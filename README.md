@@ -1,2 +1,51 @@
 # sensei-for-evidence
-Method-first evidence research workflows: discovery, screening, provenance, synthesis, independent challenge, and bounded conclusions.
+
+질문 정의부터 근거 수집·종합·반론 검토·결론 범위 판단까지 연결하는 연구 방법 프레임워크입니다.
+A method-first framework for traceable evidence research and bounded conclusions.
+
+## Core principle
+
+**Search completion is not evidence sufficiency.** A persuasive narrative does not
+replace a reproducible search, claim-linked evidence or an explicit uncertainty bound.
+
+## Included
+
+- Workflow design for neutral discovery, protocol lock, search, screening, extraction,
+  normalization, appraisal, synthesis, independent challenge and controlled reopening.
+- A portable agent workflow (`SKILL.md`) with plan/run/status/method/audit intents.
+- A deterministic research-state validator (`validate_run.py`) and synthetic tests/example.
+
+No private research projects, experiment results, evidence databases, article/book
+full text, extracted figures, paid databases or real patent-census datasets are included.
+This repository does not itself execute searches, read papers, run an LLM, determine
+scientific adequacy or deliver a legal freedom-to-operate opinion.
+
+## Quick start
+
+Python 3.10+, standard library only:
+
+```sh
+python3 validate_run.py examples/state.json
+python3 -m unittest discover -v
+```
+
+The pending synthetic state passes consistency checks while its conclusion remains
+`NOT_READY`. A valid file is not a completed study. `COMPLETE` additionally requires
+explicit sufficiency, readiness, QA, storage and traceable citation/artifact fields;
+these remain recorded assertions until independently checked against real evidence.
+
+## Research intents
+
+| Intent | Output |
+|---|---|
+| Plan | Research map, scope, sources, criteria, extraction, appraisal and stop conditions |
+| Run | Execution within a resolved question and versioned protocol |
+| Status | Phase, coverage, contradiction, blocker and next action |
+| Method | Established term, rationale, applicability, inputs, procedure, failures and references |
+| Audit | Claim/evidence challenge, alternatives, surviving boundary and discriminating gaps |
+
+Prefer established methods and current authoritative references appropriate to the
+question. This framework does not reproduce or replace those standards.
+See [architecture](docs/ARCHITECTURE.md), [workflow](SKILL.md),
+[publication boundary](PUBLICATION.md), [security](SECURITY.md), and [rights](RIGHTS.md).
+No license has been selected by the owner yet.

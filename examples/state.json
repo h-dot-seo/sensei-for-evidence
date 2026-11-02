@@ -1,0 +1,16 @@
+{
+  "project_id": "synthetic-project",
+  "research_question": "How should a synthetic evidence question be scoped?",
+  "run_id": "synthetic-demo",
+  "phase": "discovery",
+  "gate": "intent",
+  "evidence_sufficiency": "UNASSESSED",
+  "conclusion_readiness": "NOT_READY",
+  "next_action": "Define scope",
+  "searches": [],
+  "references": [],
+  "blockers": [],
+  "release": {
+    "status": "DRAFT"
+  }
+}

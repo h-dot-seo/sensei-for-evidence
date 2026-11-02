@@ -1,0 +1,25 @@
+---
+name: sensei-for-evidence
+description: Plan, execute, inspect or challenge scientific and patent-information research using traceable sources, explicit methods, contradiction handling and bounded conclusions.
+---
+
+# Evidence research workflow
+
+Read README.md and docs/ARCHITECTURE.md. Route natural intent to plan, run, status,
+method or audit. Do not require a special command syntax or promise unavailable tools.
+
+1. Resolve question and consequential scope; identify the evidence needed for the decision.
+2. Discover neutrally before fixing a preferred scientific axis.
+3. Build and version a protocol/research map with exact sources, search, screening and appraisal.
+4. Record retrieval counts and paging before deduplication; retain exclusions and failed searches.
+5. Normalize evidence with source locators; distinguish records/reports/studies/claims.
+6. Appraise using current established methods; preserve counterevidence and uncertainty.
+7. Synthesize only within evidence bounds; separate observation, interpretation and decision.
+8. Challenge the strongest alternative explanation independently when a suitable reviewer is available.
+9. Assess evidence sufficiency and conclusion readiness separately; reopen targeted gaps explicitly.
+10. Verify citations/artifacts and disclose coverage, limitations and unresolved issues before release.
+
+For patent work, separate records/families/claims/legal status and disclose jurisdiction
+and date. Do not call a partial inventory a census or a landscape a legal FTO opinion.
+For persona consultation, keep it interpretive and downstream of neutral discovery.
+Never treat private project datasets or textbook contents as bundled framework assets.
