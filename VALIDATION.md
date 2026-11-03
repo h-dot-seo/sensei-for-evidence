@@ -292,3 +292,17 @@ fixtures, 47 malformed-input CLI cases and 27 existing report/handoff tests.
 The fictional E2E CLI audit/handoff and existing bundle create/verify passed.
 Matching partitions do not certify completeness, identity, PRISMA compliance or
 scientific/clinical validity; no sources or models were called.
+
+Search query/receipt manifest increment (2026-11-03): 294 tests in the suite;
+Linux run: 293 passed and one native-Windows-only test skipped. Fifteen new tests
+cover exact full/core query specifications, unsupported fields, missing runtime
+metadata, source-wise missing/unresolved/asserted receipt states, null versus zero
+counts, recorded interruption/page signals, page versus query overlap, same-source
+versus cross-source IDs, no-plan behavior, full hashes/nonmutation, mock-receipt
+compatibility, downstream validation, handoff fingerprints and safe real CLI
+JSON/text/error paths. Uninterpreted receipt/page metadata is preserved but never
+executed. Independent review passed 69 focused tests and probes on 17 valid
+fixtures, including source/ID collisions and cross-process hash determinism.
+The synthetic manifest/handoff/PRISMA CLI journey and existing bundle creation/
+verification passed. No provider request, query translation, next cursor,
+automatic retry, review renewal or census assertion is performed.

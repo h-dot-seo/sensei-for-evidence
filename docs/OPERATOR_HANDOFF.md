@@ -16,6 +16,7 @@ fictional checked-in fixture; they do not download papers or call models.
 
 ```sh
 python review_handoff.py examples/claim-comparison.json --work-package WP-TRANSLATION --text
+python search_manifest.py examples/claim-comparison.json
 python prisma_audit.py examples/claim-comparison.json
 python research_status.py examples/claim-comparison.json --text
 python synthesis_review.py examples/claim-comparison.json --text
@@ -57,7 +58,8 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
    supplied rank and uncertainty, guideline/development limitations and exact
    claim positions. The full statement's review status includes other cited
    results; selected positions never imply a WP-specific endorsement.
-5. Use the PRISMA audit JSON view for member-level record/report/study accounting
+5. Use the search manifest JSON view for exact query specifications, source-wise
+   receipt limits and overlap. Use the PRISMA audit JSON view for member-level record/report/study accounting
    and exact exclusion/unavailable reasons. Use other detailed-view argument arrays
    for full source, condition, n, statistical,
    appraisal and claim trace. Replace the `PROTOCOL.json` placeholder with your

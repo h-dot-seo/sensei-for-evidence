@@ -119,13 +119,15 @@ def handoff(protocol, work_package_id=None):
     implementation = dict(synthesis['engine_sha256'], **works['engine_sha256'])
     implementation['review_handoff.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
+    implementation['search_manifest.py'] = hashlib.sha256(Path(__file__).with_name('search_manifest.py').read_bytes()).hexdigest()
     return dict(schema_version=1, question=state['question'], protocol_version=state['protocol_version'],
                 protocol_sha256=state['protocol_sha256'], engine_sha256=implementation,
                 hash_scope=state['hash_scope'], work_selection=works['selection'],
                 record_flow=copy.deepcopy(synthesis['record_flow']), report_stage=synthesis['report_stage'],
                 report_flow=copy.deepcopy(synthesis['report_flow']), synthesis_stage=synthesis['synthesis_stage'],
                 manual_review_steps=steps, selected_work=summaries,
-                detailed_views=[dict(script='prisma_audit.py',arguments=['PROTOCOL.json'],purpose='Machine-readable accounting members, reason groups and record/report/study/result links'),
+                detailed_views=[dict(script='search_manifest.py',arguments=['PROTOCOL.json'],purpose='Exact planned query specifications and source-wise receipt/interruption/overlap accounting'),
+                                dict(script='prisma_audit.py',arguments=['PROTOCOL.json'],purpose='Machine-readable accounting members, reason groups and record/report/study/result links'),
                                 dict(script='research_status.py',arguments=['PROTOCOL.json','--text'],purpose='Protocol-wide queues'),
                                 dict(script='synthesis_review.py',arguments=['PROTOCOL.json','--text'],purpose='Full result/source/condition/n/statistics/claim traces'),
                                 dict(script='work_review.py',arguments=['PROTOCOL.json']+(['--work-package='+work_package_id] if work_package_id is not None else [])+['--text'],purpose='Detailed work evidence and applicability packet')],
