@@ -121,3 +121,9 @@ tests verify the documented end-to-end synthetic counts, missing-source and revi
 gaps, work dependencies, unchanged-run comparison, verified bundle output and
 README/usage relative links. Detailed compatibility notes were retained in
 docs/USAGE.md while the README became a shorter practical entry point.
+
+Status summary increment (2026-11-03): 122 tests passed. Nine new tests cover
+combined queues, unknown-stage nulls, page issues, identifier-based screening,
+separate report stages, unavailable/unmapped reports, dependency assertions, input
+immutability/hash consistency and JSON/text CLI behavior. No priorities or
+scientific readiness are inferred from queue counts.

@@ -4,18 +4,13 @@ import hashlib
 import json
 from pathlib import Path
 from evidence_workflow import run
-from json_io import configure_utf8_stdio, parse_json
+from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes as canonical
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
 
 BOUNDARY = ('Mechanical comparison of supplied inputs; both ledgers are recomputed with the current implementation, not replayed historical engines. '
             'Version labels do not authenticate amendment history or justify changes. '
             'No search, scientific reassessment or conclusion promotion is performed.')
-
-
-def canonical(value):
-    return json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False,
-                      separators=(',', ':')).encode('utf-8')
 
 
 def changed_fields(before, after):
@@ -65,7 +60,7 @@ def compare_protocols(before, after):
     implementation = dict(engine_hashes(), **{'compare_runs.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     return dict(engine_sha256=implementation, before_protocol_sha256=hashlib.sha256(left_bytes).hexdigest(),
                 after_protocol_sha256=hashlib.sha256(right_bytes).hexdigest(),
-                hash_scope='canonical JSON inputs; object key order ignored, list order retained; not authentication',
+                hash_scope='sorted compact UTF-8 JSON inputs; object key order ignored, list order retained; not authentication',
                 has_changes=changed, before_version=before['version'], after_version=after['version'],
                 version_changed=version_changed, unversioned_change=changed and not version_changed,
                 changed_protocol_fields=changed_fields(before, after),

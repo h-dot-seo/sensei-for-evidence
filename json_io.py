@@ -45,3 +45,9 @@ def configure_utf8_stdio():
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, 'reconfigure'):
             stream.reconfigure(encoding='utf-8', errors=getattr(stream, 'errors', None) or 'strict')
+
+
+def canonical_json_bytes(value):
+    """Sorted compact UTF-8 representation for semantic input fingerprints."""
+    return json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False,
+                      separators=(',', ':')).encode('utf-8')

@@ -36,6 +36,7 @@ Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh
 python -m unittest discover -v
+python research_status.py examples/review-demo.json --text
 python evidence_workflow.py examples/review-demo.json
 python prisma_reports.py examples/review-demo.json
 python research_bundle.py create examples/review-demo.json ../synthetic-review.zip
@@ -63,6 +64,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 
 | Command | Purpose |
 |---|---|
+| `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
 | `validate_run.py STATE.json` | Validate selected state/release consistency rules |
 | `evidence_workflow.py PROTOCOL.json` | Reconcile search, screening, results, context, appraisal and work |
 | `prisma_reports.py PROTOCOL.json` | Add report/full-text/study and extraction-queue accounting |

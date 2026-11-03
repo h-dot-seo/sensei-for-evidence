@@ -310,7 +310,8 @@ domain judgements and provenance.
 
 ## Consistent JSON entrypoints
 
-All workflow, report, state-validation and bundle CLIs use one strict JSON reader.
+All workflow, report, state-validation, bundle, comparison and status CLIs use
+one strict JSON reader.
 Duplicate object keys, unpaired Unicode surrogates, NaN/Infinity and numbers outside finite float range fail
 instead of being silently reinterpreted. Protocol roots must be objects. CLI input
 files and output streams use UTF-8, including redirected Windows output.
@@ -377,3 +378,26 @@ only means page-level assertions agree internally; neither pages nor search
 receipts are authenticated, queries assessed or sources searched by this code.
 Legacy inputs without pages remain supported, and census readiness stays
 `NOT_ESTABLISHED`.
+
+## Concise research status
+
+```sh
+python research_status.py examples/review-demo.json --text
+python research_status.py examples/review-demo.json
+```
+
+The status command summarizes existing validated ledgers rather than executing
+research. JSON preserves IDs and reasons for missing planned searches, incomplete
+searches, unscreened records, report mapping/retrieval/full-text/extraction queues,
+context review, absent recorded appraisal and dependency-blocked work. `--text`
+prints a shorter count summary. No total is summed across these overlapping stages.
+
+Missing plan/report stages use null counts and `not supplied`, not zero pending
+work. The record-level extraction queue retains its title/abstract scope; report
+queues use full-text eligibility. `dependency_unblocked_planned_work` describes
+only declared dependencies, not scientific permission or suitability to begin.
+Completed work remains an operator assertion, and readiness is never promoted.
+
+Status and comparison use the same sorted compact UTF-8 JSON representation for
+semantic input hashes. Both record implementation hashes; these hashes are neither
+exact-byte receipt hashes nor signatures.
