@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.8.1-report-extraction-accounting",
+  "release": "0.9.0-supplied-appraisal-provenance",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 34,
+  "file_count": 37,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 15569,
-      "sha256": "17c4080868d45895cd886d97c097f7bf5d4adc93d476077ec0e2ff297979b76e"
+      "bytes": 17231,
+      "sha256": "edf558634c3bfceaae8403ffa1fb35606ddb10876f16c905738e4cd044bd1fba"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,13 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5722,
-      "sha256": "be47333a9cd5c647719cfc182b2691be31799c7a6ecf9990f3278e1de8cea527"
+      "bytes": 6123,
+      "sha256": "bef8e62b837f74beb582c04947ca9e01c43bf00d5d39faf428cbb551a569a472"
+    },
+    {
+      "path": "appraisal_links.py",
+      "bytes": 3428,
+      "sha256": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2"
     },
     {
       "path": "audit_publication.py",
@@ -75,8 +80,13 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 7411,
-      "sha256": "aca4a82364bdf6c595923c6cd88506a98a7806702dab0157165bed3a3183344e"
+      "bytes": 7534,
+      "sha256": "e3205e17e57186b53f579a43bce7274bdbd1d85ed963a6e2677389dcb30b67f1"
+    },
+    {
+      "path": "examples/appraised-protocol.json",
+      "bytes": 4687,
+      "sha256": "e37cd04237aaccb68ad2ad1cf81f0ea9f2e18dc433fc5681cd8d920e671492a7"
     },
     {
       "path": "examples/context-protocol.json",
@@ -110,18 +120,23 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 5509,
-      "sha256": "68bb967a92cf4fa6182cdfca5cdf5f7bbb9694c792c10d5d0a920a032997aa41"
+      "bytes": 5542,
+      "sha256": "832627e54d24e28304cbd5ecad11f42c007c96feb06e9277589383fb3fc9b983"
     },
     {
       "path": "research_bundle.py",
-      "bytes": 7397,
-      "sha256": "ee21ae1b932cb5840352a1382135b60ea4ee5cc2e428893dae85d415e31393d7"
+      "bytes": 8188,
+      "sha256": "715b731d023257072541efd8a1621fa771273bfc2b9fa25ee6b86cbe955a54aa"
     },
     {
       "path": "search_audit.py",
       "bytes": 3709,
       "sha256": "362260247faa100d702534031b8eee213457a9dc197bad8ee2af3fc2548da189"
+    },
+    {
+      "path": "test_appraisal_links.py",
+      "bytes": 5394,
+      "sha256": "9e8abfef206648b4084e7cde9dfd6a5423f6db1a6aaeb4bc06f8dffb28151184"
     },
     {
       "path": "test_cli_e2e.py",

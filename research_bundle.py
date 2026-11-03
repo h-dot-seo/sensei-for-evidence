@@ -10,7 +10,7 @@ from evidence_workflow import run
 from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -43,13 +43,19 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
         return safe_csv_cell(text)
+    context_by_work = {row['work_package_id']: row for row in research['context']['work_package_context']}
+    appraisal_by_work = {row['work_package_id']: row for row in research['appraisal']['work_package_appraisals']}
     for wp in sorted(research['work_packages'],key=lambda w:w['work_package_id']):
-        writer.writerow([safe(wp.get(c,'')) for c in columns])
+        wid = wp['work_package_id']
+        exported = dict(wp, context_review_pending=context_by_work[wid]['context_review_pending'],
+                        appraisal_ids=appraisal_by_work[wid]['appraisal_ids'],
+                        evidence_without_recorded_appraisal=appraisal_by_work[wid]['evidence_without_recorded_appraisal'])
+        writer.writerow([safe(exported.get(c,'')) for c in columns])
     summary=('Research bundle\n===============\n\n'
              'Supplied-data bookkeeping only; not independently verified research.\n'
              f"Identified records: {research['flow']['identified']}\n"
@@ -65,6 +71,7 @@ def build_bundle(raw):
              f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"
              f"Work packages: {len(research['work_packages'])}\n"
              f"Context review pending: {len(research['context']['review_pending'])}\n"
+             f"Result rows without recorded appraisal: {len(research['appraisal']['evidence_without_recorded_appraisal'])}\n"
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')
     payloads={'protocol.json':raw,'research.json':json_bytes(research),'reports.json':json_bytes(reports),
               'reports.csv':csv_text.encode(),'work-packages.csv':out.getvalue().encode(),'summary.md':summary.encode()}

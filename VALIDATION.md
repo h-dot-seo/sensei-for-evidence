@@ -88,3 +88,9 @@ tests distinguish report-level extraction from title/abstract record queues,
 exclude unretrieved/excluded reports, prevent alias/result-row count inflation,
 and run a combined plan + context + multi-result + full-text + bundle scenario
 through CLI subprocesses while preserving pending reviews and readiness bounds.
+
+Supplied appraisal provenance increment (2026-11-03): 87 tests passed. Nine new
+tests cover provenance/domain requirements, missing appraisal coverage, duplicate
+and dangling links, same-study scope, preservation of differing reviewer judgements,
+legacy inputs, dates/shapes and report/bundle propagation. No appraisal method,
+domain rubric, source authenticity or scientific adequacy was evaluated.

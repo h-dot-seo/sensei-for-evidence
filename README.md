@@ -129,7 +129,7 @@ outside this public repository; no uploads or external calls are made.
 
 Bundle schema 2 additionally records the exact implementation bytes for
 `evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`,
-`csv_safety.py` and `research_bundle.py`. Retain that
+`csv_safety.py`, `appraisal_links.py` and `research_bundle.py`. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains
@@ -273,3 +273,34 @@ or endpoint rows. The older record-level `extraction_pending` is explicitly
 scoped by `extraction_pending_scope` to title/abstract-included source records
 without any row. An empty queue at either stage never certifies exhaustive
 extraction; the extraction-completeness flag remains unestablished.
+
+## Supplied appraisal provenance
+
+```sh
+python evidence_workflow.py examples/appraised-protocol.json
+```
+
+Optional `appraisals` preserve a declared method, version and method locator,
+reviewer/date, limitations and domain-level judgement, rationale and source
+locator. Each unique `appraisal_id` links a nonempty set of known extraction IDs
+within one supplied study ID. A record applies only to its listed extraction IDs;
+it does not silently appraise other results from the study. Domain names must be
+unique within an appraisal. Judgement labels are retained as supplied because
+different methods use different rubrics.
+
+The output links appraisal IDs to result rows and work packages and exposes
+`evidence_without_recorded_appraisal`. Multiple reviewers' records, including
+different judgements, remain separate; no score or consensus is calculated.
+Reports and portable bundles retain the same provenance and missing coverage.
+Existing inputs without appraisals show absent recorded appraisal, not poor
+quality or a completed appraisal.
+
+No tool or rubric is executed or validated. Method suitability, source authenticity,
+domain completeness, assessor independence and scientific adequacy require review.
+The example uses an explicitly synthetic placeholder method, not a recommended
+appraisal standard. Recording all rows never promotes conclusion readiness.
+
+Work-package CSV also includes linked appraisal IDs, result IDs without recorded
+appraisal and pending context-review IDs. These are transparent review queues,
+not inferred blockers or completion certifications. JSON retains the complete
+domain judgements and provenance.
