@@ -113,3 +113,8 @@ screening/report states. See [source-review work](SOURCE_REVIEW_WORK.md).
 For a revised guideline/development context, [context amendment comparison](CONTEXT_AMENDMENTS.md)
 uses the existing compare_runs CLI to connect exact context/result changes to old
 and new explicit WP links, without determining clinical or regulatory impact.
+
+Use [prerequisite review](PREREQUISITE_REVIEW.md) with `--work-package ID
+--include-prerequisites` to open the selected work plus all explicit transitive
+prerequisite packets in dependency-first order. Defaults remain selected-only or
+lexical all-work order. This order is not priority or scientific readiness.

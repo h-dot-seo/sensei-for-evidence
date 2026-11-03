@@ -134,6 +134,7 @@ def handoff(protocol, work_package_id=None):
                                 dict(script='research_status.py',arguments=['PROTOCOL.json','--text'],purpose='Protocol-wide queues'),
                                 dict(script='synthesis_review.py',arguments=['PROTOCOL.json','--text'],purpose='Full result/source/condition/n/statistics/claim traces'),
                                 dict(script='work_review.py',arguments=['PROTOCOL.json']+(['--work-package='+work_package_id] if work_package_id is not None else [])+['--text'],purpose='Detailed work evidence and applicability packet')],
+                prerequisite_review_view=None if work_package_id is None else dict(script='work_review.py',arguments=['PROTOCOL.json','--work-package='+work_package_id,'--include-prerequisites','--text'],purpose='Selected work plus explicit transitive prerequisite packets; no scientific approval'),
                 manual_input_workflow=dict(precondition='Use a separate declared-plan base with empty searches/evidence and no adapter receipts; do not erase current research',
                     template_arguments=['receipt_intake.py','template','BASE_PROTOCOL.json'],
                     check_arguments=['receipt_intake.py','check','BASE_PROTOCOL.json','FILLED_MOCK_RECEIPTS.json','--text'],
@@ -173,7 +174,7 @@ def render_text(result):
                 position_stage=claim['position_stage'],work_evidence_ids=claim['work_evidence_ids'],
                 other_statement_evidence_ids=claim['other_statement_evidence_ids'],positions=claim['work_positions'],scope=claim['scope'])))
     lines.extend(['', 'Detailed read-only views (replace the PROTOCOL.json placeholder; arguments are not shell commands):',
-                  show(result['detailed_views']), 'Separate manual receipt entry workflow (not for overwriting this protocol): ' + show(result['manual_input_workflow']),
+                  show(result['detailed_views']), 'Optional prerequisite packet view: ' + show(result['prerequisite_review_view']), 'Separate manual receipt entry workflow (not for overwriting this protocol): ' + show(result['manual_input_workflow']),
                   'Manual work not performed: ' + show(result['manual_work_remaining']),
                   'Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', result['boundary']])
     return '\n'.join(lines) + '\n'

@@ -115,3 +115,7 @@ The handoff also lists a separate [manual receipt-entry workflow](RECEIPT_INTAKE
 with BASE_PROTOCOL.json and FILLED_MOCK_RECEIPTS.json placeholders. This is not a
 command to re-import over the current protocol. It requires a separate base, makes
 no approvals, and can save only a new unreviewed candidate file.
+
+With a selected WP, `prerequisite_review_view` suggests the existing work_review
+command with `--include-prerequisites`. It is an argument array, never executed by
+the handoff. See [prerequisite review](PREREQUISITE_REVIEW.md) for scope boundaries.

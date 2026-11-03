@@ -371,3 +371,15 @@ overlap wrappers; comparison now uses the nested work assertions and a regressio
 locks the distinction. Synthetic work packet → amendment comparison → updated work
 packet/handoff passes with clinical/regulatory significance and review validity
 unassessed. No source retrieval, applicability inference or priority changes occur.
+
+Prerequisite-packet review increment (2026-11-03): 369 tests in the suite;
+Linux run: 368 passed and one native-Windows-only test skipped. Eleven new tests
+cover mixed source/evidence dependency chains, exact packet reuse, default omitted
+packet disclosure, strict flag/selector validation, diamonds, completed prerequisites,
+no shared-evidence/downstream expansion, input isolation, a reversed 1,050-node
+chain, cycle rejection, safe leading-dash handoff argv and real CLI/text boundaries.
+Independent review also exercised 1,200 nodes, missing dependencies and packet
+identity against individually selected work. The synthetic chain deliberately
+retains stale planning assertions after dependency amendments; rank renewal and
+scientific/clinical/acceptance decisions are not performed. CLI handoff → expanded
+packets preserves source, condition/statistics, guideline and appraisal limits.

@@ -179,3 +179,8 @@ bytes are never acceptance of a work package or scientific conclusion.
 compare_runs with explicit context→result→work snapshots and retained-review-label
 cues. Version/access/review dates, applicability and uncertainty stay separate;
 no clinical significance, regulatory decision or new priority is inferred.
+
+[Prerequisite review packets](docs/PREREQUISITE_REVIEW.md) open a selected WP and
+its explicit transitive prerequisites together, preserving source/experimental/
+guideline gaps and supplied planning rationale beside deliverables and completion
+criteria. Dependency-first display is not an automated research decision.

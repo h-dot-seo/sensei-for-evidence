@@ -17,7 +17,11 @@ BOUNDARY = ('A review packet joins supplied assertions and mechanical gaps only.
             'recommendation or go/no-go decision is generated.')
 
 
-def review_packets(protocol, work_package_id=None):
+def review_packets(protocol, work_package_id=None, include_prerequisites=False):
+    if type(include_prerequisites) is not bool:
+        raise ValueError("include_prerequisites must be a boolean")
+    if include_prerequisites and work_package_id is None:
+        raise ValueError("prerequisite review requires a selected work package")
     research = run(protocol)
     reports = report_flow(protocol) if 'reports' in protocol else None
     work = {row['work_package_id']: row for row in research['work_packages']}
@@ -42,6 +46,24 @@ def review_packets(protocol, work_package_id=None):
     result_ids_by_record = {}
     for row in research['evidence']: result_ids_by_record.setdefault(row['record_id'],[]).append(row['evidence_id'])
     selected = [work_package_id] if work_package_id is not None else sorted(work)
+    if include_prerequisites:
+        closure=set();pending=[work_package_id]
+        while pending:
+            wid=pending.pop()
+            if wid in closure:continue
+            closure.add(wid);pending.extend(work[wid]['depends_on'])
+        selected=[wid for wid in research['execution_order'] if wid in closure]
+    selected_set=set(selected)
+    dependency_scope=dict(
+        include_prerequisites=include_prerequisites,packet_work_ids=selected[:],
+        edges=[dict(work_package_id=wid,depends_on=dep,prerequisite_packet_included=dep in selected_set)
+               for wid in selected for dep in work[wid]['depends_on']],
+        omitted_direct_prerequisite_ids=sorted({dep for wid in selected for dep in work[wid]['depends_on'] if dep not in selected_set}),
+        order_scope=('Supplied dependency-first traversal, not priority or scientific readiness'
+                     if include_prerequisites else 'Selected work or lexical work ID order; not execution order'),
+        boundary=('Only explicit transitive depends_on links are expanded. Completed prerequisites remain visible. '
+                  'Shared evidence, context or ranks do not add dependencies. No work is executed, approved or reprioritized. '
+                  'A dependency-unblocked task may retain source, experimental, clinical and appraisal gaps.'))
     packets = []
     for wid in selected:
         item = work[wid]
@@ -134,7 +156,7 @@ def review_packets(protocol, work_package_id=None):
     return dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
-                engine_sha256=implementation, selection=work_package_id,
+                engine_sha256=implementation, selection=work_package_id, dependency_review=dependency_scope,
                 experiment_boundary=research['experiments']['boundary'],
                 planning_boundary=research['planning']['boundary'],
                 planning_source_scope_fields=research['planning']['source_scope_fields'],
@@ -154,6 +176,7 @@ def render_text(result):
     plan_supplied = result['global_search_plan_audit']['plan_status'] != 'NOT_SUPPLIED'
     lines = ['Work-package review packets', 'Question: ' + show(result['question']),
              'Protocol version: ' + show(result['protocol_version']),
+             'Dependency review scope: ' + show(result['dependency_review']),
              'Global search plan: ' + show(result['global_search_plan_audit']['plan_status']),
              'Missing planned searches: ' + (show(result['global_search_plan_audit']['missing_search_ids']) if plan_supplied else 'not supplied'),
              'Incomplete planned searches: ' + (show(result['global_search_plan_audit']['incomplete_search_ids']) if plan_supplied else 'not supplied')]
@@ -211,10 +234,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('protocol', type=Path)
     parser.add_argument('--work-package', help='select one exact supplied work-package ID')
+    parser.add_argument('--include-prerequisites', action='store_true', help='include all explicit transitive prerequisites of the selected work in dependency-first order')
     parser.add_argument('--text', action='store_true', help='render a text review packet')
     args = parser.parse_args()
     try:
-        result = review_packets(parse_json(args.protocol.read_bytes()), args.work_package)
+        result = review_packets(parse_json(args.protocol.read_bytes()), args.work_package, args.include_prerequisites)
     except (OSError, ValueError, TypeError, KeyError) as error:
         parser.exit(1, str(error) + '\n')
     print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')
