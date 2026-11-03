@@ -94,3 +94,9 @@ tests cover provenance/domain requirements, missing appraisal coverage, duplicat
 and dangling links, same-study scope, preservation of differing reviewer judgements,
 legacy inputs, dates/shapes and report/bundle propagation. No appraisal method,
 domain rubric, source authenticity or scientific adequacy was evaluated.
+
+JSON entrypoint consistency increment (2026-11-03): 93 tests passed. Six new
+tests cover duplicate/nested keys, nonfinite/overflow numbers, all four CLIs on
+ambiguous/nonobject inputs, UTF-8 output under a forced ASCII stream environment,
+unpaired-surrogate-safe diagnostics, and malformed bundle manifests without tracebacks. The shared parser is included
+in implementation fingerprints; no external services were invoked.

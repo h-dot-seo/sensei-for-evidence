@@ -3,6 +3,7 @@
 import argparse
 import json
 from pathlib import Path
+from json_io import parse_json, configure_utf8_stdio
 from search_audit import completion_issues
 
 
@@ -89,11 +90,12 @@ def validate(state):
 
 
 def main():
+    configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('state', type=Path)
     args = parser.parse_args()
     try:
-        state = json.loads(args.state.read_text())
+        state = parse_json(args.state.read_text(encoding='utf-8'))
         if not isinstance(state, dict):
             raise ValueError('state must be an object')
         errors = validate(state)

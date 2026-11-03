@@ -9,24 +9,13 @@ from pathlib import Path
 from evidence_workflow import run
 from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
+from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in ENGINE_FILES}
-
-def parse_json(raw):
-    def pairs(items):
-        result = {}
-        for key, value in items:
-            if key in result:
-                raise ValueError('duplicate JSON key: ' + key)
-            result[key] = value
-        return result
-    def invalid(value):
-        raise ValueError('invalid JSON numeric constant: ' + value)
-    return json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid)
 
 PAYLOADS={'protocol.json','research.json','reports.json','reports.csv','work-packages.csv','summary.md'}
 
@@ -104,11 +93,20 @@ def verify(path):
         if sum(e.file_size for e in entries)>50_000_000:
             raise ValueError('bundle exceeds verification size limit')
         manifest=parse_json(archive.read('manifest.json'))
-        if manifest.get('schema_version')!=2:
+        if not isinstance(manifest, dict):
+            raise ValueError('bundle manifest must be an object')
+        if type(manifest.get('schema_version')) is not int or manifest['schema_version'] != 2:
             raise ValueError('unsupported bundle schema')
         if manifest.get('engine_sha256') != engine_hashes():
             raise ValueError('engine bytes differ; verify using the recorded implementation')
-        listed=[r['path'] for r in manifest['files']]
+        files = manifest.get('files')
+        if not isinstance(files, list) or any(not isinstance(row, dict) for row in files):
+            raise ValueError('manifest files must be a list of objects')
+        for row in files:
+            if (not isinstance(row.get('path'), str) or type(row.get('bytes')) is not int
+                    or row['bytes'] < 0 or not isinstance(row.get('sha256'), str)):
+                raise ValueError('invalid manifest file metadata')
+        listed=[r['path'] for r in files]
         if len(listed)!=len(PAYLOADS) or set(listed)!=PAYLOADS:
             raise ValueError('invalid manifest file set')
         for item in manifest['files']:
@@ -127,6 +125,7 @@ def verify(path):
 
 
 def main():
+    configure_utf8_stdio()
     p=argparse.ArgumentParser(description=__doc__); sub=p.add_subparsers(dest='command',required=True)
     c=sub.add_parser('create'); c.add_argument('protocol',type=Path); c.add_argument('output',type=Path)
     v=sub.add_parser('verify'); v.add_argument('bundle',type=Path)

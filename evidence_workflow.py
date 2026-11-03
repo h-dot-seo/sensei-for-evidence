@@ -2,12 +2,15 @@
 import argparse
 import json
 from pathlib import Path
+from json_io import parse_json, configure_utf8_stdio
 from context_links import link_context, id_list, nonempty_text
 from search_audit import audit_search_plan, completion_issues
 from appraisal_links import link_appraisals
 
 
 def run(protocol):
+    if not isinstance(protocol, dict):
+        raise ValueError('protocol must be an object')
     for key in ('question', 'version', 'inclusion_criteria', 'exclusion_criteria'):
         if not protocol.get(key):
             raise ValueError('missing protocol field: ' + key)
@@ -123,10 +126,11 @@ def run(protocol):
 
 
 def main():
+    configure_utf8_stdio()
     p = argparse.ArgumentParser(description=__doc__); p.add_argument('protocol', type=Path)
     a = p.parse_args()
     try:
-        result = run(json.loads(a.protocol.read_text(encoding='utf-8')))
+        result = run(parse_json(a.protocol.read_text(encoding='utf-8')))
     except (ValueError, OSError, KeyError, TypeError) as e:
         p.exit(1, str(e) + '\n')
     print(json.dumps(result, ensure_ascii=False, indent=2))

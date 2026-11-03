@@ -129,7 +129,7 @@ outside this public repository; no uploads or external calls are made.
 
 Bundle schema 2 additionally records the exact implementation bytes for
 `evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`,
-`csv_safety.py`, `appraisal_links.py` and `research_bundle.py`. Retain that
+`csv_safety.py`, `appraisal_links.py`, `json_io.py` and `research_bundle.py`. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains
@@ -304,3 +304,13 @@ Work-package CSV also includes linked appraisal IDs, result IDs without recorded
 appraisal and pending context-review IDs. These are transparent review queues,
 not inferred blockers or completion certifications. JSON retains the complete
 domain judgements and provenance.
+
+## Consistent JSON entrypoints
+
+All workflow, report, state-validation and bundle CLIs use one strict JSON reader.
+Duplicate object keys, unpaired Unicode surrogates, NaN/Infinity and numbers outside finite float range fail
+instead of being silently reinterpreted. Protocol roots must be objects. CLI input
+files and output streams use UTF-8, including redirected Windows output.
+Bundle verification also rejects malformed manifest containers, noninteger schema
+versions and invalid file metadata with ordinary validation errors. These checks
+establish input consistency, not authenticity or scientific correctness.

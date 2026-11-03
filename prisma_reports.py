@@ -5,6 +5,7 @@ import io
 import json
 from collections import Counter
 from pathlib import Path
+from json_io import parse_json, configure_utf8_stdio
 from evidence_workflow import run
 from context_links import nonempty_text
 from csv_safety import safe_csv_cell
@@ -80,9 +81,10 @@ def report_flow(protocol):
 
 
 def main():
+    configure_utf8_stdio()
     p=argparse.ArgumentParser(description=__doc__); p.add_argument('protocol',type=Path)
     a=p.parse_args()
-    try: result=report_flow(json.loads(a.protocol.read_text(encoding='utf-8')))
+    try: result=report_flow(parse_json(a.protocol.read_text(encoding='utf-8')))
     except (ValueError,OSError,KeyError,TypeError) as e: p.exit(1,str(e)+'\n')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
