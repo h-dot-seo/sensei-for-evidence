@@ -383,3 +383,15 @@ identity against individually selected work. The synthetic chain deliberately
 retains stale planning assertions after dependency amendments; rank renewal and
 scientific/clinical/acceptance decisions are not performed. CLI handoff → expanded
 packets preserves source, condition/statistics, guideline and appraisal limits.
+
+Planning rationale-statement increment (2026-11-03): 380 tests in the suite;
+Linux run: 379 passed and one native-Windows-only test skipped. Eleven new tests
+cover explicit shared-evidence references, strict unknown/duplicate/empty/type
+rejection, source-only exclusion, linked statement/position/sibling-result
+staleness, unlinked statement independence, validated-synthesis helper binding,
+legacy omission behavior, unchanged work-progress semantics and packet/handoff/
+bundle propagation with copy isolation. Independent review compared all 21 valid
+legacy examples to the previous HEAD and found identical no-reference review
+targets/hashes. CLI work-prerequisites → handoff → synthesis retains supplied
+challenging/unknown positions without judging rationale support or making a
+scientific, clinical, regulatory, proceed/stop/defer or priority decision.

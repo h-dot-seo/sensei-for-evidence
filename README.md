@@ -184,3 +184,8 @@ no clinical significance, regulatory decision or new priority is inferred.
 its explicit transitive prerequisites together, preserving source/experimental/
 guideline gaps and supplied planning rationale beside deliverables and completion
 criteria. Dependency-first display is not an automated research decision.
+
+[Planning rationale citations](docs/PLANNING_RATIONALE_LINKS.md) connect existing
+human planning assertions to supplied hypotheses and challenging/unresolved
+positions. They add source-change tracking, not automated rationale validation,
+refutation, clinical decisions or new priorities.

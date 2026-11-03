@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.30.0-prerequisite-review",
+  "release": "0.31.0-planning-rationale-links",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 113,
+  "file_count": 116,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11526,
-      "sha256": "e3f72672603c80dfbe75a42604137c11c5310caae8f2ddc3df3590eda7d47888"
+      "bytes": 11815,
+      "sha256": "a4920c3004d481d402ad635668c02f6a043d52f07966cb04af895467dfa2761c"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 26889,
-      "sha256": "c73e372dcc9f0704b8cfcca55e82aa8bbca2e010910fe92cf7d6de99d96283d3"
+      "bytes": 27753,
+      "sha256": "52254329384c47249c9ef4c91ac4a0457d2fbb50157dc5938014b103530bb4a0"
     },
     {
       "path": "adapter_integrity.py",
@@ -130,8 +130,13 @@
     },
     {
       "path": "docs/PLANNING_ASSERTIONS.md",
-      "bytes": 8142,
-      "sha256": "121dcddfcee583d29fc0294fa7c683a5aa94ddf0b9a821ad20e692e1fa5167c2"
+      "bytes": 8459,
+      "sha256": "26fae49ab0c9f2ebb2cf18148488d8d6dc1210b4f312d5e4420dd16fa9dba40a"
+    },
+    {
+      "path": "docs/PLANNING_RATIONALE_LINKS.md",
+      "bytes": 3649,
+      "sha256": "aaf54619a3a6600c5ffc6c43a7e8494be8198220b1a443748878103e940395d3"
     },
     {
       "path": "docs/PREREQUISITE_REVIEW.md",
@@ -175,8 +180,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 11354,
-      "sha256": "49395081273e0949d7ed2d9c932b8cb1ae4bc2e3f9bb5bbd913ecb5c79d9c597"
+      "bytes": 11365,
+      "sha256": "fddae9f898d0b1dbc7110a822b5024cc2c65ebbe1e85d4f54a96806c57e5304a"
     },
     {
       "path": "examples/adapter-fixture.json",
@@ -274,6 +279,11 @@
       "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
     },
     {
+      "path": "examples/rationale-links.json",
+      "bytes": 28851,
+      "sha256": "10bad6fa4bee49a71dc1cc96a80e3d7e47729217d35c7e9a38b905d816a12034"
+    },
+    {
       "path": "examples/report-protocol.json",
       "bytes": 1662,
       "sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78"
@@ -335,8 +345,8 @@
     },
     {
       "path": "planning_links.py",
-      "bytes": 5977,
-      "sha256": "f6dae38ac6ca58ddf61bd09909f2011c8e929bea57dc5e96bfed87f2b3ae8565"
+      "bytes": 7846,
+      "sha256": "670053326028635423007024ff2ae76067771bcc001c951cdd9239c786f9f98e"
     },
     {
       "path": "prisma_audit.py",
@@ -482,6 +492,11 @@
       "path": "test_prisma_work_links.py",
       "bytes": 5908,
       "sha256": "6cd2dae1e2820d308e92a25605f1c670d2d5c3ccdef690ca0323b91855444da0"
+    },
+    {
+      "path": "test_rationale_links.py",
+      "bytes": 6060,
+      "sha256": "13dc453251609d4e61810b4a248970fae4540a27a3b19f483477b07976862ec2"
     },
     {
       "path": "test_receipt_intake.py",

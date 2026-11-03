@@ -145,3 +145,8 @@ For explicit source_review work, the work scope also binds a structural inventor
 of result IDs on referenced records (and direct-dependency scopes carry it). It
 does not bind those results as evidence or assess their content. Existing evidence
 work scope and legacy hashes are unchanged. See [source-review work](SOURCE_REVIEW_WORK.md).
+
+Optional [rationale statement links](PLANNING_RATIONALE_LINKS.md) cite existing
+synthesis statements and their supplied challenging/unresolved positions. Linked
+statement changes can stale that planning assertion; no rationale support or
+scientific decision is assessed. Omitted links preserve legacy source hashes.

@@ -1,12 +1,13 @@
 """Track supplied planning ranks and source staleness without generating priorities."""
 import copy
 import hashlib
-from context_links import nonempty_text, iso_date
+from context_links import nonempty_text, iso_date, id_list
 from json_io import canonical_json_bytes
 
 BOUNDARY = ('Ranks, rationale and planner labels are supplied assertions, not independently '
             'verified priorities or advice. Source matching is content consistency, not planning '
             'quality. Stale ranks are historical and excluded from current rank groups. '
+            'Optional statement links are supplied rationale references, not support or refutation judgments. '
             'Dependency order and scientific/clinical readiness are not changed.')
 PROGRESS_FIELDS = {'status', 'blocked_by', 'artifact_locator', 'acceptance_verified'}
 
@@ -15,7 +16,7 @@ def digest(value):
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
-def link_planning(protocol, evidence, work, context, appraisal, experiments=None):
+def link_planning(protocol, evidence, work, context, appraisal, experiments=None, synthesis=None):
     if 'experimental_units' in protocol and (not isinstance(experiments, dict) or experiments.get('stage') != 'SUPPLIED'):
         raise ValueError('supplied experimental units require validated experiment binding')
     supplied = protocol.get('planning_decisions', [])
@@ -36,18 +37,8 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
         if row.get('work_type') == 'source_review':
             record_refs = {ref['record_id'] for ref in row['source_refs'] if ref['kind']=='record'}
             scope_by_id[wid]['source_result_inventory'] = [dict(record_id=rid,evidence_ids=sorted(source_result_ids.get(rid,[]))) for rid in sorted(record_refs)]
-    targets = {}
-    for wid, row in work_by_id.items():
-        refs = set(row['evidence_ids'])
-        basis = dict(schema_version=1, source_scope_sha256=source_hash,
-            work_scope=scope_by_id[wid],
-            direct_dependency_scopes=[scope_by_id[dep] for dep in row['depends_on']],
-            evidence=[copy.deepcopy(evidence_by_id[eid]) for eid in sorted(refs)],
-            contexts=[copy.deepcopy(context_by_id[cid]) for cid in sorted(row.get('context_ids', []))],
-            appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if refs.intersection(item['evidence_ids'])])
-        if experiments is not None and experiments['stage'] == 'SUPPLIED':
-            basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if refs.intersection(item['evidence_ids'])])
-        targets[wid] = dict(work_package_id=wid, basis=basis, basis_sha256=digest(basis))
+    statement_by_id = ({row['statement_id']:row for row in synthesis['statement_ledger']}
+                       if isinstance(synthesis,dict) and synthesis.get('stage')=='SUPPLIED' else {})
     decisions = {}
     for decision in supplied:
         if not isinstance(decision, dict):
@@ -65,7 +56,29 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
         if len(value) != 64 or any(c not in '0123456789abcdef' for c in value):
             raise ValueError('planning basis_sha256 must be lowercase SHA-256 hex')
         iso_date(decision['planned_at'], 'planned_at')
+        if 'rationale_statement_ids' in decision:
+            refs=id_list(decision['rationale_statement_ids'],'rationale_statement_ids')
+            if not refs:raise ValueError('rationale_statement_ids must be nonempty when supplied')
+            if not isinstance(synthesis,dict) or synthesis.get('stage')!='SUPPLIED':
+                raise ValueError('planning rationale references require validated synthesis binding')
+            if any(sid not in statement_by_id for sid in refs):raise ValueError('planning rationale references unknown statement')
+            if any(not set(statement_by_id[sid]['evidence_ids']).intersection(work_by_id[wid]['evidence_ids']) for sid in refs):
+                raise ValueError('planning rationale statement must share work evidence')
         decisions[wid] = copy.deepcopy(decision)
+    targets = {}
+    for wid, row in work_by_id.items():
+        refs = set(row['evidence_ids'])
+        basis = dict(schema_version=1, source_scope_sha256=source_hash,
+            work_scope=scope_by_id[wid],
+            direct_dependency_scopes=[scope_by_id[dep] for dep in row['depends_on']],
+            evidence=[copy.deepcopy(evidence_by_id[eid]) for eid in sorted(refs)],
+            contexts=[copy.deepcopy(context_by_id[cid]) for cid in sorted(row.get('context_ids', []))],
+            appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if refs.intersection(item['evidence_ids'])])
+        if experiments is not None and experiments['stage'] == 'SUPPLIED':
+            basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if refs.intersection(item['evidence_ids'])])
+        if 'rationale_statement_ids' in decisions.get(wid,{}):
+            basis['rationale_statements']=[copy.deepcopy(statement_by_id[sid]) for sid in sorted(decisions[wid]['rationale_statement_ids'])]
+        targets[wid] = dict(work_package_id=wid, basis=basis, basis_sha256=digest(basis))
     ledger, groups, missing, stale = [], {}, [], []
     for wid in sorted(work_by_id):
         decision = decisions.get(wid)
@@ -77,6 +90,13 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
         ledger.append(dict(work_package_id=wid, source_match_status=match, assertion=decision,
                            current_priority_rank=decision['priority_rank'] if match == 'CURRENT_SOURCE' else None,
                            current_basis_sha256=targets[wid]['basis_sha256']))
+        if decision is not None and 'rationale_statement_ids' in decision:
+            ledger[-1]['rationale_statement_links']=[dict(
+                statement=copy.deepcopy(statement),
+                work_evidence_ids=sorted(set(statement['evidence_ids']) & set(work_by_id[wid]['evidence_ids'])),
+                other_statement_evidence_ids=sorted(set(statement['evidence_ids'])-set(work_by_id[wid]['evidence_ids'])),
+                rationale_support_assessment='NOT_PERFORMED')
+                for statement in targets[wid]['basis']['rationale_statements']]
     return dict(schema_version=1, source_scope_fields=list(source_scope), source_scope_sha256=source_hash,
                 review_targets=[targets[wid] for wid in sorted(targets)], planning_ledger=ledger,
                 current_rank_groups=[dict(supplied_priority_rank=rank, work_package_ids=groups[rank],
