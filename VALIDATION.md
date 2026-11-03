@@ -267,3 +267,15 @@ work/synthesis review and reproducible bundle creation/verification passed on
 fictional positions only. No direction, refutation or causal judgment is inferred.
 Independent partial-overlap review was retained as an e1-only WP regression: only
 its positions are selected while the other result and full statement stay visible.
+
+Operator handoff CLI increment (2026-11-03): 265 tests in the suite;
+Linux run: 264 passed and one native-Windows-only test skipped. Fifteen new tests
+exercise all typed queue mappings, missing/empty states, selected-WP versus global
+scope, protocol/implementation hashes, unchanged inputs, source-safe text, null
+search plans, legacy effective IDs, namespace collisions, missing/duplicate search
+IDs, leading-dash work IDs and nonzero/no-partial-output failures. The actual CLI
+journey runs status, synthesis, selected work, handoff text/JSON and bundle
+create/verify against a fictional input path with spaces. Independent review
+identified null-plan, search-index, namespace and argument-array edge cases;
+these were fixed with explicit regressions. No source retrieval, scientific
+review, work execution or automatic review renewal is performed.

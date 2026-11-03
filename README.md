@@ -48,6 +48,7 @@ Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh
 python -m unittest discover -v
+python review_handoff.py examples/claim-comparison.json --work-package WP-TRANSLATION --text
 python research_status.py examples/review-demo.json --text
 python evidence_workflow.py examples/review-demo.json
 python prisma_reports.py examples/review-demo.json
@@ -76,6 +77,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 
 | Command | Purpose |
 |---|---|
+| `review_handoff.py PROTOCOL.json [--work-package ID] [--text]` | Read-only operator sheet: manual queues, input locations, work deliverables and detailed-view navigation |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
 | `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
@@ -139,3 +141,7 @@ fields and literal-label cues without numerical or scientific inference.
 observation/causal claim positions alongside source-linked results, n and statistics.
 [Claim-position comparison](docs/CLAIM_COMPARISON.md) explains exact scope,
 stale review and why positions are not independent votes or inferred conclusions.
+
+Start with the [operator handoff journey](docs/OPERATOR_HANDOFF.md) to see which
+steps remain human work and reproduce evidence → claim/guideline → WP → bundle
+review using real CLI commands on the fictional fixture.

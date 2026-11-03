@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.21.0-supplied-claim-positions",
+  "release": "0.22.0-operator-review-handoff",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 82,
+  "file_count": 85,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8250,
-      "sha256": "caf1b96b1b12a7ab17beb7befee361ce0089575b5c955d2c1e92565f9c4c829c"
+      "bytes": 8741,
+      "sha256": "d26401f2f293dc47b4573f113ad802afc8a94a49860d681481e216338efa9ebf"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 18355,
-      "sha256": "fcb6de9bb72c41764a17e7679fa796b52535a6a5dd981c3c515dd049b4e64713"
+      "bytes": 19206,
+      "sha256": "968dfe011207a47d125838e773ce74f3e73a7a210ff3fdd49bf132e9c9e3b7fd"
     },
     {
       "path": "adapter_integrity.py",
@@ -102,6 +102,11 @@
       "path": "docs/EXPERIMENT_CONDITIONS.md",
       "bytes": 11346,
       "sha256": "a4519dcf953f15432c6594eeaa3909ba07c1052b077f7e027bdff99c6182cc37"
+    },
+    {
+      "path": "docs/OPERATOR_HANDOFF.md",
+      "bytes": 6515,
+      "sha256": "38836b4380bb6a61b70815ffbe867e58e9b7a3dd861b827e7fd621b70182bc75"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -264,6 +269,11 @@
       "sha256": "cdc2e5c86586aa538fa09ff3b715d31241edaa3eb8d16ffd70fc338ba13d8aa7"
     },
     {
+      "path": "review_handoff.py",
+      "bytes": 15716,
+      "sha256": "22c4db3b12bbbd9c75514c0c0d2666a3194ad87fc55d0aba5e268639c79b63e0"
+    },
+    {
       "path": "search_audit.py",
       "bytes": 6191,
       "sha256": "fa48f3b17e625218985433b2d8182d4f2cd0900e1069aa3cbb7a7486a11f991c"
@@ -362,6 +372,11 @@
       "path": "test_research_status.py",
       "bytes": 6072,
       "sha256": "d5686cdc7393de2d2a1150fcf127dfb45d8a5fd82a2b7c4faa13d27e2fb4b35b"
+    },
+    {
+      "path": "test_review_handoff.py",
+      "bytes": 12394,
+      "sha256": "a1f2f9e747ef834224d59bc737cf6369c3569f23ab4389c56542776e1e93118e"
     },
     {
       "path": "test_sampling_links.py",
