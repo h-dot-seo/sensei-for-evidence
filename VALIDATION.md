@@ -82,3 +82,9 @@ The same increment includes one ZIP portability regression: a simulated Windows
 creator previously changed archive bytes despite identical input/code. Fixed
 creator metadata now makes those byte streams identical. Actual multi-platform
 CI verifies runtime behavior separately.
+
+Report extraction accounting increment (2026-11-03): 78 tests passed. Five new
+tests distinguish report-level extraction from title/abstract record queues,
+exclude unretrieved/excluded reports, prevent alias/result-row count inflation,
+and run a combined plan + context + multi-result + full-text + bundle scenario
+through CLI subprocesses while preserving pending reviews and readiness bounds.

@@ -114,6 +114,7 @@ def run(protocol):
                           extracted_studies=len({row['study_id'] for row in evidence})),
                 evidence=evidence, work_packages=work, execution_order=order, context=context,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
+                extraction_pending_scope='title_abstract_included_records_without_any_result_row',
                 extraction_completeness='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')

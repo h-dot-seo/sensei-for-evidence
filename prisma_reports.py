@@ -46,10 +46,12 @@ def report_flow(protocol):
             raise ValueError('included report requires study ID')
         reports[rid] = report
     report_by_record = {record: report for report in reports.values() for record in report['record_ids']}
+    extracted_report_ids = set()
     for evidence in protocol['evidence']:
         report = report_by_record.get(evidence['record_id'])
         if report is None or report.get('decision') != 'include' or report['retrieval'] != 'retrieved':
             raise ValueError('extracted evidence requires an included retrieved report; reconcile screening first')
+        extracted_report_ids.add(report['report_id'])
         if evidence['study_id'] != report['study_id']:
             raise ValueError('extracted evidence study ID conflicts with included report')
     counts=Counter(r['retrieval'] for r in reports.values())
@@ -65,7 +67,10 @@ def report_flow(protocol):
     return dict(search_plan_audit=baseline['search_plan_audit'], record_flow=baseline['flow'], report_flow=dict(sought=len(reports),retrieved=counts['retrieved'],
                 not_retrieved=counts['not_retrieved'],retrieval_pending=counts['pending'],assessed=len(assessed),
                 assessment_pending=counts['retrieved']-len(assessed),excluded=len(excluded),included=len(included),
-                included_studies=len({r['study_id'] for r in included})),
+                included_studies=len({r['study_id'] for r in included}),
+                reports_with_extraction=len(extracted_report_ids)),
+                extraction_pending_reports=sorted(r['report_id'] for r in included
+                                                  if r['report_id'] not in extracted_report_ids),
                 unmapped_records=sorted(included_records-linked),
                 exclusion_reasons=dict(sorted(Counter(r['reason'] for r in excluded).items())),
                 report_ledger=[reports[k] for k in sorted(reports)], report_csv=output.getvalue(),

@@ -264,3 +264,12 @@ Bundle ZIP creator metadata is explicitly fixed across Unix and Windows instead
 of inheriting the host default. Reproducible archive bytes still require identical
 input bytes and implementation files; source line endings are enforced by this
 repository's attributes.
+
+Report-level extraction accounting is separate from title/abstract screening.
+`extraction_pending_reports` lists only full-text-included reports with no linked
+result row; excluded or unretrieved reports do not enter that queue.
+`report_flow.reports_with_extraction` counts distinct reports, not source aliases
+or endpoint rows. The older record-level `extraction_pending` is explicitly
+scoped by `extraction_pending_scope` to title/abstract-included source records
+without any row. An empty queue at either stage never certifies exhaustive
+extraction; the extraction-completeness flag remains unestablished.

@@ -67,3 +67,52 @@ class ReportProvenanceTests(unittest.TestCase):
         result = report_flow(self.protocol)
         self.assertEqual(result['report_flow']['retrieval_pending'], 1)
         self.assertEqual(result['report_flow']['included_studies'], 0)
+
+
+class ReportExtractionTests(unittest.TestCase):
+    def setUp(self):
+        self.protocol = json.loads(Path('examples/report-protocol.json').read_text())
+
+    def test_included_report_without_results_is_pending(self):
+        self.protocol['evidence'] = []
+        self.protocol['gaps'] = []
+        result = report_flow(self.protocol)
+        self.assertEqual(result['extraction_pending_reports'], ['report-1'])
+        self.assertEqual(result['report_flow']['reports_with_extraction'], 0)
+        self.assertEqual(result['extraction_completeness'], 'NOT_ESTABLISHED')
+
+    def test_excluded_or_unretrieved_reports_are_not_pending_extraction(self):
+        self.protocol['evidence'] = []
+        self.protocol['gaps'] = []
+        for update in (dict(decision='exclude', reason='wrong model'),
+                       dict(retrieval='pending', decision='pending')):
+            protocol = copy.deepcopy(self.protocol)
+            protocol['reports'][0].update(update)
+            with self.subTest(update=update):
+                self.assertEqual(report_flow(protocol)['extraction_pending_reports'], [])
+
+    def test_multiple_records_or_results_do_not_inflate_extracted_reports(self):
+        self.protocol['screening'][1]['decision'] = 'include'
+        self.protocol['reports'][0]['record_ids'].append('r2')
+        self.protocol['evidence'].append(dict(self.protocol['evidence'][0], evidence_id='e2', record_id='r2'))
+        result = report_flow(self.protocol)
+        self.assertEqual(result['report_flow']['reports_with_extraction'], 1)
+        self.assertEqual(result['extraction_pending_reports'], [])
+        self.assertEqual(result['record_flow']['extracted'], 2)
+        self.protocol['evidence'][1]['record_id'] = 'r1'
+        self.protocol['reports'][0]['record_ids'] = ['r1']
+        self.protocol['reports'].append(dict(report_id='report-2', record_ids=['r2'], retrieval='retrieved', decision='include', study_id='s1', locator='synthetic second report'))
+        result = report_flow(self.protocol)
+        self.assertEqual(result['report_flow']['included_studies'], 1)
+        self.assertEqual(result['report_flow']['reports_with_extraction'], 1)
+        self.assertEqual(result['extraction_pending_reports'], ['report-2'])
+
+    def test_record_and_report_pending_stages_explicit(self):
+        from evidence_workflow import run
+        self.protocol['evidence'] = []
+        self.protocol['gaps'] = []
+        self.protocol['reports'][0].update(decision='exclude', reason='wrong model')
+        record_result = run(self.protocol)
+        self.assertEqual(record_result['extraction_pending'], ['r1'])
+        self.assertEqual(record_result['extraction_pending_scope'], 'title_abstract_included_records_without_any_result_row')
+        self.assertEqual(report_flow(self.protocol)['extraction_pending_reports'], [])

@@ -59,6 +59,7 @@ def build_bundle(raw):
              f"Incomplete planned searches: {len(research['search_plan_audit']['incomplete_search_ids'])}\n"
              f"Included reports: {reports['report_flow']['included'] if reports is not None else 'not supplied'}\n"
              f"Included studies: {reports['report_flow']['included_studies'] if reports is not None else 'not supplied'}\n"
+             f"Included reports without extraction: {len(reports['extraction_pending_reports']) if reports is not None else 'not supplied'}\n"
              f"Extracted result rows: {research['flow']['extracted']}\n"
              f"Source records with extraction: {research['flow']['extracted_records']}\n"
              f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"

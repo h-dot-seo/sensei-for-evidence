@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.8.0-multi-result-extraction",
+  "release": "0.8.1-report-extraction-accounting",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14959,
-      "sha256": "41edb9c34e8fed2afcde3550878fd39f3c977978e4db3a317c2c13f242df0c08"
+      "bytes": 15569,
+      "sha256": "17c4080868d45895cd886d97c097f7bf5d4adc93d476077ec0e2ff297979b76e"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5326,
-      "sha256": "73bd41a98adb2cedd3e7269011f1708f474ed5e7543828910e77e232bdbcd13a"
+      "bytes": 5722,
+      "sha256": "be47333a9cd5c647719cfc182b2691be31799c7a6ecf9990f3278e1de8cea527"
     },
     {
       "path": "audit_publication.py",
@@ -75,8 +75,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 7312,
-      "sha256": "bd04392b99cd3111a8e0691994fffaf121afcf14507419974fc6f6b95ad2645b"
+      "bytes": 7411,
+      "sha256": "aca4a82364bdf6c595923c6cd88506a98a7806702dab0157165bed3a3183344e"
     },
     {
       "path": "examples/context-protocol.json",
@@ -110,13 +110,13 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 5174,
-      "sha256": "ae1dfce54eedf94b3ee36ec2b683ebf4a70340f09da2a7085a47a6dfdfd20459"
+      "bytes": 5509,
+      "sha256": "68bb967a92cf4fa6182cdfca5cdf5f7bbb9694c792c10d5d0a920a032997aa41"
     },
     {
       "path": "research_bundle.py",
-      "bytes": 7254,
-      "sha256": "48d5b667030b52a5151a1ceb6ec9e8a0728a2080d64a3bda01ce3659de386ab3"
+      "bytes": 7397,
+      "sha256": "ee21ae1b932cb5840352a1382135b60ea4ee5cc2e428893dae85d415e31393d7"
     },
     {
       "path": "search_audit.py",
@@ -125,8 +125,8 @@
     },
     {
       "path": "test_cli_e2e.py",
-      "bytes": 1447,
-      "sha256": "979cdec31f61c60d1bad4859f5ade1c133aaf85809dd8f479268dfec6b811a8b"
+      "bytes": 3325,
+      "sha256": "9cb0a51ef43fa10ac996493db6044e15c463e6e23ec38140946ae089d40fe286"
     },
     {
       "path": "test_context_links.py",
@@ -150,8 +150,8 @@
     },
     {
       "path": "test_prisma_reports.py",
-      "bytes": 3608,
-      "sha256": "18c4d7daf8f3553f8975dfc1aca4d744af22cf51cc31c0f3507f066a8ffb1b8c"
+      "bytes": 6442,
+      "sha256": "34fb3a104a3348d297bda5b0c79ae0fbe218faa3956cdd629faa329ffd226d41"
     },
     {
       "path": "test_research_bundle.py",
