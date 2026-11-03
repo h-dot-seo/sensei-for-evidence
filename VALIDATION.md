@@ -306,3 +306,16 @@ fixtures, including source/ID collisions and cross-process hash determinism.
 The synthetic manifest/handoff/PRISMA CLI journey and existing bundle creation/
 verification passed. No provider request, query translation, next cursor,
 automatic retry, review renewal or census assertion is performed.
+
+Synthetic manual receipt-intake increment (2026-11-03): 308 tests in the suite;
+Linux run: 307 passed and one native-Windows-only test skipped. Fourteen new tests
+cover deliberately unfilled templates, exact query copying, required-field pointer
+hints, interrupted/overlapping unreviewed receipts, reuse of existing normalization,
+separate-base guards, review/extraction rejection, unknown versus empty results,
+canonical validation errors, hashes/nonmutation, escaped text, handoff separation
+and real CLI exclusive export followed by PRISMA audit. Independent review passed
+74 focused tests and 1,230 malformed-value mutations; existing/input/symlink files
+could not be overwritten. The synthetic template/check/candidate → manifest →
+PRISMA → handoff → bundle create/verify journey passed. Candidates retain no
+accepted reviews or promoted evidence; missing facts and review gaps remain.
+No source retrieval, API call, scientific judgment or acceptance is performed.

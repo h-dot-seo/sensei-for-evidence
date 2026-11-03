@@ -110,3 +110,8 @@ The synthetic E2E test runs status, synthesis, selected WP, handoff text/JSON,
 bundle create and bundle verify as actual subprocesses, using an input path with
 spaces. It checks input bytes remain unchanged and no extra files are produced.
 No real literature, model inference or scientific validity is tested.
+
+The handoff also lists a separate [manual receipt-entry workflow](RECEIPT_INTAKE.md)
+with BASE_PROTOCOL.json and FILLED_MOCK_RECEIPTS.json placeholders. This is not a
+command to re-import over the current protocol. It requires a separate base, makes
+no approvals, and can save only a new unreviewed candidate file.

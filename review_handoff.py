@@ -120,6 +120,7 @@ def handoff(protocol, work_package_id=None):
     implementation['review_handoff.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
     implementation['search_manifest.py'] = hashlib.sha256(Path(__file__).with_name('search_manifest.py').read_bytes()).hexdigest()
+    implementation['receipt_intake.py'] = hashlib.sha256(Path(__file__).with_name('receipt_intake.py').read_bytes()).hexdigest()
     return dict(schema_version=1, question=state['question'], protocol_version=state['protocol_version'],
                 protocol_sha256=state['protocol_sha256'], engine_sha256=implementation,
                 hash_scope=state['hash_scope'], work_selection=works['selection'],
@@ -131,6 +132,10 @@ def handoff(protocol, work_package_id=None):
                                 dict(script='research_status.py',arguments=['PROTOCOL.json','--text'],purpose='Protocol-wide queues'),
                                 dict(script='synthesis_review.py',arguments=['PROTOCOL.json','--text'],purpose='Full result/source/condition/n/statistics/claim traces'),
                                 dict(script='work_review.py',arguments=['PROTOCOL.json']+(['--work-package='+work_package_id] if work_package_id is not None else [])+['--text'],purpose='Detailed work evidence and applicability packet')],
+                manual_input_workflow=dict(precondition='Use a separate declared-plan base with empty searches/evidence and no adapter receipts; do not erase current research',
+                    template_arguments=['receipt_intake.py','template','BASE_PROTOCOL.json'],
+                    check_arguments=['receipt_intake.py','check','BASE_PROTOCOL.json','FILLED_MOCK_RECEIPTS.json','--text'],
+                    scope='Synthetic entry rehearsal only; null template fields need supplied facts, checks never approve receipts'),
                 manual_work_remaining=['Authorized literature and full-text retrieval', 'Human eligibility and extraction',
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
@@ -164,7 +169,8 @@ def render_text(result):
                 position_stage=claim['position_stage'],work_evidence_ids=claim['work_evidence_ids'],
                 other_statement_evidence_ids=claim['other_statement_evidence_ids'],positions=claim['work_positions'],scope=claim['scope'])))
     lines.extend(['', 'Detailed read-only views (replace the PROTOCOL.json placeholder; arguments are not shell commands):',
-                  show(result['detailed_views']), 'Manual work not performed: ' + show(result['manual_work_remaining']),
+                  show(result['detailed_views']), 'Separate manual receipt entry workflow (not for overwriting this protocol): ' + show(result['manual_input_workflow']),
+                  'Manual work not performed: ' + show(result['manual_work_remaining']),
                   'Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', result['boundary']])
     return '\n'.join(lines) + '\n'
 

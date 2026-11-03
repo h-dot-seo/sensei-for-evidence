@@ -116,3 +116,7 @@ results. Source authenticity, query adequacy, current guideline coverage, citati
 followup completion and census remain unestablished. No review decision, clinical
 judgment, causal inference or automatic retry is performed. External calls stay 0
 and conclusion readiness stays NOT_READY.
+
+For a guided synthetic input workflow, see [receipt intake](RECEIPT_INTAKE.md).
+Use a separate empty-search/evidence base; the manifest itself is not executable
+input, and existing receipts must not be erased to satisfy intake requirements.

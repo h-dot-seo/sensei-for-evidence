@@ -78,6 +78,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | Command | Purpose |
 |---|---|
 | `review_handoff.py PROTOCOL.json [--work-package ID] [--text]` | Read-only operator sheet: manual queues, input locations, work deliverables and detailed-view navigation |
+| `receipt_intake.py template BASE.json` / `check BASE.json RECEIPTS.json [--text] [--protocol-output NEW.json]` | Guide synthetic manual receipt entry and inspect unreviewed candidates through the existing adapter |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
 | `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
@@ -155,3 +156,7 @@ search or PRISMA compliance. Try `examples/prisma-audit.json`.
 Before wiring a live provider, use the [search query/receipt manifest](docs/SEARCH_MANIFEST.md)
 with `examples/search-manifest.json` to inspect exact requests, missing runtime
 fields and source-wise unresolved receipts. No query translation or execution occurs.
+
+For manual-entry rehearsal, start with [receipt intake](docs/RECEIPT_INTAKE.md).
+It generates deliberately unfilled request/page fields and checks a filled mock
+fixture without accepting reviews or overwriting existing research.

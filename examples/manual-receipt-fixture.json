@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "mode": "mock",
+  "provider_id": "fictional-manual-entry",
+  "adapter_version": "manual-synthetic-v1",
+  "search_responses": [
+    {
+      "request": {
+        "search_id": "search-primary",
+        "source": "synthetic-index",
+        "query": "synthetic mechanism",
+        "window": "2020-2026",
+        "searched_at": "2026-01-01",
+        "request_id": "mock-search-request-1"
+      },
+      "pages": [
+        {
+          "response_id": "mock-page-1",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 1,
+          "has_more": true,
+          "total_count": 2,
+          "records": [
+            {
+              "record_id": "r1",
+              "source_locator": "synthetic://r1",
+              "title": "Synthetic record r1"
+            }
+          ]
+        },
+        {
+          "response_id": "mock-page-2",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 2,
+          "has_more": true,
+          "total_count": 2,
+          "records": [
+            {
+              "record_id": "r1",
+              "source_locator": "synthetic://r1",
+              "title": "Synthetic record r1"
+            },
+            {
+              "record_id": "r2",
+              "source_locator": "synthetic://r2",
+              "title": "Synthetic record r2"
+            }
+          ],
+          "error": "Fictional interrupted manual receipt",
+          "truncated": true
+        }
+      ],
+      "total_count": 2
+    }
+  ],
+  "extraction_candidates": []
+}
