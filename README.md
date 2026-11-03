@@ -49,3 +49,24 @@ question. This framework does not reproduce or replace those standards.
 See [architecture](docs/ARCHITECTURE.md), [workflow](SKILL.md),
 [publication boundary](PUBLICATION.md), [security](SECURITY.md), and [rights](RIGHTS.md).
 No license has been selected by the owner yet.
+
+## Search-to-work-package workflow
+
+```sh
+python evidence_workflow.py examples/protocol.json
+```
+
+Provide a versioned question, criteria, exact search source/query/time/window,
+record IDs and paging assertions, reasoned screening decisions, extracted evidence
+and gaps. IDs must be normalized by the caller across search sources. Output preserves
+search/screening ledgers, reconciles record counts before and after deduplication,
+reports pending screening/extraction and creates evidence-linked work packages with
+deliverables and acceptance criteria. Model, intervention, comparator, endpoint,
+result, limitation and mechanism basis are explicit. Intervention evidence alone
+does not establish causality. Clinical/development context may be supplied in gap
+records; no clinical guideline retrieval or recommendation is performed.
+
+This is an initial record-level ledger, not a complete PRISMA implementation:
+report retrieval, study-level reconciliation, appraisal, dependency scheduling and
+guideline/development evidence integration remain future work. Coverage assertions
+are not independently authenticated; census and conclusion readiness stay unestablished.

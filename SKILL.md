@@ -23,3 +23,8 @@ For patent work, separate records/families/claims/legal status and disclose juri
 and date. Do not call a partial inventory a census or a landscape a legal FTO opinion.
 For persona consultation, keep it interpretive and downstream of neutral discovery.
 Never treat private project datasets or textbook contents as bundled framework assets.
+
+## Executable increment
+
+See the README workflow section for the new local CLI and explicit limitations.
+Use only authorized inputs; shipped examples are entirely synthetic.
