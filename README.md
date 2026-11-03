@@ -165,3 +165,7 @@ fixture without accepting reviews or overwriting existing research.
 [Source-review work packages](docs/SOURCE_REVIEW_WORK.md) connect unreviewed manual
 receipts to search/screening/extraction deliverables without fabricating evidence
 IDs. Try `examples/source-work-protocol.json` with the existing work/handoff CLIs.
+
+PRISMA audit JSON also exposes [work/deliverable traceability](docs/PRISMA_AUDIT.md#work-and-deliverable-traceability):
+explicit source/result work references, indirect report links and unverified
+artifact assertions, without treating task completion as source approval.

@@ -107,3 +107,41 @@ Citation searching, registry coverage, full-text access, risk of bias, certainty
 scientific validity and omitted literature remain outside this export's claims.
 Census, identity and extraction completeness stay NOT_ESTABLISHED, and conclusion
 readiness stays NOT_READY even when all partitions match and all queues are empty.
+
+## Work and deliverable traceability
+
+The same export includes `work_traceability` to answer: which supplied work
+package and artifact assertion is linked to this planned search, record or result?
+Run the existing audit on `examples/source-work-protocol.json`:
+
+```sh
+python prisma_audit.py examples/source-work-protocol.json --text
+python prisma_audit.py examples/source-work-protocol.json > ../fictional-work-audit.json
+```
+
+JSON contains all work packages with `/gaps/N` input pointers, questions,
+deliverables, acceptance criteria, dependencies, blocked state and supplied
+artifact/completion fields. `artifact_verification` and `acceptance_assessment`
+remain NOT_PERFORMED. Locators are displayed only, never opened.
+
+- `planned_search_links` maps declared searches to direct source-work IDs and
+  observed search indices. A missing receipt can still have a supplied task.
+  An absent plan gives null, never an invented plan.
+- `record_links` separates direct record-source work from work reached via its
+  extracted results. A search-level WP is **not** expanded to all its records.
+- `result_links` lists only directly named evidence-work IDs. Record-source work
+  does not implicitly claim responsibility for every extracted result.
+- `report_links` is explicitly indirect, grouped by each named record. Multiple
+  records mapping to one report retain separate links. No report-level task or
+  report-wide completion is inferred. An absent report stage gives null; a
+  supplied empty report ledger gives an empty list.
+
+Empty link lists mean only that no such reference was supplied. They are not a
+missing-task verdict, an assignment recommendation or task-coverage metric.
+Completing the receipt-note WP with a fictional artifact can unblock the next
+recorded WP, but does not clear the missing search, accept an interrupted receipt,
+change PRISMA counts or promote evidence. This export joins assertions; it does
+not execute collection, screening, extraction or artifact acceptance. The fixed
+census and conclusion boundaries remain unchanged. The seven-file research bundle
+does not archive this standalone audit; retain its canonical protocol hash and
+implementation hashes alongside any separately saved export.

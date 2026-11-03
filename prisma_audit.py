@@ -17,6 +17,48 @@ BOUNDARY = ('PRISMA-oriented supplied-data accounting export, not a PRISMA-stand
             'independence, evidence adequacy or clinical validity. No sources are retrieved or authenticated.')
 
 
+
+def work_traceability(research, record_ids, report_rows, report_supplied):
+    """Reverse only explicit typed links; never expand search work into record work."""
+    planned=defaultdict(set); records=defaultdict(set); results=defaultdict(set)
+    evidence_records=defaultdict(set); work=[]
+    evidence_by_id={row['evidence_id']:row for row in research['evidence']}
+    for index,item in enumerate(research['work_packages']):
+        wid=item['work_package_id']
+        for ref in item.get('source_refs',[]):
+            if ref['kind']=='planned_search':planned[ref['search_id']].add(wid)
+            else:records[ref['record_id']].add(wid)
+        for eid in item['evidence_ids']:
+            results[eid].add(wid)
+            evidence_records[evidence_by_id[eid]['record_id']].add(wid)
+        work.append(dict(work_package=copy.deepcopy(item),input_pointer=f'/gaps/{index}',
+                         work_type=item.get('work_type','evidence_review'),
+                         artifact_status='LOCATOR_SUPPLIED' if item.get('artifact_locator') else 'NOT_SUPPLIED',
+                         artifact_verification='NOT_PERFORMED',acceptance_assessment='NOT_PERFORMED'))
+    indices=defaultdict(list)
+    for i,row in enumerate(research['search_ledger']):
+        if isinstance(row.get('search_id'),str):indices[row['search_id']].append(i)
+    plan=research['search_plan_audit']
+    return dict(
+        work_packages=work,
+        planned_search_links=None if plan['plan_status']=='NOT_SUPPLIED' else [
+            dict(search_id=row['search_id'],observed_search_indices=indices[row['search_id']],
+                 direct_source_work_ids=sorted(planned[row['search_id']])) for row in plan['search_plan_ledger']],
+        record_links=[dict(record_id=rid,direct_source_work_ids=sorted(records[rid]),
+                           via_result_work_ids=sorted(evidence_records[rid])) for rid in sorted(record_ids)],
+        result_links=[dict(evidence_id=eid,direct_evidence_work_ids=sorted(results[eid])) for eid in sorted(evidence_by_id)],
+        report_links=None if not report_supplied else [
+            dict(report_id=row['report_id'],record_links=[
+                dict(record_id=rid,via_record_source_work_ids=sorted(records[rid]),
+                     via_record_result_work_ids=sorted(evidence_records[rid])) for rid in sorted(row['record_ids'])])
+            for row in sorted(report_rows,key=lambda row:row['report_id'])],
+        boundary=('Explicit work references and supplied artifact assertions only. Report links are indirect via named records. '
+                  'Planned-search work is not inherited by its records; record-source work is not evidence-result work. '
+                  'Empty links mean no such supplied reference, not a required or completed task. Artifact locators are not opened '
+                  'or authenticated. COMPLETE and acceptance_verified do not approve receipts, screening, extraction or science. '
+                  'No task coverage, source completeness or deliverable adequacy is assessed.'))
+
+
 def export_audit(protocol):
     research=run(protocol)
     reports=report_flow(protocol) if 'reports' in protocol else None
@@ -117,6 +159,7 @@ def export_audit(protocol):
                 searches=[dict(search_index=i,input_pointer=f'/searches/{i}',search=copy.deepcopy(row),accounting=copy.deepcopy(research['coverage'][i])) for i,row in enumerate(research['search_ledger'])],
                 occurrence_ledger=occurrences,repeated_occurrence_links=repeated,record_ledger=record_ledger,
                 report_ledger=None if reports is None else report_rows,evidence_links=evidence,study_links=study_links,
+                work_traceability=work_traceability(research,all_records,report_rows,reports is not None),
                 reasons=dict(record_exclusions=reasons([r for r in screening.values() if r['decision']=='exclude'],'record','record_id'),
                              report_exclusions=None if reports is None else reasons([r for r in report_rows if r.get('decision')=='exclude'],'report','report_id'),
                              reports_not_retrieved=None if reports is None else reasons([r for r in report_rows if r['retrieval']=='not_retrieved'],'report','report_id')),
@@ -132,6 +175,7 @@ def render_text(result):
         lines.append(node['node_id']+' ['+node['unit']+']: '+('not supplied' if node['count'] is None else str(node['count'])))
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
+                  'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),
                   'Full member IDs, input pointers and link ledgers are available in default JSON output.',
                   'Census: NOT_ESTABLISHED','Conclusion: NOT_READY',result['boundary']])
     return '\n'.join(lines)+'\n'

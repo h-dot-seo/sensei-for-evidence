@@ -100,3 +100,9 @@ unblock another recorded WP while search receipts remain unreviewed, planned
 sources remain missing, and scientific readiness remains NOT_READY. It must never
 be read as an accepted search, exhaustive extraction, guideline approval or census.
 No review flags, source facts, evidence rows or priorities are changed automatically.
+
+For the reverse path from a planned search, record, result or indirectly linked
+report to its supplied work and artifact, use `prisma_audit.py` on the same
+protocol. See [work and deliverable traceability](PRISMA_AUDIT.md#work-and-deliverable-traceability).
+It lists explicit links without propagating source-work completion to records or
+results, and never opens or verifies artifact locators.

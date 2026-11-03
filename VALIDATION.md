@@ -332,3 +332,15 @@ prior HEAD and confirmed identical run outputs/planning hashes. The discovered
 source-inventory staleness gap was fixed with ID-only binding; result-content
 assessment remains the evidence-work scope. Synthetic work/handoff and bundle
 create/verify passed. No work is automatically completed, ranked or executed.
+
+PRISMA work-traceability increment (2026-11-03): 332 tests in the suite;
+Linux run: 331 passed and one native-Windows-only test skipped. Ten new tests
+cover explicit planned-search and record-source work, separately linked result
+work, missing receipt with a task, indirect multi-record report links, absent vs
+empty stages, default IDs/input pointers, output copy isolation, hostile artifact
+text, reproducible CLI output and completion without changing PRISMA accounting.
+Independent review additionally probed namespace collisions and multi-result
+record-level deduplication. A real CLI synthetic receipt intake → supplied source
+work/fictional completion note → handoff → PRISMA export → seven-file bundle
+create/verify passed. Artifacts remain unverified; work completion does not approve
+receipts, create extracted evidence, assess task coverage or establish census.

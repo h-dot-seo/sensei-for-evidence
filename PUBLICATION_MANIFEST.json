@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.26.0-source-review-work",
+  "release": "0.27.0-prisma-work-traceability",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 100,
+  "file_count": 101,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10303,
-      "sha256": "21d84433df26c29ce9f3ec9054cb2273f705cf8e1142c3a932c1dbe753008033"
+      "bytes": 10575,
+      "sha256": "e1e7b4506d834708766e6959da8d7104c9c62ce763a050ade196d4e67fe10d4e"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 23096,
-      "sha256": "3dd50399697899a51990f66aed6cca72ea308c0b3d6fa9f8821bc8d15e63b9c2"
+      "bytes": 23978,
+      "sha256": "4ee38ee7bf71fe701de4415f7912f355fc019dfd41334b817bdbe8372729809f"
     },
     {
       "path": "adapter_integrity.py",
@@ -120,8 +120,8 @@
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
-      "bytes": 6633,
-      "sha256": "6e50381659253f720ab214a60351c6c24f0a6e98270edd726b9d28be5d68993a"
+      "bytes": 8860,
+      "sha256": "0a1f52896222be17026686c8a527e1c966b85cc6dad138c08f1ebf7b04db939d"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -135,8 +135,8 @@
     },
     {
       "path": "docs/SOURCE_REVIEW_WORK.md",
-      "bytes": 6449,
-      "sha256": "f46d29bd3282d5f01eaa10bfcb5b3e00736ce0ce63b5409fe623516ba718e343"
+      "bytes": 6845,
+      "sha256": "e177075aa98ca0d3a5ee26b6f4e0a00c262a1f30a07bf7bcead41917b5657388"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -295,8 +295,8 @@
     },
     {
       "path": "prisma_audit.py",
-      "bytes": 12720,
-      "sha256": "98ae924513f46f9c17b01f87c3145d376369c9454d6c9b7d092b8419d0422a9e"
+      "bytes": 15984,
+      "sha256": "3e8e9de2575cd470e6b03a7ece257d2695a0edbc8a0c0188c0cd5b4c7014d0eb"
     },
     {
       "path": "prisma_reports.py",
@@ -417,6 +417,11 @@
       "path": "test_prisma_reports.py",
       "bytes": 6442,
       "sha256": "34fb3a104a3348d297bda5b0c79ae0fbe218faa3956cdd629faa329ffd226d41"
+    },
+    {
+      "path": "test_prisma_work_links.py",
+      "bytes": 5908,
+      "sha256": "6cd2dae1e2820d308e92a25605f1c670d2d5c3ccdef690ca0323b91855444da0"
     },
     {
       "path": "test_receipt_intake.py",
