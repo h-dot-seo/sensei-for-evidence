@@ -100,3 +100,13 @@ tests cover duplicate/nested keys, nonfinite/overflow numbers, all four CLIs on
 ambiguous/nonobject inputs, UTF-8 output under a forced ASCII stream environment,
 unpaired-surrogate-safe diagnostics, and malformed bundle manifests without tracebacks. The shared parser is included
 in implementation fingerprints; no external services were invoked.
+
+Offline comparison increment (2026-11-03): 102 tests passed. Nine new tests cover
+unchanged/key-reordered inputs, unversioned result changes, version-label bounds,
+additional result rows without study inflation, reconciled full-text exclusions,
+new source records, context/appraisal/plan changes, no-report input and strict
+repeatable CLI output. Positional work-package IDs are explicitly warned about.
+
+Comparator review also closed a shared workflow error path: malformed screening,
+evidence and gap containers/rows now return validation errors instead of
+AttributeError tracebacks. Regression cases run through the comparison CLI.

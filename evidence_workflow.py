@@ -14,6 +14,9 @@ def run(protocol):
     for key in ('question', 'version', 'inclusion_criteria', 'exclusion_criteria'):
         if not protocol.get(key):
             raise ValueError('missing protocol field: ' + key)
+    for key in ('searches', 'screening', 'evidence', 'gaps'):
+        if not isinstance(protocol.get(key), list):
+            raise ValueError(key + ' must be a list')
     records = {}
     identified = 0
     coverage = []
@@ -26,7 +29,7 @@ def run(protocol):
             if not isinstance(search.get(key), str) or not search[key].strip():
                 raise ValueError('search requires ' + key)
         ids = search['record_ids']
-        if not isinstance(ids, list) or any(not isinstance(i, str) or not i for i in ids) or len(ids) != len(set(ids)):
+        if not isinstance(ids, list) or any(not isinstance(i, str) or not i.strip() for i in ids) or len(ids) != len(set(ids)):
             raise ValueError('invalid or duplicate IDs within search')
         identified += len(ids)
         for rid in ids:
@@ -37,10 +40,12 @@ def run(protocol):
     search_plan_audit = audit_search_plan(protocol)
     decisions = {}
     for row in protocol['screening']:
-        rid = row['record_id']
-        if rid not in records or rid in decisions:
+        if not isinstance(row, dict):
+            raise ValueError('screening row must be an object')
+        rid = row.get('record_id')
+        if not nonempty_text(rid) or rid not in records or rid in decisions:
             raise ValueError('unknown or duplicate screening record')
-        if row['decision'] not in ('include', 'exclude') or not row.get('reason'):
+        if row['decision'] not in ('include', 'exclude') or not nonempty_text(row.get('reason')):
             raise ValueError('screening decision and reason required')
         decisions[rid] = row
     evidence = []
@@ -48,7 +53,11 @@ def run(protocol):
     extracted_records = set()
     record_studies = {}
     for row in protocol['evidence']:
-        rid = row['record_id']
+        if not isinstance(row, dict):
+            raise ValueError('evidence row must be an object')
+        rid = row.get('record_id')
+        if not nonempty_text(rid):
+            raise ValueError('evidence record_id must be a nonempty string')
         eid = row.get('evidence_id', rid)
         if not nonempty_text(eid) or eid in seen:
             raise ValueError('evidence IDs must be unique nonempty strings')
@@ -67,6 +76,8 @@ def run(protocol):
         evidence.append(dict(row, evidence_id=eid))
     work = []
     for gap in protocol['gaps']:
+        if not isinstance(gap, dict):
+            raise ValueError('gap must be an object')
         if any(not nonempty_text(gap.get(field)) for field in ('question', 'deliverable', 'acceptance_criterion')):
             raise ValueError('gap requires question, deliverable and acceptance criterion')
         evidence_ids = id_list(gap.get('evidence_ids'), 'gap evidence_ids')

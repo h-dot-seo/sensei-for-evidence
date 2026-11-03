@@ -314,3 +314,33 @@ files and output streams use UTF-8, including redirected Windows output.
 Bundle verification also rejects malformed manifest containers, noninteger schema
 versions and invalid file metadata with ordinary validation errors. These checks
 establish input consistency, not authenticity or scientific correctness.
+
+## Offline run-to-run comparison
+
+```sh
+python compare_runs.py before-protocol.json after-protocol.json
+```
+
+Both inputs must pass current workflow and optional report reconciliation. The
+comparison reports canonical input hashes, changed top-level fields, record-ID
+additions/removals, stable-ID ledger additions/removals/changed fields and before/
+after counts. Screening, extraction rows, work packages, contexts, appraisals,
+reports and declared-plan status are covered. It reports field names and IDs,
+not an automatically interpreted scientific narrative.
+
+`unversioned_change` flags differing inputs that retain the same version label.
+A changed version label does not authenticate history, justify an amendment or
+mean that findings improved. Object key order is ignored for these comparison
+hashes; list order is retained. They are not the exact-byte receipt hashes used
+by portable bundles. Compare hashes are not signatures.
+
+Use explicit stable work-package IDs across versions. Legacy generated IDs are
+positional; the comparison exposes them and warns that insertion/reordering can
+change apparent identity. Explicit extraction-ID changes are additions/removals,
+not guessed matches. Missing report ledgers stay null rather than becoming zero
+counts. No inputs are edited, source searches performed or readiness promoted.
+
+Comparison ledgers are recomputed with the current implementation, not replayed
+with each historical run's engine. Output records implementation SHA-256 values,
+including the comparator, for reproducibility; retain those source bytes when
+archiving a comparison. The hashes do not authenticate amendment history.

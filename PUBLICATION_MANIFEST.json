@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.9.1-json-entrypoint-consistency",
+  "release": "0.10.0-offline-run-comparison",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 39,
+  "file_count": 41,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17862,
-      "sha256": "ac8918770dee5fdac4006ae8770e9653480d3f00d26cde5deb61ff748a4928ee"
+      "bytes": 19513,
+      "sha256": "a6a966c2d218102afb5b6fd673ca8e267833c86a3257133962004bc1a697fb12"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 6548,
-      "sha256": "70eb257404abe638f94b9cd30a983fed5fa47ed3907bac7a5ffd69db9e27afc8"
+      "bytes": 7184,
+      "sha256": "fad9f754a7e26d2895420c835ab81cf5b65dfe6ddede9cf9f299164d03543fbd"
     },
     {
       "path": "appraisal_links.py",
@@ -62,6 +62,11 @@
       "path": "audit_publication.py",
       "bytes": 1969,
       "sha256": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08"
+    },
+    {
+      "path": "compare_runs.py",
+      "bytes": 5736,
+      "sha256": "4823530088993255dcc5237f19ee331072c33634db196b98346382525a6031ea"
     },
     {
       "path": "context_links.py",
@@ -80,8 +85,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 7708,
-      "sha256": "6d053cdd5e2bec35dc99750e45268ee9652c446daa861bfd1689b6ca3d2eab14"
+      "bytes": 8340,
+      "sha256": "f34d52a9f0e60df38f54c4ed2638f07bf17290b15b9ac2c2f833a760844e567e"
     },
     {
       "path": "examples/appraised-protocol.json",
@@ -147,6 +152,11 @@
       "path": "test_cli_e2e.py",
       "bytes": 3325,
       "sha256": "9cb0a51ef43fa10ac996493db6044e15c463e6e23ec38140946ae089d40fe286"
+    },
+    {
+      "path": "test_compare_runs.py",
+      "bytes": 6744,
+      "sha256": "c4216ce5cd9f76f070edb902355d979c9a16f36ecd3a590b41a9aa32d2e41d54"
     },
     {
       "path": "test_context_links.py",
