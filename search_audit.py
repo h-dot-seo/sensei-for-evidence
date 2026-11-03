@@ -5,6 +5,54 @@ BOUNDARY = ('Declared-plan accounting and supplied search assertions only; no so
             'receipt authentication, query adequacy assessment or complete-census claim.')
 
 
+def page_audit(search):
+    """Reconcile optional supplied pages, not independently authenticated receipts."""
+    if 'pages' not in search:
+        return dict(status='NOT_SUPPLIED', page_count=None, record_occurrences=None,
+                    unique_records=None, issues=[])
+    pages = search['pages']
+    if not isinstance(pages, list) or not pages:
+        raise ValueError('search pages must be a nonempty list')
+    numbers, known_numbers, seen, occurrences = [], set(), set(), 0
+    overlap = False
+    page_errors = False
+    unresolved_flags = set()
+    for page in pages:
+        if not isinstance(page, dict):
+            raise ValueError('search page must be an object')
+        number = page.get('page_number')
+        if type(number) is not int or number < 1 or number in known_numbers:
+            raise ValueError('page numbers must be unique positive integers')
+        numbers.append(number)
+        known_numbers.add(number)
+        ids = page.get('record_ids')
+        if (not isinstance(ids, list) or any(not isinstance(rid, str) or not rid.strip() for rid in ids)
+                or len(ids) != len(set(ids))):
+            raise ValueError('page record_ids must be unique nonblank strings')
+        overlap = overlap or bool(seen.intersection(ids))
+        seen.update(ids)
+        occurrences += len(ids)
+        page_errors = page_errors or bool(page.get('error'))
+        for flag in ('truncated', 'pagination_limited', 'field_pages_pending'):
+            if flag in page and page[flag] is not False:
+                unresolved_flags.add(flag)
+    issues = []
+    if numbers != list(range(1, len(pages) + 1)):
+        issues.append('page_sequence_unresolved')
+    if (any(page.get('has_more') is not True for page in pages[:-1])
+            or pages[-1].get('has_more') is not False):
+        issues.append('page_pagination_unresolved')
+    if overlap:
+        issues.append('page_record_overlap')
+    if seen != set(search['record_ids']):
+        issues.append('page_record_set_mismatch')
+    if page_errors:
+        issues.append('page_error_recorded')
+    issues.extend('page_' + flag + '_unresolved' for flag in sorted(unresolved_flags))
+    return dict(status='UNRESOLVED' if issues else 'RECONCILED', page_count=len(pages),
+                record_occurrences=occurrences, unique_records=len(seen), issues=issues)
+
+
 def completion_issues(search):
     issues = []
     if search.get('complete') is not True:
@@ -21,6 +69,7 @@ def completion_issues(search):
             issues.append(flag + '_unresolved')
     if search.get('error'):
         issues.append('search_error_recorded')
+    issues.extend(page_audit(search)['issues'])
     return issues
 
 
@@ -61,7 +110,8 @@ def audit_search_plan(protocol):
         search = executed.get(sid)
         issues = ['search_not_supplied'] if search is None else completion_issues(search)
         ledger.append(dict(item, status='MISSING' if search is None else ('INCOMPLETE' if issues else 'ASSERTED_COMPLETE'),
-                           enumerated_records=None if search is None else len(search['record_ids']), issues=issues))
+                           enumerated_records=None if search is None else len(search['record_ids']),
+                           page_audit=None if search is None else page_audit(search), issues=issues))
     missing = [row['search_id'] for row in ledger if row['status'] == 'MISSING']
     incomplete = [row['search_id'] for row in ledger if row['status'] == 'INCOMPLETE']
     complete = len(ledger) - len(missing) - len(incomplete)

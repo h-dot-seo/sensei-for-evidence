@@ -344,3 +344,33 @@ Comparison ledgers are recomputed with the current implementation, not replayed
 with each historical run's engine. Output records implementation SHA-256 values,
 including the comparator, for reproducibility; retain those source bytes when
 archiving a comparison. The hashes do not authenticate amendment history.
+
+## Optional supplied search-page ledgers
+
+```sh
+python evidence_workflow.py examples/paged-protocol.json
+```
+
+A search may include `pages`, each with a unique positive `page_number`, a list
+of unique nonblank `record_ids`, explicit Boolean `has_more` and optional error.
+Page numbers start at one and appear in order without gaps; all intermediate
+pages indicate more pages and the final page indicates none. Page record IDs
+use the same caller-normalized identity convention as the search-level list.
+Optional page-level `truncated`, `pagination_limited` and `field_pages_pending`
+flags use the same explicit-false resolution rule as their search-level counterparts.
+
+The audit reports page count, record occurrences and distinct records. Gaps,
+reordering, unresolved paging, overlap, recorded errors or a page/search record-set
+mismatch prevent asserted search completion. Overlap is retained as an unresolved
+reconciliation issue, not silently discarded. Malformed page structures fail.
+An omitted ledger is `NOT_SUPPLIED` with null counts, distinct from one explicit
+empty final page representing a supplied zero-result search.
+
+Workflow, declared-plan, report and bundle outputs preserve the accounting.
+Report output retains search coverage even without a declared plan. The state
+validator always checks page structure and applies completion rules only when
+completion is asserted. `RECONCILED`
+only means page-level assertions agree internally; neither pages nor search
+receipts are authenticated, queries assessed or sources searched by this code.
+Legacy inputs without pages remain supported, and census readiness stays
+`NOT_ESTABLISHED`.

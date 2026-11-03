@@ -110,3 +110,8 @@ repeatable CLI output. Positional work-package IDs are explicitly warned about.
 Comparator review also closed a shared workflow error path: malformed screening,
 evidence and gap containers/rows now return validation errors instead of
 AttributeError tracebacks. Regression cases run through the comparison CLI.
+
+Supplied page-ledger increment (2026-11-03): 111 tests passed. Nine new tests
+cover reconciled/absent/zero-result pages, ordering gaps, intermediate/final paging
+flags, overlap, record-set mismatches, errors, malformed page fields, report/bundle
+propagation and state-validator parity. No real search receipt was authenticated.

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from json_io import parse_json, configure_utf8_stdio
 from context_links import link_context, id_list, nonempty_text
-from search_audit import audit_search_plan, completion_issues
+from search_audit import audit_search_plan, completion_issues, page_audit
 from appraisal_links import link_appraisals
 
 
@@ -36,7 +36,7 @@ def run(protocol):
             records.setdefault(rid, []).append(search['source'])
         issues = completion_issues(search)
         coverage.append(dict(source=search['source'], search_id=search.get('search_id'),
-                             enumerated=len(ids), complete=not issues, issues=issues))
+                             enumerated=len(ids), complete=not issues, issues=issues, page_audit=page_audit(search)))
     search_plan_audit = audit_search_plan(protocol)
     decisions = {}
     for row in protocol['screening']:

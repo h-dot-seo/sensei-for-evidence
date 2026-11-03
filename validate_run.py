@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 from json_io import parse_json, configure_utf8_stdio
-from search_audit import completion_issues
+from search_audit import completion_issues, page_audit
 
 
 def validate(state):
@@ -33,6 +33,11 @@ def validate(state):
             continue
         if len(ids) != len(set(ids)):
             errors.append(f'{tag}: duplicate enumerated IDs')
+        try:
+            page_audit(dict(search, record_ids=ids))
+        except ValueError as error:
+            errors.append(f'{tag}: {error}')
+            continue
         if 'complete' in search and type(search['complete']) is not bool:
             errors.append(f'{tag}: complete must be boolean')
         if search.get('complete') is True:
@@ -45,7 +50,12 @@ def validate(state):
                 'field_pages_pending_unresolved': 'unresolved truncation marked complete',
                 'search_error_recorded': 'search error marked complete',
             }
-            for issue in completion_issues(dict(search, record_ids=ids)):
+            try:
+                issues = completion_issues(dict(search, record_ids=ids))
+            except ValueError as error:
+                errors.append(f'{tag}: {error}')
+                continue
+            for issue in issues:
                 errors.append(f'{tag}: {messages.get(issue, issue)}')
     screening = state.get('screening', {})
     groups = [('identified', 'duplicates', 'screened'),
