@@ -107,3 +107,36 @@ with Python 3.10 and 3.12. Actions are commit-pinned; token permissions are read
 checkout does not persist credentials, no secrets or deployment steps are used.
 The manifest describes LF-normalized published files, enforced by .gitattributes.
 External model/search behavior and scientific meaning are not evaluated by CI.
+
+## Portable offline research bundle
+
+```sh
+python research_bundle.py create examples/report-protocol.json ../synthetic-research.zip
+python research_bundle.py verify ../synthetic-research.zip
+```
+
+The ZIP contains the exact input protocol, validated research/report JSON, report
+and work-package CSV, a bounded summary and a SHA-256 manifest. Fixed ZIP metadata
+and deterministic serialization reproduce identical bytes from identical input.
+The output path must not exist. Validation occurs before creating it; an interrupted
+filesystem write can leave an incomplete file, which verification rejects. Verify
+checks a fixed entry set, a 50 MB uncompressed size bound, each payload hash, input
+hash and regenerated derived outputs without extracting paths. It detects altered
+derived results even if their manifest hashes were changed, but does not authenticate
+the original protocol. CSV formula-leading cells are escaped. Store real bundles
+outside this public repository; no uploads or external calls are made.
+
+Bundle schema 2 additionally records the exact implementation bytes for
+`evidence_workflow.py`, `prisma_reports.py` and `research_bundle.py`. Retain that
+source revision with each bundle; verification fails closed on implementation
+drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
+record-only protocol is supported: `reports.json` is null, report CSV contains
+only its header, and report/study counts say `not supplied`, never zero.
+The input protocol bytes are preserved exactly, so different whitespace or object
+key order can yield different archive bytes despite equivalent results. Hashes
+are not signatures. No source authenticity, completed census, scientific adequacy,
+clinical recommendation or full PRISMA compliance is established.
+
+The previously unpublished schema-1 prototype must be rebuilt from its retained
+protocol to use schema 2. Only one bundle engine is shipped; a redundant JSON-only
+prototype was consolidated into the portable ZIP workflow before publication.

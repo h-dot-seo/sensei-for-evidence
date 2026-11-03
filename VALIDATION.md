@@ -27,3 +27,12 @@ Second increment: 10 tests passed; failure boundaries and deterministic repeated
 Third increment: 13 tests passed, including supplied-evidence rejection and deterministic output. No external model/search integration tested.
 
 Fourth increment: CLI end-to-end scenarios and failure recovery added. Local tests: 15 passed. Remote CI status is recorded separately in the private development log.
+
+Fifth increment: 18 local tests passed. New CLI paths, source boundaries, deterministic output and tamper/no-overwrite checks are covered. See private development log for remote matrix CI.
+
+Cloud reconciliation (2026-11-03): hdbio's fifth-increment ZIP/CSV/summary exporter
+was consolidated with implementation fingerprinting, strict JSON parsing and
+record-only support. All 26 tests passed, including the original 18 and eight
+integration cases. The duplicate JSON-envelope prototype is not published.
+Schema 2 intentionally rejects prototype schema 1 and changed implementation
+bytes. No literature retrieval or scientific completeness validation was performed.
