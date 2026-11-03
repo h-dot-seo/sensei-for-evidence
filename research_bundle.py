@@ -59,6 +59,9 @@ def build_bundle(raw):
              f"Incomplete planned searches: {len(research['search_plan_audit']['incomplete_search_ids'])}\n"
              f"Included reports: {reports['report_flow']['included'] if reports is not None else 'not supplied'}\n"
              f"Included studies: {reports['report_flow']['included_studies'] if reports is not None else 'not supplied'}\n"
+             f"Extracted result rows: {research['flow']['extracted']}\n"
+             f"Source records with extraction: {research['flow']['extracted_records']}\n"
+             f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"
              f"Work packages: {len(research['work_packages'])}\n"
              f"Context review pending: {len(research['context']['review_pending'])}\n"
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')
@@ -71,6 +74,7 @@ def build_bundle(raw):
     with zipfile.ZipFile(target,'w',compression=zipfile.ZIP_STORED) as archive:
         for name,data in sorted(payloads.items()):
             entry=zipfile.ZipInfo(name,date_time=(1980,1,1,0,0,0))
+            entry.create_system=3  # Fixed creator metadata across Windows and Unix.
             entry.external_attr=0o100600 << 16
             archive.writestr(entry,data)
     return target.getvalue()

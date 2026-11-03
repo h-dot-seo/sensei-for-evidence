@@ -41,17 +41,26 @@ def run(protocol):
         decisions[rid] = row
     evidence = []
     seen = set()
+    extracted_records = set()
+    record_studies = {}
     for row in protocol['evidence']:
         rid = row['record_id']
-        if rid in seen or decisions.get(rid, {}).get('decision') != 'include':
-            raise ValueError('evidence must link uniquely to included record')
-        seen.add(rid)
+        eid = row.get('evidence_id', rid)
+        if not nonempty_text(eid) or eid in seen:
+            raise ValueError('evidence IDs must be unique nonempty strings')
+        if decisions.get(rid, {}).get('decision') != 'include':
+            raise ValueError('evidence must link to included record')
+        seen.add(eid)
+        extracted_records.add(rid)
         for field in ('study_id', 'locator', 'model', 'intervention', 'comparator', 'endpoint', 'result', 'limitations'):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 raise ValueError('evidence requires ' + field)
+        if rid in record_studies and record_studies[rid] != row['study_id']:
+            raise ValueError('evidence study ID conflicts within source record')
+        record_studies[rid] = row['study_id']
         if row.get('mechanism_basis') not in ('association', 'intervention', 'unknown'):
             raise ValueError('explicit mechanism_basis required')
-        evidence.append(row)
+        evidence.append(dict(row, evidence_id=eid))
     work = []
     for gap in protocol['gaps']:
         if any(not nonempty_text(gap.get(field)) for field in ('question', 'deliverable', 'acceptance_criterion')):
@@ -100,9 +109,12 @@ def run(protocol):
                 search_plan_audit=search_plan_audit,
                 flow=dict(identified=identified, duplicates=identified-len(records), unique_records=len(records),
                           screened=len(decisions), pending=len(records)-len(decisions),
-                          excluded=len(decisions)-included, included=included, extracted=len(evidence)),
+                          excluded=len(decisions)-included, included=included, extracted=len(evidence),
+                          extracted_records=len(extracted_records),
+                          extracted_studies=len({row['study_id'] for row in evidence})),
                 evidence=evidence, work_packages=work, execution_order=order, context=context,
-                extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in seen),
+                extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
+                extraction_completeness='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')
 

@@ -226,3 +226,41 @@ text. This includes newline/control/Unicode whitespace prefixes, avoiding diverg
 export behavior when a spreadsheet consumer trims leading whitespace. Original
 protocol and JSON evidence remain unchanged. The rule is defensive text handling,
 not certification of every spreadsheet application's import behavior.
+
+## Multiple results from one source record
+
+```sh
+python evidence_workflow.py examples/multi-result-protocol.json
+```
+
+Evidence rows may carry a unique `evidence_id`; omitted IDs default to `record_id`
+for existing one-result-per-record inputs. Multiple rows can share a source
+`record_id` when their evidence IDs differ. Each row still requires its own
+locator, model, intervention, comparator, endpoint, result, limitations and
+mechanism basis. The synthetic example keeps both a changed readout and a null
+result from one report without inventing another source record.
+
+Work-package and context `evidence_ids` refer to extraction IDs. If explicit IDs
+replace legacy record IDs, update those references together; record IDs are not
+automatically treated as aliases. Duplicate implicit IDs fail, and the original
+input is not mutated. Full-text report/study reconciliation checks every result.
+
+`flow.extracted` counts result rows, while `extracted_records` and
+`extracted_studies` count distinct supplied source-record and study IDs. More rows
+do not create more independent studies. `extraction_pending` lists included
+records with no extracted row; an empty list does not prove all results in a paper
+were extracted. `extraction_completeness` stays `NOT_ESTABLISHED`. Statistical
+dependence, endpoint comparability, study identity and scientific adequacy remain
+operator-review responsibilities, not automated findings.
+
+Standalone report JSON includes the normalized evidence ledger, so extraction IDs
+can be traced back to source record IDs even without a bundle. The current model
+requires one supplied study ID per source record/report; conflicting study IDs
+across result rows fail even when the optional report ledger is absent. Supporting
+multiple studies in one report requires a future explicit model extension, not
+silent reassignment of endpoint rows.
+
+Bundle ZIP creator metadata is explicitly fixed across Unix and Windows instead
+of inheriting the host default. Reproducible archive bytes still require identical
+input bytes and implementation files; source line endings are enforced by this
+repository's attributes.

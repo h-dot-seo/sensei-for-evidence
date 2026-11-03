@@ -38,7 +38,7 @@ def link_context(protocol, evidence, work_packages):
     supplied = protocol.get('contexts', [])
     if not isinstance(supplied, list):
         raise ValueError('contexts must be a list')
-    known_evidence = {row['record_id']: row for row in evidence}
+    known_evidence = {row.get('evidence_id', row['record_id']): row for row in evidence}
     contexts = {}
     for row in supplied:
         if not isinstance(row, dict):

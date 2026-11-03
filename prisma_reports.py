@@ -70,6 +70,7 @@ def report_flow(protocol):
                 exclusion_reasons=dict(sorted(Counter(r['reason'] for r in excluded).items())),
                 report_ledger=[reports[k] for k in sorted(reports)], report_csv=output.getvalue(),
                 work_packages=baseline['work_packages'], context=baseline['context'],
+                evidence=baseline['evidence'], extraction_completeness=baseline['extraction_completeness'],
                 boundary='PRISMA-oriented supplied-data ledger; not a claim of full PRISMA compliance or complete search')
 
 

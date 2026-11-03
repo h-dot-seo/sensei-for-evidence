@@ -70,3 +70,15 @@ tests cover formula/whitespace prefixes, plain Unicode text, multiline report CS
 round trips and work-package CSV inside verified bundles. Both exporters use one
 escaping function, whose bytes are bound in bundle implementation fingerprints.
 Original protocol JSON remains unchanged; no spreadsheet application was invoked.
+
+Multi-result extraction increment (2026-11-03): 73 tests passed. Nine new extraction tests
+cover multiple endpoint rows from one record, distinct record/study counts, legacy
+ID defaults without mutation, duplicate/malformed IDs, extraction-level context
+and work links, remaining unextracted records, full-text reconciliation of every
+result and preservation of null findings in verified bundles. Extraction
+completeness and scientific independence are not established.
+
+The same increment includes one ZIP portability regression: a simulated Windows
+creator previously changed archive bytes despite identical input/code. Fixed
+creator metadata now makes those byte streams identical. Actual multi-platform
+CI verifies runtime behavior separately.

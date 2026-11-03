@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 from pathlib import Path
 from research_bundle import build_bundle, create, verify
@@ -22,6 +23,15 @@ class BundleTests(unittest.TestCase):
             with self.assertRaises(FileExistsError): create(source,output)
             result=subprocess.run([sys.executable,'research_bundle.py','verify',str(output)],capture_output=True,text=True,timeout=20)
             self.assertEqual(result.returncode,0,result.stderr)
+
+    def test_zip_creator_platform_is_fixed(self):
+        raw = Path('examples/report-protocol.json').read_bytes()
+        baseline = build_bundle(raw)
+        with patch('zipfile.sys.platform', 'win32'):
+            simulated_windows = build_bundle(raw)
+        self.assertEqual(baseline, simulated_windows)
+        with zipfile.ZipFile(io.BytesIO(baseline)) as archive:
+            self.assertTrue(all(entry.create_system == 3 for entry in archive.infolist()))
 
     def test_tampered_derivation_even_with_updated_hash(self):
         raw=build_bundle(Path('examples/report-protocol.json').read_bytes())
