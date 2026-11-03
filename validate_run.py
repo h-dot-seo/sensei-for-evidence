@@ -58,23 +58,74 @@ def validate(state):
             for issue in issues:
                 errors.append(f'{tag}: {messages.get(issue, issue)}')
     screening = state.get('screening', {})
+    if not isinstance(screening, dict):
+        errors.append('screening must be an object')
+        screening = {}
     groups = [('identified', 'duplicates', 'screened'),
               ('screened', 'excluded', 'advanced')]
+    count_keys = {key for group in groups for key in group}
+    invalid_counts = {key for key in count_keys if key in screening and
+                      (type(screening[key]) is not int or screening[key] < 0)}
+    for key in sorted(invalid_counts):
+        errors.append(f'screening: {key} counts must be nonnegative integers')
     for total, left, right in groups:
-        if all(k in screening for k in (total, left, right)):
-            if any(type(screening[k]) is not int or screening[k] < 0
-                   for k in (total, left, right)):
-                errors.append('screening: counts must be nonnegative integers')
-            elif screening[total] != screening[left] + screening[right]:
+        if all(k in screening for k in (total, left, right)) and not invalid_counts.intersection((total, left, right)):
+            if screening[total] != screening[left] + screening[right]:
                 errors.append(f'screening: {total} != {left} + {right}')
     refs = state.get('references', [])
-    ref_ids = [r.get('reference_no') for r in refs]
+    if not isinstance(refs, list):
+        errors.append('references must be a list')
+        refs = []
+    valid_refs = []
+    for ref in refs:
+        if not isinstance(ref, dict):
+            errors.append('reference must be an object')
+            continue
+        number = ref.get('reference_no')
+        if type(number) is not int or number < 1:
+            errors.append('reference_no must be a positive integer')
+            continue
+        valid_refs.append(ref)
+        for flag in ('included_in_report', 'verified', 'text_complete', 'text_truncated'):
+            if flag in ref and type(ref[flag]) is not bool:
+                errors.append(f'reference {number}: {flag} must be boolean')
+        if ref.get('text_complete') is True and ref.get('text_truncated') is True:
+            errors.append(f'reference {number}: truncated text marked complete')
+    refs = valid_refs
+    ref_ids = [r['reference_no'] for r in refs]
     if len(ref_ids) != len(set(ref_ids)):
         errors.append('references: duplicate reference_no')
-    for ref in refs:
-        if ref.get('text_complete') and ref.get('text_truncated'):
-            errors.append(f'reference {ref.get("reference_no")}: truncated text marked complete')
     release = state.get('release', {})
+    if not isinstance(release, dict):
+        errors.append('release must be an object')
+        release = {}
+    cited = release.get('cited_reference_numbers', [])
+    if not isinstance(cited, list) or any(type(n) is not int or n < 1 for n in cited):
+        errors.append('release: cited_reference_numbers must be a list of positive integers')
+        cited = []
+    elif len(cited) != len(set(cited)):
+        errors.append('release: duplicate cited reference number')
+    required_artifacts = release.get('required_artifacts', [])
+    if not isinstance(required_artifacts, list) or any(not isinstance(t, str) or not t.strip() for t in required_artifacts):
+        errors.append('release: required_artifacts must be a list of nonempty strings')
+        required_artifacts = []
+    artifacts = release.get('artifacts', [])
+    if not isinstance(artifacts, list):
+        errors.append('release: artifacts must be a list')
+        artifacts = []
+    artifact_types = set()
+    for artifact in artifacts:
+        if not isinstance(artifact, dict):
+            errors.append('release: artifact must be an object')
+            continue
+        kind = artifact.get('type')
+        if not isinstance(kind, str) or not kind.strip():
+            errors.append('release: artifact type must be a nonempty string')
+            continue
+        if 'exists' in artifact and type(artifact['exists']) is not bool:
+            errors.append('release: artifact exists must be boolean')
+        if artifact.get('exists') is True:
+            artifact_types.add(kind)
     if release.get('status') == 'COMPLETE':
         if state.get('evidence_sufficiency') != 'SUFFICIENT':
             errors.append('release: evidence sufficiency not established')
@@ -86,15 +137,13 @@ def validate(state):
             errors.append('release: QA missing/failed')
         if release.get('storage_verified') is not True:
             errors.append('release: storage not verified')
-        cited = release.get('cited_reference_numbers', [])
         for ref in refs:
             if (ref.get('included_in_report') or ref.get('reference_no') in cited) and ref.get('verified') is not True:
                 errors.append('release: unverified cited reference')
         known = set(ref_ids)
         if any(r not in known for r in cited):
             errors.append('release: unmatched citation')
-        artifact_types = {a.get('type') for a in release.get('artifacts', []) if a.get('exists') is True}
-        for kind in release.get('required_artifacts', []):
+        for kind in required_artifacts:
             if kind not in artifact_types:
                 errors.append(f'release: required {kind} missing')
     return errors

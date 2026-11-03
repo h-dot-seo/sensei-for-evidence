@@ -149,3 +149,10 @@ tests cover repeated source labels and absent search IDs, occurrence/count
 reconciliation, preserved distinct similar IDs, report lookup back to search
 positions, deterministic bundle propagation, page/search overlap separation and empty searches. No publication
 identity matching or actual source authentication was performed.
+
+State shape correction (2026-11-03): 147 tests in the suite; local Linux run:
+146 passed and one Windows-only test skipped. Five new tests cover malformed
+nested state containers, strict citation/reference numbers (including boolean,
+float and null collisions), draft reference flags, individually supplied screening counts and machine-readable CLI errors
+without tracebacks. Valid supplied COMPLETE assertions remain accepted without
+independently certifying their factual truth.

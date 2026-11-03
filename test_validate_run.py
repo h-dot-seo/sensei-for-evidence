@@ -1,5 +1,10 @@
 import copy
 import unittest
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 from validate_run import validate
 
 
@@ -82,6 +87,65 @@ class StateTest(unittest.TestCase):
         state = self.complete_state()
         state['references'].append(dict(reference_no=2, included_in_report=False, verified=False))
         self.assertEqual(validate(state), [])
+
+    def test_malformed_nested_shapes_return_errors(self):
+        for key, value in (('screening', []), ('screening', 0), ('references', {}),
+                           ('references', [None]), ('references', [1]), ('release', [])):
+            state = self.complete_state()
+            state[key] = value
+            with self.subTest(key=key, value=value):
+                self.assertTrue(validate(state))
+        for key, value in (('artifacts', [None]), ('artifacts', {}),
+                           ('required_artifacts', {}), ('required_artifacts', [None]),
+                           ('artifacts', [dict(exists=True)]), ('cited_reference_numbers', {})):
+            state = self.complete_state()
+            state['release'][key] = value
+            with self.subTest(key=key, value=value):
+                self.assertTrue(validate(state))
+
+    def test_partial_screening_counts_are_validated_individually(self):
+        for field in ('identified', 'duplicates', 'screened', 'excluded', 'advanced'):
+            for value in (-1, True, 1.0, '1', None):
+                state = copy.deepcopy(self.s)
+                state['screening'] = {field: value}
+                with self.subTest(field=field, value=value):
+                    self.assertTrue(validate(state))
+            state['screening'] = {field: 0}
+            self.assertEqual(validate(state), [])
+
+    def test_reference_numbers_do_not_alias_boolean_float_or_null(self):
+        for number in (True, 1.0, None, '1', [], {}, 0, -1):
+            for where in ('reference', 'citation'):
+                state = self.complete_state()
+                if where == 'reference':
+                    state['references'][0]['reference_no'] = number
+                else:
+                    state['release']['cited_reference_numbers'] = [number]
+                with self.subTest(number=number, where=where):
+                    self.assertTrue(validate(state))
+        state = self.complete_state()
+        state['release']['cited_reference_numbers'] = [1, 1]
+        self.assertTrue(validate(state))
+
+    def test_reference_flags_are_boolean_even_before_release(self):
+        for flag in ('included_in_report', 'verified', 'text_complete', 'text_truncated'):
+            state = self.complete_state()
+            state['release']['status'] = 'DRAFT'
+            state['references'][0][flag] = 'false'
+            self.assertTrue(validate(state))
+
+    def test_malformed_state_cli_returns_json_without_traceback(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'synthetic-state.json'
+            for field, value in (('references', [None]), ('release', []), ('screening', 0)):
+                state = self.complete_state()
+                state[field] = value
+                path.write_text(json.dumps(state), encoding='utf-8')
+                result = subprocess.run([sys.executable, 'validate_run.py', str(path)],
+                                        capture_output=True, text=True, timeout=20)
+                self.assertEqual(result.returncode, 1)
+                self.assertFalse(json.loads(result.stdout)['valid'])
+                self.assertNotIn('Traceback', result.stderr)
 
     def test_false_release_rejected(self):
         self.s['blockers']=['synthetic missing evidence']

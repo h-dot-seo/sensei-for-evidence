@@ -454,3 +454,16 @@ Optional search IDs need not be unique without a declared plan, so use the searc
 position for this ledger lookup. Page occurrences are separate: overlap across
 pages remains an unresolved search audit issue and does not inflate search-level
 record occurrence counts.
+
+The state validator rejects malformed screening/reference/release containers and
+artifact entries with ordinary validation errors, including machine-readable CLI
+JSON. Reference numbers and cited numbers must be positive JSON integers, excluding
+booleans, floating-point values and null; cited numbers must be unique. Previously
+accepted loosely typed reference IDs must be converted explicitly upstream.
+Reference flags, when supplied, must be booleans. Required artifact names and
+artifact types must be nonempty strings. These selected structural checks do not
+constitute a complete state schema or establish that an artifact actually exists.
+
+Each supplied screening count must be a nonnegative integer even if the rest of
+its reconciliation equation is omitted. Arithmetic reconciliation is applied only
+when all three counts in that equation are supplied.

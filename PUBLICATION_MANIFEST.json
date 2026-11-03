@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.13.0-record-occurrence-provenance",
+  "release": "0.13.1-state-shape-guards",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 9861,
-      "sha256": "4bd6c1370b202201d7e678721efcf570dfa03f60da1b4bfdf87d253dbcc4ae4f"
+      "bytes": 10343,
+      "sha256": "5efe3c0bf7591bc541ff0880b5d20b3d5a4ef90bc672b5444b15344c6fb37848"
     },
     {
       "path": "appraisal_links.py",
@@ -85,8 +85,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 25520,
-      "sha256": "8862cb7f07d681f805b06103412c811c583dba9e58597979adbab34411b57dc8"
+      "bytes": 26383,
+      "sha256": "d1dabadd0449707c8661c2bbab795a7755d5e0112f8ef6a587657cf2072202b1"
     },
     {
       "path": "evidence_workflow.py",
@@ -240,8 +240,8 @@
     },
     {
       "path": "test_validate_run.py",
-      "bytes": 4984,
-      "sha256": "32045caa8a484db8ed39fbbfa11d64d53a9ca393f5b063e80b1fa53bc0d0320e"
+      "bytes": 8265,
+      "sha256": "c051e2937dbaa8754ff61ed3aa18b4800cdc2dfc635299c1160abbdc01feb699"
     },
     {
       "path": "test_verify_manifest.py",
@@ -250,8 +250,8 @@
     },
     {
       "path": "validate_run.py",
-      "bytes": 5814,
-      "sha256": "485957a8bcf2ec92413030328696c3c5e341e123c22d07c46766c0e2e2be68d1"
+      "bytes": 8179,
+      "sha256": "e1c50ff38e55911d8240c673bb9aaf6003c198e6eb04cd8726513685a9c8b40b"
     },
     {
       "path": "verify_manifest.py",
