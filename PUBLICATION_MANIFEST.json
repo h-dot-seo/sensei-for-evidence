@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.32.0-work-navigation",
+  "release": "0.32.1-work-navigation-newlines",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 28552,
-      "sha256": "138dacbab5c305e341800617ccf4347d2b268c481aa8dc0bf34a522c0380f38b"
+      "bytes": 28876,
+      "sha256": "cd87e4200c7e27e98a81297db35867c02ebdf145430d89eb5e435ae6003b88a2"
     },
     {
       "path": "adapter_integrity.py",
@@ -575,8 +575,8 @@
     },
     {
       "path": "test_work_navigation.py",
-      "bytes": 4920,
-      "sha256": "1554333aafb175ce726f7e4fc28980a1654d9252d120a2949a1c32e9c9a4f2c1"
+      "bytes": 4948,
+      "sha256": "4ebc94886dd5087d54dbb86cad6b51e616a0efbab06f561f16fbbe50d8162108"
     },
     {
       "path": "test_work_review.py",

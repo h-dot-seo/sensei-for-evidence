@@ -57,7 +57,7 @@ class WorkNavigationTests(unittest.TestCase):
         cmd=[sys.executable,str(ROOT/'work_review.py'),str(ROOT/'examples/prerequisite-review.json'),'--work-package=WP-TRANSLATION','--include-prerequisites']
         brief=subprocess.run(cmd+['--brief'],capture_output=True,check=True).stdout
         full=subprocess.run(cmd+['--text'],capture_output=True,check=True).stdout
-        self.assertLess(len(brief),len(full)//2);self.assertEqual(brief.decode(),render_brief(self.report()))
+        self.assertLess(len(brief),len(full)//2);self.assertEqual(brief.decode('utf-8').replace('\r\n','\n'),render_brief(self.report()))
         invalid=subprocess.run(cmd+['--brief','--text'],capture_output=True);self.assertNotEqual(invalid.returncode,0)
     def test_empty_work_is_not_readiness(self):
         self.p['gaps']=[];self.p.pop('planning_decisions');r=review_packets(self.p)

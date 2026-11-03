@@ -406,3 +406,7 @@ output size. Independent review confirmed status-only grouping and scope/copy
 boundaries; supplied search-index wording and compact global-plan display were
 refined. CLI prerequisite and rationale views retain unresolved source/scientific
 work without generating next-task priorities, acceptance or clinical decisions.
+The first navigation CI run exposed a Windows-only test comparison issue: native
+CRLF stdout was compared to the renderer's LF string. The regression now normalizes
+only CRLF line endings before comparing the complete UTF-8 text; production
+behavior is unchanged. A fresh CI matrix run is required for the corrected commit.
