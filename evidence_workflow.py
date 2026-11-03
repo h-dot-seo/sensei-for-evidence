@@ -22,7 +22,7 @@ def run(protocol):
     coverage = []
     if not isinstance(protocol['searches'], list):
         raise ValueError('searches must be a list')
-    for search in protocol['searches']:
+    for search_index, search in enumerate(protocol['searches']):
         if not isinstance(search, dict):
             raise ValueError('search must be an object')
         for key in ('source', 'query', 'searched_at', 'window'):
@@ -33,7 +33,8 @@ def run(protocol):
             raise ValueError('invalid or duplicate IDs within search')
         identified += len(ids)
         for rid in ids:
-            records.setdefault(rid, []).append(search['source'])
+            records.setdefault(rid, []).append(dict(search_index=search_index,
+                                                    search_id=search.get('search_id'), source=search['source']))
         issues = completion_issues(search)
         coverage.append(dict(source=search['source'], search_id=search.get('search_id'),
                              enumerated=len(ids), complete=not issues, issues=issues, page_audit=page_audit(search)))
@@ -123,6 +124,9 @@ def run(protocol):
     return dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
                 search_plan_audit=search_plan_audit,
+                record_provenance=[dict(record_id=rid, occurrences=records[rid]) for rid in sorted(records)],
+                deduplication_scope='exact_supplied_record_id_only',
+                record_identity_verification='NOT_ESTABLISHED',
                 flow=dict(identified=identified, duplicates=identified-len(records), unique_records=len(records),
                           screened=len(decisions), pending=len(records)-len(decisions),
                           excluded=len(decisions)-included, included=included, extracted=len(evidence),

@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.12.2-release-assertion-guards",
+  "release": "0.13.0-record-occurrence-provenance",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 49,
+  "file_count": 50,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5129,
-      "sha256": "e01f264daed6790aefeb2f76ff6ba0cc426af9073a14ac3e5f011806a1b949de"
+      "bytes": 5289,
+      "sha256": "b3f3fc8bb06281b8f23c0d0b9d3ecd3775144ff1e0772814650c284ef88cb839"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 9374,
-      "sha256": "e2c9f8ef6baee2d29a565c340863882f73bd04ac451bd7297d726c6bbe334a79"
+      "bytes": 9861,
+      "sha256": "4bd6c1370b202201d7e678721efcf570dfa03f60da1b4bfdf87d253dbcc4ae4f"
     },
     {
       "path": "appraisal_links.py",
@@ -85,13 +85,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 23938,
-      "sha256": "85ede913d03d7b8c6827d3a7ac99410589840534b95f40e18dbe628243f23e6d"
+      "bytes": 25520,
+      "sha256": "8862cb7f07d681f805b06103412c811c583dba9e58597979adbab34411b57dc8"
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 8383,
-      "sha256": "de91db8064db9c6bdfe20a1daed72af15c60412d8c8bcc7bd5f691e0f39ea365"
+      "bytes": 8778,
+      "sha256": "1165981f82f1912698efceb99b969e0f3eee6cb4ab1ef4cc8f72997ac46fa005"
     },
     {
       "path": "examples/appraised-protocol.json",
@@ -145,18 +145,18 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 5660,
-      "sha256": "734c444e8b27eb429733b4cae1f093ad688e08ab1e9bc5309c88abb1d94fd1a2"
+      "bytes": 5938,
+      "sha256": "9aedf9817607c49f88425df3d7131a82ab41a6f9f90b2d79e556773a17ef2636"
     },
     {
       "path": "research_bundle.py",
-      "bytes": 8485,
-      "sha256": "b5ed012d214c39dcee3c1e05016c9e7b249f60870310a4983782fa99b0e64cde"
+      "bytes": 8759,
+      "sha256": "c0f24a631b5f9c6120b11bdbc8d77c10acdb460ca69ea5a4d6c5041ed9d49b61"
     },
     {
       "path": "research_status.py",
-      "bytes": 6219,
-      "sha256": "767bd314644a493b9ce8d867da0ad1dc60ad69c720cd7f0a31fbaaf2eefed25f"
+      "bytes": 6476,
+      "sha256": "5580097686b26b2773adac22e47b56a340c0ce997f873cc891ce61c79324b2c0"
     },
     {
       "path": "search_audit.py",
@@ -212,6 +212,11 @@
       "path": "test_prisma_reports.py",
       "bytes": 6442,
       "sha256": "34fb3a104a3348d297bda5b0c79ae0fbe218faa3956cdd629faa329ffd226d41"
+    },
+    {
+      "path": "test_record_provenance.py",
+      "bytes": 4972,
+      "sha256": "73d5f98d2c642b654136c3e7c49d5a4c1a52b35a6da2e9e248035d5112a0c4a5"
     },
     {
       "path": "test_research_bundle.py",

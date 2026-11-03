@@ -47,7 +47,10 @@ def build_bundle(raw):
         writer.writerow([safe(exported.get(c,'')) for c in columns])
     summary=('Research bundle\n===============\n\n'
              'Supplied-data bookkeeping only; not independently verified research.\n'
-             f"Identified records: {research['flow']['identified']}\n"
+             f"Identified record occurrences: {research['flow']['identified']}\n"
+             f"Distinct supplied record IDs: {research['flow']['unique_records']}\n"
+             f"Repeated exact-ID occurrences: {research['flow']['duplicates']}\n"
+             'Deduplication: exact supplied IDs only; identities not independently verified.\n'
              f"Screening pending: {research['flow']['pending']}\n"
              f"Declared search plan: {research['search_plan_audit']['plan_status']}\n"
              f"Missing planned searches: {len(research['search_plan_audit']['missing_search_ids'])}\n"

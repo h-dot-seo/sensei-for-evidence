@@ -429,3 +429,28 @@ Strings such as `"false"` and numeric `1` are not accepted as positive assertion
 Every explicitly cited reference, as well as every reference flagged as included
 in the report, must be verified. These are checks of supplied assertions, not
 independent verification of references, artifacts, evidence sufficiency or science.
+
+### Record occurrence provenance
+
+`record_provenance` in research and report JSON lists each distinct supplied
+`record_id` in sorted order, with an `occurrences` array retaining every search
+position (`search_index`, zero-based), optional `search_id` (null if absent), and
+`source`. The research/report `search_ledger` provides the query and other supplied
+metadata at that position. Repeated source labels remain distinct occurrences.
+Positions apply only to this protocol, not stable IDs across edited protocols.
+
+Existing `flow.identified` counts search-record occurrences, `flow.unique_records`
+counts exact distinct IDs, and `flow.duplicates` counts repeated exact-ID
+occurrences. These names remain for compatibility. No case folding, trimming,
+bibliographic matching or cross-source entity resolution occurs. Use consistent,
+unambiguous IDs upstream; different IDs for one publication stay separate, and an
+accidental shared ID can collapse different publications. The tool cannot detect
+those identity errors. `deduplication_scope` is `exact_supplied_record_id_only` and
+`record_identity_verification` remains `NOT_ESTABLISHED`. Compact status exposes
+these bounds rather than repeating the full source ledger. Bundles preserve the
+ledger in existing JSON payloads without changing the archive file set.
+
+Optional search IDs need not be unique without a declared plan, so use the search
+position for this ledger lookup. Page occurrences are separate: overlap across
+pages remains an unresolved search audit issue and does not inflate search-level
+record occurrence counts.

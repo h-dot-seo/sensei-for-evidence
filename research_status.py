@@ -46,6 +46,8 @@ def status(protocol):
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not an exact-byte receipt',
                 engine_sha256=implementation, search_plan_status=plan['plan_status'],
                 report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
+                deduplication_scope=research['deduplication_scope'],
+                record_identity_verification=research['record_identity_verification'],
                 counts=counts, queues=queues,
                 record_extraction_scope=research['extraction_pending_scope'],
                 extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED',
@@ -76,6 +78,7 @@ def render_text(result):
     lines.extend(label + ': ' + count(key) for label, key in labels)
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
+    lines.append('Record identity: exact supplied IDs only; identities not independently verified.')
     lines.extend(['Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', result['boundary']])
     return '\n'.join(lines) + '\n'
 

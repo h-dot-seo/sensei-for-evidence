@@ -142,3 +142,10 @@ the inclusion flag is absent/false, while allowing unverified uncited background
 references. An independent synthetic relationship audit exercised 52 rejection
 checks across report, bundle, comparison and status entrypoints without finding
 another broken-link acceptance in those cases. This is not scientific validation.
+
+Record occurrence provenance increment (2026-11-03): 142 tests in the suite;
+local Linux run: 141 passed and one Windows-only test skipped. Six new synthetic
+tests cover repeated source labels and absent search IDs, occurrence/count
+reconciliation, preserved distinct similar IDs, report lookup back to search
+positions, deterministic bundle propagation, page/search overlap separation and empty searches. No publication
+identity matching or actual source authentication was performed.

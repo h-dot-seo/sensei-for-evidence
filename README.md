@@ -13,6 +13,8 @@ services or models:
 
 - Declared search plans and optional page ledgers, including missing sources,
   count mismatches, overlap, truncation and incomplete pagination.
+- Per-record search-occurrence provenance with exact-ID-only deduplication.
+  Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
   exclusions, with separate record/result/report counts.
 - Multiple result rows per source, including null findings, with extraction-level
