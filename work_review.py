@@ -33,6 +33,8 @@ def review_packets(protocol, work_package_id=None):
     appraisal_links = {row['evidence_id']: row['appraisal_ids'] for row in research['appraisal']['evidence_appraisal_links']}
     candidate_receipts = {row['sha256']: row for row in protocol.get('adapter_receipts', {}).get('receipts', [])
                           if row['target_type'] == 'extraction'}
+    planning = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
+    planning_targets = {row['work_package_id']: row for row in research['planning']['review_targets']}
     selected = [work_package_id] if work_package_id is not None else sorted(work)
     packets = []
     for wid in selected:
@@ -67,6 +69,7 @@ def review_packets(protocol, work_package_id=None):
         source_rows = [dict(search_index=index, search=copy.deepcopy(research['search_ledger'][index]),
                             accounting=copy.deepcopy(research['coverage'][index])) for index in sorted(source_indices)]
         packets.append(dict(work_package=copy.deepcopy(item),
+            planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
             scope_counts=dict(result_rows=len(result_rows),
@@ -86,6 +89,11 @@ def review_packets(protocol, work_package_id=None):
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
                 engine_sha256=implementation, selection=work_package_id,
+                planning_boundary=research['planning']['boundary'],
+                planning_source_scope_fields=research['planning']['source_scope_fields'],
+                planning_source_scope_sha256=research['planning']['source_scope_sha256'],
+                global_current_rank_groups=copy.deepcopy(research['planning']['current_rank_groups']),
+                rank_groups_scope=research['planning']['current_rank_groups_scope'],
                 global_search_plan_audit=copy.deepcopy(research['search_plan_audit']),
                 deduplication_scope=research['deduplication_scope'],
                 record_identity_verification=research['record_identity_verification'],
@@ -117,6 +125,8 @@ def render_text(result):
                       'Acceptance criterion: ' + show(work['acceptance_criterion']),
                       'Dependencies: ' + show(work['depends_on']), 'Blocked by: ' + show(work['blocked_by']),
                       'Scope counts: ' + show(packet['scope_counts']),
+                      'Supplied planning assertion: ' + show(packet['planning_assertion']),
+                      'Current planning basis hash (review target only): ' + show(packet['planning_review_target']['basis_sha256']),
                       'Recorded review gaps: ' + show(packet['recorded_review_gaps']),
                       'Report stage: ' + show(packet['report_stage']),
                       'Context links: ' + show(packet['context_link_status'])])
@@ -141,7 +151,7 @@ def render_text(result):
         lines.append('Decision: NO_AUTOMATED_DECISION')
     lines.extend(['', 'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',
                   'Extraction completeness: NOT_ESTABLISHED', 'Census: NOT_ESTABLISHED',
-                  'Conclusion: NOT_READY', result['boundary']])
+                  'Conclusion: NOT_READY', result['planning_boundary'], result['boundary']])
     return '\n'.join(lines) + '\n'
 
 

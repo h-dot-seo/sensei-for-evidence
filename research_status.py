@@ -22,6 +22,8 @@ def status(protocol):
     report_ledger = reports['report_ledger'] if reports is not None else []
     work = research['work_packages']
     queues = dict(
+        work_without_planning_assertion=research['planning']['work_without_planning_assertion'],
+        work_with_stale_planning_assertion=research['planning']['work_with_stale_planning_assertion'],
         missing_planned_searches=plan['missing_search_ids'] if plan['plan_status'] != 'NOT_SUPPLIED' else None,
         incomplete_searches=[dict(search_index=index, search_id=row['search_id'], source=row['source'], issues=row['issues'])
                              for index, row in enumerate(research['coverage']) if not row['complete']],
@@ -59,6 +61,8 @@ def render_text(result):
         value = result['counts'][key]
         return 'not supplied' if value is None else str(value)
     labels = [
+        ('Work without supplied planning ranks', 'work_without_planning_assertion'),
+        ('Work with stale planning source bindings', 'work_with_stale_planning_assertion'),
         ('Missing planned searches', 'missing_planned_searches'),
         ('Incomplete supplied searches', 'incomplete_searches'),
         ('Unscreened records', 'records_pending_screening'),

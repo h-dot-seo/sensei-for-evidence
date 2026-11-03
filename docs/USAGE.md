@@ -494,3 +494,9 @@ This is an offline mock runner, not a live literature or model API integration.
 See [the work-review contract](WORK_REVIEW.md) for source-linked guideline and
 development context, explicit extraction-level appraisal scope and pending review
 items beside each supplied deliverable. No scientific or medical decision is made.
+
+## Supplied planning assertions
+
+See [planning ranks and source staleness](PLANNING_ASSERTIONS.md). The workflow
+exposes source/hash review targets but never chooses a rank or renews a stale
+assertion. Missing/stale planning queues remain separate from dependency status.

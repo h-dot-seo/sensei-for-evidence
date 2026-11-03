@@ -193,3 +193,13 @@ UTF-8/strict-JSON CLI behavior. Text rendering escapes control, format and Unico
 line-separator characters. Extraction completeness and source identity remain
 unestablished even when recorded review gaps are empty. No clinical, regulatory,
 scientific-quality, prioritization or go/no-go decision is generated.
+
+Supplied planning assertion increment (2026-11-03): 191 tests in the suite; local
+Linux run: 190 passed and one Windows-only test skipped. Eleven new tests cover
+strict ranks/targets, ties and missing assertions, stale evidence/context/appraisal/
+search/screening/report/scope bindings, progress/version exclusions, unrelated work,
+canonical type distinctions, immutable inputs, comparison, CSV safety and the
+adapter → context/WP → supplied rank → prerequisite completion → packet/bundle
+journey. Independent review also probed dependency-scope and context-review changes.
+Current-source matching is not planning quality; stale ranks are not used in current
+rank groups, and neither ranks nor completion assertions alter readiness bounds.

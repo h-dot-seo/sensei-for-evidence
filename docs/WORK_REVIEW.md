@@ -96,3 +96,7 @@ The command performs no external retrieval, model call, credential use or upload
 It does not verify guideline currency, source authenticity, study identity,
 clinical applicability, scientific adequacy or regulatory compliance. Census stays
 `NOT_ESTABLISHED`; conclusion readiness stays `NOT_READY`.
+
+Packets also include [supplied planning assertions](PLANNING_ASSERTIONS.md), their
+source-match status and a current basis/hash review target. Stale ranks are retained
+as historical assertions but excluded from current-rank groups. No rank is inferred.

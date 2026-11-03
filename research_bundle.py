@@ -11,7 +11,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -34,18 +34,28 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
         return safe_csv_cell(text)
     context_by_work = {row['work_package_id']: row for row in research['context']['work_package_context']}
     appraisal_by_work = {row['work_package_id']: row for row in research['appraisal']['work_package_appraisals']}
+    planning_by_work = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
     for wp in sorted(research['work_packages'],key=lambda w:w['work_package_id']):
         wid = wp['work_package_id']
         exported = dict(wp, context_review_pending=context_by_work[wid]['context_review_pending'],
                         appraisal_ids=appraisal_by_work[wid]['appraisal_ids'],
                         evidence_without_recorded_appraisal=appraisal_by_work[wid]['evidence_without_recorded_appraisal'])
+        planning = planning_by_work[wid]
+        assertion = planning['assertion'] or {}
+        exported.update(supplied_priority_rank=assertion.get('priority_rank', ''),
+                        current_priority_rank=planning['current_priority_rank'] if planning['current_priority_rank'] is not None else '',
+                        planning_source_status=planning['source_match_status'],
+                        planning_rationale=assertion.get('rationale', ''), planning_uncertainty=assertion.get('uncertainty', ''),
+                        planner=assertion.get('planner', ''), planned_at=assertion.get('planned_at', ''),
+                        planning_basis_sha256=assertion.get('basis_sha256', ''),
+                        current_planning_basis_sha256=planning['current_basis_sha256'])
         writer.writerow([safe(exported.get(c,'')) for c in columns])
     summary=('Research bundle\n===============\n\n'
              'Supplied-data bookkeeping only; not independently verified research.\n'
@@ -64,6 +74,9 @@ def build_bundle(raw):
              f"Source records with extraction: {research['flow']['extracted_records']}\n"
              f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"
              f"Work packages: {len(research['work_packages'])}\n"
+             f"Work without supplied planning ranks: {len(research['planning']['work_without_planning_assertion'])}\n"
+             f"Work with stale planning source bindings: {len(research['planning']['work_with_stale_planning_assertion'])}\n"
+             'Planning ranks are supplied assertions, not advice; dependencies remain separate.\n'
              f"Context review pending: {len(research['context']['review_pending'])}\n"
              f"Result rows without recorded appraisal: {len(research['appraisal']['evidence_without_recorded_appraisal'])}\n"
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')

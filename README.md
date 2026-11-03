@@ -26,6 +26,8 @@ services or models:
 - Supplied appraisal methods and domain judgements, with reviewer provenance and
   missing-appraisal coverage. No appraisal score or consensus is inferred.
 - Dependency-aware work packages, deliverables and explicit completion assertions.
+- Supplied planning ranks with rationale/uncertainty and source-staleness checks;
+  ranks never override dependencies or become automated recommendations.
 - Per-work-package review packets joining source lineage, guideline/development
   applicability limits, appraisal provenance and local review gaps without decisions.
 - Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
@@ -108,3 +110,6 @@ search → receipt review → extraction review → report/status/bundle example
 
 See [work review packets](docs/WORK_REVIEW.md) for the synthetic guideline,
 development and research-management handoff example.
+
+See [supplied planning assertions](docs/PLANNING_ASSERTIONS.md) for recording a
+rank, checking changed source context and keeping priority separate from dependencies.

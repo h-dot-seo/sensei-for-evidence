@@ -43,7 +43,8 @@ and matching study ID. Neither case independently establishes full-text access o
 scientific validity. Work packages/context/appraisals can be added to the exported
 protocol using the ordinary validated evidence IDs; the adapter does not invent
 these links. Version the protocol when adding or changing work. Downstream validation allows
-changes only to version, work packages (`gaps`), contexts and appraisals beyond the
+changes only to version, work packages (`gaps`), contexts, appraisals and supplied
+`planning_decisions` beyond the
 derived searches/evidence. Changing question, criteria, plan, screening or reports
 requires a new assembly and new hash-bound reviews. The original base protocol
 and its review version remain in the receipt ledger.
@@ -124,7 +125,7 @@ key order. They are **not exact-byte response receipts or digital signatures**:
 
 Changing the base protocol input, provider metadata, source pages or extraction
 proposals invalidates the associated review binding. Later version/work-package/
-context/appraisal enrichment is the explicit downstream exception described above. The exported protocol stores the original base-protocol snapshot, receipts,
+context/appraisal/planning enrichment is the explicit downstream exception described above. The exported protocol stores the original base-protocol snapshot, receipts,
 reviews and the adapter source-file hash. Promoted searches/evidence retain mock
 provenance and `UNVERIFIED_PROVIDER_RESPONSE` even after review acceptance.
 
