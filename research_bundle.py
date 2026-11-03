@@ -9,7 +9,7 @@ from pathlib import Path
 from evidence_workflow import run
 from prisma_reports import report_flow
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -53,6 +53,9 @@ def build_bundle(raw):
              'Supplied-data bookkeeping only; not independently verified research.\n'
              f"Identified records: {research['flow']['identified']}\n"
              f"Screening pending: {research['flow']['pending']}\n"
+             f"Declared search plan: {research['search_plan_audit']['plan_status']}\n"
+             f"Missing planned searches: {len(research['search_plan_audit']['missing_search_ids'])}\n"
+             f"Incomplete planned searches: {len(research['search_plan_audit']['incomplete_search_ids'])}\n"
              f"Included reports: {reports['report_flow']['included'] if reports is not None else 'not supplied'}\n"
              f"Included studies: {reports['report_flow']['included_studies'] if reports is not None else 'not supplied'}\n"
              f"Work packages: {len(research['work_packages'])}\n"

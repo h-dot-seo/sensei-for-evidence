@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 from context_links import link_context
+from search_audit import audit_search_plan, completion_issues
 
 
 def run(protocol):
@@ -12,19 +13,24 @@ def run(protocol):
     records = {}
     identified = 0
     coverage = []
+    if not isinstance(protocol['searches'], list):
+        raise ValueError('searches must be a list')
     for search in protocol['searches']:
+        if not isinstance(search, dict):
+            raise ValueError('search must be an object')
         for key in ('source', 'query', 'searched_at', 'window'):
             if not isinstance(search.get(key), str) or not search[key].strip():
                 raise ValueError('search requires ' + key)
         ids = search['record_ids']
-        if any(not isinstance(i, str) or not i for i in ids) or len(ids) != len(set(ids)):
+        if not isinstance(ids, list) or any(not isinstance(i, str) or not i for i in ids) or len(ids) != len(set(ids)):
             raise ValueError('invalid or duplicate IDs within search')
         identified += len(ids)
         for rid in ids:
             records.setdefault(rid, []).append(search['source'])
-        complete = (search.get('complete') is True and search.get('total_count') == len(ids)
-                    and search.get('has_more') is False and not search.get('error'))
-        coverage.append(dict(source=search['source'], enumerated=len(ids), complete=complete))
+        issues = completion_issues(search)
+        coverage.append(dict(source=search['source'], search_id=search.get('search_id'),
+                             enumerated=len(ids), complete=not issues, issues=issues))
+    search_plan_audit = audit_search_plan(protocol)
     decisions = {}
     for row in protocol['screening']:
         rid = row['record_id']
@@ -86,6 +92,7 @@ def run(protocol):
     included = sum(d['decision'] == 'include' for d in decisions.values())
     return dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
+                search_plan_audit=search_plan_audit,
                 flow=dict(identified=identified, duplicates=identified-len(records), unique_records=len(records),
                           screened=len(decisions), pending=len(records)-len(decisions),
                           excluded=len(decisions)-included, included=included, extracted=len(evidence)),

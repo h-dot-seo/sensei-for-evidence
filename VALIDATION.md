@@ -42,3 +42,9 @@ provenance requirements, typed context domains, evidence/work-package joins,
 review assertions, dates, dangling/duplicate references, record-only compatibility
 and context preservation in portable bundles. Synthetic data only; no real
 guideline currency, applicability or scientific adequacy evaluation was performed.
+
+Search-plan accounting increment (2026-11-03): 44 tests passed. Nine additional
+tests cover missing planned searches, asserted-only completion, count/paging/error
+reasons, strict integer totals, source/query/window mismatch, duplicate/unplanned
+search IDs, invalid shapes, legacy no-plan input and bundle/report propagation.
+No source authentication, live retrieval or completeness assessment was performed.

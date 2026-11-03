@@ -128,7 +128,8 @@ the original protocol. CSV formula-leading cells are escaped. Store real bundles
 outside this public repository; no uploads or external calls are made.
 
 Bundle schema 2 additionally records the exact implementation bytes for
-`evidence_workflow.py`, `prisma_reports.py`, `context_links.py` and `research_bundle.py`. Retain that
+`evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`
+and `research_bundle.py`. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains
@@ -170,3 +171,30 @@ context reviews. Existing protocols without contexts remain supported. All
 examples are synthetic. No guideline retrieval, regulatory assessment or clinical
 recommendation is performed, and clinical context does not turn a cell-model
 finding into evidence of patient benefit.
+
+## Declared search-plan accounting
+
+```sh
+python evidence_workflow.py examples/planned-protocol.json
+```
+
+Optional `search_plan` is a nonempty list of stable `search_id`, exact `source`,
+`query` and `window` entries. When supplied, each executed search must reference
+one unique planned ID and exactly match that scope. Scope changes must be
+reconciled explicitly under a revised protocol rather than silently accepted.
+Repeated attempts are not merged automatically; preserve them in separately
+versioned inputs. Existing protocols without a plan remain supported and show
+`NOT_SUPPLIED`, not complete planned coverage.
+
+The audit exposes missing planned searches, incomplete paging/count assertions,
+recorded errors and per-item reasons. Missing searches have null enumerated
+counts, distinct from an executed zero-result search. Count assertions must be
+nonnegative integers; booleans and floats never establish completion. The same
+audit survives report output and bundles.
+
+`ASSERTED_ACCOUNTED` means only that every declared search has a supplied matching
+ledger with internally consistent completion assertions. It does not establish
+that the plan was comprehensive, the query adequate, receipts authentic or all
+relevant literature found. No searches are performed, and census/conclusion gates
+remain unestablished/not ready. The synthetic example deliberately omits one
+planned source so that the remaining work stays visible.

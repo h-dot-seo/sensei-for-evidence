@@ -59,7 +59,7 @@ def report_flow(protocol):
     for rid,r in sorted(reports.items()):
         writer.writerow([cell(rid),cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
                          cell(r.get('reason','')),cell(r.get('study_id','')),cell(r.get('locator',''))])
-    return dict(record_flow=baseline['flow'], report_flow=dict(sought=len(reports),retrieved=counts['retrieved'],
+    return dict(search_plan_audit=baseline['search_plan_audit'], record_flow=baseline['flow'], report_flow=dict(sought=len(reports),retrieved=counts['retrieved'],
                 not_retrieved=counts['not_retrieved'],retrieval_pending=counts['pending'],assessed=len(assessed),
                 assessment_pending=counts['retrieved']-len(assessed),excluded=len(excluded),included=len(included),
                 included_studies=len({r['study_id'] for r in included})),
