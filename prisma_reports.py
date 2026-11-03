@@ -7,6 +7,7 @@ from collections import Counter
 from pathlib import Path
 from evidence_workflow import run
 from context_links import nonempty_text
+from csv_safety import safe_csv_cell
 
 
 def report_flow(protocol):
@@ -58,12 +59,9 @@ def report_flow(protocol):
     output=io.StringIO(newline='')
     writer=csv.writer(output,lineterminator='\n')
     writer.writerow(['report_id','record_ids','retrieval','decision','reason','study_id','locator'])
-    def cell(value):
-        text=str(value)
-        return "'"+text if text.startswith(('=','+','-','@','\t','\r')) else text
     for rid,r in sorted(reports.items()):
-        writer.writerow([cell(rid),cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
-                         cell(r.get('reason','')),cell(r.get('study_id','')),cell(r.get('locator',''))])
+        writer.writerow([safe_csv_cell(rid),safe_csv_cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
+                         safe_csv_cell(r.get('reason','')),safe_csv_cell(r.get('study_id','')),safe_csv_cell(r.get('locator',''))])
     return dict(search_plan_audit=baseline['search_plan_audit'], record_flow=baseline['flow'], report_flow=dict(sought=len(reports),retrieved=counts['retrieved'],
                 not_retrieved=counts['not_retrieved'],retrieval_pending=counts['pending'],assessed=len(assessed),
                 assessment_pending=counts['retrieved']-len(assessed),excluded=len(excluded),included=len(included),

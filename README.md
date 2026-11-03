@@ -128,8 +128,8 @@ the original protocol. CSV formula-leading cells are escaped. Store real bundles
 outside this public repository; no uploads or external calls are made.
 
 Bundle schema 2 additionally records the exact implementation bytes for
-`evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`
-and `research_bundle.py`. Retain that
+`evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`,
+`csv_safety.py` and `research_bundle.py`. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains
@@ -219,3 +219,10 @@ including completed packages. Full-text exclusions therefore cannot be reconcile
 by clearing a work package's evidence links and retaining a completed claim.
 Completed packages also require a nonblank artifact locator. Pending report
 retrieval does not require a locator or study ID that is not yet available.
+
+Report and work-package CSV use one conservative escaping rule: cells beginning
+with formula characters or whitespace receive an apostrophe before their original
+text. This includes newline/control/Unicode whitespace prefixes, avoiding divergent
+export behavior when a spreadsheet consumer trims leading whitespace. Original
+protocol and JSON evidence remain unchanged. The rule is defensive text handling,
+not certification of every spreadsheet application's import behavior.

@@ -64,3 +64,9 @@ Report/work-package provenance correction (2026-11-03): 59 tests passed. Seven
 new tests reject blank/nontext report provenance, malformed report containers,
 empty/duplicate/malformed work evidence links, unsupported completed work after
 full-text exclusion and blank completion artifacts. Pending reports remain valid.
+
+CSV export consistency correction (2026-11-03): 63 tests passed. Four additional
+tests cover formula/whitespace prefixes, plain Unicode text, multiline report CSV
+round trips and work-package CSV inside verified bundles. Both exporters use one
+escaping function, whose bytes are bound in bundle implementation fingerprints.
+Original protocol JSON remains unchanged; no spreadsheet application was invoked.

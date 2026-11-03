@@ -8,8 +8,9 @@ import zipfile
 from pathlib import Path
 from evidence_workflow import run
 from prisma_reports import report_flow
+from csv_safety import safe_csv_cell
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -46,7 +47,7 @@ def build_bundle(raw):
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
-        return "'"+text if text.startswith(('=','+','-','@','\t','\r')) else text
+        return safe_csv_cell(text)
     for wp in sorted(research['work_packages'],key=lambda w:w['work_package_id']):
         writer.writerow([safe(wp.get(c,'')) for c in columns])
     summary=('Research bundle\n===============\n\n'

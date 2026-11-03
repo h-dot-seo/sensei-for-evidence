@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.7.3-report-work-provenance",
+  "release": "0.7.4-consistent-csv-escaping",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 30,
+  "file_count": 32,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12327,
-      "sha256": "95788b2ebe21f0d573ca96d9b4f963e037efd0e84462be610f56aa7c4f23ee6d"
+      "bytes": 12822,
+      "sha256": "facf0c9ace2207f23f66575141d0113db54c7ec9f4f08c73d081a78bcfb6ccab"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4170,
-      "sha256": "3002625d21aaccbe5f8f52bce50dd8162e7b40a43f5b6b0baa2f94a72950c26a"
+      "bytes": 4577,
+      "sha256": "5239079baf26e554e8b59cbd7cc94f7ca487734b82a478723442476c218fd141"
     },
     {
       "path": "audit_publication.py",
@@ -62,6 +62,11 @@
       "path": "context_links.py",
       "bytes": 4465,
       "sha256": "ca692de40eb23033934787bdcedb16579d943d145c1c96c8386f82eecb23eccb"
+    },
+    {
+      "path": "csv_safety.py",
+      "bytes": 377,
+      "sha256": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -100,13 +105,13 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 5111,
-      "sha256": "552e5b3246fea307935c60f89ba0f1d323017e728fa3fe2807941e2659cac8d8"
+      "bytes": 5066,
+      "sha256": "0eadde127b0cde5950b0af39bed8e4a798edec3dfd33f583f09e7a373bb436d8"
     },
     {
       "path": "research_bundle.py",
-      "bytes": 6914,
-      "sha256": "5773b12104c84c5ff05989e7822e8f22fc3d301c850b48757f897bf970c57daa"
+      "bytes": 6921,
+      "sha256": "8f01bbfc11cdccf51aae19025941b3cb4ec004a5e4ae92efca61b199172c81fe"
     },
     {
       "path": "search_audit.py",
@@ -122,6 +127,11 @@
       "path": "test_context_links.py",
       "bytes": 5727,
       "sha256": "828fcd6d70329f6bdd65b24864c10cc69c20bc179cf6d2df90dcf3efd72fa8f1"
+    },
+    {
+      "path": "test_csv_safety.py",
+      "bytes": 2202,
+      "sha256": "b04fc14540071c54bdcaad13ffc5248ff0ab722ff23d1a80ecdbb9e93d9c48fa"
     },
     {
       "path": "test_evidence_workflow.py",
