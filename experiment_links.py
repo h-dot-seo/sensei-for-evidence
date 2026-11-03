@@ -36,6 +36,33 @@ def condition(row, label):
     return [label + '.' + key for key in ('concentration', 'exposure_time') if measurement(row[key], label + '.' + key)]
 
 
+
+def sampling(rows, refs):
+    """Preserve outcome/arm-specific n semantics without computing or assessing n."""
+    if not isinstance(rows, list):
+        raise ValueError('outcome_sampling must be a list')
+    seen, gaps = set(), []
+    for row in rows:
+        fields(row, ('evidence_id', 'treatment', 'comparator', 'analysis_unit',
+                     'independence_basis', 'limitations', 'source_locator'), (), 'outcome sampling')
+        text(row, ('evidence_id', 'limitations', 'source_locator'), 'outcome sampling')
+        eid = row['evidence_id']
+        if eid not in refs or eid in seen:
+            raise ValueError('outcome_sampling requires each linked evidence ID exactly once')
+        seen.add(eid)
+        for key in ('analysis_unit', 'independence_basis'):
+            if measurement(row[key], 'sampling ' + key, with_unit=False):
+                gaps.append('outcome_sampling.' + eid + '.' + key)
+        for arm in ('treatment', 'comparator'):
+            counts = row[arm]
+            fields(counts, ('animal_n', 'biological_n', 'technical_n', 'analyzed_n'), (), 'sampling arm')
+            for key in ('animal_n', 'biological_n', 'technical_n', 'analyzed_n'):
+                if measurement(counts[key], 'sampling ' + arm + '.' + key):
+                    gaps.append('outcome_sampling.' + eid + '.' + arm + '.' + key)
+    if seen != set(refs):
+        raise ValueError('outcome_sampling requires each linked evidence ID exactly once')
+    return sorted(gaps)
+
 def link_experiments(protocol, evidence):
     supplied = protocol.get('experimental_units', [])
     if not isinstance(supplied, list):
@@ -45,7 +72,7 @@ def link_experiments(protocol, evidence):
     for row in supplied:
         required = ('experiment_id', 'evidence_ids', 'source_locator', 'model', 'treatment', 'comparator',
                     'observation_times', 'causal_basis', 'causal_statement', 'causal_limitations', 'causal_source_locator', 'limitations')
-        fields(row, required, (), 'experimental unit')
+        fields(row, required, ('outcome_sampling',), 'experimental unit')
         text(row, ('experiment_id', 'source_locator', 'causal_statement', 'causal_limitations', 'causal_source_locator', 'limitations'), 'experimental unit')
         xid = row['experiment_id']
         if xid in ledger:
@@ -98,10 +125,17 @@ def link_experiments(protocol, evidence):
                             unresolved_fields=sorted(unresolved), condition_review_status='NOT_ASSESSED',
                             causal_assessment='NOT_PERFORMED',
                             scope='one_supplied_comparison_condition_not_independent_statistical_unit')
+        if 'outcome_sampling' in row:
+            ledger[xid]['sampling_review'] = dict(stage='SUPPLIED',
+                unresolved_fields=sampling(row['outcome_sampling'], refs),
+                independence_assessment='NOT_PERFORMED', numeric_consistency='NOT_ASSESSED',
+                boundary='Counts are supplied text by outcome and arm, not totals or independent sample sizes. No arithmetic, unit equivalence, pooling, statistical adequacy or independence is inferred.')
         for eid in refs: assigned[eid] = xid
     return dict(stage='SUPPLIED' if 'experimental_units' in protocol else 'NOT_SUPPLIED',
                 experimental_unit_ledger=[ledger[xid] for xid in sorted(ledger)],
                 evidence_links=[dict(evidence_id=eid, experiment_id=assigned.get(eid)) for eid in sorted(known)],
                 evidence_without_experimental_unit=sorted(set(known)-set(assigned)) if 'experimental_units' in protocol else None,
                 units_with_unresolved_conditions=sorted(xid for xid,row in ledger.items() if row['unresolved_fields']) if 'experimental_units' in protocol else None,
+                units_without_outcome_sampling=sorted(xid for xid,row in ledger.items() if 'outcome_sampling' not in row) if 'experimental_units' in protocol else None,
+                units_with_unresolved_sampling=sorted(xid for xid,row in ledger.items() if row.get('sampling_review', {}).get('unresolved_fields')) if 'experimental_units' in protocol else None,
                 boundary=BOUNDARY)

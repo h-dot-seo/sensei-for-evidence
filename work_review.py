@@ -86,6 +86,8 @@ def review_packets(protocol, work_package_id=None):
             context_link_status='SUPPLIED' if context_rows else 'NO_CONTEXT_LINKS_SUPPLIED',
             report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
             recorded_review_gaps=dict(
+                units_without_outcome_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_sampling' not in unit and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_with_unresolved_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit.get('sampling_review', {}).get('unresolved_fields') and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 evidence_without_experimental_unit=sorted(eid for eid in evidence_ids if experiment_links[eid] is None) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 units_with_unresolved_conditions=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit['unresolved_fields'] and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 pending_context_ids=sorted(row['context']['context_id'] for row in context_rows if row['context']['review_status'] == 'pending'),

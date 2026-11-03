@@ -124,3 +124,8 @@ study/result accounting and supplied statement review journey.
 
 See [nonclinical condition records](docs/EXPERIMENT_CONDITIONS.md) for the fictional
 model/condition → result → WP/synthesis review journey.
+
+Outcome- and arm-specific sample reporting is available in the fictional
+[`sampling-review.json`](examples/sampling-review.json) workflow. It exposes
+missing n semantics and independence explanations without inferring sample size
+or assessing statistics. See [condition metadata](docs/EXPERIMENT_CONDITIONS.md#outcome-specific-sample-reporting).

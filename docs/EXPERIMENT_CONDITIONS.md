@@ -145,3 +145,47 @@ All fixtures are synthetic. There are no external calls, credentials, costs or
 uploads. No pathogen enhancement/transmission details or operational biological
 procedures are included. Census, extraction completeness and conclusion readiness
 remain unestablished/not ready, regardless of condition-field completeness.
+
+## Outcome-specific sample reporting
+
+`outcome_sampling` is an optional list on each supplied condition. When supplied,
+it must cover every linked evidence ID exactly once. The fictional
+`examples/sampling-review.json` adds it to the condition example, deliberately
+leaving old planning/synthesis review hashes stale for a reviewer to revisit.
+Run it with `synthesis_review.py`, `work_review.py`, `research_status.py`, or the
+ordinary reproducible bundle command. PRISMA record/report/study counts do not
+change when sample metadata is added.
+
+Each row requires `evidence_id`, `source_locator`, `limitations`, `analysis_unit`,
+`independence_basis`, `treatment`, and `comparator`. The two arms each require
+`animal_n`, `biological_n`, `technical_n`, and `analyzed_n`. Each n uses the same
+strict reporting-state union as condition measurements: reported textual value,
+unit (what is being counted, including denominator/scope), and source locator;
+or explicit unknown/not_reported/not_applicable with reason and locator.
+Analysis unit and independence basis use that union without a unit field.
+An independence basis is a supplied explanation, not an independence finding.
+Do not replace missing units or populations with guesses. Preserve ambiguous or
+partly reported n in an unknown field's reason and source locator.
+
+Counts may differ by result, arm, population and time. A condition pair is not a
+statistical unit; readings are not assumed to be independent organisms or
+biological replicates. No totals, numeric consistency check, inferred n, sample
+size recommendation, statistical adequacy or effect calculation is performed.
+The two arm roles are fixed and scoped to this condition's treatment/comparator;
+aggregate results or extra arms must not be silently assigned here. No automatic
+cross-arm or cross-outcome numerical discrepancy verdict is made. Such supplied
+ambiguities belong in `limitations` and require human source review.
+
+Missing metadata is queued under `units_without_outcome_sampling`; supplied
+unknown/not_reported fields are listed individually in `sampling_review` and
+queued under `units_with_unresolved_sampling`. Missing condition stage yields
+null queues, whereas a supplied empty condition ledger yields empty queues.
+Not_applicable assertions are preserved, not validated as appropriate. Even when
+all fields are reported, `independence_assessment=NOT_PERFORMED` and
+`numeric_consistency=NOT_ASSESSED` remain fixed. WP queues cover full intersecting
+condition records, including sibling outcomes outside that WP, as already
+labeled in the packet. Synthesis citations, source-bound review hashes, comparison
+diffs and bundle JSON carry the full metadata; changing it stales affected
+planning/synthesis assertions. Older protocols without this optional metadata
+retain their condition source bindings, but now display the missing-metadata
+queue. This is reporting coverage, not scientific approval.

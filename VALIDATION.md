@@ -225,3 +225,18 @@ bundle/CSV scope, deterministic nonmutation and control-safe text. Independent
 review confirmed anchor handling, full-unit unresolved-field scope, shared null
 queues and enforced condition binding. Fixtures use fictional models and units;
 no protocol, dosing advice, causal assessment or operational biology is generated.
+
+Outcome sample-reporting increment (2026-11-03): 227 tests in the suite; local
+Linux run: 226 passed and one native-Windows-only test skipped. Ten new tests
+cover exact per-outcome coverage, fixed arm scope, strict source-backed reporting
+states, numeric/coercion rejection, missing versus empty metadata, explicit n
+semantics, absence of inferred independence/readiness, unchanged PRISMA counts,
+planning/synthesis staleness, source-preserving WP/CSV/bundle propagation and
+nonmutation. CLI status, work review, synthesis snapshot and reproducible bundle
+creation/verification were also exercised with fictional metadata. Counts and
+independence explanations are unverified supplied text; no real biology,
+numerical/statistical consistency assessment or effect estimation was performed.
+Independent review additionally rejected 265 malformed sampling inputs, checked
+all four reporting states, affected-only review staleness (including removal),
+sibling-outcome scope, unrelated-condition stability, deterministic verification,
+source-change diffs and legacy bindings. No feature blockers were found.
