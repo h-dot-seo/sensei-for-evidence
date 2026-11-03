@@ -189,3 +189,7 @@ criteria. Dependency-first display is not an automated research decision.
 human planning assertions to supplied hypotheses and challenging/unresolved
 positions. They add source-change tracking, not automated rationale validation,
 refutation, clinical decisions or new priorities.
+
+[Compact work navigation](docs/WORK_NAVIGATION.md) adds `work_review.py --brief`
+for packet-scoped status groups, deliverables, completion criteria and existing
+review cues. It shortens the review view without choosing the next task.

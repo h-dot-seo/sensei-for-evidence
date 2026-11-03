@@ -395,3 +395,14 @@ legacy examples to the previous HEAD and found identical no-reference review
 targets/hashes. CLI work-prerequisites → handoff → synthesis retains supplied
 challenging/unknown positions without judging rationale support or making a
 scientific, clinical, regulatory, proceed/stop/defer or priority decision.
+
+Compact work-navigation increment (2026-11-03): 390 tests in the suite;
+Linux run: 389 passed and one native-Windows-only test skipped. Ten new tests
+cover selected/prerequisite scope, unblocked vs blocked IN_PROGRESS work, COMPLETE
+assertions retaining source gaps, absent vs empty cues, planning/acceptance text,
+existing challenging positions, copy isolation, hostile-text quoting, empty work,
+mutually exclusive CLI formats and a brief view under half the synthetic detailed
+output size. Independent review confirmed status-only grouping and scope/copy
+boundaries; supplied search-index wording and compact global-plan display were
+refined. CLI prerequisite and rationale views retain unresolved source/scientific
+work without generating next-task priorities, acceptance or clinical decisions.

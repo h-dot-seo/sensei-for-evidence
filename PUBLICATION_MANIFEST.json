@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.31.0-planning-rationale-links",
+  "release": "0.32.0-work-navigation",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 116,
+  "file_count": 118,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11815,
-      "sha256": "a4920c3004d481d402ad635668c02f6a043d52f07966cb04af895467dfa2761c"
+      "bytes": 12050,
+      "sha256": "c33670555125bfa19fa75bff650a1c05c951ad2e4331f3bbf373f47e6fd29c44"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 27753,
-      "sha256": "52254329384c47249c9ef4c91ac4a0457d2fbb50157dc5938014b103530bb4a0"
+      "bytes": 28552,
+      "sha256": "138dacbab5c305e341800617ccf4347d2b268c481aa8dc0bf34a522c0380f38b"
     },
     {
       "path": "adapter_integrity.py",
@@ -140,8 +140,8 @@
     },
     {
       "path": "docs/PREREQUISITE_REVIEW.md",
-      "bytes": 3714,
-      "sha256": "683064da3484588256dc090df7e4bbb38ec231b11c9b36dc63fc51a2291ecbd2"
+      "bytes": 3999,
+      "sha256": "2e8ccedf4657c1cd9eeb003009711b2ba7c19a80c66e77f924c8063d9c4ff68a"
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
@@ -174,9 +174,14 @@
       "sha256": "9399d0100de1a134bbb85f9ecf333e94239927ee6637a87a515e8e4481a89d31"
     },
     {
+      "path": "docs/WORK_NAVIGATION.md",
+      "bytes": 3288,
+      "sha256": "4e83d879b56a17a0bda18c463221c4caf75f63c2b394c5c50231899eb000993f"
+    },
+    {
       "path": "docs/WORK_REVIEW.md",
-      "bytes": 7112,
-      "sha256": "7ad2f0ae0b50cb908516ed549a0933f4a8d89aae9880f863968177c6b74e910a"
+      "bytes": 7341,
+      "sha256": "e143c892e8b291b2d1f5adfff8ce1be42a3ae726c50232fcc7ec71a3f0453632"
     },
     {
       "path": "evidence_workflow.py",
@@ -569,6 +574,11 @@
       "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
     },
     {
+      "path": "test_work_navigation.py",
+      "bytes": 4920,
+      "sha256": "1554333aafb175ce726f7e4fc28980a1654d9252d120a2949a1c32e9c9a4f2c1"
+    },
+    {
       "path": "test_work_review.py",
       "bytes": 10510,
       "sha256": "6e67d20666d5ba34f280bfb35800286c2d9f57b441c52be0d5de5fc38dd2722f"
@@ -585,8 +595,8 @@
     },
     {
       "path": "work_review.py",
-      "bytes": 20153,
-      "sha256": "d95059ee039f0071ea4f992a4b8796291a24f6bb0e227960fb60709fc57b922a"
+      "bytes": 26047,
+      "sha256": "09214d2daded5137d6dabc8c36a65fff7943e47301f32c1291feaf2afa908a14"
     }
   ]
 }

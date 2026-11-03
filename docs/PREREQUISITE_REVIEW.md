@@ -60,3 +60,8 @@ scientific count is computed. Full-context/global search and rank summaries stay
 labeled protocol-wide. Completing a supplied source-note task can remove a
 recorded work block while missing searches, uncertain appraisal and clinical
 applicability remain unresolved. No work is executed, approved or reprioritized.
+
+Add `--brief` instead of `--text` for [compact navigation](WORK_NAVIGATION.md)
+through the same selected prerequisite packets. The view separates recorded
+unblocked, blocked, in-progress and completed assertions without recommending
+what to execute or assessing scientific readiness.

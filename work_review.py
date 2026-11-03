@@ -171,6 +171,71 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 boundary=BOUNDARY)
 
 
+
+def navigation_summary(result):
+    """Compact projection of existing packet assertions, never generated priorities."""
+    groups={'unblocked_planned':[], 'unblocked_in_progress':[], 'blocked_unfinished':[], 'completed_assertions':[]}
+    rows=[]
+    for packet in result['packets']:
+        work=packet['work_package'];wid=work['work_package_id']
+        group=('completed_assertions' if work['status']=='COMPLETE' else
+               'blocked_unfinished' if work['blocked_by'] else
+               'unblocked_in_progress' if work['status']=='IN_PROGRESS' else 'unblocked_planned')
+        groups[group].append(wid)
+        gaps=copy.deepcopy(packet['recorded_review_gaps'])
+        # Retain null vs empty: absent stages are not zero outstanding work.
+        rows.append(dict(work_package_id=wid,work_type=packet['work_type'],status=work['status'],
+                         question=work['question'],deliverable=work['deliverable'],acceptance_criterion=work['acceptance_criterion'],
+                         depends_on=copy.deepcopy(work['depends_on']),blocked_by=copy.deepcopy(work['blocked_by']),
+                         artifact_locator=work.get('artifact_locator'),acceptance_verified=work.get('acceptance_verified'),
+                         planning=copy.deepcopy(packet['planning_assertion']),recorded_review_gaps=gaps,
+                         source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
+                         statement_review_statuses=[dict(statement_id=row['statement']['statement_id'],
+                             source_match_status=row['statement']['source_match_status'],support_status=row['statement']['support_status'],
+                             position_stage=row['position_stage'],
+                             work_positions=[{key:p[key] for key in ('evidence_id','claim_component','aspect','relation')} for p in row['work_positions']],
+                             other_statement_evidence_ids=copy.deepcopy(row['other_statement_evidence_ids'])) for row in packet['claim_positions']],
+                         scope_counts=copy.deepcopy(packet['scope_counts'])))
+    return dict(selection=result['selection'],dependency_review=copy.deepcopy(result['dependency_review']),
+                work_state_groups={key:sorted(ids) for key,ids in groups.items()},work=rows,
+                global_search_plan_audit=copy.deepcopy(result['global_search_plan_audit']),
+                protocol_sha256=result['protocol_sha256'],
+                boundary=('Packet-scope navigation only; group names describe recorded status and dependencies, not a next-task recommendation. '
+                          'No ranking, ownership, deadlines, clinical readiness or acceptance assessment is inferred. '
+                          'Completed work may still have evidence gaps. Empty cues are omitted from brief text, not a completeness finding. '
+                          'Full supplied evidence, context and experimental details remain in the normal packet output.'))
+
+
+def render_brief(result):
+    summary=navigation_summary(result);show=quoted_display
+    lines=['Work review navigation (no automated next-task decision)',
+           'Protocol SHA-256: '+summary['protocol_sha256'],
+           'Selected packet scope: '+show(summary['dependency_review']),
+           'Recorded work-state groups (IDs sorted, not ranked): '+show(summary['work_state_groups']),
+           'Protocol-wide search plan status: '+show({key:summary['global_search_plan_audit'].get(key) for key in ('plan_status','missing_search_ids','incomplete_search_ids')})]
+    for row in summary['work']:
+        lines.extend(['', 'Work: '+show(row['work_package_id'])+'; supplied status: '+show(row['status']),
+                      'Work type: '+show(row['work_type']), 'Question: '+show(row['question']), 'Deliverable: '+show(row['deliverable']),
+                      'Acceptance criterion: '+show(row['acceptance_criterion']),
+                      'Depends on: '+show(row['depends_on'])+'; blocked by: '+show(row['blocked_by']),
+                      'Supplied artifact/acceptance (not checked): '+show(dict(artifact_locator=row['artifact_locator'],acceptance_verified=row['acceptance_verified'])),
+                      'Planning source status: '+show(row['planning']['source_match_status'])])
+        assertion=row['planning']['assertion']
+        if assertion is not None:
+            lines.append('Supplied planning rationale/uncertainty: '+show({key:assertion[key] for key in ('rationale','uncertainty')}))
+            lines.append('Supplied rationale statement IDs (not support): '+show(assertion.get('rationale_statement_ids')))
+        lines.append('Recorded nonempty review cues: '+show({k:v for k,v in row['recorded_review_gaps'].items() if v}))
+        lines.append('Review cue stages not supplied: '+show([k for k,v in row['recorded_review_gaps'].items() if v is None]))
+        for source in row['source_review_inputs']:
+            if source['reference']['kind']=='planned_search':
+                lines.append('Source reference/supplied search indices: '+show(dict(reference=source['reference'],observed_search_indices=source['observed_search_indices'])))
+            else:
+                lines.append('Source record stage assertions: '+show(dict(reference=source['reference'],screening=source['screening'],report=source['report'],existing_result_ids=source['existing_result_ids'])))
+        lines.append('Statement review assertions (not support): '+show(row['statement_review_statuses']))
+    lines.extend(['',summary['boundary'],'Census: NOT_ESTABLISHED','Conclusion: NOT_READY'])
+    return '\n'.join(lines)+'\n'
+
+
 def render_text(result):
     show = quoted_display
     plan_supplied = result['global_search_plan_audit']['plan_status'] != 'NOT_SUPPLIED'
@@ -235,13 +300,15 @@ def main():
     parser.add_argument('protocol', type=Path)
     parser.add_argument('--work-package', help='select one exact supplied work-package ID')
     parser.add_argument('--include-prerequisites', action='store_true', help='include all explicit transitive prerequisites of the selected work in dependency-first order')
-    parser.add_argument('--text', action='store_true', help='render a text review packet')
+    formatting=parser.add_mutually_exclusive_group()
+    formatting.add_argument('--text', action='store_true', help='render a detailed text review packet')
+    formatting.add_argument('--brief', action='store_true', help='render compact work-state, deliverable and review-cue navigation')
     args = parser.parse_args()
     try:
         result = review_packets(parse_json(args.protocol.read_bytes()), args.work_package, args.include_prerequisites)
     except (OSError, ValueError, TypeError, KeyError) as error:
         parser.exit(1, str(error) + '\n')
-    print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')
+    print(render_brief(result) if args.brief else render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text or args.brief else '\n')
 
 
 if __name__ == '__main__':

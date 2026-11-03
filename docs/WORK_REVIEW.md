@@ -118,3 +118,7 @@ Use [prerequisite review](PREREQUISITE_REVIEW.md) with `--work-package ID
 --include-prerequisites` to open the selected work plus all explicit transitive
 prerequisite packets in dependency-first order. Defaults remain selected-only or
 lexical all-work order. This order is not priority or scientific readiness.
+
+For a compact view, use [work navigation](WORK_NAVIGATION.md) with `--brief`
+instead of `--text`. It groups supplied work states and shows deliverables,
+acceptance criteria and existing review cues without choosing a next task.
