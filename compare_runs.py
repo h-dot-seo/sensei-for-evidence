@@ -5,9 +5,12 @@ import hashlib
 import json
 from pathlib import Path
 from evidence_workflow import run
+from context_links import nonempty_text, iso_date, id_list
 from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes as canonical
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
+
+_NO_AMENDMENT = object()
 
 BOUNDARY = ('Mechanical comparison of supplied inputs; both ledgers are recomputed with the current implementation, not replayed historical engines. '
             'Version labels do not authenticate amendment history or justify changes. '
@@ -88,7 +91,51 @@ def context_work_impact(left, right):
                           'No clinical applicability, recommendation, regulatory status, stage transition or priority is determined.'))
 
 
-def compare_protocols(before, after):
+
+def amendment_review(assertion, before, after, left, right):
+    """Match an external supplied change note to exact inputs; never approve it."""
+    if assertion is _NO_AMENDMENT:return dict(stage='NOT_SUPPLIED',assertion=None)
+    required={'schema_version','before_sha256','after_sha256','from_version','to_version','reason','authored_by','authored_at','scope_fields'}
+    if not isinstance(assertion,dict) or set(assertion)!=required or type(assertion['schema_version']) is not int or assertion['schema_version']!=1:
+        raise ValueError('amendment requires exact schema_version 1 fields')
+    for key in ('before_sha256','after_sha256'):
+        value=assertion[key]
+        if not isinstance(value,str) or len(value)!=64 or any(c not in '0123456789abcdef' for c in value):
+            raise ValueError('amendment requires lowercase SHA-256 input hashes')
+    for key in ('from_version','to_version','reason','authored_by'):
+        if not nonempty_text(assertion[key]):raise ValueError('amendment requires '+key)
+    iso_date(assertion['authored_at'],'amendment authored_at')
+    scope=id_list(assertion['scope_fields'],'amendment scope_fields')
+    actual=changed_fields(before,after)
+    hashes=dict(before=assertion['before_sha256']==hashlib.sha256(canonical(before)).hexdigest(),
+                after=assertion['after_sha256']==hashlib.sha256(canonical(after)).hexdigest())
+    versions=dict(before=canonical(assertion['from_version'])==canonical(before['version']),
+                  after=canonical(assertion['to_version'])==canonical(after['version']))
+    missing=sorted(set(actual)-set(scope));unexpected=sorted(set(scope)-set(actual))
+    def transitions(a,b,key,fields):
+        a={r[key]:{f:copy.deepcopy(r[f]) for f in fields} for r in a}
+        b={r[key]:{f:copy.deepcopy(r[f]) for f in fields} for r in b}
+        return [dict(id=k,before=a.get(k),after=b.get(k)) for k in sorted(set(a)|set(b))
+                if k not in a or k not in b or canonical(a[k])!=canonical(b[k])]
+    changes=dict(
+        planning=transitions(left['planning']['planning_ledger'],right['planning']['planning_ledger'],'work_package_id',('source_match_status','current_priority_rank')),
+        synthesis=transitions(left['synthesis']['statement_ledger'],right['synthesis']['statement_ledger'],'statement_id',('source_match_status','support_status')),
+        work=transitions(left['work_packages'],right['work_packages'],'work_package_id',('status','blocked_by')),
+        search_plan=dict(before={k:copy.deepcopy(left['search_plan_audit'][k]) for k in ('plan_status','missing_search_ids','incomplete_search_ids')},
+                         after={k:copy.deepcopy(right['search_plan_audit'][k]) for k in ('plan_status','missing_search_ids','incomplete_search_ids')}))
+    return dict(stage='SUPPLIED',assertion=copy.deepcopy(assertion),
+                assertion_sha256=hashlib.sha256(canonical(assertion)).hexdigest(),
+                input_hash_matches=hashes,version_matches=versions,
+                actual_changed_fields=actual,undeclared_changed_fields=missing,declared_but_unchanged_fields=unexpected,
+                binding_status='RECORDED_INPUTS_AND_SCOPE_MATCH' if all(hashes.values()) and all(versions.values()) and not missing and not unexpected else 'MISMATCH',
+                observed_state_transitions=changes,
+                boundary=('A supplied external change note, not approval or verified authorship. Hashes bind the exact supplied snapshots; '
+                          'scope matching compares top-level field names only, not semantic scope or reason adequacy. '
+                          'Transitions are recomputed from the actual before/after inputs even if the note mismatches; they are not causal attribution. '
+                          'No planning/synthesis assertion is renewed and no work, scientific, clinical or regulatory decision is made.'))
+
+
+def compare_protocols(before, after, amendment=_NO_AMENDMENT):
     left, right = run(before), run(after)
     left_reports = report_flow(before) if 'reports' in before else None
     right_reports = report_flow(after) if 'reports' in after else None
@@ -125,7 +172,7 @@ def compare_protocols(before, after):
                 version_changed=version_changed, unversioned_change=changed and not version_changed,
                 changed_protocol_fields=changed_fields(before, after),
                 record_ids_added=sorted(new_records - old_records), record_ids_removed=sorted(old_records - new_records),
-                entity_changes=entities, context_work_impact=context_work_impact(left,right), positional_work_package_ids=positional_ids,
+                entity_changes=entities, amendment_review=amendment_review(amendment,before,after,left,right), context_work_impact=context_work_impact(left,right), positional_work_package_ids=positional_ids,
                 identity_warnings=identity_warnings,
                 before_counts=left['flow'], after_counts=right['flow'],
                 before_report_counts=left_reports['report_flow'] if left_reports else None,
@@ -138,13 +185,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('before', type=Path)
     parser.add_argument('after', type=Path)
+    parser.add_argument('--amendment',type=Path,help='optional supplied change-note JSON; checked, never approved')
     args = parser.parse_args()
     try:
         result = compare_protocols(parse_json(args.before.read_text(encoding='utf-8')),
-                                   parse_json(args.after.read_text(encoding='utf-8')))
+                                   parse_json(args.after.read_text(encoding='utf-8')),
+                                   parse_json(args.amendment.read_bytes()) if args.amendment else _NO_AMENDMENT)
     except (ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(1, str(error) + '\n')
     print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    if args.amendment and result['amendment_review']['binding_status']=='MISMATCH':parser.exit(1)
 
 
 if __name__ == '__main__':

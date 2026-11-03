@@ -125,3 +125,7 @@ After this rehearsal, use [operator handoff](OPERATOR_HANDOFF.md) to navigate th
 existing tools and [manual receipt intake](RECEIPT_INTAKE.md) for entry checks.
 Actual source access, screening/extraction, appraisal, hypotheses, decisions and
 acceptance remain authorized human research work outside this mock walkthrough.
+
+To rehearse a supplied change reason after this run, see [amendment notes](AMENDMENT_NOTES.md).
+The optional external note binds its declared scope to the exact before/after
+snapshots without changing the protocols or approving their contents.

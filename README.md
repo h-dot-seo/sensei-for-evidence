@@ -198,3 +198,8 @@ refutation, clinical decisions or new priorities.
 [Compact work navigation](docs/WORK_NAVIGATION.md) adds `work_review.py --brief`
 for packet-scoped status groups, deliverables, completion criteria and existing
 review cues. It shortens the review view without choosing the next task.
+
+[Supplied amendment notes](docs/AMENDMENT_NOTES.md) optionally bind a human change
+reason, scope and version labels to the exact inputs of compare_runs, with observed
+review/work-state transitions. Matching notes are not change approval or legal,
+scientific or regulatory validation.

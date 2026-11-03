@@ -422,3 +422,14 @@ searches and scientific-readiness bounds persist. Local documentation links and
 unchanged completion guards are checked. The sequence clearly separates mock
 provider proposals, prewritten fictional reviews, hand-authored nonclinical/context
 work metadata and unverified artifact/acceptance assertions.
+
+External amendment-note increment (2026-11-03): 406 tests in the suite;
+Linux run: 405 passed and one native-Windows-only test skipped. Eleven new tests
+cover canonical input/version binding, exact top-level scope omissions/extras,
+strict note fields/types/dates/hashes, missing vs null, identical inputs with empty
+scope, observed work/planning transitions, typed-value hashing, mutation isolation,
+unchanged non-note comparison fields and real CLI match/mismatch exit behavior.
+Independent adversarial review found no blockers. The synthetic reason binds a
+receipt-note completion snapshot while missing search and scientific-readiness
+limits remain visible. Notes are external supplied assertions, not protocol
+amendments performed by the tool, authenticated authorship or approved decisions.

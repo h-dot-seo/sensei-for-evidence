@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.33.0-first-run-walkthrough",
+  "release": "0.34.0-amendment-notes",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 122,
+  "file_count": 125,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12359,
-      "sha256": "ab6a282bb9adfe236eb7ce65fa54accb905cd14c0ddba813491d793aefc4a696"
+      "bytes": 12644,
+      "sha256": "228085bbdb984d5ab52dfd50f0283802edd2bff9fd85235305610488afd34580"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 29734,
-      "sha256": "a75295d241b7d00df0b15e5a671733b493c0ca492a7d02be8a7be00edb05d646"
+      "bytes": 30531,
+      "sha256": "0998cd4b6d6e6ebd6a28927ba9d9a074fd396f7a48b0d83e2c43d90dad81ac6b"
     },
     {
       "path": "adapter_integrity.py",
@@ -75,8 +75,8 @@
     },
     {
       "path": "compare_runs.py",
-      "bytes": 10596,
-      "sha256": "d5bb5b814f33850108ad67aefce3481f942b8aa85d55d73af05265be60072c27"
+      "bytes": 14993,
+      "sha256": "e6884aa29850278d26c0e13d09619c44f5ccf5968251046787ef5d9b0ccc10c5"
     },
     {
       "path": "context_links.py",
@@ -92,6 +92,11 @@
       "path": "docs/ADAPTER_CONTRACT.md",
       "bytes": 9193,
       "sha256": "41e2343cd5b709298bd3e6e9649bdd605baf1359ba7274f0a69a8d0d2214c32f"
+    },
+    {
+      "path": "docs/AMENDMENT_NOTES.md",
+      "bytes": 3537,
+      "sha256": "6c9d8578217dce0f61db63bab88d8224321968a82f4cd704c40d2e5494c9d87f"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -115,8 +120,8 @@
     },
     {
       "path": "docs/FIRST_RUN.md",
-      "bytes": 6899,
-      "sha256": "0588bccdf39a359d662ea314f7f34ad9923c2ab491acbb45413e420f7273934d"
+      "bytes": 7144,
+      "sha256": "dcbf3e3a905e6164033658845aa9a8fec4c92974dcbc5c4f96b19450124d4e95"
     },
     {
       "path": "docs/LOCAL_ARTIFACT_REVIEW.md",
@@ -349,6 +354,11 @@
       "sha256": "1e1947663c82a89554f64a916fd5adf3be2cf0a26f106b1e316a3179d287013c"
     },
     {
+      "path": "examples/work-note-amendment.json",
+      "bytes": 575,
+      "sha256": "d99c2f6c4a7bfa45469218f2d41670c1c9450d799ccb7197c4917ac49eb9e049"
+    },
+    {
       "path": "experiment_links.py",
       "bytes": 13723,
       "sha256": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74"
@@ -417,6 +427,11 @@
       "path": "synthesis_review.py",
       "bytes": 11433,
       "sha256": "c62eb4988a8948fd00761e322bb997c574fed4ccf0375c237548a8b8ee78cca1"
+    },
+    {
+      "path": "test_amendment_review.py",
+      "bytes": 7155,
+      "sha256": "41ea99d6da50bd71c53132d50c173754711ff884535263962d2ac3dbf6bc9130"
     },
     {
       "path": "test_appraisal_links.py",
