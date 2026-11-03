@@ -79,3 +79,21 @@ order and unfinished dependencies. Unknown IDs, duplicate IDs and cycles fail.
 `COMPLETE` requires `artifact_locator`, `acceptance_verified: true` and completed
 dependencies. These are operator assertions; the tool does not fetch artifacts
 or certify experiment quality. Evidence links remain mandatory.
+
+## Report retrieval and full-text screening
+
+```sh
+python prisma_reports.py examples/report-protocol.json
+```
+
+Add `reports` with unique `report_id`, included `record_ids`, `retrieval`
+(`retrieved`, `not_retrieved`, `pending`) and `decision` (`include`, `exclude`,
+`pending`). Retrieved reports require a locator, failures/exclusions require a
+reason, and included reports require `study_id`. The JSON output contains report
+and study counts, pending work, exclusion counts, a deterministic report ledger and
+CSV text. CSV cells beginning with formula characters are escaped. Multiple reports
+may share a study ID; each input record maps to at most one report. Unmapped advanced
+records remain visible. Report screening and existing extracted evidence/work
+packages are separate views: this increment does not automatically revise earlier
+extractions when full-text decisions change. It is PRISMA-oriented bookkeeping,
+not a complete compliance checker, search backend or scientific review.

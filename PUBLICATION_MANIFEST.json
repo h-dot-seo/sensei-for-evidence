@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.3.0-linked-workflows",
+  "release": "0.4.0-evidence-contracts",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 15,
+  "file_count": 18,
   "files": [
     {
       "path": ".gitignore",
@@ -34,9 +34,19 @@
       "sha256": "d487f43caa650f64bbb9bc9661cccdacaf4adce8b904f38d155ce37f88990ed5"
     },
     {
+      "path": "examples/report-protocol.json",
+      "bytes": 1736,
+      "sha256": "9820329687ea60b2da9e6a83f20f7758771ea966ecad498ce238662e6205c403"
+    },
+    {
       "path": "examples/state.json",
       "bytes": 418,
       "sha256": "69852593a16f1701320f528f6003c719319fa0c8cfe2cac90dccb24b166a8b8f"
+    },
+    {
+      "path": "prisma_reports.py",
+      "bytes": 4080,
+      "sha256": "512c0c4f7517c047ca418d41a6854f6c8504f164c9b1baf4fb577a6aa03d5524"
     },
     {
       "path": "PUBLICATION.md",
@@ -45,8 +55,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4184,
-      "sha256": "c339c49bc12ef28c9a496dc531400a532fa238506d2a13a78c9447f3cfb83c0e"
+      "bytes": 5194,
+      "sha256": "06c94ba33bda6bc981165d0ebf7560e040fe08982a746b42cc0255c2e72b359f"
     },
     {
       "path": "RIGHTS.md",
@@ -69,6 +79,11 @@
       "sha256": "18e30eb2721a9fadff54cf066f9a0d4504d93c944ab1ee8f4e61fe6d587b7e96"
     },
     {
+      "path": "test_prisma_reports.py",
+      "bytes": 1297,
+      "sha256": "e6aaeb993f0eb3f81e730cf152ec5c562cc9e099e8511017409ad347fc810274"
+    },
+    {
       "path": "test_validate_run.py",
       "bytes": 1584,
       "sha256": "7bbfe9eddb21667da4bc111df6e2ec2d28ea3f9a5b2477fbdf72a7cbe9f4113b"
@@ -80,8 +95,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 1378,
-      "sha256": "f8634370e4abda010597681344815503981ca5829e3393284ff17b3d98b51ab0"
+      "bytes": 1524,
+      "sha256": "b6f56da73c92bea31b7a2e5bc2b32ee717d0cc623d1b92d54cfa90c7970ffd5a"
     }
   ]
 }
