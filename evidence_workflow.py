@@ -2,6 +2,7 @@
 import argparse
 import json
 from pathlib import Path
+from context_links import link_context
 
 
 def run(protocol):
@@ -81,13 +82,14 @@ def run(protocol):
         visiting.remove(wid); visited.add(wid); order.append(wid)
     for wid in known:
         visit(wid)
+    context = link_context(protocol, evidence, work)
     included = sum(d['decision'] == 'include' for d in decisions.values())
     return dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
                 flow=dict(identified=identified, duplicates=identified-len(records), unique_records=len(records),
                           screened=len(decisions), pending=len(records)-len(decisions),
                           excluded=len(decisions)-included, included=included, extracted=len(evidence)),
-                evidence=evidence, work_packages=work, execution_order=order,
+                evidence=evidence, work_packages=work, execution_order=order, context=context,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in seen),
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')

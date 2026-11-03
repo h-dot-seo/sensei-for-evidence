@@ -36,3 +36,9 @@ record-only support. All 26 tests passed, including the original 18 and eight
 integration cases. The duplicate JSON-envelope prototype is not published.
 Schema 2 intentionally rejects prototype schema 1 and changed implementation
 bytes. No literature retrieval or scientific completeness validation was performed.
+
+Supplied-context increment (2026-11-03): 35 tests passed. Nine new tests cover
+provenance requirements, typed context domains, evidence/work-package joins,
+review assertions, dates, dangling/duplicate references, record-only compatibility
+and context preservation in portable bundles. Synthetic data only; no real
+guideline currency, applicability or scientific adequacy evaluation was performed.

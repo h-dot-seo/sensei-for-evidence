@@ -66,10 +66,11 @@ result, limitation and mechanism basis are explicit. Intervention evidence alone
 does not establish causality. Clinical/development context may be supplied in gap
 records; no clinical guideline retrieval or recommendation is performed.
 
-This is an initial record-level ledger, not a complete PRISMA implementation:
-report retrieval, study-level reconciliation, appraisal, dependency scheduling and
-guideline/development evidence integration remain future work. Coverage assertions
-are not independently authenticated; census and conclusion readiness stay unestablished.
+Record/report bookkeeping and dependency scheduling are implemented, but this
+is not a complete PRISMA implementation. Actual report retrieval, scientific
+appraisal and independent guideline/development evidence verification remain
+future work. Coverage assertions are not independently authenticated; census and
+conclusion readiness stay unestablished.
 
 ### Dependency-aware research work
 
@@ -127,7 +128,7 @@ the original protocol. CSV formula-leading cells are escaped. Store real bundles
 outside this public repository; no uploads or external calls are made.
 
 Bundle schema 2 additionally records the exact implementation bytes for
-`evidence_workflow.py`, `prisma_reports.py` and `research_bundle.py`. Retain that
+`evidence_workflow.py`, `prisma_reports.py`, `context_links.py` and `research_bundle.py`. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains
@@ -140,3 +141,32 @@ clinical recommendation or full PRISMA compliance is established.
 The previously unpublished schema-1 prototype must be rebuilt from its retained
 protocol to use schema 2. Only one bundle engine is shipped; a redundant JSON-only
 prototype was consolidated into the portable ZIP workflow before publication.
+
+## Supplied clinical and development context
+
+```sh
+python evidence_workflow.py examples/context-protocol.json
+python research_bundle.py create examples/context-protocol.json ../synthetic-context.zip
+```
+
+Optional `contexts` link supplied `clinical_guideline` or `drug_development`
+records to extracted evidence IDs. Each record requires a unique `context_id`,
+title, issuer, locator, version, ISO access date, population/setting, relevance,
+applicability, limitations and at least one known evidence ID. Guideline records
+require recommendation strength and evidence certainty; development records
+require development stage and regulatory status. Use `unknown` when unassessed,
+not an invented positive claim. These strings are operator-supplied assertions.
+
+Work packages may list `context_ids`; every referenced context must share an
+evidence ID with that work package. Output shows linked study IDs, pending
+context reviews and unassigned contexts. A context defaults to `pending`;
+`reviewed` requires a reviewer and ISO review date but does not establish source
+authenticity, guideline currency, applicability or scientific validity. Review
+status is separate from work-package completion and never promotes conclusion
+readiness. Dangling references fail rather than silently dropping context.
+
+The same links survive report output and bundle JSON/CSV; summary reports pending
+context reviews. Existing protocols without contexts remain supported. All
+examples are synthetic. No guideline retrieval, regulatory assessment or clinical
+recommendation is performed, and clinical context does not turn a cell-model
+finding into evidence of patient benefit.

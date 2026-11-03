@@ -9,7 +9,7 @@ from pathlib import Path
 from evidence_workflow import run
 from prisma_reports import report_flow
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -42,7 +42,7 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -56,6 +56,7 @@ def build_bundle(raw):
              f"Included reports: {reports['report_flow']['included'] if reports is not None else 'not supplied'}\n"
              f"Included studies: {reports['report_flow']['included_studies'] if reports is not None else 'not supplied'}\n"
              f"Work packages: {len(research['work_packages'])}\n"
+             f"Context review pending: {len(research['context']['review_pending'])}\n"
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')
     payloads={'protocol.json':raw,'research.json':json_bytes(research),'reports.json':json_bytes(reports),
               'reports.csv':csv_text.encode(),'work-packages.csv':out.getvalue().encode(),'summary.md':summary.encode()}
