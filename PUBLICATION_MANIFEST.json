@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.14.0-mock-provider-adapter",
+  "release": "0.15.0-work-review-packets",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 57,
+  "file_count": 61,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5775,
-      "sha256": "4eb68d370f4d66f15ea8ffd5d29902a79a7e66f1d741f3c345cb0c1791e96799"
+      "bytes": 6197,
+      "sha256": "70d3cb06dfb6b16e6b69379a83f47d8886c72513c1c9e5b1b2cf05faa27d8f56"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 12089,
-      "sha256": "8d4b7cb4e4cedd09580afd25b1766a68e2d35f7ff7dfeee5ddcfb61404d06d4d"
+      "bytes": 12887,
+      "sha256": "eb28e1bc7c2ef3ecdc35c74dba1f5956e0bdb20524967b99c62490cf5d1335c6"
     },
     {
       "path": "adapter_integrity.py",
@@ -95,8 +95,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 27567,
-      "sha256": "22ae880c7aaf0787253ef67722df697e84ee9bab4971ee15a9b62a671ad31f89"
+      "bytes": 27844,
+      "sha256": "be3d738a6cc89e810628eaec31190ae3c9290672895f603b09352c21d00b552a"
+    },
+    {
+      "path": "docs/WORK_REVIEW.md",
+      "bytes": 5736,
+      "sha256": "23b6c63687fdcc132aa1a39c10172cc104f479c5eb5b0b2170bff02de86035d8"
     },
     {
       "path": "evidence_workflow.py",
@@ -162,6 +167,11 @@
       "path": "examples/state.json",
       "bytes": 402,
       "sha256": "1cced1a3609b882f2829a8205db1b25377c3b81e97a43392d97a2490bc153d1e"
+    },
+    {
+      "path": "examples/translation-review.json",
+      "bytes": 6239,
+      "sha256": "1e1947663c82a89554f64a916fd5adf3be2cf0a26f106b1e316a3179d287013c"
     },
     {
       "path": "json_io.py",
@@ -284,6 +294,11 @@
       "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
     },
     {
+      "path": "test_work_review.py",
+      "bytes": 10510,
+      "sha256": "6e67d20666d5ba34f280bfb35800286c2d9f57b441c52be0d5de5fc38dd2722f"
+    },
+    {
       "path": "validate_run.py",
       "bytes": 8179,
       "sha256": "e1c50ff38e55911d8240c673bb9aaf6003c198e6eb04cd8726513685a9c8b40b"
@@ -292,6 +307,11 @@
       "path": "verify_manifest.py",
       "bytes": 4941,
       "sha256": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d"
+    },
+    {
+      "path": "work_review.py",
+      "bytes": 11049,
+      "sha256": "001de839957173c61e329e9f12459d3206f8d1272aadcce25a6ba667457c9f5e"
     }
   ]
 }

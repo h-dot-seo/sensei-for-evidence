@@ -182,3 +182,14 @@ are synthetic; no external service/model or actual reviewer was invoked.
 Adapter regressions also reject consistently rehashed but structurally invalid
 candidate ledgers and integer/Boolean/float substitutions in frozen review content.
 Assembly and downstream validation share the same fixture/candidate contract.
+
+Work-package review packet increment (2026-11-03): 180 tests in the suite; local
+Linux run: 179 passed and one Windows-only test skipped. Twelve new synthetic
+tests cover source/report/screening lineage, guideline/development assertions,
+extraction-level context/appraisal scope, narrowed work selection, multiple reports
+and reviewers, optional stages, positional search joins, full-protocol validation,
+completion bounds, input/hash determinism, adapter-to-management enrichment and
+UTF-8/strict-JSON CLI behavior. Text rendering escapes control, format and Unicode
+line-separator characters. Extraction completeness and source identity remain
+unestablished even when recorded review gaps are empty. No clinical, regulatory,
+scientific-quality, prioritization or go/no-go decision is generated.

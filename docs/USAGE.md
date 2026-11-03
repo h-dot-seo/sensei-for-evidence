@@ -488,3 +488,9 @@ processing and derived payload construction still occur in memory.
 See [the versioned adapter contract](ADAPTER_CONTRACT.md) for the provider-neutral
 fixture schema, review hash boundaries, CLI export and end-to-end synthetic demo.
 This is an offline mock runner, not a live literature or model API integration.
+
+## Work-package review packets
+
+See [the work-review contract](WORK_REVIEW.md) for source-linked guideline and
+development context, explicit extraction-level appraisal scope and pending review
+items beside each supplied deliverable. No scientific or medical decision is made.

@@ -26,6 +26,8 @@ services or models:
 - Supplied appraisal methods and domain judgements, with reviewer provenance and
   missing-appraisal coverage. No appraisal score or consensus is inferred.
 - Dependency-aware work packages, deliverables and explicit completion assertions.
+- Per-work-package review packets joining source lineage, guideline/development
+  applicability limits, appraisal provenance and local review gaps without decisions.
 - Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
   CSV exports, plus version-to-version mechanical comparison.
 
@@ -69,6 +71,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | Command | Purpose |
 |---|---|
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
+| `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
 | `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
 | `validate_run.py STATE.json` | Validate selected state/release consistency rules |
 | `evidence_workflow.py PROTOCOL.json` | Reconcile search, screening, results, context, appraisal and work |
@@ -102,3 +105,6 @@ been selected by the owner yet.
 
 See [the mock adapter contract](docs/ADAPTER_CONTRACT.md) for the synthetic
 search → receipt review → extraction review → report/status/bundle example.
+
+See [work review packets](docs/WORK_REVIEW.md) for the synthetic guideline,
+development and research-management handoff example.
