@@ -401,3 +401,22 @@ Completed work remains an operator assertion, and readiness is never promoted.
 Status and comparison use the same sorted compact UTF-8 JSON representation for
 semantic input hashes. Both record implementation hashes; these hashes are neither
 exact-byte receipt hashes nor signatures.
+
+## Publication inventory checks
+
+```sh
+python audit_publication.py
+python verify_manifest.py
+```
+
+The publication manifest now covers the complete checkout inventory, excluding
+Git metadata, generated Python caches and the manifest itself. Extra unlisted
+files fail verification instead of silently falling outside its hash coverage.
+Unreadable directories and nonregular filesystem entries also fail closed.
+File metadata, canonical relative paths, portable case uniqueness, missing files
+and exact bytes are checked. Use a canonical root path when calling the verifier API. Symlink roots or their
+ancestors, manifests, file entries and parent
+components, including Windows reparse points/junctions, are rejected without
+recursing through them. Do not place private inputs or generated bundles inside
+the public checkout. These checks do not authenticate authorship, detect every
+secret or establish redistribution rights.

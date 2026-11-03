@@ -127,3 +127,10 @@ combined queues, unknown-stage nulls, page issues, identifier-based screening,
 separate report stages, unavailable/unmapped reports, dependency assertions, input
 immutability/hash consistency and JSON/text CLI behavior. No priorities or
 scientific readiness are inferred from queue counts.
+
+Publication inventory correction (2026-11-03): 132 tests in the suite; local Linux run: 131 passed and one Windows-only
+junction test skipped. Ten new temporary-fixture tests cover exact inventory, unlisted files, changed/missing
+bytes, unsafe paths, duplicate/case-colliding names, malformed metadata and
+symlink files/parents/manifests, unreadable directories and nonregular entries.
+Symlink/FIFO tests skip only where creation is unavailable.
+The scanner remains limited; inventory/hash validity is not authenticity or rights.

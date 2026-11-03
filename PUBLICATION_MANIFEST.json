@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.12.0-research-status-queues",
+  "release": "0.12.1-publication-inventory-guards",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 48,
+  "file_count": 49,
   "files": [
     {
       "path": ".gitattributes",
@@ -25,8 +25,8 @@
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 1042,
-      "sha256": "d0eb77be8d3f46f7c954cb4108270e72c6ca1208a8410e3ae42393afe83c5308"
+      "bytes": 1361,
+      "sha256": "42ae69352e6e33329d17939cd873006eebc61888d8b42f6a69ea7e043099b749"
     },
     {
       "path": "README.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 8268,
-      "sha256": "0de46b865ec69cbff751d702b5408263241d08916ce897d0cceb045fe328f80a"
+      "bytes": 8799,
+      "sha256": "86b5244cc6f909874d2ae8e8498e2fc6a3b925feac155752765a18ecd3580cf4"
     },
     {
       "path": "appraisal_links.py",
@@ -85,8 +85,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 22495,
-      "sha256": "984119e89c580a768e8fc1896dfbf841fdbf49ad09703694bd63f86036839c93"
+      "bytes": 23420,
+      "sha256": "2c4bc656b170be7db0d2bdf6679af7efd203fb1002c6e476baf72ba20baaa1c3"
     },
     {
       "path": "evidence_workflow.py",
@@ -239,14 +239,19 @@
       "sha256": "cfd976dca31479a0d699a6b06fbc28c9464f3b956d602de17d103a6d977d1230"
     },
     {
+      "path": "test_verify_manifest.py",
+      "bytes": 7056,
+      "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
+    },
+    {
       "path": "validate_run.py",
       "bytes": 5722,
       "sha256": "9f0c0d6e5cd1f6cd95a0ad6944b3dd1fa5c67b3aca6aaf09fdc9549984e14677"
     },
     {
       "path": "verify_manifest.py",
-      "bytes": 1141,
-      "sha256": "1e57854f4e6c88c31ed38a6d7d9481f8c5a57ceaba18de039251f7f66b471f05"
+      "bytes": 4941,
+      "sha256": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d"
     }
   ]
 }

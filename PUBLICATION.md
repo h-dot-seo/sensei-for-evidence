@@ -16,3 +16,8 @@ See README for implemented versus specified behavior and known integration limit
 The manifest binds this release's file bytes. It excludes itself to avoid a recursive
 hash dependency. A source hash establishes identity; it does not establish scholarly
 support, personal consent or redistribution rights.
+
+Inventory verification rejects unlisted checkout files and symlink/path ambiguity,
+in addition to checking listed bytes. Git metadata, generated Python caches and
+the manifest itself are excluded. This is not a secret detector, authorship
+signature or permission to publish material outside the selected public scope.
