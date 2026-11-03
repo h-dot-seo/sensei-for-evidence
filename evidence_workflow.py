@@ -94,30 +94,36 @@ def run(protocol):
     if len(known) != len(work) or any(not isinstance(k, str) or not k for k in known):
         raise ValueError('work package IDs must be unique nonempty strings')
     visiting, visited, order = set(), set(), []
-    def visit(wid):
-        if wid in visiting:
-            raise ValueError('cyclic work package dependencies')
-        if wid in visited:
-            return
-        if wid not in known:
-            raise ValueError('unknown work package dependency')
-        visiting.add(wid)
-        w = known[wid]
-        if w['status'] not in ('PLANNED', 'IN_PROGRESS', 'COMPLETE'):
-            raise ValueError('invalid work package status')
-        if not isinstance(w['depends_on'], list) or any(not isinstance(d, str) for d in w['depends_on']):
-            raise ValueError('depends_on must be a list of IDs')
-        for dep in w['depends_on']:
-            visit(dep)
-        if w['status'] == 'COMPLETE':
-            if not nonempty_text(w.get('artifact_locator')) or w.get('acceptance_verified') is not True:
-                raise ValueError('complete work requires artifact locator and verified acceptance')
-            if any(known[d]['status'] != 'COMPLETE' for d in w['depends_on']):
-                raise ValueError('complete work has unfinished dependency')
-        w['blocked_by'] = [d for d in w['depends_on'] if known[d]['status'] != 'COMPLETE']
-        visiting.remove(wid); visited.add(wid); order.append(wid)
-    for wid in known:
-        visit(wid)
+    for root in known:
+        stack = [(root, False)]
+        while stack:
+            wid, exiting = stack.pop()
+            if exiting:
+                w = known[wid]
+                if w['status'] == 'COMPLETE':
+                    if not nonempty_text(w.get('artifact_locator')) or w.get('acceptance_verified') is not True:
+                        raise ValueError('complete work requires artifact locator and verified acceptance')
+                    if any(known[d]['status'] != 'COMPLETE' for d in w['depends_on']):
+                        raise ValueError('complete work has unfinished dependency')
+                w['blocked_by'] = [d for d in w['depends_on'] if known[d]['status'] != 'COMPLETE']
+                visiting.remove(wid)
+                visited.add(wid)
+                order.append(wid)
+                continue
+            if wid in visiting:
+                raise ValueError('cyclic work package dependencies')
+            if wid in visited:
+                continue
+            if wid not in known:
+                raise ValueError('unknown work package dependency')
+            w = known[wid]
+            if w['status'] not in ('PLANNED', 'IN_PROGRESS', 'COMPLETE'):
+                raise ValueError('invalid work package status')
+            if not isinstance(w['depends_on'], list) or any(not isinstance(d, str) for d in w['depends_on']):
+                raise ValueError('depends_on must be a list of IDs')
+            visiting.add(wid)
+            stack.append((wid, True))
+            stack.extend((dep, False) for dep in reversed(w['depends_on']))
     context = link_context(protocol, evidence, work)
     appraisal = link_appraisals(protocol, evidence, work)
     included = sum(d['decision'] == 'include' for d in decisions.values())

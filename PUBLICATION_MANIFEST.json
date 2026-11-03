@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.13.1-state-shape-guards",
+  "release": "0.13.2-offline-scale-guards",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 10343,
-      "sha256": "5efe3c0bf7591bc541ff0880b5d20b3d5a4ef90bc672b5444b15344c6fb37848"
+      "bytes": 11056,
+      "sha256": "796356f4b8ff525d29f33a39619b72cde8f5f3cddbd33c086ea2b0cc708ef38b"
     },
     {
       "path": "appraisal_links.py",
@@ -85,13 +85,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 26383,
-      "sha256": "d1dabadd0449707c8661c2bbab795a7755d5e0112f8ef6a587657cf2072202b1"
+      "bytes": 27295,
+      "sha256": "af5699b1dc2847ac3f7b5318de2521f98827715cb8873a02d7f2d35d4073faba"
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 8778,
-      "sha256": "1165981f82f1912698efceb99b969e0f3eee6cb4ab1ef4cc8f72997ac46fa005"
+      "bytes": 9103,
+      "sha256": "1df46c945bf1974f887abb249863316a328109ebfd3eafe8dc03a5ac8287b2a5"
     },
     {
       "path": "examples/appraised-protocol.json",
@@ -150,8 +150,8 @@
     },
     {
       "path": "research_bundle.py",
-      "bytes": 8759,
-      "sha256": "c0f24a631b5f9c6120b11bdbc8d77c10acdb460ca69ea5a4d6c5041ed9d49b61"
+      "bytes": 8991,
+      "sha256": "4f0f6859a17183abe6dcc4ad1fab279697b40158ce26f15882c09a9402df98a7"
     },
     {
       "path": "research_status.py",
@@ -195,8 +195,8 @@
     },
     {
       "path": "test_evidence_workflow.py",
-      "bytes": 3934,
-      "sha256": "28557699a5807d27266a7f71c4a7f647a75bb22a35adb95da625baae3ff5e97d"
+      "bytes": 5476,
+      "sha256": "7a719fc544ad03d45621658f3e900b9c475597b2b69173a0143897e57ee7bc89"
     },
     {
       "path": "test_json_io.py",
@@ -220,8 +220,8 @@
     },
     {
       "path": "test_research_bundle.py",
-      "bytes": 6574,
-      "sha256": "5ee4016aef0115cd0f96d4aa1b5ae70c0ca13331596612aa403c4887951c80a6"
+      "bytes": 7911,
+      "sha256": "bddcdfd5adcd53379163477f978ff6b7e47007e5dc372f0357474672d7809903"
     },
     {
       "path": "test_research_status.py",

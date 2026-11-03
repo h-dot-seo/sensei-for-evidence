@@ -14,6 +14,36 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(result['flow']['included'],1)
         self.assertEqual(result['work_packages'][0]['evidence_ids'],['r1'])
         self.assertEqual(result['conclusion_readiness'],'NOT_READY')
+    def chain(self, count):
+        template = self.p['gaps'][0]
+        self.p['gaps'] = [dict(copy.deepcopy(template), work_package_id=f'w{i}',
+                               depends_on=[f'w{i+1}'] if i + 1 < count else [])
+                          for i in range(count)]
+
+    def test_deep_dependency_chain_does_not_use_python_recursion(self):
+        self.chain(1500)
+        before = copy.deepcopy(self.p)
+        result = run(self.p)
+        self.assertEqual(result['execution_order'], [f'w{i}' for i in reversed(range(1500))])
+        self.assertEqual(self.p, before)
+        self.assertEqual(result['conclusion_readiness'], 'NOT_READY')
+
+    def test_deep_cycle_is_a_validation_error(self):
+        self.chain(1500)
+        self.p['gaps'][-1]['depends_on'] = ['w0']
+        with self.assertRaisesRegex(ValueError, 'cyclic'):
+            run(self.p)
+
+    def test_branching_dependencies_keep_postorder_and_completion_checks(self):
+        template = self.p['gaps'][0]
+        self.p['gaps'] = [dict(copy.deepcopy(template), work_package_id=wid, depends_on=deps)
+                          for wid, deps in [('root', ['left', 'right']), ('left', ['leaf']),
+                                            ('right', ['leaf']), ('leaf', [])]]
+        self.assertEqual(run(self.p)['execution_order'], ['leaf', 'left', 'right', 'root'])
+        self.p['gaps'][0].update(status='COMPLETE', artifact_locator='synthetic', acceptance_verified=True)
+        with self.assertRaisesRegex(ValueError, 'unfinished dependency'):
+            run(self.p)
+
     def test_paging_and_pending(self):
         self.p['searches'][0]['has_more']=True
         self.p['screening'].pop()

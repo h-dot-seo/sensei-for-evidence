@@ -156,3 +156,14 @@ nested state containers, strict citation/reference numbers (including boolean,
 float and null collisions), draft reference flags, individually supplied screening counts and machine-readable CLI errors
 without tracebacks. Valid supplied COMPLETE assertions remain accepted without
 independently certifying their factual truth.
+
+Offline scale guards (2026-11-03): 152 tests in the suite; local Linux
+run: 151 passed and one Windows-only test skipped. Three new tests cover a flat
+1,500-work-package dependency chain, an equally deep cycle and branching shared
+dependencies/completion checks. A separate seeded differential probe compared
+100 small DAGs against the previous implementation and found identical output.
+These synthetic graph checks do not validate research scale or scientific plans.
+
+Two additional bundle regressions enforce the same inclusive uncompressed-byte
+limit during creation and verification, and confirm rejected creation leaves no
+output file. This fixes creation of a bundle that exceeded its own verifier limit.

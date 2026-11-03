@@ -17,6 +17,8 @@ def engine_hashes():
     root = Path(__file__).resolve().parent
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in ENGINE_FILES}
 
+MAX_BUNDLE_BYTES = 50_000_000  # Sum of uncompressed entry bytes, including manifest.
+
 PAYLOADS={'protocol.json','research.json','reports.json','reports.csv','work-packages.csv','summary.md'}
 
 
@@ -70,6 +72,8 @@ def build_bundle(raw):
     manifest=dict(schema_version=2,engine_sha256=engine_hashes(),input_sha256=hashlib.sha256(raw).hexdigest(),
         files=[dict(path=name,bytes=len(data),sha256=hashlib.sha256(data).hexdigest()) for name,data in sorted(payloads.items())])
     payloads['manifest.json']=json_bytes(manifest)
+    if sum(len(data) for data in payloads.values()) > MAX_BUNDLE_BYTES:
+        raise ValueError('bundle exceeds verification size limit')
     target=io.BytesIO()
     with zipfile.ZipFile(target,'w',compression=zipfile.ZIP_STORED) as archive:
         for name,data in sorted(payloads.items()):
@@ -93,7 +97,7 @@ def verify(path):
         entries=archive.infolist(); names=[e.filename for e in entries]
         if len(names)!=len(set(names)) or set(names)!=PAYLOADS|{'manifest.json'}:
             raise ValueError('unexpected, missing or duplicate archive entries')
-        if sum(e.file_size for e in entries)>50_000_000:
+        if sum(e.file_size for e in entries)>MAX_BUNDLE_BYTES:
             raise ValueError('bundle exceeds verification size limit')
         manifest=parse_json(archive.read('manifest.json'))
         if not isinstance(manifest, dict):

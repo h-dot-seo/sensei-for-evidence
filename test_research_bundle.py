@@ -24,6 +24,31 @@ class BundleTests(unittest.TestCase):
             result=subprocess.run([sys.executable,'research_bundle.py','verify',str(output)],capture_output=True,text=True,timeout=20)
             self.assertEqual(result.returncode,0,result.stderr)
 
+    def test_build_and_verify_share_inclusive_uncompressed_limit(self):
+        raw = Path('examples/report-protocol.json').read_bytes()
+        data = build_bundle(raw)
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            total = sum(entry.file_size for entry in archive.infolist())
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'synthetic.zip'
+            path.write_bytes(data)
+            with patch('research_bundle.MAX_BUNDLE_BYTES', total):
+                self.assertEqual(build_bundle(raw), data)
+                self.assertTrue(verify(path)['valid'])
+            with patch('research_bundle.MAX_BUNDLE_BYTES', total - 1):
+                with self.assertRaisesRegex(ValueError, 'size limit'):
+                    build_bundle(raw)
+                with self.assertRaisesRegex(ValueError, 'size limit'):
+                    verify(path)
+
+    def test_oversized_create_does_not_leave_output_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'synthetic.zip'
+            with patch('research_bundle.MAX_BUNDLE_BYTES', 1):
+                with self.assertRaisesRegex(ValueError, 'size limit'):
+                    create(Path('examples/report-protocol.json'), path)
+            self.assertFalse(path.exists())
+
     def test_zip_creator_platform_is_fixed(self):
         raw = Path('examples/report-protocol.json').read_bytes()
         baseline = build_bundle(raw)

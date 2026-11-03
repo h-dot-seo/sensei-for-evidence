@@ -467,3 +467,18 @@ constitute a complete state schema or establish that an artifact actually exists
 Each supplied screening count must be a nonnegative integer even if the rest of
 its reconciliation equation is omitted. Arithmetic reconciliation is applied only
 when all three counts in that equation are supplied.
+
+### Long work-package dependency chains
+
+Dependency ordering uses iterative traversal, so a valid long chain does not
+consume Python call-stack depth. Existing dependency-order ties, unfinished-work
+checks, cycle rejection and supplied completion assertions are unchanged. This is
+not a claim of unlimited scale: available memory, input size and bundle limits
+still apply. Dependency-unblocked work is not approval to perform an experiment.
+
+Bundle creation and verification share a 50,000,000-byte limit on the sum of all
+uncompressed ZIP entry bytes, including the manifest. Creation rejects oversized
+outputs before writing the destination, rather than creating a bundle that its own
+verifier cannot accept. ZIP container overhead is not part of this threshold.
+This is an output-size safeguard, not a streaming/input-memory limit; protocol
+processing and derived payload construction still occur in memory.
