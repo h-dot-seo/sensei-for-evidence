@@ -17,7 +17,9 @@ def report_flow(protocol):
         if not isinstance(rid,str) or not rid or rid in reports:
             raise ValueError('unique report IDs required')
         record_ids = report['record_ids']
-        if not isinstance(record_ids,list) or not record_ids or any(r not in included_records for r in record_ids):
+        if (not isinstance(record_ids,list) or not record_ids
+                or any(not isinstance(r,str) or r not in included_records for r in record_ids)
+                or len(record_ids) != len(set(record_ids))):
             raise ValueError('reports must link to included screening records')
         if linked.intersection(record_ids):
             raise ValueError('record mapped to multiple reports')
@@ -37,6 +39,13 @@ def report_flow(protocol):
         if decision == 'include' and not report.get('study_id'):
             raise ValueError('included report requires study ID')
         reports[rid] = report
+    report_by_record = {record: report for report in reports.values() for record in report['record_ids']}
+    for evidence in protocol['evidence']:
+        report = report_by_record.get(evidence['record_id'])
+        if report is None or report.get('decision') != 'include' or report['retrieval'] != 'retrieved':
+            raise ValueError('extracted evidence requires an included retrieved report; reconcile screening first')
+        if evidence['study_id'] != report['study_id']:
+            raise ValueError('extracted evidence study ID conflicts with included report')
     counts=Counter(r['retrieval'] for r in reports.values())
     assessed=[r for r in reports.values() if r['retrieval']=='retrieved' and r.get('decision') in ('include','exclude')]
     included=[r for r in assessed if r['decision']=='include']

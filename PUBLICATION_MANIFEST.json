@@ -1,27 +1,37 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.4.0-evidence-contracts",
+  "release": "0.4.1-e2e-validation",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 18,
+  "file_count": 22,
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 19,
+      "sha256": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "bytes": 719,
+      "sha256": "c8b7f561edcb36a3bb1c58bd09f5dabf8c837042ddc12b8c76a95b397c6e342f"
+    },
+    {
       "path": ".gitignore",
-      "bytes": 174,
-      "sha256": "b06208a7be76971fb80572cc23fd8ec4c233d90e343dd836aee217d290170e9b"
+      "bytes": 155,
+      "sha256": "9582424c530015ffed444c118b0a8f46e9b4a4f64989775c4d534e1049ffdd32"
     },
     {
       "path": "audit_publication.py",
-      "bytes": 2015,
-      "sha256": "cb4c106c30f769dc5955cc96437e5431c9f7f6d80aa5619a924e3fb93757b866"
+      "bytes": 1969,
+      "sha256": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08"
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 3906,
-      "sha256": "ebea6c0f9195b7a12f3ffa57f7247a99155cb319d9146e141d23df861a291177"
+      "bytes": 3833,
+      "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
     },
     {
       "path": "evidence_workflow.py",
@@ -30,48 +40,53 @@
     },
     {
       "path": "examples/protocol.json",
-      "bytes": 1495,
-      "sha256": "d487f43caa650f64bbb9bc9661cccdacaf4adce8b904f38d155ce37f88990ed5"
+      "bytes": 1433,
+      "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
     },
     {
       "path": "examples/report-protocol.json",
-      "bytes": 1736,
-      "sha256": "9820329687ea60b2da9e6a83f20f7758771ea966ecad498ce238662e6205c403"
+      "bytes": 1662,
+      "sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78"
     },
     {
       "path": "examples/state.json",
-      "bytes": 418,
-      "sha256": "69852593a16f1701320f528f6003c719319fa0c8cfe2cac90dccb24b166a8b8f"
+      "bytes": 402,
+      "sha256": "1cced1a3609b882f2829a8205db1b25377c3b81e97a43392d97a2490bc153d1e"
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 4080,
-      "sha256": "512c0c4f7517c047ca418d41a6854f6c8504f164c9b1baf4fb577a6aa03d5524"
+      "bytes": 4757,
+      "sha256": "3b533b127fecb72e5e59f07b5a16f3ad7fb844517e124d5fe46c54be41756999"
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 1060,
-      "sha256": "cb9d1023b8564db0ec031118ab4deabd20bc685d6eac106dcd36b93ab27e5bfb"
+      "bytes": 1042,
+      "sha256": "d0eb77be8d3f46f7c954cb4108270e72c6ca1208a8410e3ae42393afe83c5308"
     },
     {
       "path": "README.md",
-      "bytes": 5194,
-      "sha256": "06c94ba33bda6bc981165d0ebf7560e040fe08982a746b42cc0255c2e72b359f"
+      "bytes": 5750,
+      "sha256": "b006bfed6e4cd443e81d35a386c47736eab9732b8e74b55c93be9ed244a3bd22"
     },
     {
       "path": "RIGHTS.md",
-      "bytes": 967,
-      "sha256": "3a62db96ace5df5eb023a586764f33bb3125a814809d6fad880c587176d8ba44"
+      "bytes": 952,
+      "sha256": "7b403cfda5978399a0a9aac7b2af267234d6ff3e6baad234883a972e9767068a"
     },
     {
       "path": "SECURITY.md",
-      "bytes": 1345,
-      "sha256": "3bb8bff293221d91d2c81368300df05a9c6019b1387b179306f9836161de2a8b"
+      "bytes": 1324,
+      "sha256": "9bcf7ee3f4b484ed2af153569946f72fadcf6d8a06a599433e4d80e8525d8f36"
     },
     {
       "path": "SKILL.md",
-      "bytes": 1907,
-      "sha256": "f02fae537042981db61425403addff5bbab9435c3221c15d02dac6c6f51bbafc"
+      "bytes": 1877,
+      "sha256": "0670146b1595a1a831f8e09447377c727e13daa450f3e54bd232315da1bc5cea"
+    },
+    {
+      "path": "test_cli_e2e.py",
+      "bytes": 1447,
+      "sha256": "979cdec31f61c60d1bad4859f5ade1c133aaf85809dd8f479268dfec6b811a8b"
     },
     {
       "path": "test_evidence_workflow.py",
@@ -80,23 +95,28 @@
     },
     {
       "path": "test_prisma_reports.py",
-      "bytes": 1297,
-      "sha256": "e6aaeb993f0eb3f81e730cf152ec5c562cc9e099e8511017409ad347fc810274"
+      "bytes": 1745,
+      "sha256": "7b84bbc6a899170efff42332ed4bfb265112c030f68d8d5ea39e0bfcab7675ba"
     },
     {
       "path": "test_validate_run.py",
-      "bytes": 1584,
-      "sha256": "7bbfe9eddb21667da4bc111df6e2ec2d28ea3f9a5b2477fbdf72a7cbe9f4113b"
+      "bytes": 1548,
+      "sha256": "994040f66ac7c21e1013f5ae62c8568b22d2773e0110767d04c178870033c367"
     },
     {
       "path": "validate_run.py",
-      "bytes": 4343,
-      "sha256": "c20b06e2b342fcd1149a2c1e7fd5be104eace5677f44c3fc866a1f71609baa1a"
+      "bytes": 4253,
+      "sha256": "466a1e637f871ce8aa1844fa2de7a93b3366853aae45de4a0e3f324ccbe36e4f"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 1524,
-      "sha256": "b6f56da73c92bea31b7a2e5bc2b32ee717d0cc623d1b92d54cfa90c7970ffd5a"
+      "bytes": 1665,
+      "sha256": "b49f737c9e47189491320e412d250bebcba314e98dfcb5b17faefb27ff59ffef"
+    },
+    {
+      "path": "verify_manifest.py",
+      "bytes": 1141,
+      "sha256": "1e57854f4e6c88c31ed38a6d7d9481f8c5a57ceaba18de039251f7f66b471f05"
     }
   ]
 }

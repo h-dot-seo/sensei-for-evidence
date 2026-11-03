@@ -93,7 +93,17 @@ reason, and included reports require `study_id`. The JSON output contains report
 and study counts, pending work, exclusion counts, a deterministic report ledger and
 CSV text. CSV cells beginning with formula characters are escaped. Multiple reports
 may share a study ID; each input record maps to at most one report. Unmapped advanced
-records remain visible. Report screening and existing extracted evidence/work
-packages are separate views: this increment does not automatically revise earlier
-extractions when full-text decisions change. It is PRISMA-oriented bookkeeping,
+records remain visible. Extracted evidence must now map to a retrieved, included report with the same
+study ID. Changed full-text decisions fail until the operator reconciles affected
+extractions and work packages; evidence is never silently deleted. It is PRISMA-oriented bookkeeping,
 not a complete compliance checker, search backend or scientific review.
+
+## End-to-end and CI verification
+
+`test_cli_e2e.py` runs the synthetic workflow through actual CLI subprocesses and
+checks failed inputs and reproducible output. GitHub Actions runs standard-library
+tests, publication scanning and manifest byte verification on Linux and Windows
+with Python 3.10 and 3.12. Actions are commit-pinned; token permissions are read-only,
+checkout does not persist credentials, no secrets or deployment steps are used.
+The manifest describes LF-normalized published files, enforced by .gitattributes.
+External model/search behavior and scientific meaning are not evaluated by CI.

@@ -17,11 +17,18 @@ class ReportTests(unittest.TestCase):
         self.assertIn('report-1',r['report_csv'])
     def test_exclusions_and_csv_formula(self):
         self.p['reports'][0].update(decision='exclude',reason='=synthetic formula')
+        self.p['evidence']=[]; self.p['gaps']=[]
         r=report_flow(self.p)
         self.assertEqual(r['report_flow']['excluded'],1)
         self.assertIn("'=synthetic formula",r['report_csv'])
     def test_unretrieved_and_duplicate_report(self):
         self.p['reports'][0]['retrieval']='not_retrieved'
         with self.assertRaises(ValueError): report_flow(self.p)
+
+    def test_full_text_exclusion_invalidates_extraction(self):
+        self.p['reports'][0].update(decision='exclude',reason='outside scope')
+        with self.assertRaisesRegex(ValueError,'included retrieved report'): report_flow(self.p)
+        self.setUp(); self.p['reports'][0]['study_id']='other-study'
+        with self.assertRaisesRegex(ValueError,'study ID conflicts'): report_flow(self.p)
         self.setUp(); self.p['reports'].append(copy.deepcopy(self.p['reports'][0]))
         with self.assertRaises(ValueError): report_flow(self.p)
