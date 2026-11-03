@@ -358,3 +358,16 @@ blocking issue within the documented trusted/quiescent-directory boundary; its
 metadata-cap, input-error leakage, root-spelling and access-time caveats were
 addressed. The synthetic note hashes successfully while its WP remains IN_PROGRESS,
 its dependent WP stays blocked, and source completeness is not established.
+
+Context-amendment work comparison increment (2026-11-03): 358 tests in the
+suite; Linux run: 357 passed and one native-Windows-only test skipped. Thirteen
+new tests cover unchanged/added/removed contexts, distinct access/review dates,
+retained review assertions after changed source/result inputs, changed review
+metadata without reassessment claims, explicit-only WP linkage, old/new scope
+partitions, unassigned contexts, validation failures, copy isolation, progress-only
+changes, out-of-scope source changes and deterministic real CLI output. Independent
+review found a mislabeled work-change cue caused by comparing context-derived link
+overlap wrappers; comparison now uses the nested work assertions and a regression
+locks the distinction. Synthetic work packet → amendment comparison → updated work
+packet/handoff passes with clinical/regulatory significance and review validity
+unassessed. No source retrieval, applicability inference or priority changes occur.

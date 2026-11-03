@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.28.0-local-artifact-review",
+  "release": "0.29.0-context-work-amendments",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 107,
+  "file_count": 110,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10883,
-      "sha256": "7c304d27a97e40a6f3da3311dab6c332c3a1854a823ff041be42e473cc8a364f"
+      "bytes": 11207,
+      "sha256": "36ca82c6a2eb3383714f5caf2dfcc78b1e4d04d048ffa6170225d8b5fd290f44"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 25019,
-      "sha256": "e7e7f5ffaac04d2310739485024f1813579771a37d83c47e19defd955dc5b07d"
+      "bytes": 25995,
+      "sha256": "3b957fb938098575f8da1d0a8e08e6c1942e030989976ff17706a1b7a7a7c8f3"
     },
     {
       "path": "adapter_integrity.py",
@@ -75,8 +75,8 @@
     },
     {
       "path": "compare_runs.py",
-      "bytes": 6036,
-      "sha256": "1b133bf516eceae6ae4a39a92985e4aa3d13982e943cc1ca80aae78c89f7fad0"
+      "bytes": 10596,
+      "sha256": "d5bb5b814f33850108ad67aefce3481f942b8aa85d55d73af05265be60072c27"
     },
     {
       "path": "context_links.py",
@@ -102,6 +102,11 @@
       "path": "docs/CLAIM_COMPARISON.md",
       "bytes": 5373,
       "sha256": "d8df19ff772195c5ecea9e2f5e008cd631f87743358e8ac15b1163c6a5757c13"
+    },
+    {
+      "path": "docs/CONTEXT_AMENDMENTS.md",
+      "bytes": 3851,
+      "sha256": "14bb0424dc7fa14c901a5408c276ec6da0edec82afb03a22b2304c12b2a1b890"
     },
     {
       "path": "docs/EXPERIMENT_CONDITIONS.md",
@@ -160,8 +165,8 @@
     },
     {
       "path": "docs/WORK_REVIEW.md",
-      "bytes": 6540,
-      "sha256": "28645a22205114b6baad0f93f96f23d3b5cad3e78504ce087703859830c0e1e0"
+      "bytes": 6800,
+      "sha256": "ce2f2d2fceef23f71da895ec6036f88aa022d7c552ee757e75575d4e3ccab442"
     },
     {
       "path": "evidence_workflow.py",
@@ -202,6 +207,11 @@
       "path": "examples/claim-comparison.json",
       "bytes": 28640,
       "sha256": "248882fb7de3f1ce8aa87e0b7d2e43cc6581fcd240ea3ff942c94fec21072ff4"
+    },
+    {
+      "path": "examples/context-amendment.json",
+      "bytes": 6241,
+      "sha256": "409ab7b91e889bbaace29d755af38bcd75ff70bb1dfe40c92914431234c2610d"
     },
     {
       "path": "examples/context-protocol.json",
@@ -397,6 +407,11 @@
       "path": "test_context_links.py",
       "bytes": 5727,
       "sha256": "828fcd6d70329f6bdd65b24864c10cc69c20bc179cf6d2df90dcf3efd72fa8f1"
+    },
+    {
+      "path": "test_context_work_impact.py",
+      "bytes": 6817,
+      "sha256": "5fa3a9aac26c78606b91b493c3cf384f6071fc291f3ef71815b0c6af8a060d6d"
     },
     {
       "path": "test_csv_safety.py",

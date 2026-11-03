@@ -109,3 +109,7 @@ explicit scope for sibling outcomes. No causal validity is inferred.
 Source-review packets can precede extraction. They show planned-search/record
 inputs and counts separately from results, preserving missing receipts and pending
 screening/report states. See [source-review work](SOURCE_REVIEW_WORK.md).
+
+For a revised guideline/development context, [context amendment comparison](CONTEXT_AMENDMENTS.md)
+uses the existing compare_runs CLI to connect exact context/result changes to old
+and new explicit WP links, without determining clinical or regulatory impact.

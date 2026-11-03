@@ -174,3 +174,8 @@ artifact assertions, without treating task completion as source approval.
 listed synthetic local files against supplied size/SHA-256 expectations using
 safe POSIX directory descriptors. Unsupported platforms fail closed; matching
 bytes are never acceptance of a work package or scientific conclusion.
+
+[Guideline/development amendment comparison](docs/CONTEXT_AMENDMENTS.md) extends
+compare_runs with explicit context→result→work snapshots and retained-review-label
+cues. Version/access/review dates, applicability and uncertainty stay separate;
+no clinical significance, regulatory decision or new priority is inferred.

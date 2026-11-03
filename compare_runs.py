@@ -1,5 +1,6 @@
 """Compare validated supplied protocols without inferring scientific meaning from changes."""
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -29,6 +30,62 @@ def entity_changes(before, after, id_field):
     return dict(added_ids=sorted(set(right) - set(left)),
                 removed_ids=sorted(set(left) - set(right)), changed=changed,
                 unchanged_count=len(shared) - len(changed))
+
+
+
+def context_work_impact(left, right):
+    """Compare exact context/evidence/work assertions, not clinical change significance."""
+    review_fields={'review_status','reviewer','reviewed_at'}
+    def snapshot(research):
+        evidence={r['evidence_id']:r for r in research['evidence']}
+        contexts={r['context_id']:r for r in research['context']['context_ledger']}
+        work={cid:[] for cid in contexts}
+        for item in research['work_packages']:
+            for cid in item.get('context_ids',[]):
+                refs=set(contexts[cid]['evidence_ids']);own=set(item['evidence_ids'])
+                work[cid].append(dict(work_package=copy.deepcopy(item),
+                    shared_evidence_ids=sorted(refs & own),
+                    other_context_evidence_ids=sorted(refs-own),other_work_evidence_ids=sorted(own-refs)))
+        return {cid:dict(context=copy.deepcopy(row),
+                        date_roles=dict(accessed_at=row['accessed_at'],recorded_reviewed_at=row.get('reviewed_at'),
+                                        publication_or_effective_date_assessment='NOT_PERFORMED'),
+                        linked_evidence=[copy.deepcopy(evidence[eid]) for eid in sorted(row['evidence_ids'])],
+                        work_links=sorted(work[cid],key=lambda r:r['work_package']['work_package_id']))
+                for cid,row in contexts.items()}
+    before,after=snapshot(left),snapshot(right);rows=[]
+    for cid in sorted(set(before)|set(after)):
+        a=before.get(cid);b=after.get(cid)
+        ac={} if a is None else a['context'];bc={} if b is None else b['context']
+        fields=changed_fields(ac,bc)
+        source_fields=[f for f in fields if f not in review_fields and f!='linked_study_ids']
+        evidence=entity_changes([] if a is None else a['linked_evidence'],[] if b is None else b['linked_evidence'],'evidence_id')
+        evidence_changed=bool(evidence['added_ids'] or evidence['removed_ids'] or evidence['changed'])
+        aw={} if a is None else {r['work_package']['work_package_id']:r for r in a['work_links']}
+        bw={} if b is None else {r['work_package']['work_package_id']:r for r in b['work_links']}
+        changed_work=sorted(wid for wid in set(aw)&set(bw) if canonical(aw[wid]['work_package'])!=canonical(bw[wid]['work_package']))
+        retained=(a is not None and b is not None and ac['review_status']=='reviewed' and bc['review_status']=='reviewed'
+                  and canonical({k:ac.get(k) for k in review_fields})==canonical({k:bc.get(k) for k in review_fields}))
+        cues=[]
+        if a is None:cues.append('CONTEXT_ADDED')
+        if b is None:cues.append('CONTEXT_REMOVED')
+        if source_fields:cues.append('CONTEXT_ASSERTIONS_CHANGED')
+        if set(fields)&review_fields:cues.append('REVIEW_METADATA_CHANGED')
+        if evidence_changed:cues.append('LINKED_RESULT_ASSERTIONS_CHANGED')
+        if set(aw)!=set(bw):cues.append('EXPLICIT_WORK_LINKS_CHANGED')
+        if changed_work:cues.append('LINKED_WORK_ASSERTIONS_CHANGED')
+        if retained and (source_fields or evidence_changed):cues.append('REVIEW_LABEL_RETAINED_AFTER_INPUT_CHANGE')
+        rows.append(dict(context_id=cid,before=a,after=b,changed_context_fields=fields,
+                         changed_context_assertion_fields=source_fields,linked_evidence_changes=evidence,
+                         work_links_added=sorted(set(bw)-set(aw)),work_links_removed=sorted(set(aw)-set(bw)),
+                         changed_linked_work_ids=changed_work,work_ids_for_manual_comparison=sorted(set(aw)|set(bw)) if cues else [],
+                         comparison_cues=cues,change_significance='NOT_ASSESSED',review_validity='NOT_VERIFIED'))
+    return dict(contexts=rows,
+                boundary=('Exact supplied context, linked result and explicitly context-linked work comparison only. '
+                          'Access dates and recorded review dates are not publication/effective dates or currency checks. '
+                          'Review-label retention flags unchanged reviewer/date/status assertions, not a finding that review is invalid. '
+                          'A new review label/date does not prove reassessment. Shared results do not implicitly link other work. '
+                          'Search/report/appraisal/experiment changes are outside this focused view; inspect the full comparison. '
+                          'No clinical applicability, recommendation, regulatory status, stage transition or priority is determined.'))
 
 
 def compare_protocols(before, after):
@@ -68,7 +125,7 @@ def compare_protocols(before, after):
                 version_changed=version_changed, unversioned_change=changed and not version_changed,
                 changed_protocol_fields=changed_fields(before, after),
                 record_ids_added=sorted(new_records - old_records), record_ids_removed=sorted(old_records - new_records),
-                entity_changes=entities, positional_work_package_ids=positional_ids,
+                entity_changes=entities, context_work_impact=context_work_impact(left,right), positional_work_package_ids=positional_ids,
                 identity_warnings=identity_warnings,
                 before_counts=left['flow'], after_counts=right['flow'],
                 before_report_counts=left_reports['report_flow'] if left_reports else None,
