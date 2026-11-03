@@ -48,3 +48,8 @@ tests cover missing planned searches, asserted-only completion, count/paging/err
 reasons, strict integer totals, source/query/window mismatch, duplicate/unplanned
 search IDs, invalid shapes, legacy no-plan input and bundle/report propagation.
 No source authentication, live retrieval or completeness assessment was performed.
+
+Contradictory-completion correction (2026-11-03): 49 tests passed. Five regression
+tests cover each truncation/pagination-limit flag, malformed values, legacy absent
+flags, no-plan coverage and combined report/bundle propagation. This aligns the
+workflow with the state validator's pre-existing truncation boundary.

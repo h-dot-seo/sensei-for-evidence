@@ -198,3 +198,10 @@ that the plan was comprehensive, the query adequate, receipts authentic or all
 relevant literature found. No searches are performed, and census/conclusion gates
 remain unestablished/not ready. The synthetic example deliberately omits one
 planned source so that the remaining work stays visible.
+
+Optional search flags `truncated`, `pagination_limited` and
+`field_pages_pending` also block asserted completion. Omission remains compatible
+with older inputs; a supplied flag is resolved only when explicitly `false`. True,
+null and malformed values remain unresolved, even if returned counts match and
+`has_more` is false. This prevents a capped result set from being marked complete
+solely because its reported count matches the enumerated IDs.

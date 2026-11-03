@@ -16,6 +16,9 @@ def completion_issues(search):
         issues.append('total_count_mismatch')
     if search.get('has_more') is not False:
         issues.append('pagination_unresolved')
+    for flag in ('truncated', 'pagination_limited', 'field_pages_pending'):
+        if flag in search and search[flag] is not False:
+            issues.append(flag + '_unresolved')
     if search.get('error'):
         issues.append('search_error_recorded')
     return issues

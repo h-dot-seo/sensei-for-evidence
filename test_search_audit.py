@@ -92,3 +92,51 @@ class SearchAuditTests(unittest.TestCase):
             self.assertIn(b'Missing planned searches: 1', archive.read('summary.md'))
             self.assertIn(b'Incomplete planned searches: 1', archive.read('summary.md'))
             self.assertIn('search_audit.py', json.loads(archive.read('manifest.json'))['engine_sha256'])
+
+
+class TruncationTests(unittest.TestCase):
+    def setUp(self):
+        self.protocol = json.loads(Path('examples/planned-protocol.json').read_text())
+        self.protocol['search_plan'].pop()
+
+    def test_each_blocker_prevents_asserted_complete(self):
+        for flag in ('truncated', 'pagination_limited', 'field_pages_pending'):
+            protocol = copy.deepcopy(self.protocol)
+            protocol['searches'][0][flag] = True
+            with self.subTest(flag=flag):
+                result = run(protocol)
+                self.assertFalse(result['coverage'][0]['complete'])
+                self.assertEqual(result['coverage'][0]['issues'], [flag + '_unresolved'])
+                self.assertEqual(result['search_plan_audit']['plan_status'], 'INCOMPLETE')
+                self.assertEqual(result['census_claim'], 'NOT_ESTABLISHED')
+
+    def test_absent_or_false_optional_flags_remain_compatible(self):
+        self.assertTrue(run(self.protocol)['coverage'][0]['complete'])
+        self.protocol['searches'][0].update(truncated=False, pagination_limited=False, field_pages_pending=False)
+        self.assertTrue(run(self.protocol)['coverage'][0]['complete'])
+
+    def test_malformed_optional_flags_fail_closed(self):
+        for flag in ('truncated', 'pagination_limited', 'field_pages_pending'):
+            for value in (None, 'false', 0, [], {}):
+                protocol = copy.deepcopy(self.protocol)
+                protocol['searches'][0][flag] = value
+                with self.subTest(flag=flag, value=value):
+                    self.assertFalse(run(protocol)['coverage'][0]['complete'])
+
+    def test_unplanned_search_still_reports_blockers(self):
+        self.protocol.pop('search_plan')
+        self.protocol['searches'][0]['truncated'] = True
+        result = run(self.protocol)
+        self.assertEqual(result['coverage'][0]['issues'], ['truncated_unresolved'])
+        self.assertEqual(result['search_plan_audit']['plan_status'], 'NOT_SUPPLIED')
+
+    def test_combined_blockers_propagate_to_report_and_bundle(self):
+        self.protocol['searches'][0].update(truncated=True, pagination_limited=True, field_pages_pending=True)
+        expected = ['truncated_unresolved', 'pagination_limited_unresolved', 'field_pages_pending_unresolved']
+        result = run(self.protocol)
+        self.assertEqual(result['coverage'][0]['issues'], expected)
+        with zipfile.ZipFile(io.BytesIO(build_bundle(json.dumps(self.protocol).encode()))) as archive:
+            reports = json.loads(archive.read('reports.json'))
+            self.assertEqual(reports['search_plan_audit']['search_plan_ledger'][0]['issues'], expected)
+            self.assertIn(b'Incomplete planned searches: 1', archive.read('summary.md'))
+            self.assertIn(b'Declared search plan: INCOMPLETE', archive.read('summary.md'))
