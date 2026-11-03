@@ -115,3 +115,9 @@ Supplied page-ledger increment (2026-11-03): 111 tests passed. Nine new tests
 cover reconciled/absent/zero-result pages, ordering gaps, intermediate/final paging
 flags, overlap, record-set mismatches, errors, malformed page fields, report/bundle
 propagation and state-validator parity. No real search receipt was authenticated.
+
+Combined demo/documentation increment (2026-11-03): 113 tests passed. Two new
+tests verify the documented end-to-end synthetic counts, missing-source and review
+gaps, work dependencies, unchanged-run comparison, verified bundle output and
+README/usage relative links. Detailed compatibility notes were retained in
+docs/USAGE.md while the README became a shorter practical entry point.

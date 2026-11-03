@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.11.0-supplied-search-page-ledgers",
+  "release": "0.11.1-combined-synthetic-demo",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 43,
+  "file_count": 46,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21163,
-      "sha256": "67fa923b32ca422fe758ac1d689d6fd3b06274d63ffc085cfc0df3135a15edc4"
+      "bytes": 4971,
+      "sha256": "e9f0e5a2464c7599b62dcf831b324d44e6588df196eaafef76ff38e2796e7479"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 7513,
-      "sha256": "a5d311240e2a7bf737d094250a1ed6f33cc414b884d5d92d49ec2a9018727345"
+      "bytes": 7899,
+      "sha256": "2745b58a0d87ba514bc3a5b1587632dd92e15b0f468b75989bece992c2ac3dd0"
     },
     {
       "path": "appraisal_links.py",
@@ -82,6 +82,11 @@
       "path": "docs/ARCHITECTURE.md",
       "bytes": 3833,
       "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "bytes": 21309,
+      "sha256": "7cda60472bfec56f85bd4fc9eba538d613fb076c4535e1e9e7eaa0e477727209"
     },
     {
       "path": "evidence_workflow.py",
@@ -122,6 +127,11 @@
       "path": "examples/report-protocol.json",
       "bytes": 1662,
       "sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78"
+    },
+    {
+      "path": "examples/review-demo.json",
+      "bytes": 5958,
+      "sha256": "66709d8460b56cefff7b76babafd0429277600a86e81b653f08cf4eacfde912a"
     },
     {
       "path": "examples/state.json",
@@ -172,6 +182,11 @@
       "path": "test_csv_safety.py",
       "bytes": 2202,
       "sha256": "b04fc14540071c54bdcaad13ffc5248ff0ab722ff23d1a80ecdbb9e93d9c48fa"
+    },
+    {
+      "path": "test_documented_demo.py",
+      "bytes": 2425,
+      "sha256": "d871b964f252c51279a6b6b3df43e99c2550a8a265854c2ade506cb22df8eba1"
     },
     {
       "path": "test_evidence_workflow.py",
