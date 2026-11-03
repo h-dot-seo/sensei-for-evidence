@@ -45,3 +45,32 @@ class EvidenceTests(unittest.TestCase):
         self.p['gaps'][0]['depends_on']=[]
         self.p['gaps'][0]['status']='COMPLETE'
         with self.assertRaises(ValueError): run(self.p)
+
+
+class WorkProvenanceTests(unittest.TestCase):
+    def setUp(self):
+        self.protocol = json.loads(Path('examples/report-protocol.json').read_text())
+
+    def test_evidence_links_nonempty_unique_and_typed(self):
+        for value in ([], '', 'r1', {}, None, ['r1', 'r1'], [' '], [1], ['unknown']):
+            self.protocol['gaps'][0]['evidence_ids'] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                run(self.protocol)
+
+    def test_completed_work_cannot_lose_evidence_after_exclusion(self):
+        from research_bundle import build_bundle
+        self.protocol['reports'][0].update(decision='exclude', reason='wrong model')
+        self.protocol['evidence'] = []
+        self.protocol['gaps'][0].update(evidence_ids=[], status='COMPLETE',
+                                       artifact_locator='synthetic://artifact', acceptance_verified=True)
+        with self.assertRaisesRegex(ValueError, 'at least one linked evidence'):
+            build_bundle(json.dumps(self.protocol).encode())
+
+    def test_work_text_and_completed_artifact_require_nonblank_strings(self):
+        for field in ('question', 'deliverable', 'acceptance_criterion', 'work_package_id', 'artifact_locator'):
+            for value in ('   ', None, True, []):
+                protocol = copy.deepcopy(self.protocol)
+                protocol['gaps'][0].update(status='COMPLETE', artifact_locator='synthetic://artifact', acceptance_verified=True)
+                protocol['gaps'][0][field] = value
+                with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+                    run(protocol)

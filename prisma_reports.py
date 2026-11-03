@@ -6,15 +6,20 @@ import json
 from collections import Counter
 from pathlib import Path
 from evidence_workflow import run
+from context_links import nonempty_text
 
 
 def report_flow(protocol):
     baseline = run(protocol)
     included_records = {r['record_id'] for r in protocol['screening'] if r['decision']=='include'}
     reports, linked = {}, set()
+    if not isinstance(protocol['reports'], list):
+        raise ValueError('reports must be a list')
     for report in protocol['reports']:
-        rid = report['report_id']
-        if not isinstance(rid,str) or not rid or rid in reports:
+        if not isinstance(report, dict):
+            raise ValueError('report must be an object')
+        rid = report.get('report_id')
+        if not nonempty_text(rid) or rid in reports:
             raise ValueError('unique report IDs required')
         record_ids = report['record_ids']
         if (not isinstance(record_ids,list) or not record_ids
@@ -32,11 +37,11 @@ def report_flow(protocol):
             raise ValueError('invalid full-text decision')
         if retrieval != 'retrieved' and decision != 'pending':
             raise ValueError('unretrieved report cannot have full-text decision')
-        if retrieval == 'retrieved' and not report.get('locator'):
+        if retrieval == 'retrieved' and not nonempty_text(report.get('locator')):
             raise ValueError('retrieved report requires locator')
-        if (retrieval == 'not_retrieved' or decision == 'exclude') and not report.get('reason'):
+        if (retrieval == 'not_retrieved' or decision == 'exclude') and not nonempty_text(report.get('reason')):
             raise ValueError('retrieval failure/full-text exclusion requires reason')
-        if decision == 'include' and not report.get('study_id'):
+        if decision == 'include' and not nonempty_text(report.get('study_id')):
             raise ValueError('included report requires study ID')
         reports[rid] = report
     report_by_record = {record: report for report in reports.values() for record in report['record_ids']}

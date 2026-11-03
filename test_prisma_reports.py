@@ -32,3 +32,38 @@ class ReportTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'study ID conflicts'): report_flow(self.p)
         self.setUp(); self.p['reports'].append(copy.deepcopy(self.p['reports'][0]))
         with self.assertRaises(ValueError): report_flow(self.p)
+
+class ReportProvenanceTests(unittest.TestCase):
+    def setUp(self):
+        self.protocol = json.loads(Path('examples/report-protocol.json').read_text())
+        self.protocol['evidence'] = []
+        self.protocol['gaps'] = []
+
+    def test_blank_or_nontext_included_provenance_rejected(self):
+        for field in ('report_id', 'locator', 'study_id'):
+            for value in ('', '   ', '\n\t', None, 1, True, [], {}):
+                protocol = copy.deepcopy(self.protocol)
+                protocol['reports'][0][field] = value
+                with self.subTest(field=field, value=value), self.assertRaises(ValueError):
+                    report_flow(protocol)
+
+    def test_exclusion_and_retrieval_reasons_must_be_text(self):
+        for state in (dict(retrieval='retrieved', decision='exclude'),
+                      dict(retrieval='not_retrieved', decision='pending')):
+            for value in ('   ', None, 1, [], {}):
+                protocol = copy.deepcopy(self.protocol)
+                protocol['reports'][0].update(state, reason=value)
+                with self.subTest(state=state, value=value), self.assertRaisesRegex(ValueError, 'requires reason'):
+                    report_flow(protocol)
+
+    def test_report_container_shapes_rejected(self):
+        for value in ('', {}, None, ['invalid'], [None]):
+            self.protocol['reports'] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                report_flow(self.protocol)
+
+    def test_pending_report_does_not_require_unavailable_provenance(self):
+        self.protocol['reports'][0] = dict(report_id='pending-report', record_ids=['r1'], retrieval='pending')
+        result = report_flow(self.protocol)
+        self.assertEqual(result['report_flow']['retrieval_pending'], 1)
+        self.assertEqual(result['report_flow']['included_studies'], 0)

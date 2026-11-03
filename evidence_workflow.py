@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from context_links import link_context
+from context_links import link_context, id_list, nonempty_text
 from search_audit import audit_search_plan, completion_issues
 
 
@@ -54,12 +54,17 @@ def run(protocol):
         evidence.append(row)
     work = []
     for gap in protocol['gaps']:
-        if not gap.get('question') or not gap.get('deliverable') or not gap.get('acceptance_criterion'):
+        if any(not nonempty_text(gap.get(field)) for field in ('question', 'deliverable', 'acceptance_criterion')):
             raise ValueError('gap requires question, deliverable and acceptance criterion')
-        if any(i not in seen for i in gap['evidence_ids']):
+        evidence_ids = id_list(gap.get('evidence_ids'), 'gap evidence_ids')
+        if not evidence_ids:
+            raise ValueError('gap requires at least one linked evidence ID')
+        if any(i not in seen for i in evidence_ids):
             raise ValueError('gap references unknown evidence')
         work.append(dict(gap, work_package_id=gap.get('work_package_id', f'WP-{len(work)+1:03}'),
                          depends_on=gap.get('depends_on', []), status=gap.get('status', 'PLANNED')))
+    if any(not nonempty_text(w['work_package_id']) for w in work):
+        raise ValueError('work package IDs must be unique nonempty strings')
     known = {w['work_package_id']: w for w in work}
     if len(known) != len(work) or any(not isinstance(k, str) or not k for k in known):
         raise ValueError('work package IDs must be unique nonempty strings')
@@ -80,7 +85,7 @@ def run(protocol):
         for dep in w['depends_on']:
             visit(dep)
         if w['status'] == 'COMPLETE':
-            if not w.get('artifact_locator') or w.get('acceptance_verified') is not True:
+            if not nonempty_text(w.get('artifact_locator')) or w.get('acceptance_verified') is not True:
                 raise ValueError('complete work requires artifact locator and verified acceptance')
             if any(known[d]['status'] != 'COMPLETE' for d in w['depends_on']):
                 raise ValueError('complete work has unfinished dependency')

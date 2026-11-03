@@ -211,3 +211,11 @@ workflow. Its `enumerated_ids` map to the workflow's `record_ids`; completed
 searches require explicit `has_more: false`, strict integer totals and resolved
 optional blockers. Malformed search containers and identifier lists return
 validation errors, and Boolean screening counts are not accepted as integers.
+
+Report IDs and required retrieval locators, included study IDs, exclusion/failure
+reasons and work-package deliverables must be nonblank strings, not merely truthy
+values. Every work package requires a nonempty list of unique known evidence IDs,
+including completed packages. Full-text exclusions therefore cannot be reconciled
+by clearing a work package's evidence links and retaining a completed claim.
+Completed packages also require a nonblank artifact locator. Pending report
+retrieval does not require a locator or study ID that is not yet available.

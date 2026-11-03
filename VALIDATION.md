@@ -59,3 +59,8 @@ validator now reuses the workflow's completion checks, rejects Boolean/float tot
 and Boolean screening counts, records malformed search shapes as validation errors
 and refuses unresolved paging/error flags in completed search assertions. Three
 regression tests cover these previously inconsistent input paths.
+
+Report/work-package provenance correction (2026-11-03): 59 tests passed. Seven
+new tests reject blank/nontext report provenance, malformed report containers,
+empty/duplicate/malformed work evidence links, unsupported completed work after
+full-text exclusion and blank completion artifacts. Pending reports remain valid.

@@ -87,7 +87,9 @@ class ContextTests(unittest.TestCase):
         self.protocol['gaps'][0]['context_ids'] = []
         self.assertEqual(run(self.protocol)['context']['unassigned_context_ids'], ['ctx-development', 'ctx-guideline'])
         self.protocol['gaps'][0]['context_ids'] = ['ctx-guideline']
-        self.protocol['gaps'][0]['evidence_ids'] = []
+        self.protocol['screening'][1]['decision'] = 'include'
+        self.protocol['evidence'].append(dict(self.protocol['evidence'][0], record_id='r2'))
+        self.protocol['gaps'][0]['evidence_ids'] = ['r2']
         with self.assertRaisesRegex(ValueError, 'share a linked evidence ID'):
             run(self.protocol)
 

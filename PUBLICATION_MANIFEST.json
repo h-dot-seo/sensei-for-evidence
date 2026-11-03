@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.7.2-validator-completion-parity",
+  "release": "0.7.3-report-work-provenance",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11769,
-      "sha256": "aad92381c011ece631b909b3a0059c6e5fdb7ebf15c6c32e4180a19875a2f84e"
+      "bytes": 12327,
+      "sha256": "95788b2ebe21f0d573ca96d9b4f963e037efd0e84462be610f56aa7c4f23ee6d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3849,
-      "sha256": "2e728028e19450bee5f90f90c04a087407c761e5374a1e6a946c29490a6f0f49"
+      "bytes": 4170,
+      "sha256": "3002625d21aaccbe5f8f52bce50dd8162e7b40a43f5b6b0baa2f94a72950c26a"
     },
     {
       "path": "audit_publication.py",
@@ -70,8 +70,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 6254,
-      "sha256": "918820f40acb38676a1550e074ae29a152d3450eeddb9489ad32a0283eb4ee2e"
+      "bytes": 6623,
+      "sha256": "fd7d33360c8c40109af5a3cdc4233bcb3628a127795f4a2a56a4a51b25a75917"
     },
     {
       "path": "examples/context-protocol.json",
@@ -100,8 +100,8 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 4835,
-      "sha256": "82365634d0b4943ec257b6c1e5c630d9a215a549b8cba56a838eced6dc6b05d0"
+      "bytes": 5111,
+      "sha256": "552e5b3246fea307935c60f89ba0f1d323017e728fa3fe2807941e2659cac8d8"
     },
     {
       "path": "research_bundle.py",
@@ -120,18 +120,18 @@
     },
     {
       "path": "test_context_links.py",
-      "bytes": 5568,
-      "sha256": "a9ee5a1ce2f0c72732ddb78c4eedb4425b727ee8ae961116725a07d367d6e1a7"
+      "bytes": 5727,
+      "sha256": "828fcd6d70329f6bdd65b24864c10cc69c20bc179cf6d2df90dcf3efd72fa8f1"
     },
     {
       "path": "test_evidence_workflow.py",
-      "bytes": 2286,
-      "sha256": "18e30eb2721a9fadff54cf066f9a0d4504d93c944ab1ee8f4e61fe6d587b7e96"
+      "bytes": 3934,
+      "sha256": "28557699a5807d27266a7f71c4a7f647a75bb22a35adb95da625baae3ff5e97d"
     },
     {
       "path": "test_prisma_reports.py",
-      "bytes": 1745,
-      "sha256": "7b84bbc6a899170efff42332ed4bfb265112c030f68d8d5ea39e0bfcab7675ba"
+      "bytes": 3608,
+      "sha256": "18c4d7daf8f3553f8975dfc1aca4d744af22cf51cc31c0f3507f066a8ffb1b8c"
     },
     {
       "path": "test_research_bundle.py",
