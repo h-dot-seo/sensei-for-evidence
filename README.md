@@ -13,6 +13,8 @@ services or models:
 
 - Declared search plans and optional page ledgers, including missing sources,
   count mismatches, overlap, truncation and incomplete pagination.
+- Provider-neutral mock search/extraction receipts with hash-bound operator review
+  gates; unreviewed proposals never enter accepted evidence. No live API client.
 - Per-record search-occurrence provenance with exact-ID-only deduplication.
   Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
@@ -66,6 +68,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 
 | Command | Purpose |
 |---|---|
+| `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
 | `validate_run.py STATE.json` | Validate selected state/release consistency rules |
 | `evidence_workflow.py PROTOCOL.json` | Reconcile search, screening, results, context, appraisal and work |
@@ -96,3 +99,6 @@ Only generic code, documentation and synthetic fixtures are included. No private
 research corpus, account information, article/book full text, figures, real
 experimental results or scientific validation data are included. No license has
 been selected by the owner yet.
+
+See [the mock adapter contract](docs/ADAPTER_CONTRACT.md) for the synthetic
+search → receipt review → extraction review → report/status/bundle example.

@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.13.2-offline-scale-guards",
+  "release": "0.14.0-mock-provider-adapter",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 50,
+  "file_count": 57,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5289,
-      "sha256": "b3f3fc8bb06281b8f23c0d0b9d3ecd3775144ff1e0772814650c284ef88cb839"
+      "bytes": 5775,
+      "sha256": "4eb68d370f4d66f15ea8ffd5d29902a79a7e66f1d741f3c345cb0c1791e96799"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,13 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 11056,
-      "sha256": "796356f4b8ff525d29f33a39619b72cde8f5f3cddbd33c086ea2b0cc708ef38b"
+      "bytes": 12089,
+      "sha256": "8d4b7cb4e4cedd09580afd25b1766a68e2d35f7ff7dfeee5ddcfb61404d06d4d"
+    },
+    {
+      "path": "adapter_integrity.py",
+      "bytes": 15909,
+      "sha256": "4ab1b70a2a8b6c665438105c58d2ee97f57484063937fd4fb27ec5f740d9e8d6"
     },
     {
       "path": "appraisal_links.py",
@@ -79,19 +84,39 @@
       "sha256": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e"
     },
     {
+      "path": "docs/ADAPTER_CONTRACT.md",
+      "bytes": 9089,
+      "sha256": "f1d5f0dfd2ba600aec1a518aa300956d05f37abbabd91abb0bfac5940d078f9b"
+    },
+    {
       "path": "docs/ARCHITECTURE.md",
       "bytes": 3833,
       "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 27295,
-      "sha256": "af5699b1dc2847ac3f7b5318de2521f98827715cb8873a02d7f2d35d4073faba"
+      "bytes": 27567,
+      "sha256": "22ae880c7aaf0787253ef67722df697e84ee9bab4971ee15a9b62a671ad31f89"
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 9103,
-      "sha256": "1df46c945bf1974f887abb249863316a328109ebfd3eafe8dc03a5ac8287b2a5"
+      "bytes": 9199,
+      "sha256": "86ad6cd60fd2d1a13f02db2bffa85becb958718091ababa72787fd2053f70a2d"
+    },
+    {
+      "path": "examples/adapter-fixture.json",
+      "bytes": 3301,
+      "sha256": "b8e963ee03d92732f50fb1bb20586cbe62651e6b540a3130ad28f7ce3e3414af"
+    },
+    {
+      "path": "examples/adapter-protocol.json",
+      "bytes": 1077,
+      "sha256": "bd072c3f110d04327acb5a1265acbbd9b2bd68c8a479730b39c0d27b597c71b2"
+    },
+    {
+      "path": "examples/adapter-reviews.json",
+      "bytes": 962,
+      "sha256": "9479a7f43812c5b5ed579cfd1ce9e501a05b99be75cb90ac4f25f167f67dffc3"
     },
     {
       "path": "examples/appraised-protocol.json",
@@ -144,14 +169,19 @@
       "sha256": "1cf98a1f789b4b148f55047b574f696c739b4c7b16c488482b876bccf65b616f"
     },
     {
+      "path": "offline_adapter.py",
+      "bytes": 4738,
+      "sha256": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f"
+    },
+    {
       "path": "prisma_reports.py",
       "bytes": 5938,
       "sha256": "9aedf9817607c49f88425df3d7131a82ab41a6f9f90b2d79e556773a17ef2636"
     },
     {
       "path": "research_bundle.py",
-      "bytes": 8991,
-      "sha256": "4f0f6859a17183abe6dcc4ad1fab279697b40158ce26f15882c09a9402df98a7"
+      "bytes": 9037,
+      "sha256": "bea95672cf633781e11f37793ca3a0bbbe8b2624fe743898e5ef164e27712bb3"
     },
     {
       "path": "research_status.py",
@@ -207,6 +237,11 @@
       "path": "test_multi_result.py",
       "bytes": 4701,
       "sha256": "6f9ecb819575122f8bf7e30a848ad18b6d978b2ee2e60172ced10064269b9ca5"
+    },
+    {
+      "path": "test_offline_adapter.py",
+      "bytes": 17408,
+      "sha256": "2a6453b9e3b96cebe80fc9f5e80d664007b25f4096528ccd731225e3bd34a9f9"
     },
     {
       "path": "test_prisma_reports.py",

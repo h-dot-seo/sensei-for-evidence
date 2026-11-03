@@ -482,3 +482,9 @@ outputs before writing the destination, rather than creating a bundle that its o
 verifier cannot accept. ZIP container overhead is not part of this threshold.
 This is an output-size safeguard, not a streaming/input-memory limit; protocol
 processing and derived payload construction still occur in memory.
+
+## Mock provider adapter
+
+See [the versioned adapter contract](ADAPTER_CONTRACT.md) for the provider-neutral
+fixture schema, review hash boundaries, CLI export and end-to-end synthetic demo.
+This is an offline mock runner, not a live literature or model API integration.

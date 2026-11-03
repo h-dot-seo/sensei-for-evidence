@@ -167,3 +167,18 @@ These synthetic graph checks do not validate research scale or scientific plans.
 Two additional bundle regressions enforce the same inclusive uncompressed-byte
 limit during creation and verification, and confirm rejected creation leaves no
 output file. This fixes creation of a bundle that exceeded its own verifier limit.
+
+Mock adapter contract increment (2026-11-03): 168 tests in the suite; local Linux
+run: 167 passed and one Windows-only test skipped. Sixteen adapter tests cover
+pending/rejected proposals, hash-bound supplied review promotion, exact plan and
+source links, request/response/candidate collisions, page/count failures, zero
+results, existing screening/report eligibility, immutable inputs, downstream
+stale-provenance rejection and CLI protocol export/bundle verification. A forged
+bundle with updated file hashes still fails when extraction content no longer
+matches its reviewed receipt. Enrichment tests retain original review context
+while allowing version/work-package additions. All examples and review assertions
+are synthetic; no external service/model or actual reviewer was invoked.
+
+Adapter regressions also reject consistently rehashed but structurally invalid
+candidate ledgers and integer/Boolean/float substitutions in frozen review content.
+Assembly and downstream validation share the same fixture/candidate contract.

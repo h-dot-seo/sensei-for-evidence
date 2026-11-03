@@ -6,11 +6,13 @@ from json_io import parse_json, configure_utf8_stdio
 from context_links import link_context, id_list, nonempty_text
 from search_audit import audit_search_plan, completion_issues, page_audit
 from appraisal_links import link_appraisals
+from adapter_integrity import validate_adapter_protocol
 
 
 def run(protocol):
     if not isinstance(protocol, dict):
         raise ValueError('protocol must be an object')
+    validate_adapter_protocol(protocol)
     for key in ('question', 'version', 'inclusion_criteria', 'exclusion_criteria'):
         if not protocol.get(key):
             raise ValueError('missing protocol field: ' + key)
