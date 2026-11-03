@@ -51,14 +51,43 @@ def run(protocol):
             raise ValueError('gap requires question, deliverable and acceptance criterion')
         if any(i not in seen for i in gap['evidence_ids']):
             raise ValueError('gap references unknown evidence')
-        work.append(dict(work_package_id=f'WP-{len(work)+1:03}', **gap, status='PLANNED'))
+        work.append(dict(gap, work_package_id=gap.get('work_package_id', f'WP-{len(work)+1:03}'),
+                         depends_on=gap.get('depends_on', []), status=gap.get('status', 'PLANNED')))
+    known = {w['work_package_id']: w for w in work}
+    if len(known) != len(work) or any(not isinstance(k, str) or not k for k in known):
+        raise ValueError('work package IDs must be unique nonempty strings')
+    visiting, visited, order = set(), set(), []
+    def visit(wid):
+        if wid in visiting:
+            raise ValueError('cyclic work package dependencies')
+        if wid in visited:
+            return
+        if wid not in known:
+            raise ValueError('unknown work package dependency')
+        visiting.add(wid)
+        w = known[wid]
+        if w['status'] not in ('PLANNED', 'IN_PROGRESS', 'COMPLETE'):
+            raise ValueError('invalid work package status')
+        if not isinstance(w['depends_on'], list) or any(not isinstance(d, str) for d in w['depends_on']):
+            raise ValueError('depends_on must be a list of IDs')
+        for dep in w['depends_on']:
+            visit(dep)
+        if w['status'] == 'COMPLETE':
+            if not w.get('artifact_locator') or w.get('acceptance_verified') is not True:
+                raise ValueError('complete work requires artifact locator and verified acceptance')
+            if any(known[d]['status'] != 'COMPLETE' for d in w['depends_on']):
+                raise ValueError('complete work has unfinished dependency')
+        w['blocked_by'] = [d for d in w['depends_on'] if known[d]['status'] != 'COMPLETE']
+        visiting.remove(wid); visited.add(wid); order.append(wid)
+    for wid in known:
+        visit(wid)
     included = sum(d['decision'] == 'include' for d in decisions.values())
     return dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
                 flow=dict(identified=identified, duplicates=identified-len(records), unique_records=len(records),
                           screened=len(decisions), pending=len(records)-len(decisions),
                           excluded=len(decisions)-included, included=included, extracted=len(evidence)),
-                evidence=evidence, work_packages=work,
+                evidence=evidence, work_packages=work, execution_order=order,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in seen),
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')

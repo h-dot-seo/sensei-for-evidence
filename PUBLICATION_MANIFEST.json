@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.2.0-local-workflows",
+  "release": "0.3.0-linked-workflows",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -25,8 +25,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 4165,
-      "sha256": "0c51e21536961c12f0cf47728eb3b815f386f692b5682670181a6178075797bd"
+      "bytes": 5802,
+      "sha256": "5bc09e1379357194b8503614eddb2dce0f53cd3ba6ba1a5a00a1d2b8197e5b8c"
     },
     {
       "path": "examples/protocol.json",
@@ -45,8 +45,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3676,
-      "sha256": "bedf3001d7479668a6d07a3a5bc6172d4c404256c3883212deaf55f4da79033e"
+      "bytes": 4184,
+      "sha256": "c339c49bc12ef28c9a496dc531400a532fa238506d2a13a78c9447f3cfb83c0e"
     },
     {
       "path": "RIGHTS.md",
@@ -65,8 +65,8 @@
     },
     {
       "path": "test_evidence_workflow.py",
-      "bytes": 1218,
-      "sha256": "7955a8be218a7189f2ad51ac42038e2ca2078842cf0d438ad6c665258fcc22fa"
+      "bytes": 2286,
+      "sha256": "18e30eb2721a9fadff54cf066f9a0d4504d93c944ab1ee8f4e61fe6d587b7e96"
     },
     {
       "path": "test_validate_run.py",
@@ -80,8 +80,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 1277,
-      "sha256": "a4d58cad68df011e5843fee77025a1bd2d641ca8e204a2637d2385dd8fbf82ae"
+      "bytes": 1378,
+      "sha256": "f8634370e4abda010597681344815503981ca5829e3393284ff17b3d98b51ab0"
     }
   ]
 }

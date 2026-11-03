@@ -70,3 +70,12 @@ This is an initial record-level ledger, not a complete PRISMA implementation:
 report retrieval, study-level reconciliation, appraisal, dependency scheduling and
 guideline/development evidence integration remain future work. Coverage assertions
 are not independently authenticated; census and conclusion readiness stay unestablished.
+
+### Dependency-aware research work
+
+Gaps may include stable `work_package_id`, `depends_on` ID lists and `status`
+(`PLANNED`, `IN_PROGRESS`, `COMPLETE`). Output includes a topological execution
+order and unfinished dependencies. Unknown IDs, duplicate IDs and cycles fail.
+`COMPLETE` requires `artifact_locator`, `acceptance_verified: true` and completed
+dependencies. These are operator assertions; the tool does not fetch artifacts
+or certify experiment quality. Evidence links remain mandatory.
