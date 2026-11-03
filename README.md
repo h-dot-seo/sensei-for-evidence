@@ -169,3 +169,8 @@ IDs. Try `examples/source-work-protocol.json` with the existing work/handoff CLI
 PRISMA audit JSON also exposes [work/deliverable traceability](docs/PRISMA_AUDIT.md#work-and-deliverable-traceability):
 explicit source/result work references, indirect report links and unverified
 artifact assertions, without treating task completion as source approval.
+
+[Opt-in local artifact review](docs/LOCAL_ARTIFACT_REVIEW.md) checks explicitly
+listed synthetic local files against supplied size/SHA-256 expectations using
+safe POSIX directory descriptors. Unsupported platforms fail closed; matching
+bytes are never acceptance of a work package or scientific conclusion.

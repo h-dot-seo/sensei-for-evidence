@@ -344,3 +344,17 @@ record-level deduplication. A real CLI synthetic receipt intake → supplied sou
 work/fictional completion note → handoff → PRISMA export → seven-file bundle
 create/verify passed. Artifacts remain unverified; work completion does not approve
 receipts, create extracted evidence, assess task coverage or establish census.
+
+Opt-in local artifact review increment (2026-11-03): 345 tests in the suite;
+Linux run: 344 passed and one native-Windows-only test skipped. Thirteen new tests
+exercise matching hashes without work completion, size/hash mismatch and missing
+files, empty manifests, full manifest validation before access, traversal and
+metadata paths, strict sizes/hashes/IDs, unsupported-platform fail-closed behavior,
+symlink ancestors/root, hardlinks/FIFOs/directories, zero-byte nested files,
+detected concurrent growth, bounded inputs, sanitized input errors and real CLI.
+On unsupported platforms, POSIX artifact-access cases are skipped while explicit
+fail-closed and portable validation tests still run. Independent review found no
+blocking issue within the documented trusted/quiescent-directory boundary; its
+metadata-cap, input-error leakage, root-spelling and access-time caveats were
+addressed. The synthetic note hashes successfully while its WP remains IN_PROGRESS,
+its dependent WP stays blocked, and source completeness is not established.

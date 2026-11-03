@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.27.0-prisma-work-traceability",
+  "release": "0.28.0-local-artifact-review",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 101,
+  "file_count": 107,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 10575,
-      "sha256": "e1e7b4506d834708766e6959da8d7104c9c62ce763a050ade196d4e67fe10d4e"
+      "bytes": 10883,
+      "sha256": "7c304d27a97e40a6f3da3311dab6c332c3a1854a823ff041be42e473cc8a364f"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 23978,
-      "sha256": "4ee38ee7bf71fe701de4415f7912f355fc019dfd41334b817bdbe8372729809f"
+      "bytes": 25019,
+      "sha256": "e7e7f5ffaac04d2310739485024f1813579771a37d83c47e19defd955dc5b07d"
     },
     {
       "path": "adapter_integrity.py",
@@ -62,6 +62,11 @@
       "path": "appraisal_links.py",
       "bytes": 3428,
       "sha256": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2"
+    },
+    {
+      "path": "artifact_review.py",
+      "bytes": 10239,
+      "sha256": "bdf9ffb04a54dc2baa273f85515873a2b3acf9c8a7497c71d4602f5f4396467b"
     },
     {
       "path": "audit_publication.py",
@@ -104,6 +109,11 @@
       "sha256": "a4519dcf953f15432c6594eeaa3909ba07c1052b077f7e027bdff99c6182cc37"
     },
     {
+      "path": "docs/LOCAL_ARTIFACT_REVIEW.md",
+      "bytes": 4660,
+      "sha256": "612f54bb7319961aba3249471643b0273e93d9af35f91a260669c5f881d437a8"
+    },
+    {
       "path": "docs/OPERATOR_HANDOFF.md",
       "bytes": 7183,
       "sha256": "30675c76abf3bbada1c355d32925d270412bcafb32e8875507e9a46eceb5ead8"
@@ -135,8 +145,8 @@
     },
     {
       "path": "docs/SOURCE_REVIEW_WORK.md",
-      "bytes": 6845,
-      "sha256": "e177075aa98ca0d3a5ee26b6f4e0a00c262a1f30a07bf7bcead41917b5657388"
+      "bytes": 7109,
+      "sha256": "badd507589f2099b238b5168f96b7644a2640b1237d8a7c3bf08731294987b15"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -179,6 +189,16 @@
       "sha256": "e37cd04237aaccb68ad2ad1cf81f0ea9f2e18dc433fc5681cd8d920e671492a7"
     },
     {
+      "path": "examples/artifact-review-manifest.json",
+      "bytes": 306,
+      "sha256": "5a8bbb97fcfebb76faa040ae67a0a947b8f959d23234204b7e388c41bca2ff9a"
+    },
+    {
+      "path": "examples/artifact-review-protocol.json",
+      "bytes": 8273,
+      "sha256": "f0a33a29e9acef99f216c147daf0ea72a1ac70d618adb5add5297bc46e69dd92"
+    },
+    {
       "path": "examples/claim-comparison.json",
       "bytes": 28640,
       "sha256": "248882fb7de3f1ce8aa87e0b7d2e43cc6581fcd240ea3ff942c94fec21072ff4"
@@ -192,6 +212,11 @@
       "path": "examples/experiment-review.json",
       "bytes": 13861,
       "sha256": "88fa6547a98247a771d402ca3babba40c552768e697314d7ba562e1e7da8ff09"
+    },
+    {
+      "path": "examples/local-artifacts/receipt-review.txt",
+      "bytes": 351,
+      "sha256": "f64a947a6f3f334dc5df4550b14a9886de42ca520030b2e430cf821b96e6e940"
     },
     {
       "path": "examples/manual-receipt-fixture.json",
@@ -347,6 +372,11 @@
       "path": "test_appraisal_links.py",
       "bytes": 5394,
       "sha256": "9e8abfef206648b4084e7cde9dfd6a5423f6db1a6aaeb4bc06f8dffb28151184"
+    },
+    {
+      "path": "test_artifact_review.py",
+      "bytes": 8237,
+      "sha256": "c065ed04b3598d13625536c68b13c89f6e8ee2601eab680aaf7c139e078c04c4"
     },
     {
       "path": "test_claim_positions.py",

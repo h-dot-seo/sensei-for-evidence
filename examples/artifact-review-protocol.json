@@ -1,0 +1,273 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "synthetic-source-work-v1",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026",
+      "searched_at": "2026-01-01",
+      "record_ids": [
+        "r1",
+        "r2"
+      ],
+      "pages": [
+        {
+          "response_id": "mock-page-1",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 1,
+          "has_more": true,
+          "total_count": 2,
+          "record_ids": [
+            "r1"
+          ]
+        },
+        {
+          "response_id": "mock-page-2",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 2,
+          "has_more": true,
+          "total_count": 2,
+          "error": "Fictional interrupted manual receipt",
+          "truncated": true,
+          "record_ids": [
+            "r1",
+            "r2"
+          ]
+        }
+      ],
+      "complete": false,
+      "total_count": 2,
+      "has_more": true,
+      "adapter_provenance": {
+        "receipt_sha256": "457305874b79684f3e6cdce7b98e757482e18ef4f71639d8aa471b8bf1c60e39",
+        "provider": {
+          "provider_id": "fictional-manual-entry",
+          "adapter_version": "manual-synthetic-v1",
+          "mode": "mock"
+        },
+        "source_verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "review": null
+      }
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [],
+  "gaps": [
+    {
+      "work_package_id": "WP-RECEIPT-REVIEW",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "planned_search",
+          "search_id": "search-primary"
+        },
+        {
+          "kind": "planned_search",
+          "search_id": "search-secondary"
+        }
+      ],
+      "question": "Which supplied receipt limitations and missing planned sources require human reconciliation?",
+      "deliverable": "Source-linked receipt review log retaining interruption, overlap and missing-source limitations.",
+      "acceptance_criterion": "A human records source pointers and dispositions without inventing totals, accepting unresolved receipts or claiming complete coverage.",
+      "status": "IN_PROGRESS",
+      "artifact_locator": "synthetic://receipt-review-note"
+    },
+    {
+      "work_package_id": "WP-EXTRACTION-REVIEW",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "r1"
+        }
+      ],
+      "depends_on": [
+        "WP-RECEIPT-REVIEW"
+      ],
+      "question": "What source-linked result entries or explicit unresolved extraction limits can a human document for the supplied record?",
+      "deliverable": "Human-reviewed extraction worksheet or an explicit unresolved-source note with locator.",
+      "acceptance_criterion": "A human checks the supplied record/report provenance and documents result IDs or why extraction remains unresolved; no result or causal conclusion is inferred."
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-1",
+      "record_ids": [
+        "r1"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "s1",
+      "locator": "synthetic section"
+    }
+  ],
+  "contexts": [],
+  "appraisals": [],
+  "search_plan": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "search-secondary",
+      "source": "synthetic-secondary-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    }
+  ],
+  "adapter_receipts": {
+    "schema_version": 1,
+    "provider": {
+      "provider_id": "fictional-manual-entry",
+      "adapter_version": "manual-synthetic-v1",
+      "mode": "mock"
+    },
+    "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+    "base_protocol": {
+      "question": "How should a synthetic mechanism be tested?",
+      "version": "1",
+      "inclusion_criteria": [
+        "synthetic intervention study"
+      ],
+      "exclusion_criteria": [
+        "outside synthetic scope"
+      ],
+      "searches": [],
+      "screening": [
+        {
+          "record_id": "r1",
+          "decision": "include",
+          "reason": "in scope"
+        },
+        {
+          "record_id": "r2",
+          "decision": "exclude",
+          "reason": "outside scope"
+        }
+      ],
+      "evidence": [],
+      "gaps": [],
+      "reports": [
+        {
+          "report_id": "report-1",
+          "record_ids": [
+            "r1"
+          ],
+          "retrieval": "retrieved",
+          "decision": "include",
+          "study_id": "s1",
+          "locator": "synthetic section"
+        }
+      ],
+      "contexts": [],
+      "appraisals": [],
+      "search_plan": [
+        {
+          "search_id": "search-primary",
+          "source": "synthetic-index",
+          "query": "synthetic mechanism",
+          "window": "2020-2026"
+        },
+        {
+          "search_id": "search-secondary",
+          "source": "synthetic-secondary-index",
+          "query": "synthetic mechanism",
+          "window": "2020-2026"
+        }
+      ]
+    },
+    "adapter_engine_sha256": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "receipts": [
+      {
+        "schema_version": 1,
+        "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+        "target_type": "search",
+        "target_id": "search-primary",
+        "provider": {
+          "provider_id": "fictional-manual-entry",
+          "adapter_version": "manual-synthetic-v1",
+          "mode": "mock"
+        },
+        "exchange": {
+          "request": {
+            "search_id": "search-primary",
+            "source": "synthetic-index",
+            "query": "synthetic mechanism",
+            "window": "2020-2026",
+            "searched_at": "2026-01-01",
+            "request_id": "mock-search-request-1"
+          },
+          "pages": [
+            {
+              "response_id": "mock-page-1",
+              "request_id": "mock-search-request-1",
+              "retrieved_at": "2026-11-03T00:00:00Z",
+              "page_number": 1,
+              "has_more": true,
+              "total_count": 2,
+              "records": [
+                {
+                  "record_id": "r1",
+                  "source_locator": "synthetic://r1",
+                  "title": "Synthetic record r1"
+                }
+              ]
+            },
+            {
+              "response_id": "mock-page-2",
+              "request_id": "mock-search-request-1",
+              "retrieved_at": "2026-11-03T00:00:00Z",
+              "page_number": 2,
+              "has_more": true,
+              "total_count": 2,
+              "records": [
+                {
+                  "record_id": "r1",
+                  "source_locator": "synthetic://r1",
+                  "title": "Synthetic record r1"
+                },
+                {
+                  "record_id": "r2",
+                  "source_locator": "synthetic://r2",
+                  "title": "Synthetic record r2"
+                }
+              ],
+              "error": "Fictional interrupted manual receipt",
+              "truncated": true
+            }
+          ],
+          "total_count": 2
+        },
+        "verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "sha256": "457305874b79684f3e6cdce7b98e757482e18ef4f71639d8aa471b8bf1c60e39"
+      }
+    ],
+    "reviews": [],
+    "boundary": "Mock provider responses are unverified candidates. Review entries are supplied operator assertions, not independent source verification or scientific appraisal. No external search, model call, identity matching or census claim is performed."
+  }
+}

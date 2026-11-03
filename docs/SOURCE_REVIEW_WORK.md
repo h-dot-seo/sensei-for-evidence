@@ -106,3 +106,7 @@ report to its supplied work and artifact, use `prisma_audit.py` on the same
 protocol. See [work and deliverable traceability](PRISMA_AUDIT.md#work-and-deliverable-traceability).
 It lists explicit links without propagating source-work completion to records or
 results, and never opens or verifies artifact locators.
+
+For explicitly authorized local byte checks, [local artifact review](LOCAL_ARTIFACT_REVIEW.md)
+accepts a separate manifest/root and checks bounded regular-file size and SHA-256.
+This POSIX-only opt-in never fetches locators or changes work/acceptance assertions.
