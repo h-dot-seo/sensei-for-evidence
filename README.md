@@ -45,6 +45,11 @@ Census and conclusion readiness remain `NOT_ESTABLISHED` and `NOT_READY`.
 
 ## Quick start
 
+New to the tools? Follow the [first offline run](docs/FIRST_RUN.md): 11 tested
+commands from a declared question and mock receipt through explicit supplied
+reviews, PRISMA accounting, nonclinical/context work and a verified bundle.
+Human-authored inputs and automatic bookkeeping are separated at each step.
+
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh

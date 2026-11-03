@@ -1,0 +1,622 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "synthetic-first-run-note-complete-v2",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026",
+      "searched_at": "2026-01-01",
+      "record_ids": [
+        "r1",
+        "r2"
+      ],
+      "pages": [
+        {
+          "response_id": "mock-page-1",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 1,
+          "has_more": true,
+          "total_count": 2,
+          "record_ids": [
+            "r1"
+          ]
+        },
+        {
+          "response_id": "mock-page-2",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 2,
+          "has_more": false,
+          "total_count": 2,
+          "record_ids": [
+            "r2"
+          ]
+        }
+      ],
+      "complete": true,
+      "total_count": 2,
+      "has_more": false,
+      "adapter_provenance": {
+        "receipt_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "source_verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "review": {
+          "target_type": "search",
+          "target_id": "search-primary",
+          "target_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+          "decision": "accept",
+          "reviewer": "synthetic-reviewer",
+          "reviewed_at": "2026-11-03",
+          "rationale": "Synthetic fixture review assertion only."
+        }
+      }
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 1",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "reporter",
+      "result": "reporter changed",
+      "limitations": "no rescue experiment",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e1",
+      "adapter_provenance": {
+        "candidate_id": "candidate-1",
+        "receipt_sha256": "81e09edd8cfaa89072a2b23286cdc73412a28ecb20afb5fc4319a78deff5e7a0",
+        "search_receipt_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "source_verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "review": {
+          "target_type": "extraction",
+          "target_id": "candidate-1",
+          "target_sha256": "81e09edd8cfaa89072a2b23286cdc73412a28ecb20afb5fc4319a78deff5e7a0",
+          "decision": "accept",
+          "reviewer": "synthetic-reviewer",
+          "reviewed_at": "2026-11-03",
+          "rationale": "Synthetic fixture review assertion only."
+        }
+      }
+    },
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 2",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "orthogonal synthetic readout",
+      "result": "no change observed",
+      "limitations": "synthetic negative result; precision unassessed",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e2",
+      "adapter_provenance": {
+        "candidate_id": "candidate-2",
+        "receipt_sha256": "66ca11cde35fb1be9f464931c862ae98638f0edccfcbc58b2bb7855c7eb455b3",
+        "search_receipt_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "source_verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "review": {
+          "target_type": "extraction",
+          "target_id": "candidate-2",
+          "target_sha256": "66ca11cde35fb1be9f464931c862ae98638f0edccfcbc58b2bb7855c7eb455b3",
+          "decision": "accept",
+          "reviewer": "synthetic-reviewer",
+          "reviewed_at": "2026-11-03",
+          "rationale": "Synthetic fixture review assertion only."
+        }
+      }
+    }
+  ],
+  "gaps": [
+    {
+      "work_package_id": "WP-RECEIPT-REVIEW",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "planned_search",
+          "search_id": "search-primary"
+        },
+        {
+          "kind": "planned_search",
+          "search_id": "search-secondary"
+        }
+      ],
+      "question": "Which supplied receipt limitations and missing planned sources require human reconciliation?",
+      "deliverable": "Source-linked receipt review log retaining interruption, overlap and missing-source limitations.",
+      "acceptance_criterion": "A human records source pointers and dispositions without inventing totals, accepting unresolved receipts or claiming complete coverage.",
+      "status": "COMPLETE",
+      "artifact_locator": "synthetic://fictional-receipt-review-note",
+      "acceptance_verified": true
+    },
+    {
+      "work_package_id": "WP-EXTRACTION-REVIEW",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "r1"
+        }
+      ],
+      "depends_on": [
+        "WP-RECEIPT-REVIEW"
+      ],
+      "question": "What source-linked result entries or explicit unresolved extraction limits can a human document for the supplied record?",
+      "deliverable": "Human-reviewed extraction worksheet or an explicit unresolved-source note with locator.",
+      "acceptance_criterion": "A human checks the supplied record/report provenance and documents result IDs or why extraction remains unresolved; no result or causal conclusion is inferred."
+    },
+    {
+      "question": "Does rescue reverse the endpoint?",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "deliverable": "Source-linked synthetic mechanism uncertainty review",
+      "acceptance_criterion": "Document observed and unassessed endpoints, source limitations and unresolved appraisal inputs; no go/no-go inference.",
+      "context": "preclinical mechanism; clinical translation unassessed",
+      "context_ids": [
+        "ctx-development"
+      ],
+      "work_package_id": "WP-MECHANISM",
+      "depends_on": [
+        "WP-EXTRACTION-REVIEW"
+      ]
+    },
+    {
+      "work_package_id": "WP-TRANSLATION",
+      "question": "Which applicability gaps need review before interpreting the synthetic model for a broader setting?",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "deliverable": "Synthetic guideline-to-development applicability review packet",
+      "acceptance_criterion": "Reviewer records population/model limitations and unknown development/regulatory claims with locators; no clinical recommendation.",
+      "context_ids": [
+        "ctx-guideline",
+        "ctx-development"
+      ],
+      "depends_on": [
+        "WP-MECHANISM"
+      ],
+      "status": "PLANNED"
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-1",
+      "record_ids": [
+        "r1"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "s1",
+      "locator": "synthetic section"
+    }
+  ],
+  "contexts": [
+    {
+      "context_id": "ctx-guideline",
+      "domain": "clinical_guideline",
+      "title": "Synthetic guideline placeholder",
+      "issuer": "Synthetic standards group",
+      "locator": "synthetic://guideline/section-1",
+      "version": "synthetic-v1",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic adult population; no real patient guidance",
+      "relevance_statement": "A supplied clinical context motivates a translation gap, not efficacy inference.",
+      "applicability": "Synthetic cell-model evidence cannot establish applicability to the supplied synthetic clinical population.",
+      "limitations": "Entirely synthetic; no guideline retrieved or currency verified.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [
+        "e1"
+      ]
+    },
+    {
+      "context_id": "ctx-development",
+      "domain": "drug_development",
+      "title": "Synthetic development context",
+      "issuer": "Synthetic development group",
+      "locator": "synthetic://development/memo-1",
+      "version": "synthetic-v1",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic preclinical research",
+      "relevance_statement": "Mechanistic uncertainty motivates an evidence review work package.",
+      "applicability": "Applies only to the supplied synthetic model.",
+      "limitations": "Synthetic planning context only; no safety package, regulatory clearance or development-stage transition is established.",
+      "development_stage": "discovery (supplied synthetic assertion)",
+      "regulatory_status": "unknown",
+      "evidence_ids": [
+        "e2"
+      ],
+      "review_status": "reviewed",
+      "reviewer": "synthetic-reviewer",
+      "reviewed_at": "2026-01-03"
+    }
+  ],
+  "appraisals": [
+    {
+      "appraisal_id": "appraisal-1",
+      "method": "Synthetic method placeholder; not a validated rubric",
+      "method_version": "synthetic-v1",
+      "method_locator": "synthetic://method/example",
+      "reviewer": "synthetic-reviewer",
+      "assessed_at": "2026-01-03",
+      "evidence_ids": [
+        "e1"
+      ],
+      "limitations": "Synthetic supplied assertion only; method suitability and source authenticity not checked.",
+      "domains": [
+        {
+          "name": "Synthetic reporting domain",
+          "judgement": "unclear",
+          "rationale": "Synthetic record does not state a relevant design detail.",
+          "source_locator": "synthetic section 1"
+        }
+      ]
+    }
+  ],
+  "search_plan": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "search-secondary",
+      "source": "synthetic-secondary-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    }
+  ],
+  "adapter_receipts": {
+    "schema_version": 1,
+    "provider": {
+      "provider_id": "synthetic-provider",
+      "adapter_version": "1",
+      "mode": "mock"
+    },
+    "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+    "base_protocol": {
+      "question": "How should a synthetic mechanism be tested?",
+      "version": "1",
+      "inclusion_criteria": [
+        "synthetic intervention study"
+      ],
+      "exclusion_criteria": [
+        "outside synthetic scope"
+      ],
+      "searches": [],
+      "screening": [
+        {
+          "record_id": "r1",
+          "decision": "include",
+          "reason": "in scope"
+        },
+        {
+          "record_id": "r2",
+          "decision": "exclude",
+          "reason": "outside scope"
+        }
+      ],
+      "evidence": [],
+      "gaps": [],
+      "reports": [
+        {
+          "report_id": "report-1",
+          "record_ids": [
+            "r1"
+          ],
+          "retrieval": "retrieved",
+          "decision": "include",
+          "study_id": "s1",
+          "locator": "synthetic section"
+        }
+      ],
+      "contexts": [],
+      "appraisals": [],
+      "search_plan": [
+        {
+          "search_id": "search-primary",
+          "source": "synthetic-index",
+          "query": "synthetic mechanism",
+          "window": "2020-2026"
+        },
+        {
+          "search_id": "search-secondary",
+          "source": "synthetic-secondary-index",
+          "query": "synthetic mechanism",
+          "window": "2020-2026"
+        }
+      ]
+    },
+    "adapter_engine_sha256": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "receipts": [
+      {
+        "schema_version": 1,
+        "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+        "target_type": "search",
+        "target_id": "search-primary",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "exchange": {
+          "request": {
+            "search_id": "search-primary",
+            "source": "synthetic-index",
+            "query": "synthetic mechanism",
+            "window": "2020-2026",
+            "searched_at": "2026-01-01",
+            "request_id": "mock-search-request-1"
+          },
+          "pages": [
+            {
+              "response_id": "mock-page-1",
+              "request_id": "mock-search-request-1",
+              "retrieved_at": "2026-11-03T00:00:00Z",
+              "page_number": 1,
+              "has_more": true,
+              "total_count": 2,
+              "records": [
+                {
+                  "record_id": "r1",
+                  "source_locator": "synthetic://r1",
+                  "title": "Synthetic record r1"
+                }
+              ]
+            },
+            {
+              "response_id": "mock-page-2",
+              "request_id": "mock-search-request-1",
+              "retrieved_at": "2026-11-03T00:00:00Z",
+              "page_number": 2,
+              "has_more": false,
+              "total_count": 2,
+              "records": [
+                {
+                  "record_id": "r2",
+                  "source_locator": "synthetic://r2",
+                  "title": "Synthetic record r2"
+                }
+              ]
+            }
+          ],
+          "total_count": 2
+        },
+        "verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778"
+      },
+      {
+        "schema_version": 1,
+        "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+        "target_type": "extraction",
+        "target_id": "candidate-1",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "search_receipt_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "candidate": {
+          "candidate_id": "candidate-1",
+          "request_id": "mock-search-request-1",
+          "record_id": "r1",
+          "source_locator": "synthetic://r1",
+          "source_text": "Entirely synthetic source. reporter changed",
+          "supporting_quote": "reporter changed",
+          "extraction_request_id": "mock-extraction-1",
+          "extractor_id": "synthetic-mock-extractor",
+          "extractor_version": "1",
+          "instruction": "Propose a structured result from the supplied synthetic text; do not infer validity.",
+          "proposal": {
+            "record_id": "r1",
+            "study_id": "s1",
+            "locator": "synthetic section 1",
+            "model": "synthetic cell model",
+            "intervention": "perturbation",
+            "comparator": "vehicle",
+            "endpoint": "reporter",
+            "result": "reporter changed",
+            "limitations": "no rescue experiment",
+            "mechanism_basis": "intervention",
+            "evidence_id": "e1"
+          }
+        },
+        "verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "sha256": "81e09edd8cfaa89072a2b23286cdc73412a28ecb20afb5fc4319a78deff5e7a0"
+      },
+      {
+        "schema_version": 1,
+        "base_protocol_sha256": "16149bbff3f8f8e58e2aaaba48a6c0b2683e302363e1affa47805b8f497e6741",
+        "target_type": "extraction",
+        "target_id": "candidate-2",
+        "provider": {
+          "provider_id": "synthetic-provider",
+          "adapter_version": "1",
+          "mode": "mock"
+        },
+        "search_receipt_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "candidate": {
+          "candidate_id": "candidate-2",
+          "request_id": "mock-search-request-1",
+          "record_id": "r1",
+          "source_locator": "synthetic://r1",
+          "source_text": "Entirely synthetic source. no change observed",
+          "supporting_quote": "no change observed",
+          "extraction_request_id": "mock-extraction-2",
+          "extractor_id": "synthetic-mock-extractor",
+          "extractor_version": "1",
+          "instruction": "Propose a structured result from the supplied synthetic text; do not infer validity.",
+          "proposal": {
+            "record_id": "r1",
+            "study_id": "s1",
+            "locator": "synthetic section 2",
+            "model": "synthetic cell model",
+            "intervention": "perturbation",
+            "comparator": "vehicle",
+            "endpoint": "orthogonal synthetic readout",
+            "result": "no change observed",
+            "limitations": "synthetic negative result; precision unassessed",
+            "mechanism_basis": "intervention",
+            "evidence_id": "e2"
+          }
+        },
+        "verification": "UNVERIFIED_PROVIDER_RESPONSE",
+        "sha256": "66ca11cde35fb1be9f464931c862ae98638f0edccfcbc58b2bb7855c7eb455b3"
+      }
+    ],
+    "reviews": [
+      {
+        "target_type": "search",
+        "target_id": "search-primary",
+        "target_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+        "decision": "accept",
+        "reviewer": "synthetic-reviewer",
+        "reviewed_at": "2026-11-03",
+        "rationale": "Synthetic fixture review assertion only."
+      },
+      {
+        "target_type": "extraction",
+        "target_id": "candidate-1",
+        "target_sha256": "81e09edd8cfaa89072a2b23286cdc73412a28ecb20afb5fc4319a78deff5e7a0",
+        "decision": "accept",
+        "reviewer": "synthetic-reviewer",
+        "reviewed_at": "2026-11-03",
+        "rationale": "Synthetic fixture review assertion only."
+      },
+      {
+        "target_type": "extraction",
+        "target_id": "candidate-2",
+        "target_sha256": "66ca11cde35fb1be9f464931c862ae98638f0edccfcbc58b2bb7855c7eb455b3",
+        "decision": "accept",
+        "reviewer": "synthetic-reviewer",
+        "reviewed_at": "2026-11-03",
+        "rationale": "Synthetic fixture review assertion only."
+      }
+    ],
+    "boundary": "Mock provider responses are unverified candidates. Review entries are supplied operator assertions, not independent source verification or scientific appraisal. No external search, model call, identity matching or census claim is performed."
+  },
+  "experimental_units": [
+    {
+      "experiment_id": "condition-1",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "source_locator": "synthetic://condition/source",
+      "model": {
+        "kind": "other",
+        "label": "Fictional non-operational signal model",
+        "source_locator": "synthetic://model",
+        "limitations": "Synthetic descriptor only; no organism, material or validated assay."
+      },
+      "treatment": {
+        "label": "Fictional perturbation A",
+        "source_locator": "synthetic://treatment",
+        "concentration": {
+          "status": "reported",
+          "value": "synthetic-level-A",
+          "unit": "fictional concentration unit",
+          "source_locator": "synthetic://condition/source"
+        },
+        "exposure_time": {
+          "status": "reported",
+          "value": "synthetic-window-A",
+          "unit": "fictional duration unit",
+          "source_locator": "synthetic://condition/source"
+        }
+      },
+      "comparator": {
+        "status": "reported",
+        "label": "Fictional comparator B",
+        "source_locator": "synthetic://comparator",
+        "concentration": {
+          "status": "not_applicable",
+          "reason": "No numeric comparator amount applies to this fictional description.",
+          "source_locator": "synthetic://condition/source"
+        },
+        "exposure_time": {
+          "status": "unknown",
+          "reason": "Comparator exposure duration is unknown in the synthetic source.",
+          "source_locator": "synthetic://condition/source"
+        }
+      },
+      "observation_times": [
+        {
+          "evidence_id": "e1",
+          "time": {
+            "status": "reported",
+            "value": "synthetic observation A",
+            "unit": "fictional elapsed unit",
+            "source_locator": "synthetic://condition/source"
+          },
+          "reference_event": {
+            "status": "reported",
+            "value": "Fictional source-defined event A; not assumed to be treatment start",
+            "source_locator": "synthetic://reference-event"
+          }
+        },
+        {
+          "evidence_id": "e2",
+          "time": {
+            "status": "not_reported",
+            "reason": "The synthetic source does not report this outcome observation time.",
+            "source_locator": "synthetic://condition/source"
+          },
+          "reference_event": {
+            "status": "unknown",
+            "reason": "Reference event is unknown in the synthetic source.",
+            "source_locator": "synthetic://reference-event"
+          }
+        }
+      ],
+      "causal_basis": "intervention",
+      "causal_statement": "Supplied intervention label only; causality is not established.",
+      "causal_limitations": "Necessity, sufficiency, specificity and clinical translation are unassessed.",
+      "causal_source_locator": "synthetic://causal-assertion",
+      "limitations": "A synthetic condition-pair record, not a procedure or independent replicate."
+    }
+  ]
+}

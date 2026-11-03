@@ -410,3 +410,15 @@ The first navigation CI run exposed a Windows-only test comparison issue: native
 CRLF stdout was compared to the renderer's LF string. The regression now normalizes
 only CRLF line endings before comparing the complete UTF-8 text; production
 behavior is unchanged. A fresh CI matrix run is required for the corrected commit.
+
+First-run walkthrough increment (2026-11-03): 395 tests in the suite;
+Linux run: 394 passed and one native-Windows-only test skipped. No runtime engine
+or input schema was added. Five new tests execute all 11 shell-free documented
+CLI commands in order using an external temporary directory with spaces, assert
+exclusive output refusal, verify exact adapter lineage and restricted authored
+enrichment fields, separate record/report/study/result counts, and check that the
+fictional completed note only changes recorded work/dependency assertions. Missing
+searches and scientific-readiness bounds persist. Local documentation links and
+unchanged completion guards are checked. The sequence clearly separates mock
+provider proposals, prewritten fictional reviews, hand-authored nonclinical/context
+work metadata and unverified artifact/acceptance assertions.

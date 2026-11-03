@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.32.1-work-navigation-newlines",
+  "release": "0.33.0-first-run-walkthrough",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 118,
+  "file_count": 122,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12050,
-      "sha256": "c33670555125bfa19fa75bff650a1c05c951ad2e4331f3bbf373f47e6fd29c44"
+      "bytes": 12359,
+      "sha256": "ab6a282bb9adfe236eb7ce65fa54accb905cd14c0ddba813491d793aefc4a696"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 28876,
-      "sha256": "cd87e4200c7e27e98a81297db35867c02ebdf145430d89eb5e435ae6003b88a2"
+      "bytes": 29734,
+      "sha256": "a75295d241b7d00df0b15e5a671733b493c0ca492a7d02be8a7be00edb05d646"
     },
     {
       "path": "adapter_integrity.py",
@@ -114,6 +114,11 @@
       "sha256": "a4519dcf953f15432c6594eeaa3909ba07c1052b077f7e027bdff99c6182cc37"
     },
     {
+      "path": "docs/FIRST_RUN.md",
+      "bytes": 6899,
+      "sha256": "0588bccdf39a359d662ea314f7f34ad9923c2ab491acbb45413e420f7273934d"
+    },
+    {
       "path": "docs/LOCAL_ARTIFACT_REVIEW.md",
       "bytes": 4660,
       "sha256": "612f54bb7319961aba3249471643b0273e93d9af35f91a260669c5f881d437a8"
@@ -170,8 +175,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 28935,
-      "sha256": "9399d0100de1a134bbb85f9ecf333e94239927ee6637a87a515e8e4481a89d31"
+      "bytes": 29019,
+      "sha256": "0f311ce637a7087c079ce87248431093aa121e8edf5fd01cbfef7922aa4fa3c7"
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
@@ -237,6 +242,16 @@
       "path": "examples/experiment-review.json",
       "bytes": 13861,
       "sha256": "88fa6547a98247a771d402ca3babba40c552768e697314d7ba562e1e7da8ff09"
+    },
+    {
+      "path": "examples/first-run-enriched.json",
+      "bytes": 21884,
+      "sha256": "4a2fb9b29660772de6d76360a0d2987114e838b69a8c695c75b0eebdaa5bb0bf"
+    },
+    {
+      "path": "examples/first-run-note-complete.json",
+      "bytes": 22023,
+      "sha256": "eb417852b09f86304fbb2ca17dfd0b63e3b4a522eb5d5f03406897b0dcc6c363"
     },
     {
       "path": "examples/local-artifacts/receipt-review.txt",
@@ -457,6 +472,11 @@
       "path": "test_experiment_links.py",
       "bytes": 12208,
       "sha256": "3c022945254af805cf34f67532f2db7c8122c2c309ce8578ed190e3cff78b4be"
+    },
+    {
+      "path": "test_first_run_walkthrough.py",
+      "bytes": 5420,
+      "sha256": "d96072b31b86bacbd595e4c242d05803ed13c039e75e3335a0d407a1b992ac5e"
     },
     {
       "path": "test_json_io.py",

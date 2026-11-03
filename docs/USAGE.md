@@ -1,5 +1,6 @@
 # Detailed usage and compatibility
 
+For a first complete rehearsal, use the [tested offline walkthrough](FIRST_RUN.md).
 Run command examples from the repository root. See the [quick start](../README.md)
 for the combined synthetic demonstration.
 
