@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.22.0-operator-review-handoff",
+  "release": "0.23.0-prisma-accounting-export",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 85,
+  "file_count": 89,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 8741,
-      "sha256": "d26401f2f293dc47b4573f113ad802afc8a94a49860d681481e216338efa9ebf"
+      "bytes": 9111,
+      "sha256": "5ed4fc23245dbe1021c8e8cadc033b07084be22ecf22b6ba05817e1dda8efc9e"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 19206,
-      "sha256": "968dfe011207a47d125838e773ce74f3e73a7a210ff3fdd49bf132e9c9e3b7fd"
+      "bytes": 20145,
+      "sha256": "8ba3921d1d6e8e3edd33c8d09daef82b359de24f779762f95c85967f876c8f74"
     },
     {
       "path": "adapter_integrity.py",
@@ -105,8 +105,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 6515,
-      "sha256": "38836b4380bb6a61b70815ffbe867e58e9b7a3dd861b827e7fd621b70182bc75"
+      "bytes": 6701,
+      "sha256": "4877dff92e196ff28f1139e32ea23fcc858b9d1ac3941265cff7dda73e2d5ced"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -117,6 +117,11 @@
       "path": "docs/PLANNING_ASSERTIONS.md",
       "bytes": 7803,
       "sha256": "a46edb093fc242aa71bf25e8a2465bdd15dc6a3ef3dc3b677afa3ca5f4d37648"
+    },
+    {
+      "path": "docs/PRISMA_AUDIT.md",
+      "bytes": 6633,
+      "sha256": "6e50381659253f720ab214a60351c6c24f0a6e98270edd726b9d28be5d68993a"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -194,6 +199,11 @@
       "sha256": "d66afe9b76cc2fba6cb02d925a1160e9d4818f5d6faa6d0090908d9c035bad64"
     },
     {
+      "path": "examples/prisma-audit.json",
+      "bytes": 29356,
+      "sha256": "103f43c65af40fa30499602401374c5a6641703ad0af9320587d1de588a00020"
+    },
+    {
       "path": "examples/protocol.json",
       "bytes": 1433,
       "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
@@ -254,6 +264,11 @@
       "sha256": "63e2198cb328b43dbbdf87b06d96dcb6ec42488b14486d22d5104686a0b6a4ad"
     },
     {
+      "path": "prisma_audit.py",
+      "bytes": 12720,
+      "sha256": "98ae924513f46f9c17b01f87c3145d376369c9454d6c9b7d092b8419d0422a9e"
+    },
+    {
       "path": "prisma_reports.py",
       "bytes": 6039,
       "sha256": "a1ff4e2ec4e13c41abe74315a8612225524b131df13adc0d4c7608ffdb49f6b3"
@@ -270,8 +285,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 15716,
-      "sha256": "22c4db3b12bbbd9c75514c0c0d2666a3194ad87fc55d0aba5e268639c79b63e0"
+      "bytes": 16031,
+      "sha256": "49c3810cd61b20f95d73165bc25eac20ec59ebf87bc9b6c84839ca93a30ba046"
     },
     {
       "path": "search_audit.py",
@@ -352,6 +367,11 @@
       "path": "test_planning_links.py",
       "bytes": 9817,
       "sha256": "1d03bb2638a08b7e55444426efce335ba52c8723e601acea48635cce2a846cb1"
+    },
+    {
+      "path": "test_prisma_audit.py",
+      "bytes": 10872,
+      "sha256": "5d456afc73c116576dc5445a49c2f96e14523bcb438916200886a3f1673d319b"
     },
     {
       "path": "test_prisma_reports.py",

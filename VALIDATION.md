@@ -279,3 +279,16 @@ create/verify against a fictional input path with spaces. Independent review
 identified null-plan, search-index, namespace and argument-array edge cases;
 these were fixed with explicit regressions. No source retrieval, scientific
 review, work execution or automatic review renewal is performed.
+
+PRISMA-oriented accounting export increment (2026-11-03): 279 tests in the suite;
+Linux run: 278 passed and one native-Windows-only test skipped. Fourteen new tests
+cover occurrence/record/report/study/result units, nine same-unit disjoint member
+partitions, exact-ID retention pointers, many-record/report/study links, missing
+versus empty report stages, exact stage-specific reasons, incomplete-search
+visibility, input-order retention, legacy source IDs, unchanged source data,
+canonical/implementation hashes, handoff navigation and real JSON/text/error CLI
+runs. Independent review additionally passed 150 randomized mixed accounting
+fixtures, 47 malformed-input CLI cases and 27 existing report/handoff tests.
+The fictional E2E CLI audit/handoff and existing bundle create/verify passed.
+Matching partitions do not certify completeness, identity, PRISMA compliance or
+scientific/clinical validity; no sources or models were called.

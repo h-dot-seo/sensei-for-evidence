@@ -84,6 +84,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
 | `validate_run.py STATE.json` | Validate selected state/release consistency rules |
 | `evidence_workflow.py PROTOCOL.json` | Reconcile search, screening, results, context, appraisal and work |
+| `prisma_audit.py PROTOCOL.json [--text]` | Export unit-specific members, exclusion reasons, identity links and supplied-count partitions |
 | `prisma_reports.py PROTOCOL.json` | Add report/full-text/study and extraction-queue accounting |
 | `research_bundle.py create PROTOCOL.json OUTPUT.zip` | Create a new portable supplied-data bundle |
 | `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
@@ -145,3 +146,7 @@ stale review and why positions are not independent votes or inferred conclusions
 Start with the [operator handoff journey](docs/OPERATOR_HANDOFF.md) to see which
 steps remain human work and reproduce evidence → claim/guideline → WP → bundle
 review using real CLI commands on the fictional fixture.
+
+The [PRISMA-oriented accounting export](docs/PRISMA_AUDIT.md) exposes exact member
+IDs and record/report/study/result links for audit, without certifying a complete
+search or PRISMA compliance. Try `examples/prisma-audit.json`.
