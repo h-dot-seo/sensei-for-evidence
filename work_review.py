@@ -72,6 +72,14 @@ def review_packets(protocol, work_package_id=None):
             planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
+            synthesis_stage=research['synthesis']['stage'],
+            claim_positions=[dict(statement=copy.deepcopy(statement),
+                                  work_evidence_ids=sorted(evidence_ids.intersection(statement['evidence_ids'])),
+                                  other_statement_evidence_ids=sorted(set(statement['evidence_ids'])-evidence_ids),
+                                  work_positions=[copy.deepcopy(position) for position in statement.get('evidence_positions', []) if position['evidence_id'] in evidence_ids],
+                                  position_stage='SUPPLIED' if 'evidence_positions' in statement else 'NOT_SUPPLIED',
+                                  scope='full_statement_review_with_only_work_linked_positions_selected')
+                             for statement in research['synthesis']['statement_ledger'] if evidence_ids.intersection(statement['evidence_ids'])],
             experimental_stage=research['experiments']['stage'],
             experimental_gap_scope='full_intersecting_condition_records_including_other_outcomes',
             experimental_units=[dict(experimental_unit=copy.deepcopy(unit),
@@ -152,6 +160,8 @@ def render_text(result):
                 lines.append('Unverified mock candidate support: ' + show(row['adapter_candidate_support']))
         for source in packet['sources']:
             lines.append('Search source/accounting: ' + show(source))
+        lines.append('Supplied synthesis stage: ' + packet['synthesis_stage'])
+        lines.append('Supplied claim positions and linkage scope: ' + show(packet['claim_positions']))
         lines.append('Structured condition stage: ' + packet['experimental_stage'])
         lines.append('Unresolved condition scope: ' + packet['experimental_gap_scope'])
         for unit in packet['experimental_units']:

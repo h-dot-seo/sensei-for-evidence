@@ -34,7 +34,7 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues','linked_synthesis_statement_ids']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -56,6 +56,7 @@ def build_bundle(raw):
                         planner=assertion.get('planner', ''), planned_at=assertion.get('planned_at', ''),
                         planning_basis_sha256=assertion.get('basis_sha256', ''),
                         current_planning_basis_sha256=planning['current_basis_sha256'],
+                        linked_synthesis_statement_ids=sorted(statement['statement_id'] for statement in research['synthesis']['statement_ledger'] if set(wp['evidence_ids']).intersection(statement['evidence_ids'])) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied',
                         experimental_stage=research['experiments']['stage'],
                         units_without_outcome_statistics=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_statistics' not in unit and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
                         units_with_statistics_review_cues=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if (unit.get('statistics_review', {}).get('missing_fields') or unit.get('statistics_review', {}).get('literal_label_differences')) and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
@@ -91,6 +92,7 @@ def build_bundle(raw):
              f"Pending supplied statement reviews: {len(research['synthesis']['pending_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
              f"Stale supplied statement reviews: {len(research['synthesis']['stale_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
              'Citation links do not establish support for supplied synthesis statements.\n'
+             'Supplied claim positions are not votes or inferred support, refutation or causality.\n'
              f"Work packages: {len(research['work_packages'])}\n"
              f"Work without supplied planning ranks: {len(research['planning']['work_without_planning_assertion'])}\n"
              f"Work with stale planning source bindings: {len(research['planning']['work_with_stale_planning_assertion'])}\n"

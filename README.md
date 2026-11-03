@@ -134,3 +134,8 @@ or assessing statistics. See [condition metadata](docs/EXPERIMENT_CONDITIONS.md#
 arm summaries, statistical metadata and explicitly oriented effect-direction
 text. [Outcome statistics review](docs/OUTCOME_STATISTICS.md) explains missing
 fields and literal-label cues without numerical or scientific inference.
+
+[`claim-comparison.json`](examples/claim-comparison.json) adds human-supplied
+observation/causal claim positions alongside source-linked results, n and statistics.
+[Claim-position comparison](docs/CLAIM_COMPARISON.md) explains exact scope,
+stale review and why positions are not independent votes or inferred conclusions.

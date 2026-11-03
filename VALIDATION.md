@@ -253,3 +253,17 @@ Independent review tested 146 malformed/reporting-state cases and 82 individual
 source-leaf changes against current review bindings. The reported dispersion-unit
 cue omission was fixed and covered by a targeted regression. Numerical consistency,
 statistical significance, effect direction and causality remain unassessed.
+
+Claim-position comparison increment (2026-11-03): 250 tests in the suite;
+Linux run: 249 passed and one native-Windows-only test skipped. Eleven new tests
+cover exact component/citation/aspect scope, strict provenance and author/date
+fields, duplicate/partial coverage rejection, missing-versus-empty stages,
+source-bound position changes/removal, fixed no-support/no-voting behavior,
+WP-selected positions versus full-statement scope, condition/n/statistics joins,
+CSV/bundle propagation, legacy hashes, unchanged PRISMA/work priorities and safe
+text/nonmutation. Independent review identified a missing synthesis-stage label
+in WP text; the label and absence/empty regression were added. CLI status,
+work/synthesis review and reproducible bundle creation/verification passed on
+fictional positions only. No direction, refutation or causal judgment is inferred.
+Independent partial-overlap review was retained as an e1-only WP regression: only
+its positions are selected while the other result and full statement stay visible.
