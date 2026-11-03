@@ -3,13 +3,12 @@ import argparse
 import copy
 import hashlib
 import json
-import unicodedata
 from pathlib import Path
 
 from evidence_workflow import run
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
-from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json
+from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 
 BOUNDARY = ('A review packet joins supplied assertions and mechanical gaps only. It does not '
             'judge source authenticity, clinical applicability, guideline currency, regulatory status, causal validity, '
@@ -103,12 +102,7 @@ def review_packets(protocol, work_package_id=None):
 
 
 def render_text(result):
-    # Quote every supplied value so control characters/newlines cannot spoof packet labels.
-    def show(value):
-        encoded = json.dumps(value, ensure_ascii=False, sort_keys=True)
-        return ''.join(json.dumps(char, ensure_ascii=True)[1:-1]
-                       if unicodedata.category(char) in ('Cc', 'Cf', 'Zl', 'Zp') else char
-                       for char in encoded)
+    show = quoted_display
     plan_supplied = result['global_search_plan_audit']['plan_status'] != 'NOT_SUPPLIED'
     lines = ['Work-package review packets', 'Question: ' + show(result['question']),
              'Protocol version: ' + show(result['protocol_version']),

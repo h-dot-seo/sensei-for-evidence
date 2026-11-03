@@ -8,6 +8,7 @@ from search_audit import audit_search_plan, completion_issues, page_audit
 from appraisal_links import link_appraisals
 from adapter_integrity import validate_adapter_protocol
 from planning_links import link_planning
+from synthesis_links import link_synthesis
 
 
 def run(protocol):
@@ -129,6 +130,7 @@ def run(protocol):
             stack.extend((dep, False) for dep in reversed(w['depends_on']))
     context = link_context(protocol, evidence, work)
     appraisal = link_appraisals(protocol, evidence, work)
+    synthesis = link_synthesis(protocol, evidence, context, appraisal)
     planning = link_planning(protocol, evidence, work, context, appraisal)
     included = sum(d['decision'] == 'include' for d in decisions.values())
     return dict(question=protocol['question'], protocol_version=protocol['version'],
@@ -142,7 +144,7 @@ def run(protocol):
                           excluded=len(decisions)-included, included=included, extracted=len(evidence),
                           extracted_records=len(extracted_records),
                           extracted_studies=len({row['study_id'] for row in evidence})),
-                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning,
+                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
                 extraction_pending_scope='title_abstract_included_records_without_any_result_row',
                 extraction_completeness='NOT_ESTABLISHED',

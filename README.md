@@ -26,6 +26,8 @@ services or models:
 - Supplied appraisal methods and domain judgements, with reviewer provenance and
   missing-appraisal coverage. No appraisal score or consensus is inferred.
 - Dependency-aware work packages, deliverables and explicit completion assertions.
+- PRISMA-oriented synthesis review snapshots with exact result citations, visible
+  uncited evidence and source-bound supplied reviews; no generated conclusions.
 - Supplied planning ranks with rationale/uncertainty and source-staleness checks;
   ranks never override dependencies or become automated recommendations.
 - Per-work-package review packets joining source lineage, guideline/development
@@ -73,6 +75,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | Command | Purpose |
 |---|---|
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
+| `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
 | `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
 | `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
 | `validate_run.py STATE.json` | Validate selected state/release consistency rules |
@@ -113,3 +116,6 @@ development and research-management handoff example.
 
 See [supplied planning assertions](docs/PLANNING_ASSERTIONS.md) for recording a
 rank, checking changed source context and keeping priority separate from dependencies.
+
+See [synthesis review snapshots](docs/SYNTHESIS_REVIEW.md) for the record/report/
+study/result accounting and supplied statement review journey.

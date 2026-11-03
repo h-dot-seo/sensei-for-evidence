@@ -500,3 +500,9 @@ items beside each supplied deliverable. No scientific or medical decision is mad
 See [planning ranks and source staleness](PLANNING_ASSERTIONS.md). The workflow
 exposes source/hash review targets but never chooses a rank or renews a stale
 assertion. Missing/stale planning queues remain separate from dependency status.
+
+## Synthesis review snapshot
+
+See [PRISMA-oriented accounting and supplied synthesis review](SYNTHESIS_REVIEW.md)
+for exact result citations, all stage ledgers, uncited evidence and pending/stale
+reviews. This is not generated scientific synthesis or a completed systematic review.

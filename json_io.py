@@ -2,6 +2,7 @@
 import json
 import math
 import sys
+import unicodedata
 
 
 def parse_json(raw):
@@ -51,3 +52,11 @@ def canonical_json_bytes(value):
     """Sorted compact UTF-8 representation for semantic input fingerprints."""
     return json.dumps(value, sort_keys=True, ensure_ascii=False, allow_nan=False,
                       separators=(',', ':')).encode('utf-8')
+
+
+def quoted_display(value):
+    """Quote supplied values without allowing control/format characters to spoof labels."""
+    encoded = json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
+    return ''.join(json.dumps(char, ensure_ascii=True)[1:-1]
+                   if unicodedata.category(char) in ('Cc', 'Cf', 'Zl', 'Zp') else char
+                   for char in encoded)

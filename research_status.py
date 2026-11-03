@@ -22,6 +22,9 @@ def status(protocol):
     report_ledger = reports['report_ledger'] if reports is not None else []
     work = research['work_packages']
     queues = dict(
+        pending_synthesis_statement_reviews=research['synthesis']['pending_statement_ids'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
+        stale_synthesis_statement_reviews=research['synthesis']['stale_statement_ids'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
+        evidence_without_statement_citation=research['synthesis']['evidence_without_statement_citation'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
         work_without_planning_assertion=research['planning']['work_without_planning_assertion'],
         work_with_stale_planning_assertion=research['planning']['work_with_stale_planning_assertion'],
         missing_planned_searches=plan['missing_search_ids'] if plan['plan_status'] != 'NOT_SUPPLIED' else None,
@@ -61,6 +64,9 @@ def render_text(result):
         value = result['counts'][key]
         return 'not supplied' if value is None else str(value)
     labels = [
+        ('Pending supplied synthesis reviews', 'pending_synthesis_statement_reviews'),
+        ('Stale supplied synthesis reviews', 'stale_synthesis_statement_reviews'),
+        ('Results without statement citations', 'evidence_without_statement_citation'),
         ('Work without supplied planning ranks', 'work_without_planning_assertion'),
         ('Work with stale planning source bindings', 'work_with_stale_planning_assertion'),
         ('Missing planned searches', 'missing_planned_searches'),

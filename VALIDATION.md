@@ -203,3 +203,14 @@ adapter → context/WP → supplied rank → prerequisite completion → packet/
 journey. Independent review also probed dependency-scope and context-review changes.
 Current-source matching is not planning quality; stale ranks are not used in current
 rank groups, and neither ranks nor completion assertions alter readiness bounds.
+
+Synthesis review snapshot increment (2026-11-03): 204 tests in the suite; local
+Linux run: 203 passed and one Windows-only test skipped. Thirteen new synthetic
+tests cover distinct record/report/study/result accounting, unfinished search and
+full-text stages, missing versus empty stages, extraction-scoped citation/context/
+appraisal links, malformed citations, source-bound statement reviews, stale prose
+and source inputs, canonical type changes, conflicting appraisal assertions,
+empty-queue readiness limits, adapter-to-synthesis/bundle propagation and strict
+UTF-8/control-safe CLI rendering. Independent review also checked conservation,
+source-hash scope, tampering and latest ledger/diagnostic visibility fixes.
+No statement support, literature completeness or clinical validity was assessed.

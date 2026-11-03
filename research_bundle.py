@@ -11,7 +11,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -73,6 +73,10 @@ def build_bundle(raw):
              f"Extracted result rows: {research['flow']['extracted']}\n"
              f"Source records with extraction: {research['flow']['extracted_records']}\n"
              f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"
+             f"Synthesis statement stage: {research['synthesis']['stage']}\n"
+             f"Pending supplied statement reviews: {len(research['synthesis']['pending_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
+             f"Stale supplied statement reviews: {len(research['synthesis']['stale_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
+             'Citation links do not establish support for supplied synthesis statements.\n'
              f"Work packages: {len(research['work_packages'])}\n"
              f"Work without supplied planning ranks: {len(research['planning']['work_without_planning_assertion'])}\n"
              f"Work with stale planning source bindings: {len(research['planning']['work_with_stale_planning_assertion'])}\n"
