@@ -31,13 +31,14 @@ def snapshot(protocol):
     contexts = {row['context_id']: row for row in research['context']['context_ledger']}
     candidate_receipts = {row['sha256']: row for row in protocol.get('adapter_receipts', {}).get('receipts', [])
                           if row['target_type'] == 'extraction'}
+    experiment_links = {row['evidence_id']: row['experiment_id'] for row in research['experiments']['evidence_links']}
     citations = {}
     for evidence in research['evidence']:
         eid, rid = evidence['evidence_id'], evidence['record_id']
         candidate = candidate_receipts.get(evidence.get('adapter_provenance', {}).get('receipt_sha256'), {}).get('candidate')
         support = None if candidate is None else {key: candidate[key] for key in
             ('candidate_id', 'request_id', 'source_locator', 'supporting_quote', 'extractor_id', 'extractor_version')}
-        citations[eid] = dict(evidence=copy.deepcopy(evidence), adapter_candidate_support=support, screening=copy.deepcopy(screening[rid]),
+        citations[eid] = dict(evidence=copy.deepcopy(evidence), experiment_id=experiment_links[eid], adapter_candidate_support=support, screening=copy.deepcopy(screening[rid]),
             report=copy.deepcopy(report_by_record.get(rid)),
             search_sources=[dict(occurrence=copy.deepcopy(row),
                                  search=copy.deepcopy(research['search_ledger'][row['search_index']]),
@@ -49,6 +50,11 @@ def snapshot(protocol):
         refs = set(statement['evidence_ids'])
         statements.append(dict(statement=copy.deepcopy(statement),
             citations=[copy.deepcopy(citations[eid]) for eid in statement['evidence_ids']],
+            experimental_gap_scope='full_intersecting_condition_records_including_other_outcomes',
+            experimental_units=[dict(experimental_unit=copy.deepcopy(unit),
+                                     cited_evidence_ids=sorted(refs.intersection(unit['evidence_ids'])),
+                                     other_experiment_evidence_ids=sorted(set(unit['evidence_ids'])-refs))
+                                for unit in research['experiments']['experimental_unit_ledger'] if refs.intersection(unit['evidence_ids'])],
             contexts=[dict(context=copy.deepcopy(contexts[cid]),
                            cited_evidence_ids=sorted(refs.intersection(contexts[cid]['evidence_ids'])),
                            other_context_evidence_ids=sorted(set(contexts[cid]['evidence_ids'])-refs)) for cid in statement['context_ids']],
@@ -75,6 +81,9 @@ def snapshot(protocol):
         statement_review_targets=copy.deepcopy(synthesis['review_targets']),
         evidence_citation_index=[citations[eid] for eid in sorted(citations)],
         evidence_without_statement_citation=None if not supplied else copy.deepcopy(synthesis['evidence_without_statement_citation']),
+        experimental_stage=research['experiments']['stage'],
+        experimental_unit_ledger=copy.deepcopy(research['experiments']['experimental_unit_ledger']),
+        experiment_boundary=research['experiments']['boundary'],
         context_ledger=copy.deepcopy(research['context']['context_ledger']),
         appraisal_ledger=copy.deepcopy(research['appraisal']['appraisal_ledger']),
         deduplication_scope=research['deduplication_scope'], record_identity_verification='NOT_ESTABLISHED',
@@ -111,6 +120,8 @@ def render_text(result):
     for item in result['statements']:
         lines.extend(['', 'Supplied synthesis statement: ' + show(item['statement']),
                       'Cited extraction/source trace: ' + show(item['citations']),
+                      'Unresolved condition scope: ' + item['experimental_gap_scope'],
+                      'Supplied comparison conditions and linkage scope: ' + show(item['experimental_units']),
                       'Explicit context linkage scope: ' + show(item['contexts']),
                       'Appraisal linkage scope: ' + show(item['appraisals'])])
     lines.append('Results without explicit statement citations: ' + show(result['evidence_without_statement_citation']))
@@ -120,11 +131,13 @@ def render_text(result):
             lines.append('Uncited result/source trace: ' + show(row))
         elif result['synthesis_stage'] == 'NOT_SUPPLIED':
             lines.append('Result inventory (synthesis stage not supplied): ' + show(row))
+    lines.append('Structured condition stage: ' + result['experimental_stage'])
+    lines.append('Supplied condition record inventory (not replicate counts): ' + show(result['experimental_unit_ledger']))
     lines.extend(['Recorded context inventory: ' + show(result['context_ledger']),
                   'Recorded appraisal inventory: ' + show(result['appraisal_ledger']),
                   'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',
                   'Extraction completeness: NOT_ESTABLISHED', 'Census: NOT_ESTABLISHED',
-                  'Conclusion: NOT_READY', result['synthesis_boundary'], result['boundary']])
+                  'Conclusion: NOT_READY', result['experiment_boundary'], result['synthesis_boundary'], result['boundary']])
     return '\n'.join(lines) + '\n'
 
 

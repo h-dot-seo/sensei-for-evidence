@@ -9,7 +9,9 @@ BOUNDARY = ('Statements and review labels are supplied assertions. Linked citati
             'are not automatically omission errors. No synthesis text or conclusions are generated.')
 
 
-def link_synthesis(protocol, evidence, context, appraisal):
+def link_synthesis(protocol, evidence, context, appraisal, experiments=None):
+    if 'experimental_units' in protocol and (not isinstance(experiments, dict) or experiments.get('stage') != 'SUPPLIED'):
+        raise ValueError('supplied experimental units require validated experiment binding')
     supplied = protocol.get('synthesis_statements', [])
     if not isinstance(supplied, list):
         raise ValueError('synthesis_statements must be a list')
@@ -67,6 +69,8 @@ def link_synthesis(protocol, evidence, context, appraisal):
                      context_ids=copy.deepcopy(cids), evidence=[copy.deepcopy(known[eid]) for eid in refs],
                      contexts=[copy.deepcopy(contexts[cid]) for cid in cids],
                      appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if set(refs).intersection(item['evidence_ids'])])
+        if experiments is not None and experiments['stage'] == 'SUPPLIED':
+            basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if set(refs).intersection(item['evidence_ids'])])
         current_hash = digest(basis)
         match = ('PENDING_REVIEW' if review == 'pending' else
                  'CURRENT_SOURCE' if row['basis_sha256'] == current_hash else 'STALE_SOURCE')

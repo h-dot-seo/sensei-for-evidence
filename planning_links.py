@@ -15,7 +15,9 @@ def digest(value):
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
-def link_planning(protocol, evidence, work, context, appraisal):
+def link_planning(protocol, evidence, work, context, appraisal, experiments=None):
+    if 'experimental_units' in protocol and (not isinstance(experiments, dict) or experiments.get('stage') != 'SUPPLIED'):
+        raise ValueError('supplied experimental units require validated experiment binding')
     supplied = protocol.get('planning_decisions', [])
     if not isinstance(supplied, list):
         raise ValueError('planning_decisions must be a list')
@@ -37,6 +39,8 @@ def link_planning(protocol, evidence, work, context, appraisal):
             evidence=[copy.deepcopy(evidence_by_id[eid]) for eid in sorted(refs)],
             contexts=[copy.deepcopy(context_by_id[cid]) for cid in sorted(row.get('context_ids', []))],
             appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if refs.intersection(item['evidence_ids'])])
+        if experiments is not None and experiments['stage'] == 'SUPPLIED':
+            basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if refs.intersection(item['evidence_ids'])])
         targets[wid] = dict(work_package_id=wid, basis=basis, basis_sha256=digest(basis))
     decisions = {}
     for decision in supplied:

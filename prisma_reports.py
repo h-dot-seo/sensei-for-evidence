@@ -65,7 +65,7 @@ def report_flow(protocol):
     for rid,r in sorted(reports.items()):
         writer.writerow([safe_csv_cell(rid),safe_csv_cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
                          safe_csv_cell(r.get('reason','')),safe_csv_cell(r.get('study_id','')),safe_csv_cell(r.get('locator',''))])
-    return dict(synthesis=baseline['synthesis'], planning=baseline['planning'], record_provenance=baseline['record_provenance'],
+    return dict(experiments=baseline['experiments'], synthesis=baseline['synthesis'], planning=baseline['planning'], record_provenance=baseline['record_provenance'],
                 deduplication_scope=baseline['deduplication_scope'],
                 record_identity_verification=baseline['record_identity_verification'],
                 search_ledger=baseline['search_ledger'],

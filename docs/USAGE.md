@@ -506,3 +506,9 @@ assertion. Missing/stale planning queues remain separate from dependency status.
 See [PRISMA-oriented accounting and supplied synthesis review](SYNTHESIS_REVIEW.md)
 for exact result citations, all stage ledgers, uncited evidence and pending/stale
 reviews. This is not generated scientific synthesis or a completed systematic review.
+
+## Supplied nonclinical conditions
+
+See [comparison condition records](EXPERIMENT_CONDITIONS.md) for explicit model,
+treatment/comparator, concentration, exposure and anchored observation-time metadata.
+Reporting states and causal limitations are preserved without scientific inference.

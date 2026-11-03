@@ -22,6 +22,8 @@ def status(protocol):
     report_ledger = reports['report_ledger'] if reports is not None else []
     work = research['work_packages']
     queues = dict(
+        evidence_without_experimental_unit=research['experiments']['evidence_without_experimental_unit'] if research['experiments']['stage'] == 'SUPPLIED' else None,
+        units_with_unresolved_conditions=research['experiments']['units_with_unresolved_conditions'] if research['experiments']['stage'] == 'SUPPLIED' else None,
         pending_synthesis_statement_reviews=research['synthesis']['pending_statement_ids'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
         stale_synthesis_statement_reviews=research['synthesis']['stale_statement_ids'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
         evidence_without_statement_citation=research['synthesis']['evidence_without_statement_citation'] if research['synthesis']['stage'] == 'SUPPLIED' else None,
@@ -64,6 +66,8 @@ def render_text(result):
         value = result['counts'][key]
         return 'not supplied' if value is None else str(value)
     labels = [
+        ('Results without supplied comparison conditions', 'evidence_without_experimental_unit'),
+        ('Condition records with unresolved fields', 'units_with_unresolved_conditions'),
         ('Pending supplied synthesis reviews', 'pending_synthesis_statement_reviews'),
         ('Stale supplied synthesis reviews', 'stale_synthesis_statement_reviews'),
         ('Results without statement citations', 'evidence_without_statement_citation'),

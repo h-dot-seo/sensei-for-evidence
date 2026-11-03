@@ -100,3 +100,8 @@ clinical applicability, scientific adequacy or regulatory compliance. Census sta
 Packets also include [supplied planning assertions](PLANNING_ASSERTIONS.md), their
 source-match status and a current basis/hash review target. Stale ranks are retained
 as historical assertions but excluded from current-rank groups. No rank is inferred.
+
+[Supplied comparison conditions](EXPERIMENT_CONDITIONS.md) add exact result-linked
+model/treatment/comparator and timing metadata. Full intersecting condition rows
+participate in review/planning source binding when the ledger is supplied, with
+explicit scope for sibling outcomes. No causal validity is inferred.

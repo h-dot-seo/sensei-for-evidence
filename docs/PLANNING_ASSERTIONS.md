@@ -135,3 +135,8 @@ guideline/development/WP links → supplied ranks → prerequisite completion �
 and bundle. No external call, real literature, credential, payment or data upload
 is involved. Planner labels and all scientific/development statements remain
 unverified supplied assertions; no automatic approval or prioritization is made.
+
+[Supplied comparison conditions](EXPERIMENT_CONDITIONS.md) add exact result-linked
+model/treatment/comparator and timing metadata. Full intersecting condition rows
+participate in review/planning source binding when the ledger is supplied, with
+explicit scope for sibling outcomes. No causal validity is inferred.

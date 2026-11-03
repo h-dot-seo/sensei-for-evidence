@@ -34,6 +34,7 @@ def review_packets(protocol, work_package_id=None):
                           if row['target_type'] == 'extraction'}
     planning = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
     planning_targets = {row['work_package_id']: row for row in research['planning']['review_targets']}
+    experiment_links = {row['evidence_id']: row['experiment_id'] for row in research['experiments']['evidence_links']}
     selected = [work_package_id] if work_package_id is not None else sorted(work)
     packets = []
     for wid in selected:
@@ -49,7 +50,7 @@ def review_packets(protocol, work_package_id=None):
             support = None if candidate is None else {
                 key: candidate[key] for key in ('candidate_id', 'request_id', 'source_locator',
                                                 'supporting_quote', 'extractor_id', 'extractor_version')}
-            result_rows.append(dict(evidence=copy.deepcopy(row), screening=copy.deepcopy(screening[row['record_id']]),
+            result_rows.append(dict(evidence=copy.deepcopy(row), experiment_id=experiment_links[eid], screening=copy.deepcopy(screening[row['record_id']]),
                                     search_occurrences=occurrences,
                                     report=copy.deepcopy(report_by_record.get(row['record_id'])),
                                     appraisal_ids=copy.deepcopy(appraisal_links[eid]),
@@ -71,6 +72,12 @@ def review_packets(protocol, work_package_id=None):
             planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
+            experimental_stage=research['experiments']['stage'],
+            experimental_gap_scope='full_intersecting_condition_records_including_other_outcomes',
+            experimental_units=[dict(experimental_unit=copy.deepcopy(unit),
+                                     work_evidence_ids=sorted(evidence_ids.intersection(unit['evidence_ids'])),
+                                     other_experiment_evidence_ids=sorted(set(unit['evidence_ids'])-evidence_ids))
+                                for unit in research['experiments']['experimental_unit_ledger'] if evidence_ids.intersection(unit['evidence_ids'])],
             scope_counts=dict(result_rows=len(result_rows),
                 source_records=len({row['evidence']['record_id'] for row in result_rows}),
                 supplied_study_ids=len({row['evidence']['study_id'] for row in result_rows}),
@@ -79,6 +86,8 @@ def review_packets(protocol, work_package_id=None):
             context_link_status='SUPPLIED' if context_rows else 'NO_CONTEXT_LINKS_SUPPLIED',
             report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
             recorded_review_gaps=dict(
+                evidence_without_experimental_unit=sorted(eid for eid in evidence_ids if experiment_links[eid] is None) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_with_unresolved_conditions=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit['unresolved_fields'] and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 pending_context_ids=sorted(row['context']['context_id'] for row in context_rows if row['context']['review_status'] == 'pending'),
                 evidence_without_recorded_appraisal=sorted(eid for eid in evidence_ids if not appraisal_links[eid]),
                 source_indices_with_unresolved_accounting=[row['search_index'] for row in source_rows if not row['accounting']['complete']]),
@@ -88,6 +97,7 @@ def review_packets(protocol, work_package_id=None):
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
                 engine_sha256=implementation, selection=work_package_id,
+                experiment_boundary=research['experiments']['boundary'],
                 planning_boundary=research['planning']['boundary'],
                 planning_source_scope_fields=research['planning']['source_scope_fields'],
                 planning_source_scope_sha256=research['planning']['source_scope_sha256'],
@@ -138,6 +148,10 @@ def render_text(result):
                 lines.append('Unverified mock candidate support: ' + show(row['adapter_candidate_support']))
         for source in packet['sources']:
             lines.append('Search source/accounting: ' + show(source))
+        lines.append('Structured condition stage: ' + packet['experimental_stage'])
+        lines.append('Unresolved condition scope: ' + packet['experimental_gap_scope'])
+        for unit in packet['experimental_units']:
+            lines.append('Supplied comparison condition and linkage scope: ' + show(unit))
         for context in packet['contexts']:
             lines.append('Context assertion and linkage scope: ' + show(context))
         for appraisal in packet['appraisals']:
@@ -145,7 +159,7 @@ def render_text(result):
         lines.append('Decision: NO_AUTOMATED_DECISION')
     lines.extend(['', 'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',
                   'Extraction completeness: NOT_ESTABLISHED', 'Census: NOT_ESTABLISHED',
-                  'Conclusion: NOT_READY', result['planning_boundary'], result['boundary']])
+                  'Conclusion: NOT_READY', result['experiment_boundary'], result['planning_boundary'], result['boundary']])
     return '\n'.join(lines) + '\n'
 
 

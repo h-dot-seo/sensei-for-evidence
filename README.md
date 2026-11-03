@@ -19,6 +19,8 @@ services or models:
   Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
   exclusions, with separate record/result/report counts.
+- Supplied nonclinical comparison conditions with model, concentration/exposure,
+  observation-time anchors, comparator and causal limitations; no procedure or inference.
 - Multiple result rows per source, including null findings, with extraction-level
   IDs and traceable locators. The current model allows one study ID per record/report.
 - Supplied clinical-guideline and drug-development context, applicability limits,
@@ -119,3 +121,6 @@ rank, checking changed source context and keeping priority separate from depende
 
 See [synthesis review snapshots](docs/SYNTHESIS_REVIEW.md) for the record/report/
 study/result accounting and supplied statement review journey.
+
+See [nonclinical condition records](docs/EXPERIMENT_CONDITIONS.md) for the fictional
+model/condition → result → WP/synthesis review journey.

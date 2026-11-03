@@ -214,3 +214,14 @@ empty-queue readiness limits, adapter-to-synthesis/bundle propagation and strict
 UTF-8/control-safe CLI rendering. Independent review also checked conservation,
 source-hash scope, tampering and latest ledger/diagnostic visibility fixes.
 No statement support, literature completeness or clinical validity was assessed.
+
+Nonclinical condition-record increment (2026-11-03): 217 tests in the suite; local
+Linux run: 216 passed and one Windows-only test skipped. Thirteen new synthetic
+tests cover strict reporting-state unions, anchored per-result observation times,
+condition/outcome scope, missing versus empty stages, duplicate/cross-record/study
+and overlapping assignments, causal-label consistency, planning/synthesis staleness,
+unrelated/legacy basis compatibility, direct-helper safeguards, adapter enrichment,
+bundle/CSV scope, deterministic nonmutation and control-safe text. Independent
+review confirmed anchor handling, full-unit unresolved-field scope, shared null
+queues and enforced condition binding. Fixtures use fictional models and units;
+no protocol, dosing advice, causal assessment or operational biology is generated.

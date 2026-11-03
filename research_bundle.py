@@ -11,7 +11,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'research_bundle.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -34,7 +34,7 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -55,7 +55,10 @@ def build_bundle(raw):
                         planning_rationale=assertion.get('rationale', ''), planning_uncertainty=assertion.get('uncertainty', ''),
                         planner=assertion.get('planner', ''), planned_at=assertion.get('planned_at', ''),
                         planning_basis_sha256=assertion.get('basis_sha256', ''),
-                        current_planning_basis_sha256=planning['current_basis_sha256'])
+                        current_planning_basis_sha256=planning['current_basis_sha256'],
+                        experimental_stage=research['experiments']['stage'],
+                        experimental_unit_ids=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if set(wp['evidence_ids']).intersection(unit['evidence_ids'])),
+                        evidence_without_experimental_unit=sorted(set(wp['evidence_ids']).intersection(research['experiments']['evidence_without_experimental_unit'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied')
         writer.writerow([safe(exported.get(c,'')) for c in columns])
     summary=('Research bundle\n===============\n\n'
              'Supplied-data bookkeeping only; not independently verified research.\n'
@@ -73,6 +76,9 @@ def build_bundle(raw):
              f"Extracted result rows: {research['flow']['extracted']}\n"
              f"Source records with extraction: {research['flow']['extracted_records']}\n"
              f"Study IDs with extraction: {research['flow']['extracted_studies']}\n"
+             f"Structured comparison condition stage: {research['experiments']['stage']}\n"
+             f"Supplied condition records: {len(research['experiments']['experimental_unit_ledger']) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
+             'Condition records are not independent replicate counts; causal assessment is not performed.\n'
              f"Synthesis statement stage: {research['synthesis']['stage']}\n"
              f"Pending supplied statement reviews: {len(research['synthesis']['pending_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
              f"Stale supplied statement reviews: {len(research['synthesis']['stale_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"

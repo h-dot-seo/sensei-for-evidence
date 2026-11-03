@@ -9,6 +9,7 @@ from appraisal_links import link_appraisals
 from adapter_integrity import validate_adapter_protocol
 from planning_links import link_planning
 from synthesis_links import link_synthesis
+from experiment_links import link_experiments
 
 
 def run(protocol):
@@ -130,8 +131,9 @@ def run(protocol):
             stack.extend((dep, False) for dep in reversed(w['depends_on']))
     context = link_context(protocol, evidence, work)
     appraisal = link_appraisals(protocol, evidence, work)
-    synthesis = link_synthesis(protocol, evidence, context, appraisal)
-    planning = link_planning(protocol, evidence, work, context, appraisal)
+    experiments = link_experiments(protocol, evidence)
+    synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments)
+    planning = link_planning(protocol, evidence, work, context, appraisal, experiments)
     included = sum(d['decision'] == 'include' for d in decisions.values())
     return dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
@@ -144,7 +146,7 @@ def run(protocol):
                           excluded=len(decisions)-included, included=included, extracted=len(evidence),
                           extracted_records=len(extracted_records),
                           extracted_studies=len({row['study_id'] for row in evidence})),
-                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis,
+                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis, experiments=experiments,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
                 extraction_pending_scope='title_abstract_included_records_without_any_result_row',
                 extraction_completeness='NOT_ESTABLISHED',

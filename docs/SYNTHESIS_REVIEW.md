@@ -139,3 +139,8 @@ Even with empty mechanical queues, the snapshot retains
 `conclusion_readiness: NOT_READY`. It claims neither full PRISMA compliance nor an
 actual literature census, guideline currency, scientific synthesis or clinical
 recommendation.
+
+[Supplied comparison conditions](EXPERIMENT_CONDITIONS.md) add exact result-linked
+model/treatment/comparator and timing metadata. Full intersecting condition rows
+participate in review/planning source binding when the ledger is supplied, with
+explicit scope for sibling outcomes. No causal validity is inferred.

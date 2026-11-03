@@ -47,6 +47,7 @@ def compare_protocols(before, after):
     identity_warnings = (['Work-package IDs were generated from list positions; insertion or reordering can change apparent identity. Use explicit stable IDs for longitudinal tracking.']
                          if positional_ids['before'] or positional_ids['after'] else [])
     entities = {
+        'experimental_units': entity_changes(before.get('experimental_units', []), after.get('experimental_units', []), 'experiment_id'),
         'synthesis_statements': entity_changes(before.get('synthesis_statements', []), after.get('synthesis_statements', []), 'statement_id'),
         'planning_decisions': entity_changes(before.get('planning_decisions', []), after.get('planning_decisions', []), 'work_package_id'),
         'screening': entity_changes(left['screening_ledger'], right['screening_ledger'], 'record_id'),
