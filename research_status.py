@@ -22,6 +22,8 @@ def status(protocol):
     report_ledger = reports['report_ledger'] if reports is not None else []
     work = research['work_packages']
     queues = dict(
+        units_without_outcome_statistics=research['experiments']['units_without_outcome_statistics'],
+        units_with_statistics_review_cues=research['experiments']['units_with_statistics_review_cues'],
         units_without_outcome_sampling=research['experiments']['units_without_outcome_sampling'],
         units_with_unresolved_sampling=research['experiments']['units_with_unresolved_sampling'],
         evidence_without_experimental_unit=research['experiments']['evidence_without_experimental_unit'] if research['experiments']['stage'] == 'SUPPLIED' else None,
@@ -72,6 +74,8 @@ def render_text(result):
         ('Condition records with unresolved fields', 'units_with_unresolved_conditions'),
         ('Condition records without outcome sampling metadata', 'units_without_outcome_sampling'),
         ('Condition records with unresolved sampling metadata', 'units_with_unresolved_sampling'),
+        ('Condition records without outcome statistics metadata', 'units_without_outcome_statistics'),
+        ('Condition records with statistics review cues', 'units_with_statistics_review_cues'),
         ('Pending supplied synthesis reviews', 'pending_synthesis_statement_reviews'),
         ('Stale supplied synthesis reviews', 'stale_synthesis_statement_reviews'),
         ('Results without statement citations', 'evidence_without_statement_citation'),

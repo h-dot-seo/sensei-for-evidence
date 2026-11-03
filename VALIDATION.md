@@ -240,3 +240,16 @@ Independent review additionally rejected 265 malformed sampling inputs, checked
 all four reporting states, affected-only review staleness (including removal),
 sibling-outcome scope, unrelated-condition stability, deterministic verification,
 source-change diffs and legacy bindings. No feature blockers were found.
+
+Outcome statistics-reporting increment (2026-11-03): 239 tests in the suite;
+Linux run: 238 passed and one native-Windows-only test skipped. Twelve new tests
+cover source-preserved arm summaries, contrasts and explicitly oriented direction,
+strict string/reporting-state unions, missing/empty stages, exact outcome/arm
+coverage, literal unit/statistic/dispersion-label cues, unchanged PRISMA counts,
+fresh-to-stale source review bindings, unrelated condition stability, WP/CSV/
+synthesis/bundle propagation, safe text and nonmutation. CLI status, work review,
+synthesis and bundle creation/verification passed with fictional numerical data.
+Independent review tested 146 malformed/reporting-state cases and 82 individual
+source-leaf changes against current review bindings. The reported dispersion-unit
+cue omission was fixed and covered by a targeted regression. Numerical consistency,
+statistical significance, effect direction and causality remain unassessed.

@@ -63,6 +63,56 @@ def sampling(rows, refs):
         raise ValueError('outcome_sampling requires each linked evidence ID exactly once')
     return sorted(gaps)
 
+
+def statistics(rows, refs):
+    """Check reporting shape and literal labels, never infer effects or significance."""
+    if not isinstance(rows, list):
+        raise ValueError('outcome_statistics must be a list')
+    seen, gaps, differences = set(), [], []
+    for row in rows:
+        fields(row, ('evidence_id', 'treatment', 'comparator', 'contrast',
+                     'limitations', 'source_locator'), (), 'outcome statistics')
+        text(row, ('evidence_id', 'limitations', 'source_locator'), 'outcome statistics')
+        eid = row['evidence_id']
+        if eid not in refs or eid in seen:
+            raise ValueError('outcome_statistics requires each linked evidence ID exactly once')
+        seen.add(eid)
+        prefix = 'outcome_statistics.' + eid + '.'
+        for arm in ('treatment', 'comparator'):
+            fields(row[arm], ('value', 'summary_statistic', 'dispersion', 'dispersion_type'), (), 'statistics arm')
+            for key in ('value', 'summary_statistic', 'dispersion', 'dispersion_type'):
+                if measurement(row[arm][key], 'statistics ' + arm + '.' + key,
+                               with_unit=key in ('value', 'dispersion')):
+                    gaps.append(prefix + arm + '.' + key)
+        contrast = row['contrast']
+        keys = ('measure', 'estimate', 'uncertainty', 'uncertainty_type', 'uncertainty_level',
+                'statistical_test', 'p_value', 'multiplicity_adjustment', 'direction')
+        fields(contrast, keys, (), 'statistics contrast')
+        for key in keys[:-1]:
+            if measurement(contrast[key], 'contrast ' + key, with_unit=key in ('estimate', 'uncertainty')):
+                gaps.append(prefix + 'contrast.' + key)
+        direction = contrast['direction']
+        if isinstance(direction, dict) and direction.get('status') == 'reported':
+            fields(direction, ('status', 'value', 'source_text', 'source_locator', 'orientation'), (), 'effect direction')
+            text(direction, ('value', 'source_text', 'source_locator', 'orientation'), 'effect direction')
+            if direction['value'] not in ('higher', 'lower', 'no_difference_reported', 'mixed', 'unclear'):
+                raise ValueError('invalid supplied effect direction')
+            if direction['orientation'] != 'treatment_relative_to_comparator':
+                raise ValueError('effect direction requires treatment_relative_to_comparator orientation; do not auto-invert')
+        elif measurement(direction, 'effect direction', with_unit=False):
+            gaps.append(prefix + 'contrast.direction')
+        # Exact supplied-label differences only. Different labels need not be incompatible.
+        for key, label in (('value', 'unit'), ('summary_statistic', 'value'), ('dispersion', 'unit'), ('dispersion_type', 'value')):
+            left, right = row['treatment'][key], row['comparator'][key]
+            if left['status'] == right['status'] == 'reported' and left[label] != right[label]:
+                differences.append(dict(evidence_id=eid, field=key + '.' + label,
+                                        treatment=left[label], comparator=right[label]))
+    if seen != set(refs):
+        raise ValueError('outcome_statistics requires each linked evidence ID exactly once')
+    return dict(stage='SUPPLIED', missing_fields=sorted(gaps), literal_label_differences=differences,
+                numeric_consistency='NOT_ASSESSED', effect_assessment='NOT_PERFORMED',
+                boundary='Values and directions are supplied unverified text. Label differences are review cues, not incompatibility findings. No arithmetic, significance, equivalence, direction inversion, effect or causal inference is performed.')
+
 def link_experiments(protocol, evidence):
     supplied = protocol.get('experimental_units', [])
     if not isinstance(supplied, list):
@@ -72,7 +122,7 @@ def link_experiments(protocol, evidence):
     for row in supplied:
         required = ('experiment_id', 'evidence_ids', 'source_locator', 'model', 'treatment', 'comparator',
                     'observation_times', 'causal_basis', 'causal_statement', 'causal_limitations', 'causal_source_locator', 'limitations')
-        fields(row, required, ('outcome_sampling',), 'experimental unit')
+        fields(row, required, ('outcome_sampling', 'outcome_statistics'), 'experimental unit')
         text(row, ('experiment_id', 'source_locator', 'causal_statement', 'causal_limitations', 'causal_source_locator', 'limitations'), 'experimental unit')
         xid = row['experiment_id']
         if xid in ledger:
@@ -130,6 +180,8 @@ def link_experiments(protocol, evidence):
                 unresolved_fields=sampling(row['outcome_sampling'], refs),
                 independence_assessment='NOT_PERFORMED', numeric_consistency='NOT_ASSESSED',
                 boundary='Counts are supplied text by outcome and arm, not totals or independent sample sizes. No arithmetic, unit equivalence, pooling, statistical adequacy or independence is inferred.')
+        if 'outcome_statistics' in row:
+            ledger[xid]['statistics_review'] = statistics(row['outcome_statistics'], refs)
         for eid in refs: assigned[eid] = xid
     return dict(stage='SUPPLIED' if 'experimental_units' in protocol else 'NOT_SUPPLIED',
                 experimental_unit_ledger=[ledger[xid] for xid in sorted(ledger)],
@@ -138,4 +190,6 @@ def link_experiments(protocol, evidence):
                 units_with_unresolved_conditions=sorted(xid for xid,row in ledger.items() if row['unresolved_fields']) if 'experimental_units' in protocol else None,
                 units_without_outcome_sampling=sorted(xid for xid,row in ledger.items() if 'outcome_sampling' not in row) if 'experimental_units' in protocol else None,
                 units_with_unresolved_sampling=sorted(xid for xid,row in ledger.items() if row.get('sampling_review', {}).get('unresolved_fields')) if 'experimental_units' in protocol else None,
+                units_without_outcome_statistics=sorted(xid for xid,row in ledger.items() if 'outcome_statistics' not in row) if 'experimental_units' in protocol else None,
+                units_with_statistics_review_cues=sorted(xid for xid,row in ledger.items() if row.get('statistics_review', {}).get('missing_fields') or row.get('statistics_review', {}).get('literal_label_differences')) if 'experimental_units' in protocol else None,
                 boundary=BOUNDARY)

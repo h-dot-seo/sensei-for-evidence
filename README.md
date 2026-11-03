@@ -129,3 +129,8 @@ Outcome- and arm-specific sample reporting is available in the fictional
 [`sampling-review.json`](examples/sampling-review.json) workflow. It exposes
 missing n semantics and independence explanations without inferring sample size
 or assessing statistics. See [condition metadata](docs/EXPERIMENT_CONDITIONS.md#outcome-specific-sample-reporting).
+
+[`statistics-review.json`](examples/statistics-review.json) demonstrates supplied
+arm summaries, statistical metadata and explicitly oriented effect-direction
+text. [Outcome statistics review](docs/OUTCOME_STATISTICS.md) explains missing
+fields and literal-label cues without numerical or scientific inference.

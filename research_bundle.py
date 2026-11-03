@@ -34,7 +34,7 @@ def build_bundle(raw):
     reports=report_flow(protocol) if 'reports' in protocol else None
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
-    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage','units_without_outcome_sampling','units_with_unresolved_sampling']
+    columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -57,6 +57,8 @@ def build_bundle(raw):
                         planning_basis_sha256=assertion.get('basis_sha256', ''),
                         current_planning_basis_sha256=planning['current_basis_sha256'],
                         experimental_stage=research['experiments']['stage'],
+                        units_without_outcome_statistics=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_statistics' not in unit and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
+                        units_with_statistics_review_cues=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if (unit.get('statistics_review', {}).get('missing_fields') or unit.get('statistics_review', {}).get('literal_label_differences')) and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
                         units_without_outcome_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_sampling' not in unit and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
                         units_with_unresolved_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit.get('sampling_review', {}).get('unresolved_fields') and set(wp['evidence_ids']).intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else 'not supplied',
                         experimental_unit_ids=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if set(wp['evidence_ids']).intersection(unit['evidence_ids'])),
@@ -83,6 +85,8 @@ def build_bundle(raw):
              'Condition records are not independent replicate counts; causal assessment is not performed.\n'
              'Sampling queues in work-packages.csv cover full intersecting condition records, including sibling outcomes.\n'
              'Reported n values are not pooled or validated; independence and numeric consistency are not assessed.\n'
+             'Statistics queues cover full intersecting condition records; literal label differences are not incompatibility findings.\n'
+             'Effect direction and statistical claims are supplied text, not computed or assessed.\n'
              f"Synthesis statement stage: {research['synthesis']['stage']}\n"
              f"Pending supplied statement reviews: {len(research['synthesis']['pending_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
              f"Stale supplied statement reviews: {len(research['synthesis']['stale_statement_ids']) if research['synthesis']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
