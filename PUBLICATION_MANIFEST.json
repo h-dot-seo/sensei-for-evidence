@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.7.1-truncation-completion-guards",
+  "release": "0.7.2-validator-completion-parity",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11382,
-      "sha256": "9117d9048725e32c9d63083ba53195123e0f4af0ba1c7a8790f7d04f6ff1ce97"
+      "bytes": 11769,
+      "sha256": "aad92381c011ece631b909b3a0059c6e5fdb7ebf15c6c32e4180a19875a2f84e"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3455,
-      "sha256": "cf9d14c265dca12a977a214c98bb6f890c8d8463f62d21f9fe4f0c046bcc5fad"
+      "bytes": 3849,
+      "sha256": "2e728028e19450bee5f90f90c04a087407c761e5374a1e6a946c29490a6f0f49"
     },
     {
       "path": "audit_publication.py",
@@ -145,13 +145,13 @@
     },
     {
       "path": "test_validate_run.py",
-      "bytes": 1548,
-      "sha256": "994040f66ac7c21e1013f5ae62c8568b22d2773e0110767d04c178870033c367"
+      "bytes": 2858,
+      "sha256": "cfd976dca31479a0d699a6b06fbc28c9464f3b956d602de17d103a6d977d1230"
     },
     {
       "path": "validate_run.py",
-      "bytes": 4253,
-      "sha256": "466a1e637f871ce8aa1844fa2de7a93b3366853aae45de4a0e3f324ccbe36e4f"
+      "bytes": 5283,
+      "sha256": "7c27155f783bec47764830fa8cc0269afd78f02246bfc9a5b36749d79833d669"
     },
     {
       "path": "verify_manifest.py",

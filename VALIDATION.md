@@ -53,3 +53,9 @@ Contradictory-completion correction (2026-11-03): 49 tests passed. Five regressi
 tests cover each truncation/pagination-limit flag, malformed values, legacy absent
 flags, no-plan coverage and combined report/bundle propagation. This aligns the
 workflow with the state validator's pre-existing truncation boundary.
+
+Validator parity correction (2026-11-03): 52 tests passed. The standalone state
+validator now reuses the workflow's completion checks, rejects Boolean/float totals
+and Boolean screening counts, records malformed search shapes as validation errors
+and refuses unresolved paging/error flags in completed search assertions. Three
+regression tests cover these previously inconsistent input paths.

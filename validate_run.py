@@ -3,6 +3,7 @@
 import argparse
 import json
 from pathlib import Path
+from search_audit import completion_issues
 
 
 def validate(state):
@@ -14,26 +15,43 @@ def validate(state):
     for key in required:
         if not state.get(key):
             errors.append(f'missing state field: {key}')
-    for idx, search in enumerate(state.get('searches', [])):
+    searches = state.get('searches', [])
+    if not isinstance(searches, list):
+        errors.append('searches must be a list')
+        searches = []
+    for idx, search in enumerate(searches):
         tag = f'search[{idx}]'
-        if not search.get('query'):
+        if not isinstance(search, dict):
+            errors.append(f'{tag}: search must be an object')
+            continue
+        if not isinstance(search.get('query'), str) or not search['query'].strip():
             errors.append(f'{tag}: exact query missing')
         ids = search.get('enumerated_ids', [])
+        if not isinstance(ids, list) or any(not isinstance(i, str) or not i.strip() for i in ids):
+            errors.append(f'{tag}: enumerated IDs must be a list of nonempty strings')
+            continue
         if len(ids) != len(set(ids)):
             errors.append(f'{tag}: duplicate enumerated IDs')
-        if search.get('complete'):
-            if search.get('has_more') or search.get('pagination_limited'):
-                errors.append(f'{tag}: incomplete paging marked complete')
-            if search.get('field_pages_pending') or search.get('truncated'):
-                errors.append(f'{tag}: unresolved truncation marked complete')
-            if search.get('total_count') != len(ids):
-                errors.append(f'{tag}: complete census count mismatch')
+        if 'complete' in search and type(search['complete']) is not bool:
+            errors.append(f'{tag}: complete must be boolean')
+        if search.get('complete') is True:
+            messages = {
+                'total_count_not_nonnegative_integer': 'total count must be a nonnegative integer',
+                'total_count_mismatch': 'complete census count mismatch',
+                'pagination_unresolved': 'incomplete paging marked complete',
+                'pagination_limited_unresolved': 'incomplete paging marked complete',
+                'truncated_unresolved': 'unresolved truncation marked complete',
+                'field_pages_pending_unresolved': 'unresolved truncation marked complete',
+                'search_error_recorded': 'search error marked complete',
+            }
+            for issue in completion_issues(dict(search, record_ids=ids)):
+                errors.append(f'{tag}: {messages.get(issue, issue)}')
     screening = state.get('screening', {})
     groups = [('identified', 'duplicates', 'screened'),
               ('screened', 'excluded', 'advanced')]
     for total, left, right in groups:
         if all(k in screening for k in (total, left, right)):
-            if any(not isinstance(screening[k], int) or screening[k] < 0
+            if any(type(screening[k]) is not int or screening[k] < 0
                    for k in (total, left, right)):
                 errors.append('screening: counts must be nonnegative integers')
             elif screening[total] != screening[left] + screening[right]:

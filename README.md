@@ -205,3 +205,9 @@ with older inputs; a supplied flag is resolved only when explicitly `false`. Tru
 null and malformed values remain unresolved, even if returned counts match and
 `has_more` is false. This prevents a capped result set from being marked complete
 solely because its reported count matches the enumerated IDs.
+
+The standalone state validator uses the same search-completion rules as the
+workflow. Its `enumerated_ids` map to the workflow's `record_ids`; completed
+searches require explicit `has_more: false`, strict integer totals and resolved
+optional blockers. Malformed search containers and identifier lists return
+validation errors, and Boolean screening counts are not accepted as integers.
