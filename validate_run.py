@@ -82,17 +82,18 @@ def validate(state):
             errors.append('release: unresolved blockers')
         if state.get('conclusion_readiness') != 'READY':
             errors.append('release: conclusion not ready')
-        if not release.get('qa_passed'):
+        if release.get('qa_passed') is not True:
             errors.append('release: QA missing/failed')
-        if not release.get('storage_verified'):
+        if release.get('storage_verified') is not True:
             errors.append('release: storage not verified')
+        cited = release.get('cited_reference_numbers', [])
         for ref in refs:
-            if ref.get('included_in_report') and not ref.get('verified'):
+            if (ref.get('included_in_report') or ref.get('reference_no') in cited) and ref.get('verified') is not True:
                 errors.append('release: unverified cited reference')
         known = set(ref_ids)
-        if any(r not in known for r in release.get('cited_reference_numbers', [])):
+        if any(r not in known for r in cited):
             errors.append('release: unmatched citation')
-        artifact_types = {a.get('type') for a in release.get('artifacts', []) if a.get('exists')}
+        artifact_types = {a.get('type') for a in release.get('artifacts', []) if a.get('exists') is True}
         for kind in release.get('required_artifacts', []):
             if kind not in artifact_types:
                 errors.append(f'release: required {kind} missing')

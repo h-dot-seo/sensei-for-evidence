@@ -420,3 +420,12 @@ components, including Windows reparse points/junctions, are rejected without
 recursing through them. Do not place private inputs or generated bundles inside
 the public checkout. These checks do not authenticate authorship, detect every
 secret or establish redistribution rights.
+
+### Release assertion checks
+
+The legacy research-state validator requires literal JSON `true` for a COMPLETE
+release's QA, storage, reference verification and artifact-existence assertions.
+Strings such as `"false"` and numeric `1` are not accepted as positive assertions.
+Every explicitly cited reference, as well as every reference flagged as included
+in the report, must be verified. These are checks of supplied assertions, not
+independent verification of references, artifacts, evidence sufficiency or science.

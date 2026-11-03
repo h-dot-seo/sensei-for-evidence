@@ -45,6 +45,44 @@ class StateTest(unittest.TestCase):
         self.s['screening'] = dict(identified=True, duplicates=0, screened=1)
         self.assertTrue(any('nonnegative integers' in error for error in validate(self.s)))
 
+    def complete_state(self):
+        state = copy.deepcopy(self.s)
+        state.update(evidence_sufficiency='SUFFICIENT', conclusion_readiness='READY',
+                     references=[dict(reference_no=1, included_in_report=True, verified=True)])
+        state['release'] = dict(status='COMPLETE', qa_passed=True, storage_verified=True,
+                                cited_reference_numbers=[1], required_artifacts=['evidence_table'],
+                                artifacts=[dict(type='evidence_table', exists=True)])
+        return state
+
+    def test_complete_assertions_require_true_boolean(self):
+        baseline = self.complete_state()
+        self.assertEqual(validate(baseline), [])
+        for value in ('false', 'true', 1, [], None, False):
+            for field in ('qa_passed', 'storage_verified', 'verified', 'exists'):
+                state = copy.deepcopy(baseline)
+                target = (state['references'][0] if field == 'verified' else
+                          state['release']['artifacts'][0] if field == 'exists' else state['release'])
+                target[field] = value
+                with self.subTest(field=field, value=value):
+                    self.assertTrue(validate(state))
+
+    def test_actual_citations_require_verification_without_inclusion_flag(self):
+        for included in (False, None, True):
+            state = self.complete_state()
+            state['references'][0].update(included_in_report=included, verified=False)
+            self.assertIn('release: unverified cited reference', validate(state))
+
+    def test_included_reference_requires_verification_without_explicit_citation(self):
+        state = self.complete_state()
+        state['release']['cited_reference_numbers'] = []
+        state['references'][0]['verified'] = False
+        self.assertIn('release: unverified cited reference', validate(state))
+
+    def test_uncited_unincluded_reference_need_not_be_verified(self):
+        state = self.complete_state()
+        state['references'].append(dict(reference_no=2, included_in_report=False, verified=False))
+        self.assertEqual(validate(state), [])
+
     def test_false_release_rejected(self):
         self.s['blockers']=['synthetic missing evidence']
         self.s['release']=dict(status='COMPLETE',qa_passed=False,storage_verified=False,

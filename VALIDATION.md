@@ -134,3 +134,11 @@ bytes, unsafe paths, duplicate/case-colliding names, malformed metadata and
 symlink files/parents/manifests, unreadable directories and nonregular entries.
 Symlink/FIFO tests skip only where creation is unavailable.
 The scanner remains limited; inventory/hash validity is not authenticity or rights.
+
+Release assertion correction (2026-11-03): 136 tests in the suite; local Linux run:
+135 passed and one Windows-only test skipped. Four new regressions reject nonboolean
+positive release assertions and require verification of actual cited IDs even when
+the inclusion flag is absent/false, while allowing unverified uncited background
+references. An independent synthetic relationship audit exercised 52 rejection
+checks across report, bundle, comparison and status entrypoints without finding
+another broken-link acceptance in those cases. This is not scientific validation.
