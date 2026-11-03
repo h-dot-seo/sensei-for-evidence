@@ -512,3 +512,7 @@ reviews. This is not generated scientific synthesis or a completed systematic re
 See [comparison condition records](EXPERIMENT_CONDITIONS.md) for explicit model,
 treatment/comparator, concentration, exposure and anchored observation-time metadata.
 Reporting states and causal limitations are preserved without scientific inference.
+
+Explicit `work_type: source_review` can use empty evidence_ids only with validated
+source_refs to declared searches or enumerated records. Legacy evidence work still
+requires extracted result IDs. See [source-review work](SOURCE_REVIEW_WORK.md).

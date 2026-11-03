@@ -27,7 +27,8 @@ services or models:
   reviewer status and evidence/work-package links.
 - Supplied appraisal methods and domain judgements, with reviewer provenance and
   missing-appraisal coverage. No appraisal score or consensus is inferred.
-- Dependency-aware work packages, deliverables and explicit completion assertions.
+- Dependency-aware work packages, deliverables and explicit completion assertions,
+  including source-review work before any result has been extracted.
 - PRISMA-oriented synthesis review snapshots with exact result citations, visible
   uncited evidence and source-bound supplied reviews; no generated conclusions.
 - Supplied planning ranks with rationale/uncertainty and source-staleness checks;
@@ -160,3 +161,7 @@ fields and source-wise unresolved receipts. No query translation or execution oc
 For manual-entry rehearsal, start with [receipt intake](docs/RECEIPT_INTAKE.md).
 It generates deliberately unfilled request/page fields and checks a filled mock
 fixture without accepting reviews or overwriting existing research.
+
+[Source-review work packages](docs/SOURCE_REVIEW_WORK.md) connect unreviewed manual
+receipts to search/screening/extraction deliverables without fabricating evidence
+IDs. Try `examples/source-work-protocol.json` with the existing work/handoff CLIs.

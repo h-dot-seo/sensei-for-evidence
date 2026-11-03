@@ -319,3 +319,16 @@ could not be overwritten. The synthetic template/check/candidate → manifest �
 PRISMA → handoff → bundle create/verify journey passed. Candidates retain no
 accepted reviews or promoted evidence; missing facts and review gaps remain.
 No source retrieval, API call, scientific judgment or acceptance is performed.
+
+Source-review work increment (2026-11-03): 322 tests in the suite;
+Linux run: 321 passed and one native-Windows-only test skipped. Fourteen new tests
+cover empty-evidence source work with strict planned-search/record references,
+legacy evidence requirements, pending source stages, mixed dependencies, unchanged
+completion guards, no implicit receipt/extraction approval, structural result-ID
+inventory staleness (including direct dependent evidence work), legacy hashes,
+manual receipt → reviewed extraction → mixed WP workflow, CSV/handoff output and
+real CLI execution. Independent review compared 17 valid legacy protocols to the
+prior HEAD and confirmed identical run outputs/planning hashes. The discovered
+source-inventory staleness gap was fixed with ID-only binding; result-content
+assessment remains the evidence-work scope. Synthetic work/handoff and bundle
+create/verify passed. No work is automatically completed, ranked or executed.

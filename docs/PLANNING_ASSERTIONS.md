@@ -140,3 +140,8 @@ unverified supplied assertions; no automatic approval or prioritization is made.
 model/treatment/comparator and timing metadata. Full intersecting condition rows
 participate in review/planning source binding when the ledger is supplied, with
 explicit scope for sibling outcomes. No causal validity is inferred.
+
+For explicit source_review work, the work scope also binds a structural inventory
+of result IDs on referenced records (and direct-dependency scopes carry it). It
+does not bind those results as evidence or assess their content. Existing evidence
+work scope and legacy hashes are unchanged. See [source-review work](SOURCE_REVIEW_WORK.md).

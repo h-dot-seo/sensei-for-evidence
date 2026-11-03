@@ -111,6 +111,8 @@ def handoff(protocol, work_package_id=None):
     summaries = []
     for packet in works['packets']:
         summaries.append(dict(work_package=copy.deepcopy(packet['work_package']),
+                             work_type=packet['work_type'],source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
+                             source_input_counts=copy.deepcopy(packet['source_input_counts']),
                              planning=copy.deepcopy(packet['planning_assertion']),
                              claim_positions=copy.deepcopy(packet['claim_positions']),
                              contexts=[copy.deepcopy(row['context']) for row in packet['contexts']],
@@ -160,7 +162,9 @@ def render_text(result):
                       'Matching rows: ' + show(step['matching_input_rows']), 'Operator: ' + step['operator_task']])
     lines.append('\nSelected work deliverables and applicability context:')
     for item in result['selected_work']:
-        lines.extend(['Work: ' + show(item['work_package']), 'Supplied planning: ' + show(item['planning']),
+        lines.extend(['Work: ' + show(item['work_package']), 'Work type: ' + item['work_type'],
+                      'Source review inputs (not extracted evidence): ' + show(item['source_review_inputs']),
+                      'Source input counts: ' + show(item['source_input_counts']), 'Supplied planning: ' + show(item['planning']),
                       'Guideline/development context: ' + show(item['contexts'])])
         for claim in item['claim_positions']:
             statement=claim['statement']

@@ -81,14 +81,40 @@ def run(protocol):
             raise ValueError('explicit mechanism_basis required')
         evidence.append(dict(row, evidence_id=eid))
     work = []
+    planned_ids = {row['search_id'] for row in search_plan_audit['search_plan_ledger']}
     for gap in protocol['gaps']:
         if not isinstance(gap, dict):
             raise ValueError('gap must be an object')
         if any(not nonempty_text(gap.get(field)) for field in ('question', 'deliverable', 'acceptance_criterion')):
             raise ValueError('gap requires question, deliverable and acceptance criterion')
         evidence_ids = id_list(gap.get('evidence_ids'), 'gap evidence_ids')
-        if not evidence_ids:
-            raise ValueError('gap requires at least one linked evidence ID')
+        work_type = gap.get('work_type', 'evidence_review')
+        if work_type not in ('evidence_review', 'source_review'):
+            raise ValueError('work_type must be evidence_review or source_review')
+        if work_type == 'source_review':
+            if evidence_ids:
+                raise ValueError('source_review work uses source_refs and empty evidence_ids; do not imply extracted evidence')
+            refs = gap.get('source_refs')
+            if not isinstance(refs, list) or not refs:
+                raise ValueError('source_review requires nonempty source_refs')
+            source_keys = set()
+            for ref in refs:
+                if not isinstance(ref, dict) or ref.get('kind') not in ('planned_search', 'record'):
+                    raise ValueError('source reference kind must be planned_search or record')
+                key = 'search_id' if ref['kind'] == 'planned_search' else 'record_id'
+                if set(ref) != {'kind', key} or not nonempty_text(ref.get(key)):
+                    raise ValueError('source reference requires exact fields and nonempty ID')
+                if ref[key] not in (planned_ids if key == 'search_id' else records):
+                    raise ValueError('source reference must identify a declared search or enumerated record')
+                identity = (ref['kind'], ref[key])
+                if identity in source_keys:
+                    raise ValueError('duplicate source reference')
+                source_keys.add(identity)
+        else:
+            if not evidence_ids:
+                raise ValueError('gap requires at least one linked evidence ID')
+            if 'source_refs' in gap:
+                raise ValueError('source_refs are reserved for source_review work')
         if any(i not in seen for i in evidence_ids):
             raise ValueError('gap references unknown evidence')
         work.append(dict(gap, work_package_id=gap.get('work_package_id', f'WP-{len(work)+1:03}'),

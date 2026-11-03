@@ -30,6 +30,12 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
     source_hash = digest(source_scope)
     scope_by_id = {wid: {k: copy.deepcopy(v) for k, v in row.items() if k not in PROGRESS_FIELDS}
                    for wid, row in work_by_id.items()}
+    source_result_ids = {}
+    for item in evidence: source_result_ids.setdefault(item['record_id'],[]).append(item['evidence_id'])
+    for wid,row in work_by_id.items():
+        if row.get('work_type') == 'source_review':
+            record_refs = {ref['record_id'] for ref in row['source_refs'] if ref['kind']=='record'}
+            scope_by_id[wid]['source_result_inventory'] = [dict(record_id=rid,evidence_ids=sorted(source_result_ids.get(rid,[]))) for rid in sorted(record_refs)]
     targets = {}
     for wid, row in work_by_id.items():
         refs = set(row['evidence_ids'])

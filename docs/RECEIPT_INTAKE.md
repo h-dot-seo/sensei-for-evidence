@@ -119,3 +119,8 @@ research protocol. Actual source retrieval, permissions, human source reading,
 eligibility/extraction, receipt review, appraisal and scientific interpretation
 remain manual or unimplemented. External calls stay 0, census stays
 NOT_ESTABLISHED, and conclusion readiness stays NOT_READY.
+
+A candidate with evidence=[] can now have [source-review work packages](SOURCE_REVIEW_WORK.md)
+for declared searches or enumerated records. Add them explicitly under gaps after
+entry; no fake extraction IDs or automatic scientific work plans are needed.
+Receipt checking does not generate or complete those work packages.

@@ -105,3 +105,7 @@ as historical assertions but excluded from current-rank groups. No rank is infer
 model/treatment/comparator and timing metadata. Full intersecting condition rows
 participate in review/planning source binding when the ledger is supplied, with
 explicit scope for sibling outcomes. No causal validity is inferred.
+
+Source-review packets can precede extraction. They show planned-search/record
+inputs and counts separately from results, preserving missing receipts and pending
+screening/report states. See [source-review work](SOURCE_REVIEW_WORK.md).

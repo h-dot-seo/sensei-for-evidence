@@ -35,12 +35,34 @@ def review_packets(protocol, work_package_id=None):
     planning = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
     planning_targets = {row['work_package_id']: row for row in research['planning']['review_targets']}
     experiment_links = {row['evidence_id']: row['experiment_id'] for row in research['experiments']['evidence_links']}
+    planned_searches = {row['search_id']:row for row in research['search_plan_audit']['search_plan_ledger']}
+    search_indices_by_id = {}
+    for index,row in enumerate(research['search_ledger']):
+        if isinstance(row.get('search_id'),str): search_indices_by_id.setdefault(row['search_id'],[]).append(index)
+    result_ids_by_record = {}
+    for row in research['evidence']: result_ids_by_record.setdefault(row['record_id'],[]).append(row['evidence_id'])
     selected = [work_package_id] if work_package_id is not None else sorted(work)
     packets = []
     for wid in selected:
         item = work[wid]
         evidence_ids = set(item['evidence_ids'])
         result_rows, source_indices = [], set()
+        source_inputs = []
+        for ref in item.get('source_refs', []):
+            if ref['kind'] == 'planned_search':
+                planned = planned_searches[ref['search_id']]
+                indices = copy.deepcopy(search_indices_by_id.get(ref['search_id'],[]))
+                source_indices.update(indices)
+                source_inputs.append(dict(reference=copy.deepcopy(ref), planned_search=copy.deepcopy(planned),
+                                          observed_search_indices=indices, scope='declared_search_not_source_completion'))
+            else:
+                rid = ref['record_id']
+                occurrences = copy.deepcopy(provenance[rid])
+                source_indices.update(row['search_index'] for row in occurrences)
+                source_inputs.append(dict(reference=copy.deepcopy(ref), search_occurrences=occurrences,
+                                          screening=copy.deepcopy(screening.get(rid)),report=copy.deepcopy(report_by_record.get(rid)),
+                                          existing_result_ids=sorted(result_ids_by_record.get(rid,[])),
+                                          scope='enumerated_record_not_eligibility_or_extraction_approval'))
         for eid in sorted(evidence_ids):
             row = evidence[eid]
             occurrences = copy.deepcopy(provenance[row['record_id']])
@@ -69,6 +91,9 @@ def review_packets(protocol, work_package_id=None):
         source_rows = [dict(search_index=index, search=copy.deepcopy(research['search_ledger'][index]),
                             accounting=copy.deepcopy(research['coverage'][index])) for index in sorted(source_indices)]
         packets.append(dict(work_package=copy.deepcopy(item),
+            work_type=item.get('work_type','evidence_review'),source_review_inputs=source_inputs,
+            source_input_counts=dict(planned_searches=sum(ref['kind']=='planned_search' for ref in item.get('source_refs',[])),
+                                     enumerated_records=sum(ref['kind']=='record' for ref in item.get('source_refs',[]))),
             planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
@@ -94,6 +119,7 @@ def review_packets(protocol, work_package_id=None):
             context_link_status='SUPPLIED' if context_rows else 'NO_CONTEXT_LINKS_SUPPLIED',
             report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
             recorded_review_gaps=dict(
+                source_review_missing_searches=sorted(row['reference']['search_id'] for row in source_inputs if row['reference']['kind']=='planned_search' and not row['observed_search_indices']),
                 units_without_outcome_statistics=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_statistics' not in unit and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 units_with_statistics_review_cues=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if (unit.get('statistics_review', {}).get('missing_fields') or unit.get('statistics_review', {}).get('literal_label_differences')) and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 units_without_outcome_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_sampling' not in unit and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
@@ -160,6 +186,9 @@ def render_text(result):
                 lines.append('Unverified mock candidate support: ' + show(row['adapter_candidate_support']))
         for source in packet['sources']:
             lines.append('Search source/accounting: ' + show(source))
+        lines.append('Work type: ' + packet['work_type'])
+        lines.append('Source review inputs (not extracted evidence): ' + show(packet['source_review_inputs']))
+        lines.append('Source input counts, separate from result scope: ' + show(packet['source_input_counts']))
         lines.append('Supplied synthesis stage: ' + packet['synthesis_stage'])
         lines.append('Supplied claim positions and linkage scope: ' + show(packet['claim_positions']))
         lines.append('Structured condition stage: ' + packet['experimental_stage'])

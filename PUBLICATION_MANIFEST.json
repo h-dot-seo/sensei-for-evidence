@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.25.0-synthetic-receipt-intake",
+  "release": "0.26.0-source-review-work",
   "date": "2026-11-03",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 97,
+  "file_count": 100,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 9984,
-      "sha256": "2dfa387e1b7f101bfb910e7e79b93bcef6d58c7d45f79031b2af1235a14f0b73"
+      "bytes": 10303,
+      "sha256": "21d84433df26c29ce9f3ec9054cb2273f705cf8e1142c3a932c1dbe753008033"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 22144,
-      "sha256": "228ed7147957e56d2695476d8a6875e45304bd7bd3da37cff301f59108caadc6"
+      "bytes": 23096,
+      "sha256": "3dd50399697899a51990f66aed6cca72ea308c0b3d6fa9f8821bc8d15e63b9c2"
     },
     {
       "path": "adapter_integrity.py",
@@ -115,8 +115,8 @@
     },
     {
       "path": "docs/PLANNING_ASSERTIONS.md",
-      "bytes": 7803,
-      "sha256": "a46edb093fc242aa71bf25e8a2465bdd15dc6a3ef3dc3b677afa3ca5f4d37648"
+      "bytes": 8142,
+      "sha256": "121dcddfcee583d29fc0294fa7c683a5aa94ddf0b9a821ad20e692e1fa5167c2"
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
@@ -125,13 +125,18 @@
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
-      "bytes": 7753,
-      "sha256": "795e98fed9798c3cd912bc040b25d83290161334ad6faaaab017eb2ca875363b"
+      "bytes": 8076,
+      "sha256": "35c8480ad49dbf051478245e28994f425e80f209972a2a5de712678621d0b7aa"
     },
     {
       "path": "docs/SEARCH_MANIFEST.md",
       "bytes": 7484,
       "sha256": "b7132d24a87bcbb85677ccfafdbd761ae62f9e8cbb9f332c181cb9b451d673e4"
+    },
+    {
+      "path": "docs/SOURCE_REVIEW_WORK.md",
+      "bytes": 6449,
+      "sha256": "f46d29bd3282d5f01eaa10bfcb5b3e00736ce0ce63b5409fe623516ba718e343"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -140,18 +145,18 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 28688,
-      "sha256": "b8a084683cd7ec0c3d70dc93208755d23325e1cd920fb1ddc66393e3a7614486"
+      "bytes": 28935,
+      "sha256": "9399d0100de1a134bbb85f9ecf333e94239927ee6637a87a515e8e4481a89d31"
     },
     {
       "path": "docs/WORK_REVIEW.md",
-      "bytes": 6304,
-      "sha256": "f6d96673512c5867b8ce434e11c55b0172e2223a43d57a5288fc02147f7cf7f6"
+      "bytes": 6540,
+      "sha256": "28645a22205114b6baad0f93f96f23d3b5cad3e78504ce087703859830c0e1e0"
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 9621,
-      "sha256": "818497cd2be96689e3c303f79a866c565b90d39740606e4072abac42593be3fb"
+      "bytes": 11354,
+      "sha256": "49395081273e0949d7ed2d9c932b8cb1ae4bc2e3f9bb5bbd913ecb5c79d9c597"
     },
     {
       "path": "examples/adapter-fixture.json",
@@ -244,6 +249,11 @@
       "sha256": "d7b8f6485c32d8c526e29757c4f132c7ae383feacf6b31ef16e169fe764da5b6"
     },
     {
+      "path": "examples/source-work-protocol.json",
+      "bytes": 8181,
+      "sha256": "4bf90bfeecc8b0cfe815c09960c520ac297f32b1bef5c32165c9f4c4bc3e7665"
+    },
+    {
       "path": "examples/state.json",
       "bytes": 402,
       "sha256": "1cced1a3609b882f2829a8205db1b25377c3b81e97a43392d97a2490bc153d1e"
@@ -280,8 +290,8 @@
     },
     {
       "path": "planning_links.py",
-      "bytes": 5492,
-      "sha256": "63e2198cb328b43dbbdf87b06d96dcb6ec42488b14486d22d5104686a0b6a4ad"
+      "bytes": 5977,
+      "sha256": "f6dae38ac6ca58ddf61bd09909f2011c8e929bea57dc5e96bfed87f2b3ae8565"
     },
     {
       "path": "prisma_audit.py",
@@ -300,8 +310,8 @@
     },
     {
       "path": "research_bundle.py",
-      "bytes": 14475,
-      "sha256": "fa2994d15eadf57cab05665da2c25003f037d61a2d65e601f74210a77b5e6a10"
+      "bytes": 14735,
+      "sha256": "9514da8b9021a8e47ff65b0a7db858b035088087f57fa195ec96a3a9dd289a23"
     },
     {
       "path": "research_status.py",
@@ -310,8 +320,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 17155,
-      "sha256": "8e3f11ed0621fe5536a27ff100bcbb1dfc864580c12e6b8ab1c2286d0813e32d"
+      "bytes": 17605,
+      "sha256": "2095de73db0a8e71beb7d51858087da8e2f63c72c74df71772e05ff466cd51c9"
     },
     {
       "path": "search_audit.py",
@@ -454,6 +464,11 @@
       "sha256": "122b0af0432a56c5100d3925722523c98a3f515544cd848942e3b9ffd3b5bb4b"
     },
     {
+      "path": "test_source_work.py",
+      "bytes": 13191,
+      "sha256": "90ca465276042ad78870c8eda9e37764ba7c3272d93ad3e5afdd2d7c99de2164"
+    },
+    {
       "path": "test_statistics_links.py",
       "bytes": 11880,
       "sha256": "dcac06ca31d12f8630e4536774a2c850fcc044c0980b58857f1f70808233f53a"
@@ -490,8 +505,8 @@
     },
     {
       "path": "work_review.py",
-      "bytes": 15722,
-      "sha256": "34dd5e330b0651b05d8cc3beef58a0918221c863e6381d254a3790802bb628a0"
+      "bytes": 18213,
+      "sha256": "9aec0803166170334167229cef753b9d008370ff1132a940bf345f17de0846fc"
     }
   ]
 }
