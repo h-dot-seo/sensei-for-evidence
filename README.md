@@ -112,6 +112,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `report_study_inventory_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Record separate human positions on described candidates before report inclusion, without declaring memberships |
 | `result_intake.py target/assemble/verify ...` | Explicitly review and append supplied manual result rows with detached document associations and exact-input replay |
 | `result_source_review.py ORIGINAL.json APPLICATION.json CURRENT.json [--text]` | Replay a manual intake record, then separately compare current result rows, report links and supplied document context |
+| `result_correction.py target/assemble/verify ...` | Apply explicitly reviewed result/limitations text corrections without changing extraction IDs, row order or counts |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -311,3 +312,8 @@ or changing prior evidence. Document associations stay in a separate replay reco
 [Detached result-source comparison](docs/RESULT_SOURCE_REVIEW.md) checks later
 result/source drift against a replayed manual intake record. Differences stay
 separate from approval, source authenticity and scientific interpretation.
+
+[Explicit result text corrections](docs/RESULT_CORRECTIONS.md) preserve an existing
+finding's ID and count while applying separately reviewed wording changes. Before/
+after rows and supplied sources stay in a detached replay record; earlier reviews
+and downstream assertions are not renewed or scientifically reassessed.

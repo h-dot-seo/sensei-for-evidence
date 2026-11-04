@@ -151,3 +151,8 @@ shapes; previously produced artifacts still need their exact recorded engine.
 A separate [result-source comparison](RESULT_SOURCE_REVIEW.md) can explicitly
 replay this record and compare it with a later protocol. It reports literal
 result/link/source changes without writing persistent bindings or renewing review.
+
+For a transcription correction to an existing finding, use
+[explicit result text correction](RESULT_CORRECTIONS.md) rather than assigning a
+new ID and counting another result. Its narrow result/limitations changes require
+a separate human review and never renew this intake's original associations.

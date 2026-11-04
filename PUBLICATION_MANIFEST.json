@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.55.0-result-source-review",
+  "release": "0.56.0-result-text-correction",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 207,
+  "file_count": 211,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21107,
-      "sha256": "178e90c0a28071f400d746d3958aadcbe377de8b1e072d574b1633773404f8f3"
+      "bytes": 21600,
+      "sha256": "9017abfc8cf8ba39b46c04c1d75acea52d3b9b9675054a20af96475b56f6b311"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 66251,
-      "sha256": "c42e0218f6e5cb56ba5e85bf777a2e8eed97bac5f6a81ad3df25487885048c6a"
+      "bytes": 68779,
+      "sha256": "c6ac51ea5d587b820db363bcc814b0d716018603dcd0027d5019aaebb88f2ea3"
     },
     {
       "path": "adapter_integrity.py",
@@ -175,8 +175,8 @@
     },
     {
       "path": "docs/MANUAL_RESULT_INTAKE.md",
-      "bytes": 9638,
-      "sha256": "30387c7a540152a2234f5a464fe7b4cbec797322ecddccb5d292453a68f25107"
+      "bytes": 9938,
+      "sha256": "3e6059d80faa9caf79178f2899211e91eaec2dbecb549548be1521af0b340b47"
     },
     {
       "path": "docs/MULTI_STUDY_REPORTS.md",
@@ -242,6 +242,11 @@
       "path": "docs/REPORT_STUDY_REVIEWS.md",
       "bytes": 11483,
       "sha256": "b92078bbae9f0749758330f64a69dc6b7af1cdeb3862501d15a1f92fec962718"
+    },
+    {
+      "path": "docs/RESULT_CORRECTIONS.md",
+      "bytes": 9898,
+      "sha256": "d90bd6718faf3c49ad1a672943d971bbbaaa1a34e85f199cf1da8f42ae66b599"
     },
     {
       "path": "docs/RESULT_SOURCE_REVIEW.md",
@@ -407,6 +412,11 @@
       "path": "examples/manual-result-candidates.json",
       "bytes": 2475,
       "sha256": "196ae4b0732a941b55c1afa573aa39cfe93db7a80c065ddbf04c4e164b76acf4"
+    },
+    {
+      "path": "examples/manual-result-corrections.json",
+      "bytes": 1580,
+      "sha256": "436a94efbab10ff19a1e7657614db598af8f4bc3acdbae93d989ac941ce5f3e2"
     },
     {
       "path": "examples/multi-result-protocol.json",
@@ -667,6 +677,11 @@
       "path": "research_status.py",
       "bytes": 15294,
       "sha256": "14a75ff6b537d8ac7bf179af4495b07b82be25932f15a00edc125c5fde87e17e"
+    },
+    {
+      "path": "result_correction.py",
+      "bytes": 18877,
+      "sha256": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52"
     },
     {
       "path": "result_intake.py",
@@ -932,6 +947,11 @@
       "path": "test_research_status.py",
       "bytes": 6072,
       "sha256": "d5686cdc7393de2d2a1150fcf127dfb45d8a5fd82a2b7c4faa13d27e2fb4b35b"
+    },
+    {
+      "path": "test_result_correction.py",
+      "bytes": 29060,
+      "sha256": "cc49680c84877e3d5ccca0441cde86524f1b5ab9b985f9dacfc55649269a42e5"
     },
     {
       "path": "test_result_intake.py",

@@ -910,3 +910,37 @@ completeness. No protocol state or persistent provenance ledger is written.
 Publication audit checks 208 text files and exact manifest verification passes.
 No private corpus, real document access, medical fact check or biological execution
 guidance was used or added.
+
+Explicit result-text correction increment (2026-11-04): 994 tests in the suite;
+Linux run: 993 passed and one native-Windows-only test skipped. Twenty-five new
+tests cover exact in-place result/limitations corrections, preserved IDs/order/
+opaque fields/counts, multiple corrections in supplied order, a 100-row batch,
+strict schemas/dates, no-op and prohibited-field rejection, explicit raw IDs
+without implicit fallback, same-report source selections and null digests.
+They also cover complete original/candidate validation including scalar report
+guards, CSV provenance preservation, mock-adapter rejection, blank human review,
+input/proposal/implementation drift, exact replay and resealed tampering, and
+the distinction between reproducibility and authenticated reviewer identity.
+The focused six-suite run passes 121 tests. The independent read-only audit ran
+the full suite and found no blocking issue; additional literal whitespace,
+Unicode/control-character ID and opaque numeric-type probes passed.
+All 38 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing tracked Python file is byte-unchanged,
+including manual intake and source comparison, and a previously saved intake
+application still replays. An earlier intake's source comparison reports a
+corrected imported row as CHANGED without renewing its historical associations.
+Existing appraisals/condition/work assertions remain literally unchanged; an
+affected source-bound completion becomes stale under the existing engine rule,
+while its recorded COMPLETE status remains unchanged. This is not a claim that
+all downstream assertions have bindings or are automatically reassessed.
+The documented fictional CLI target/review/assembly/replay/comparison/bundle
+journey succeeds: one result wording and one limitation change, while four result
+rows, one included report and three included study labels remain unchanged.
+Strict JSON/UTF-8, quoted controls, exclusive output creation, input preservation
+and byte bounds (including encoded text/JSON before file creation) are exercised.
+The separate unsigned correction record retains before/after rows and supplied
+source selections. Ordinary protocol bundles do not retain or verify that record.
+Publication audit checks 212 text files and exact manifest verification passes.
+No source reading, actual research corpus, medical verification, biological
+execution guidance, automatic scientific approval or downstream review renewal
+was performed or added.
