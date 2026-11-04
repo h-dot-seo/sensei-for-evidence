@@ -165,7 +165,10 @@ source identity, actual review, complete searching, extraction or scientific tru
 The archive does **not** embed the detached report-registration, retrieval,
 full-text, result or condition applications or all intermediate originals. Retain
 the entire `OUTPUT` directory and recorded code revision to replay those steps.
-Do not call the ZIP alone a complete review-history archive. Data is not redacted;
+Do not call the ZIP alone a complete review-history archive. The optional separate
+[report-transition archive](REPORT_TRANSITION_BUNDLES.md) can preserve the exact
+registration/retrieval/full-text segment; it does not include later result or
+condition intake history. Data is not redacted;
 real inputs and outputs belong outside the public repository and should only be
 shared with authorized recipients.
 

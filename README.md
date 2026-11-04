@@ -104,6 +104,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
 | `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
+| `report_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay an explicitly selected contiguous registration/retrieval/full-text segment, not complete research history |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
@@ -327,6 +328,9 @@ no report eligibility, study membership, result or nonclinical parameter is infe
 [Supplied retrieval updates](docs/REPORT_RETRIEVAL_UPDATES.md) then record a later
 retrieval outcome for pending/unavailable reports without duplicate registration.
 Changed source contexts expose stale retained reviews rather than refreshing them.
+The optional [report-transition archive](docs/REPORT_TRANSITION_BUNDLES.md) retains
+exact initial/application/endpoint files for a supplied contiguous segment without
+changing the existing research or native-source archive formats.
 
 [Exact report-study reviewer positions](docs/REPORT_STUDY_REVIEWS.md) distinguish
 human opinions on individual studies from report inclusion. Explicit source-ID

@@ -1315,3 +1315,45 @@ resolve, publication audit checks 267 text files and exact manifest verification
 passes. No real-source acquisition, reading, review, scientific conclusion or
 experimental parameter generation is represented. Exact-head CI covers Windows
 and both supported Python versions.
+
+Portable report-transition segment increment (2026-11-04): 1,226 tests in the
+suite; final Linux run: 1,225 passed and one native-Windows-only test skipped.
+Twenty-five independently authored tests pass, with 134 passing tests in the
+focused six-suite transition/registration/retrieval/decision/walkthrough/native-
+archive run. An independent read-only gap assessment informed the narrow segment
+scope. A separate independent code audit could not be performed; implementation
+self-review and independent regression tests are not represented as that audit.
+The optional stored ZIP retains exact initial-protocol, ordered application and
+endpoint-protocol bytes, including Unicode and whitespace, while canonical JSON
+binds each next original to the preceding candidate. Only existing registration,
+retrieval-update and full-text application verifiers can dispatch. Their original
+validation and implementation bindings remain authoritative. All 129 previously
+committed Python files are byte-unchanged, including existing bundle engines.
+Tests cover valid contiguous prefixes/suffixes, three distinct step kinds,
+20-step inclusive bounds, omitted/reordered/duplicate/stale steps, full endpoint
+comparison including Boolean/integer distinctions, altered/resealed applications,
+strict JSON/schema/types, wrapper/verifier fingerprints and aggregate byte limits.
+Hostile paths, extra/missing/duplicate/code members, symlink/compressed/encrypted
+entries, CRC/size attacks, archive comments/order/metadata/trailing bytes and
+resealed chain/summary/manifest tampering are refused. Verification uses in-memory
+reads only; no source locator, extraction or embedded-code execution occurs.
+Exclusive output, final dangling entries, inspection failures and API/CLI
+serialization preflight are covered; the documented race/parent-alias limitations
+remain. Explicit negative claims keep earlier/later history unassessed, complete
+history unestablished, human/source authenticity unverified and execution/review
+renewal unperformed.
+The existing 30-command NBIB-to-evidence recipe and the new two-command segment
+recipe execute successfully against the same synthetic outputs. Registration,
+retrieval and full-text replay end exactly at included.json, before results and
+conditions. Supplying the later final.json as this segment's endpoint is rejected
+without creating an archive. The eight-member segment preserves all five exact
+input/application files and verifies after copying only the ZIP into a separate
+working directory with the recorded implementation available. It contains no
+native source files, document files, ordinary research ZIP or implementation code,
+and is not called a complete review-history archive.
+Saved prior registration, batch-native collection and ordinary research artifacts
+still verify. Documentation links resolve, publication audit checks 270 text files
+and exact manifest verification passes. No actual reading, source acquisition,
+human authentication, eligibility validity, complete searching or scientific
+readiness is established. Exact-head CI checks both supported Python versions on
+Windows and Ubuntu.

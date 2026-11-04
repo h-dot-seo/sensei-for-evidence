@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.66.0-nbib-to-evidence-rehearsal",
+  "release": "0.67.0-report-transition-segments",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 266,
+  "file_count": 269,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27337,
-      "sha256": "495cd3af3f690cc41eea721fc8c4c70f1e89b0d30e1141b5fe8453afda0e6005"
+      "bytes": 27822,
+      "sha256": "49ad0edb98f99ab3ac5845bcf85b082cf861d574588d0088d6c02f88ad45f7f2"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 96936,
-      "sha256": "92b595fc7a4dc70fcd9f9ee3bc347f9b309f7e2d53531161e522acaa0fc48230"
+      "bytes": 100068,
+      "sha256": "a36cda765c7ff3ca70e3a6e2065ade62b0937310ae2e320096f144bee1d0a76a"
     },
     {
       "path": "adapter_integrity.py",
@@ -145,8 +145,8 @@
     },
     {
       "path": "docs/BATCH_TO_EVIDENCE.md",
-      "bytes": 11507,
-      "sha256": "3605d2847b4fe844d781337c972d899ef7fca1d863cbfc999b3f3e176d70297b"
+      "bytes": 11714,
+      "sha256": "ecb6889ab7e7d70a67893db1ca0a1542ee1136469069d068a36f8600ca44e3ec"
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
@@ -302,6 +302,11 @@
       "path": "docs/REPORT_STUDY_REVIEWS.md",
       "bytes": 11483,
       "sha256": "b92078bbae9f0749758330f64a69dc6b7af1cdeb3862501d15a1f92fec962718"
+    },
+    {
+      "path": "docs/REPORT_TRANSITION_BUNDLES.md",
+      "bytes": 7322,
+      "sha256": "92c7d06c3c15b36b68b54f51fcddbdc975ca3d09d822e1afc667850d67155c37"
     },
     {
       "path": "docs/RESULT_CORRECTIONS.md",
@@ -884,6 +889,11 @@
       "sha256": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b"
     },
     {
+      "path": "report_transition_bundle.py",
+      "bytes": 15457,
+      "sha256": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e"
+    },
+    {
       "path": "research_bundle.py",
       "bytes": 17914,
       "sha256": "3ee4b48af908b3de883b0d8525572c6f296f5f08c57fb920a9f40cee8c8aabd2"
@@ -1202,6 +1212,11 @@
       "path": "test_report_study_reviews.py",
       "bytes": 31093,
       "sha256": "ac1018d334291c93b63ef042078b6dbb4087551e9f76f56a651030d6bccdfa84"
+    },
+    {
+      "path": "test_report_transition_bundle.py",
+      "bytes": 25213,
+      "sha256": "b67d3b2afe67a30f0c28673a29e9fa254a08bacb633829da27bda2a807177625"
     },
     {
       "path": "test_research_bundle.py",
