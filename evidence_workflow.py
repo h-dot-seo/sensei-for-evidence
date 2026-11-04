@@ -10,12 +10,20 @@ from adapter_integrity import validate_adapter_protocol
 from planning_links import link_planning
 from synthesis_links import link_synthesis
 from experiment_links import link_experiments
+from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
 
 
 def run(protocol):
     if not isinstance(protocol, dict):
         raise ValueError('protocol must be an object')
     validate_adapter_protocol(protocol)
+    # Import only at runtime: the verifier validates a ledger-free common base,
+    # never a reconstructed historic protocol containing earlier imports.
+    if 'bibliographic_imports' in protocol:
+        from bibliographic_intake import verify as verify_bibliographic_artifact
+    else:
+        verify_bibliographic_artifact = None
+    bibliographic_collection = validate_bibliographic_protocol(protocol, verify_bibliographic_artifact)
     for key in ('question', 'version', 'inclusion_criteria', 'exclusion_criteria'):
         if not protocol.get(key):
             raise ValueError('missing protocol field: ' + key)
@@ -161,7 +169,7 @@ def run(protocol):
     synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments)
     planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis)
     included = sum(d['decision'] == 'include' for d in decisions.values())
-    return dict(question=protocol['question'], protocol_version=protocol['version'],
+    result = dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
                 search_plan_audit=search_plan_audit,
                 record_provenance=[dict(record_id=rid, occurrences=records[rid]) for rid in sorted(records)],
@@ -178,6 +186,9 @@ def run(protocol):
                 extraction_completeness='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')
+    if bibliographic_collection is not None:
+        result['bibliographic_collection'] = bibliographic_collection
+    return result
 
 
 def main():

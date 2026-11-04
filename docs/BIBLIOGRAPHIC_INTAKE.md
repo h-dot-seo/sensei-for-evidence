@@ -8,8 +8,9 @@ turn the export into an accepted search receipt.
 
 This is a **detached unreviewed collection artifact**. No imported row is counted
 in the protocol's PRISMA-oriented accounting, evidence tables, guideline links or
-development work. Integration and acceptance of this artifact are not supported
-yet. The existing synthetic mock-receipt workflow remains separate.
+development work. A separate [explicit reconciliation workflow](BIBLIOGRAPHIC_REVIEW.md)
+can append an incomplete search after supplied row choices and export-level review.
+The existing synthetic mock-receipt workflow remains separate.
 
 ## Reproduce the synthetic journey
 
@@ -106,8 +107,8 @@ rights before sharing. No real export or paper content is included in this relea
 ## Remaining research workflow gaps
 
 This increment gives a researcher a reproducible local intake record, not a
-complete literature collection pipeline. Human reconciliation of duplicate IDs
-and locator conflicts, explicit search-completion evidence, reviewed promotion
-into screening, many-study report representation, and source-review links to
+complete literature collection pipeline. Explicit [reconciliation and screening
+intake](BIBLIOGRAPHIC_REVIEW.md) is a separate step. Verified search-completion
+evidence, many-study report representation, and source-review links to
 guideline/development context before extraction remain separate work. Raw imported
 labels never stand in for those decisions.

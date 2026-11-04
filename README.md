@@ -15,6 +15,8 @@ services or models:
   count mismatches, overlap, truncation and incomplete pagination.
 - Provider-neutral mock search/extraction receipts with hash-bound operator review
   gates; unreviewed proposals never enter accepted evidence. No live API client.
+- Local UTF-8 CSV export provenance and explicit supplied identity reconciliation,
+  with raw-row retention and incomplete-search promotion into screening queues.
 - Per-record search-occurrence provenance with exact-ID-only deduplication.
   Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
@@ -85,6 +87,8 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 |---|---|
 | `review_handoff.py PROTOCOL.json [--work-package ID] [--text]` | Read-only operator sheet: manual queues, input locations, work deliverables and detailed-view navigation |
 | `receipt_intake.py template BASE.json` / `check BASE.json RECEIPTS.json [--text] [--protocol-output NEW.json]` | Guide synthetic manual receipt entry and inspect unreviewed candidates through the existing adapter |
+| `bibliographic_intake.py preview PROTOCOL.json EXPORT.csv --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--text]` | Retain exact local CSV bytes and inspect detached unreviewed candidates |
+| `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
 | `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
@@ -230,3 +234,8 @@ bytes, original rows and an explicit search-plan association in a detached,
 unreviewed artifact. Duplicate occurrences and locator conflicts remain visible;
 byte-consistency verification does not authenticate the source or promote rows
 into screening, PRISMA counts, guideline links or development evidence.
+
+[Explicit CSV reconciliation](docs/BIBLIOGRAPHIC_REVIEW.md) connects those artifacts
+to screening through supplied per-row identity/withholding choices and a separate
+exact-context review. Repeated imports retain flat source provenance and raw-row
+accounting while appending only incomplete searches, with no eligibility decisions.

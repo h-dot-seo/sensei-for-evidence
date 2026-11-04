@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "resolutions": [
+    {"candidate_id": "csv-row-000001", "disposition": "new_record", "record_id": "synthetic-record-1", "rationale": "Fictional operator proposes a new canonical record; identity is not verified."},
+    {"candidate_id": "csv-row-000002", "disposition": "same_record", "record_id": "synthetic-record-1", "rationale": "Fictional operator explicitly links the repeated row to the first candidate."},
+    {"candidate_id": "csv-row-000003", "disposition": "same_record", "record_id": "synthetic-record-1", "rationale": "Fictional operator asserts the different locator concerns the same record; both literal locators remain retained and unverified."},
+    {"candidate_id": "csv-row-000004", "disposition": "new_record", "record_id": "synthetic-guideline-record", "rationale": "Collect the fictional guideline candidate for later screening; no recommendation is extracted."},
+    {"candidate_id": "csv-row-000005", "disposition": "do_not_promote", "record_id": null, "rationale": "Fictional operator withholds this collection row pending clarification; this is not an eligibility exclusion."}
+  ],
+  "review": null
+}

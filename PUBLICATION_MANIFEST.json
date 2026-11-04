@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.40.0-local-bibliographic-intake",
+  "release": "0.41.0-reviewed-bibliographic-promotion",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 140,
+  "file_count": 146,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14455,
-      "sha256": "dcb05ca08b580834822452110397c8f8fe0dd86000971f16c4aae25a24798c3c"
+      "bytes": 15472,
+      "sha256": "1d891680ccd806eddc772dbf8f1f37bf9e219ceb22f0b0a2329072cccd5f8b3d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 37283,
-      "sha256": "2038ea80fd7f4856cf0ef5ae5244e1f3fb2de3912a89e7c3ab42a7495996e1fe"
+      "bytes": 38558,
+      "sha256": "420c5cf58e8bb8a67dae99e60715498212f1e86cca637f461194c167a9c3ab00"
     },
     {
       "path": "adapter_integrity.py",
@@ -77,6 +77,16 @@
       "path": "bibliographic_intake.py",
       "bytes": 12738,
       "sha256": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585"
+    },
+    {
+      "path": "bibliographic_integrity.py",
+      "bytes": 14693,
+      "sha256": "1880dc818b2daa8d8a0d9f651c4be2c8d706cbf0586c9b7bb6e723c1cfccc9bb"
+    },
+    {
+      "path": "bibliographic_review.py",
+      "bytes": 10150,
+      "sha256": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570"
     },
     {
       "path": "compare_runs.py",
@@ -115,8 +125,13 @@
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
-      "bytes": 7166,
-      "sha256": "2f5732da5c60e9a36f948b30bd2478ebda3a1aad513bbd450960f872f2e024ab"
+      "bytes": 7250,
+      "sha256": "bd2c6cf825d2249fe7ed2760e14247da882ebdb0642860a8a620eb933da0a920"
+    },
+    {
+      "path": "docs/BIBLIOGRAPHIC_REVIEW.md",
+      "bytes": 8808,
+      "sha256": "5ca0890c232c1b2c1c7667cd41774d8d80e272219765430126d2a5bfdc2e6d34"
     },
     {
       "path": "docs/CLAIM_COMPARISON.md",
@@ -220,8 +235,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 11365,
-      "sha256": "fddae9f898d0b1dbc7110a822b5024cc2c65ebbe1e85d4f54a96806c57e5304a"
+      "bytes": 12027,
+      "sha256": "69405189e132b37c741e36ba0f106e8219c69ac1c49c93c80e77370f5485dff9"
     },
     {
       "path": "examples/adapter-fixture.json",
@@ -254,9 +269,19 @@
       "sha256": "f0a33a29e9acef99f216c147daf0ea72a1ac70d618adb5add5297bc46e69dd92"
     },
     {
+      "path": "examples/bibliographic-base.json",
+      "bytes": 677,
+      "sha256": "ff434613922fe7dd9d861c452094ffa27cddc501fe86690062dbc1bed5894e3c"
+    },
+    {
       "path": "examples/bibliographic-export.csv",
       "bytes": 670,
       "sha256": "6b7f2660100c7c31eafa9d80c22f1dce36e2021410c510b84d960e472cfc4c6e"
+    },
+    {
+      "path": "examples/bibliographic-resolutions.json",
+      "bytes": 1154,
+      "sha256": "e3cc3705a611d1c5c3d1ddb4521e6d31092f000281acfac8014a161c47d74284"
     },
     {
       "path": "examples/claim-comparison.json",
@@ -420,8 +445,8 @@
     },
     {
       "path": "prisma_audit.py",
-      "bytes": 15984,
-      "sha256": "3e8e9de2575cd470e6b03a7ece257d2695a0edbc8a0c0188c0cd5b4c7014d0eb"
+      "bytes": 16839,
+      "sha256": "12891fcd000df4756bffe31eaf7d9c16c3fb4617a158509f9fe9cc33b838844e"
     },
     {
       "path": "prisma_reports.py",
@@ -435,8 +460,8 @@
     },
     {
       "path": "research_bundle.py",
-      "bytes": 16809,
-      "sha256": "ea1434a8e604d5b0144b19bc1f8fa85c2597f05f6054506bb7793aca269241fd"
+      "bytes": 16917,
+      "sha256": "d6b8b7d3152f83f014950e22c800cb25a0ce71ac871bbd0250f8c735f0380d31"
     },
     {
       "path": "research_status.py",
@@ -487,6 +512,11 @@
       "path": "test_bibliographic_intake.py",
       "bytes": 18696,
       "sha256": "13e0081c96fb89b7a58a7774a0947255a45670928229cc6761b7cb58543d7ece"
+    },
+    {
+      "path": "test_bibliographic_review.py",
+      "bytes": 26918,
+      "sha256": "ba3ccde997f9481c153cfac1e659670a3e64d67b6645d4810f55d5ae218bcbc4"
     },
     {
       "path": "test_claim_positions.py",

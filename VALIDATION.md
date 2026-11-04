@@ -526,3 +526,20 @@ and code review found no remaining substantive defect. The fixture is entirely
 fictional; no source retrieval or real corpus was used. This is a detached,
 unreviewed local export, not an accepted receipt or an integration into research
 counts. Source authenticity, search completion and conclusions remain unverified.
+
+Supplied bibliographic reconciliation increment (2026-11-04): 539 tests in the
+suite; Linux run: 538 passed and one native-Windows-only test skipped. Twenty-six
+new independently written tests cover explicit new/same/withheld row decisions,
+forward references and canonical ordering, exact-context review targets, strict
+review fields, empty/all-withheld exports, exclusive CLI writes and UTF-8/newline
+portability. Sequential imports preserve intervening screening, version and
+source-work enrichment while using one immutable common base. Compact artifacts
+reconstruct exactly, and callbacks receive only ledger-free base snapshots.
+Tests reject altered raw bytes/spans, choices, base context, historical bodies,
+prefix order and attached completeness; dependent review targets remain stale
+even after earlier receipt and search hashes are resealed. Output isolation,
+resource bounds, separate raw-row versus PRISMA-membership accounting, row pointers
+and deterministic bundle verification are exercised. The focused integration
+suite passes 80 tests. Independent review found no remaining production defect.
+All examples remain synthetic; supplied identity/review assertions do not prove
+authenticity or complete searches, and no eligibility/extraction decision is made.

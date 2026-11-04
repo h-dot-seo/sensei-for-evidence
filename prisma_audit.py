@@ -151,7 +151,7 @@ def export_audit(protocol):
     study_links=[dict(study_id=sid,included_report_ids=None if reports is None else sorted(reports_by_study[sid]),
                       evidence_ids=sorted(evidence_by_study[sid])) for sid in studies]
     implementation=dict(engine_hashes(),**{'prisma_audit.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    return dict(schema_version=1,question=research['question'],protocol_version=research['protocol_version'],
+    result = dict(schema_version=1,question=research['question'],protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='Canonical supplied JSON; key order ignored, list order retained; not source authenticity',engine_sha256=implementation,
                 report_stage='NOT_SUPPLIED' if reports is None else 'SUPPLIED',nodes=nodes,partition_checks=checks,
@@ -165,6 +165,13 @@ def export_audit(protocol):
                              reports_not_retrieved=None if reports is None else reasons([r for r in report_rows if r['retrieval']=='not_retrieved'],'report','report_id')),
                 extraction_completeness='NOT_ESTABLISHED',record_identity_verification='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED',conclusion_readiness='NOT_READY',boundary=BOUNDARY)
+    if 'bibliographic_collection' in research:
+        result['bibliographic_collection'] = copy.deepcopy(research['bibliographic_collection'])
+        collection_rows = result['bibliographic_collection']['row_ledger']
+        for row in result['record_ledger']:
+            row['bibliographic_row_pointers'] = [item['source_pointer'] for item in collection_rows
+                                                if item['resolution']['record_id'] == row['record_id']]
+    return result
 
 
 def render_text(result):
@@ -173,6 +180,10 @@ def render_text(result):
            'Protocol SHA-256: '+result['protocol_sha256'],'Report stage: '+result['report_stage']]
     for node in result['nodes']:
         lines.append(node['node_id']+' ['+node['unit']+']: '+('not supplied' if node['count'] is None else str(node['count'])))
+    if 'bibliographic_collection' in result:
+        lines.extend(['Local CSV collection rows (distinct from search-membership occurrence nodes): '
+                      + show(result['bibliographic_collection']['counts']),
+                      'Full collection row provenance, supplied identity choices and withheld rows remain in JSON; identity is not verified.'])
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
                   'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),
