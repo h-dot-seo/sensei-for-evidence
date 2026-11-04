@@ -650,3 +650,26 @@ source locators and rationales are not authenticated, and historical whole-proto
 reconstruction, eligibility validity and scientific review are not claimed.
 Publication audit and exact manifest verification pass; no private records or real
 literature were used.
+
+Supplied full-text report-review increment (2026-11-04): 729 tests in the suite;
+Linux run: 728 passed and one native-Windows-only test skipped. Forty-three new
+independent tests cover strict document/reviewer schemas, scalar/plural report
+validation, exact source/reviewer identities, conservative document/provenance
+binding, null versus supplied-but-unverified digests, removed-source/unretrieved
+assertion retention, source-first scaffolds, no automatic opinion renewal and
+canonical decision/study neutrality. The focused eight-suite run passes 187 tests.
+All 31 prior valid examples retain equal core/report/audit/status/handoff/synthesis/
+comparison projections and report CSV bytes, excluding implementation fingerprints.
+A separate read-only review found no blocking correctness or overclaim issue and
+reran all 43 new tests. Fictional CLI/audit/handoff/comparison/bundle journeys check
+five reports, three source declarations and four positions, retaining unchanged
+input bytes and canonical PRISMA counts. Multiple descriptors do not infer a
+preferred version or exhaustive reading; reviewed coverage remains free text,
+not a validated subset of document IDs. Every document digest is explicitly a
+supplied assertion rather than a local byte measurement. Empty comparison cues
+never imply source verification, agreement, complete reading or eligibility.
+Whole-input validation occurs before selection; exclusive UTF-8/control-safe
+output, duplicate-JSON rejection, import-cycle safety, linear source catalogs,
+CSV-import enrichment and detached outputs are tested. Publication audit and
+exact manifest verification pass. Only fictional inputs are included; no full
+text, private records, external retrieval or medical facts were used or verified.

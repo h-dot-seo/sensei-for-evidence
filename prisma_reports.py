@@ -68,6 +68,8 @@ def report_flow(protocol, *, include_csv=True):
         result['report_study_coverage'] = baseline['report_study_coverage']
     if 'screening_review' in baseline:
         result['screening_review'] = baseline['screening_review']
+    if 'report_review' in baseline:
+        result['report_review'] = baseline['report_review']
     if 'screening_decision_history' in baseline:
         result['screening_decision_history'] = baseline['screening_decision_history']
     if not include_csv:

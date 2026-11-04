@@ -131,3 +131,9 @@ Optional [screening decision history](SCREENING_DECISIONS.md) appears separately
 from pending queues, with a detailed inspection link. It retains explicit choices
 without erasing reviewer differences. Older receipt/current-row mismatches do not
 create work dependencies, select an active receipt or imply an invalid old choice.
+
+Optional full-text review navigation shows `reports_with_review_cues` and exact
+`/reports`, `/report_sources` and `/report_reviews` pointers. The detailed
+`report_review.py` view separates supplied document versions/digests from reviewer
+positions. Read [the full-text review boundaries](REPORT_REVIEWS.md) before using
+its blank scaffolds; no source is retrieved, read or authenticated by the tool.

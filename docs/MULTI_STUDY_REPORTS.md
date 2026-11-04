@@ -168,3 +168,9 @@ belongs to one source record and study. A multi-study paper does not relax those
 guards or make result rows independent votes. Source identity, study identity,
 search completeness, scientific validity and clinical applicability remain
 unverified. No real paper, result, procedure or guideline is included or retrieved.
+
+[Full-text source/reviewer assertions](REPORT_REVIEWS.md) can describe several
+documents for one report without splitting report or study identities. Their
+positions remain report-level, and changing study assignments does not silently
+rewrite the source target. Per-study eligibility and exhaustive document reading
+remain separate, unperformed assessments.

@@ -165,3 +165,9 @@ human choice and its supplied before/after/source/reviewer snapshots. Canonical
 record counts still derive only from `screening`, not from receipt totals or a
 date-selected winner. Historical receipt mismatches are retrospective comparisons,
 not automatically pending tasks or invalid earlier choices.
+
+Optional [full-text report review assertions](REPORT_REVIEWS.md) retain declared
+document versions, unverified digests and human positions separately. Report
+retrieval/assessment and study counts still derive only from their canonical
+ledgers. A matching context hash is not verified reading, source authenticity,
+consensus or a per-study eligibility decision.

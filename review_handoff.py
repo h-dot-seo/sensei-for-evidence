@@ -44,10 +44,12 @@ SPECS = {
     'completed_work_assertions': ('gaps', 'Inspect the supplied artifact locator and acceptance assertion. This tool does not open artifacts or certify acceptance.'),
 }
 OPTIONAL_SPECS = {
+    'reports_with_review_cues': ('reports report_sources report_reviews', 'Inspect the supplied document versions, page/section coverage and separate human full-text positions. A matching supplied digest does not verify bytes, reading, authenticity or eligibility. Retrieve only through authorized access; never infer consensus, per-study eligibility or renew stale hashes automatically.'),
     'report_study_memberships_without_results': ('reports evidence', 'Read the exact included report-study membership and record traceable results if in scope. A result for this study in another report does not fill this membership; presence is not exhaustive extraction or study independence.'),
     'records_with_screening_review_cues': ('screening_reviews screening searches', 'Inspect each supplied reviewer position, source binding and any differing or unclear labels. Resolve eligibility outside this tool if appropriate; never choose a majority, authenticate reviewers or renew hashes automatically. Canonical screening remains a separate supplied decision.'),
 }
-OPTIONAL_QUEUE_DOMAINS = {'report_study_memberships_without_results': 'report_study',
+OPTIONAL_QUEUE_DOMAINS = {'reports_with_review_cues': 'report',
+                        'report_study_memberships_without_results': 'report_study',
                         'records_with_screening_review_cues': 'record'}
 
 BOUNDARY = ('Read-only navigation and supplied-data handoff, not a generated scientific report. '
@@ -96,7 +98,7 @@ def input_locations(protocol, queue, sections, items):
                 if section=='gaps': values=[row.get('work_package_id',f'WP-{index+1:03}')]
                 elif section=='planning_decisions': values=[row.get('work_package_id')]
             else:
-                fields={'search':('search_plan','searches'), 'report':('reports',),
+                fields={'search':('search_plan','searches'), 'report':('reports','report_sources','report_reviews'),
                         'experiment':('experimental_units',), 'statement':('synthesis_statements',),
                         'context':('contexts',)}
                 if section in fields[domain]: values=[row.get(domain + '_id')]
@@ -168,6 +170,10 @@ def handoff(protocol, work_package_id=None):
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'report_sources' in protocol or 'report_reviews' in protocol:
+        result['engine_sha256']['report_review.py'] = hashlib.sha256(Path(__file__).with_name('report_review.py').read_bytes()).hexdigest()
+        result['detailed_views'].append(dict(script='report_review.py', arguments=['PROTOCOL.json','--text'],
+                                            purpose='Supplied full-text document versions and separate human positions; no verified reading, bytes or adjudication'))
     if 'screening_reviews' in protocol:
         result['engine_sha256']['screening_review.py'] = hashlib.sha256(Path(__file__).with_name('screening_review.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='screening_review.py', arguments=['PROTOCOL.json','--text'],

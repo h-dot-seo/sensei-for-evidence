@@ -36,6 +36,47 @@ def entity_changes(before, after, id_field):
                 unchanged_count=len(shared) - len(changed))
 
 
+def report_review_changes(left, right):
+    """Compare document declarations and human assertions without source verification."""
+    a, b = left.get('report_review'), right.get('report_review')
+    old_reviews = {} if a is None else {row['review']['review_id']: row for row in a['review_ledger']}
+    new_reviews = {} if b is None else {row['review']['review_id']: row for row in b['review_ledger']}
+    old_sources = {} if a is None else {row['source']['source_id']: row for row in a['source_ledger']}
+    new_sources = {} if b is None else {row['source']['source_id']: row for row in b['source_ledger']}
+    old_targets = {} if a is None else {row['report_id']: row for row in a['report_targets']}
+    new_targets = {} if b is None else {row['report_id']: row for row in b['report_targets']}
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        before_source_stage='NOT_SUPPLIED' if a is None else a['source_stage'],
+        after_source_stage='NOT_SUPPLIED' if b is None else b['source_stage'],
+        before_review_stage='NOT_SUPPLIED' if a is None else a['review_stage'],
+        after_review_stage='NOT_SUPPLIED' if b is None else b['review_stage'],
+        source_changes=entity_changes([row['source'] for row in old_sources.values()],
+                                     [row['source'] for row in new_sources.values()], 'source_id'),
+        source_comparisons=[dict(source_id=sid, before=copy.deepcopy(old_sources.get(sid)),
+                                 after=copy.deepcopy(new_sources.get(sid)))
+                            for sid in sorted(set(old_sources) | set(new_sources))],
+        assertion_changes=entity_changes([row['review'] for row in old_reviews.values()],
+                                        [row['review'] for row in new_reviews.values()], 'review_id'),
+        review_comparisons=[dict(review_id=rid, before=copy.deepcopy(old_reviews.get(rid)),
+                                 after=copy.deepcopy(new_reviews.get(rid)))
+                            for rid in sorted(set(old_reviews) | set(new_reviews))],
+        target_changes=entity_changes(list(old_targets.values()), list(new_targets.values()), 'report_id'),
+        target_comparisons=[dict(report_id=rid, before=copy.deepcopy(old_targets.get(rid)),
+                                 after=copy.deepcopy(new_targets.get(rid)))
+                            for rid in sorted(set(old_targets) | set(new_targets))],
+        report_projection_changes=entity_changes([] if a is None else a['report_review_ledger'],
+                                                 [] if b is None else b['report_review_ledger'], 'report_id'),
+        before_counts=None if a is None else copy.deepcopy(a['counts']),
+        after_counts=None if b is None else copy.deepcopy(b['counts']),
+        boundary=('Exact supplied source/review/report IDs and recomputed context hashes only. '
+                  'Changing a declared document digest or version is not verified change to document bytes. '
+                  'Distinct source IDs are not merged even when locators or digests match. '
+                  'Canonical report decisions and study assignments remain separate; no reviewer independence, '
+                  'complete reading, consensus, eligibility correctness or source authenticity is established.'))
+
+
 def screening_decision_changes(left, right):
     """Retain historical receipts while comparing their current-context labels."""
     a, b = left.get('screening_decision_history'), right.get('screening_decision_history')
@@ -392,6 +433,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
             before, after, left, right, left_reports, right_reports)
     if 'screening_review' in left or 'screening_review' in right:
         result['screening_review_changes'] = screening_review_changes(left, right)
+    if 'report_review' in left or 'report_review' in right:
+        result['report_review_changes'] = report_review_changes(left, right)
     if 'screening_decision_history' in left or 'screening_decision_history' in right:
         result['screening_decision_changes'] = screening_decision_changes(left, right)
     return result
@@ -436,6 +479,23 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'report_review_changes' in result:
+        reviews = result['report_review_changes']
+        lines.extend(['', 'Supplied full-text review comparison (not verified document changes):',
+                      'Before/after feature stages: ' + show(dict(before=reviews['before_stage'], after=reviews['after_stage'])),
+                      'Changed source declarations: ' + show(reviews['source_changes']),
+                      'Changed human assertions: ' + show(reviews['assertion_changes']),
+                      'Changed report source targets: ' + show(reviews['target_changes']),
+                      'Changed report review projections: ' + show(reviews['report_projection_changes'])])
+        lines.extend('Source declaration before/after: ' + show(row) for row in reviews['source_comparisons'])
+        lines.extend('Full-text position before/after: ' + show(row) for row in reviews['review_comparisons'])
+        for row in reviews['target_comparisons']:
+            def target_state(target):
+                return None if target is None else {key: target[key] for key in (
+                    'source_basis_sha256', 'retrieval', 'source_binding_state')}
+            lines.append('Target context before/after: ' + show(dict(
+                report_id=row['report_id'], before=target_state(row['before']), after=target_state(row['after']))))
+        lines.append(reviews['boundary'])
     if 'screening_decision_changes' in result:
         history = result['screening_decision_changes']
         lines.extend(['', 'Supplied screening decision history comparison (not authenticated chronology):',

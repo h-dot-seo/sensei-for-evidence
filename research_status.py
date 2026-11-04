@@ -61,6 +61,9 @@ def status(protocol):
     if 'screening_review' in research:
         queues['records_with_screening_review_cues'] = copy.deepcopy(
             research['screening_review']['records_with_review_cues'])
+    if 'report_review' in research:
+        queues['reports_with_review_cues'] = copy.deepcopy(
+            research['report_review']['reports_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     result = dict(question=research['question'], protocol_version=research['protocol_version'],
@@ -128,6 +131,9 @@ def render_text(result):
     if 'records_with_screening_review_cues' in result['queues']:
         lines.append('Records with supplied screening-review cues: ' + count('records_with_screening_review_cues'))
         lines.append('Reviewer assertions do not adjudicate eligibility or replace recorded screening decisions.')
+    if 'reports_with_review_cues' in result['queues']:
+        lines.append('Reports with supplied full-text review cues: ' + count('reports_with_review_cues'))
+        lines.append('Source digests and human positions are supplied assertions, not verified document bytes, reading or eligibility.')
     if 'screening_decision_history' in result:
         lines.append('Recorded screening decision history: '
                      + json.dumps(result['screening_decision_history']['counts'], sort_keys=True, ensure_ascii=True))

@@ -566,3 +566,8 @@ artifact/acceptance fields, current versus supplied basis hashes, nonverificatio
 labels and direct prerequisite source labels stay separate from recorded work
 status. The bounded summary includes unbound and stale completion counts. Matching
 hashes or a valid ZIP never certify scientific or deliverable acceptance.
+
+Full-text report review has a separate [source/version and human-position
+workflow](REPORT_REVIEWS.md). `report_review.py` offers read-only targets and blank
+scaffolds, preserving unbound document digests and unavailable reports without
+changing canonical full-text decisions or claiming actual document verification.

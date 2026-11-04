@@ -152,3 +152,8 @@ synthesis source bases. Canonical screening remains the operational input to
 those workflows. No new work dependency is created, and work completion does not
 resolve reviewer positions. Full-text review, per-study eligibility, reviewer
 supersession history, source authenticity and medical/scientific correctness remain separate.
+
+The separate [full-text report review workflow](REPORT_REVIEWS.md) now offers
+report-level document-version declarations and supplied human positions. It does
+not reuse title/abstract target hashes as a substitute for full-text context and
+does not change canonical report decisions.
