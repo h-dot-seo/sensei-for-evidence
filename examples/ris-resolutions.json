@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "resolutions": [
+    {"candidate_id": "csv-row-000001", "disposition": "new_record", "record_id": "fictional-ris-A", "rationale": "Prewritten fictional identity choice for software testing only."},
+    {"candidate_id": "csv-row-000002", "disposition": "same_record", "record_id": "fictional-ris-A", "rationale": "Explicit fictional link, not a decision inferred from the repeated DOI or ID."},
+    {"candidate_id": "csv-row-000003", "disposition": "new_record", "record_id": "fictional-ris-B", "rationale": "Explicit new fictional record despite absent external identifiers."},
+    {"candidate_id": "csv-row-000004", "disposition": "do_not_promote", "record_id": null, "rationale": "Fictional collection triage, not a screening exclusion."}
+  ],
+  "review": null
+}

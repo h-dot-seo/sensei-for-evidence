@@ -75,13 +75,16 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
 The JSON now also contains `supplied_input_workflows`, a static catalog of eleven
 existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
 the same catalog. Each group names its guide files, required human inputs,
-operation limits and parser-help argument arrays. The 45 entry points all end in
+operation limits and parser-help argument arrays. The 47 entry points all end in
 `--help`: they explain command syntax, not execute research or write a draft.
 
 The routes cover:
 
-- Supplied single-file or batch NBIB preparation, native verification/CSV intake
-  export, and separate collection reconciliation/review.
+- Supplied single-file or batch NBIB and single-file strict-subset RIS
+  preparation, native verification/CSV intake export, and separate collection
+  reconciliation/review.
+  RIS occurrence labels are not publication IDs; existing NBIB archive formats
+  do not accept RIS wrappers.
 - Separate screening reviewer positions and explicit canonical decisions.
 - Report registration, later retrieval assertions and full-text choices.
 - Supplied result rows and descriptive nonclinical condition metadata.

@@ -1467,3 +1467,53 @@ Guide links resolve, publication audit checks 275 text files and exact manifest
 verification passes. No actual retrieval, reading, source authentication, identity
 resolution, scientific review or completeness claim is performed. Exact-head CI
 checks Windows and Ubuntu with both supported Python versions.
+
+Source-preserving RIS intake increment (2026-11-04): 1,280 tests in the suite;
+final Linux run: 1,279 passed and one native-Windows-only test skipped. Thirty-three
+new self-authored tests pass; the focused RIS/NBIB/reconciliation/navigation run
+passes 89 tests. All eleven documented CLI commands also run against an outside,
+space-named directory using an explicitly fictional supplied review. Independent
+code review could not be performed for this increment. Self-review, these tests
+and the manual software rehearsal are not represented as an independent audit,
+provider-format conformance testing or actual literature review.
+The new standalone parser and wrapper preserve an explicit fixed-column UTF-8 RIS
+subset: TY/empty-ER framing, ordered repeated/unknown fields, optional initial BOM,
+CR/LF/CRLF endings, six-space continuations and exact full-file/record/field spans.
+Malformed framing, absent ER, orphan content, NUL/invalid UTF-8, unsupported
+padding/continuations, blank lines inside records and legacy encodings fail closed.
+Unindented multiline abstracts remain outside this initial subset; the tool does
+not silently repair originals or claim universal RIS compatibility. Primary format
+context references are linked in the guide, without copying translator code or
+using actual publication data.
+File-hash plus positional occurrence labels supply the CSV's required ID/locator
+fields. They are not DOI, URL, publication identity or stable cross-file IDs.
+DO/ID/AN/UR/attachment fields are neither selected nor resolved. Identical records,
+repeated identifiers and conflicting fields remain distinct ordered occurrences;
+identifier-free records are retained. CSV duplicate-ID/overlap hints therefore
+compare only these occurrence labels and cannot establish absence of publication
+duplicates. Existing explicit reconciliation still requires complete human row
+choices and a separate exact-current-input review, then appends only an incomplete
+search. Fictional four-row reconciliation retains three promoted raw occurrences,
+one withheld occurrence and two canonical memberships, without screening/results.
+Tests cover literal/Unicode/BOM/mixed-line byte reconstruction, forty seeded
+supported exports, exact inclusive byte/line/record bounds, derivative expansion
+and unchanged interpreter CSV field limits, entire-input validation, strict JSON
+and type handling, tampering/resealed targets, unknown fields and implementation
+drift. Cross-format wrappers are not guessed or interchanged. CLI tests cover
+Unicode under ASCII locale settings, spaces, mutual output exclusion, read-only
+inputs, exclusive output, observed dangling entries, inspection refusal and
+serialization-before-write. Native source URLs and attachment locators remain
+inert; no external call or source-document access occurs.
+A second unused planned RIS search retains prior screening and the flat common-
+base import history. Ordinary research bundles verify the resulting CSV ledger,
+not the native RIS wrapper; existing NBIB collection archives do not accept it.
+The exact wrapper and recorded implementation must be retained separately. No
+RIS archive, mixed-format archive, automatic deduplication, source authentication,
+completeness assertion, scientific decision or review renewal is added.
+Only the existing read-only handoff and its navigation test changed among prior
+Python files; the catalog now exposes 47 parser-help entrypoints. All prior intake,
+review and bundle engines remain byte-unchanged. Saved registration, report-
+transition, two-search native collection and ordinary research artifacts still
+verify, as does the newly retained RIS wrapper. Guide links resolve, publication
+audit checks 281 text files and exact manifest verification passes. Exact-head CI
+covers Windows/Ubuntu with Python 3.10 and 3.12. Census and readiness stay closed.

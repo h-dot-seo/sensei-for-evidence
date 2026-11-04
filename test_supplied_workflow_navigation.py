@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),45)
+        self.assertEqual(len(entries),47)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -116,6 +116,8 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
 
     def test_workflow_limits_keep_human_choices_and_archive_scopes_separate(self):
         catalog={r['workflow_id']:r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        self.assertIn('docs/RIS_INTAKE.md',catalog['native_collection']['guide_paths'])
+        self.assertIn('file-occurrence labels are not publication identity',catalog['native_collection']['boundary'])
         self.assertIn('No report grouping',catalog['report_registration']['boundary'])
         self.assertIn('Mock-adapter',catalog['report_registration']['boundary'])
         self.assertIn('already retrieved',catalog['report_retrieval']['boundary'])

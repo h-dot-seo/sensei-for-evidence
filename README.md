@@ -15,8 +15,9 @@ services or models:
   count mismatches, overlap, truncation and incomplete pagination.
 - Provider-neutral mock search/extraction receipts with hash-bound operator review
   gates; unreviewed proposals never enter accepted evidence. No live API client.
-- Local UTF-8 CSV export provenance and explicit supplied identity reconciliation,
-  with raw-row retention and incomplete-search promotion into screening queues.
+- Local UTF-8 CSV export provenance, strict-subset NBIB/RIS native wrappers,
+  and explicit supplied identity reconciliation with raw-row retention and
+  incomplete-search promotion into screening queues.
 - Per-record search-occurrence provenance with exact-ID-only deduplication.
   Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
@@ -66,6 +67,10 @@ Then use the [second-search continuation](docs/SECOND_SEARCH_CONTINUATION.md) to
 append another originally planned search while retaining prior results and
 checking changed source context.
 
+For supported RIS exports, use [source-preserving RIS intake](docs/RIS_INTAKE.md)
+with separate explicit identity choices. Its scope is a documented subset, not
+universal database-format compatibility.
+
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh
@@ -104,6 +109,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `bibliographic_intake.py preview PROTOCOL.json EXPORT.csv --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--text]` | Retain exact local CSV bytes and inspect detached unreviewed candidates |
 | `nbib_intake.py preview PROTOCOL.json EXPORT.nbib --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve native PubMed-format field occurrences and verify a CSV derivative for explicit reconciliation |
 | `nbib_batch_intake.py preview PROTOCOL.json --export ID=EXPORT.nbib [--export ID=OTHER.nbib] --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve each explicitly grouped native file and prepare one unreviewed CSV intake for one incomplete search |
+| `ris_intake.py preview PROTOCOL.json EXPORT.ris --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve strict-subset native RIS bytes/field occurrences and prepare CSV candidates without DOI/ID resolution |
 | `collection_bundle.py create PROTOCOL.json NEW.zip --nbib INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Carry selected native wrappers with the research bundle and replay their exact import associations |
 | `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |

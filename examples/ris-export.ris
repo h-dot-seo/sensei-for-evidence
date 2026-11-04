@@ -1,0 +1,29 @@
+TY  - JOUR
+TI  - Fictional citation for software validation only
+AU  - Fictional Author A
+AU  - Fictional Author B
+ID  - fictional-shared-label
+DO  - 10.0000/fictional-shared
+UR  - https://example.invalid/fictional-first
+AB  - Fictional metadata only; no scientific findings are supplied.
+      A supported indented continuation is retained as a separate value line.
+Z9  - Unknown tag retained without interpretation
+ER  -
+
+TY  - JOUR
+TI  - Fictional repeated identifier with a different supplied title
+ID  - fictional-shared-label
+DO  - 10.0000/fictional-shared
+DO  - 10.0000/fictional-conflicting
+UR  - https://example.invalid/fictional-second
+L1  - /unopened/fictional-attachment.pdf
+ER  -
+
+TY  - RPRT
+TI  - Fictional identifier-free reference
+N1  - No DOI, URL or accession is supplied; occurrence is not identity.
+ER  -
+
+TY  - GEN
+TI  - Fictional candidate explicitly withheld in the supplied choices
+ER  -
