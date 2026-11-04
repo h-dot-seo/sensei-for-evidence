@@ -2319,3 +2319,49 @@ external/model call is made. Private text is not redacted; output creation does
 not claim atomic path-race or ancestor-alias protection. Existing work-transition
 archives do not support this new application kind. Exact-head matrix CI is checked
 separately after push; local success is not a substitute for remote verification.
+
+The exact published work-context head passed all four Ubuntu/Windows × Python
+3.10/3.12 jobs: run 41872850838, commit
+5c8ee356a5312d58b2830eba6cf88c45b64dcd0b.
+
+## 2026-11-04 bounded optional PubMed identifier discovery
+
+Added an optional, explicit ESearch client rather than another mock receipt path.
+Only its preview-hash-bound fetch contacts the fixed HTTPS NCBI endpoint. Preview,
+supplied-response replay, verification and conversion stay offline. It preserves
+bounded raw response bytes, exact parameters, ordered PMID occurrences, failures,
+query translation and count/paging diagnostics without certifying a database census.
+Separate conversion requires an exact existing plan and enters ordinary unreviewed
+CSV collection; it never changes a search plan, resolves identities, screens records
+or extracts evidence. Zero-hit observations retain native provenance and cannot be
+converted into a provenance-free header-only intake.
+
+Full local regression passed 1,696 tests in 235.965 seconds (1,695 passed and one
+native-Windows-only skip). Two additional actual-urllib/buffered-read regression
+tests, added after that full run started, passed separately in 0.022 seconds. These
+exercise a real synthetic 302 handler chain and a slow one-byte buffered source.
+The full run includes 11 discovery tests, one six-command documented offline journey
+with separate explicit fictional collection review, and one navigation regression.
+Operator discovery now has 22 static routes and 91 parser-help entrypoints. No real
+ESearch query, abstract/full-text retrieval, private input or model call was used.
+
+Independent review identified and verified fixes for zero-hit provenance loss,
+slow-body read aggregation, a rate-sleep deadline overshoot and impossible successful
+replay durations. No remaining release blocker was found. This is implementation
+review, not source authentication or a full security audit. Socket/checkpoint budgets
+are best effort: DNS, TLS, response/chunk headers, an individual blocking read or OS
+scheduling can still delay control. Pacing is process-local, not shared-IP enforcement.
+
+Strict run caps are 100 requested IDs/page, 1,000 requested occurrences, 10 requests,
+65,536 native bytes/attempt and 20 MB discovery JSON. Unexpected returned occurrences
+remain retained even when a diagnostic stops the run; caps do not erase provenance.
+TLS validation is enabled; redirects, retries, authentication, cookies, proxies and
+provider fallback are not used. Error messages do not expose raw exception strings.
+Unsigned replay proves consistency only, not retrieval, authentic timing or index
+stability. Real queries and returned data belong outside the public repository.
+
+Compile, seven changed-guide local links, whitespace, limited publication audit and
+regenerated inventory checks pass. Official parameters and limits were checked via
+public documentation; modern JSON behavior remains conservatively mocked, not live
+service validated. Exact published-head Ubuntu/Windows × Python 3.10/3.12 CI is checked
+separately after push, including the two added transport tests.

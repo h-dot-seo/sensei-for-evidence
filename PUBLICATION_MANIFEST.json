@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.81.0-reviewed-work-context-links",
+  "release": "0.82.0-bounded-pubmed-discovery",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 340,
+  "file_count": 348,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 34164,
-      "sha256": "37d967d05cf77a2dc62c527b0838ba617bf35d6db3f7f08964fd39738339131f"
+      "bytes": 34820,
+      "sha256": "393c7d217c971b3ecd2b317e732bbc764370df7df1ccf1aa2eb061ff9ef836a7"
     },
     {
       "path": "RIGHTS.md",
@@ -40,18 +40,18 @@
     },
     {
       "path": "SECURITY.md",
-      "bytes": 1324,
-      "sha256": "9bcf7ee3f4b484ed2af153569946f72fadcf6d8a06a599433e4d80e8525d8f36"
+      "bytes": 2217,
+      "sha256": "f6f106c847c35b0d8fca65dcb73150f4381cc8b73295734b89bf416d8c99da73"
     },
     {
       "path": "SKILL.md",
-      "bytes": 1877,
-      "sha256": "0670146b1595a1a831f8e09447377c727e13daa450f3e54bd232315da1bc5cea"
+      "bytes": 2373,
+      "sha256": "93e818f6142314743ac28f443975f9df1144c7ea36b1cadd91359a1d664edd6d"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 167502,
-      "sha256": "5e229cd7a00fe7326a6837208dd40c46adafff49792b308afbd81e7998533675"
+      "bytes": 170603,
+      "sha256": "cb8cf87febef299ec371460313791f49addba868e3bd73684074934a27df4962"
     },
     {
       "path": "adapter_integrity.py",
@@ -165,8 +165,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 3833,
-      "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
+      "bytes": 4393,
+      "sha256": "c48380bdfdef2db2573a3cb3dab4c6becfb097939b711c44eabd1212518db527"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -295,8 +295,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 16555,
-      "sha256": "e9e1de39d635b5e39ceaeb1a94e581843ab901b5bcd610d14eb0ba925158f7c3"
+      "bytes": 16847,
+      "sha256": "e9b5b2301bbba764af3500d6c26a24a9110669677b8def8add830a58b80c9249"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -322,6 +322,11 @@
       "path": "docs/PRISMA_AUDIT.md",
       "bytes": 11678,
       "sha256": "a2dcc308ca87832e55d725149ec6b724f4253f6db880c4d0ae4ecc208dd3c853"
+    },
+    {
+      "path": "docs/PUBMED_DISCOVERY.md",
+      "bytes": 10716,
+      "sha256": "8f2d5bce523b436cf4e945b91b690a6851841591f915cd77caf91b0b5fa4c678"
     },
     {
       "path": "docs/PUBMED_NBIB_BATCH.md",
@@ -430,8 +435,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 33793,
-      "sha256": "457957944106e6d84ad7004f8e0583e6fa7d8164a4c63fd1dd6c20870d8cfce9"
+      "bytes": 34235,
+      "sha256": "ce7b0d1c12378747061cfd74173bc4af427e76cb27a58b022cfb5a2aee1c5e81"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -764,6 +769,21 @@
       "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
     },
     {
+      "path": "examples/pubmed-discovery-base.json",
+      "bytes": 575,
+      "sha256": "b407ffa99e085082a675ea8aeefbf4862f7e632f91395b72fc50da230c392ac6"
+    },
+    {
+      "path": "examples/pubmed-discovery-execution.json",
+      "bytes": 1363,
+      "sha256": "7e7a361850fa07b16682d0534267edb7a5c1328355b6089f23f6a0b72c3c6444"
+    },
+    {
+      "path": "examples/pubmed-discovery-spec.json",
+      "bytes": 203,
+      "sha256": "f470ff495e0e7796b064336db7494e99a8e64e44982491badb6873ba71ea2e4f"
+    },
+    {
       "path": "examples/pubmed-export-additional.nbib",
       "bytes": 351,
       "sha256": "87fb6f90b30906c1570ab4012acc10893c8f1768daaf389b55a3adaaca87c47e"
@@ -1029,6 +1049,11 @@
       "sha256": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562"
     },
     {
+      "path": "pubmed_discovery.py",
+      "bytes": 23682,
+      "sha256": "c7abf35510220cb1fe77d68e1fe6dc3ec8961a6eb80441f23f4fdd87f30f9bda"
+    },
+    {
       "path": "receipt_intake.py",
       "bytes": 7870,
       "sha256": "f456e9f618d173da7495c0e412d93ec565a5fb9c824bae90a55b6b704df34b39"
@@ -1140,8 +1165,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 50799,
-      "sha256": "a46212aacc71f447dfa5df70ee648c9f03a050f80de214d821b8ae98a9e74283"
+      "bytes": 51726,
+      "sha256": "2a25a4377f7852a574a38e8abc6365b1847fee30d79db10c19d78f3d8109b6a2"
     },
     {
       "path": "ris_export_parser.py",
@@ -1439,6 +1464,21 @@
       "sha256": "6cd2dae1e2820d308e92a25605f1c670d2d5c3ccdef690ca0323b91855444da0"
     },
     {
+      "path": "test_pubmed_discovery.py",
+      "bytes": 14899,
+      "sha256": "64bd31db79fad177170d880c6119587aba5aaaec6f806e2dd0a0eb44101feb55"
+    },
+    {
+      "path": "test_pubmed_discovery_journey.py",
+      "bytes": 3877,
+      "sha256": "fbc4c6e010edadd34749fa27c9438c0f284e3a92de6e88de0f213efc852a8578"
+    },
+    {
+      "path": "test_pubmed_transport_regressions.py",
+      "bytes": 3108,
+      "sha256": "63627104093aaf5bb0d9e501c46d1ed6a0268c30864b965364411d784b9c848d"
+    },
+    {
       "path": "test_rationale_links.py",
       "bytes": 6060,
       "sha256": "13dc453251609d4e61810b4a248970fae4540a27a3b19f483477b07976862ec2"
@@ -1610,8 +1650,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 21812,
-      "sha256": "8bc6e9fc6331d0c58214745dc7918f45837f2f53b91881d95a4e539b6fdddbcd"
+      "bytes": 22526,
+      "sha256": "a33464688a897dd820cd50b810bee4eda579d4103d51ef49f8a3dbdffd56b3a8"
     },
     {
       "path": "test_synthesis_review.py",

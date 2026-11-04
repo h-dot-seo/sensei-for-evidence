@@ -8,13 +8,15 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 
 ## What is implemented
 
-Standard-library Python tools reconcile **supplied data**, without calling search
-services or models:
+Standard-library Python tools reconcile **supplied data**. The optional, explicitly
+invoked PubMed client can fetch bounded PMID lists; the core never calls models:
 
+- Optional preview-bound, keyless PubMed identifier discovery with retained native
+  response observations, explicit caps/failures and separate unreviewed CSV intake.
 - Declared search plans and optional page ledgers, including missing sources,
   count mismatches, overlap, truncation and incomplete pagination.
 - Provider-neutral mock search/extraction receipts with hash-bound operator review
-  gates; unreviewed proposals never enter accepted evidence. No live API client.
+  gates; unreviewed proposals never enter accepted evidence. Mock adapters stay offline.
 - Local UTF-8 CSV export provenance, strict-subset NBIB/RIS native wrappers,
   and explicit supplied identity reconciliation with raw-row retention and
   incomplete-search promotion into screening queues.
@@ -44,9 +46,9 @@ services or models:
 - Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
   CSV exports, plus version-to-version mechanical comparison.
 
-No live literature retrieval, full-text reading, guideline currency verification,
-scientific appraisal, meta-analysis, clinical recommendation or legal opinion is
-performed. Search pages, source locators and reviewer claims are not authenticated.
+Only explicit PubMed ESearch identifier discovery can make live search requests.
+No abstract/full-text retrieval, guideline currency verification, scientific
+appraisal, meta-analysis, clinical recommendation or legal opinion is performed. Search pages, source locators and reviewer claims are not authenticated.
 Census and conclusion readiness remain `NOT_ESTABLISHED` and `NOT_READY`.
 
 ## Quick start
@@ -212,7 +214,7 @@ The [PRISMA-oriented accounting export](docs/PRISMA_AUDIT.md) exposes exact memb
 IDs and record/report/study/result links for audit, without certifying a complete
 search or PRISMA compliance. Try `examples/prisma-audit.json`.
 
-Before wiring a live provider, use the [search query/receipt manifest](docs/SEARCH_MANIFEST.md)
+Before connecting provider output to research, use the [search query/receipt manifest](docs/SEARCH_MANIFEST.md)
 with `examples/search-manifest.json` to inspect exact requests, missing runtime
 fields and source-wise unresolved receipts. No query translation or execution occurs.
 
@@ -452,3 +454,8 @@ planning/completion bases and each context's own review status remain unchanged.
 only explicitly selected context links to named work. Before/after targets expose
 selected and direct-dependent source-basis changes while preserving stored ranks,
 completion assertions and hashes, without automatic applicability or review renewal.
+
+[Bounded optional PubMed discovery](docs/PUBMED_DISCOVERY.md) closes the gap between
+manual export collection and live identifier discovery. Preview is offline; only a
+matching explicitly invoked fetch contacts NCBI. Raw observations and stop reasons
+remain separate from search completeness, identity decisions and extracted evidence.

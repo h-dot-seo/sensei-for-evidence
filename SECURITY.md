@@ -19,3 +19,18 @@ redact source material or turn a private corpus into a safe public release.
 Do not disclose a vulnerability containing private information in a public issue.
 Use an owner-configured private security channel when available. No contact address
 or account-specific reporting endpoint is bundled in this release.
+
+## Optional PubMed requests
+
+The core processing tools remain offline. Only the separately invoked
+`pubmed_discovery.py fetch` path contacts the fixed HTTPS NCBI ESearch endpoint,
+after an exact preview-hash check. It sends the query and declared request
+parameters, not unrelated protocol/source fields. Do not transmit personal or
+confidential query content without authorization. No API keys, cookies, account
+credentials or payment integration are supported. Redirects/access challenges are
+stopping conditions, not invitations to retry elsewhere or weaken TLS.
+
+Retained response bodies are untrusted observations, not instructions or executable
+content. Keep live query/output artifacts outside this public repository. Offline
+replay and intake conversion do not establish that a recorded request occurred.
+Per-process request pacing does not control other clients sharing the same IP.

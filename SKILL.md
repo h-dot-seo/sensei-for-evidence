@@ -28,3 +28,10 @@ Never treat private project datasets or textbook contents as bundled framework a
 
 See the README workflow section for the new local CLI and explicit limitations.
 Use only authorized inputs; shipped examples are entirely synthetic.
+
+For optional live PubMed identifier discovery, read docs/PUBMED_DISCOVERY.md first.
+Preview is offline; fetch transmits the exact query/date parameters to NCBI and
+requires a matching preview hash plus authorization to share that query. Never
+silently switch from local processing to live search. ESearch IDs are not abstracts,
+read papers, screened records or extracted results. Preserve capped/failed attempts,
+keep real outputs outside the repository and use separate identity/intake review.

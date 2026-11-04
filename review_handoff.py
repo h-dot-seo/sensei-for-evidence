@@ -71,6 +71,13 @@ SUPPLIED_INPUT_WORKFLOW_SCOPE = (
     'The legacy manual_input_workflow remains a separate mock receipt rehearsal, not the only input route.'
 )
 SUPPLIED_INPUT_WORKFLOWS = [
+    dict(workflow_id='pubmed_discovery', title='Inspect bounded optional PubMed identifier discovery',
+         guide_paths=['docs/PUBMED_DISCOVERY.md'],
+         entrypoints=[dict(script='pubmed_discovery.py', arguments=[command, '--help'])
+                      for command in ('preview', 'fetch', 'from-responses', 'verify', 'to-intake')],
+         required_human_inputs=['Explicit standalone query/date/sort specification and bounded request/record settings',
+                                'Permission to transmit the query to NCBI, exact preview hash for fetch, and separate plan/identity review for intake'],
+         boundary='Only the separately invoked fetch contacts NCBI. Handoff help performs no search. ESearch returns identifiers only; caps, partial/error observations and raw bodies do not establish census, source authenticity, eligibility or evidence. Conversion never amends a plan or resolves identity.'),
     dict(workflow_id='native_collection', title='Supplied native citation files and explicit collection review',
          guide_paths=['docs/PUBMED_NBIB_INTAKE.md', 'docs/PUBMED_NBIB_BATCH.md', 'docs/RIS_INTAKE.md', 'docs/BIBLIOGRAPHIC_REVIEW.md', 'docs/BATCH_TO_EVIDENCE.md'],
          entrypoints=[dict(script='nbib_intake.py', arguments=['preview', '--help']),

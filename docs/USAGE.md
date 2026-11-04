@@ -592,3 +592,11 @@ records](REPORT_DECISIONS.md). Save the application record first, then replay it
 against the original protocol before exporting the candidate. Existing results
 must remain structurally compatible; no reviewer consensus or study identity is
 inferred.
+
+## Optional bounded PubMed identifier discovery
+
+See [PubMed discovery](PUBMED_DISCOVERY.md) for the separate preview/fetch/native
+observation/verification/conversion route. Only explicit, preview-bound fetch is
+networked; ordinary tools and the mock adapter remain offline. The API returns
+identifiers, not abstracts or extracted findings. No real network query is part of
+this repository's synthetic tests or documented offline rehearsal.

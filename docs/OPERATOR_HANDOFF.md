@@ -262,3 +262,8 @@ to existing work or upgrade their own pending/reviewed status.
 [Existing-work context assignment](WORK_CONTEXT_INTAKE.md) exposes explicit-link
 preparation and exact review, including direct-dependent source-basis changes.
 No supplied completion or planning hash is renewed by this operation.
+
+[Bounded optional PubMed discovery](PUBMED_DISCOVERY.md) is also discoverable here
+through parser-help entries only. The handoff never executes live fetch, chooses
+a query or supplies its preview approval. Identifier collection and evidence
+extraction remain separate human-reviewed stages.

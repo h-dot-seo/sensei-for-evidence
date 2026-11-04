@@ -1,0 +1,44 @@
+{
+  "started_at": "2026-01-01T00:00:00+00:00",
+  "attempts": [
+    {
+      "parameters": {
+        "db": "pubmed",
+        "retmode": "json",
+        "term": "fictional mechanism",
+        "sort": "pub_date",
+        "retstart": "0",
+        "retmax": "2"
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "started_at": "2026-01-01T00:00:00+00:00",
+      "elapsed_seconds": 0.1,
+      "body_base64": "eyJlc2VhcmNocmVzdWx0IjogeyJjb3VudCI6ICIzIiwgInJldHN0YXJ0IjogIjAiLCAicmV0bWF4IjogIjIiLCAiaWRsaXN0IjogWyIxMSIsICIxMiJdLCAicXVlcnl0cmFuc2xhdGlvbiI6ICJmaWN0aW9uYWwgbWVjaGFuaXNtIn19",
+      "body_complete": true,
+      "error": null
+    },
+    {
+      "parameters": {
+        "db": "pubmed",
+        "retmode": "json",
+        "term": "fictional mechanism",
+        "sort": "pub_date",
+        "retstart": "2",
+        "retmax": "2"
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "application/json"
+      },
+      "started_at": "2026-01-01T00:00:00+00:00",
+      "elapsed_seconds": 0.1,
+      "body_base64": "eyJlc2VhcmNocmVzdWx0IjogeyJjb3VudCI6ICIzIiwgInJldHN0YXJ0IjogIjIiLCAicmV0bWF4IjogIjEiLCAiaWRsaXN0IjogWyIxMyJdLCAicXVlcnl0cmFuc2xhdGlvbiI6ICJmaWN0aW9uYWwgbWVjaGFuaXNtIn19",
+      "body_complete": true,
+      "error": null
+    }
+  ],
+  "stop_reason": "reported_count_reached"
+}

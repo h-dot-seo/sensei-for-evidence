@@ -71,3 +71,13 @@ arithmetic, duplicate reference IDs and release flags/citation/artifact linkage.
 does not authenticate a search receipt, inspect a paper, assess bias, establish legal
 status, verify a storage location or certify scientific sufficiency. Its output must
 not be represented as independent scientific validation.
+
+## Optional identifier discovery transport
+
+The separately invoked [bounded PubMed client](PUBMED_DISCOVERY.md) can transmit
+an explicit preview-bound request to NCBI. Its native observations are detached
+from protocol state. A later explicit conversion supplies unreviewed identifier
+CSV to existing collection review; no search-plan amendment, identity resolution,
+screening or evidence extraction is automatic. ESearch identifier counts are not
+article-reading coverage or source/census authentication. Mock adapters keep their
+existing offline semantics.
