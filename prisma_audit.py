@@ -8,6 +8,7 @@ from collections import defaultdict
 from evidence_workflow import run
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
+from report_links import report_study_ids
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 
 BOUNDARY = ('PRISMA-oriented supplied-data accounting export, not a PRISMA-standard interchange '
@@ -80,7 +81,7 @@ def export_audit(protocol):
         evidence_by_record[row['record_id']].append(row['evidence_id'])
         evidence_by_study[row['study_id']].append(row['evidence_id'])
     for row in report_rows:
-        if row.get('decision')=='include': reports_by_study[row['study_id']].append(row['report_id'])
+        for study_id in report_study_ids(row): reports_by_study[study_id].append(row['report_id'])
     all_records=set(first); included={rid for rid,row in screening.items() if row['decision']=='include'}
     excluded={rid for rid,row in screening.items() if row['decision']=='exclude'}
     extracted_reports={by_record[row['record_id']]['report_id'] for row in evidence} if reports is not None else set()
@@ -112,15 +113,24 @@ def export_audit(protocol):
     }
     for name,predicate in selectors.items():
         node(name,'report',{r['report_id'] for r in report_rows if predicate(r)} if reports is not None else None,'Supplied report ledger; missing/default decisions remain pending')
-    included_studies={r['study_id'] for r in report_rows if r.get('decision')=='include'} if reports is not None else None
+    included_studies={sid for r in report_rows for sid in report_study_ids(r)} if reports is not None else None
     node('included_studies','supplied_study_id',included_studies,'Distinct study IDs on included reports, not independently verified study identity')
     node('extracted_result_rows','result',{r['evidence_id'] for r in evidence},'Distinct result IDs, not studies or independent observations')
     node('records_with_extraction','record',{r['record_id'] for r in evidence},'Records with at least one supplied result, not exhaustive extraction')
     node('included_records_without_extraction','record',included-set(evidence_by_record),'Title/abstract-included records without result rows; not a full-text extraction task list')
     node('studies_with_extraction','supplied_study_id',{r['study_id'] for r in evidence},'Supplied study IDs represented by at least one result')
+    membership_coverage = reports.get('report_study_coverage') if reports is not None else None
+    if membership_coverage is not None:
+        memberships = membership_coverage['membership_ledger']
+        for name, selected in (
+                ('included_report_study_memberships', memberships),
+                ('report_study_memberships_with_results', [r for r in memberships if r['has_result_rows']]),
+                ('report_study_memberships_without_results', [r for r in memberships if not r['has_result_rows']])):
+            node(name, 'report_study_membership', [r['membership_id'] for r in selected],
+                 'Explicit supplied report-study pair; any result presence is not exhaustive extraction or study independence')
     nodes_by_id={r['node_id']:r for r in nodes}
     checks=[]
-    for parent,children in [('identified_occurrences',['retained_occurrences','repeated_exact_id_occurrences']),
+    partitions = [('identified_occurrences',['retained_occurrences','repeated_exact_id_occurrences']),
                             ('unique_records',['screened_records','screening_pending_records']),
                             ('screened_records',['included_records','excluded_records']),
                             ('included_records',['mapped_included_records','unmapped_included_records']),
@@ -128,7 +138,10 @@ def export_audit(protocol):
                             ('reports_sought',['reports_retrieved','reports_not_retrieved','reports_retrieval_pending']),
                             ('reports_retrieved',['reports_assessed','reports_assessment_pending']),
                             ('reports_assessed',['reports_included','reports_excluded']),
-                            ('reports_included',['included_reports_with_extraction','included_reports_without_extraction'])]:
+                            ('reports_included',['included_reports_with_extraction','included_reports_without_extraction'])]
+    if membership_coverage is not None:
+        partitions.append(('included_report_study_memberships', ['report_study_memberships_with_results','report_study_memberships_without_results']))
+    for parent,children in partitions:
         whole=nodes_by_id[parent];parts=[nodes_by_id[k] for k in children]
         available=whole['count'] is not None and all(p['count'] is not None for p in parts)
         if available:
@@ -179,6 +192,8 @@ def export_audit(protocol):
                        for row in research['context']['context_ledger'] if row.get('context_scope') == 'source_review']
     if source_contexts:
         result['source_context_ledger'] = source_contexts
+    if membership_coverage is not None:
+        result['report_study_coverage'] = copy.deepcopy(membership_coverage)
     return result
 
 
@@ -194,6 +209,8 @@ def render_text(result):
                       'Full collection row provenance, supplied identity choices and withheld rows remain in JSON; identity is not verified.'])
     if 'source_context_ledger' in result:
         lines.append('Pre-extraction source contexts (not evidence or applicability): ' + show(result['source_context_ledger']))
+    if 'report_study_coverage' in result:
+        lines.append('Explicit report-study membership coverage (not exhaustive extraction): ' + show(result['report_study_coverage']))
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
                   'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),

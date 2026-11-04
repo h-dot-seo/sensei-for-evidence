@@ -96,12 +96,14 @@ python prisma_reports.py examples/report-protocol.json
 Add `reports` with unique `report_id`, included `record_ids`, `retrieval`
 (`retrieved`, `not_retrieved`, `pending`) and `decision` (`include`, `exclude`,
 `pending`). Retrieved reports require a locator, failures/exclusions require a
-reason, and included reports require `study_id`. The JSON output contains report
+reason, and included reports require legacy `study_id` or explicit plural `study_ids`.
+The two fields are mutually exclusive. See [multiple studies](MULTI_STUDY_REPORTS.md)
+for opt-in validation and separate report-study membership accounting. The JSON output contains report
 and study counts, pending work, exclusion counts, a deterministic report ledger and
 CSV text. CSV cells beginning with formula characters are escaped. Multiple reports
 may share a study ID; each input record maps to at most one report. Unmapped advanced
-records remain visible. Extracted evidence must now map to a retrieved, included report with the same
-study ID. Changed full-text decisions fail until the operator reconciles affected
+records remain visible. Extracted evidence must map to a retrieved, included report
+that explicitly declares its study ID. Changed full-text decisions fail until the operator reconciles affected
 extractions and work packages; evidence is never silently deleted. It is PRISMA-oriented bookkeeping,
 not a complete compliance checker, search backend or scientific review.
 
@@ -269,10 +271,11 @@ operator-review responsibilities, not automated findings.
 
 Standalone report JSON includes the normalized evidence ledger, so extraction IDs
 can be traced back to source record IDs even without a bundle. The current model
-requires one supplied study ID per source record/report; conflicting study IDs
-across result rows fail even when the optional report ledger is absent. Supporting
-multiple studies in one report requires a future explicit model extension, not
-silent reassignment of endpoint rows.
+requires one supplied study ID per source record/report unless an included report
+explicitly declares plural `study_ids`. Without that opt-in, conflicting study IDs
+across result rows fail even when the optional report ledger is absent. Use the
+explicit [report-study membership model](MULTI_STUDY_REPORTS.md), never silent
+reassignment of endpoint rows or inferred study independence.
 
 Bundle ZIP creator metadata is explicitly fixed across Unix and Windows instead
 of inheriting the host default. Reproducible archive bytes still require identical

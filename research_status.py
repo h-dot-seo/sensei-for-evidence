@@ -1,5 +1,6 @@
 """Summarize mechanical review queues from a validated supplied protocol."""
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -54,6 +55,9 @@ def status(protocol):
         completed_work_with_stale_source_binding=sorted(row['work_package_id'] for row in research['planning']['completion_ledger'] if row['source_match_status']=='STALE_SOURCE'),
         completed_work_assertions=sorted(row['work_package_id'] for row in work if row['status'] == 'COMPLETE'),
     )
+    if reports is not None and 'report_study_coverage' in reports:
+        queues['report_study_memberships_without_results'] = copy.deepcopy(
+            reports['report_study_coverage']['missing_report_study_memberships'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     return dict(question=research['question'], protocol_version=research['protocol_version'],
@@ -106,6 +110,10 @@ def render_text(result):
     ]
     lines = ['Supplied research status', 'Search plan: ' + result['search_plan_status']]
     lines.extend(label + ': ' + count(key) for label, key in labels)
+    if 'report_study_memberships_without_results' in result['queues']:
+        lines.append('Included report-study memberships without result rows: '
+                     + count('report_study_memberships_without_results'))
+        lines.append('Membership presence is not exhaustive extraction or independent study verification.')
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
     lines.append('Record identity: exact supplied IDs only; identities not independently verified.')

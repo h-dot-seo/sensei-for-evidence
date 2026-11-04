@@ -1,0 +1,28 @@
+{
+  "question": "How can fictional results from several explicitly declared studies in one report remain separately traceable?",
+  "version": "synthetic-multi-study-v1",
+  "inclusion_criteria": ["Fictional in-scope reports for software testing only"],
+  "exclusion_criteria": ["Fictional out-of-scope reports for software testing only"],
+  "search_plan": [
+    {"search_id": "synthetic-search", "source": "synthetic-index", "query": "fictional multi-study report", "window": "2020-2026"}
+  ],
+  "searches": [
+    {"search_id": "synthetic-search", "source": "synthetic-index", "query": "fictional multi-study report", "window": "2020-2026", "searched_at": "synthetic supplied timestamp", "record_ids": ["record-one", "record-two"], "complete": false, "total_count": null, "has_more": null}
+  ],
+  "screening": [
+    {"record_id": "record-one", "decision": "include", "reason": "Fictional operator eligibility assertion for testing."},
+    {"record_id": "record-two", "decision": "include", "reason": "Fictional operator eligibility assertion for testing."}
+  ],
+  "reports": [
+    {"report_id": "report-one", "record_ids": ["record-one"], "retrieval": "retrieved", "decision": "include", "study_ids": ["study-A", "study-B", "study-C"], "locator": "synthetic://report-one"},
+    {"report_id": "report-two", "record_ids": ["record-two"], "retrieval": "retrieved", "decision": "include", "study_id": "study-A", "locator": "synthetic://report-two"}
+  ],
+  "evidence": [
+    {"evidence_id": "result-A", "record_id": "record-one", "study_id": "study-A", "locator": "synthetic://report-one/result-A", "model": "Fictional nonclinical system A", "intervention": "Fictional comparison label A", "comparator": "Fictional reference label", "endpoint": "Fictional endpoint A", "result": "Synthetic observation for software testing; no real measurement.", "limitations": "Study identity, independence and scientific validity have not been verified.", "mechanism_basis": "unknown"},
+    {"evidence_id": "result-B", "record_id": "record-one", "study_id": "study-B", "locator": "synthetic://report-one/result-B", "model": "Fictional nonclinical system B", "intervention": "Fictional comparison label B", "comparator": "Fictional reference label", "endpoint": "Fictional endpoint B", "result": "Different synthetic observation for software testing; no real measurement.", "limitations": "Sharing a report does not establish the same study, independence or replication.", "mechanism_basis": "unknown"}
+  ],
+  "gaps": [
+    {"work_package_id": "WP-RESULT-LINKS", "evidence_ids": ["result-A", "result-B"], "question": "Are the two fictional result rows linked to the intended supplied studies?", "deliverable": "A source-linked result membership review note.", "acceptance_criterion": "The operator records identity uncertainty without treating two result rows as independent support."},
+    {"work_package_id": "WP-MEMBERSHIP-SOURCES", "work_type": "source_review", "evidence_ids": [], "source_refs": [{"kind": "record", "record_id": "record-one"}, {"kind": "record", "record_id": "record-two"}], "question": "Which declared report-study memberships have no supplied result rows?", "deliverable": "An explicit report-specific extraction inventory and limitations note.", "acceptance_criterion": "Results in one report are not assumed to fill another report's membership; no exhaustive extraction is asserted."}
+  ]
+}

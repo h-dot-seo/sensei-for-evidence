@@ -7,72 +7,44 @@ from collections import Counter
 from pathlib import Path
 from json_io import parse_json, configure_utf8_stdio
 from evidence_workflow import run
-from context_links import nonempty_text
 from csv_safety import safe_csv_cell
+from report_links import has_plural_studies, report_study_ids, validate_reports, validate_evidence_membership
 
 
 def report_flow(protocol):
     baseline = run(protocol)
     included_records = {r['record_id'] for r in protocol['screening'] if r['decision']=='include'}
-    reports, linked = {}, set()
-    if not isinstance(protocol['reports'], list):
-        raise ValueError('reports must be a list')
-    for report in protocol['reports']:
-        if not isinstance(report, dict):
-            raise ValueError('report must be an object')
-        rid = report.get('report_id')
-        if not nonempty_text(rid) or rid in reports:
-            raise ValueError('unique report IDs required')
-        record_ids = report['record_ids']
-        if (not isinstance(record_ids,list) or not record_ids
-                or any(not isinstance(r,str) or r not in included_records for r in record_ids)
-                or len(record_ids) != len(set(record_ids))):
-            raise ValueError('reports must link to included screening records')
-        if linked.intersection(record_ids):
-            raise ValueError('record mapped to multiple reports')
-        linked.update(record_ids)
-        retrieval = report['retrieval']
-        if retrieval not in ('retrieved','not_retrieved','pending'):
-            raise ValueError('invalid report retrieval state')
-        decision = report.get('decision','pending')
-        if decision not in ('include','exclude','pending'):
-            raise ValueError('invalid full-text decision')
-        if retrieval != 'retrieved' and decision != 'pending':
-            raise ValueError('unretrieved report cannot have full-text decision')
-        if retrieval == 'retrieved' and not nonempty_text(report.get('locator')):
-            raise ValueError('retrieved report requires locator')
-        if (retrieval == 'not_retrieved' or decision == 'exclude') and not nonempty_text(report.get('reason')):
-            raise ValueError('retrieval failure/full-text exclusion requires reason')
-        if decision == 'include' and not nonempty_text(report.get('study_id')):
-            raise ValueError('included report requires study ID')
-        reports[rid] = report
-    report_by_record = {record: report for report in reports.values() for record in report['record_ids']}
+    reports, report_by_record = validate_reports(protocol['reports'], included_records)
+    linked = set(report_by_record)
     extracted_report_ids = set()
     for evidence in protocol['evidence']:
-        report = report_by_record.get(evidence['record_id'])
-        if report is None or report.get('decision') != 'include' or report['retrieval'] != 'retrieved':
-            raise ValueError('extracted evidence requires an included retrieved report; reconcile screening first')
+        report = validate_evidence_membership(evidence, report_by_record)
         extracted_report_ids.add(report['report_id'])
-        if evidence['study_id'] != report['study_id']:
-            raise ValueError('extracted evidence study ID conflicts with included report')
     counts=Counter(r['retrieval'] for r in reports.values())
     assessed=[r for r in reports.values() if r['retrieval']=='retrieved' and r.get('decision') in ('include','exclude')]
     included=[r for r in assessed if r['decision']=='include']
     excluded=[r for r in assessed if r['decision']=='exclude']
     output=io.StringIO(newline='')
     writer=csv.writer(output,lineterminator='\n')
-    writer.writerow(['report_id','record_ids','retrieval','decision','reason','study_id','locator'])
+    plural_studies = has_plural_studies(protocol)
+    columns = ['report_id','record_ids','retrieval','decision','reason','study_id','locator']
+    if plural_studies:
+        columns.append('declared_study_ids')
+    writer.writerow(columns)
     for rid,r in sorted(reports.items()):
-        writer.writerow([safe_csv_cell(rid),safe_csv_cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
-                         safe_csv_cell(r.get('reason','')),safe_csv_cell(r.get('study_id','')),safe_csv_cell(r.get('locator',''))])
-    return dict(experiments=baseline['experiments'], synthesis=baseline['synthesis'], planning=baseline['planning'], record_provenance=baseline['record_provenance'],
+        values = [safe_csv_cell(rid),safe_csv_cell(';'.join(r['record_ids'])),r['retrieval'],r.get('decision','pending'),
+                  safe_csv_cell(r.get('reason','')),safe_csv_cell(r.get('study_id','')),safe_csv_cell(r.get('locator',''))]
+        if plural_studies:
+            values.append(safe_csv_cell(json.dumps(report_study_ids(r), ensure_ascii=False)))
+        writer.writerow(values)
+    result = dict(experiments=baseline['experiments'], synthesis=baseline['synthesis'], planning=baseline['planning'], record_provenance=baseline['record_provenance'],
                 deduplication_scope=baseline['deduplication_scope'],
                 record_identity_verification=baseline['record_identity_verification'],
                 search_ledger=baseline['search_ledger'],
                 search_coverage=baseline['coverage'], search_plan_audit=baseline['search_plan_audit'], record_flow=baseline['flow'], report_flow=dict(sought=len(reports),retrieved=counts['retrieved'],
                 not_retrieved=counts['not_retrieved'],retrieval_pending=counts['pending'],assessed=len(assessed),
                 assessment_pending=counts['retrieved']-len(assessed),excluded=len(excluded),included=len(included),
-                included_studies=len({r['study_id'] for r in included}),
+                included_studies=len({sid for r in included for sid in report_study_ids(r)}),
                 reports_with_extraction=len(extracted_report_ids)),
                 extraction_pending_reports=sorted(r['report_id'] for r in included
                                                   if r['report_id'] not in extracted_report_ids),
@@ -82,6 +54,9 @@ def report_flow(protocol):
                 work_packages=baseline['work_packages'], context=baseline['context'], appraisal=baseline['appraisal'],
                 evidence=baseline['evidence'], extraction_completeness=baseline['extraction_completeness'],
                 boundary='PRISMA-oriented supplied-data ledger; not a claim of full PRISMA compliance or complete search')
+    if plural_studies:
+        result['report_study_coverage'] = baseline['report_study_coverage']
+    return result
 
 
 def main():

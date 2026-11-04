@@ -8,6 +8,7 @@ from json_io import configure_utf8_stdio, parse_json, quoted_display
 from research_status import status
 from work_review import review_packets
 from synthesis_review import snapshot
+from report_links import report_study_ids
 
 # Display order is a navigation aid, never a scientific priority or execution order.
 SPECS = {
@@ -42,6 +43,10 @@ SPECS = {
     'completed_work_with_stale_source_binding': ('gaps', 'Compare changed work/evidence/context or artifact locator and reassess completion manually. Recorded COMPLETE/dependencies are not automatically changed.'),
     'completed_work_assertions': ('gaps', 'Inspect the supplied artifact locator and acceptance assertion. This tool does not open artifacts or certify acceptance.'),
 }
+OPTIONAL_SPECS = {
+    'report_study_memberships_without_results': ('reports evidence', 'Read the exact included report-study membership and record traceable results if in scope. A result for this study in another report does not fill this membership; presence is not exhaustive extraction or study independence.'),
+}
+OPTIONAL_QUEUE_DOMAINS = {'report_study_memberships_without_results': 'report_study'}
 
 BOUNDARY = ('Read-only navigation and supplied-data handoff, not a generated scientific report. '
             'Queues are protocol-wide even when a work package is selected. Optional missing stages '
@@ -64,9 +69,13 @@ QUEUE_DOMAINS = {
 
 def input_locations(protocol, queue, sections, items):
     """Resolve typed IDs and authoritative search indices, not arbitrary ID strings."""
-    domain=QUEUE_DOMAINS[queue]
+    domain={**QUEUE_DOMAINS, **OPTIONAL_QUEUE_DOMAINS}[queue]
     if domain == 'search_index':
         return list(dict.fromkeys('/searches/' + str(item['search_index']) for item in items or []))
+    if domain == 'report_study':
+        pairs = {(item['report_id'], item['study_id']) for item in items or []}
+        return [f'/reports/{index}' for index, row in enumerate(protocol.get('reports', []))
+                if any((row['report_id'], study_id) in pairs for study_id in report_study_ids(row))]
     ids={item if isinstance(item,str) else item[domain + '_id'] for item in items or []}
     matches=[]
     for section in sections:
@@ -98,10 +107,13 @@ def handoff(protocol, work_package_id=None):
     state = status(protocol)
     works = review_packets(protocol, work_package_id)
     synthesis = snapshot(protocol)
-    if set(state['queues']) != set(SPECS) or set(SPECS) != set(QUEUE_DOMAINS):
+    active_specs = dict(SPECS)
+    active_specs.update({key:value for key,value in OPTIONAL_SPECS.items() if key in state['queues']})
+    if (set(state['queues']) != set(active_specs) or set(SPECS) != set(QUEUE_DOMAINS)
+            or set(OPTIONAL_SPECS) != set(OPTIONAL_QUEUE_DOMAINS)):
         raise ValueError('handoff queue guidance is out of date')
     steps = []
-    for queue, (sections, task) in SPECS.items():
+    for queue, (sections, task) in active_specs.items():
         items = state['queues'][queue]
         sections = sections.split()
         steps.append(dict(queue=queue, state='NOT_SUPPLIED' if items is None else 'RECORDED_ITEMS' if items else 'NO_RECORDED_ITEMS',
@@ -127,6 +139,8 @@ def handoff(protocol, work_package_id=None):
                         for row in packet['contexts'] if row['context'].get('context_scope') == 'source_review']
         if source_links:
             summaries[-1]['source_context_links'] = source_links
+        if 'report_study_coverage' in packet:
+            summaries[-1]['report_study_coverage'] = copy.deepcopy(packet['report_study_coverage'])
     implementation = dict(synthesis['engine_sha256'], **works['engine_sha256'])
     implementation['review_handoff.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
@@ -180,6 +194,8 @@ def render_text(result):
                       'Guideline/development context: ' + show(item['contexts'])])
         if 'source_context_links' in item:
             lines.append('Pre-extraction typed context links (not applicability): ' + show(item['source_context_links']))
+        if 'report_study_coverage' in item:
+            lines.append('Linked-report study memberships (not work requirements): ' + show(item['report_study_coverage']))
         for claim in item['claim_positions']:
             statement=claim['statement']
             lines.append('Claim: ' + show(dict(statement_id=statement['statement_id'],text=statement['text'],

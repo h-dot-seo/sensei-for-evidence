@@ -39,7 +39,8 @@ It rejects an existing `adapter_receipts` ledger rather than overwriting it.
 
 Without reports, accepted candidates receive only the existing record-screening
 checks. With reports, they must also map to a supplied retrieved/included report
-and matching study ID. Neither case independently establishes full-text access or
+and an explicitly declared study ID, using legacy scalar or optional plural report
+declarations. Neither case independently establishes full-text access or
 scientific validity. Work packages/context/appraisals can be added to the exported
 protocol using the ordinary validated evidence IDs; the adapter does not invent
 these links. Version the protocol when adding or changing work. Downstream validation allows

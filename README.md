@@ -24,7 +24,8 @@ services or models:
 - Supplied nonclinical comparison conditions with model, concentration/exposure,
   observation-time anchors, comparator and causal limitations; no procedure or inference.
 - Multiple result rows per source, including null findings, with extraction-level
-  IDs and traceable locators. The current model allows one study ID per record/report.
+  IDs and traceable locators. Included reports may explicitly declare multiple
+  study IDs, with separate report-study result-presence accounting.
 - Supplied clinical-guideline and drug-development context, applicability limits,
   reviewer status and evidence/work-package links.
 - Explicit pre-extraction source context linked to declared searches or enumerated
@@ -245,3 +246,8 @@ accounting while appending only incomplete searches, with no eligibility decisio
 [Pre-extraction context links](docs/SOURCE_CONTEXTS.md) connect supplied guideline
 and development questions to exact typed source references and source-review work.
 They preserve applicability uncertainty and remain separate from extracted evidence.
+
+[Multiple studies in one report](docs/MULTI_STUDY_REPORTS.md) supports explicit
+plural study declarations while keeping legacy record/report counts unchanged.
+Missing report-study result memberships stay visible without inferring identity,
+independence, study-level eligibility or exhaustive extraction.

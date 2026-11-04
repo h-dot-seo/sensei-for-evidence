@@ -65,7 +65,7 @@ def snapshot(protocol):
     implementation = dict(engine_hashes())
     for name in ('synthesis_review.py', 'research_status.py'):
         implementation[name] = hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-    return dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
+    result = dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
         protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
         hash_scope='sorted compact UTF-8 JSON; object key order ignored and list order retained; not authentication',
         engine_sha256=implementation,
@@ -89,6 +89,9 @@ def snapshot(protocol):
         deduplication_scope=research['deduplication_scope'], record_identity_verification='NOT_ESTABLISHED',
         extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
         synthesis_boundary=synthesis['boundary'], boundary=BOUNDARY)
+    if reports is not None and 'report_study_coverage' in reports:
+        result['report_study_coverage'] = copy.deepcopy(reports['report_study_coverage'])
+    return result
 
 
 def render_text(result):
@@ -133,6 +136,9 @@ def render_text(result):
             lines.append('Result inventory (synthesis stage not supplied): ' + show(row))
     lines.append('Structured condition stage: ' + result['experimental_stage'])
     lines.append('Supplied condition record inventory (not replicate counts): ' + show(result['experimental_unit_ledger']))
+    if 'report_study_coverage' in result:
+        lines.append('Declared report-study membership coverage (not exhaustive extraction): '
+                     + show(result['report_study_coverage']))
     lines.extend(['Recorded context inventory: ' + show(result['context_ledger']),
                   'Recorded appraisal inventory: ' + show(result['appraisal_ledger']),
                   'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',

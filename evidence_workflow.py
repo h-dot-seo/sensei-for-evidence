@@ -11,6 +11,7 @@ from planning_links import link_planning
 from synthesis_links import link_synthesis
 from experiment_links import link_experiments
 from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
+from report_links import has_plural_studies, validate_reports, validate_evidence_membership, report_study_coverage
 
 
 def run(protocol):
@@ -62,6 +63,11 @@ def run(protocol):
         if row['decision'] not in ('include', 'exclude') or not nonempty_text(row.get('reason')):
             raise ValueError('screening decision and reason required')
         decisions[rid] = row
+    plural_studies = has_plural_studies(protocol)
+    explicit_reports, report_by_record = ({}, {})
+    if plural_studies:
+        explicit_reports, report_by_record = validate_reports(
+            protocol['reports'], {rid for rid, decision in decisions.items() if decision['decision'] == 'include'})
     evidence = []
     seen = set()
     extracted_records = set()
@@ -82,7 +88,9 @@ def run(protocol):
         for field in ('study_id', 'locator', 'model', 'intervention', 'comparator', 'endpoint', 'result', 'limitations'):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 raise ValueError('evidence requires ' + field)
-        if rid in record_studies and record_studies[rid] != row['study_id']:
+        report = validate_evidence_membership(row, report_by_record) if plural_studies else None
+        if (rid in record_studies and record_studies[rid] != row['study_id']
+                and (report is None or 'study_ids' not in report)):
             raise ValueError('evidence study ID conflicts within source record')
         record_studies[rid] = row['study_id']
         if row.get('mechanism_basis') not in ('association', 'intervention', 'unknown'):
@@ -174,6 +182,8 @@ def run(protocol):
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')
     if bibliographic_collection is not None:
         result['bibliographic_collection'] = bibliographic_collection
+    if plural_studies:
+        result['report_study_coverage'] = report_study_coverage(protocol, explicit_reports, evidence)
     return result
 
 

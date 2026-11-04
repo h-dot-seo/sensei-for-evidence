@@ -560,3 +560,20 @@ evidence/study IDs, eligibility decisions or clinical validity. Focused context
 comparison explicitly leaves underlying search/receipt changes to the full
 comparison and broader work-source binding. No real guidelines or development
 records were retrieved or published; the new example is entirely fictional.
+
+Explicit multi-study report increment (2026-11-04): 584 tests in the suite;
+Linux run: 583 passed and one native-Windows-only test skipped. Twenty-four new
+independent tests exercise plural declarations, exact report-study membership,
+multiple results within one source record, partial/cross-report extraction gaps,
+invalid or ambiguous declarations, literal identity preservation, nonmutation,
+stale source bindings, unchanged appraisal/experimental same-study guards,
+adapter integration, optional status/handoff queues, packet scope isolation,
+PRISMA pair partitions, Unicode/CSV safety and deterministic bundles. Review found
+and fixed a missing status-module import; CLI/status/snapshot/handoff regressions
+pass. The focused 13-suite run passes 169 tests. All 28 prior valid fixtures retain
+equal core/report/audit/status outputs and exact report CSV bytes, excluding only
+changed implementation fingerprints. The new helper is included in bundle
+fingerprints. Report/result-presence counters retain their legacy meaning, and
+separate membership coverage does not assert per-study eligibility, independence
+or exhaustive extraction. Only explicit included-report declarations enable this
+migration; no real literature or scientific validation data is included.

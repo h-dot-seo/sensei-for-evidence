@@ -161,6 +161,15 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 evidence_without_recorded_appraisal=sorted(eid for eid in evidence_ids if not appraisal_links[eid]),
                 source_indices_with_unresolved_accounting=[row['search_index'] for row in source_rows if not row['accounting']['complete']]),
             decision_status='NO_AUTOMATED_DECISION'))
+        if reports is not None and 'report_study_coverage' in reports:
+            report_ids = {row['report']['report_id'] for row in result_rows if row['report'] is not None}
+            report_ids.update(row['report']['report_id'] for row in source_inputs if row.get('report') is not None)
+            coverage = reports['report_study_coverage']
+            packets[-1]['report_study_coverage'] = dict(
+                membership_ledger=[copy.deepcopy(row) for row in coverage['membership_ledger'] if row['report_id'] in report_ids],
+                missing_report_study_memberships=[copy.deepcopy(row) for row in coverage['missing_report_study_memberships'] if row['report_id'] in report_ids],
+                scope='full_explicitly_linked_reports_not_inferred_work_requirements',
+                boundary=coverage['boundary'])
     implementation = dict(engine_hashes(), **{'work_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     return dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
@@ -214,6 +223,8 @@ def navigation_summary(result):
                            for row in packet['contexts'] if row['context'].get('context_scope') == 'source_review']
         if source_contexts:
             rows[-1]['source_context_links'] = source_contexts
+        if 'report_study_coverage' in packet:
+            rows[-1]['report_study_coverage'] = copy.deepcopy(packet['report_study_coverage'])
     return dict(selection=result['selection'],dependency_review=copy.deepcopy(result['dependency_review']),
                 work_state_groups={key:sorted(ids) for key,ids in groups.items()},work=rows,
                 global_search_plan_audit=copy.deepcopy(result['global_search_plan_audit']),
@@ -254,6 +265,8 @@ def render_brief(result):
         lines.append('Statement review assertions (not support): '+show(row['statement_review_statuses']))
         if 'source_context_links' in row:
             lines.append('Pre-extraction context links (not applicability): '+show(row['source_context_links']))
+        if 'report_study_coverage' in row:
+            lines.append('Linked-report study memberships (not work requirements): '+show(row['report_study_coverage']))
     lines.extend(['',summary['boundary'],'Census: NOT_ESTABLISHED','Conclusion: NOT_READY'])
     return '\n'.join(lines)+'\n'
 
@@ -309,6 +322,8 @@ def render_text(result):
             lines.append('Supplied comparison condition and linkage scope: ' + show(unit))
         for context in packet['contexts']:
             lines.append('Context assertion and linkage scope: ' + show(context))
+        if 'report_study_coverage' in packet:
+            lines.append('Linked-report study membership coverage (not work requirements): ' + show(packet['report_study_coverage']))
         for appraisal in packet['appraisals']:
             lines.append('Appraisal assertion and linkage scope: ' + show(appraisal))
         lines.append('Decision: NO_AUTOMATED_DECISION')

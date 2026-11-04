@@ -49,7 +49,8 @@ hashes identify the supplied data and code. Canonical hashes ignore object-key
 order but preserve list order; they do not authenticate a source or reviewer.
 
 `nodes` contains fixed node IDs, explicit unit, stage, count, member_ids and scope.
-Units are record_occurrence, record, report, supplied_study_id or result. Member
+Units are record_occurrence, record, report, supplied_study_id or result; opted-in
+plural report declarations additionally expose report_study_membership. Member
 IDs make every count inspectable. Occurrence IDs are JSON pointers into the raw
 search arrays, such as `/searches/1/record_ids/0`; other member IDs are the supplied
 record/report/study IDs or effective result IDs.
@@ -100,9 +101,12 @@ be shown without pretending full-text eligibility is known. An explicitly suppli
 empty report ledger has zero report counts and unmapped included records; it is
 not equivalent to a missing stage. No reports are invented to fill a diagram.
 
-The modeled workflow still permits at most one report per supplied record and one
-study ID per report/record. Results from reports that cannot be represented under
-those constraints need explicit human reconciliation, not fabricated mappings.
+The modeled workflow still permits at most one report per supplied record. An
+included report may [explicitly declare multiple study IDs](MULTI_STUDY_REPORTS.md).
+Opt-in report-study membership nodes and a separate pair partition expose result
+presence without changing existing report partitions. Study IDs remain supplied
+identities, not study-level eligibility decisions or independent observations.
+Unrepresentable source relationships need human reconciliation, not fabricated mappings.
 Citation searching, registry coverage, full-text access, risk of bias, certainty,
 scientific validity and omitted literature remain outside this export's claims.
 Census, identity and extraction completeness stay NOT_ESTABLISHED, and conclusion
