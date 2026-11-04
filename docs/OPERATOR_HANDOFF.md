@@ -72,10 +72,10 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
 
 ## Discover supplied-input workflows without executing them
 
-The JSON now also contains `supplied_input_workflows`, a static catalog of twelve
+The JSON now also contains `supplied_input_workflows`, a static catalog of thirteen
 existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
 the same catalog. Each group names its guide files, required human inputs,
-operation limits and parser-help argument arrays. The 53 entry points all end in
+operation limits and parser-help argument arrays. The 55 entry points all end in
 `--help`: they explain command syntax, not execute research or write a draft.
 
 The routes cover:
@@ -93,7 +93,8 @@ The routes cover:
 - Supplied result rows and descriptive nonclinical condition metadata.
 - Later result-source comparison and separately reviewed result-text corrections.
 - Explicit optional source-review work proposals.
-- Ordinary/native collection archives and a separate report-transition segment.
+- Ordinary/native collection archives, a report-transition segment and a separate
+  extraction-transition segment retaining historical result/condition source context.
   The new [typed native archive](NATIVE_COLLECTION_BUNDLES.md) accepts explicitly
   selected RIS, single NBIB and NBIB batch wrappers in one snapshot, bound to
   their exact historical imports. It does not infer formats or attach missing sources.

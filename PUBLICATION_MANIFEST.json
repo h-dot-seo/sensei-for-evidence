@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.71.0-reviewed-inventory-intake",
+  "release": "0.72.0-extraction-transition-archives",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 288,
+  "file_count": 292,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 29745,
-      "sha256": "b17042fedd01fd3d17291f9484e5b39bd2f80b68b3054a71ddd0a7e1c76ec9f6"
+      "bytes": 30319,
+      "sha256": "24a66b7060cad9f15f476e5f9633ee98e2f13ede3e2f2bc213ce2189f71b438b"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 122837,
-      "sha256": "e32c1c61934c726c7e604b44db0b58c202156ed1bae9dced579d41e551b704f0"
+      "bytes": 128560,
+      "sha256": "f1284076da46204b1a4d04ed609e014dc06828404eeb652868d70fbf08a3a88d"
     },
     {
       "path": "adapter_integrity.py",
@@ -189,6 +189,11 @@
       "sha256": "b607eb54583dcaf2566f031787fa62196eb2f45501efac3ffb94662c3894ec73"
     },
     {
+      "path": "docs/EXTRACTION_TRANSITION_BUNDLES.md",
+      "bytes": 10511,
+      "sha256": "5b0c2621722d7c05c305b7e6224fdd6ee20c2d6a52bce823b3bee8890f994851"
+    },
+    {
       "path": "docs/EXTRACTION_WORKSHEETS.md",
       "bytes": 9339,
       "sha256": "78bb6b59764540603d9dbf4034d2cd348af70df5e5f5728a2afb4a96ae51ddcc"
@@ -240,8 +245,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 14242,
-      "sha256": "9f5a7db526d92a0e718d460d37b4d30fc4158a62a564d859001d69141ada3252"
+      "bytes": 14332,
+      "sha256": "1d1a6df2cc492a8b70468219c3598639714779aea0ee819fd7fcc464eae1fed2"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -315,8 +320,8 @@
     },
     {
       "path": "docs/REPORT_TRANSITION_BUNDLES.md",
-      "bytes": 7322,
-      "sha256": "92c7d06c3c15b36b68b54f51fcddbdc975ca3d09d822e1afc667850d67155c37"
+      "bytes": 7566,
+      "sha256": "9d2a9508b1748fd6bef3ea7b8ee957bb1b652de09e3964a9a5b756350ffe9307"
     },
     {
       "path": "docs/RESULT_CORRECTIONS.md",
@@ -829,6 +834,11 @@
       "sha256": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74"
     },
     {
+      "path": "extraction_transition_bundle.py",
+      "bytes": 16323,
+      "sha256": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66"
+    },
+    {
       "path": "inventory_intake.py",
       "bytes": 21497,
       "sha256": "6944a2bbeab09b9afc61a9c8374f4e06805ba439354c5297dfdfe4e119850057"
@@ -985,8 +995,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 41656,
-      "sha256": "a98c6ea89b2b5ca0794593217692a32a07b7db07ae3434b67a890d9e5e44b441"
+      "bytes": 42671,
+      "sha256": "78cf9db3f8166576a376ceb56814eab751425b954fdf718d426278cc4b43e201"
     },
     {
       "path": "ris_export_parser.py",
@@ -1157,6 +1167,16 @@
       "path": "test_experiment_links.py",
       "bytes": 12208,
       "sha256": "3c022945254af805cf34f67532f2db7c8122c2c309ce8578ed190e3cff78b4be"
+    },
+    {
+      "path": "test_extraction_transition_bundle.py",
+      "bytes": 26529,
+      "sha256": "f35904ae1e6c6cc927ff4444a928903d469bb2079ce62dea4ad13ead983838f0"
+    },
+    {
+      "path": "test_extraction_transition_context.py",
+      "bytes": 17290,
+      "sha256": "d6f6b58a55a092c2a8aef1387c72dbf2d3ffdf75672a1415a9814ec51d8bb549"
     },
     {
       "path": "test_first_run_walkthrough.py",
@@ -1395,8 +1415,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 14171,
-      "sha256": "c5e3dc6ba8b114cee34fc952b35140b194433a71a8514cb992badb62496005bf"
+      "bytes": 15186,
+      "sha256": "7f179167818d4be271dec4126988a5759683e0dffbda351a1fea05683312bac3"
     },
     {
       "path": "test_synthesis_review.py",

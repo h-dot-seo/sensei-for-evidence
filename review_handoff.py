@@ -167,7 +167,14 @@ SUPPLIED_INPUT_WORKFLOWS = [
          entrypoints=[dict(script='report_transition_bundle.py', arguments=[command, '--help'])
                       for command in ('create', 'verify')],
          required_human_inputs=['Exact original and endpoint protocols, explicitly ordered supported application files and a new archive path.'],
-         boundary='Only registration, retrieval-update and full-text applications are replayed as steps. Search, screening, result and condition operations are outside this segment; earlier/later history is unassessed. No embedded code is loaded or executed.')
+         boundary='Only registration, retrieval-update and full-text applications are replayed as steps. Search, screening, result and condition operations are outside this segment; earlier/later history is unassessed. No embedded code is loaded or executed.'),
+    dict(workflow_id='extraction_transition_archive', title='Preserve a contiguous supplied extraction-transition segment',
+         guide_paths=['docs/EXTRACTION_TRANSITION_BUNDLES.md'],
+         entrypoints=[dict(script='extraction_transition_bundle.py', arguments=[command, '--help'])
+                      for command in ('create', 'verify')],
+         required_human_inputs=['Exact initial/endpoint protocols, explicitly ordered supported result/condition applications and a new archive path.',
+                                'Separately retain the recorded implementation; each historical source association belongs to its recorded step context.'],
+         boundary='Only result intake, result-text correction and descriptive condition intake are replayed as steps. No earlier review is renewed or downstream work reassessed. Other operations and earlier/later history are outside this segment. No source documents or code are embedded; complete history and extraction completeness remain unestablished.')
 ]
 
 

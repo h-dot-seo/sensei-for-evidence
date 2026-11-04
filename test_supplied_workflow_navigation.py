@@ -19,7 +19,7 @@ from work_review import review_packets
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
                 'descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work',
-                'collection_archives','report_transition_archive']
+                'collection_archives','report_transition_archive','extraction_transition_archive']
 
 
 def fixture(name):
@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),53)
+        self.assertEqual(len(entries),55)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -138,6 +138,18 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertIn('Only registration, retrieval-update and full-text',scope)
         self.assertIn('result and condition operations are outside',scope)
         self.assertIn('earlier/later history is unassessed',scope)
+
+    def test_extraction_segment_discovery_preserves_historical_context_boundary(self):
+        catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        route = catalog['extraction_transition_archive']
+        self.assertEqual(route['guide_paths'], ['docs/EXTRACTION_TRANSITION_BUNDLES.md'])
+        self.assertEqual(route['entrypoints'], [dict(script='extraction_transition_bundle.py', arguments=[c, '--help'])
+                                               for c in ('create', 'verify')])
+        self.assertIn('recorded step context', ' '.join(route['required_human_inputs']))
+        for text in ['result intake, result-text correction and descriptive condition intake',
+                     'No earlier review is renewed', 'downstream work reassessed', 'earlier/later history',
+                     'complete history and extraction completeness remain unestablished']:
+            self.assertIn(text, route['boundary'])
 
     def test_result_continuation_distinguishes_comparison_from_reviewed_correction(self):
         result=review_handoff.handoff(fixture('result-source-current.json'))

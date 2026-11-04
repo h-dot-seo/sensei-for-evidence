@@ -119,6 +119,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
 | `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
 | `report_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay an explicitly selected contiguous registration/retrieval/full-text segment, not complete research history |
+| `extraction_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay a contiguous reviewed result/correction/condition segment with historical source context, not complete extraction history |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
@@ -346,6 +347,10 @@ Changed source contexts expose stale retained reviews rather than refreshing the
 The optional [report-transition archive](docs/REPORT_TRANSITION_BUNDLES.md) retains
 exact initial/application/endpoint files for a supplied contiguous segment without
 changing the existing research or native-source archive formats.
+The separate [extraction-transition archive](docs/EXTRACTION_TRANSITION_BUNDLES.md)
+retains ordered result intake, text correction and descriptive condition records.
+Earlier wording and source selections remain bound to their recorded step context;
+no prior review or downstream assertion is renewed.
 
 [Exact report-study reviewer positions](docs/REPORT_STUDY_REVIEWS.md) distinguish
 human opinions on individual studies from report inclusion. Explicit source-ID

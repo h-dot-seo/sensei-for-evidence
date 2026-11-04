@@ -1666,3 +1666,83 @@ original input, application and recorded code must be retained separately. Outpu
 size limits are not hard memory/CPU ceilings, and exclusive creation is not an
 atomic defense against concurrent path replacement. Census and readiness remain
 NOT_ESTABLISHED and NOT_READY. Real/private research stays outside the repository.
+
+Portable extraction-transition archive increment (2026-11-04): the new standalone
+extraction_transition_bundle.py retains exact initial/application/endpoint bytes
+for an explicitly ordered contiguous segment of result intake, result-text
+correction and descriptive condition intake. Every step uses its unchanged
+existing verifier, and full canonical JSON equality binds each transition and
+the endpoint. It does not mutate protocols, infer ordering, repair missing steps,
+renew a review or claim a complete/authenticated research history.
+
+Independent review found one direct-helper fingerprint omission during development:
+nbib_intake.py and source_work_intake.py were used but not in the inherited verifier
+engine maps. The new wrapper now fingerprints both helpers explicitly; no existing
+runtime dependency was modified. Independent final-runtime review and 36 separately
+executed synthetic acceptance/adversarial checks pass against SHA-256:
+4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66.
+These are targeted code/probe checks, not a comprehensive security or scientific
+audit, provider validation, source authentication or proof of execution.
+
+The 27 general archive tests cover deterministic exact bytes, strict JSON,
+canonical-versus-raw equality, literal Unicode, bool/int distinction, all supported
+verifiers, valid prefix/suffix segments and repeated kinds, invalid missing/reordered
+or repeated transitions, whole-input drift and resealed application tampering.
+ZIP tests cover generated member allowlists, missing/duplicate/extra paths, embedded
+code, symlink/type flags, compression, CRC, encryption flags, metadata, ordering,
+comments and prefix/trailing bytes. Byte-identical canonical repacking is accepted.
+Bounds cover exactly 20 versus 21 steps and inclusive archive-byte limits. API/CLI
+checks cover relocation, spaces/equals in paths, ASCII process streams, exclusive
+creation, observed dangling links, inspection failure and output preflight.
+
+Eight independently authored context regressions retain exact source selections,
+ordering, literal locations, supplied reviews and pre-correction result text.
+A condition recorded before correction keeps its earlier evidence snapshot rather
+than rebinding it to the endpoint. An archived intake remains replayable and can
+be used with the separate source-context comparison against changed final wording
+or later descriptor drift. Existing current/stale review assertions remain raw
+and unchanged; correction can make completion context stale without changing its
+supplied COMPLETE status or renewing its assertion. Existing bibliographic ledgers
+and mapped raw-source context survive every supported extraction step.
+
+All eleven CLI commands in the new synthetic guide passed using an outside,
+space-named output directory and explicitly fictional reviews. The fixture appends
+two result rows (2 to 4), corrects two existing text fields without adding results,
+and appends two descriptive condition records. Extracted study labels increase
+2 to 3 during result intake, while report-stage counts and membership stay fixed.
+Independent documentation review caught and corrected an overly broad claim that
+all PRISMA accounting was unchanged. Two additional documented commands archive
+and verify the existing NBIB walkthrough's result/condition segment; its initial
+canonical fingerprint equals the earlier report segment's endpoint. This is a
+boundary match between supplied segments, not proof of complete research history.
+The documentation also limits omitted/reordered-step rejection to changes that
+break exact replay, rather than implying detection of unrecorded reversible history.
+
+The related extraction/intake/correction/condition/source-comparison/navigation
+suite passes 140 tests. A new discovery regression adds the separate extraction
+archive route while preserving static, protocol-independent, help-only behavior.
+The catalog now has thirteen groups and 55 parser-help entrypoints; no queue,
+identity, clinical/scientific decision or execution recommendation is inferred.
+All 41 prior files in the combined relevant extraction/native/report/inventory
+replay dependency sets remain byte-unchanged. Saved typed native, NBIB batch,
+report-transition, inventory application and ordinary research artifacts still
+verify. Only read-only handoff navigation changes among existing runtime files.
+
+Unsupported scope remains explicit: no collection/screening/report/inventory or
+other mutations as extraction steps, no source documents/native citation files or
+runtime embedded, no source updates, current endpoint source approval, automatic
+review renewal, downstream scientific reassessment or complete-history claim.
+Recorded source associations apply only to their recorded step context. Old
+receipts remain unchanged; this separate archive preserves them rather than
+rewriting their original snapshot-bundle caveats. No actual literature, private
+research, experimental instructions or clinical inference is introduced. The
+50 MB archive limit is not a hard CPU/memory ceiling, and exclusive creation is
+not an atomic path-race/ancestor-alias defense. Census/extraction completeness
+remain NOT_ESTABLISHED, and conclusions remain NOT_READY.
+
+Final full Linux suite: 1,396 tests, 1,395 passed and one native-Windows-only test
+skipped (265.508 seconds). The increment adds 36 tests: 27 archive tests, eight
+independently authored context tests and one static discovery regression. Python
+compilation, changed-guide links and whitespace checks pass. Publication audit
+checks 293 text files and exact manifest verification passes with 292 listed files.
+Exact-head CI uses the existing Ubuntu/Windows by Python 3.10/3.12 matrix.

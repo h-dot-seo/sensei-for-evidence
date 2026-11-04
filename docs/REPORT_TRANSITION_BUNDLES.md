@@ -73,8 +73,9 @@ All member names are generated, never derived from report IDs or local paths:
 The entire archive is deterministic stored ZIP with fixed member metadata and
 ordering. Verification checks paths/types/size bounds, invokes the existing replay
 functions, rebuilds the archive, then compares complete bytes. Rewriting the
-manifest, changing summary text, re-zipping, altering metadata or merely resealing
-a changed receipt does not repair an inconsistency. A consistently reauthored
+manifest, changing summary text, altering metadata or merely resealing a changed
+receipt does not repair an inconsistency. Repacking that changes bytes fails;
+byte-identical canonical repacking remains valid. A consistently reauthored
 complete set of inputs can still replay: this is not an authenticated or immutable
 history service.
 
@@ -90,8 +91,11 @@ The archive does not add original NBIB files, document files, source-code files 
 the ordinary research bundle. Keep the separate
 [batch-native collection archive](BATCH_COLLECTION_BUNDLES.md) for selected native
 source bytes and historical import association. Its endpoint may be a later stage;
-that does not extend this segment's coverage. Keep result/condition applications
-and their originals separately. No preferred document version, source identity,
+that does not extend this segment's coverage. For a contiguous
+result/correction/condition segment, use the separate
+[extraction-transition archive](EXTRACTION_TRANSITION_BUNDLES.md). It retains those
+applications and originals without broadening this report archive's replay scope.
+No preferred document version, source identity,
 reviewer authority, eligibility correctness, census or scientific readiness is
 established by either archive.
 
