@@ -224,3 +224,9 @@ reconstructing historical acceptance reasons or reopening completed work.
 Add `--text` to [protocol comparison](docs/COMPLETION_COMPARISON.md#readable-comparison-output)
 for a read-only summary with exact input hashes, changed field names, all work
 source states and amendment-binding results. Full JSON remains the default.
+
+[Local bibliographic CSV intake](docs/BIBLIOGRAPHIC_INTAKE.md) preserves exact export
+bytes, original rows and an explicit search-plan association in a detached,
+unreviewed artifact. Duplicate occurrences and locator conflicts remain visible;
+byte-consistency verification does not authenticate the source or promote rows
+into screening, PRISMA counts, guideline links or development evidence.

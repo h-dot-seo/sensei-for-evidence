@@ -511,3 +511,18 @@ Two new regressions preserve literal escaped newlines, unexpected bare carriage
 returns and invalid-UTF-8 failures, and exercise simulated Windows stdout on any
 host. The suite now contains 487 tests; Linux run: 486 passed and one native-
 Windows-only test skipped. Publication audit and manifest verification pass.
+
+Local bibliographic intake increment (2026-11-04): 513 tests in the suite;
+Linux run: 512 passed and one native-Windows-only test skipped. Twenty-six new
+tests cover exact UTF-8/BOM/newline bytes and multiline row spans, original columns,
+explicit search-plan mapping, duplicate occurrence and literal-locator conflicts,
+canonical full-protocol binding, unchanged existing receipts/PRISMA counts,
+header-only noncompletion, deterministic artifacts and safe text display.
+Verification rejects 21 tampering classes even after a supplied review-target
+hash is recomputed. CLI regressions cover exclusive output, invalid/null input,
+forced-ASCII environments and portable native stdout. Byte, data-row, physical-line,
+CSV-field and artifact-size limits bound parsing and retention. Independent test
+and code review found no remaining substantive defect. The fixture is entirely
+fictional; no source retrieval or real corpus was used. This is a detached,
+unreviewed local export, not an accepted receipt or an integration into research
+counts. Source authenticity, search completion and conclusions remain unverified.

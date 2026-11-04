@@ -1,0 +1,6 @@
+record_id,source_locator,title,study_kind,note
+r1,synthetic://export/row-a,Fictional mechanism report,nonclinical,Synthetic example only; not a real publication
+r1,synthetic://export/row-a,Fictional mechanism report,nonclinical,Repeated occurrence retained for human review
+r1,synthetic://export/row-b,Fictional alternate locator,nonclinical,Conflicting literal locator is not resolved
+synthetic-guideline,synthetic://export/row-c,Fictional guideline record,guideline,No recommendation or applicability has been extracted
+synthetic-development,synthetic://export/row-d,Fictional development context,development,No translational conclusion or milestone has been inferred

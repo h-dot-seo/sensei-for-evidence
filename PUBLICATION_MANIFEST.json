@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.39.1-native-newline-comparison-tests",
+  "release": "0.40.0-local-bibliographic-intake",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 134,
+  "file_count": 140,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14060,
-      "sha256": "a73a3d8141da9efb33734be5fb63d476ea0435493ef0e6f08b87492ea9813757"
+      "bytes": 14455,
+      "sha256": "dcb05ca08b580834822452110397c8f8fe0dd86000971f16c4aae25a24798c3c"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 36169,
-      "sha256": "3113e5c779b0b0c2e331edeafaaf40c9998900b36462759f3c678303fadfdc65"
+      "bytes": 37283,
+      "sha256": "2038ea80fd7f4856cf0ef5ae5244e1f3fb2de3912a89e7c3ab42a7495996e1fe"
     },
     {
       "path": "adapter_integrity.py",
@@ -74,6 +74,11 @@
       "sha256": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08"
     },
     {
+      "path": "bibliographic_intake.py",
+      "bytes": 12738,
+      "sha256": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585"
+    },
+    {
       "path": "compare_runs.py",
       "bytes": 28208,
       "sha256": "4b94dfbce8dd76f09afd371f9e3ff70b258ab7a9ad2f160d7163d431227b51c2"
@@ -82,6 +87,11 @@
       "path": "context_links.py",
       "bytes": 4489,
       "sha256": "00d17181610f3999a396a6a2261caeefd52806ebe5983882da7be37ba5be9cb7"
+    },
+    {
+      "path": "csv_export_parser.py",
+      "bytes": 5607,
+      "sha256": "64d14e9118af92c40ce1b8d9c960dda71bd4861eb4d496f6fc7e83bb81a32c91"
     },
     {
       "path": "csv_safety.py",
@@ -102,6 +112,11 @@
       "path": "docs/ARCHITECTURE.md",
       "bytes": 3833,
       "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
+    },
+    {
+      "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
+      "bytes": 7166,
+      "sha256": "2f5732da5c60e9a36f948b30bd2478ebda3a1aad513bbd450960f872f2e024ab"
     },
     {
       "path": "docs/CLAIM_COMPARISON.md",
@@ -237,6 +252,11 @@
       "path": "examples/artifact-review-protocol.json",
       "bytes": 8273,
       "sha256": "f0a33a29e9acef99f216c147daf0ea72a1ac70d618adb5add5297bc46e69dd92"
+    },
+    {
+      "path": "examples/bibliographic-export.csv",
+      "bytes": 670,
+      "sha256": "6b7f2660100c7c31eafa9d80c22f1dce36e2021410c510b84d960e472cfc4c6e"
     },
     {
       "path": "examples/claim-comparison.json",
@@ -464,6 +484,11 @@
       "sha256": "c065ed04b3598d13625536c68b13c89f6e8ee2601eab680aaf7c139e078c04c4"
     },
     {
+      "path": "test_bibliographic_intake.py",
+      "bytes": 18696,
+      "sha256": "13e0081c96fb89b7a58a7774a0947255a45670928229cc6761b7cb58543d7ece"
+    },
+    {
       "path": "test_claim_positions.py",
       "bytes": 9416,
       "sha256": "368f5713489e680779c60ac4b9a81c07803396a6471b216908872dc7e96491a2"
@@ -507,6 +532,11 @@
       "path": "test_context_work_impact.py",
       "bytes": 6817,
       "sha256": "5fa3a9aac26c78606b91b493c3cf384f6071fc291f3ef71815b0c6af8a060d6d"
+    },
+    {
+      "path": "test_csv_export_parser.py",
+      "bytes": 9218,
+      "sha256": "92f9981b234540307bf9cd0d96240510fdd6bbb47d3579a2f90385c9f482c36a"
     },
     {
       "path": "test_csv_safety.py",
