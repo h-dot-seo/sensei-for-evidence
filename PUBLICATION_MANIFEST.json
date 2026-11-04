@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.61.0-source-work-intake",
+  "release": "0.61.1-source-work-output-guard",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 81835,
-      "sha256": "9006110d2becb9effc1a32e819c5bccb0d8c4f2c7d6cad91fa5e7043b4b79881"
+      "bytes": 83318,
+      "sha256": "0798d88dac4811a2b0bc95b1a7f92c29ee4d81722a2fd86c1b72e5513a7237a7"
     },
     {
       "path": "adapter_integrity.py",
@@ -310,8 +310,8 @@
     },
     {
       "path": "docs/SOURCE_WORK_INTAKE.md",
-      "bytes": 8865,
-      "sha256": "044625293247090c44e846588ca6cbf7056cef9ed8e33ff201a6d2526a66b5e2"
+      "bytes": 9067,
+      "sha256": "b8fe34078688fe07a9634b70dc54566b82a6d8eb00610d8eb74be21314adfc45"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -805,8 +805,8 @@
     },
     {
       "path": "source_work_intake.py",
-      "bytes": 20617,
-      "sha256": "29d1e62a3fbab510f57ace452d4f59314b84f7cee6459de36ff52e8734b21fc7"
+      "bytes": 21092,
+      "sha256": "f0c73f0ccfb917dfcc15480ccdb86642bb7eb7a09facda434d8f3bf22e4c036c"
     },
     {
       "path": "synthesis_links.py",
@@ -1110,8 +1110,8 @@
     },
     {
       "path": "test_source_work_intake.py",
-      "bytes": 28255,
-      "sha256": "9b19176ca581f3bf08476875229c900c9bb30888873391d6d3f3b1c8585374c3"
+      "bytes": 29607,
+      "sha256": "5d8ed3d872629f3fa13d186a12aef423a038ca708722b125007b7339ac8325d4"
     },
     {
       "path": "test_statistics_links.py",

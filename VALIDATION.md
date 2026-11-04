@@ -1115,3 +1115,23 @@ NBIB preparation, native collection bundle, result-intake, result-correction and
 condition-intake records still verify. Publication audit checks 233 text files
 and exact manifest verification passes. No task meaning, priority, dependency,
 completion, experimental procedure or scientific/clinical judgment is generated.
+
+Source-work Windows output correction (2026-11-04): exact-head CI for 4d983ad
+passed both Ubuntu environments but failed both Windows environments on the
+existing dangling-symlink CLI regression. Windows exclusive open followed that
+dangling final entry and created its target. The source-work output helper now
+checks the final entry with lstat, rejects every observed existing entry, catches
+only FileNotFoundError and retains exclusive creation. Other inspection errors
+propagate without opening the output. Two additional focused regressions check
+this preflight independently of host behavior; the original native symlink test
+remains. This is not atomic protection against concurrent path replacement or
+parent-directory aliases, as stated in the helper and guide.
+The revised suite contains 1,109 tests: Linux 1,108 passed, one native-Windows-only
+test skipped. The focused eight-suite run passes 153 tests. Independent review
+confirmed the scoped fix and error propagation. The revised fictional target/
+review/assembly/replay journey passes, and all 39 earlier example projections
+remain unchanged. Source-work implementation fingerprints change intentionally;
+artifacts made with the earlier implementation require that recorded revision,
+not an automatically renewed review. No underlying research engine or other
+intake implementation changed. Publication audit and exact manifest validation
+pass; native Windows confirmation is performed on the corrective commit's CI.

@@ -141,6 +141,9 @@ creation and are opened only after validation and serialization, including stdou
 preflight. Existing files and symlinks are not overwritten; an operating-system
 write failure can still leave a partial new file. Text output quotes supplied
 values. No locator is opened and no external call occurs.
+The final directory entry is inspected without following it before exclusive
+creation, including on Windows. This is not protection against concurrent path
+replacement or aliases in parent directories.
 
 Real inputs may contain private project plans, source text and reviewer labels.
 Nothing is redacted. Keep real files outside the public repository and review

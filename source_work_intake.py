@@ -2,6 +2,7 @@
 import argparse
 import copy
 import datetime
+import errno
 import hashlib
 import json
 from pathlib import Path
@@ -319,6 +320,22 @@ def _read(path, limit, label):
     return parse_json(raw)
 
 
+def _write_new(path, raw):
+    """Reject existing final entries, including Windows dangling symlinks.
+
+    Exclusive creation remains required after this check. This is not a
+    race-proof defense against concurrent path replacement or ancestor aliases.
+    """
+    try:
+        path.lstat()
+    except FileNotFoundError:
+        pass
+    else:
+        raise FileExistsError(errno.EEXIST, 'output directory entry already exists', str(path))
+    with path.open('xb') as output:
+        output.write(raw)
+
+
 def main():
     configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -361,8 +378,7 @@ def main():
         if encoded is not None and len(encoded) > MAX_APPLICATION_BYTES:
             raise ValueError('output exceeds byte limit')
         if destination is not None:
-            with destination.open('xb') as output:
-                output.write(encoded)
+            _write_new(destination, encoded)
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as error:
         parser.exit(1, 'source work intake error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

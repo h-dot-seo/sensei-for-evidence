@@ -3,12 +3,13 @@ import copy
 import io
 import json
 import os
+import stat
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import source_work_intake as intake
 from evidence_workflow import run
@@ -348,6 +349,26 @@ class SourceWorkIntakeTests(unittest.TestCase):
                 old=path.read_bytes();self.assertNotEqual(self.cli(*args).returncode,0);self.assertEqual(path.read_bytes(),old)
             for raw in (b'{"schema_version":1,"schema_version":1,"candidates":[]}',b'\xff',b'{"x":NaN}',b'{} trailing',br'{"bad":"\ud800"}'):
                 c.write_bytes(raw);bad=d/'bad.json';self.assertNotEqual(self.cli('target',p,c,'--output',bad).returncode,0);self.assertFalse(bad.exists())
+
+    def test_output_preflight_rejects_dangling_directory_entry_before_open(self):
+        # Model lstat succeeding on a dangling link even when exists() is false.
+        # This runs on Windows without depending on symlink creation privileges.
+        destination=Mock(spec=Path)
+        destination.lstat.return_value=os.stat_result((stat.S_IFLNK | 0o777,0,0,1,0,0,0,0,0,0))
+        destination.exists.return_value=False
+        with self.assertRaises(FileExistsError):intake._write_new(destination,b'fictional output')
+        destination.lstat.assert_called_once_with()
+        destination.exists.assert_not_called()
+        destination.open.assert_not_called()
+
+    def test_output_preflight_propagates_inspection_failure_without_open(self):
+        for error in (PermissionError('fictional inspection denied'),NotADirectoryError('fictional parent is not a directory'),OSError('fictional inspection failed')):
+            with self.subTest(error=type(error).__name__):
+                destination=Mock(spec=Path);destination.lstat.side_effect=error
+                with self.assertRaises(type(error)) as caught:intake._write_new(destination,b'fictional output')
+                self.assertIs(caught.exception,error)
+                destination.lstat.assert_called_once_with()
+                destination.open.assert_not_called()
 
     def test_cli_existing_and_dangling_symlink_outputs_not_followed(self):
         with tempfile.TemporaryDirectory() as temp:
