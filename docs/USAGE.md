@@ -571,3 +571,8 @@ Full-text report review has a separate [source/version and human-position
 workflow](REPORT_REVIEWS.md). `report_review.py` offers read-only targets and blank
 scaffolds, preserving unbound document digests and unavailable reports without
 changing canonical full-text decisions or claiming actual document verification.
+
+For distinct human opinions on individual studies, use the [report-study review
+workflow](REPORT_STUDY_REVIEWS.md). Pair-specific scaffolds leave source selections
+and every human field blank. This does not infer per-study eligibility from report
+inclusion or change existing extracted results.

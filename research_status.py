@@ -64,6 +64,9 @@ def status(protocol):
     if 'report_review' in research:
         queues['reports_with_review_cues'] = copy.deepcopy(
             research['report_review']['reports_with_review_cues'])
+    if 'report_study_review' in research:
+        queues['study_memberships_with_review_cues'] = copy.deepcopy(
+            research['report_study_review']['current_memberships_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     result = dict(question=research['question'], protocol_version=research['protocol_version'],
@@ -77,6 +80,12 @@ def status(protocol):
                 record_extraction_scope=research['extraction_pending_scope'],
                 extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED',
                 conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'report_study_review' in research:
+        review = research['report_study_review']
+        result['report_study_review'] = dict(
+            stage=review['stage'], counts=copy.deepcopy(review['counts']),
+            orphan_review_assertions=copy.deepcopy(review['orphan_review_assertions']),
+            orphan_scope='unverified_retained_assertions_not_pending_tasks', boundary=review['boundary'])
     if 'screening_decision_history' in research:
         history = research['screening_decision_history']
         result['screening_decision_history'] = dict(
@@ -131,6 +140,11 @@ def render_text(result):
     if 'records_with_screening_review_cues' in result['queues']:
         lines.append('Records with supplied screening-review cues: ' + count('records_with_screening_review_cues'))
         lines.append('Reviewer assertions do not adjudicate eligibility or replace recorded screening decisions.')
+    if 'study_memberships_with_review_cues' in result['queues']:
+        lines.append('Current report-study memberships with review cues: ' + count('study_memberships_with_review_cues'))
+        lines.append('Retained orphan assertions: ' + str(len(result['report_study_review']['orphan_review_assertions']))
+                     + '; retrospective supplied records, not proof of past membership or pending tasks.')
+        lines.append('Study positions do not adjudicate report decisions or filter extracted results.')
     if 'reports_with_review_cues' in result['queues']:
         lines.append('Reports with supplied full-text review cues: ' + count('reports_with_review_cues'))
         lines.append('Source digests and human positions are supplied assertions, not verified document bytes, reading or eligibility.')

@@ -174,3 +174,9 @@ documents for one report without splitting report or study identities. Their
 positions remain report-level, and changing study assignments does not silently
 rewrite the source target. Per-study eligibility and exhaustive document reading
 remain separate, unperformed assessments.
+
+The optional [report-study review ledger](REPORT_STUDY_REVIEWS.md) now preserves
+separate human eligibility positions and reviewed-source ID selections for exact
+pairs. It does not turn those positions into canonical study selection or filter
+results. Pre-inclusion study inventory remains unimplemented; do not change report
+eligibility merely to obtain study targets.

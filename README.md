@@ -107,6 +107,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `screening_review.py PROTOCOL.json [--record-id ID] [--template] [--text]` | Inspect source-bound supplied reviewer positions or prepare blank assertions without deciding eligibility |
 | `screening_decision.py target/assemble/inspect ...` | Apply only an explicit supplied screening choice to a new candidate, retaining source/reviewer decision receipts |
 | `report_review.py PROTOCOL.json [--report-id ID] [--template] [--text]` | Inspect supplied full-text versions and reviewer positions without verifying documents or changing decisions |
+| `report_study_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -269,3 +270,8 @@ and never votes, authenticates chronology or verifies medical correctness.
 positions to declared document versions and mapped record context. Read-only
 scaffolds preserve missing/unverified digests, source coverage and disagreement;
 no document reading, consensus or per-study eligibility is inferred.
+
+[Exact report-study reviewer positions](docs/REPORT_STUDY_REVIEWS.md) distinguish
+human opinions on individual studies from report inclusion. Explicit source-ID
+selections and unresolved orphan assertions remain visible without choosing a
+canonical study outcome, changing PRISMA counts or filtering extracted results.

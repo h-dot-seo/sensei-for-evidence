@@ -673,3 +673,27 @@ output, duplicate-JSON rejection, import-cycle safety, linear source catalogs,
 CSV-import enrichment and detached outputs are tested. Publication audit and
 exact manifest verification pass. Only fictional inputs are included; no full
 text, private records, external retrieval or medical facts were used or verified.
+
+Exact report-study human-review increment (2026-11-04): 770 tests in the suite;
+Linux run: 769 passed and one native-Windows-only test skipped. Forty-one new
+regression tests independently exercise the supplied pair-position implementation:
+strict schemas/dates/hashes and explicit source selections, exact tuple identity,
+shared study IDs across reports, opposing sibling opinions, source-catalog versus
+selected-subset binding, scalar/singleton migration and reordering, source removal,
+retained orphan assertions, unknown/cross-report source rejection, fabricated
+matching orphan-hash rejection, literal result-presence cues without filtering,
+source-first blank scaffolds, whole-input validation and create-only UTF-8 CLI.
+The focused seven-suite run passes 155 tests. All 32 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison outputs and exact CSV
+bytes, excluding implementation fingerprints. The fictional CLI/audit/handoff/
+comparison/bundle journey preserves three current memberships, two result rows,
+five human assertions and one separately retained orphan pair view. Study opinions
+never become canonical selection, report decisions, verified reading or independent
+study identity. Orphans are not added to current-membership pending queues and
+are not proof of historically valid membership. A current exclude-position with
+result rows is only a literal navigation cue, never an invalid-result verdict or
+a filtering instruction. Report-level source hashes remain unchanged by the new
+ledger; the new pair presence flag intentionally changes when membership disappears.
+Pre-inclusion study inventory remains outside this bounded increment. Publication
+audit and exact manifest verification pass; no private records, real full text,
+source retrieval, biological experiments or medical fact checks were used.

@@ -171,3 +171,8 @@ document versions, unverified digests and human positions separately. Report
 retrieval/assessment and study counts still derive only from their canonical
 ledgers. A matching context hash is not verified reading, source authenticity,
 consensus or a per-study eligibility decision.
+
+Optional [report-study human positions](REPORT_STUDY_REVIEWS.md) are another
+separate unit. They do not replace report inclusion, legacy distinct study-ID
+counts or extraction membership. Undeclared pair views retained by assertions
+are not nodes representing eligible or historically validated studies.

@@ -137,3 +137,9 @@ Optional full-text review navigation shows `reports_with_review_cues` and exact
 `report_review.py` view separates supplied document versions/digests from reviewer
 positions. Read [the full-text review boundaries](REPORT_REVIEWS.md) before using
 its blank scaffolds; no source is retrieved, read or authenticated by the tool.
+
+`study_memberships_with_review_cues` navigates only currently declared exact
+report-study pairs. The [report-study review view](REPORT_STUDY_REVIEWS.md) shows
+source selections and separate human positions; orphan assertions stay in a
+retrospective summary rather than a pending task queue. Matching input rows
+include report, source declaration, pair assertion and linked result locations.

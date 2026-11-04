@@ -44,11 +44,13 @@ SPECS = {
     'completed_work_assertions': ('gaps', 'Inspect the supplied artifact locator and acceptance assertion. This tool does not open artifacts or certify acceptance.'),
 }
 OPTIONAL_SPECS = {
+    'study_memberships_with_review_cues': ('reports report_sources report_study_reviews evidence', 'Inspect the exact report-study pair, human-selected source IDs and separate positions. Report inclusion is not per-study eligibility; differing source-ID sets do not prove different reading or equivalent coverage. No canonical selection, evidence filtering, identity inference or automatic consensus occurs.'),
     'reports_with_review_cues': ('reports report_sources report_reviews', 'Inspect the supplied document versions, page/section coverage and separate human full-text positions. A matching supplied digest does not verify bytes, reading, authenticity or eligibility. Retrieve only through authorized access; never infer consensus, per-study eligibility or renew stale hashes automatically.'),
     'report_study_memberships_without_results': ('reports evidence', 'Read the exact included report-study membership and record traceable results if in scope. A result for this study in another report does not fill this membership; presence is not exhaustive extraction or study independence.'),
     'records_with_screening_review_cues': ('screening_reviews screening searches', 'Inspect each supplied reviewer position, source binding and any differing or unclear labels. Resolve eligibility outside this tool if appropriate; never choose a majority, authenticate reviewers or renew hashes automatically. Canonical screening remains a separate supplied decision.'),
 }
-OPTIONAL_QUEUE_DOMAINS = {'reports_with_review_cues': 'report',
+OPTIONAL_QUEUE_DOMAINS = {'study_memberships_with_review_cues': 'report_study_review',
+                        'reports_with_review_cues': 'report',
                         'report_study_memberships_without_results': 'report_study',
                         'records_with_screening_review_cues': 'record'}
 
@@ -76,6 +78,20 @@ def input_locations(protocol, queue, sections, items):
     domain={**QUEUE_DOMAINS, **OPTIONAL_QUEUE_DOMAINS}[queue]
     if domain == 'search_index':
         return list(dict.fromkeys('/searches/' + str(item['search_index']) for item in items or []))
+    if domain == 'report_study_review':
+        pairs = {(item['report_id'], item['study_id']) for item in items or []}
+        report_ids = {rid for rid, _ in pairs}
+        report_for_record = {record: row['report_id'] for row in protocol.get('reports', [])
+                             for record in row['record_ids']}
+        paths = [f'/reports/{index}' for index, row in enumerate(protocol.get('reports', []))
+                 if any((row['report_id'], sid) in pairs for sid in report_study_ids(row))]
+        paths += [f'/report_sources/{index}' for index, row in enumerate(protocol.get('report_sources', []))
+                  if row['report_id'] in report_ids]
+        paths += [f'/report_study_reviews/{index}' for index, row in enumerate(protocol.get('report_study_reviews', []))
+                  if (row['report_id'], row['study_id']) in pairs]
+        paths += [f'/evidence/{index}' for index, row in enumerate(protocol['evidence'])
+                  if (report_for_record.get(row['record_id']), row['study_id']) in pairs]
+        return paths
     if domain == 'report_study':
         pairs = {(item['report_id'], item['study_id']) for item in items or []}
         return [f'/reports/{index}' for index, row in enumerate(protocol.get('reports', []))
@@ -170,6 +186,11 @@ def handoff(protocol, work_package_id=None):
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'report_study_review' in state:
+        result['report_study_review'] = copy.deepcopy(state['report_study_review'])
+        result['engine_sha256']['report_study_review.py'] = hashlib.sha256(Path(__file__).with_name('report_study_review.py').read_bytes()).hexdigest()
+        result['detailed_views'].append(dict(script='report_study_review.py', arguments=['PROTOCOL.json','--text'],
+                                            purpose='Exact report-study human positions and explicit source selections; orphan assertions are retrospective, not canonical eligibility'))
     if 'report_sources' in protocol or 'report_reviews' in protocol:
         result['engine_sha256']['report_review.py'] = hashlib.sha256(Path(__file__).with_name('report_review.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='report_review.py', arguments=['PROTOCOL.json','--text'],

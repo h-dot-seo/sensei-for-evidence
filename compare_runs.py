@@ -36,6 +36,44 @@ def entity_changes(before, after, id_field):
                 unchanged_count=len(shared) - len(changed))
 
 
+def report_study_review_changes(left, right):
+    """Compare literal pair views without equating report and study eligibility."""
+    a, b = left.get('report_study_review'), right.get('report_study_review')
+    old = {} if a is None else {row['review']['review_id']: row for row in a['review_ledger']}
+    new = {} if b is None else {row['review']['review_id']: row for row in b['review_ledger']}
+    def pairs(view):
+        if view is None:
+            return {}
+        targets = {(row['report_id'], row['study_id']): row for row in view['membership_targets']}
+        reviews = {(row['report_id'], row['study_id']): row for row in view['membership_review_ledger']}
+        return {key: dict(target=targets[key], review=reviews[key]) for key in targets}
+    previous, current = pairs(a), pairs(b)
+    keys = set(previous) | set(current)
+    def pair_key(key):
+        return dict(report_id=key[0], study_id=key[1])
+    changed = [dict(**pair_key(key), fields=changed_fields(previous[key], current[key]))
+               for key in sorted(set(previous) & set(current)) if canonical(previous[key]) != canonical(current[key])]
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        assertion_changes=entity_changes([row['review'] for row in old.values()],
+                                        [row['review'] for row in new.values()], 'review_id'),
+        review_comparisons=[dict(review_id=rid, before=copy.deepcopy(old.get(rid)), after=copy.deepcopy(new.get(rid)))
+                            for rid in sorted(set(old) | set(new))],
+        pair_projection_changes=dict(added_pairs=[pair_key(key) for key in sorted(set(current) - set(previous))],
+                                     removed_pairs=[pair_key(key) for key in sorted(set(previous) - set(current))],
+                                     changed_pairs=changed, unchanged_count=len(set(previous) & set(current))-len(changed)),
+        pair_comparisons=[dict(**pair_key(key), before=copy.deepcopy(previous.get(key)), after=copy.deepcopy(current.get(key)))
+                          for key in sorted(keys)],
+        before_counts=None if a is None else copy.deepcopy(a['counts']),
+        after_counts=None if b is None else copy.deepcopy(b['counts']),
+        boundary=('Exact supplied report-study pairs and human assertions only. Pair views may include explicitly retained '
+                  'orphan assertions; their presence does not create a membership or prove valid historical review. '
+                  'Report-level decisions and study-level positions are different units, never compared as agreement. '
+                  'Source-ID sets describe supplied selections, not verified reading or equivalent coverage. '
+                  'No canonical study selection, result filtering, consensus or identity inference is performed.'))
+
+
 def report_review_changes(left, right):
     """Compare document declarations and human assertions without source verification."""
     a, b = left.get('report_review'), right.get('report_review')
@@ -435,6 +473,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
         result['screening_review_changes'] = screening_review_changes(left, right)
     if 'report_review' in left or 'report_review' in right:
         result['report_review_changes'] = report_review_changes(left, right)
+    if 'report_study_review' in left or 'report_study_review' in right:
+        result['report_study_review_changes'] = report_study_review_changes(left, right)
     if 'screening_decision_history' in left or 'screening_decision_history' in right:
         result['screening_decision_changes'] = screening_decision_changes(left, right)
     return result
@@ -479,6 +519,22 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'report_study_review_changes' in result:
+        review = result['report_study_review_changes']
+        lines.extend(['', 'Supplied report-study position comparison (not canonical eligibility):',
+                      'Before/after review stages: ' + show(dict(before=review['before_stage'], after=review['after_stage'])),
+                      'Changed assertions: ' + show(review['assertion_changes']),
+                      'Pair view changes, including retained orphan assertions: ' + show(review['pair_projection_changes'])])
+        lines.extend('Pair position before/after: ' + show(row) for row in review['review_comparisons'])
+        for row in review['pair_comparisons']:
+            def pair_state(value):
+                return None if value is None else dict(
+                    source_basis_sha256=value['target']['source_basis_sha256'],
+                    membership_currently_declared=value['target']['membership_currently_declared'],
+                    comparison_cues=value['review']['comparison_cues'])
+            lines.append('Exact pair context: ' + show(dict(report_id=row['report_id'], study_id=row['study_id'],
+                                                           before=pair_state(row['before']), after=pair_state(row['after']))))
+        lines.append(review['boundary'])
     if 'report_review_changes' in result:
         reviews = result['report_review_changes']
         lines.extend(['', 'Supplied full-text review comparison (not verified document changes):',

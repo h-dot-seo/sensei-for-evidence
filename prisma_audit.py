@@ -198,6 +198,8 @@ def export_audit(protocol):
         result['screening_review'] = copy.deepcopy(research['screening_review'])
     if 'report_review' in research:
         result['report_review'] = copy.deepcopy(research['report_review'])
+    if 'report_study_review' in research:
+        result['report_study_review'] = copy.deepcopy(research['report_study_review'])
     if 'screening_decision_history' in research:
         result['screening_decision_history'] = copy.deepcopy(research['screening_decision_history'])
     return result
@@ -220,6 +222,10 @@ def render_text(result):
     if 'screening_review' in result:
         lines.extend(['Supplied screening reviewer positions (not adjudication): ' + show(result['screening_review']['record_review_ledger']),
                       result['screening_review']['boundary']])
+    if 'report_study_review' in result:
+        lines.extend(['Supplied report-study human positions (not canonical study selection): '
+                      + show(result['report_study_review']['membership_review_ledger']),
+                      result['report_study_review']['boundary']])
     if 'report_review' in result:
         lines.extend(['Supplied full-text report review positions (not document verification): '
                       + show(result['report_review']['report_review_ledger']),

@@ -171,3 +171,8 @@ without a report stage are rejected. Both keys are now reserved enrichment field
 in CSV import histories. The seven-file bundle retains raw assertions and the
 validator fingerprint; it does not archive document bytes. Verify engine-bound
 artifacts using their recorded implementation version, not automatic reapproval.
+
+For a person's position on an individual declared study, use the separate
+[exact report-study review workflow](REPORT_STUDY_REVIEWS.md). It records explicit
+reviewed-source IDs without comparing its opinion to report inclusion as if the
+units were interchangeable. Report-level positions and hashes remain unchanged.

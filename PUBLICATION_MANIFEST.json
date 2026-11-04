@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.47.0-full-text-review-positions",
+  "release": "0.48.0-report-study-review-positions",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 170,
+  "file_count": 175,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17756,
-      "sha256": "96fe73734cf980a92d2b491a866dd4504f0d420233bb5aa93bae9b324ddb6cd4"
+      "bytes": 18287,
+      "sha256": "2ceff564f6383b80d0e38b5691756af545df980488d44a632584b870bdbed489"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 48321,
-      "sha256": "75e5f1391114edd7fcc51095cae52a591a5680d806098890f87f008c3d7d882c"
+      "bytes": 50180,
+      "sha256": "6497f58dd55a286e5acdd81d36eb4238aca4211ccc8eb6ab4bd91d352718de29"
     },
     {
       "path": "adapter_integrity.py",
@@ -80,8 +80,8 @@
     },
     {
       "path": "bibliographic_integrity.py",
-      "bytes": 14784,
-      "sha256": "7ea7b0c810f258eefee0a51a7b535e226b6796344f36742f023c9bda3e7302b1"
+      "bytes": 14808,
+      "sha256": "1acc8b14609910ac07cecded8538d29fb3dde2871d56419fe0d60e7d1aac4c57"
     },
     {
       "path": "bibliographic_review.py",
@@ -90,8 +90,8 @@
     },
     {
       "path": "compare_runs.py",
-      "bytes": 48010,
-      "sha256": "47c323f935f453d493c0307f9c278c235863b1efb49c79fe4bf7fe21e0c30b49"
+      "bytes": 52397,
+      "sha256": "6d3a63e4c3fbe3d5033c43896a05bb0485d4c0db51f97b48aa8db60e4c0ebf90"
     },
     {
       "path": "context_links.py",
@@ -170,13 +170,13 @@
     },
     {
       "path": "docs/MULTI_STUDY_REPORTS.md",
-      "bytes": 10616,
-      "sha256": "5af030573f33b1a1159a0a0923be2bec95abd3617146fd42becd02a356b6f7df"
+      "bytes": 10987,
+      "sha256": "2ea6ea4a5af891b1f5478832b943f0fb526fe326d16c72c5996bc8d705b15b6f"
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 8619,
-      "sha256": "b04a3d1b9cc6964a3a1cf2eaad01f015e10eb7c30505541c0ba6e4c0fda44ba7"
+      "bytes": 9011,
+      "sha256": "ed2447fd2a123548a6e440fef8f3f303186046d24149c17130afddaea22ea43d"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -200,8 +200,8 @@
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
-      "bytes": 10558,
-      "sha256": "ee68d335560337447206484431b0a88daa0a7737ee461c0a008eec3504c31372"
+      "bytes": 10863,
+      "sha256": "fbf9a7f10d85d7014fe32939a02d82fd2fdb7712ae889e0039e69c802ad4dfcf"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -210,8 +210,13 @@
     },
     {
       "path": "docs/REPORT_REVIEWS.md",
-      "bytes": 10126,
-      "sha256": "fd6de09dc3a4f2d2ec67a58753cb1af091c8e22bc46217b57fb9d4777552b857"
+      "bytes": 10444,
+      "sha256": "a29dd89cd082f983adc1af59181f290a1e81252a9cc279c4569694ddd962fe35"
+    },
+    {
+      "path": "docs/REPORT_STUDY_REVIEWS.md",
+      "bytes": 11037,
+      "sha256": "8950266242c0cb0f964de9b3ab0db1c8b9c64c26280f8bad666c38a95021189d"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
@@ -245,8 +250,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 32538,
-      "sha256": "5a322095452732574a79bd79f43c5b31ba2da72561f280ef434086a5e313d3d6"
+      "bytes": 32834,
+      "sha256": "680a3c859cc3816cb806e7fdc525e1ada6f4553ffa4b2b1ffc70b610b12a2687"
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
@@ -260,8 +265,8 @@
     },
     {
       "path": "evidence_workflow.py",
-      "bytes": 12381,
-      "sha256": "734da95dc4aa64f7281ef98fd76e7ec959a1ed046337d70b33c83f8e5324c676"
+      "bytes": 12590,
+      "sha256": "3f29698cc333de33f10d703503721be28c71500fa4c367049fb098de5b2dc513"
     },
     {
       "path": "examples/adapter-fixture.json",
@@ -414,6 +419,11 @@
       "sha256": "1d103dafc2626c3daabf3e6cdc14e6a2373258110bf4c7b77b2fa5a181a4d530"
     },
     {
+      "path": "examples/report-study-reviews.json",
+      "bytes": 10966,
+      "sha256": "261c6447fc92bf81039d451119ff760e0e42c27439704f8083601b1c3797697b"
+    },
+    {
       "path": "examples/review-demo.json",
       "bytes": 5958,
       "sha256": "66709d8460b56cefff7b76babafd0429277600a86e81b653f08cf4eacfde912a"
@@ -500,13 +510,13 @@
     },
     {
       "path": "prisma_audit.py",
-      "bytes": 20270,
-      "sha256": "4fad8da60703e8fac48ffe9779c7e101a70a2b4ac7483909bed7b2d84a6d1abb"
+      "bytes": 20690,
+      "sha256": "d410a5265812ea4b49a5c2230e3ea9c2989a0a62e632b96c8ef700f47f731483"
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 5143,
-      "sha256": "c8eb8f82cb124cded652eeffd2510909b24e0264ca9200981c7c54cf77b0de7c"
+      "bytes": 5257,
+      "sha256": "cd228670022b1a33e381a883ef60791cbd8034f6ea44e99b0820d9d95fccb611"
     },
     {
       "path": "receipt_intake.py",
@@ -529,19 +539,29 @@
       "sha256": "53196b12e09eb6193e1de9482a741080159c89c8307a76966d60667e5434da1a"
     },
     {
+      "path": "report_study_review.py",
+      "bytes": 8829,
+      "sha256": "d2b14faec3dfdd344393547f8bc977f5323b8bfd499cc79e05680e82c17ab9db"
+    },
+    {
+      "path": "report_study_review_links.py",
+      "bytes": 12891,
+      "sha256": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b"
+    },
+    {
       "path": "research_bundle.py",
-      "bytes": 17040,
-      "sha256": "6fe9c436f4cb2ecd88c65969c78644e70e8ad026e79b24128a3601372bceabfb"
+      "bytes": 17072,
+      "sha256": "a6ba063e1b4b1aaa87507f4701579ad579578766c496b9f5e3eba61bbf8ffe8e"
     },
     {
       "path": "research_status.py",
-      "bytes": 12260,
-      "sha256": "8c4ce1e791d98aa8f283ed562dd08599765b97fba77eb4d7c80a64844889f375"
+      "bytes": 13383,
+      "sha256": "29caa0870518c64b045c501f309a19e0ef725e95f93d33c43f16adc321dcf4b6"
     },
     {
       "path": "review_handoff.py",
-      "bytes": 23374,
-      "sha256": "2e8876bab2f74ef2eed78082d73075dad98001b39b57f8b17fb999f8050b3c05"
+      "bytes": 25505,
+      "sha256": "ed896e933cca0fc68c1508957d68deddab8df4e07c51e2dd55bdf63c81605cef"
     },
     {
       "path": "screening_decision.py",
@@ -580,8 +600,8 @@
     },
     {
       "path": "synthesis_review.py",
-      "bytes": 13043,
-      "sha256": "e26a21b1232cd0f78b8d733c9a499db6affe9c11c55a11bc45141269d7596e5e"
+      "bytes": 13463,
+      "sha256": "46a1021b741580297f61ada2f260e3e25e901fcd56cea93da8fbc647522b9364"
     },
     {
       "path": "test_amendment_review.py",
@@ -757,6 +777,11 @@
       "path": "test_report_study_memberships.py",
       "bytes": 18995,
       "sha256": "820795d6faa0e06c87835dbbd6f0efac60bbf257cca2041ee2f53f105d0f5086"
+    },
+    {
+      "path": "test_report_study_reviews.py",
+      "bytes": 31093,
+      "sha256": "ac1018d334291c93b63ef042078b6dbb4087551e9f76f56a651030d6bccdfa84"
     },
     {
       "path": "test_research_bundle.py",
