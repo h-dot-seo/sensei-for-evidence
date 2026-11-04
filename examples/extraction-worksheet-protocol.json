@@ -1,0 +1,518 @@
+{
+  "evidence": [
+    {
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint A",
+      "evidence_id": "result-A",
+      "intervention": "Fictional comparison label A",
+      "limitations": "Study identity, independence and scientific validity have not been verified.",
+      "locator": "synthetic://report-one/result-A",
+      "mechanism_basis": "unknown",
+      "model": "Fictional nonclinical system A",
+      "record_id": "record-one",
+      "result": "Synthetic observation for software testing; no real measurement.",
+      "study_id": "study-A"
+    },
+    {
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint B",
+      "evidence_id": "result-B",
+      "intervention": "Fictional comparison label B",
+      "limitations": "Sharing a report does not establish the same study, independence or replication.",
+      "locator": "synthetic://report-one/result-B",
+      "mechanism_basis": "unknown",
+      "model": "Fictional nonclinical system B",
+      "record_id": "record-one",
+      "result": "Different synthetic observation for software testing; no real measurement.",
+      "study_id": "study-B"
+    },
+    {
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint label",
+      "evidence_id": "result-C-manual",
+      "intervention": "Fictional comparison label",
+      "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+      "locator": "synthetic://report-one/result-C-manual",
+      "mechanism_basis": "unknown",
+      "model": "Fictional model label for bookkeeping only",
+      "record_id": "record-one",
+      "result": "A revised fictional null-finding description. No actual source reassessment is claimed.",
+      "study_id": "study-C"
+    },
+    {
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint label",
+      "evidence_id": "result-A-second",
+      "intervention": "Fictional comparison label",
+      "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+      "locator": "synthetic://report-one/result-A-second",
+      "mechanism_basis": "unknown",
+      "model": "Fictional model label for bookkeeping only",
+      "record_id": "record-one",
+      "result": "A direction-only fictional observation is retained without an inferred effect size.",
+      "study_id": "study-A"
+    }
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope reports for software testing only"
+  ],
+  "gaps": [
+    {
+      "acceptance_criterion": "The operator records identity uncertainty without treating two result rows as independent support.",
+      "deliverable": "A source-linked result membership review note.",
+      "evidence_ids": [
+        "result-A",
+        "result-B"
+      ],
+      "question": "Are the two fictional result rows linked to the intended supplied studies?",
+      "work_package_id": "WP-RESULT-LINKS"
+    },
+    {
+      "acceptance_criterion": "Results in one report are not assumed to fill another report's membership; no exhaustive extraction is asserted.",
+      "deliverable": "An explicit report-specific extraction inventory and limitations note.",
+      "evidence_ids": [],
+      "question": "Which declared report-study memberships have no supplied result rows?",
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-two"
+        }
+      ],
+      "work_package_id": "WP-MEMBERSHIP-SOURCES",
+      "work_type": "source_review"
+    }
+  ],
+  "inclusion_criteria": [
+    "Fictional in-scope reports for software testing only"
+  ],
+  "question": "Which supplied fictional observations need manual extraction while preserving document, study and context boundaries?",
+  "report_reviews": [
+    {
+      "decision": "include",
+      "rationale": "Fictional human position for software testing, not a scientific assessment.",
+      "report_id": "report-one",
+      "review_id": "review-one-A",
+      "reviewed_at": "2026-11-04",
+      "reviewed_locator": "Fictional main section 2; no exhaustive supplement reading claimed.",
+      "reviewer": "Fictional reviewer A",
+      "source_basis_sha256": "74d4e9a9a9e7c247ced1115f2a6b515cc6d36d13e32633194bb0ac4dabc80241"
+    },
+    {
+      "decision": "exclude",
+      "rationale": "Fictional human position for software testing, not a scientific assessment.",
+      "report_id": "report-one",
+      "review_id": "review-one-B",
+      "reviewed_at": "2026-11-04",
+      "reviewed_locator": "Fictional main section 3 and supplement table S1.",
+      "reviewer": "Fictional reviewer B",
+      "source_basis_sha256": "74d4e9a9a9e7c247ced1115f2a6b515cc6d36d13e32633194bb0ac4dabc80241"
+    },
+    {
+      "decision": "unclear",
+      "rationale": "Fictional human position for software testing, not a scientific assessment.",
+      "report_id": "report-two",
+      "review_id": "review-two-A",
+      "reviewed_at": "2026-11-04",
+      "reviewed_locator": "Fictional section 1; supplied byte digest is missing.",
+      "reviewer": "Fictional reviewer A",
+      "source_basis_sha256": "ab65ff55f64fb7ff30e83cd7d47c513bdba13d70bc1782366852f272c1d1519e"
+    },
+    {
+      "decision": "exclude",
+      "rationale": "Fictional human position for software testing, not a scientific assessment.",
+      "report_id": "report-five",
+      "review_id": "review-five-old",
+      "reviewed_at": "2026-11-04",
+      "reviewed_locator": "Fictional earlier source context; current retrieval differs.",
+      "reviewer": "Fictional reviewer C",
+      "source_basis_sha256": "59ee47d90819200ed51c73ab7aa7c2b4a4bb6d1ee51e71e7186e1f26a4754823"
+    }
+  ],
+  "report_sources": [
+    {
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "document_version": "Fictional main document version 1",
+      "report_id": "report-one",
+      "source_id": "source-main",
+      "source_locator": "synthetic://report-one/main"
+    },
+    {
+      "document_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "document_version": "Fictional supplement version 2, supplied metadata only",
+      "report_id": "report-one",
+      "source_id": "source-supplement",
+      "source_locator": "synthetic://report-one/supplement"
+    },
+    {
+      "document_sha256": null,
+      "document_version": "Fictional supplied version with bytes unbound",
+      "report_id": "report-two",
+      "source_id": "source-unbound",
+      "source_locator": "synthetic://report-two/main"
+    },
+    {
+      "document_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "document_version": "Fictional candidate document v1",
+      "report_id": "report-three",
+      "source_id": "source-candidate",
+      "source_locator": "synthetic://report-three/main"
+    }
+  ],
+  "report_study_inventory": [
+    {
+      "description": "Fictional candidate X described before the report decision.",
+      "inventory_id": "inventory-pending-A",
+      "recorded_at": "2026-11-04",
+      "recorded_by": "Fictional recorder A",
+      "report_id": "report-three",
+      "source_basis_sha256": "1b8b63242c5da0c5fcb3e62cbdd88bb9b0cb35b66d472fe5f295b13738961668",
+      "source_ids": [
+        "source-candidate"
+      ],
+      "source_locator": "Fictional page and section description for candidate-X",
+      "study_id": "candidate-X"
+    },
+    {
+      "description": "A separate fictional description of the same supplied label; identity is not verified.",
+      "inventory_id": "inventory-pending-B",
+      "recorded_at": "2020-01-01",
+      "recorded_by": "Fictional recorder B",
+      "report_id": "report-three",
+      "source_basis_sha256": "1b8b63242c5da0c5fcb3e62cbdd88bb9b0cb35b66d472fe5f295b13738961668",
+      "source_ids": [
+        "source-candidate"
+      ],
+      "source_locator": "Fictional page and section description for candidate-X",
+      "study_id": "candidate-X"
+    },
+    {
+      "description": "Fictional candidate description retained on an excluded report.",
+      "inventory_id": "inventory-excluded",
+      "recorded_at": "2026-11-04",
+      "recorded_by": "Fictional recorder C",
+      "report_id": "report-two",
+      "source_basis_sha256": "63c8a40480b81799ff2eeb8be4acdad9cf5712ba4021b4a24ce37ca25262c0d7",
+      "source_ids": [
+        "source-unbound"
+      ],
+      "source_locator": "Fictional page and section description for candidate-Y",
+      "study_id": "candidate-Y"
+    },
+    {
+      "description": "Fictional description with a separately declared included membership.",
+      "inventory_id": "inventory-included",
+      "recorded_at": "2026-11-04",
+      "recorded_by": "Fictional recorder A",
+      "report_id": "report-one",
+      "source_basis_sha256": "92c93ed849d60efe3046a4c70d19b1c5481079a69c902f32e6bd71e89383a30a",
+      "source_ids": [
+        "source-main"
+      ],
+      "source_locator": "Fictional page and section description for study-A",
+      "study_id": "study-A"
+    },
+    {
+      "description": "Fictional earlier description retained after the supplied source became unavailable.",
+      "inventory_id": "inventory-unavailable",
+      "recorded_at": "2026-11-04",
+      "recorded_by": "Fictional recorder D",
+      "report_id": "report-five",
+      "source_basis_sha256": "583d5ae1d606d872f59fa52f2d9d6401038c7579475ebdaee5f275fd23fd4c20",
+      "source_ids": [
+        "source-archived"
+      ],
+      "source_locator": "Fictional page and section description for candidate-Z",
+      "study_id": "candidate-Z"
+    }
+  ],
+  "report_study_inventory_reviews": [
+    {
+      "decision": "include",
+      "rationale": "Fictional human eligibility position for software testing, not a scientific finding.",
+      "report_id": "report-three",
+      "review_id": "candidate-review-A",
+      "reviewed_at": "2026-11-04",
+      "reviewed_inventory_ids": [
+        "inventory-pending-A"
+      ],
+      "reviewed_locator": "Fictional page and section reference; actual reading is not verified.",
+      "reviewed_source_ids": [
+        "source-candidate"
+      ],
+      "reviewer": "Fictional reviewer A",
+      "source_basis_sha256": "e20503891b91865d798253545dece16b80b267250f4bd60c63fb8d061d7d947a",
+      "study_id": "candidate-X"
+    },
+    {
+      "decision": "exclude",
+      "rationale": "Fictional human eligibility position for software testing, not a scientific finding.",
+      "report_id": "report-three",
+      "review_id": "candidate-review-B",
+      "reviewed_at": "2026-11-04",
+      "reviewed_inventory_ids": [
+        "inventory-pending-B"
+      ],
+      "reviewed_locator": "Fictional page and section reference; actual reading is not verified.",
+      "reviewed_source_ids": [
+        "source-candidate"
+      ],
+      "reviewer": "Fictional reviewer B",
+      "source_basis_sha256": "e20503891b91865d798253545dece16b80b267250f4bd60c63fb8d061d7d947a",
+      "study_id": "candidate-X"
+    },
+    {
+      "decision": "unclear",
+      "rationale": "Fictional human eligibility position for software testing, not a scientific finding.",
+      "report_id": "report-two",
+      "review_id": "candidate-review-C",
+      "reviewed_at": "2026-11-04",
+      "reviewed_inventory_ids": [
+        "inventory-excluded"
+      ],
+      "reviewed_locator": "Fictional page and section reference; actual reading is not verified.",
+      "reviewed_source_ids": [
+        "source-unbound"
+      ],
+      "reviewer": "Fictional reviewer C",
+      "source_basis_sha256": "91fdebd7c0b9f9e64e821c807872bf098c2bc7d9a1a49d5aa538858ce1a04c92",
+      "study_id": "candidate-Y"
+    },
+    {
+      "decision": "include",
+      "rationale": "Fictional human eligibility position for software testing, not a scientific finding.",
+      "report_id": "report-one",
+      "review_id": "candidate-review-D",
+      "reviewed_at": "2026-11-04",
+      "reviewed_inventory_ids": [
+        "inventory-included"
+      ],
+      "reviewed_locator": "Fictional page and section reference; actual reading is not verified.",
+      "reviewed_source_ids": [
+        "source-main"
+      ],
+      "reviewer": "Fictional reviewer D",
+      "source_basis_sha256": "d5101d14fbac6f9dd524bfdf8b7303c9a428ac55fae4d994a85947f101e4accb",
+      "study_id": "study-A"
+    },
+    {
+      "decision": "unclear",
+      "rationale": "Retained synthetic assertion; this record does not prove historical validity.",
+      "report_id": "report-three",
+      "review_id": "candidate-review-retained",
+      "reviewed_at": "2020-01-01",
+      "reviewed_inventory_ids": [
+        "inventory-removed"
+      ],
+      "reviewed_locator": "Fictional old reference; not retrieved.",
+      "reviewed_source_ids": [
+        "source-candidate"
+      ],
+      "reviewer": "Fictional reviewer E",
+      "source_basis_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "study_id": "candidate-removed"
+    }
+  ],
+  "reports": [
+    {
+      "decision": "include",
+      "locator": "synthetic://report-one",
+      "record_ids": [
+        "record-one"
+      ],
+      "report_id": "report-one",
+      "retrieval": "retrieved",
+      "study_ids": [
+        "study-A",
+        "study-B",
+        "study-C"
+      ]
+    },
+    {
+      "decision": "exclude",
+      "locator": "synthetic://report-two",
+      "reason": "Fictional full-text exclusion; candidate descriptions remain separate.",
+      "record_ids": [
+        "record-two"
+      ],
+      "report_id": "report-two",
+      "retrieval": "retrieved",
+      "study_id": "study-A"
+    },
+    {
+      "decision": "pending",
+      "locator": "synthetic://report-three",
+      "record_ids": [
+        "record-three"
+      ],
+      "report_id": "report-three",
+      "retrieval": "retrieved"
+    },
+    {
+      "record_ids": [
+        "record-four"
+      ],
+      "report_id": "report-four",
+      "retrieval": "pending"
+    },
+    {
+      "reason": "Fictional unavailable document; not an assessed exclusion.",
+      "record_ids": [
+        "record-five"
+      ],
+      "report_id": "report-five",
+      "retrieval": "not_retrieved"
+    }
+  ],
+  "screening": [
+    {
+      "decision": "include",
+      "reason": "Fictional operator eligibility assertion for testing.",
+      "record_id": "record-one"
+    },
+    {
+      "decision": "include",
+      "reason": "Fictional operator eligibility assertion for testing.",
+      "record_id": "record-two"
+    },
+    {
+      "decision": "include",
+      "reason": "Fictional title/abstract inclusion for software testing only.",
+      "record_id": "record-three"
+    },
+    {
+      "decision": "include",
+      "reason": "Fictional title/abstract inclusion for software testing only.",
+      "record_id": "record-four"
+    },
+    {
+      "decision": "include",
+      "reason": "Fictional title/abstract inclusion for software testing only.",
+      "record_id": "record-five"
+    }
+  ],
+  "search_plan": [
+    {
+      "query": "fictional multi-study report",
+      "search_id": "synthetic-search",
+      "source": "synthetic-index",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "complete": false,
+      "has_more": null,
+      "query": "fictional multi-study report",
+      "record_ids": [
+        "record-one",
+        "record-two",
+        "record-three",
+        "record-four",
+        "record-five"
+      ],
+      "search_id": "synthetic-search",
+      "searched_at": "synthetic supplied timestamp",
+      "source": "synthetic-index",
+      "total_count": null,
+      "window": "2020-2026"
+    }
+  ],
+  "version": "synthetic-extraction-worksheet-v1",
+  "contexts": [
+    {
+      "context_id": "ctx-selected-record",
+      "context_scope": "source_review",
+      "domain": "clinical_guideline",
+      "title": "Fictional selected-record guideline question",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/guideline",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional setting",
+      "relevance_statement": "The operator records a question for later source review, not an applicability finding.",
+      "applicability": "unknown",
+      "limitations": "No actual guideline was retrieved or assessed; no recommendations were extracted.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-two"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "context_id": "ctx-existing-result",
+      "domain": "drug_development",
+      "title": "Fictional development context for existing results only",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/development",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional development setting",
+      "relevance_statement": "The operator records missing-source questions without making a development decision.",
+      "applicability": "unknown",
+      "limitations": "No real development dossier or regulatory status was verified.",
+      "development_stage": "unknown",
+      "regulatory_status": "unknown",
+      "evidence_ids": [
+        "result-C-manual",
+        "result-B"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "context_id": "ctx-other-study",
+      "domain": "clinical_guideline",
+      "title": "Fictional other-study context, not selected by matching report alone",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/guideline",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional setting",
+      "relevance_statement": "The operator records a question for later source review, not an applicability finding.",
+      "applicability": "unknown",
+      "limitations": "No actual guideline was retrieved or assessed; no recommendations were extracted.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [
+        "result-A"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "context_id": "ctx-search-only",
+      "context_scope": "source_review",
+      "domain": "clinical_guideline",
+      "title": "Fictional search-only context, not inherited by records",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/guideline",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional setting",
+      "relevance_statement": "The operator records a question for later source review, not an applicability finding.",
+      "applicability": "unknown",
+      "limitations": "No actual guideline was retrieved or assessed; no recommendations were extracted.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "planned_search",
+          "search_id": "synthetic-search"
+        }
+      ],
+      "review_status": "pending"
+    }
+  ]
+}

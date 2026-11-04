@@ -944,3 +944,33 @@ Publication audit checks 212 text files and exact manifest verification passes.
 No source reading, actual research corpus, medical verification, biological
 execution guidance, automatic scientific approval or downstream review renewal
 was performed or added.
+
+Manual extraction worksheet increment (2026-11-04): 1,018 tests in the suite;
+Linux run: 1,017 passed and one native-Windows-only test skipped. Twenty-four new
+independently written tests cover mandatory exact report/study/record selections,
+scalar/plural membership, whole-protocol validation, multiple mapped records,
+same-label studies in different reports, original raw rows and implicit ID origins,
+missing-result pairs, available-but-unselected sources, null/non-null digests,
+and source-less eligible reports with deliberately unfinished candidates.
+Tests preserve full context assertions while selecting only exact typed record or
+existing pair-result intersections. Search membership and shared report labels do
+not infer context applicability. Human assertions remain unchanged, and all new
+scientific fields, extraction IDs, dates and source choices remain unfilled.
+Further tests cover deep output detachment, opaque numeric types, validated CSV
+provenance, fingerprints, no external actions, strict JSON/UTF-8, quoted controls,
+exclusive output files and final encoded output bounds. The focused six-suite
+run passes 142 tests. Independent read-only implementation/documentation review
+found no blocking issue; existing and dangling output-symlink probes fail safely.
+All 38 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing Python file remains byte-unchanged.
+Previously saved manual intake and correction application records still replay.
+The new fictional worksheet reports one existing pair-result, one selected-record
+result and two available source descriptors. It shows the exact selected-record
+context and existing-result context without inheriting the search-only context or
+another study's context. Full context assertions retain their other references,
+while matched subsets are separately visible. No new candidate applicability is
+asserted. The blank candidate fails intake as intended; after explicit fictional
+manual filling, the existing target/review/assembly/replay/bundle journey succeeds.
+Publication audit checks 216 text files and exact manifest verification passes.
+No actual source reading, private corpus, medical fact checking, biological
+execution guidance, inferred findings or automated scientific approval was added.

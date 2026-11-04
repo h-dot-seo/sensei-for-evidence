@@ -6,6 +6,11 @@ CSV-import workflow. It never reads a document or creates a scientific extractio
 A person supplies every result, source selection and location, then explicitly
 reviews that exact batch before a new protocol candidate is produced.
 
+To start an unfinished candidate, use a [manual extraction worksheet](EXTRACTION_WORKSHEETS.md).
+It joins exact report-study context and existing results while leaving scientific
+fields, source choices and human metadata blank. Complete those fields before
+requesting the intake target below.
+
 This is append-only, **detached** intake. Source associations remain in its separate
 application record, not a new persistent protocol ledger. Ordinary later views do
 not validate those associations or detect their staleness after further edits.

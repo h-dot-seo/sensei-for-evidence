@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.56.0-result-text-correction",
+  "release": "0.57.0-extraction-worksheet",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 211,
+  "file_count": 215,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21600,
-      "sha256": "9017abfc8cf8ba39b46c04c1d75acea52d3b9b9675054a20af96475b56f6b311"
+      "bytes": 22109,
+      "sha256": "2a9a7674e2bbfa7e5c25e2450ed1ee8b2389d3330433bf5fe71134731f14fb9d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 68779,
-      "sha256": "c6ac51ea5d587b820db363bcc814b0d716018603dcd0027d5019aaebb88f2ea3"
+      "bytes": 71104,
+      "sha256": "0d53c6e5c97df4866adabb9a3fb2556e17ea38f2baa9953bc04a24dae5a0a7c2"
     },
     {
       "path": "adapter_integrity.py",
@@ -159,6 +159,11 @@
       "sha256": "a4519dcf953f15432c6594eeaa3909ba07c1052b077f7e027bdff99c6182cc37"
     },
     {
+      "path": "docs/EXTRACTION_WORKSHEETS.md",
+      "bytes": 9339,
+      "sha256": "78bb6b59764540603d9dbf4034d2cd348af70df5e5f5728a2afb4a96ae51ddcc"
+    },
+    {
       "path": "docs/FIRST_RUN.md",
       "bytes": 7144,
       "sha256": "dcbf3e3a905e6164033658845aa9a8fec4c92974dcbc5c4f96b19450124d4e95"
@@ -175,8 +180,8 @@
     },
     {
       "path": "docs/MANUAL_RESULT_INTAKE.md",
-      "bytes": 9938,
-      "sha256": "3e6059d80faa9caf79178f2899211e91eaec2dbecb549548be1521af0b340b47"
+      "bytes": 10232,
+      "sha256": "2228ec41cc159b29f69123cab01c49db5d4184126cb1881aa3d5d4d02828f766"
     },
     {
       "path": "docs/MULTI_STUDY_REPORTS.md",
@@ -382,6 +387,11 @@
       "path": "examples/experiment-review.json",
       "bytes": 13861,
       "sha256": "88fa6547a98247a771d402ca3babba40c552768e697314d7ba562e1e7da8ff09"
+    },
+    {
+      "path": "examples/extraction-worksheet-protocol.json",
+      "bytes": 19363,
+      "sha256": "d89f72f2545b645642922466e77ea408358397112191cf177e83e3d762279616"
     },
     {
       "path": "examples/first-run-enriched.json",
@@ -684,6 +694,11 @@
       "sha256": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52"
     },
     {
+      "path": "result_extraction.py",
+      "bytes": 11190,
+      "sha256": "6ed413ce7cd0157d5479a413b1bc8a14629194fb800efd34260e0a546a578732"
+    },
+    {
       "path": "result_intake.py",
       "bytes": 16882,
       "sha256": "bba5e1437fa9713291ad10f65acd2b2b3a695bae981686be9068fff4c568715b"
@@ -952,6 +967,11 @@
       "path": "test_result_correction.py",
       "bytes": 29060,
       "sha256": "cc49680c84877e3d5ccca0441cde86524f1b5ab9b985f9dacfc55649269a42e5"
+    },
+    {
+      "path": "test_result_extraction.py",
+      "bytes": 27298,
+      "sha256": "ee107639fd3496b7210096d140716a5d091a61a8909068ca706cb96d0fc75ab7"
     },
     {
       "path": "test_result_intake.py",

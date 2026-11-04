@@ -113,6 +113,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `result_intake.py target/assemble/verify ...` | Explicitly review and append supplied manual result rows with detached document associations and exact-input replay |
 | `result_source_review.py ORIGINAL.json APPLICATION.json CURRENT.json [--text]` | Replay a manual intake record, then separately compare current result rows, report links and supplied document context |
 | `result_correction.py target/assemble/verify ...` | Apply explicitly reviewed result/limitations text corrections without changing extraction IDs, row order or counts |
+| `result_extraction.py PROTOCOL.json --report-id ID --study-id ID --record-id ID [--text]` | Join exact report-study context and existing results with a deliberately blank manual intake candidate |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -317,3 +318,8 @@ separate from approval, source authenticity and scientific interpretation.
 finding's ID and count while applying separately reviewed wording changes. Before/
 after rows and supplied sources stay in a detached replay record; earlier reviews
 and downstream assertions are not renewed or scientifically reassessed.
+
+[Manual extraction worksheets](docs/EXTRACTION_WORKSHEETS.md) gather available
+document declarations, existing pair-results and explicitly linked contexts before
+new result entry. Only caller-selected report/study/record IDs are prefilled;
+source selection, scientific fields and human metadata remain blank.
