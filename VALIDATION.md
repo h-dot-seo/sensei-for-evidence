@@ -2365,3 +2365,55 @@ regenerated inventory checks pass. Official parameters and limits were checked v
 public documentation; modern JSON behavior remains conservatively mocked, not live
 service validated. Exact published-head Ubuntu/Windows × Python 3.10/3.12 CI is checked
 separately after push, including the two added transport tests.
+
+## 2026-11-04 selected PubMed metadata and HTTP framing hardening
+
+Added explicit bounded EFetch MEDLINE-text acquisition for selected discovery
+occurrences. This retrieves title/abstract candidate fields only. It reuses the
+strict fixed-column parser, preserves raw response bytes/ordered fields/spans,
+reconciles returned PMIDs by literal identifier rather than position, and keeps
+repeated discovery occurrences mapped to their selected native record. Only fully
+reconciled successful batches enter a separate unreviewed CSV derivative with
+acquisition/discovery/native provenance. No source identity, screening, full text,
+extraction, search-plan amendment or scientific conclusion is inferred.
+
+Independent review found an HTTP framing defect shared by both clients: a duplicate
+Content-Length could be collapsed to its last value and falsely mark a truncated
+body complete. Both clients now preserve comma-joined bounded observations and
+fail closed on repeated Content-Length, simultaneous Transfer-Encoding and length,
+and repeated/unsupported transfer coding. Replay rejects contradictory complete-body
+claims too. Actual synthetic HTTPResponse tests cover these cases for both clients,
+while retaining real-handler redirect and slow-buffered-read regressions.
+
+Additional review verified nonpositional/repeated occurrence mappings, BOM/CRLF and
+field span hashes, missing/duplicate/unexpected PMID stops, malformed native bodies,
+partial-batch retention, tamper rejection and unchanged scientific gates. A native
+JSON-expansion cap preserves raw observations without candidate promotion when
+control characters or repeated field structures expand excessively. Fetch snapshots
+the approved discovery and selection before an injected callback can mutate them.
+No remaining review blocker was found; this is not a full security or live-service
+audit. All data/transports are synthetic, with no NCBI query, model, private corpus,
+credential or expenditure used.
+
+Limits: 100 selected occurrences, 20 distinct literal IDs per request, 10 requests,
+262,144 raw bytes per response, 1,000 physical lines/500 fields/40 native records,
+1 MB serialized parsed response and 50 MB acquisition JSON. Separate CSV intake has
+its existing size bound. Repeated IDs are grouped only for transport while original
+selection provenance remains explicit. Timing is best effort and pacing process-local;
+DNS/TLS/headers/reads/scheduling can exceed wall-clock expectations. Unsigned replay
+cannot prove retrieval, freshness, authentic timing or source identity. Current
+implementation bytes are required for replay; use the recorded version for earlier
+artifacts after the shared transport change.
+
+Final frozen-byte Linux regression: 1,721 tests in 287.177 seconds, with 1,720
+passed and one native-Windows-only skip. All Python source/test hashes were unchanged
+across the run. Eighteen metadata tests, one six-command offline journey, one new
+operator route and three added HTTP framing tests are included. The catalog has
+23 static routes and 96 parser-help entrypoints. Eight changed-guide local link
+checks, compilation, whitespace, limited publication audit and regenerated inventory
+checks pass.
+
+The prior d211f8aca1e912ea15139b76f847427905066b3d workflow run 41877285628 was
+reported completed/success at 17:48 UTC on 2026-11-04. All matrix step results were
+successful; two per-job summary states still lagged at in_progress at that read.
+New exact-head CI is checked separately after publication.

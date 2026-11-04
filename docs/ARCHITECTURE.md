@@ -81,3 +81,10 @@ CSV to existing collection review; no search-plan amendment, identity resolution
 screening or evidence extraction is automatic. ESearch identifier counts are not
 article-reading coverage or source/census authentication. Mock adapters keep their
 existing offline semantics.
+
+Selected metadata acquisition is separate again: `pubmed_metadata.py` consumes a
+verified discovery plus explicit occurrence selection and retains EFetch MEDLINE
+text. It reuses the strict native parser without changing its grammar. Exact-PMID
+batch reconciliation is non-positional; CSV rows retain native record fields and
+acquisition/discovery provenance. Unchanged collection review controls research
+import. No metadata record automatically becomes screening, full text or evidence.

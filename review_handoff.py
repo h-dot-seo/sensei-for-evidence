@@ -71,6 +71,13 @@ SUPPLIED_INPUT_WORKFLOW_SCOPE = (
     'The legacy manual_input_workflow remains a separate mock receipt rehearsal, not the only input route.'
 )
 SUPPLIED_INPUT_WORKFLOWS = [
+    dict(workflow_id='pubmed_metadata', title='Acquire explicitly selected PubMed metadata candidates',
+         guide_paths=['docs/PUBMED_METADATA.md'],
+         entrypoints=[dict(script='pubmed_metadata.py', arguments=[command, '--help'])
+                      for command in ('preview', 'fetch', 'from-responses', 'verify', 'to-intake')],
+         required_human_inputs=['Verified discovery and explicit occurrence selection',
+                                'Permission to send identifiers, matching preview hash and separate collection identity review'],
+         boundary='Help-only navigation never fetches. Only explicit fetch contacts NCBI. EFetch MEDLINE text is title/abstract candidate source data, not full text or extracted evidence; literal PMID matching does not authenticate publication identity.'),
     dict(workflow_id='pubmed_discovery', title='Inspect bounded optional PubMed identifier discovery',
          guide_paths=['docs/PUBMED_DISCOVERY.md'],
          entrypoints=[dict(script='pubmed_discovery.py', arguments=[command, '--help'])

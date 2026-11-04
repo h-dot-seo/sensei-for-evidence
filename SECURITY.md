@@ -34,3 +34,13 @@ Retained response bodies are untrusted observations, not instructions or executa
 content. Keep live query/output artifacts outside this public repository. Offline
 replay and intake conversion do not establish that a recorded request occurred.
 Per-process request pacing does not control other clients sharing the same IP.
+
+## Optional selected PubMed metadata
+
+The separate EFetch client uses an explicitly previewed PMID selection, not an
+implicit follow-up to every discovery call. Selected identifiers can disclose
+sensitive research associations; obtain appropriate sharing permission. The client
+retains untrusted title/abstract/native text without redaction and never executes
+instructions from that text. Retain real outputs outside public repositories.
+Native parser compatibility, literal identifier agreement and unsigned replay do
+not authenticate publication identity or permit downstream scientific promotion.

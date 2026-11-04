@@ -17,7 +17,7 @@ import review_handoff
 from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
-WORKFLOW_IDS = ['pubmed_discovery','native_collection','screening_decision','report_registration','report_retrieval',
+WORKFLOW_IDS = ['pubmed_metadata','pubmed_discovery','native_collection','screening_decision','report_registration','report_retrieval',
                 'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','context_intake','work_context_assignment','source_review_work','evidence_review_work','work_completion',
                 'collection_archives','report_transition_archive','extraction_transition_archive','work_transition_archive','appraisal_transition_archive']
 
@@ -49,6 +49,8 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         for item in result['supplied_input_workflows']:
             self.assertEqual(set(item),{'workflow_id','title','guide_paths','entrypoints','required_human_inputs','boundary'})
             self.assertTrue(item['title'] and item['required_human_inputs'] and item['boundary'])
+            self.assertIsInstance(item['required_human_inputs'],list)
+            self.assertTrue(all(type(value) is str for value in item['required_human_inputs']))
             for guide in item['guide_paths']:
                 self.assertTrue(guide.startswith('docs/'))
                 self.assertTrue((ROOT/guide).is_file(),guide)
@@ -59,7 +61,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),91)
+        self.assertEqual(len(entries),96)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -150,6 +152,15 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         for phrase in ['Conflicting positions remain separate', 'no score, consensus', 'not proof of reading',
                        'hashes are not renewed', 'source-status cues may change']:
             self.assertIn(phrase, route['boundary'])
+
+    def test_pubmed_metadata_route_is_explicit_and_keeps_source_data_unreviewed(self):
+        catalog={r['workflow_id']:r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        route=catalog['pubmed_metadata']
+        self.assertEqual(route['guide_paths'],['docs/PUBMED_METADATA.md'])
+        self.assertEqual(route['entrypoints'],[dict(script='pubmed_metadata.py',arguments=[c,'--help'])
+                                             for c in ('preview','fetch','from-responses','verify','to-intake')])
+        for phrase in ['Help-only navigation never fetches','not full text or extracted evidence','literal PMID matching']:
+            self.assertIn(phrase,route['boundary'])
 
     def test_pubmed_route_is_help_only_and_does_not_promote_discovery_to_evidence(self):
         catalog={r['workflow_id']:r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}

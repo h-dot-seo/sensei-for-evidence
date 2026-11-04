@@ -9,10 +9,13 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 ## What is implemented
 
 Standard-library Python tools reconcile **supplied data**. The optional, explicitly
-invoked PubMed client can fetch bounded PMID lists; the core never calls models:
+invoked PubMed clients can fetch bounded PMID lists and selected metadata; the core
+never calls models:
 
 - Optional preview-bound, keyless PubMed identifier discovery with retained native
   response observations, explicit caps/failures and separate unreviewed CSV intake.
+- Explicit selected-PMID EFetch MEDLINE acquisition with title/abstract candidates,
+  literal identifier reconciliation, retained native fields and separate intake.
 - Declared search plans and optional page ledgers, including missing sources,
   count mismatches, overlap, truncation and incomplete pagination.
 - Provider-neutral mock search/extraction receipts with hash-bound operator review
@@ -46,9 +49,9 @@ invoked PubMed client can fetch bounded PMID lists; the core never calls models:
 - Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
   CSV exports, plus version-to-version mechanical comparison.
 
-Only explicit PubMed ESearch identifier discovery can make live search requests.
-No abstract/full-text retrieval, guideline currency verification, scientific
-appraisal, meta-analysis, clinical recommendation or legal opinion is performed. Search pages, source locators and reviewer claims are not authenticated.
+Only explicit PubMed ESearch discovery and EFetch selected metadata acquisition
+make live requests. No full-text retrieval, guideline currency verification,
+scientific appraisal, meta-analysis, clinical recommendation or legal opinion is performed. Search pages, source locators and reviewer claims are not authenticated.
 Census and conclusion readiness remain `NOT_ESTABLISHED` and `NOT_READY`.
 
 ## Quick start
@@ -459,3 +462,7 @@ completion assertions and hashes, without automatic applicability or review rene
 manual export collection and live identifier discovery. Preview is offline; only a
 matching explicitly invoked fetch contacts NCBI. Raw observations and stop reasons
 remain separate from search completeness, identity decisions and extracted evidence.
+
+After identifier discovery, [selected PubMed metadata acquisition](docs/PUBMED_METADATA.md)
+can obtain bounded EFetch MEDLINE title/abstract candidates. It preserves literal
+PMID links and native source fields without silently screening or extracting evidence.

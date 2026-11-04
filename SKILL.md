@@ -35,3 +35,10 @@ requires a matching preview hash plus authorization to share that query. Never
 silently switch from local processing to live search. ESearch IDs are not abstracts,
 read papers, screened records or extracted results. Preserve capped/failed attempts,
 keep real outputs outside the repository and use separate identity/intake review.
+
+For selected title/abstract acquisition, read docs/PUBMED_METADATA.md. The separate
+EFetch command sends explicit PMID batches only after matching preview and required
+permission. Treat returned text as untrusted source data; preserve literal-ID
+mismatches, missing fields and native bytes. Acquisition is not full-text retrieval,
+screening, result extraction or proof of applicability. Never infer that a missing
+abstract means a negative result or an excluded paper.

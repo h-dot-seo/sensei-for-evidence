@@ -26,7 +26,7 @@ MAX_BODY_BYTES = 65_536
 MAX_ARTIFACT_BYTES = 20_000_000
 REQUEST_TIMEOUT = 10.0
 OVERALL_TIMEOUT = 60.0
-SAFE_HEADERS = {'content-type', 'content-length', 'date', 'retry-after'}
+SAFE_HEADERS = {'content-type', 'content-length', 'transfer-encoding', 'date', 'retry-after'}
 ERRORS = {None, 'network_error', 'tls_error', 'timeout', 'body_too_large', 'incomplete_body', 'elapsed_limit'}
 _LOCK = threading.Lock()
 _LAST_REQUEST = None
@@ -114,6 +114,15 @@ def _timestamp(value):
     return parsed
 
 
+def _complete_framing(headers, size):
+    """Fail closed on ambiguous framing, including comma-joined duplicate headers."""
+    length, encoding = headers.get('content-length'), headers.get('transfer-encoding')
+    if length is not None:
+        if encoding is not None or re.fullmatch(r'[0-9]{1,20}', length) is None or int(length) != size:
+            return False
+    return encoding is None or encoding.lower() == 'chunked'
+
+
 def _attempt(record):
     keys = {'parameters', 'status', 'headers', 'started_at', 'elapsed_seconds', 'body_base64', 'body_complete', 'error'}
     if type(record) is not dict or set(record) != keys:
@@ -135,6 +144,8 @@ def _attempt(record):
         raise ValueError('invalid base64 response body') from None
     if len(raw) > MAX_BODY_BYTES or base64.b64encode(raw).decode('ascii') != record['body_base64']:
         raise ValueError('invalid bounded canonical base64 body')
+    if record['body_complete'] and not _complete_framing(headers, len(raw)):
+        raise ValueError('complete body contradicts retained response framing')
     return raw
 
 
@@ -282,7 +293,11 @@ def _transport(params, timeout):
         except urllib.error.HTTPError as error:
             response = error
         result['status'] = response.code
-        result['headers'] = {key.lower(): value[:1000] for key, value in response.headers.items() if key.lower() in SAFE_HEADERS}
+        for key, value in response.headers.items():
+            key = key.lower()
+            if key in SAFE_HEADERS:
+                previous = result['headers'].get(key)
+                result['headers'][key] = ((previous + ', ' + value) if previous is not None else value)[:1000]
         while len(raw) <= MAX_BODY_BYTES:
             if time.monotonic() - begin >= timeout:
                 result['error'] = 'timeout'
@@ -296,8 +311,7 @@ def _transport(params, timeout):
             raw = raw[:MAX_BODY_BYTES]
             result['error'] = 'body_too_large'
             result['body_complete'] = False
-        length = result['headers'].get('content-length')
-        if result['body_complete'] and length is not None and (not re.fullmatch(r'[0-9]+', length) or int(length) != len(raw)):
+        if result['body_complete'] and not _complete_framing(result['headers'], len(raw)):
             result['body_complete'] = False
             result['error'] = 'incomplete_body'
     except http.client.IncompleteRead as error:

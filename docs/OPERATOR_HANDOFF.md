@@ -267,3 +267,7 @@ No supplied completion or planning hash is renewed by this operation.
 through parser-help entries only. The handoff never executes live fetch, chooses
 a query or supplies its preview approval. Identifier collection and evidence
 extraction remain separate human-reviewed stages.
+
+The selected PubMed metadata route links parser help and the offline rehearsal in
+[PUBMED_METADATA.md](PUBMED_METADATA.md). Navigation never invokes EFetch. Selecting
+records, transmitting identifiers and reviewing acquired metadata remain explicit.

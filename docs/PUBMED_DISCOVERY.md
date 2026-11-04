@@ -104,7 +104,9 @@ Every recorded attempt retains its supplied parameters, time, HTTP/transport
 observation and bounded native body bytes where available. Complete bytes and
 incomplete/truncated bodies are distinguished. Binary/non-JSON failures are retained
 as bounded observations rather than decoded into plausible citations. Cookies and
-authentication headers are not archived. Recorded attempt metadata is unsigned;
+authentication headers are not archived. Ambiguous repeated Content-Length or
+combined Transfer-Encoding/Content-Length framing is refused rather than treated as
+a complete native response. Recorded attempt metadata is unsigned;
 offline replay cannot establish that a network request actually occurred.
 
 The supported JSON subset checks decimal-string count/offset/returned-size fields,

@@ -600,3 +600,8 @@ observation/verification/conversion route. Only explicit, preview-bound fetch is
 networked; ordinary tools and the mock adapter remain offline. The API returns
 identifiers, not abstracts or extracted findings. No real network query is part of
 this repository's synthetic tests or documented offline rehearsal.
+
+For explicitly selected PMID metadata, follow [PubMed metadata](PUBMED_METADATA.md).
+Its rehearsal is offline; only its preview-bound fetch retrieves EFetch MEDLINE
+text. Inspect native title/abstract candidates and exact-ID mappings, then make
+separate collection identity choices. Existing research is never silently enriched.
