@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 from evidence_workflow import run
-from context_links import nonempty_text, iso_date, id_list
+from context_links import nonempty_text, iso_date, id_list, source_context_linkage
 from json_io import configure_utf8_stdio, parse_json, quoted_display, canonical_json_bytes as canonical
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
@@ -49,6 +49,8 @@ def context_work_impact(left, right):
                 work[cid].append(dict(work_package=copy.deepcopy(item),
                     shared_evidence_ids=sorted(refs & own),
                     other_context_evidence_ids=sorted(refs-own),other_work_evidence_ids=sorted(own-refs)))
+                if contexts[cid].get('context_scope') == 'source_review':
+                    work[cid][-1].update(source_context_linkage(contexts[cid], item))
         return {cid:dict(context=copy.deepcopy(row),
                         date_roles=dict(accessed_at=row['accessed_at'],recorded_reviewed_at=row.get('reviewed_at'),
                                         publication_or_effective_date_assessment='NOT_PERFORMED'),
@@ -307,6 +309,17 @@ def render_text(result):
                       'Changed context fields: ' + show(row['changed_context_fields']),
                       'Linked evidence changes: ' + show(row['linked_evidence_changes']),
                       'Explicit work IDs for manual comparison: ' + show(row['work_ids_for_manual_comparison'])])
+        def source_links(snapshot):
+            if snapshot is None or snapshot['context'].get('context_scope') != 'source_review':
+                return None
+            return dict(source_refs=snapshot['context']['source_refs'], linked_study_ids=snapshot['context']['linked_study_ids'],
+                        work_links=[dict(work_package_id=link['work_package']['work_package_id'],
+                                         **{key:link[key] for key in ('shared_source_refs','other_context_source_refs','other_work_source_refs')})
+                                    for link in snapshot['work_links']])
+        before_sources, after_sources = source_links(row['before']), source_links(row['after'])
+        if before_sources is not None or after_sources is not None:
+            lines.append('Before/after pre-extraction typed links (not applicability): '
+                         + show(dict(before=before_sources, after=after_sources)))
     lines.extend(['', 'Completion comparison (all work IDs; unchanged stale/unbound assertions remain visible):'])
     for row in result['completion_work_impact']['work_packages']:
         def work_state(snapshot):

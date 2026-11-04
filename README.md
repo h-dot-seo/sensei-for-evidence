@@ -27,6 +27,8 @@ services or models:
   IDs and traceable locators. The current model allows one study ID per record/report.
 - Supplied clinical-guideline and drug-development context, applicability limits,
   reviewer status and evidence/work-package links.
+- Explicit pre-extraction source context linked to declared searches or enumerated
+  records and source-review work, without inventing evidence or study IDs.
 - Supplied appraisal methods and domain judgements, with reviewer provenance and
   missing-appraisal coverage. No appraisal score or consensus is inferred.
 - Dependency-aware work packages, deliverables and explicit completion assertions,
@@ -239,3 +241,7 @@ into screening, PRISMA counts, guideline links or development evidence.
 to screening through supplied per-row identity/withholding choices and a separate
 exact-context review. Repeated imports retain flat source provenance and raw-row
 accounting while appending only incomplete searches, with no eligibility decisions.
+
+[Pre-extraction context links](docs/SOURCE_CONTEXTS.md) connect supplied guideline
+and development questions to exact typed source references and source-review work.
+They preserve applicability uncertainty and remain separate from extracted evidence.

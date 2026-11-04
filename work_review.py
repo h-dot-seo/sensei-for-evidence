@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from evidence_workflow import run
+from context_links import source_context_linkage
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
@@ -109,6 +110,8 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
             context_rows.append(dict(context=copy.deepcopy(row),
                 work_evidence_ids=sorted(evidence_ids.intersection(row['evidence_ids'])),
                 other_context_evidence_ids=sorted(set(row['evidence_ids']) - evidence_ids)))
+            if row.get('context_scope') == 'source_review':
+                context_rows[-1].update(source_context_linkage(row, item))
         appraisal_ids = sorted({aid for eid in evidence_ids for aid in appraisal_links[eid]})
         appraisal_rows = [dict(appraisal=copy.deepcopy(appraisals[aid]),
                               work_evidence_ids=sorted(evidence_ids.intersection(appraisals[aid]['evidence_ids'])),
@@ -205,6 +208,12 @@ def navigation_summary(result):
                              work_positions=[{key:p[key] for key in ('evidence_id','claim_component','aspect','relation')} for p in row['work_positions']],
                              other_statement_evidence_ids=copy.deepcopy(row['other_statement_evidence_ids'])) for row in packet['claim_positions']],
                          scope_counts=copy.deepcopy(packet['scope_counts'])))
+        source_contexts = [dict(context_id=row['context']['context_id'],
+                                review_status=row['context']['review_status'],
+                                shared_source_refs=copy.deepcopy(row['shared_source_refs']))
+                           for row in packet['contexts'] if row['context'].get('context_scope') == 'source_review']
+        if source_contexts:
+            rows[-1]['source_context_links'] = source_contexts
     return dict(selection=result['selection'],dependency_review=copy.deepcopy(result['dependency_review']),
                 work_state_groups={key:sorted(ids) for key,ids in groups.items()},work=rows,
                 global_search_plan_audit=copy.deepcopy(result['global_search_plan_audit']),
@@ -243,6 +252,8 @@ def render_brief(result):
             else:
                 lines.append('Source record stage assertions: '+show(dict(reference=source['reference'],screening=source['screening'],report=source['report'],existing_result_ids=source['existing_result_ids'])))
         lines.append('Statement review assertions (not support): '+show(row['statement_review_statuses']))
+        if 'source_context_links' in row:
+            lines.append('Pre-extraction context links (not applicability): '+show(row['source_context_links']))
     lines.extend(['',summary['boundary'],'Census: NOT_ESTABLISHED','Conclusion: NOT_READY'])
     return '\n'.join(lines)+'\n'
 

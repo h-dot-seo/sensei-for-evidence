@@ -121,6 +121,12 @@ def handoff(protocol, work_package_id=None):
                              contexts=[copy.deepcopy(row['context']) for row in packet['contexts']],
                              recorded_review_gaps=copy.deepcopy(packet['recorded_review_gaps']),
                              scope='selected_work_with_full_statement_and_condition_review_scope'))
+        source_links = [dict(context_id=row['context']['context_id'],
+                             **{key:copy.deepcopy(row[key]) for key in
+                                ('shared_source_refs','other_context_source_refs','other_work_source_refs','linkage_scope')})
+                        for row in packet['contexts'] if row['context'].get('context_scope') == 'source_review']
+        if source_links:
+            summaries[-1]['source_context_links'] = source_links
     implementation = dict(synthesis['engine_sha256'], **works['engine_sha256'])
     implementation['review_handoff.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
@@ -172,6 +178,8 @@ def render_text(result):
                       'Completion source binding (not acceptance): ' + show(item['completion_review']),
                       'Direct prerequisite completion sources (not acceptance): ' + show(item['direct_prerequisite_completion_reviews']),
                       'Guideline/development context: ' + show(item['contexts'])])
+        if 'source_context_links' in item:
+            lines.append('Pre-extraction typed context links (not applicability): ' + show(item['source_context_links']))
         for claim in item['claim_positions']:
             statement=claim['statement']
             lines.append('Claim: ' + show(dict(statement_id=statement['statement_id'],text=statement['text'],

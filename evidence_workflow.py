@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 from json_io import parse_json, configure_utf8_stdio
-from context_links import link_context, id_list, nonempty_text
+from context_links import link_context, id_list, nonempty_text, validate_source_refs
 from search_audit import audit_search_plan, completion_issues, page_audit
 from appraisal_links import link_appraisals
 from adapter_integrity import validate_adapter_protocol
@@ -103,21 +103,7 @@ def run(protocol):
             if evidence_ids:
                 raise ValueError('source_review work uses source_refs and empty evidence_ids; do not imply extracted evidence')
             refs = gap.get('source_refs')
-            if not isinstance(refs, list) or not refs:
-                raise ValueError('source_review requires nonempty source_refs')
-            source_keys = set()
-            for ref in refs:
-                if not isinstance(ref, dict) or ref.get('kind') not in ('planned_search', 'record'):
-                    raise ValueError('source reference kind must be planned_search or record')
-                key = 'search_id' if ref['kind'] == 'planned_search' else 'record_id'
-                if set(ref) != {'kind', key} or not nonempty_text(ref.get(key)):
-                    raise ValueError('source reference requires exact fields and nonempty ID')
-                if ref[key] not in (planned_ids if key == 'search_id' else records):
-                    raise ValueError('source reference must identify a declared search or enumerated record')
-                identity = (ref['kind'], ref[key])
-                if identity in source_keys:
-                    raise ValueError('duplicate source reference')
-                source_keys.add(identity)
+            validate_source_refs(refs, planned_ids, records)
         else:
             if not evidence_ids:
                 raise ValueError('gap requires at least one linked evidence ID')

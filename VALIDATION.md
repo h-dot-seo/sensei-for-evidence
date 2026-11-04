@@ -543,3 +543,20 @@ and deterministic bundle verification are exercised. The focused integration
 suite passes 80 tests. Independent review found no remaining production defect.
 All examples remain synthetic; supplied identity/review assertions do not prove
 authenticity or complete searches, and no eligibility/extraction decision is made.
+
+Pre-extraction context increment (2026-11-04): 560 tests in the suite; Linux run:
+559 passed and one native-Windows-only test skipped. Twenty-one new independently
+written tests cover both context domains with zero evidence, exact typed source
+identity, partial reference intersections, missing planned sources, unscreened and
+excluded records, unassigned contexts, scope/synthesis isolation, strict supplied
+review metadata, immutable outputs, planning/completion staleness, and explicit
+source linkage in packets, brief navigation, handoff, comparison, PRISMA and
+bundles. Review identified and fixed acceptance of malformed optional review
+dates on pending source contexts; legacy evidence-context behavior is unchanged.
+The focused suite passes 116 tests. All 27 pre-edit valid examples retain exactly
+equal normalized contexts, planning targets, completion ledgers and synthesis
+outputs, avoiding implicit legacy hash renewal. Source links do not create
+evidence/study IDs, eligibility decisions or clinical validity. Focused context
+comparison explicitly leaves underlying search/receipt changes to the full
+comparison and broader work-source binding. No real guidelines or development
+records were retrieved or published; the new example is entirely fictional.

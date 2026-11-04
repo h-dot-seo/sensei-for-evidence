@@ -83,7 +83,9 @@ Gaps may include stable `work_package_id`, `depends_on` ID lists and `status`
 order and unfinished dependencies. Unknown IDs, duplicate IDs and cycles fail.
 `COMPLETE` requires `artifact_locator`, `acceptance_verified: true` and completed
 dependencies. These are operator assertions; the tool does not fetch artifacts
-or certify experiment quality. Evidence links remain mandatory.
+or certify experiment quality. Evidence links remain mandatory for evidence-review
+work. Explicit [source-review work](SOURCE_REVIEW_WORK.md) instead requires typed
+source references and empty evidence IDs.
 
 ## Report retrieval and full-text screening
 
@@ -154,7 +156,7 @@ python evidence_workflow.py examples/context-protocol.json
 python research_bundle.py create examples/context-protocol.json ../synthetic-context.zip
 ```
 
-Optional `contexts` link supplied `clinical_guideline` or `drug_development`
+By default, optional `contexts` link supplied `clinical_guideline` or `drug_development`
 records to extracted evidence IDs. Each record requires a unique `context_id`,
 title, issuer, locator, version, ISO access date, population/setting, relevance,
 applicability, limitations and at least one known evidence ID. Guideline records
@@ -162,13 +164,21 @@ require recommendation strength and evidence certainty; development records
 require development stage and regulatory status. Use `unknown` when unassessed,
 not an invented positive claim. These strings are operator-supplied assertions.
 
-Work packages may list `context_ids`; every referenced context must share an
+Work packages may list `context_ids`; each default evidence context must share an
 evidence ID with that work package. Output shows linked study IDs, pending
 context reviews and unassigned contexts. A context defaults to `pending`;
 `reviewed` requires a reviewer and ISO review date but does not establish source
 authenticity, guideline currency, applicability or scientific validity. Review
 status is separate from work-package completion and never promotes conclusion
 readiness. Dangling references fail rather than silently dropping context.
+
+Alternatively, explicit `context_scope: "source_review"` uses empty `evidence_ids`
+and nonempty typed `source_refs` for a declared search or enumerated record. It
+can attach only to source-review work sharing an exact typed reference. It never
+creates linked study IDs or inherits extracted results. Source references outside
+this explicit scope are rejected. See [pre-extraction context links](SOURCE_CONTEXTS.md)
+for provenance rules, supplied review metadata, comparison limits and the
+fictional source-context example.
 
 The same links survive report output and bundle JSON/CSV; summary reports pending
 context reviews. Existing protocols without contexts remain supported. All

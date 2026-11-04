@@ -43,10 +43,12 @@ evidence_ids, optional explicit work_package_id, depends_on and status.
   work are rejected. Questions and completion criteria still must be supplied;
   this feature does not write them or infer scientific work from a record.
 
-Source-only work cannot attach guideline/context links through context_ids: those
-links continue to require shared extracted evidence. Use a subsequent evidence-
-review WP when evidence-level scientific/applicability review is needed. Multiple
-source refs may be listed explicitly, but they are not evidence rows or studies.
+Source-only work can attach an explicitly source-scoped guideline/development
+context through `context_ids` when both share an exact typed source reference.
+See [pre-extraction context links](SOURCE_CONTEXTS.md). Legacy evidence contexts
+still require shared extracted evidence and cannot attach to source-only work.
+Use a subsequent evidence-review WP for evidence-level scientific/applicability
+review. Multiple source refs are not evidence rows or studies.
 
 ## A concrete manual journey
 

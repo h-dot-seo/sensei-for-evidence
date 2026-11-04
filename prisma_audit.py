@@ -171,6 +171,14 @@ def export_audit(protocol):
         for row in result['record_ledger']:
             row['bibliographic_row_pointers'] = [item['source_pointer'] for item in collection_rows
                                                 if item['resolution']['record_id'] == row['record_id']]
+    context_pointers = {row['context_id']:f'/contexts/{index}' for index,row in enumerate(protocol.get('contexts', []))}
+    source_contexts = [dict(context=copy.deepcopy(row), input_pointer=context_pointers[row['context_id']],
+                            explicit_work_ids=sorted(work['work_package_id'] for work in research['work_packages']
+                                                     if row['context_id'] in work.get('context_ids', [])),
+                            scope='explicit_source_context_links_not_result_or_work_coverage')
+                       for row in research['context']['context_ledger'] if row.get('context_scope') == 'source_review']
+    if source_contexts:
+        result['source_context_ledger'] = source_contexts
     return result
 
 
@@ -184,6 +192,8 @@ def render_text(result):
         lines.extend(['Local CSV collection rows (distinct from search-membership occurrence nodes): '
                       + show(result['bibliographic_collection']['counts']),
                       'Full collection row provenance, supplied identity choices and withheld rows remain in JSON; identity is not verified.'])
+    if 'source_context_ledger' in result:
+        lines.append('Pre-extraction source contexts (not evidence or applicability): ' + show(result['source_context_ledger']))
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
                   'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),
