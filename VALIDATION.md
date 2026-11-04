@@ -877,3 +877,36 @@ associations; original inputs, detached records and code must be retained separa
 Publication audit checks 204 text files and exact manifest verification passes.
 No private corpus, real source retrieval, medical fact checking or biological
 execution guidance was used or added.
+
+Detached result-source comparison increment (2026-11-04): 969 tests in the suite;
+Linux run: 968 passed and one native-Windows-only test skipped. Twenty-five new
+independent tests cover replay-first failure, engine drift, full-current-input
+validation, exact explicit evidence IDs without implicit legacy fallback, raw-row
+changes, and original record/report/study mapping separately from a moved current
+result. They also cover scalar/plural declaration changes, eligibility versus
+retrieval/source context, missing/moved/unsupplied descriptors, whole same-report
+catalog and criteria/search drift, pointer relocation, unrelated inputs, shared
+report counts, JSON type distinctions, validated CSV provenance and detached
+nested outputs. The focused five-suite run passes 135 tests.
+All 37 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Canonical engine files and result_intake.py remain byte-for-
+byte unchanged, and the previously saved manual intake application still replays.
+The new tool adds its own fingerprint without changing the earlier receipt's
+implementation inputs. CLI tests exercise strict UTF-8/JSON, quoted controls,
+exclusive output creation, input preservation and the 50 MB input/output bounds.
+Independent read-only review found no blocking issue and confirmed additional
+whitespace-sensitive identity, absent-report, number-type and duplicate-ID probes.
+A documentation sentence was qualified to distinguish explicit pointer scope
+fields from nested current-mapping pointer names.
+The fictional CLI comparison matches its documented independent counts: one
+changed and one unchanged result, two unchanged original mappings and current
+row links, one unchanged report assertion, one changed shared report-source
+context, and two changed versus one unchanged selected-source references. Repeated
+source selections are counted per candidate; shared contexts count original report
+IDs. No combined current/approved verdict hides those units. Source locations
+remain historical assertions, not verified or renewed reading; exact matches do
+not establish lineage, source authenticity, clinical validity or extraction
+completeness. No protocol state or persistent provenance ledger is written.
+Publication audit checks 208 text files and exact manifest verification passes.
+No private corpus, real document access, medical fact check or biological execution
+guidance was used or added.

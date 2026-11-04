@@ -147,3 +147,7 @@ scientific completeness. Real inputs and outputs may contain sensitive supplied
 information and must stay outside this public repository. Nothing is uploaded.
 The standalone tool does not change existing canonical engine files or output
 shapes; previously produced artifacts still need their exact recorded engine.
+
+A separate [result-source comparison](RESULT_SOURCE_REVIEW.md) can explicitly
+replay this record and compare it with a later protocol. It reports literal
+result/link/source changes without writing persistent bindings or renewing review.
