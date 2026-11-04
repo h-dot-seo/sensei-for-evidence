@@ -197,7 +197,14 @@ SUPPLIED_INPUT_WORKFLOWS = [
                       for command in ('create', 'verify')],
          required_human_inputs=['Exact initial/endpoint protocols, explicitly ordered supported result/condition applications and a new archive path.',
                                 'Separately retain the recorded implementation; each historical source association belongs to its recorded step context.'],
-         boundary='Only result intake, result-text correction and descriptive condition intake are replayed as steps. No earlier review is renewed or downstream work reassessed. Other operations and earlier/later history are outside this segment. No source documents or code are embedded; complete history and extraction completeness remain unestablished.')
+         boundary='Only result intake, result-text correction and descriptive condition intake are replayed as steps. No earlier review is renewed or downstream work reassessed. Other operations and earlier/later history are outside this segment. No source documents or code are embedded; complete history and extraction completeness remain unestablished.'),
+    dict(workflow_id='work_transition_archive', title='Preserve a supplied contiguous work-history segment',
+         guide_paths=['docs/WORK_TRANSITION_BUNDLES.md'],
+         entrypoints=[dict(script='work_transition_bundle.py', arguments=[command, '--help'])
+                      for command in ('create', 'verify')],
+         required_human_inputs=['Actual initial/endpoint protocols and explicitly ordered source-work, evidence-work or completion application records',
+                                'Recorded implementation; retained assertions apply to their recorded step context'],
+         boundary='Only source-work intake, evidence-work intake and single-work completion steps are replayed. No review/completion is renewed, artifact inspected or acceptance assessed. Explicit step IDs do not enumerate all derived impacts. Earlier/later and complete project history remain unestablished.'),
 ]
 
 

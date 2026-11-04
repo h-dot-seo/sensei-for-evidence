@@ -159,3 +159,8 @@ unchanged and does not accept evidence-review work or convert prior tasks.
 review and replay path for one existing unfinished task. It records only supplied
 completion/locator/acceptance and the reviewed source binding, preserves earlier
 COMPLETE assertions, and does not inspect artifacts or assess acceptance.
+
+[Work-transition archives](WORK_TRANSITION_BUNDLES.md) can retain an explicitly
+selected contiguous source-work/evidence-work/completion segment, including its
+actual original and detached records. This does not package earlier extraction
+history, inspect artifacts or renew historical completion assertions.

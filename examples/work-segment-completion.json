@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "work_package_id": "WP-DOCUMENT-TRACE-NOTE",
+  "artifact_locator": "synthetic://document-trace-note",
+  "acceptance_verified": true,
+  "completed_by": "Fictional software-test completer",
+  "completed_at": "2026-11-04",
+  "completion_note": "A supplied fictional note-completion assertion; artifact bytes and actual acceptance are not assessed by this tool."
+}

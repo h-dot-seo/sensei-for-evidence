@@ -2013,3 +2013,83 @@ The final focused intake/journey suite also passed all 24 tests. Compilation,
 Publication audit checks 309 text files; exact manifest verification passes with
 308 listed files. The existing exact-head remote matrix runs Ubuntu/Windows and
 Python 3.10/3.12; its terminal status is verified separately after publication.
+
+## Portable reviewed work-history increment (2026-11-04)
+
+Added a separate work-transition archive, supporting only reviewed source-work
+intake, evidence-work intake and single-work completion applications. It retains
+exact initial/application/endpoint bytes and replays explicitly ordered steps
+through the unchanged existing verifiers. Whole-protocol canonical equality
+connects steps, including opaque metadata and JSON scalar types. No automatic
+rebase, review renewal, completion renewal, status editing or work execution occurs.
+
+The closed stored ZIP keeps generated regular-file paths, fixed metadata, raw and
+canonical hashes, receipt identifiers, explicit selected work IDs and recorded
+implementation fingerprints. Exact regeneration compares the entire archive byte
+sequence rather than trusting editable manifest checksums. Directly used JSON,
+file-reading and exclusive-output helpers are fingerprinted. No embedded code,
+source document, artifact bytes, native citation file or credential is added or
+executed. A byte-identical canonical repack is accepted; changed metadata or
+archive bytes fail the canonical byte receipt.
+
+The tests adapt the existing archive regression matrix and add work-specific
+context cases. They cover deterministic/raw-byte retention, exact prefix/suffix
+segments, ordering and omitted/duplicate/stale applications, strict schema/JSON,
+unsupported kinds, full protocol equality, resealed tampering, helper changes,
+malformed paths/ZIP types/CRC/sizes/encryption, 20-step and inclusive-byte bounds,
+relocation, no network/extraction, explicit output refusal and rendering preflight.
+The contextual cases check retained proposal/completer/reviewer snapshots,
+explicit targets versus derived dependency effects, preserved stale completion
+and planning assertions, later source amendment versus historical replay,
+unrecorded inter-step changes, source-only zero-result work, control-quoted work
+IDs and the actual documented thirteen-command journey.
+
+The thirteen CLI commands were also executed outside the repository in a
+space-named directory. Source-work intake grows two tasks to three; evidence-work
+intake grows three to four; one separately reviewed completion keeps four tasks
+and completes only the document-trace note. The result-delivery note becomes
+mechanically unblocked but remains PLANNED. Four result rows, report accounting,
+old tasks and research remain unchanged. The three-step archive has eight members
+and 170,641 bytes for this particular generated rehearsal. It verifies after
+relocation. An additional earlier evidence-work/two-completion segment also
+packages and verifies without rewriting its saved application records.
+
+All 46 prior files in the combined work/source/inventory/extraction/native/report/
+batch/research replay dependency sets remain byte-unchanged. Nine saved artifact
+kinds still verify: work-completion, evidence-work, source-declaration and inventory
+applications; extraction-transition, native, report-transition and NBIB-batch
+archives; and an ordinary research archive. Among existing runtime files only
+read-only handoff discovery changes, to seventeen static groups and 71 help-only
+entrypoints. Its 17-test discovery suite passed in 16.378 seconds. The combined
+related regression suite passed 178 tests in 146.290 seconds.
+
+Actual independent review was not performed for this increment. All new runtime,
+adapted tests, work-context tests and documentation received implementation-author
+review only. The previous intake and extraction-archive independent reviews are
+not an independent audit of this new wrapper. No comprehensive security audit,
+real artifact inspection, source authentication or scientific validation is
+claimed. Native cross-platform checks remain a separate CI result.
+
+Historical snapshots and completion bindings apply only to their recorded step
+context. A later document amendment can stale a persisted completion while the
+older archive still verifies; it does not renew approval for the changed input.
+Existing stale/unbound COMPLETE prerequisites remain unchanged and can satisfy the
+original engine's dependency rule. Explicit selected work IDs are not a complete
+list of derived blocking effects. Unsigned assertions cannot authenticate people,
+chronology, actual work or complete project history. Collection, screening,
+report/source/inventory and extraction transitions are not supported steps here.
+
+Limits remain 1–20 steps and 50 MB stored/retained bytes, not hard memory/CPU
+ceilings. Exclusive outputs do not provide an atomic path-race or ancestor-alias
+defense. Supplied text is not redacted. Synthetic fixtures only; no source/artifact
+locator is followed, no criteria are assessed, and census/conclusion labels remain
+NOT_ESTABLISHED/NOT_READY. The exact full-suite and publication counts follow.
+
+Final full Linux suite: 1,532 tests, 1,531 passed and one native-Windows-only test
+skipped (357.814 seconds). This increment adds 37 tests: 27 adapted archive
+regressions, eight new work-context checks, one documented CLI journey and one
+static discovery regression, all implementation-author written/reviewed.
+Compilation, 99 changed-guide local links, whitespace and limited publication
+checks pass. Publication audit checks 316 text files; exact manifest verification
+passes with 315 listed files. Ubuntu/Windows × Python 3.10/3.12 exact-head CI is
+checked separately after publication and is not an independent code audit.

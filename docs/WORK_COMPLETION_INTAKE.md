@@ -158,3 +158,8 @@ procedure is invoked. Text and identities are retained as supplied, not redacted
 or authenticated. Keep private inputs and generated artifacts outside this public
 repository. No scientific, clinical, regulatory or development-stage decision is
 made, and no source review or readiness is advanced automatically.
+
+[Work-transition archives](WORK_TRANSITION_BUNDLES.md) can retain an explicitly
+selected contiguous source-work/evidence-work/completion segment, including its
+actual original and detached records. This does not package earlier extraction
+history, inspect artifacts or renew historical completion assertions.
