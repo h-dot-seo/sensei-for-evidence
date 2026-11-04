@@ -1200,3 +1200,41 @@ manifest verification passes. Packaging does not import records, renew review,
 infer native formats for unselected imports, deduplicate source occurrences or
 establish complete retrieval, source authenticity, human authenticity or research
 readiness. Windows and both supported Python versions are checked in exact-head CI.
+
+Explicit supplied report registration increment (2026-11-04): 1,172 tests in the
+suite; final Linux run: 1,171 passed and one native-Windows-only test skipped.
+Nineteen new self-authored regression tests pass; the focused eight-suite report,
+PRISMA, full-text decision, result, condition and bibliographic run passes 186.
+Neither an independent test author nor a separate independent code auditor could
+be started for this increment because the worker limit was reached. These tests
+and implementation self-review are not represented as independent review or as
+scientific validation.
+The new detached intake registers explicitly grouped included records as new
+reports and optionally appends supplied document declarations. Full-text choices
+remain pending. Tests cover record/report unit differences, all three supplied
+retrieval states, unavailable versus excluded reports, absent versus supplied
+empty stages, duplicate/collision/mapped-record refusal, no study-ID inference,
+exact raw-prefix preservation, source targets and unverified document hashes.
+Stale review, altered/resealed application, implementation drift, strict JSON,
+quotas, invalid dates, UTF-8/quoted display, serialization preflight, exclusive
+output, dangling final entries and inspection errors are checked. Existing mock
+adapter receipts lock report declarations; this intake explicitly refuses those
+contexts rather than rebasing or deleting their provenance. The supported manual
+and bibliographic-import paths preserve their original collection associations.
+The fictional CLI draft/target/review/assembly/replay/export/status/PRISMA/review-
+template/ordinary-bundle journey succeeds. Six records and four included records
+remain unchanged while registration adds three sought reports: one retrieved,
+one not retrieved, one retrieval-pending, zero assessed or included reports,
+zero studies and zero extracted results. Unknown search totals and a missing
+planned search remain visible. A separate synthetic test continues from one
+registered report through an explicit full-text choice, supplied result, explicit
+missing nonclinical metadata and verified ordinary bundle without deriving an
+experimental parameter. Existing report retrieval or document versions are not
+updated by this registration-only operation.
+All 124 previously committed Python files remain byte-unchanged, preserving
+existing engine fingerprints. Previously saved native batch collection and
+ordinary research archives still verify. Documentation links resolve, publication
+audit checks 246 text files, and exact manifest verification passes. No external
+acquisition, source authenticity, reading, human authenticity, inferred identity,
+review renewal, complete searching or scientific conclusion is established.
+The exact-head CI matrix checks Windows and both supported Python versions.

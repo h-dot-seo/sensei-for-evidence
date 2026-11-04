@@ -42,6 +42,11 @@ record-level extraction absence must not be confused with an unextracted report.
 Work-package statuses, prerequisites, acceptance assertions and stale reviews are
 not changed by exporting this accounting.
 
+To register newly supplied report mappings before full-text assessment, use the
+separate reviewed [manual report intake](MANUAL_REPORT_INTAKE.md). It appends
+pending-decision reports without changing record screening or treating retrieval
+failure as exclusion. It does not infer a mapping or make searching complete.
+
 ## Schema version 1
 
 Top-level question, protocol version, canonical protocol SHA-256 and implementation

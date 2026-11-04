@@ -1,0 +1,73 @@
+{
+  "question": "How can fictional included records be registered as reports before nonclinical extraction?",
+  "version": "synthetic-report-intake-base-v1",
+  "inclusion_criteria": [
+    "Fictional scope only"
+  ],
+  "exclusion_criteria": [
+    "Fictional exclusion only"
+  ],
+  "search_plan": [
+    {
+      "search_id": "primary",
+      "source": "synthetic-index",
+      "query": "fictional condition metadata",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "followup",
+      "source": "synthetic-second-index",
+      "query": "fictional citation followup",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "primary",
+      "source": "synthetic-index",
+      "query": "fictional condition metadata",
+      "window": "2020-2026",
+      "searched_at": "2026-11-04",
+      "record_ids": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "complete": false,
+      "total_count": null,
+      "has_more": null
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "Explicit fictional screening assertion"
+    },
+    {
+      "record_id": "r2",
+      "decision": "include",
+      "reason": "Explicit fictional screening assertion"
+    },
+    {
+      "record_id": "r3",
+      "decision": "include",
+      "reason": "Explicit fictional screening assertion"
+    },
+    {
+      "record_id": "r4",
+      "decision": "include",
+      "reason": "Explicit fictional screening assertion"
+    },
+    {
+      "record_id": "r5",
+      "decision": "exclude",
+      "reason": "Explicit fictional screening assertion"
+    }
+  ],
+  "evidence": [],
+  "gaps": []
+}

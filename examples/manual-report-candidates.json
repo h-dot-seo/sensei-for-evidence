@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report": {
+        "report_id": "report-A",
+        "record_ids": [
+          "r1",
+          "r2"
+        ],
+        "retrieval": "retrieved",
+        "decision": "pending",
+        "locator": "synthetic://report-A",
+        "reason": null
+      },
+      "source_declarations": [
+        {
+          "source_id": "source-A",
+          "report_id": "report-A",
+          "source_locator": "synthetic://report-A/main",
+          "document_version": "Fictional version A",
+          "document_sha256": null
+        }
+      ],
+      "registered_by": "Fictional registrar",
+      "registered_at": "2026-11-04",
+      "registration_note": "Synthetic human-authored grouping and retrieval assertion, not verified publication identity or acquisition."
+    },
+    {
+      "report": {
+        "report_id": "report-B",
+        "record_ids": [
+          "r3"
+        ],
+        "retrieval": "not_retrieved",
+        "decision": "pending",
+        "locator": null,
+        "reason": "Fictional document was not supplied."
+      },
+      "source_declarations": [],
+      "registered_by": "Fictional registrar",
+      "registered_at": "2026-11-04",
+      "registration_note": "Synthetic human-authored grouping and retrieval assertion, not verified publication identity or acquisition."
+    },
+    {
+      "report": {
+        "report_id": "report-C",
+        "record_ids": [
+          "r4"
+        ],
+        "retrieval": "pending",
+        "decision": "pending",
+        "locator": null,
+        "reason": null
+      },
+      "source_declarations": [],
+      "registered_by": "Fictional registrar",
+      "registered_at": "2026-11-04",
+      "registration_note": "Synthetic human-authored grouping and retrieval assertion, not verified publication identity or acquisition."
+    }
+  ]
+}
