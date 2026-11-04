@@ -240,3 +240,8 @@ COMPLETE assertions, and does not inspect artifacts or assess acceptance.
 selected contiguous source-work/evidence-work/completion segment, including its
 actual original and detached records. This does not package earlier extraction
 history, inspect artifacts or renew historical completion assertions.
+
+[Reviewed appraisal intake](MANUAL_APPRAISAL_INTAKE.md) appends supplied method and
+domain judgements through a separate exact-target review. It preserves conflicting
+positions and existing assertions while exposing changed source-status cues; no
+quality score, method choice or scientific acceptance is generated.

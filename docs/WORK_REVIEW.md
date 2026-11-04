@@ -126,3 +126,8 @@ acceptance criteria and existing review cues without choosing a next task.
 [Completion source binding](COMPLETION_BINDING.md) separately shows whether a
 supplied completion basis still matches current work/source/locator metadata.
 It does not assess acceptance or automatically reopen completed work.
+
+[Reviewed appraisal intake](MANUAL_APPRAISAL_INTAKE.md) appends supplied method and
+domain judgements through a separate exact-target review. It preserves conflicting
+positions and existing assertions while exposing changed source-status cues; no
+quality score, method choice or scientific acceptance is generated.

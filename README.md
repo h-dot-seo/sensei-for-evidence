@@ -116,6 +116,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
 | `native_collection_bundle.py create PROTOCOL.json NEW.zip [--ris INDEX=ARTIFACT.json] [--nbib INDEX=ARTIFACT.json] [--nbib-batch INDEX=ARTIFACT.json] [--text]` / `verify BUNDLE.zip [--text]` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
+| `appraisal_intake.py template/target/assemble/verify ...` | Append explicitly supplied result-linked method/domain appraisals after separate review; preserve disagreement and expose source-status changes without scores or review renewal |
 | `work_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APPLICATION.json ...` / `verify BUNDLE.zip` | Retain and replay an explicit contiguous source-work/evidence-work/completion segment with exact original bytes, without renewing completion or assessing artifacts |
 | `work_completion_intake.py template/target/assemble/verify ...` | Record one explicit unfinished-work completion with separate exact-target review, source binding and dependency-change cues, without artifact checks or acceptance assessment |
 | `evidence_work_intake.py template/target/assemble/verify ...` | Append explicitly reviewed result-linked work packages with human deliverables/dependencies, without changing existing research or generating scientific tasks |
@@ -427,3 +428,7 @@ shown separately from scientific readiness; artifact content is not inspected.
 [Work-transition archives](docs/WORK_TRANSITION_BUNDLES.md) preserve selected proposal
 and completion records with their actual initial/endpoint protocols. Replaying
 a historical segment does not renew acceptance or establish complete project history.
+
+[Reviewed appraisal intake](docs/MANUAL_APPRAISAL_INTAKE.md) records human-authored
+method/domain assertions against exact result IDs. Existing conflicting positions
+remain separate; changed work/synthesis/completion source cues do not renew reviews.

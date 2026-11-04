@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.76.0-work-transition-archives",
+  "release": "0.77.0-reviewed-appraisal-intake",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 315,
+  "file_count": 321,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 32365,
-      "sha256": "fb20b5dfa660a8d462357ac72f117e9785bd6926379b8817a747b89d8748caec"
+      "bytes": 32858,
+      "sha256": "f3276ad04dc9001e01434d8b45f76bcf4a0f34f01aaa215d2719429cef439259"
     },
     {
       "path": "RIGHTS.md",
@@ -50,13 +50,18 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 152562,
-      "sha256": "e4703d404153eb632fb4d046fdd4eb5dc96c92420fc6bed54b734f7a72b02dfe"
+      "bytes": 158090,
+      "sha256": "d0acced0016d752e8613a81a4c32154d025c396db3cb23278fbc0430dce6a029"
     },
     {
       "path": "adapter_integrity.py",
       "bytes": 15977,
       "sha256": "c5f9f901c59c1b90edc1241354fcf849e146493abbaea67d466d1dd4b81447d1"
+    },
+    {
+      "path": "appraisal_intake.py",
+      "bytes": 23482,
+      "sha256": "10ddbb9b2daf465d69aa5635b9483f80e9cd9d410911823e3f090f064d08ca97"
     },
     {
       "path": "appraisal_links.py",
@@ -219,6 +224,11 @@
       "sha256": "ac32e9eef47579e99f6a469eef620c0676d8f448cdd308291ec7a6729acf2574"
     },
     {
+      "path": "docs/MANUAL_APPRAISAL_INTAKE.md",
+      "bytes": 9443,
+      "sha256": "96d6d7d49e2beb4e1dbd2a569bfb0ef6bddb82fa2f39c2d1e2d506c1d94554f9"
+    },
+    {
       "path": "docs/MANUAL_CONDITION_INTAKE.md",
       "bytes": 11250,
       "sha256": "ea4d67389414eb25a1deb5f23a72598a6593eb32b018985b6eee50dedb93359b"
@@ -255,8 +265,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 15204,
-      "sha256": "3fe896e2ce237d753b46a768ab306af56cf11f2fdd60b57f39f25f56b289e8c9"
+      "bytes": 15520,
+      "sha256": "50acc551c036fb9a2185f6df443ec5b9ba0d8462d1e13199e59855a66e3ad9cc"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -385,8 +395,8 @@
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
-      "bytes": 8268,
-      "sha256": "818655364b85af77f98139eb96f9157b8b3a34ed13fc1ebdf516397559f17af0"
+      "bytes": 8584,
+      "sha256": "27c26048e1a6979c87444a6d8c01a4e25918b6b3780141ff0afd46bdc98fc90f"
     },
     {
       "path": "docs/USAGE.md",
@@ -410,8 +420,8 @@
     },
     {
       "path": "docs/WORK_REVIEW.md",
-      "bytes": 7568,
-      "sha256": "5394dab87632f01cb01558febd79138a94ef4ae9b5d487bbe66b56401cec07c1"
+      "bytes": 7884,
+      "sha256": "cf07ecda78630551b998c12a087c6c33e22b82cdb25912c77f583ce6fc9948db"
     },
     {
       "path": "docs/WORK_TRANSITION_BUNDLES.md",
@@ -442,6 +452,11 @@
       "path": "examples/adapter-reviews.json",
       "bytes": 962,
       "sha256": "9479a7f43812c5b5ed579cfd1ce9e501a05b99be75cb90ac4f25f167f67dffc3"
+    },
+    {
+      "path": "examples/appraisal-references.json",
+      "bytes": 70,
+      "sha256": "23181a06d2803c093a635fd6649ff9d8c1be657ddb103c529f92c10ca6c30f6f"
     },
     {
       "path": "examples/appraised-protocol.json",
@@ -612,6 +627,11 @@
       "path": "examples/local-sources/fictional-report.txt",
       "bytes": 225,
       "sha256": "bdbfec26d1ed84f0f6759d680dfce5ae9fef589cab1c6cf8257cad5c89963c91"
+    },
+    {
+      "path": "examples/manual-appraisal-candidates.json",
+      "bytes": 1671,
+      "sha256": "f24d1ed69697f2a31f6f6dfa972ea37456d288012df7ccaf55794e04d1ac2aa3"
     },
     {
       "path": "examples/manual-condition-candidates.json",
@@ -1065,8 +1085,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 46939,
-      "sha256": "7d4c5c0607633321ac92c873c3f5ac1a8eaf510286db04bbe9ab9d33640fb645"
+      "bytes": 47926,
+      "sha256": "54200409b3e6a633cb4d2d7557ead9b12c5f0828e9c3cb8ef898e21140901979"
     },
     {
       "path": "ris_export_parser.py",
@@ -1127,6 +1147,16 @@
       "path": "test_amendment_review.py",
       "bytes": 7155,
       "sha256": "41ea99d6da50bd71c53132d50c173754711ff884535263962d2ac3dbf6bc9130"
+    },
+    {
+      "path": "test_appraisal_intake.py",
+      "bytes": 23091,
+      "sha256": "0977f886b92338c583fce59b5fa2f30ffbf87bb76e1decf323fe30bf72e1f15f"
+    },
+    {
+      "path": "test_appraisal_intake_journey.py",
+      "bytes": 3468,
+      "sha256": "71982ced4c874ffcd9ab3952255565e9a5d9836fb262d7135d154493bc16a22f"
     },
     {
       "path": "test_appraisal_links.py",
@@ -1500,8 +1530,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 18501,
-      "sha256": "e4a2a754e5d483127df93ca555d9d0bb8a7c8772e04b0df12ac65111ff9a9d7e"
+      "bytes": 19297,
+      "sha256": "35a84428f1ece3c85c3f8a77a188091b5e64a70d1e3ce50954df4976556016f8"
     },
     {
       "path": "test_synthesis_review.py",

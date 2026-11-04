@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
-                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work','evidence_review_work','work_completion',
+                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','source_review_work','evidence_review_work','work_completion',
                 'collection_archives','report_transition_archive','extraction_transition_archive','work_transition_archive']
 
 
@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),71)
+        self.assertEqual(len(entries),75)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -138,6 +138,16 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertIn('Only registration, retrieval-update and full-text',scope)
         self.assertIn('result and condition operations are outside',scope)
         self.assertIn('earlier/later history is unassessed',scope)
+
+    def test_appraisal_route_keeps_judgements_and_downstream_review_separate(self):
+        catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        route = catalog['appraisal_intake']
+        self.assertIn('docs/MANUAL_APPRAISAL_INTAKE.md', route['guide_paths'])
+        self.assertEqual(route['entrypoints'], [dict(script='appraisal_intake.py', arguments=[c,'--help'])
+                                               for c in ('template','target','assemble','verify')])
+        for phrase in ['Conflicting positions remain separate', 'no score, consensus', 'not proof of reading',
+                       'hashes are not renewed', 'source-status cues may change']:
+            self.assertIn(phrase, route['boundary'])
 
     def test_work_segment_route_keeps_historical_completion_bounds(self):
         catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}

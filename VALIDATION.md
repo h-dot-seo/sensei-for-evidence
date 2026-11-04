@@ -2093,3 +2093,84 @@ Compilation, 99 changed-guide local links, whitespace and limited publication
 checks pass. Publication audit checks 316 text files; exact manifest verification
 passes with 315 listed files. Ubuntu/Windows × Python 3.10/3.12 exact-head CI is
 checked separately after publication and is not an independent code audit.
+
+## Reviewed supplied-appraisal increment (2026-11-04)
+
+Added a standalone appraisal intake for explicitly authored method/domain records
+linked to existing normalized result IDs. Blank drafts copy only selections and
+structure: even domain names and judgement choices remain unset. Each new appraisal
+stays within one supplied study ID; separate rows may concern different studies.
+This is identifier scoping, not verified study identity or independent evidence.
+New record/domain schemas, calendar dates, unique IDs and bounded list sizes are
+validated without choosing a method, validating a rubric, assigning scores or
+judging scientific quality.
+
+A separate exact-target import review permits appending the supplied records.
+Every prior raw field and appraisal prefix is preserved. Contradictory positions
+remain separate records, and appraisal coverage does not extend to uncited sibling
+results. The detached target binds whole input, ordered records, raw/normalized
+result snapshots with identity origins, record provenance, mapped report/source
+catalog context and derived planning/synthesis/completion source-status changes.
+Mapped catalogs are not selected or read documents; literal locators are not
+resolved. Existing review hashes, ranks, completion statuses and dependency
+semantics are unchanged even when their derived basis becomes stale.
+
+The implementation-author tests cover strict input/review schemas, blank meaning
+fields, exact result selection and legacy identity, study scoping, preserved
+conflicts and coverage, append-only invariants, source catalogs, current/stale/
+pending downstream cues, completed and unlinked work, opaque old appraisal data,
+whole-original/candidate/helper changes, resealed inconsistent tampering, unsigned
+consistent reauthoring, size/count bounds, UTF-8 and control quoting, mock/CSV
+provenance, absent reports, no network, archive scope, exclusive outputs, duplicate
+JSON and preflight refusal. The initial test expectation that consistently
+reauthored unsigned reviewer text must fail was corrected: this is replay, not
+identity authentication. A regression explicitly preserves that limitation.
+
+The documented ten CLI commands also ran in a space-named directory outside the
+repository. Three results remain three; supplied appraisals grow from one to three.
+The old e1 appraisal and a differing e1 position both remain; e2 gains a recorded
+appraisal and uncited e3 remains without one. A previously current e1 synthesis
+assertion becomes STALE_SOURCE without changing its stored review or creating
+support; the e2 statement stays pending. Ordinary archive creation and verification
+succeed. An additional saved two-search NBIB protocol accepts one supplied appraisal
+while retaining both import receipts; its three-original native archive rebuilds
+and verifies. No appraisal, document or source is actually assessed in these runs.
+
+All 47 prior replay dependency files remain byte-unchanged. Ten saved artifact
+kinds still verify: work-transition, work-completion, evidence-work, source,
+inventory, extraction-transition, typed native, report-transition, NBIB-batch and
+ordinary research artifacts. Existing runtime changes are limited to static
+read-only handoff discovery, now eighteen groups and 75 help-only entrypoints.
+The focused intake/discovery suite passed 49 tests in 14.050 seconds; the combined
+intake/journey/appraisal/planning/synthesis/completion/work suite passed 128 tests
+in 12.287 seconds.
+
+A separate read-only reviewer inspected the final new runtime and guide and ran
+all 32 intake/journey tests successfully, finding no blocking correctness or
+provenance issue. The inspected appraisal_intake.py SHA-256 is
+10ddbb9b2daf465d69aa5635b9483f80e9cd9d410911823e3f090f064d08ca97;
+the guide SHA-256 is
+96d6d7d49e2beb4e1dbd2a569bfb0ef6bddb82fa2f39c2d1e2d506c1d94554f9.
+This review did not independently author the new tests and is not a comprehensive
+security audit, real-world scientific review or method validation. The earlier
+search-plan assessment concerned a different proposed change, not this code.
+
+The operation adds no live current/stale validity label to persisted appraisal
+rows after later result/source changes. Import review and selected snapshots remain
+detached, not a current-approval ledger. Ordinary archives retain rows, not this
+application history; existing specialized transition archives do not support this
+new kind. Edits/removals, consensus, method-specific checks, source authentication,
+reading, clinical applicability and appraisal adequacy remain unsupported.
+Unsigned assertions do not establish identities, chronology or independent review.
+Limits are 100 appraisals, 100 domains per new row, 10 MB reference/candidate/review
+and 50 MB protocol/application, not hard resource ceilings. Exclusive output is not
+an atomic path-race or ancestor-alias defense. Synthetic data only, with unchanged
+NOT_ESTABLISHED census and NOT_READY conclusion boundaries.
+
+Final full Linux suite: 1,565 tests, 1,564 passed and one native-Windows-only test
+skipped (251.687 seconds). This increment adds 33 implementation-author tests:
+31 intake regressions, one documented CLI journey and one discovery regression.
+Compilation, 99 changed-guide local links and whitespace checks pass. Limited
+publication audit checks 322 text files; exact manifest verification passes with
+321 listed files. Ubuntu/Windows × Python 3.10/3.12 exact-head CI is verified
+separately after publication and is not a scientific or independent security audit.

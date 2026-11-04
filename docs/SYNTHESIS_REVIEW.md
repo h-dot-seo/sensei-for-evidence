@@ -144,3 +144,8 @@ recommendation.
 model/treatment/comparator and timing metadata. Full intersecting condition rows
 participate in review/planning source binding when the ledger is supplied, with
 explicit scope for sibling outcomes. No causal validity is inferred.
+
+[Reviewed appraisal intake](MANUAL_APPRAISAL_INTAKE.md) appends supplied method and
+domain judgements through a separate exact-target review. It preserves conflicting
+positions and existing assertions while exposing changed source-status cues; no
+quality score, method choice or scientific acceptance is generated.
