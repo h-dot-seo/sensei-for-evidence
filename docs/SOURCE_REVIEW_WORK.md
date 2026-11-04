@@ -6,6 +6,11 @@ receipt, screening or extraction-review deliverables without inventing evidence.
 Explicit `work_type: source_review` closes this gap **inside the existing work
 package model**. There is no second task engine and no generated research design.
 
+To add human-authored source-review tasks without editing existing work by hand,
+use [explicit source-work intake](SOURCE_WORK_INTAKE.md). Its blank draft,
+exact-target review and replay append only new PLANNED work while preserving
+existing research decisions and provenance.
+
 ```sh
 python work_review.py examples/source-work-protocol.json --work-package WP-RECEIPT-REVIEW --text
 python work_review.py examples/source-work-protocol.json --work-package WP-EXTRACTION-REVIEW --text

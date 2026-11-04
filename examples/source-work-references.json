@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "source_refs": [
+    {"kind": "planned_search", "search_id": "search-secondary"},
+    {"kind": "record", "record_id": "r2"}
+  ]
+}

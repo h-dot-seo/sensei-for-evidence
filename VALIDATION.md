@@ -1080,3 +1080,38 @@ verification passes. Consistency remains distinct from source or reviewer
 authentication, publication identity, search completeness and scientific validity.
 No real corpus, live retrieval, biological execution guidance or automated review
 renewal was added.
+
+Human-authored source-work intake increment (2026-11-04): 1,107 tests in the suite;
+Linux run: 1,106 passed and one native-Windows-only test skipped. Twenty-seven new
+independently written tests cover intentionally incomplete templates, explicit
+task IDs/meaning/dependencies, strict proposal/review schemas and calendar dates,
+existing and same-batch dependency chains, cycles, legacy implicit-ID collisions,
+append-only raw preservation and exact existing planning/completion bases.
+The focused eight-suite run passes 151 tests. Missing planned-search receipts,
+unscreened/excluded records and absent/empty report stages are handled without
+inventing eligibility, reports or evidence. Present malformed legacy reports
+still fail the full report validator even where core run alone permits them.
+Source contexts and selected documents retain existing exact-reference rules;
+valid mock, CSV and NBIB-derived import provenance survives work enrichment.
+Entire replay rejects stale reviews, altered/resealed snapshots or candidates,
+extra fields, typed substitutions and implementation drift. Strict JSON, cycles,
+UTF-8, quoted controls, byte limits, exclusive output, available-host symlink
+refusal and serialization preflight are covered. No source URL or external
+process is invoked. Independent read-only implementation/documentation review
+found no blocking issue and separately checked helper-fingerprint and proposal
+changes invalidate review, example replay and documentation links.
+Implementation review removed an inappropriate report-presence requirement so
+pre-search and pre-screening protocols remain supported. It also clarified that
+actual source/context/document references persist in the appended work, while
+proposal metadata, human review and retained source snapshots remain detached.
+The fictional CLI draft/target/review/assembly/replay/work-packet/status/audit/
+bundle journey succeeds: work grows from two to four, both additions PLANNED;
+the secondary search stays missing, r2 stays excluded, and no evidence is added.
+The deliberately unfinished draft fails intake. Existing record/report flows,
+statuses, receipts, planning ranks and completion assertions remain unchanged.
+All 39 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing Python file is byte-unchanged; saved
+NBIB preparation, native collection bundle, result-intake, result-correction and
+condition-intake records still verify. Publication audit checks 233 text files
+and exact manifest verification passes. No task meaning, priority, dependency,
+completion, experimental procedure or scientific/clinical judgment is generated.

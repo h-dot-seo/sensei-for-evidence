@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.60.0-native-collection-bundles",
+  "release": "0.61.0-source-work-intake",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 227,
+  "file_count": 232,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 23949,
-      "sha256": "7eab4cd341e61eec3553de2a8acd29274c3b9e8c006c7dd6c29ea2a6128c732e"
+      "bytes": 24635,
+      "sha256": "ff877c20d79264f0959840432cbe62a3cc0a5a8e0f907f45ed29c802e2dfb1d9"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 79157,
-      "sha256": "1039595249082f34f99a1f50673f635ff090b25f1e7bd79502ea3e56ddba3284"
+      "bytes": 81835,
+      "sha256": "9006110d2becb9effc1a32e819c5bccb0d8c4f2c7d6cad91fa5e7043b4b79881"
     },
     {
       "path": "adapter_integrity.py",
@@ -305,8 +305,13 @@
     },
     {
       "path": "docs/SOURCE_REVIEW_WORK.md",
-      "bytes": 7692,
-      "sha256": "6b1738d6a53d56625009c822d3b867ec1ec822e7a2c7f1ddb0d8626506914981"
+      "bytes": 7970,
+      "sha256": "b8fb393c5b21b90529076857427682ed63ccc6b6d00d711097458988459fb16a"
+    },
+    {
+      "path": "docs/SOURCE_WORK_INTAKE.md",
+      "bytes": 8865,
+      "sha256": "044625293247090c44e846588ca6cbf7056cef9ed8e33ff201a6d2526a66b5e2"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -589,9 +594,19 @@
       "sha256": "45a33d2bc6915f55e053df12b4dc4172593be12ae10f3426765d9832850a1404"
     },
     {
+      "path": "examples/source-work-candidates.json",
+      "bytes": 1827,
+      "sha256": "7aee4e9a62d2d21ccccd966e50c47c604346b3053dfc07e1faa17cfe803e79dd"
+    },
+    {
       "path": "examples/source-work-protocol.json",
       "bytes": 8181,
       "sha256": "4bf90bfeecc8b0cfe815c09960c520ac297f32b1bef5c32165c9f4c4bc3e7665"
+    },
+    {
+      "path": "examples/source-work-references.json",
+      "bytes": 157,
+      "sha256": "6676eb3f1e3eb1f8931604d95029bc774f9f08811347ace3cccd57e18756a94f"
     },
     {
       "path": "examples/state.json",
@@ -787,6 +802,11 @@
       "path": "search_manifest.py",
       "bytes": 10817,
       "sha256": "9b17b9874848b2c7b93e28195109cd099de0736b88c4a50921d17d3d06409130"
+    },
+    {
+      "path": "source_work_intake.py",
+      "bytes": 20617,
+      "sha256": "29d1e62a3fbab510f57ace452d4f59314b84f7cee6459de36ff52e8734b21fc7"
     },
     {
       "path": "synthesis_links.py",
@@ -1087,6 +1107,11 @@
       "path": "test_source_work.py",
       "bytes": 13191,
       "sha256": "90ca465276042ad78870c8eda9e37764ba7c3272d93ad3e5afdd2d7c99de2164"
+    },
+    {
+      "path": "test_source_work_intake.py",
+      "bytes": 28255,
+      "sha256": "9b19176ca581f3bf08476875229c900c9bb30888873391d6d3f3b1c8585374c3"
     },
     {
       "path": "test_statistics_links.py",
