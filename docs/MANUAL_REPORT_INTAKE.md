@@ -123,7 +123,10 @@ pending reports: its existing results need separately reconciled included report
 memberships. This command does not edit existing reports, update a pending
 retrieval later, attach new versions to old reports, or replace a mapping. Those
 changes require an explicit separately validated workflow; do not register a
-duplicate report to bypass the existing mapping constraint.
+duplicate report to bypass the existing mapping constraint. For an unassessed
+pending/unavailable report, the separate [retrieval update](REPORT_RETRIEVAL_UPDATES.md)
+workflow records a supplied later retrieval outcome without replacing its identity.
+It does not support updates to already retrieved reports or general corrections.
 
 Mock-adapter protocols are also refused: their existing receipt contract locks
 report declarations into the original reviewed context. This tool does not

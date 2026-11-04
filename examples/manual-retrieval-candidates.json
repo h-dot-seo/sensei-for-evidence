@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-B",
+      "retrieval": "retrieved",
+      "locator": "synthetic://report-B/supplied",
+      "reason": null,
+      "source_declarations": [
+        {
+          "source_id": "source-B",
+          "report_id": "report-B",
+          "source_locator": "synthetic://report-B/main",
+          "document_version": "Fictional supplied version B",
+          "document_sha256": null
+        }
+      ],
+      "updated_by": "Fictional registrar",
+      "updated_at": "2026-11-04",
+      "update_note": "Synthetic assertion that a previously unavailable report was later supplied; acquisition is not verified."
+    },
+    {
+      "report_id": "report-C",
+      "retrieval": "not_retrieved",
+      "locator": null,
+      "reason": "Fictional retrieval attempt did not supply this document.",
+      "source_declarations": [],
+      "updated_by": "Fictional registrar",
+      "updated_at": "2026-11-04",
+      "update_note": "Synthetic supplied retrieval outcome, not a full-text exclusion."
+    }
+  ]
+}

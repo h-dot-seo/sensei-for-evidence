@@ -1238,3 +1238,42 @@ audit checks 246 text files, and exact manifest verification passes. No external
 acquisition, source authenticity, reading, human authenticity, inferred identity,
 review renewal, complete searching or scientific conclusion is established.
 The exact-head CI matrix checks Windows and both supported Python versions.
+
+Explicit supplied retrieval update increment (2026-11-04): 1,193 tests in the
+suite; final Linux run: 1,192 passed and one native-Windows-only test skipped.
+Twenty-one new self-authored tests pass, and the focused nine-suite report,
+retrieval, PRISMA, decision, source-review, study-inventory/study-review and
+bibliographic run passes 249. Worker limits still prevent independent test
+authorship and a separate independent code audit; this increment has self-review
+and regression coverage, not independent or scientific validation.
+Only pending-to-unavailable/retrieved and unavailable-to-retrieved transitions
+are accepted for existing unassessed reports. Tests cover exact record/report
+identity preservation, retrieval partitions without new eligibility decisions,
+prior raw retrieval/locator/reason snapshots, absent/empty source stages, explicit
+nulls, source-prefix retention and supplied but unverified document hashes.
+Existing report reviews and descriptive study inventories become stale when the
+source context changes; their original assertions remain unchanged and orphan
+study positions are not promoted into memberships. New source declarations that
+conflict with retained orphan references are rejected without erasing history.
+Mock adapter contexts stay locked. The bibliographic path retains exact imports
+and mapped record source hashes. Same-state changes, reversals, existing retrieved
+report changes, unknown reports, source replacement and unsupported identity/
+eligibility/study fields are refused. Strict JSON and quotas, stale review/code,
+resealed tamper, UTF-8/control display, no network, serialization preflight,
+exclusive output and dangling final entries are checked.
+The documented synthetic CLI sequence continues from the unchanged prior report
+registration application. Six records, four included records and three sought
+reports remain fixed; the new supplied state has two retrieved reports, one not
+retrieved, none retrieval-pending, two awaiting assessment, and no included or
+excluded reports, studies or results. A separate explicit full-text choice and
+ordinary bundle also replay in the regression journey. Unknown search totals,
+missing planned sources and completeness/readiness limits remain visible.
+All 126 previously committed Python files remain byte-unchanged. The saved report
+registration application, prior native batch collection archive and earlier
+ordinary research bundle still verify. Changed documentation links resolve;
+publication audit checks 251 text files and exact manifest verification passes.
+No actual retrieval, document reading, source/identity authentication, automatic
+review renewal, nonclinical parameter generation or completeness claim is made.
+Historical retrieval values are retained only with the detached receipt and
+original, not as a new protocol event ledger. Windows and both supported Python
+versions are checked by exact-head CI.

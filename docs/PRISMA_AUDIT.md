@@ -46,6 +46,9 @@ To register newly supplied report mappings before full-text assessment, use the
 separate reviewed [manual report intake](MANUAL_REPORT_INTAKE.md). It appends
 pending-decision reports without changing record screening or treating retrieval
 failure as exclusion. It does not infer a mapping or make searching complete.
+The separate [retrieval update](REPORT_RETRIEVAL_UPDATES.md) workflow records
+supplied outcomes for existing unassessed pending/unavailable reports, retaining
+record/report identity and keeping full-text decisions separate.
 
 ## Schema version 1
 

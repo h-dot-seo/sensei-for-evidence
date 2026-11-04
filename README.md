@@ -97,6 +97,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
+| `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
 | `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
@@ -317,6 +318,9 @@ no document reading, consensus or per-study eligibility is inferred.
 included screening records to new report rows and supplied document declarations
 before full-text assessment. Retrieval and identity remain supplied assertions;
 no report eligibility, study membership, result or nonclinical parameter is inferred.
+[Supplied retrieval updates](docs/REPORT_RETRIEVAL_UPDATES.md) then record a later
+retrieval outcome for pending/unavailable reports without duplicate registration.
+Changed source contexts expose stale retained reviews rather than refreshing them.
 
 [Exact report-study reviewer positions](docs/REPORT_STUDY_REVIEWS.md) distinguish
 human opinions on individual studies from report inclusion. Explicit source-ID
