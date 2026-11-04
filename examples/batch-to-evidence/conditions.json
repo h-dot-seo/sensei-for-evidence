@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-A",
+      "experimental_unit": {
+        "experiment_id": "missing-condition-context",
+        "evidence_ids": [
+          "result-1",
+          "result-2"
+        ],
+        "source_locator": "synthetic:caption",
+        "model": {
+          "kind": "unknown",
+          "label": "Fictional model label",
+          "source_locator": "synthetic:caption",
+          "limitations": "Unverified supplied label."
+        },
+        "treatment": {
+          "label": "Fictional comparison label",
+          "source_locator": "synthetic:caption",
+          "concentration": {
+            "status": "unknown",
+            "reason": "Fictional metadata not supplied.",
+            "source_locator": "synthetic:caption"
+          },
+          "exposure_time": {
+            "status": "unknown",
+            "reason": "Fictional metadata not supplied.",
+            "source_locator": "synthetic:caption"
+          }
+        },
+        "comparator": {
+          "status": "unknown",
+          "reason": "Fictional metadata not supplied.",
+          "source_locator": "synthetic:caption"
+        },
+        "observation_times": [
+          {
+            "evidence_id": "result-1",
+            "time": {
+              "status": "unknown",
+              "reason": "Fictional metadata not supplied.",
+              "source_locator": "synthetic:caption"
+            },
+            "reference_event": {
+              "status": "unknown",
+              "reason": "Fictional metadata not supplied.",
+              "source_locator": "synthetic:caption"
+            }
+          },
+          {
+            "evidence_id": "result-2",
+            "time": {
+              "status": "unknown",
+              "reason": "Fictional metadata not supplied.",
+              "source_locator": "synthetic:caption"
+            },
+            "reference_event": {
+              "status": "unknown",
+              "reason": "Fictional metadata not supplied.",
+              "source_locator": "synthetic:caption"
+            }
+          }
+        ],
+        "causal_basis": "unknown",
+        "causal_statement": "No causal assessment supplied.",
+        "causal_limitations": "Fictional descriptive assertion only.",
+        "causal_source_locator": "synthetic:caption",
+        "limitations": "Not a procedure, independent unit, or replicate count."
+      },
+      "source_references": [
+        {
+          "source_id": "source-A",
+          "extraction_locator": "Fictional caption"
+        }
+      ],
+      "extracted_by": "Fictional walkthrough extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Prewritten missing nonclinical metadata only; no experimental parameter is supplied or inferred."
+    }
+  ]
+}

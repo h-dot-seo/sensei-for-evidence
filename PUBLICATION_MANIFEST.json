@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.65.0-explicit-retrieval-updates",
+  "release": "0.66.0-nbib-to-evidence-rehearsal",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 250,
+  "file_count": 266,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 26958,
-      "sha256": "847aab2d90732dfd7f6c50d5c40506c6e0e54b6f41b118feb1586678a8fe462f"
+      "bytes": 27337,
+      "sha256": "495cd3af3f690cc41eea721fc8c4c70f1e89b0d30e1141b5fe8453afda0e6005"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 94043,
-      "sha256": "00e5e0a69f4f876f4991fedd1383d7713e1dd83e32cd5e9d5f87da958feeee01"
+      "bytes": 96936,
+      "sha256": "92b595fc7a4dc70fcd9f9ee3bc347f9b309f7e2d53531161e522acaa0fc48230"
     },
     {
       "path": "adapter_integrity.py",
@@ -142,6 +142,11 @@
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
       "bytes": 8707,
       "sha256": "774b96410772f99447a54e93b98575d54b2dad802b2d2f50788b17b3cf9c83d5"
+    },
+    {
+      "path": "docs/BATCH_TO_EVIDENCE.md",
+      "bytes": 11507,
+      "sha256": "3605d2847b4fe844d781337c972d899ef7fca1d863cbfc999b3f3e176d70297b"
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
@@ -255,8 +260,8 @@
     },
     {
       "path": "docs/PUBMED_NBIB_BATCH.md",
-      "bytes": 9080,
-      "sha256": "adf2bb9eff748d8e905385ec144ec0be6b275e413b4cbd5d96a48ea8220f3bad"
+      "bytes": 9251,
+      "sha256": "fbd22ad9118e1c38b0995a709cd7f2671e85e928e8a39527bb1030249eb4d84b"
     },
     {
       "path": "docs/PUBMED_NBIB_INTAKE.md",
@@ -397,6 +402,76 @@
       "path": "examples/artifact-review-protocol.json",
       "bytes": 8273,
       "sha256": "f0a33a29e9acef99f216c147daf0ea72a1ac70d618adb5add5297bc46e69dd92"
+    },
+    {
+      "path": "examples/batch-to-evidence/collection-choices.json",
+      "bytes": 1077,
+      "sha256": "ab3864f2ff028056ee6c7c50d8fa8e33189f6a1eac44ac27e2eda8dfa7a193f9"
+    },
+    {
+      "path": "examples/batch-to-evidence/collection-review.json",
+      "bytes": 1381,
+      "sha256": "adb642232a6b7088abab28d622bcd87e57631c90dcabf0630a4ea77cfcd68163"
+    },
+    {
+      "path": "examples/batch-to-evidence/conditions-review.json",
+      "bytes": 384,
+      "sha256": "cc1949a85edca9e48ad5af64b0559c285797f943682701653b09d511371d67d7"
+    },
+    {
+      "path": "examples/batch-to-evidence/conditions.json",
+      "bytes": 2773,
+      "sha256": "108a2f942e82348f0fbb8873df8d849ea22cb02da0ead888e9206cc7ee258fcc"
+    },
+    {
+      "path": "examples/batch-to-evidence/full-text.json",
+      "bytes": 550,
+      "sha256": "5625e5bad3731083a05c04c2dd2b5ac0b26f8eaa4a051221f42000ae58b2d30b"
+    },
+    {
+      "path": "examples/batch-to-evidence/reports-review.json",
+      "bytes": 378,
+      "sha256": "5d55b9bd38e1205fe6416e6315955dd8d29370985978bb96d6d04862b7fe1482"
+    },
+    {
+      "path": "examples/batch-to-evidence/reports.json",
+      "bytes": 1319,
+      "sha256": "a45b35a096f3b302132f2995d78c2c8b93766c44d5ce70eba8d796240701bd72"
+    },
+    {
+      "path": "examples/batch-to-evidence/results-review.json",
+      "bytes": 378,
+      "sha256": "fe955e5077b67236dff5c59a9d331a9dc7cd6054fad883ef93c635ed3e7b1774"
+    },
+    {
+      "path": "examples/batch-to-evidence/results.json",
+      "bytes": 2178,
+      "sha256": "a5bb43efb984d74e27420e860909f47a406ae218b291842f25c84fe00a786273"
+    },
+    {
+      "path": "examples/batch-to-evidence/retrieval-review.json",
+      "bytes": 382,
+      "sha256": "65be65ac71f4c33aab591550954a9a3f2027983cc30199b6a6bc96455bc11ab6"
+    },
+    {
+      "path": "examples/batch-to-evidence/retrieval.json",
+      "bytes": 685,
+      "sha256": "f61430ff26bc4d914620650c3776313c40f8a3257b5d7dac878e35d1ca6c056e"
+    },
+    {
+      "path": "examples/batch-to-evidence/screen-record-A.json",
+      "bytes": 491,
+      "sha256": "8627355017c4aef7a6fa5a0314a2e69f49504afcaff2dd79bae37087998e7f08"
+    },
+    {
+      "path": "examples/batch-to-evidence/screen-record-B.json",
+      "bytes": 491,
+      "sha256": "30adddfd9769d05f82672443e9f1077d8a28de92283356a60b83203e34c1fea4"
+    },
+    {
+      "path": "examples/batch-to-evidence/screen-record-C.json",
+      "bytes": 491,
+      "sha256": "055aefc0fab8bb171a0746d32e19780848db4bc23cef709db721af2cefbe79eb"
     },
     {
       "path": "examples/bibliographic-base.json",
@@ -907,6 +982,11 @@
       "path": "test_batch_collection_bundle.py",
       "bytes": 36696,
       "sha256": "cc5e654f53d77bb9c667c5b302fd4c7c40bfb0a591f5a3f1dfe157d87146b56c"
+    },
+    {
+      "path": "test_batch_to_evidence_walkthrough.py",
+      "bytes": 12876,
+      "sha256": "dd6a07a0e5f8ed1d0c81ace6cede5d574278c03a23e863b0308e7c004c6745ea"
     },
     {
       "path": "test_bibliographic_intake.py",

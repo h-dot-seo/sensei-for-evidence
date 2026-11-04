@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-B",
+      "retrieval": "retrieved",
+      "locator": "synthetic://report-B/supplied",
+      "reason": null,
+      "source_declarations": [
+        {
+          "source_id": "source-B",
+          "report_id": "report-B",
+          "source_locator": "synthetic://report-B/main",
+          "document_version": "Fictional supplied version B",
+          "document_sha256": null
+        }
+      ],
+      "updated_by": "Fictional registrar",
+      "updated_at": "2026-11-04",
+      "update_note": "Synthetic assertion that a previously unavailable report was later supplied; acquisition is not verified."
+    }
+  ]
+}

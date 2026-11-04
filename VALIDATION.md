@@ -1277,3 +1277,41 @@ review renewal, nonclinical parameter generation or completeness claim is made.
 Historical retrieval values are retained only with the detached receipt and
 original, not as a new protocol event ledger. Windows and both supported Python
 versions are checked by exact-head CI.
+
+Native batch-to-evidence rehearsal increment (2026-11-04): 1,201 tests in the
+suite; final Linux run: 1,200 passed and one native-Windows-only test skipped.
+Eight new self-authored walkthrough tests execute all 30 documentation commands
+in order in an external temporary directory whose name contains spaces, with
+ASCII environment defaults to exercise explicit UTF-8 CLI behavior. The focused
+eight-suite batch/archive/report/retrieval/result/condition/PRISMA run passes 148.
+The worker limit still prevents a separate independent author/auditor; this is
+self-review and regression testing, not independent review or scientific review.
+Fourteen prewritten fictional JSON inputs provide every explicit choice. Blank
+collection, screening, registration, retrieval, full-text, result and condition
+targets remain blank and match the separately supplied fixture hashes. No runtime
+module changes or automatic review helper is introduced; all 128 previously
+committed Python files remain byte-unchanged.
+The same five raw NBIB occurrences are preserved through one explicit same-record
+choice, one non-promotion and three new record declarations. Four promoted raw
+occurrences become three search memberships; the search-ledger identified count
+is three, not five, and its repeated-exact-ID count is zero. The guide explicitly
+distinguishes these scopes from raw-row reconciliation, publication identity and
+PRISMA duplicate-removal claims. Separate supplied screening, report grouping,
+retrieval, full-text and result steps lead to three included records, two retrieved
+reports, one assessed/included report, one pending assessment, one declared study
+and two result rows. One record anchors both results; the other mapped record is
+not given a fabricated extraction. Nonclinical concentration, exposure, comparator,
+observation timing/reference event and causal basis remain explicitly unknown.
+Tests verify unchanged source/import and screening history, exact per-stage target
+bindings, rejection of stale fixture reuse, no output overwrites, raw native member
+bytes, and archive verification after copying only the archive into another
+working directory. The archive retains the historical native import binding after
+later evidence additions, but not the detached applications or all intermediate
+originals. The guide requires retaining the complete output directory and recorded
+implementation and does not call the ZIP a complete review-history archive.
+Unknown search totals, an absent planned secondary search and unassessed report
+remain visible; census and conclusion readiness stay closed. Documentation links
+resolve, publication audit checks 267 text files and exact manifest verification
+passes. No real-source acquisition, reading, review, scientific conclusion or
+experimental parameter generation is represented. Exact-head CI covers Windows
+and both supported Python versions.

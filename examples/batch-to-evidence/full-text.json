@@ -1,0 +1,15 @@
+{
+  "adjudicator": "Fictional walkthrough reviewer",
+  "decided_at": "2026-11-04",
+  "decision": "include",
+  "rationale": "Synthetic separate eligibility and membership assertion, not actual reading.",
+  "reason": "Prewritten fictional full-text inclusion.",
+  "receipt_id": "fictional-journey-full-text",
+  "report_id": "report-A",
+  "schema_version": 1,
+  "source_locator": "synthetic://report-A/main",
+  "study_declaration": {
+    "study_id": "study-A"
+  },
+  "target_sha256": "26e88c0b8ce7314344c9bc116951aa5e79f62d93e312aa2613d830867a92fda2"
+}

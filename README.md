@@ -55,6 +55,12 @@ commands from a declared question and mock receipt through explicit supplied
 reviews, PRISMA accounting, nonclinical/context work and a verified bundle.
 Human-authored inputs and automatic bookkeeping are separated at each step.
 
+For supplied citation files rather than mock provider receipts, follow the
+[NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md): two native files through
+explicit reconciliation, screening, reports, retrieval, results, missing
+nonclinical context and a verified original-source bundle. Every decision is a
+prewritten fictional assertion, not a review performed by the tools.
+
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh

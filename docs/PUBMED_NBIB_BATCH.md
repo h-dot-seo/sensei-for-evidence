@@ -13,6 +13,9 @@ search. Different queries or search occasions should remain separately declared
 searches, not be silently joined under one timestamp. The grouping, labels, order
 and timestamp here are supplied assertions, not verified facts.
 
+For a tested end-to-end synthetic sequence through reports, results and explicit
+missing nonclinical context, see the [NBIB-to-evidence rehearsal](BATCH_TO_EVIDENCE.md).
+
 ## Prepare the entire group before collection review
 
 The following two exports are entirely fictional. Their repeated identifier
