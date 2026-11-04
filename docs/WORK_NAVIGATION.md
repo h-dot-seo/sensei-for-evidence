@@ -24,6 +24,10 @@ same validated work engine; there is no new task, stage or decision schema.
 - Each packet's supplied question, deliverable, acceptance criterion, dependencies
   and blocked state, alongside artifact/acceptance assertions explicitly labeled
   as not checked. This view never opens local artifacts.
+- Direct prerequisite completion-source labels, even when the prerequisite
+  packets are omitted. Stale/unbound COMPLETE assertions remain distinct from
+  unfinished prerequisites. These cues do not change blocked state, renew hashes
+  or recursively verify acceptance; expand prerequisite packets for earlier links.
 - Existing planning source-match status, human rationale and uncertainty, plus
   explicitly supplied rationale statement IDs. Stale planning is not renewed.
 - Nonempty existing review cues. Missing stages are listed separately; empty cues

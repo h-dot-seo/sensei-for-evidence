@@ -57,14 +57,17 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     selected_set=set(selected)
     dependency_scope=dict(
         include_prerequisites=include_prerequisites,packet_work_ids=selected[:],
-        edges=[dict(work_package_id=wid,depends_on=dep,prerequisite_packet_included=dep in selected_set)
+        edges=[dict(work_package_id=wid,depends_on=dep,prerequisite_packet_included=dep in selected_set,
+                    supplied_prerequisite_status=work[dep]['status'],
+                    prerequisite_completion_source_status=completion[dep]['source_match_status'])
                for wid in selected for dep in work[wid]['depends_on']],
         omitted_direct_prerequisite_ids=sorted({dep for wid in selected for dep in work[wid]['depends_on'] if dep not in selected_set}),
         order_scope=('Supplied dependency-first traversal, not priority or scientific readiness'
                      if include_prerequisites else 'Selected work or lexical work ID order; not execution order'),
         boundary=('Only explicit transitive depends_on links are expanded. Completed prerequisites remain visible. '
                   'Shared evidence, context or ranks do not add dependencies. No work is executed, approved or reprioritized. '
-                  'A dependency-unblocked task may retain source, experimental, clinical and appraisal gaps.'))
+                  'A dependency-unblocked task may retain source, experimental, clinical and appraisal gaps. '
+                  'Direct prerequisite completion-source labels are not recursive acceptance certificates and do not change blocking.'))
     packets = []
     for wid in selected:
         item = work[wid]
@@ -119,6 +122,8 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                                      enumerated_records=sum(ref['kind']=='record' for ref in item.get('source_refs',[]))),
             completion_review=copy.deepcopy(completion[wid]), planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
+            direct_prerequisite_completion_reviews=[dict(copy.deepcopy(completion[dependency]),
+                supplied_work_status=work[dependency]['status']) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
             synthesis_stage=research['synthesis']['stage'],
             claim_positions=[dict(statement=copy.deepcopy(statement),
@@ -191,6 +196,9 @@ def navigation_summary(result):
                          artifact_locator=work.get('artifact_locator'),acceptance_verified=work.get('acceptance_verified'),
                          planning=copy.deepcopy(packet['planning_assertion']),completion_review=copy.deepcopy(packet['completion_review']),recorded_review_gaps=gaps,
                          source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
+                         direct_prerequisite_completion_reviews=[{key:row[key] for key in
+                             ('work_package_id','supplied_work_status','source_match_status')}
+                             for row in packet['direct_prerequisite_completion_reviews']],
                          statement_review_statuses=[dict(statement_id=row['statement']['statement_id'],
                              source_match_status=row['statement']['source_match_status'],support_status=row['statement']['support_status'],
                              position_stage=row['position_stage'],
@@ -203,7 +211,7 @@ def navigation_summary(result):
                 protocol_sha256=result['protocol_sha256'],
                 boundary=('Packet-scope navigation only; group names describe recorded status and dependencies, not a next-task recommendation. '
                           'No ranking, ownership, deadlines, clinical readiness or acceptance assessment is inferred. '
-                          'Completed work may still have evidence gaps. Empty cues are omitted from brief text, not a completeness finding. '
+                          'Completed work may still have evidence gaps or stale prerequisite assertions. Direct prerequisite labels are not recursive acceptance. Empty cues are omitted from brief text, not a completeness finding. '
                           'Full supplied evidence, context and experimental details remain in the normal packet output.'))
 
 
@@ -221,6 +229,7 @@ def render_brief(result):
                       'Depends on: '+show(row['depends_on'])+'; blocked by: '+show(row['blocked_by']),
                       'Supplied artifact/acceptance (not checked): '+show(dict(artifact_locator=row['artifact_locator'],acceptance_verified=row['acceptance_verified'])),
                       'Completion source status (not acceptance): '+show(row['completion_review']['source_match_status']),
+                      'Direct prerequisite completion sources (not acceptance): '+show(row['direct_prerequisite_completion_reviews']),
                       'Planning source status: '+show(row['planning']['source_match_status'])])
         assertion=row['planning']['assertion']
         if assertion is not None:
@@ -258,6 +267,7 @@ def render_text(result):
                       'Dependencies: ' + show(work['depends_on']), 'Blocked by: ' + show(work['blocked_by']),
                       'Scope counts: ' + show(packet['scope_counts']),
                       'Completion source binding (not acceptance): ' + show(packet['completion_review']),
+                      'Direct prerequisite completion sources (not acceptance): ' + show(packet['direct_prerequisite_completion_reviews']),
                       'Supplied planning assertion: ' + show(packet['planning_assertion']),
                       'Current planning basis hash (review target only): ' + show(packet['planning_review_target']['basis_sha256']),
                       'Recorded review gaps: ' + show(packet['recorded_review_gaps']),

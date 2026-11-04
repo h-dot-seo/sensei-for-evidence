@@ -207,3 +207,7 @@ scientific or regulatory validation.
 [Completion source binding](docs/COMPLETION_BINDING.md) flags unbound/stale COMPLETE
 assertions after work/source/locator changes, reusing planning source scope. It
 never verifies acceptance, renews a hash or automatically reopens work.
+
+Selected work views also expose [direct prerequisite completion cues](docs/PREREQUISITE_REVIEW.md#completion-source-cues-without-expanding-packets):
+CURRENT/STALE/UNBOUND source labels remain visible even when full prerequisite
+packets are omitted. Recorded unblocking stays separate from acceptance review.

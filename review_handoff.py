@@ -116,6 +116,7 @@ def handoff(protocol, work_package_id=None):
                              work_type=packet['work_type'],source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
                              source_input_counts=copy.deepcopy(packet['source_input_counts']),
                              planning=copy.deepcopy(packet['planning_assertion']),completion_review=copy.deepcopy(packet['completion_review']),
+                             direct_prerequisite_completion_reviews=copy.deepcopy(packet['direct_prerequisite_completion_reviews']),
                              claim_positions=copy.deepcopy(packet['claim_positions']),
                              contexts=[copy.deepcopy(row['context']) for row in packet['contexts']],
                              recorded_review_gaps=copy.deepcopy(packet['recorded_review_gaps']),
@@ -169,6 +170,7 @@ def render_text(result):
                       'Source review inputs (not extracted evidence): ' + show(item['source_review_inputs']),
                       'Source input counts: ' + show(item['source_input_counts']), 'Supplied planning: ' + show(item['planning']),
                       'Completion source binding (not acceptance): ' + show(item['completion_review']),
+                      'Direct prerequisite completion sources (not acceptance): ' + show(item['direct_prerequisite_completion_reviews']),
                       'Guideline/development context: ' + show(item['contexts'])])
         for claim in item['claim_positions']:
             statement=claim['statement']

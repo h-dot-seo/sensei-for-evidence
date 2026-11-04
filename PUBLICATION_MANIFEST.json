@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.35.0-completion-source-binding",
-  "date": "2026-11-03",
+  "release": "0.36.0-prerequisite-completion-cues",
+  "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 128,
+  "file_count": 129,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 12882,
-      "sha256": "f5f9f41dff1c28855617149f6ae68cf56c6d9b8454ac8ddf8e41fe26b72a32c7"
+      "bytes": 13191,
+      "sha256": "ec820bd622c12fc7985f421d36c2d60f90dc3cb63daa3388f3ce728fc14d358f"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 31477,
-      "sha256": "3c02a0ff97ad4a2ae432921826342bda04e7074a2a7fee6f5b07b0ee7c1c5dba"
+      "bytes": 32428,
+      "sha256": "7b8cc26c715ec0b7a64e1996447f7f702fb93a89c5b886359004b3e02b9c182a"
     },
     {
       "path": "adapter_integrity.py",
@@ -110,8 +110,8 @@
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
-      "bytes": 4282,
-      "sha256": "a5313697ef2c101df90a501353f73d7f92e7f7afdce0b5bcf3a2416b136ae0c5"
+      "bytes": 4619,
+      "sha256": "696aec63e2475609ebc98586435a3b354e8e63bcb11c5db571a294a55d821d06"
     },
     {
       "path": "docs/CONTEXT_AMENDMENTS.md",
@@ -155,8 +155,8 @@
     },
     {
       "path": "docs/PREREQUISITE_REVIEW.md",
-      "bytes": 3999,
-      "sha256": "2e8ccedf4657c1cd9eeb003009711b2ba7c19a80c66e77f924c8063d9c4ff68a"
+      "bytes": 5532,
+      "sha256": "bd8ecb23a9be24b6af13e2a8ba32cc73a67407012077e60d2829fec86cd62660"
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
@@ -190,8 +190,8 @@
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
-      "bytes": 3288,
-      "sha256": "4e83d879b56a17a0bda18c463221c4caf75f63c2b394c5c50231899eb000993f"
+      "bytes": 3605,
+      "sha256": "240dd33f277cda2cb8ab0faf98d6197801a08e6a002c2e373f7f868cbbba9724"
     },
     {
       "path": "docs/WORK_REVIEW.md",
@@ -415,8 +415,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 18665,
-      "sha256": "2d343f853ad5ff71c21c7d29d2b88d7a06cacdda573f74e2cac980444d31ee5e"
+      "bytes": 18936,
+      "sha256": "b0969713850baf0e18792c26892b08af1b744aa56c874cac64f673dce4927192"
     },
     {
       "path": "search_audit.py",
@@ -527,6 +527,11 @@
       "path": "test_planning_links.py",
       "bytes": 9817,
       "sha256": "1d03bb2638a08b7e55444426efce335ba52c8723e601acea48635cce2a846cb1"
+    },
+    {
+      "path": "test_prerequisite_completion.py",
+      "bytes": 9386,
+      "sha256": "c73d287e14b6a7306974a49e4f096fbb227c93b9e791894493ac1520ec864f7d"
     },
     {
       "path": "test_prerequisite_review.py",
@@ -645,8 +650,8 @@
     },
     {
       "path": "work_review.py",
-      "bytes": 26486,
-      "sha256": "d5559232bdb1d8f7d64f36e215b0861a8777800a5c2e0506f5bb0454b8a1ac49"
+      "bytes": 27631,
+      "sha256": "5c7b97397530079cc38ed2077341873555baadc83e28a94ca6a3c79dd942f541"
     }
   ]
 }

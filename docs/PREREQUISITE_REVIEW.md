@@ -65,3 +65,29 @@ Add `--brief` instead of `--text` for [compact navigation](WORK_NAVIGATION.md)
 through the same selected prerequisite packets. The view separates recorded
 unblocked, blocked, in-progress and completed assertions without recommending
 what to execute or assessing scientific readiness.
+
+## Completion-source cues without expanding packets
+
+Every selected packet now includes `direct_prerequisite_completion_reviews` for
+its explicit direct `depends_on` links, including when those prerequisite packets
+are omitted. Each row retains the prerequisite's supplied work status, existing
+completion-source status and supplied/current basis hashes. The dependency edges
+also carry the supplied prerequisite status and completion-source status. These
+are the same [completion binding](COMPLETION_BINDING.md) labels, not a new gate.
+
+A dependent can remain mechanically unblocked while a completed prerequisite is
+UNBOUND_COMPLETION or STALE_SOURCE. The brief view and operator handoff show this
+beside the selected work, without reopening work, renewing a hash or verifying
+acceptance. CURRENT_SOURCE is only a match for that prerequisite's own documented
+scope. It does not recursively certify earlier prerequisites. Use the expanded
+packet view to inspect every explicit ancestor and its own direct links.
+
+```sh
+python work_review.py examples/completion-binding.json --work-package WP-TRANSLATION --brief
+python review_handoff.py examples/completion-binding.json --work-package WP-TRANSLATION --text
+```
+
+The synthetic example shows a CURRENT_SOURCE completed prerequisite while the
+selected work itself remains unfinished. Shared evidence, unrelated work and
+ranks do not add prerequisite completion rows. Empty rows mean no explicit direct
+links, not proven readiness; acceptance and artifact-byte checks remain separate.

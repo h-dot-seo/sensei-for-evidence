@@ -60,6 +60,10 @@ All entries retain acceptance_assessment and artifact_content_verification as
 NOT_PERFORMED. Research status/handoff queues expose unbound and stale completion
 assertions; work packets and brief navigation show their separate source status.
 Optional external amendment comparison includes these observed transitions.
+Selected work packets, brief navigation and handoff also expose each direct
+prerequisite's completion-source status even when its full packet is omitted.
+These are [direct-link review cues](PREREQUISITE_REVIEW.md#completion-source-cues-without-expanding-packets),
+not recursive acceptance certificates or changes to dependency blocking.
 Local artifact byte reports also show the completion-source status separately;
 matching bytes cannot repair a stale completion assertion.
 

@@ -446,3 +446,16 @@ are tested separately. Independent review compared legacy planning targets acros
 limits and artifact-byte nonverification are explicit. Recorded COMPLETE and
 mechanical dependency unblocking remain unchanged; no hash or acceptance is
 renewed automatically and no scientific/clinical decision is made.
+
+Direct prerequisite completion-cue increment (2026-11-04): 429 tests in the suite;
+Linux run: 428 passed and one native-Windows-only test skipped. Ten new tests
+cover current/stale/unbound/not-complete direct prerequisite labels, omitted
+packet disclosure, unchanged unblocking, source-review work, exact handoff
+projection, direct-only versus expanded scope, unrelated-work isolation, input
+and cross-packet nested-copy isolation, multiple-prerequisite ordering, repeated
+output determinism, and a real brief CLI invocation. Existing deep-chain,
+diamond, hostile-text and compactness regressions also pass. The projection adds
+no engine gate, automatic reopening, hash renewal or recursive acceptance claim.
+Publication audit and complete inventory verification pass on the final files.
+Independent read-only review found no blocking issues; its suggested ordering,
+determinism and cross-packet isolation cases were added as executable regressions.
