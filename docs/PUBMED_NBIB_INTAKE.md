@@ -13,6 +13,11 @@ describes UTF-8 PubMed-format exports as `.txt` or `.nbib`. Those sources explai
 the format's purpose; the deliberately strict parser contract below is this
 software's supported subset, not a claim to accept every historical export.
 
+For several local files explicitly associated with the same declared search,
+use [multiple-file preparation](PUBMED_NBIB_BATCH.md) before collection review.
+It retains each native file separately and produces one CSV intake; it does not
+infer pagination, choose duplicate resolutions or replace an imported search.
+
 ## Prepare, inspect, then explicitly reconcile
 
 `examples/pubmed-export.nbib` is entirely fictional, including its PMID strings,

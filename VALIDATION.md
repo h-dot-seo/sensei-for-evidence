@@ -1135,3 +1135,35 @@ artifacts made with the earlier implementation require that recorded revision,
 not an automatically renewed review. No underlying research engine or other
 intake implementation changed. Publication audit and exact manifest validation
 pass; native Windows confirmation is performed on the corrective commit's CI.
+
+Multiple-file NBIB preparation increment (2026-11-04): 1,122 tests in the suite;
+Linux run: 1,121 passed and one native-Windows-only test skipped. Thirteen new
+batch tests cover exact separate native files, BOM/line endings/separators,
+repeated fields, identical bytes and within/across-file repeated PMID strings,
+source-local byte spans, explicit ordered labels and one deterministic CSV intake.
+The focused five-suite run passes 91 tests. Independent implementation review
+also ran the original 10 batch tests and 78 existing intake/review/collection tests,
+found no blocking defect, and independently challenged stale review reuse after
+file additions, reordering, relabeling, separator changes and timestamp changes.
+Those stale-review cases are now committed regressions. Formula/whitespace-leading
+labels remain literal, with an explicit warning that raw derivative CSV is not
+spreadsheet-safe; output quoting does not neutralize formulas. The README now
+clearly limits existing native collection bundles to single-file wrappers.
+Strict source schemas and labels, aggregate/per-file limits, strict JSON, full
+canonical replay, altered/resealed fields, implementation drift, serialization
+preflight, exclusive creation, dangling symlinks and inspection-error propagation
+are covered. Final-entry protection retains the documented race/ancestor-alias
+limitation; actual Windows behavior is checked on this commit's CI matrix.
+The documented fictional CLI preparation/verification/template/target/review/
+assembly/status/audit/ordinary-bundle journey succeeds with two source files and
+five raw occurrences. Explicit fixture choices promote four occurrences to two
+canonical memberships and withhold one row, retaining every original value.
+Exactly one incomplete search is appended; its total is unknown, the secondary
+planned search remains missing, and screening/evidence stay empty. The separate
+batch wrapper retains native files and verifies independently; an ordinary bundle
+retains the CSV provenance but does not independently verify native batch parsing.
+Existing Python implementation files are byte-unchanged, preserving previous
+engine fingerprints and replay behavior. New documentation links resolve;
+publication audit checks 237 text files, and exact manifest verification passes.
+No live acquisition, automatic deduplication, query/page association validation,
+review renewal, scientific conclusion or completeness claim is introduced.

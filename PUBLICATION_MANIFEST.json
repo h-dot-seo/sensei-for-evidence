@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.61.1-source-work-output-guard",
+  "release": "0.62.0-multi-file-nbib-preparation",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 232,
+  "file_count": 236,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 24635,
-      "sha256": "ff877c20d79264f0959840432cbe62a3cc0a5a8e0f907f45ed29c802e2dfb1d9"
+      "bytes": 25412,
+      "sha256": "0d70ec337d428e3b9c2a912f22ad50a4ef8e78f6ce70ca3f29961f1febb10b23"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 83318,
-      "sha256": "0798d88dac4811a2b0bc95b1a7f92c29ee4d81722a2fd86c1b72e5513a7237a7"
+      "bytes": 85776,
+      "sha256": "51ed408dcd9a882262b1f291a43e7249366bdcd3876db84ef42ab7eeaa43e8b9"
     },
     {
       "path": "adapter_integrity.py",
@@ -239,9 +239,14 @@
       "sha256": "601db6034b383be94c7143f37dbe36a95480349ad19e3a99b96bacd8667eb524"
     },
     {
+      "path": "docs/PUBMED_NBIB_BATCH.md",
+      "bytes": 8950,
+      "sha256": "81d7fab55e857396ec5b82c8e585eed24f967b959fc52def0fccb6baaba3fce7"
+    },
+    {
       "path": "docs/PUBMED_NBIB_INTAKE.md",
-      "bytes": 9555,
-      "sha256": "9d67e0634dee093f6e8cbd819bd1b86462ab05a6ad0cad418cc8b6b8ba2398b4"
+      "bytes": 9871,
+      "sha256": "91de37ee1882f496fee4c445e73b4bc503e16354dbbac395433db991c757a2dd"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -504,6 +509,11 @@
       "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
     },
     {
+      "path": "examples/pubmed-export-additional.nbib",
+      "bytes": 351,
+      "sha256": "87fb6f90b30906c1570ab4012acc10893c8f1768daaf389b55a3adaaca87c47e"
+    },
+    {
       "path": "examples/pubmed-export.nbib",
       "bytes": 736,
       "sha256": "bfd5fd7c43e9d3799b604ceea59d4974819e74d5d445dc9ddd040899cac93757"
@@ -647,6 +657,11 @@
       "path": "json_io.py",
       "bytes": 2306,
       "sha256": "2cf22521af031246fdb66510442ce801080b54129f54873633b0c53a0e6e2abc"
+    },
+    {
+      "path": "nbib_batch_intake.py",
+      "bytes": 17581,
+      "sha256": "580ee96bff4ab39bd227d52dd6a46d70f7dae8b73d0928e1de1a75a91e7b86c3"
     },
     {
       "path": "nbib_export_parser.py",
@@ -937,6 +952,11 @@
       "path": "test_multi_result.py",
       "bytes": 4701,
       "sha256": "6f9ecb819575122f8bf7e30a848ad18b6d978b2ee2e60172ced10064269b9ca5"
+    },
+    {
+      "path": "test_nbib_batch_intake.py",
+      "bytes": 27127,
+      "sha256": "6c99b1c193896a1bb1015ce1162f370957af2daf15061192eb0d312f9cbadc15"
     },
     {
       "path": "test_nbib_intake.py",

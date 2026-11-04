@@ -92,6 +92,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `receipt_intake.py template BASE.json` / `check BASE.json RECEIPTS.json [--text] [--protocol-output NEW.json]` | Guide synthetic manual receipt entry and inspect unreviewed candidates through the existing adapter |
 | `bibliographic_intake.py preview PROTOCOL.json EXPORT.csv --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--text]` | Retain exact local CSV bytes and inspect detached unreviewed candidates |
 | `nbib_intake.py preview PROTOCOL.json EXPORT.nbib --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve native PubMed-format field occurrences and verify a CSV derivative for explicit reconciliation |
+| `nbib_batch_intake.py preview PROTOCOL.json --export ID=EXPORT.nbib [--export ID=OTHER.nbib] --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve each explicitly grouped native file and prepare one unreviewed CSV intake for one incomplete search |
 | `collection_bundle.py create PROTOCOL.json NEW.zip --nbib INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Carry selected native wrappers with the research bundle and replay their exact import associations |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
@@ -259,8 +260,14 @@ resolved or used for automatic identity decisions. Keep the detached native
 artifact with the resulting protocol; ordinary bundles retain the CSV provenance
 but do not independently verify the native conversion.
 
+[Multiple-file NBIB preparation](docs/PUBMED_NBIB_BATCH.md) groups explicitly
+selected downloads before one human collection review, retaining per-file native
+bytes and row provenance. Repeated identifiers and identical files are not
+automatically removed; grouping is not verified pagination or search completeness.
+Keep the detached batch wrapper alongside the protocol and ordinary bundle.
+
 [Portable collection bundles](docs/COLLECTION_BUNDLES.md) optionally preserve
-those native artifacts with the ordinary research bundle. Each attachment is
+single-file native wrappers, not batch wrappers, with the ordinary research bundle. Each attachment is
 checked against its exact historical import, while imports without supplied
 native wrappers remain visible. Packaging never changes collection or research
 decisions and does not establish search completeness.
