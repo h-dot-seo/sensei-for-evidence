@@ -186,6 +186,11 @@ def handoff(protocol, work_package_id=None):
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'report_study_inventory' in state:
+        result['report_study_inventory'] = copy.deepcopy(state['report_study_inventory'])
+        result['engine_sha256']['report_study_inventory.py'] = hashlib.sha256(Path(__file__).with_name('report_study_inventory.py').read_bytes()).hexdigest()
+        result['detailed_views'].append(dict(script='report_study_inventory.py', arguments=['PROTOCOL.json','--text'],
+                                            purpose='Supplied candidate descriptions before full-text inclusion, not selected studies or required tasks'))
     if 'report_study_review' in state:
         result['report_study_review'] = copy.deepcopy(state['report_study_review'])
         result['engine_sha256']['report_study_review.py'] = hashlib.sha256(Path(__file__).with_name('report_study_review.py').read_bytes()).hexdigest()

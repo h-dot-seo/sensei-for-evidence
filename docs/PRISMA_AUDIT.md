@@ -176,3 +176,8 @@ Optional [report-study human positions](REPORT_STUDY_REVIEWS.md) are another
 separate unit. They do not replace report inclusion, legacy distinct study-ID
 counts or extraction membership. Undeclared pair views retained by assertions
 are not nodes representing eligible or historically validated studies.
+
+The optional [descriptive study inventory](REPORT_STUDY_INVENTORY.md) is preserved
+separately from PRISMA membership nodes. A candidate description on a pending or
+excluded report is not an included study and never changes inclusion/extraction
+counts or partition checks.

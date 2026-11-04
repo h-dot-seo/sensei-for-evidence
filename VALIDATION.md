@@ -697,3 +697,27 @@ ledger; the new pair presence flag intentionally changes when membership disappe
 Pre-inclusion study inventory remains outside this bounded increment. Publication
 audit and exact manifest verification pass; no private records, real full text,
 source retrieval, biological experiments or medical fact checks were used.
+
+Descriptive pre-full-text-inclusion inventory increment (2026-11-04): 813 tests
+in the suite; Linux run: 812 passed and one native-Windows-only test skipped.
+Forty-three new independent tests cover exact descriptive schema/tuple identity,
+multiple recorder assertions without a winner, explicit source selection, pending
+and excluded reports, current/stale/unresolved source references, stable inventory
+hashes across inclusion and membership changes, unchanged prior review hashes,
+new-label proposals excluded from stored counts, whole-input validation, detached
+linear catalogs and exclusive UTF-8/control-safe CLI output. The focused eight-suite
+run passes 198 tests; all 33 prior valid examples retain equal core/report/audit/
+status/handoff/synthesis/comparison projections and report CSV bytes, excluding
+implementation fingerprints. A separate read-only review found no blocking issue.
+An imported-CSV template omission was found before publication and repaired by
+passing the validated mapped-row collection into candidate target preparation;
+two regressions confirm source-first/completed scaffolds remain CURRENT_SOURCE.
+The fictional CLI/audit/status/handoff/comparison/bundle journey retains five
+assertions for four exact candidate pairs, four current and one stale, with no
+new membership, extraction permission, queue or PRISMA node. Proposed targets are
+not counted as stored inventory. Existing report constraints still require
+title/abstract-included records: this is before full-text inclusion, not before
+screening. Candidate eligibility-review migration remains deferred rather than
+silently replacing the old membership-presence scope. Publication audit and exact
+manifest verification pass. No real full text, private records, source retrieval,
+scientific fact checking or biological experiment instructions were used.

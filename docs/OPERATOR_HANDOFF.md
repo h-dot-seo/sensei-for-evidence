@@ -143,3 +143,8 @@ report-study pairs. The [report-study review view](REPORT_STUDY_REVIEWS.md) show
 source selections and separate human positions; orphan assertions stay in a
 retrospective summary rather than a pending task queue. Matching input rows
 include report, source declaration, pair assertion and linked result locations.
+
+Optional [descriptive study inventory](REPORT_STUDY_INVENTORY.md) has a summary
+and detailed read-only view, not a pending-work queue. Candidate descriptions and
+proposed blank targets do not create included memberships, required studies,
+review approvals or extraction tasks.

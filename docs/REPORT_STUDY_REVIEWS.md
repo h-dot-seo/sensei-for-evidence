@@ -149,7 +149,7 @@ summary and are not added to current-membership review queues. Preserve full
 protocol snapshots when historical reconstruction matters; these rows alone do
 not authenticate a complete timeline.
 
-## Counts, compatibility and the remaining inventory gap
+## Counts, compatibility and the remaining review-scope gap
 
 The optional `report_study_review` view appears in core/report/audit/synthesis
 exports. Status and handoff add `study_memberships_with_review_cues` for current
@@ -172,11 +172,17 @@ change that flag. `canonical_study_selection` remains `NOT_MODELED`.
 
 This increment is post-inclusion bookkeeping. The existing schema permits plural
 study memberships only on included retrieved reports. Do not mark a report included
-just to obtain study templates. A separate pre-inclusion study inventory would be
-needed before introducing canonical per-study selection or result filtering.
+just to obtain study-review templates. The separate descriptive inventory below
+does not yet supply an inventory-based eligibility-review scope or canonical
+per-study selection/result filtering.
 
 Omitting `report_study_reviews` preserves legacy projection shapes. `[]` opts in;
 null is invalid. Empty opt-in without reports is allowed, while nonempty rows
 require known reports. The key is reserved enrichment in CSV-import histories.
 Bundles retain raw assertions and helper fingerprints within the unchanged
 seven-file format; they do not archive full text or verify document bytes.
+
+The separate [descriptive candidate inventory](REPORT_STUDY_INVENTORY.md) now
+records source-linked descriptions before full-text inclusion. It intentionally
+does not migrate this review scope or enable fresh review scaffolds for undeclared
+memberships. Its hash excludes membership presence; never interchange the hashes.

@@ -36,6 +36,35 @@ def entity_changes(before, after, id_field):
                 unchanged_count=len(shared) - len(changed))
 
 
+def report_study_inventory_changes(left, right):
+    """Compare supplied descriptions and context labels, never candidate eligibility."""
+    a, b = left.get('report_study_inventory'), right.get('report_study_inventory')
+    old = {} if a is None else {row['inventory']['inventory_id']: row for row in a['inventory_ledger']}
+    new = {} if b is None else {row['inventory']['inventory_id']: row for row in b['inventory_ledger']}
+    def pairs(view):
+        if view is None:
+            return {}
+        targets = {(row['report_id'], row['study_id']): row for row in view['candidate_targets']}
+        descriptions = {(row['report_id'], row['study_id']): row for row in view['pair_inventory_ledger']}
+        return {key: dict(target=targets[key], descriptions=descriptions[key]) for key in targets}
+    before, after = pairs(a), pairs(b)
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        assertion_changes=entity_changes([row['inventory'] for row in old.values()],
+                                        [row['inventory'] for row in new.values()], 'inventory_id'),
+        inventory_comparisons=[dict(inventory_id=iid, before=copy.deepcopy(old.get(iid)), after=copy.deepcopy(new.get(iid)))
+                               for iid in sorted(set(old) | set(new))],
+        pair_comparisons=[dict(report_id=key[0], study_id=key[1], before=copy.deepcopy(before.get(key)), after=copy.deepcopy(after.get(key)))
+                          for key in sorted(set(before) | set(after))],
+        before_counts=None if a is None else copy.deepcopy(a['counts']),
+        after_counts=None if b is None else copy.deepcopy(b['counts']),
+        boundary=('Supplied descriptions and exact report-study labels only. New inventory rows do not create '
+                  'included memberships, verified study identities, independent observations or required tasks. '
+                  'Changing a source hash is not verified document change; changing a description is not verified '
+                  'scientific reassessment. No recorder, date, description or candidate is selected as authoritative.'))
+
+
 def report_study_review_changes(left, right):
     """Compare literal pair views without equating report and study eligibility."""
     a, b = left.get('report_study_review'), right.get('report_study_review')
@@ -475,6 +504,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
         result['report_review_changes'] = report_review_changes(left, right)
     if 'report_study_review' in left or 'report_study_review' in right:
         result['report_study_review_changes'] = report_study_review_changes(left, right)
+    if 'report_study_inventory' in left or 'report_study_inventory' in right:
+        result['report_study_inventory_changes'] = report_study_inventory_changes(left, right)
     if 'screening_decision_history' in left or 'screening_decision_history' in right:
         result['screening_decision_changes'] = screening_decision_changes(left, right)
     return result
@@ -519,6 +550,16 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'report_study_inventory_changes' in result:
+        inventory = result['report_study_inventory_changes']
+        lines.extend(['', 'Supplied descriptive study inventory comparison (not membership or eligibility):',
+                      'Before/after inventory stages: ' + show(dict(before=inventory['before_stage'], after=inventory['after_stage'])),
+                      'Changed description assertions: ' + show(inventory['assertion_changes']),
+                      'Before/after inventory counts: ' + show(dict(before=inventory['before_counts'], after=inventory['after_counts']))])
+        lines.extend('Description assertion before/after: ' + show(row) for row in inventory['inventory_comparisons'])
+        for row in inventory['pair_comparisons']:
+            lines.append('Exact described pair before/after: ' + show(row))
+        lines.append(inventory['boundary'])
     if 'report_study_review_changes' in result:
         review = result['report_study_review_changes']
         lines.extend(['', 'Supplied report-study position comparison (not canonical eligibility):',

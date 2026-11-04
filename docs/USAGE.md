@@ -576,3 +576,8 @@ For distinct human opinions on individual studies, use the [report-study review
 workflow](REPORT_STUDY_REVIEWS.md). Pair-specific scaffolds leave source selections
 and every human field blank. This does not infer per-study eligibility from report
 inclusion or change existing extracted results.
+
+For candidate descriptions before a full-text inclusion decision, use the
+[study inventory workflow](REPORT_STUDY_INVENTORY.md). Supply a report ID and an
+explicit human study label to generate a blank source-linked scaffold without
+creating an included membership or eligibility judgment.

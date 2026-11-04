@@ -97,6 +97,8 @@ def snapshot(protocol):
         result['report_review'] = copy.deepcopy(research['report_review'])
     if 'report_study_review' in research:
         result['report_study_review'] = copy.deepcopy(research['report_study_review'])
+    if 'report_study_inventory' in research:
+        result['report_study_inventory'] = copy.deepcopy(research['report_study_inventory'])
     if 'screening_decision_history' in research:
         result['screening_decision_history'] = copy.deepcopy(research['screening_decision_history'])
     return result
@@ -151,6 +153,10 @@ def render_text(result):
         lines.extend(['Supplied screening reviewer positions (not adjudication): '
                       + show(result['screening_review']['record_review_ledger']),
                       result['screening_review']['boundary']])
+    if 'report_study_inventory' in result:
+        lines.extend(['Supplied descriptive study inventory (not inclusion or pending work): '
+                      + show(result['report_study_inventory']['pair_inventory_ledger']),
+                      result['report_study_inventory']['boundary']])
     if 'report_study_review' in result:
         lines.extend(['Supplied report-study human positions (not canonical study selection): '
                       + show(result['report_study_review']['membership_review_ledger']),

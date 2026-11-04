@@ -108,6 +108,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `screening_decision.py target/assemble/inspect ...` | Apply only an explicit supplied screening choice to a new candidate, retaining source/reviewer decision receipts |
 | `report_review.py PROTOCOL.json [--report-id ID] [--template] [--text]` | Inspect supplied full-text versions and reviewer positions without verifying documents or changing decisions |
 | `report_study_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility |
+| `report_study_inventory.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Describe explicit candidate studies before full-text inclusion without creating memberships or eligibility |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -275,3 +276,8 @@ no document reading, consensus or per-study eligibility is inferred.
 human opinions on individual studies from report inclusion. Explicit source-ID
 selections and unresolved orphan assertions remain visible without choosing a
 canonical study outcome, changing PRISMA counts or filtering extracted results.
+
+[Descriptive candidate inventory](docs/REPORT_STUDY_INVENTORY.md) permits source-linked
+human descriptions on retrieved reports before their full-text inclusion decision.
+Novel-label scaffolds do not count as stored assertions or change included study
+memberships, prior review targets, results or pending-work queues.

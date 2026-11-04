@@ -80,6 +80,11 @@ def status(protocol):
                 record_extraction_scope=research['extraction_pending_scope'],
                 extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED',
                 conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'report_study_inventory' in research:
+        inventory = research['report_study_inventory']
+        result['report_study_inventory'] = dict(
+            stage=inventory['stage'], counts=copy.deepcopy(inventory['counts']),
+            scope='supplied_descriptions_not_included_memberships_or_pending_tasks', boundary=inventory['boundary'])
     if 'report_study_review' in research:
         review = research['report_study_review']
         result['report_study_review'] = dict(
@@ -140,6 +145,10 @@ def render_text(result):
     if 'records_with_screening_review_cues' in result['queues']:
         lines.append('Records with supplied screening-review cues: ' + count('records_with_screening_review_cues'))
         lines.append('Reviewer assertions do not adjudicate eligibility or replace recorded screening decisions.')
+    if 'report_study_inventory' in result:
+        lines.append('Supplied descriptive study inventory: '
+                     + json.dumps(result['report_study_inventory']['counts'], sort_keys=True, ensure_ascii=True))
+        lines.append('Inventory descriptions do not add included memberships, eligibility decisions or pending tasks.')
     if 'study_memberships_with_review_cues' in result['queues']:
         lines.append('Current report-study memberships with review cues: ' + count('study_memberships_with_review_cues'))
         lines.append('Retained orphan assertions: ' + str(len(result['report_study_review']['orphan_review_assertions']))
