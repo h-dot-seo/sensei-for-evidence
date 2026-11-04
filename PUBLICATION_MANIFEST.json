@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.39.0-readable-protocol-comparison",
+  "release": "0.39.1-native-newline-comparison-tests",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 35451,
-      "sha256": "602de53ba088dbc83e33628de7f4187a24dc08f66b5031f49ab6681a1dada0d6"
+      "bytes": 36169,
+      "sha256": "3113e5c779b0b0c2e331edeafaaf40c9998900b36462759f3c678303fadfdc65"
     },
     {
       "path": "adapter_integrity.py",
@@ -480,8 +480,8 @@
     },
     {
       "path": "test_comparison_text.py",
-      "bytes": 18184,
-      "sha256": "301de0cf913b6f2a7de1dcb5b426b1f486b4c176ee1e84fab90fc98507f9f559"
+      "bytes": 19176,
+      "sha256": "17549bb9388a38169c3ab5c4fdadfa12eedd056ebc388cf8e6a13d6f43cff7d6"
     },
     {
       "path": "test_completion_binding.py",

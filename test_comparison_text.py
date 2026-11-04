@@ -16,6 +16,11 @@ from json_io import canonical_json_bytes, quoted_display
 ROOT = Path(__file__).resolve().parent
 
 
+def cli_text(raw):
+    """Normalize native CLI line endings only, preserving supplied escape sequences."""
+    return raw.decode('utf-8').replace('\r\n', '\n')
+
+
 def fixture(name='completion-binding.json'):
     return json.loads((ROOT / 'examples' / name).read_text(encoding='utf-8'))
 
@@ -64,12 +69,28 @@ class ComparisonTextTests(unittest.TestCase):
             self.assertEqual({p: p.read_bytes() for p in directory.iterdir()}, originals)
             return process
 
+    def test_cli_text_normalizes_only_crlf_preserving_escapes_and_bare_cr(self):
+        raw = '합성\r\nsecond\n' + r'literal \r\n' + '\rbared\r\n'
+        expected = '합성\nsecond\n' + r'literal \r\n' + '\rbared\n'
+        self.assertEqual(cli_text(raw.encode('utf-8')), expected)
+        self.assertEqual(cli_text(b'bare\rreturn'), 'bare\rreturn')
+        with self.assertRaises(UnicodeDecodeError):
+            cli_text(b'\xff')
+
+    def test_simulated_windows_stdout_matches_api_text(self):
+        expected = self.compare()[1]
+        output = self.cli()
+        self.assertEqual(output.returncode, 0, output.stderr)
+        native_text = cli_text(output.stdout)
+        simulated_windows_stdout = native_text.replace('\n', '\r\n').encode('utf-8')
+        self.assertEqual(cli_text(simulated_windows_stdout), expected)
+
     def test_cli_text_equals_api_and_default_json_is_unchanged(self):
         expected, text = self.compare()
         output = self.cli()
         self.assertEqual(output.returncode, 0, output.stderr)
         self.assertEqual(output.stderr, b'')
-        self.assertEqual(output.stdout.decode('utf-8'), text)
+        self.assertEqual(cli_text(output.stdout), text)
         default = self.cli(text=False)
         self.assertEqual(default.returncode, 0, default.stderr)
         self.assertEqual(json.loads(default.stdout), expected)
@@ -77,7 +98,7 @@ class ComparisonTextTests(unittest.TestCase):
     def test_windows_input_newlines_preserve_cli_api_equivalence(self):
         result = self.cli(windows_newlines=True)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.decode('utf-8'), self.compare()[1])
+        self.assertEqual(cli_text(result.stdout), self.compare()[1])
 
     def test_forced_ascii_stdout_preserves_unicode_as_utf8(self):
         self.before['version'] = '합성-α-🧪'
@@ -86,7 +107,7 @@ class ComparisonTextTests(unittest.TestCase):
             with self.subTest(text=text):
                 output = self.cli(text=text, ascii_stdout=True)
                 self.assertEqual(output.returncode, 0, output.stderr)
-                actual = output.stdout.decode('utf-8')
+                actual = cli_text(output.stdout) if text else output.stdout.decode('utf-8')
                 self.assertIn('합성-α-🧪', actual)
                 self.assertEqual(actual if text else json.loads(actual),
                                  self.compare()[1] if text else self.compare()[0])
@@ -211,7 +232,7 @@ class ComparisonTextTests(unittest.TestCase):
         self.assertIn('Conclusion: NOT_READY', text)
         output = self.cli()
         self.assertEqual(output.returncode, 0, output.stderr)
-        self.assertEqual(output.stdout.decode('utf-8'), text)
+        self.assertEqual(cli_text(output.stdout), text)
 
     def test_positional_id_warning_is_preserved(self):
         for protocol in (self.before, self.after):
@@ -247,7 +268,7 @@ class ComparisonTextTests(unittest.TestCase):
         self.assertEqual([c for c in text if c != '\n' and unicodedata.category(c) in ('Cc', 'Cf', 'Zl', 'Zp')], [])
         output = self.cli(note=note, ascii_stdout=True)
         self.assertEqual(output.returncode, 0, output.stderr)
-        self.assertEqual(output.stdout.decode('utf-8'), text)
+        self.assertEqual(cli_text(output.stdout), text)
 
     def test_matching_amendment_status_scope_and_transitions_are_visible(self):
         note = amendment(self.before, self.after)
@@ -259,7 +280,7 @@ class ComparisonTextTests(unittest.TestCase):
         self.assertIn('Observed transitions (not causal attribution): ' + quoted_display(result['amendment_review']['observed_state_transitions']), text)
         output = self.cli(note=note)
         self.assertEqual(output.returncode, 0, output.stderr)
-        self.assertEqual(output.stdout.decode('utf-8'), text)
+        self.assertEqual(cli_text(output.stdout), text)
 
     def test_mismatched_hash_version_and_scope_keep_exit_one_and_actual_results(self):
         for mutation in (dict(before_sha256='0' * 64), dict(to_version='other'),
@@ -277,7 +298,7 @@ class ComparisonTextTests(unittest.TestCase):
                     output = self.cli(note=note, text=text_mode)
                     self.assertEqual(output.returncode, 1)
                     self.assertEqual(output.stderr, b'')
-                    self.assertEqual(output.stdout.decode('utf-8') if text_mode else json.loads(output.stdout),
+                    self.assertEqual(cli_text(output.stdout) if text_mode else json.loads(output.stdout),
                                      text if text_mode else result)
 
     def test_invalid_amendment_fails_without_partial_output(self):

@@ -501,3 +501,13 @@ examples additionally rendered deterministically without mutation, preserving
 input/implementation hashes and NOT_READY bounds. Publication audit and complete
 manifest verification pass. The text view is a projection, not scientific prose
 or automatic acceptance; full JSON remains the default structured record.
+
+Native stdout portability correction (2026-11-04): the first readable-comparison
+CI run passed Ubuntu but exposed nine Windows assertion failures because normal
+CRLF stdout was compared directly with the API's LF string. Production rendering
+was unchanged. Text parity tests now strictly decode UTF-8 and normalize only
+CRLF; JSON parsing and repeated same-platform byte comparisons remain unchanged.
+Two new regressions preserve literal escaped newlines, unexpected bare carriage
+returns and invalid-UTF-8 failures, and exercise simulated Windows stdout on any
+host. The suite now contains 487 tests; Linux run: 486 passed and one native-
+Windows-only test skipped. Publication audit and manifest verification pass.
