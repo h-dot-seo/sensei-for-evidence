@@ -72,10 +72,10 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
 
 ## Discover supplied-input workflows without executing them
 
-The JSON now also contains `supplied_input_workflows`, a static catalog of ten
+The JSON now also contains `supplied_input_workflows`, a static catalog of eleven
 existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
 the same catalog. Each group names its guide files, required human inputs,
-operation limits and parser-help argument arrays. The 41 entry points all end in
+operation limits and parser-help argument arrays. The 45 entry points all end in
 `--help`: they explain command syntax, not execute research or write a draft.
 
 The routes cover:
@@ -85,6 +85,7 @@ The routes cover:
 - Separate screening reviewer positions and explicit canonical decisions.
 - Report registration, later retrieval assertions and full-text choices.
 - Supplied result rows and descriptive nonclinical condition metadata.
+- Later result-source comparison and separately reviewed result-text corrections.
 - Explicit optional source-review work proposals.
 - Ordinary/native collection archives and a separate report-transition segment.
 
@@ -105,6 +106,21 @@ queues and matching-row pointers stay unchanged and protocol-wide; workflow
 catalog order is documentation order, not recommended execution or priority.
 No actual protocol path, source ID or WP name is interpolated into these help
 arrays. They are displayed data and are never executed by the handoff.
+
+For existing results, the `result_review_continuation` route links
+[result-source comparison](RESULT_SOURCE_REVIEW.md) and
+[reviewed text corrections](RESULT_CORRECTIONS.md). Comparison needs the actual
+original protocol, its retained manual-result application and an explicit current
+protocol. It replays the old intake before showing literal differences; it does
+not establish historical lineage or decide that a correction is needed. A text
+correction instead needs explicit existing result IDs, human-supplied wording,
+selected sources and its own completed exact-target review. It changes only result
+or limitations text and preserves result IDs, row order and counts. Do not import
+a corrected copy under a new ID just to avoid the collision check: that counts an
+additional result. Earlier intake comparisons still show corrected rows as changed;
+old reviews are not renewed and downstream assertions are not all reassessed.
+Retain original inputs, detached application records and their recorded code.
+A protocol snapshot alone does not retain this comparison/correction provenance.
 
 The original `manual_input_workflow` field remains unchanged and is explicitly
 shown as a separate mock receipt rehearsal. It is no longer the only discoverable

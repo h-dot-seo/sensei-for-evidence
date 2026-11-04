@@ -1394,3 +1394,33 @@ association checks; report-transition archives remain report-only segments, not
 complete research history. No new research operation, scientific assessment,
 source retrieval, task generation, parameter inference or readiness claim occurs.
 Exact-head CI checks Windows and Ubuntu with both supported Python versions.
+
+Result-review continuation discovery increment (2026-11-04): 1,238 tests in the
+suite; final Linux run: 1,237 passed and one native-Windows-only test skipped.
+The focused handoff/intake/source-comparison/correction run passes 95 tests.
+Independent read-only assessment identified the missing existing continuation;
+independent code review found no issues and passed 77 handoff/source-comparison/
+correction tests, including all 45 parser-help commands in empty temporary
+working directories. The navigation tests are self-authored, independently reviewed
+and executed, not independently authored scientific tests.
+One static result_review_continuation group now connects the existing original
+manual-result input/application/current comparison to the separate exact-target
+result-text correction workflow. It does not select a correction because source
+context changed. Guidance keeps literal drift separate from historical lineage,
+source approval and scientific correctness; a corrected copy must not be imported
+under a new ID merely to avoid collisions. Only result/limitations wording is
+correctable by the existing operation; result IDs, order and counts stay intact.
+Prior reviews and detached source associations are not renewed, and downstream
+assertions are not all reassessed. Required original inputs and recorded code
+remain explicit. The catalog now has eleven groups and 45 help-only entry points.
+Tests retain static output across empty/manual/mock and populated result contexts,
+no command execution, source access or input mutation, deep-copy isolation, safe
+rendering, unchanged queues and closed readiness bounds. Independent old/new
+comparison across five contexts confirms equality after excluding the new group
+and the expected handoff self-fingerprint scope. Existing research-bundle, intake,
+source-comparison and correction implementation hashes exactly match the previous
+commit; only handoff runtime and its navigation test changed among prior Python
+files. A saved report-transition archive still verifies. Guide links resolve,
+publication audit checks 271 text files and exact manifest verification passes.
+No new module, schema, protocol mutation operation or source-retrieval capability
+is introduced. Exact-head CI covers Windows/Ubuntu with Python 3.10 and 3.12.

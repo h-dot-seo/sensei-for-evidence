@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.68.0-supplied-workflow-discovery",
+  "release": "0.68.1-result-review-navigation",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 102881,
-      "sha256": "77d51be0dd0e6699297e476ffa83642e2d55568e60d83a2207486a732ca99eb8"
+      "bytes": 105179,
+      "sha256": "020b4749adc4b59db785d9621c8671cb71f12bc72542cdec7260b195c84c088a"
     },
     {
       "path": "adapter_integrity.py",
@@ -230,8 +230,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 12429,
-      "sha256": "b00fc84d7ae828a99c45be2bbff7d7b3d6394f03280d39847c25831ab3dc78ae"
+      "bytes": 13606,
+      "sha256": "7be9a8df1a7671fda1d608ef9fd1bdf80579f2e3f48e6cb44cc51793637f2a27"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -925,8 +925,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 38821,
-      "sha256": "031ba267ead3163bcfcc9ae2e4ebe0f275f0c2e30f5f2cc9c589fe810c2a1b06"
+      "bytes": 40167,
+      "sha256": "1ef49a687ba5a22e1bad7bfb12f912514975a51482ba07fbf749e3349dd89d99"
     },
     {
       "path": "screening_decision.py",
@@ -1305,8 +1305,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 11255,
-      "sha256": "d2db8058f1903c2d68e5729be24dff09739b39cdd0a07ab6d31512067f34992a"
+      "bytes": 13148,
+      "sha256": "51d079de276daed9a5af6b33f188027662b93724327ef097271bf5816fc82793"
     },
     {
       "path": "test_synthesis_review.py",

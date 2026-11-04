@@ -122,6 +122,15 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit included/retrieved report, mapped record, declared study and selected document references.',
                                 'Source-linked human result rows, extraction metadata and separate import review.'],
          boundary='Mock-adapter inputs are unsupported for manual result intake. No result, effect size, independent study, complete extraction or scientific acceptance is generated.'),
+    dict(workflow_id='result_review_continuation', title='Compare later result-source context and separately review text corrections',
+         guide_paths=['docs/RESULT_SOURCE_REVIEW.md', 'docs/RESULT_CORRECTIONS.md'],
+         entrypoints=[dict(script='result_source_review.py', arguments=['--help'])] +
+                     [dict(script='result_correction.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
+         required_human_inputs=['For comparison: the actual original protocol, retained manual-result intake application and explicit current protocol.',
+                                'For correction: existing explicit result IDs, human-supplied result/limitations changes, selected source references and separate exact-target review.',
+                                'Retain original inputs, detached records and their recorded implementation; do not re-import a corrected copy under a new ID.'],
+         boundary='Comparison replays the original intake before comparing literal current context, not historical lineage or approval. Correction changes only result/limitations text, preserving IDs, row order and counts. It does not renew earlier reviews, repair associations or reassess all downstream assertions; changed context never selects a correction automatically.'),
     dict(workflow_id='condition_intake', title='Append supplied descriptive nonclinical context',
          guide_paths=['docs/MANUAL_CONDITION_INTAKE.md', 'docs/EXPERIMENT_CONDITIONS.md'],
          entrypoints=[dict(script='condition_intake.py', arguments=[command, '--help'])

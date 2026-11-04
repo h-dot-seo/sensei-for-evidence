@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
-                'full_text_decision','result_intake','condition_intake','source_review_work',
+                'full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work',
                 'collection_archives','report_transition_archive']
 
 
@@ -34,7 +34,8 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         first = review_handoff.handoff(self.protocol)['supplied_input_workflows']
         self.assertEqual([item['workflow_id'] for item in first], WORKFLOW_IDS)
         for p, selection in [(self.protocol,'WP-TRANSLATION'),(fixture('bibliographic-base.json'),None),
-                             (fixture('report-intake-base.json'),None),(fixture('source-work-protocol.json'),None)]:
+                             (fixture('report-intake-base.json'),None),(fixture('source-work-protocol.json'),None),
+                             (fixture('result-source-current.json'),None)]:
             result = review_handoff.handoff(p,selection)
             self.assertEqual(result['supplied_input_workflows'], first)
             self.assertIn('protocol-independent', result['supplied_input_workflow_scope'])
@@ -58,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),41)
+        self.assertEqual(len(entries),45)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -127,6 +128,26 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertIn('result and condition operations are outside',scope)
         self.assertIn('earlier/later history is unassessed',scope)
 
+    def test_result_continuation_distinguishes_comparison_from_reviewed_correction(self):
+        result=review_handoff.handoff(fixture('result-source-current.json'))
+        route=next(r for r in result['supplied_input_workflows'] if r['workflow_id']=='result_review_continuation')
+        self.assertEqual(route['guide_paths'],['docs/RESULT_SOURCE_REVIEW.md','docs/RESULT_CORRECTIONS.md'])
+        self.assertEqual(route['entrypoints'],[
+            dict(script='result_source_review.py',arguments=['--help']),
+            *[dict(script='result_correction.py',arguments=[command,'--help'])
+              for command in ('target','assemble','verify')]])
+        inputs=' '.join(route['required_human_inputs'])
+        for required in ['original protocol','retained manual-result intake application','current protocol',
+                         'selected source references','separate exact-target review','recorded implementation',
+                         'do not re-import a corrected copy under a new ID']:
+            self.assertIn(required,inputs)
+        for boundary in ['not historical lineage or approval','only result/limitations text',
+                         'preserving IDs, row order and counts','does not renew earlier reviews',
+                         'reassess all downstream assertions','never selects a correction automatically']:
+            self.assertIn(boundary,route['boundary'])
+        self.assertEqual({row['queue']:row['items'] for row in result['manual_review_steps']},
+                         status(fixture('result-source-current.json'))['queues'])
+
     def test_discovery_never_executes_commands_or_opens_source_locators(self):
         with patch.object(subprocess,'run',side_effect=AssertionError('No execution')), \
              patch.object(socket,'create_connection',side_effect=AssertionError('No network')):
@@ -138,8 +159,9 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         result=review_handoff.handoff(self.protocol)
         self.assertEqual(result['engine_sha256']['review_handoff.py'],hashlib.sha256((ROOT/'review_handoff.py').read_bytes()).hexdigest())
         self.assertNotIn('review_handoff.py',research_bundle.ENGINE_FILES)
-        import report_intake,report_retrieval,report_transition_bundle
-        for hashes in [report_intake._implementation_hashes(),report_retrieval._implementation_hashes(),report_transition_bundle.implementation_hashes()]:
+        import report_intake,report_retrieval,report_transition_bundle,result_intake,result_correction,result_source_review
+        for hashes in [report_intake._implementation_hashes(),report_retrieval._implementation_hashes(),report_transition_bundle.implementation_hashes(),
+                       result_intake._implementation_hashes(),result_correction._implementation_hashes(),result_source_review._implementation_hashes()]:
             self.assertNotIn('review_handoff.py',hashes)
 
     def test_cli_json_text_spaces_and_leading_dash_work_id_write_no_files(self):
