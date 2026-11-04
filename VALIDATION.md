@@ -1047,3 +1047,36 @@ verification passes. This supports a documented strict subset, not every NBIB
 variant. No provider connection, real citation/paper corpus, source authentication,
 automatic identity resolution, completeness or medical-validity assertion,
 biological execution instruction or generated scientific finding was added.
+
+Portable native collection bundle increment (2026-11-04): 1,080 tests in the suite;
+Linux run: 1,079 passed and one native-Windows-only test skipped. Twenty new
+independently authored tests cover exact native-wrapper-to-historical-intake
+association, receipt/intake/wrapper/source hashes, deterministic selection order,
+mixed CSV/NBIB imports, partial attachment, duplicate/missing/unmatched selections,
+same native bytes under different searches, later legitimate protocol enrichment,
+and preservation of exact protocol/native bytes without input mutation. The
+focused five-suite run passes 115 tests. Unknown or changed derived payloads,
+resealed native fields and summaries, altered base/receipt/engine metadata,
+boolean/integer substitutions and invalid JSON fail closed.
+Archive tests reject outer and nested duplicate, traversal, unexpected, symlink
+and compressed entries; direct encrypted-header, CRC and oversized-entry probes
+also fail. Prefix/trailing bytes and changed ZIP metadata fail canonical replay.
+Verification never extracts files. Bounds include the stored ZIP overhead, and
+inclusive-limit tests pass. CLI tests cover strict local input, filenames with
+equals signs, exclusive output, available-host symlink probes and rendering
+preflight failures before file creation. Independent read-only implementation
+and documentation review found no issue requiring changes and separately probed
+nested hostile entries and metadata changes, including resealed outer hashes.
+The fictional CLI packages the previously reviewed three-occurrence/two-record
+NBIB collection, verifies its native association and unchanged ordinary research
+bundle, and preserves its one incomplete search with no new research decisions.
+Other tests show uncovered imports explicitly without inferring whether their
+origin was CSV or an unsupplied native wrapper. No archive is uploaded or shared.
+All 39 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing Python file is byte-unchanged; saved
+NBIB preparation, result-intake, result-correction and condition-intake artifacts
+still replay. Publication audit checks 228 text files and exact manifest
+verification passes. Consistency remains distinct from source or reviewer
+authentication, publication identity, search completeness and scientific validity.
+No real corpus, live retrieval, biological execution guidance or automated review
+renewal was added.

@@ -131,6 +131,11 @@ implementation hashes. The ordinary bundle does not automatically embed that
 outer artifact or certify native parsing. Use the recorded implementation
 revision for later replay if code bytes have changed.
 
+For a single portable archive that verifies both layers and their exact import
+association, use the optional [collection bundle](COLLECTION_BUNDLES.md).
+It carries explicitly selected native wrappers with the unchanged ordinary
+bundle and lists imports for which no native wrapper was supplied.
+
 For a separate inspection copy of the derivative:
 
 ```sh

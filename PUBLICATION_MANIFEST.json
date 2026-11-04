@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.59.0-pubmed-nbib-preparation",
+  "release": "0.60.0-native-collection-bundles",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 224,
+  "file_count": 227,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 23360,
-      "sha256": "3dad809f7a4e5622c3b7c9b0a298a6569126e16203d7bfe2d13d540b6587283d"
+      "bytes": 23949,
+      "sha256": "7eab4cd341e61eec3553de2a8acd29274c3b9e8c006c7dd6c29ea2a6128c732e"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 76699,
-      "sha256": "385c88774990f840694a17a77c4b11b5a21c81c6605d518d35960b25a1ce8f4b"
+      "bytes": 79157,
+      "sha256": "1039595249082f34f99a1f50673f635ff090b25f1e7bd79502ea3e56ddba3284"
     },
     {
       "path": "adapter_integrity.py",
@@ -87,6 +87,11 @@
       "path": "bibliographic_review.py",
       "bytes": 10150,
       "sha256": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570"
+    },
+    {
+      "path": "collection_bundle.py",
+      "bytes": 15517,
+      "sha256": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06"
     },
     {
       "path": "compare_runs.py",
@@ -142,6 +147,11 @@
       "path": "docs/CLAIM_COMPARISON.md",
       "bytes": 5373,
       "sha256": "d8df19ff772195c5ecea9e2f5e008cd631f87743358e8ac15b1163c6a5757c13"
+    },
+    {
+      "path": "docs/COLLECTION_BUNDLES.md",
+      "bytes": 7126,
+      "sha256": "2900cdb316e1512033a6a9c5d43e6f1ebd025d8d0aa7a350799fecc0da8597fc"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -230,8 +240,8 @@
     },
     {
       "path": "docs/PUBMED_NBIB_INTAKE.md",
-      "bytes": 9259,
-      "sha256": "829b5cd8487fb1985fac4cfbfbf0284dd6f731fb8a2167a450366e1cd9ae3dea"
+      "bytes": 9555,
+      "sha256": "9d67e0634dee093f6e8cbd819bd1b86462ab05a6ad0cad418cc8b6b8ba2398b4"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -822,6 +832,11 @@
       "path": "test_cli_e2e.py",
       "bytes": 3325,
       "sha256": "9cb0a51ef43fa10ac996493db6044e15c463e6e23ec38140946ae089d40fe286"
+    },
+    {
+      "path": "test_collection_bundle.py",
+      "bytes": 24172,
+      "sha256": "969df345e56cb96e3e5cc718be2b34b64081f4ea57e96d95e10f8b118eb3feff"
     },
     {
       "path": "test_compare_runs.py",
