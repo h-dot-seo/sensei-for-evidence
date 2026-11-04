@@ -172,6 +172,11 @@ def handoff(protocol, work_package_id=None):
         result['engine_sha256']['screening_review.py'] = hashlib.sha256(Path(__file__).with_name('screening_review.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='screening_review.py', arguments=['PROTOCOL.json','--text'],
                                             purpose='Exact source targets and separate supplied screening reviewer positions; no automatic adjudication'))
+    if 'screening_decision_history' in state:
+        result['screening_decision_history'] = copy.deepcopy(state['screening_decision_history'])
+        result['engine_sha256']['screening_decision.py'] = hashlib.sha256(Path(__file__).with_name('screening_decision.py').read_bytes()).hexdigest()
+        result['detailed_views'].append(dict(script='screening_decision.py', arguments=['inspect','PROTOCOL.json','--text'],
+                                            purpose='Retained supplied decisions and source/reviewer snapshots; retrospective differences are not pending tasks'))
     return result
 
 

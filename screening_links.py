@@ -53,23 +53,18 @@ def prepare_targets(protocol, bibliographic_collection=None):
     return dict(source_contexts=contexts, record_targets=targets)
 
 
-def link_screening_reviews(protocol, bibliographic_collection=None):
-    """Validate exact assertions and expose comparison cues, never decisions."""
-    prepared = prepare_targets(protocol, bibliographic_collection)
-    targets = {row['record_id']: row for row in prepared['record_targets']}
-    supplied = 'screening_reviews' in protocol
-    reviews = protocol.get('screening_reviews', [])
+def validate_review_assertions(reviews, known_record_ids):
+    """Validate detached raw assertions against explicitly supplied historical IDs."""
     if not isinstance(reviews, list):
-        raise ValueError('screening_reviews must be a list')
-    canonical = {row['record_id']: row for row in protocol['screening']}
-    seen_ids, seen_pairs, ledger, grouped = set(), set(), [], {}
-    for index, row in enumerate(reviews):
+        raise ValueError("screening_reviews must be a list")
+    seen_ids, seen_pairs = set(), set()
+    for row in reviews:
         if not isinstance(row, dict) or set(row) != REVIEW_FIELDS:
             raise ValueError('screening review has unknown or missing fields')
         if any(not isinstance(row[key], str) or not row[key].strip() for key in REVIEW_FIELDS):
             raise ValueError('screening review fields must be nonblank literal strings')
         rid = row['record_id']
-        if rid not in targets:
+        if rid not in known_record_ids:
             raise ValueError('unknown screening review record_id')
         pair = (rid, row['reviewer'])
         if row['review_id'] in seen_ids or pair in seen_pairs:
@@ -86,6 +81,21 @@ def link_screening_reviews(protocol, bibliographic_collection=None):
             raise ValueError('screening source_basis_sha256 must be 64 lowercase hex characters')
         seen_ids.add(row['review_id'])
         seen_pairs.add(pair)
+
+
+def link_screening_reviews(protocol, bibliographic_collection=None):
+    """Validate exact assertions and expose comparison cues, never decisions."""
+    prepared = prepare_targets(protocol, bibliographic_collection)
+    targets = {row['record_id']: row for row in prepared['record_targets']}
+    supplied = 'screening_reviews' in protocol
+    reviews = protocol.get('screening_reviews', [])
+    if not isinstance(reviews, list):
+        raise ValueError('screening_reviews must be a list')
+    canonical = {row['record_id']: row for row in protocol['screening']}
+    ledger, grouped = [], {}
+    validate_review_assertions(reviews, set(targets))
+    for index, row in enumerate(reviews):
+        rid = row['record_id']
         current_digest = targets[rid]['source_basis_sha256']
         recorded = canonical.get(rid)
         item = dict(review=copy.deepcopy(row), input_pointer=f'/screening_reviews/{index}',

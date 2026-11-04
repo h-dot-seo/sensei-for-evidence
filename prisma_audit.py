@@ -196,6 +196,8 @@ def export_audit(protocol):
         result['report_study_coverage'] = copy.deepcopy(membership_coverage)
     if 'screening_review' in research:
         result['screening_review'] = copy.deepcopy(research['screening_review'])
+    if 'screening_decision_history' in research:
+        result['screening_decision_history'] = copy.deepcopy(research['screening_decision_history'])
     return result
 
 
@@ -216,6 +218,10 @@ def render_text(result):
     if 'screening_review' in result:
         lines.extend(['Supplied screening reviewer positions (not adjudication): ' + show(result['screening_review']['record_review_ledger']),
                       result['screening_review']['boundary']])
+    if 'screening_decision_history' in result:
+        lines.extend(['Supplied screening decision history (retrospective comparisons, not pending tasks): '
+                      + show(result['screening_decision_history']['record_history']),
+                      result['screening_decision_history']['boundary']])
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
                   'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),

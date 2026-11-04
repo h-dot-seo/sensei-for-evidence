@@ -625,3 +625,28 @@ existing planning/completion/synthesis bases unchanged. The initial model permit
 one active assertion per exact record/reviewer label and performs no adjudication,
 reviewer authentication, source retrieval, medical fact check or scientific review.
 Publication audit and exact manifest verification pass; all new inputs are fictional.
+
+Supplied screening-decision history increment (2026-11-04): 686 tests in the
+suite; Linux run: 685 passed and one native-Windows-only test skipped. Thirty-seven
+independent new tests cover strict completed decision documents, whole-input
+staleness, explicit human choices without voting, before/after row preservation,
+retained reviewer assertions, flat content-addressed source catalogs, historical
+snapshot and receipt-chain integrity, canonical CSV source pointers, bounded
+history, removed records, changed context and intervening manual edits. Before
+and after assembly validate all supplied report/evidence structure, including
+scalar and plural study links, without deleting downstream rows to accept a
+conflicting exclusion. This is structural validation, not medical fact checking.
+The focused eight-suite run passes 173 tests. All 30 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison projections and report
+CSV bytes, excluding implementation fingerprints. A history-only recording leaves
+the canonical projection and screening-review targets unchanged. Retrospective
+comparison cues are not pending-work queues, and no receipt is selected as an
+automatically authoritative or latest-by-date decision. Fictional CLI journeys
+cover target, explicit assembly, inspection, comparison, audit and bundle checks,
+including interleaved CSV imports without recursive decision-history copies.
+Public APIs validate before and after mutation; strict JSON, UTF-8, control-safe
+text and exclusive output creation remain enforced. Supplied identities, dates,
+source locators and rationales are not authenticated, and historical whole-protocol
+reconstruction, eligibility validity and scientific review are not claimed.
+Publication audit and exact manifest verification pass; no private records or real
+literature were used.

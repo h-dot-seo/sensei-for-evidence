@@ -93,6 +93,8 @@ def snapshot(protocol):
         result['report_study_coverage'] = copy.deepcopy(reports['report_study_coverage'])
     if 'screening_review' in research:
         result['screening_review'] = copy.deepcopy(research['screening_review'])
+    if 'screening_decision_history' in research:
+        result['screening_decision_history'] = copy.deepcopy(research['screening_decision_history'])
     return result
 
 
@@ -145,6 +147,10 @@ def render_text(result):
         lines.extend(['Supplied screening reviewer positions (not adjudication): '
                       + show(result['screening_review']['record_review_ledger']),
                       result['screening_review']['boundary']])
+    if 'screening_decision_history' in result:
+        lines.extend(['Supplied screening decision history (not authenticated chronology): '
+                      + show(result['screening_decision_history']['record_history']),
+                      result['screening_decision_history']['boundary']])
     lines.extend(['Recorded context inventory: ' + show(result['context_ledger']),
                   'Recorded appraisal inventory: ' + show(result['appraisal_ledger']),
                   'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',

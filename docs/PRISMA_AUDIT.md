@@ -159,3 +159,9 @@ not add reviewer judgments to screened/included/excluded node counts or change
 any membership partition. Two matching labels are not consensus; opposing labels
 are not automatically resolved. See [the screening review workflow](SCREENING_REVIEWS.md)
 for the fictional example, source-hash scope and medical/source-verification limits.
+
+Optional [screening decision receipts](SCREENING_DECISIONS.md) retain the separate
+human choice and its supplied before/after/source/reviewer snapshots. Canonical
+record counts still derive only from `screening`, not from receipt totals or a
+date-selected winner. Historical receipt mismatches are retrospective comparisons,
+not automatically pending tasks or invalid earlier choices.

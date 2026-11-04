@@ -105,6 +105,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
 | `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings |
 | `screening_review.py PROTOCOL.json [--record-id ID] [--template] [--text]` | Inspect source-bound supplied reviewer positions or prepare blank assertions without deciding eligibility |
+| `screening_decision.py target/assemble/inspect ...` | Apply only an explicit supplied screening choice to a new candidate, retaining source/reviewer decision receipts |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -257,3 +258,8 @@ independence, study-level eligibility or exhaustive extraction.
 separate title/abstract judgments, source/criteria hashes and differing or stale
 assertions after collection. They never vote, adjudicate eligibility, authenticate
 reviewers or replace canonical screening and PRISMA counts.
+
+[Explicit supplied screening decisions](docs/SCREENING_DECISIONS.md) connect those
+positions to a separately authored human choice. Target-bound assembly retains
+before/after rows and source/reviewer snapshots, refuses structural conflicts,
+and never votes, authenticates chronology or verifies medical correctness.

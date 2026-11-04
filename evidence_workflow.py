@@ -13,6 +13,7 @@ from experiment_links import link_experiments
 from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
 from report_links import has_plural_studies, validate_reports, validate_evidence_membership, report_study_coverage
 from screening_links import link_screening_reviews
+from screening_decision_links import link_screening_decisions
 
 
 def run(protocol):
@@ -187,6 +188,8 @@ def run(protocol):
         result['report_study_coverage'] = report_study_coverage(protocol, explicit_reports, evidence)
     if 'screening_reviews' in protocol:
         result['screening_review'] = link_screening_reviews(protocol, bibliographic_collection)
+    if 'screening_decision_history' in protocol:
+        result['screening_decision_history'] = link_screening_decisions(protocol, bibliographic_collection)
     return result
 
 

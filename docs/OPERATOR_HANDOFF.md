@@ -126,3 +126,8 @@ original reviewer, canonical screening and search rows. A missing/current/stale
 or differing position is a manual review cue, not an automatic eligibility
 decision or a new work dependency. Review labels do not authenticate a person,
 establish independent screening or verify a medical fact.
+
+Optional [screening decision history](SCREENING_DECISIONS.md) appears separately
+from pending queues, with a detailed inspection link. It retains explicit choices
+without erasing reviewer differences. Older receipt/current-row mismatches do not
+create work dependencies, select an active receipt or imply an invalid old choice.

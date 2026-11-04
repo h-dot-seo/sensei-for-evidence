@@ -36,6 +36,30 @@ def entity_changes(before, after, id_field):
                 unchanged_count=len(shared) - len(changed))
 
 
+def screening_decision_changes(left, right):
+    """Retain historical receipts while comparing their current-context labels."""
+    a, b = left.get('screening_decision_history'), right.get('screening_decision_history')
+    old = {} if a is None else {row['receipt']['receipt_id']: row for row in a['receipt_ledger']}
+    new = {} if b is None else {row['receipt']['receipt_id']: row for row in b['receipt_ledger']}
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        receipt_changes=entity_changes([row['receipt'] for row in old.values()],
+                                      [row['receipt'] for row in new.values()], 'receipt_id'),
+        receipt_comparisons=[dict(receipt_id=rid, before=copy.deepcopy(old.get(rid)),
+                                  after=copy.deepcopy(new.get(rid))) for rid in sorted(set(old) | set(new))],
+        source_catalog_changes=entity_changes([] if a is None else a['source_contexts'],
+                                             [] if b is None else b['source_contexts'], 'search_context_sha256'),
+        record_history_changes=entity_changes([] if a is None else a['record_history'],
+                                             [] if b is None else b['record_history'], 'record_id'),
+        before_counts=None if a is None else copy.deepcopy(a['counts']),
+        after_counts=None if b is None else copy.deepcopy(b['counts']),
+        boundary=('Exact supplied receipt IDs, retained snapshots and recomputed current-context labels only. '
+                  'A historical mismatch is a retrospective comparison, not an invalid prior decision or an unfinished task. '
+                  'No receipt is selected as active or authoritative, no date selects a winner, and no adjudication validity '
+                  'or complete/authenticated chronology is established. Canonical screening remains separate.'))
+
+
 def screening_review_changes(left, right):
     """Compare supplied reviewer assertions and recomputed labels, not adjudication."""
     a, b = left.get('screening_review'), right.get('screening_review')
@@ -368,6 +392,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
             before, after, left, right, left_reports, right_reports)
     if 'screening_review' in left or 'screening_review' in right:
         result['screening_review_changes'] = screening_review_changes(left, right)
+    if 'screening_decision_history' in left or 'screening_decision_history' in right:
+        result['screening_decision_changes'] = screening_decision_changes(left, right)
     return result
 
 
@@ -410,6 +436,19 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'screening_decision_changes' in result:
+        history = result['screening_decision_changes']
+        lines.extend(['', 'Supplied screening decision history comparison (not authenticated chronology):',
+                      'Before/after history stage: ' + show(dict(before=history['before_stage'], after=history['after_stage'])),
+                      'Changed retained receipts: ' + show(history['receipt_changes']),
+                      'Changed retained source catalog: ' + show(history['source_catalog_changes']),
+                      'Changed record history projections: ' + show(history['record_history_changes'])])
+        for row in history['receipt_comparisons']:
+            def historical_state(snapshot):
+                return None if snapshot is None else {key: value for key, value in snapshot.items() if key != 'receipt'}
+            lines.append('Receipt current-context comparison: ' + show(dict(
+                receipt_id=row['receipt_id'], before=historical_state(row['before']), after=historical_state(row['after']))))
+        lines.append(history['boundary'])
     if 'screening_review_changes' in result:
         screening = result['screening_review_changes']
         lines.extend(['', 'Supplied screening review comparison (not adjudication):',

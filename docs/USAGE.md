@@ -341,6 +341,12 @@ unfilled assertions and `--output NEW_PATH` to save a separate JSON report witho
 overwrite. See [screening reviewer positions](SCREENING_REVIEWS.md) for exact source
 binding, disagreement, source-change and non-adjudication behavior.
 
+When a human explicitly supplies the canonical choice, the separate
+`screening_decision.py target/assemble/inspect` workflow can retain its context
+and produce a new protocol candidate. It does not fill a verdict automatically.
+See [supplied decision receipts](SCREENING_DECISIONS.md) for concurrency hashes,
+before/after validation, immutable inputs and retrospective history limits.
+
 ## Offline run-to-run comparison
 
 ```sh

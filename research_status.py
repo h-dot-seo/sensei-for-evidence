@@ -63,7 +63,7 @@ def status(protocol):
             research['screening_review']['records_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    return dict(question=research['question'], protocol_version=research['protocol_version'],
+    result = dict(question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not an exact-byte receipt',
                 engine_sha256=implementation, search_plan_status=plan['plan_status'],
@@ -74,6 +74,14 @@ def status(protocol):
                 record_extraction_scope=research['extraction_pending_scope'],
                 extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED',
                 conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'screening_decision_history' in research:
+        history = research['screening_decision_history']
+        result['screening_decision_history'] = dict(
+            stage=history['stage'], counts=copy.deepcopy(history['counts']),
+            record_history=copy.deepcopy(history['record_history']),
+            records_with_history_cues=copy.deepcopy(history['records_with_history_cues']),
+            scope='retrospective_comparisons_not_pending_tasks', boundary=history['boundary'])
+    return result
 
 
 def render_text(result):
@@ -120,6 +128,10 @@ def render_text(result):
     if 'records_with_screening_review_cues' in result['queues']:
         lines.append('Records with supplied screening-review cues: ' + count('records_with_screening_review_cues'))
         lines.append('Reviewer assertions do not adjudicate eligibility or replace recorded screening decisions.')
+    if 'screening_decision_history' in result:
+        lines.append('Recorded screening decision history: '
+                     + json.dumps(result['screening_decision_history']['counts'], sort_keys=True, ensure_ascii=True))
+        lines.append('Historical differences are retrospective comparisons, not automatically unfinished work or invalid prior decisions.')
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
     lines.append('Record identity: exact supplied IDs only; identities not independently verified.')

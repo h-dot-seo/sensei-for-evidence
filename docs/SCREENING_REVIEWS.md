@@ -52,10 +52,12 @@ example is a synthetic demonstration, not authenticated review history.
    fields honestly. Copy the completed assertion rows, not the entire template
    report, into `screening_reviews` in a separate working protocol. Rerun the
    commands. Never copy a fresh hash just to clear a stale-review cue.
-4. If a canonical eligibility decision is appropriate, a human records it
-   separately in `screening`, with its own reason. This tool has no apply,
-   majority-vote or adjudication command. Preserve earlier protocol snapshots
-   when changing an assertion; this first increment is not an append-only history.
+4. If a canonical eligibility decision is appropriate, a human supplies it
+   separately with its own reason. `screening_review.py` remains read-only. The
+   separate [explicit decision workflow](SCREENING_DECISIONS.md) can apply only a
+   completed supplied document to a new candidate and retain decision receipts.
+   It never votes or adjudicates eligibility. Preserve earlier protocol snapshots
+   when changing reviewer assertions; reviewer supersession is not implemented.
 
 Each review requires exactly these fields:
 
@@ -148,5 +150,5 @@ bundles; a new implementation fingerprint is not automatic reapproval.
 Informational reviewer assertions do not change existing planning, completion or
 synthesis source bases. Canonical screening remains the operational input to
 those workflows. No new work dependency is created, and work completion does not
-resolve reviewer positions. Full-text review, per-study eligibility, supersession
-history, source authenticity and medical/scientific correctness remain separate.
+resolve reviewer positions. Full-text review, per-study eligibility, reviewer
+supersession history, source authenticity and medical/scientific correctness remain separate.

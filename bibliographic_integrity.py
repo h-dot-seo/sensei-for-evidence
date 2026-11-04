@@ -15,7 +15,7 @@ MAX_IMPORTS = 100
 ENRICHMENT_FIELDS = {
     'searches', 'screening', 'reports', 'evidence', 'gaps', 'contexts',
     'appraisals', 'version', 'planning_decisions', 'synthesis_statements',
-    'experimental_units', 'bibliographic_imports', 'screening_reviews',
+    'experimental_units', 'bibliographic_imports', 'screening_reviews', 'screening_decision_history',
 }
 ENTRY_FIELDS = {
     'intake', 'prior_protocol_body', 'prior_prefix_count', 'resolutions',
