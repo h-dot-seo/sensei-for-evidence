@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "domain": "clinical_guideline",
+  "context_scope": "source_review",
+  "evidence_ids": [],
+  "source_refs": [
+    {
+      "kind": "planned_search",
+      "search_id": "local-secondary"
+    }
+  ]
+}

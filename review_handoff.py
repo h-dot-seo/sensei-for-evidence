@@ -164,6 +164,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Exact existing result IDs within one supplied study per appraisal; authored method, domain judgements and provenance',
                                 'Separate exact-target import review; no method or judgement is generated'],
          boundary='Only new supplied appraisal records are appended. Conflicting positions remain separate; no score, consensus or method suitability is inferred. Mapped source catalogs are context, not proof of reading. Existing planning/synthesis/completion hashes are not renewed; derived source-status cues may change.'),
+    dict(workflow_id='context_intake', title='Record supplied unassigned guideline and development contexts',
+         guide_paths=['docs/MANUAL_CONTEXT_INTAKE.md', 'docs/SOURCE_CONTEXTS.md'],
+         entrypoints=[dict(script='context_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit domain/scope and source or result links, complete supplied context assertions and own review status',
+                                'Separate exact-input import review; no scientific, clinical or regulatory judgement is generated'],
+         boundary='Only new contexts append and remain unassigned. Import review never changes context review_status or authorship. Existing work/synthesis links and planning/completion bases stay unchanged. Source links do not promote eligibility or evidence; no guideline currency or regulatory validity is established.'),
     dict(workflow_id='source_review_work', title='Append explicit source-review work proposals',
          guide_paths=['docs/SOURCE_WORK_INTAKE.md', 'docs/SOURCE_REVIEW_WORK.md'],
          entrypoints=[dict(script='source_work_intake.py', arguments=[command, '--help'])

@@ -442,3 +442,8 @@ no appraisal, work completion or prior reviewer assertion is renewed.
 original/import/endpoint bytes for an explicitly selected contiguous appraisal
 segment. Existing archives stay unchanged; source snapshots and supplied reviews
 retain their historical scope without asserting complete history or current validity.
+
+[Reviewed guideline/development context intake](docs/MANUAL_CONTEXT_INTAKE.md)
+appends complete human-authored source/evidence contexts without inventing clinical
+or regulatory judgements. New contexts stay unassigned, and existing work links,
+planning/completion bases and each context's own review status remain unchanged.

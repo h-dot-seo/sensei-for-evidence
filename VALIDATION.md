@@ -2233,3 +2233,46 @@ members, unsafe file types, compression, altered metadata and inconsistent repla
 No extraction, locator resolution, source reading or external/model call occurs.
 Unsigned assertions, partial selected history and no atomic path-race defense
 remain explicit limitations. Exact-head remote CI is verified separately.
+
+The published appraisal-archive head was rerun locally in full: 1,623 tests in
+275.873 seconds, 1,622 passed and one native-Windows-only skip. Its exact-head
+Ubuntu/Windows × Python 3.10/3.12 matrix subsequently passed all four jobs (run
+41865544255, commit 27545526be9e6eab5c05c7d8fcbabf78954cd529). The prior
+appraisal-comparison head also passed all four matrix jobs (run 41861815662,
+commit 4b9bcc8bd0bf0f3c1047ccae1c2f8840a6e00dbf).
+
+## 2026-11-04 reviewed unassigned context intake
+
+Added standalone append-only input for supplied clinical-guideline/development
+contexts, using explicit source_review or extracted_evidence scope and separate
+exact-input import review. Newly imported contexts remain unassigned. Their own
+pending/reviewed status and attribution are retained, never supplied by import
+approval. Existing engine and archive formats are unchanged.
+
+Full Linux suite: 1,654 tests in 331.582 seconds, 1,653 passed and one
+native-Windows-only skip. Thirty-one new tests include 29 intake regressions, an
+eight-command documented synthetic journey and static operator discovery. Focused
+intake/journey/discovery passed 50 tests in 11.640 seconds. The catalog now has
+20 routes and 82 parser-help entrypoints, without execution or scope selection.
+
+A separate read-only reviewer exercised prepare/assemble/replay and raw-prefix
+preservation across 12 valid protocol fixtures, evidence snapshot identity/index
+handling, ten malformed inputs and exclusive file/symlink output behavior, finding
+no correctness blocker. The reviewer-reported wording typo was corrected before
+the final full test run. This was code-behavior review, not clinical or regulatory
+validation, source authentication or a comprehensive security audit.
+
+Explicit preservation checks cover original raw fields/context prefix, count
+partitions, work/dependency state, all existing planning/completion bases and
+synthesis assertions. New context, unassigned, pending and PRISMA source-context
+ledgers may grow. Source records may be excluded/unscreened and planned searches
+unexecuted without eligibility or evidence promotion. Existing-work assignment,
+review renewal, context replacement and removal are intentionally unsupported.
+
+Compilation, changed-guide links, whitespace and limited publication audit passed;
+exact publication inventory is regenerated and verified before push. Bounds are
+100 contexts, 10 MB candidate/reference/review JSON and 50 MB protocol/application,
+not hard resource ceilings. No external/model calls, source reading, guideline
+currency assessment, clinical judgement or regulatory determination is performed.
+Unsigned assertions and non-atomic path-race/ancestor-alias limits remain explicit.
+Final exact-head remote CI is checked separately after publication.

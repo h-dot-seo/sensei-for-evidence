@@ -102,3 +102,7 @@ existing count partitions retain their meaning. Bundles preserve the context and
 work metadata. Source authenticity, clinical applicability, completeness and
 scientific conclusions remain unverified. Only generic code and synthetic examples
 are included; keep real source material and research outputs private.
+
+For append-only recording without hand-editing the protocol, use the
+[reviewed context intake](MANUAL_CONTEXT_INTAKE.md). New contexts remain unassigned;
+import approval is separate from context applicability and its own review status.

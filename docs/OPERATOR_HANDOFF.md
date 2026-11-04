@@ -254,3 +254,7 @@ Literal drift stays separate from scientific validity or renewed human review.
 [Appraisal-transition archives](APPRAISAL_TRANSITION_BUNDLES.md) retain explicitly
 ordered appraisal imports with actual initial/endpoint snapshots. This separate
 route exposes create/verify help only; it does not select a segment or perform review.
+
+[Reviewed context intake](MANUAL_CONTEXT_INTAKE.md) supplies a blank draft and exact
+import-review path for new guideline/development contexts. It does not assign them
+to existing work or upgrade their own pending/reviewed status.
