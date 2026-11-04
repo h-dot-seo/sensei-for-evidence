@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.77.0-reviewed-appraisal-intake",
+  "release": "0.78.0-detached-appraisal-source-review",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 321,
+  "file_count": 324,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 32858,
-      "sha256": "f3276ad04dc9001e01434d8b45f76bcf4a0f34f01aaa215d2719429cef439259"
+      "bytes": 33175,
+      "sha256": "ad9fb912cbd8291f8d1c1e4b89218dc4434d6767adbae631d0f3c26aabe2a1b8"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 158090,
-      "sha256": "d0acced0016d752e8613a81a4c32154d025c396db3cb23278fbc0430dce6a029"
+      "bytes": 159581,
+      "sha256": "83ef1df1754ba604f780c2bb5a427091e480dd3870632a56b279464770f62c09"
     },
     {
       "path": "adapter_integrity.py",
@@ -67,6 +67,11 @@
       "path": "appraisal_links.py",
       "bytes": 3428,
       "sha256": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2"
+    },
+    {
+      "path": "appraisal_source_review.py",
+      "bytes": 9362,
+      "sha256": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf"
     },
     {
       "path": "artifact_review.py",
@@ -137,6 +142,11 @@
       "path": "docs/AMENDMENT_NOTES.md",
       "bytes": 3887,
       "sha256": "a981e2b81de72d43fca518fa4daa3be5d7a1564900158883b6617b69ccb71b1c"
+    },
+    {
+      "path": "docs/APPRAISAL_SOURCE_REVIEW.md",
+      "bytes": 4510,
+      "sha256": "65603be4bc3b50c765c1ca6759d82be1550947b0ab1cdfe327bd16d8a294acb5"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -225,8 +235,8 @@
     },
     {
       "path": "docs/MANUAL_APPRAISAL_INTAKE.md",
-      "bytes": 9443,
-      "sha256": "96d6d7d49e2beb4e1dbd2a569bfb0ef6bddb82fa2f39c2d1e2d506c1d94554f9"
+      "bytes": 9695,
+      "sha256": "ad6d649c5985ff8313d65eeab6bd42f33c5c091179c8c3bd4148448bedc746f4"
     },
     {
       "path": "docs/MANUAL_CONDITION_INTAKE.md",
@@ -265,8 +275,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 15520,
-      "sha256": "50acc551c036fb9a2185f6df443ec5b9ba0d8462d1e13199e59855a66e3ad9cc"
+      "bytes": 15841,
+      "sha256": "8960322e9b247b0f4d8cb532bd211827e87fe3e703fdb9f43d7796b5a41e5adb"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -1085,8 +1095,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 47926,
-      "sha256": "54200409b3e6a633cb4d2d7557ead9b12c5f0828e9c3cb8ef898e21140901979"
+      "bytes": 48050,
+      "sha256": "c01acb21c4df8618607082a6625e51ac449f41f598e79f3a3564aeed0308fb3b"
     },
     {
       "path": "ris_export_parser.py",
@@ -1162,6 +1172,11 @@
       "path": "test_appraisal_links.py",
       "bytes": 5394,
       "sha256": "9e8abfef206648b4084e7cde9dfd6a5423f6db1a6aaeb4bc06f8dffb28151184"
+    },
+    {
+      "path": "test_appraisal_source_review.py",
+      "bytes": 12598,
+      "sha256": "6bdf6c516fd875fab4ba8ee97a35ca994cd1e72b45a7ecd2ed7fcf643cbb577b"
     },
     {
       "path": "test_artifact_review.py",
@@ -1530,8 +1545,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 19297,
-      "sha256": "35a84428f1ece3c85c3f8a77a188091b5e64a70d1e3ce50954df4976556016f8"
+      "bytes": 19469,
+      "sha256": "0dcb640ef9aa40e062960de8e27198bdc88577f3d040119007aea34a57c65f70"
     },
     {
       "path": "test_synthesis_review.py",

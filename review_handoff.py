@@ -157,9 +157,10 @@ SUPPLIED_INPUT_WORKFLOWS = [
                                 'Descriptive condition context with honest unknown/not-reported fields and separate import review.'],
          boundary='No concentration, exposure, timing, comparator, causal interpretation or experimental procedure is invented. Optional missing stages are not automatically required work.'),
     dict(workflow_id='appraisal_intake', title='Record supplied result-linked appraisals with separate import review',
-         guide_paths=['docs/MANUAL_APPRAISAL_INTAKE.md', 'docs/SYNTHESIS_REVIEW.md', 'docs/WORK_REVIEW.md'],
+         guide_paths=['docs/MANUAL_APPRAISAL_INTAKE.md', 'docs/APPRAISAL_SOURCE_REVIEW.md', 'docs/SYNTHESIS_REVIEW.md', 'docs/WORK_REVIEW.md'],
          entrypoints=[dict(script='appraisal_intake.py', arguments=[command, '--help'])
-                      for command in ('template', 'target', 'assemble', 'verify')],
+                      for command in ('template', 'target', 'assemble', 'verify')]
+                     + [dict(script='appraisal_source_review.py', arguments=['--help'])],
          required_human_inputs=['Exact existing result IDs within one supplied study per appraisal; authored method, domain judgements and provenance',
                                 'Separate exact-target import review; no method or judgement is generated'],
          boundary='Only new supplied appraisal records are appended. Conflicting positions remain separate; no score, consensus or method suitability is inferred. Mapped source catalogs are context, not proof of reading. Existing planning/synthesis/completion hashes are not renewed; derived source-status cues may change.'),

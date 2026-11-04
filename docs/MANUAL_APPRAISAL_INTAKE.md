@@ -147,3 +147,7 @@ performed. Supplied private text is retained without redaction. Keep real inputs
 and generated records outside this public repository. Neither imported appraisals
 nor matching hashes establish quality, complete research, clinical applicability,
 scientific acceptance or development readiness.
+
+For later snapshots, [detached appraisal context comparison](APPRAISAL_SOURCE_REVIEW.md)
+shows literal appraisal/result/source changes after exact historical replay. It
+adds no current-applicability label to stored appraisals and never renews review.

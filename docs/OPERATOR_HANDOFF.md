@@ -245,3 +245,8 @@ history, inspect artifacts or renew historical completion assertions.
 domain judgements through a separate exact-target review. It preserves conflicting
 positions and existing assertions while exposing changed source-status cues; no
 quality score, method choice or scientific acceptance is generated.
+
+[Detached appraisal context comparison](APPRAISAL_SOURCE_REVIEW.md) also accepts the
+original protocol, retained appraisal application and a later valid snapshot.
+The appraisal route exposes its parser help without choosing or executing it.
+Literal drift stays separate from scientific validity or renewed human review.

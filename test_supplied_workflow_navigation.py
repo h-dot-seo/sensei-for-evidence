@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),75)
+        self.assertEqual(len(entries),76)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -144,7 +144,9 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         route = catalog['appraisal_intake']
         self.assertIn('docs/MANUAL_APPRAISAL_INTAKE.md', route['guide_paths'])
         self.assertEqual(route['entrypoints'], [dict(script='appraisal_intake.py', arguments=[c,'--help'])
-                                               for c in ('template','target','assemble','verify')])
+                                               for c in ('template','target','assemble','verify')]
+                         + [dict(script='appraisal_source_review.py', arguments=['--help'])])
+        self.assertIn('docs/APPRAISAL_SOURCE_REVIEW.md', route['guide_paths'])
         for phrase in ['Conflicting positions remain separate', 'no score, consensus', 'not proof of reading',
                        'hashes are not renewed', 'source-status cues may change']:
             self.assertIn(phrase, route['boundary'])

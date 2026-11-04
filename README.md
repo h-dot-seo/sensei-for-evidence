@@ -432,3 +432,8 @@ a historical segment does not renew acceptance or establish complete project his
 [Reviewed appraisal intake](docs/MANUAL_APPRAISAL_INTAKE.md) records human-authored
 method/domain assertions against exact result IDs. Existing conflicting positions
 remain separate; changed work/synthesis/completion source cues do not renew reviews.
+
+[Detached appraisal context comparison](docs/APPRAISAL_SOURCE_REVIEW.md) follows
+exactly replayed imported appraisal IDs and their original result/source snapshots
+through later supplied edits. Literal drift is separate from scientific validity;
+no appraisal, work completion or prior reviewer assertion is renewed.

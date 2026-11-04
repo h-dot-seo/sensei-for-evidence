@@ -2174,3 +2174,26 @@ Compilation, 99 changed-guide local links and whitespace checks pass. Limited
 publication audit checks 322 text files; exact manifest verification passes with
 321 listed files. Ubuntu/Windows × Python 3.10/3.12 exact-head CI is verified
 separately after publication and is not a scientific or independent security audit.
+
+## 2026-11-04 detached appraisal context comparison
+
+Added read-only replay-first comparison of imported appraisal assertions and their
+historical raw/normalized result, record-source and mapped report-source context.
+Literal changes remain separate from appraisal validity and never renew stored
+reviews, work completion or planning. Added operator discovery and a dedicated
+guide; no live retrieval, model call, source reading or scientific assessment.
+
+The full Linux regression run passed 1,587 tests with one Windows-only skip
+(1,586 passed). Three additional focused regressions were then added for moved
+result provenance, legacy-versus-explicit ID origin and added mapped source
+catalogs; the complete new 25-test focused suite passed. Synthetic data only.
+An independent read-only code reviewer found no blocking issue after running the
+initial 18 tests and additional identity/reorder/oversized-input probes. This is
+code-behavior review, not scientific validation or a comprehensive security audit.
+Compilation, changed-guide local links, whitespace and limited publication audit
+passed. Exact final-head cross-platform CI is checked separately after push.
+
+Inputs and canonical/rendered outputs are capped at 50 MB each, not hard memory or
+CPU ceilings. Only historical appraisal/result pairs are expanded; added links and
+unrelated current evidence are not reviewed. Exact replay remains unsigned and
+does not establish lineage, authorship, reading or appraisal applicability.
