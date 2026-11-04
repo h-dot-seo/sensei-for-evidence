@@ -118,6 +118,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
 | `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
+| `report_source_intake.py template/target/assemble/verify ...` | Append explicitly reviewed new source declarations to retrieved reports, preserving prior catalogs and stale reviews without byte verification |
 | `report_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay an explicitly selected contiguous registration/retrieval/full-text segment, not complete research history |
 | `extraction_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay a contiguous reviewed result/correction/condition segment with historical source context, not complete extraction history |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
@@ -344,6 +345,9 @@ no report eligibility, study membership, result or nonclinical parameter is infe
 [Supplied retrieval updates](docs/REPORT_RETRIEVAL_UPDATES.md) then record a later
 retrieval outcome for pending/unavailable reports without duplicate registration.
 Changed source contexts expose stale retained reviews rather than refreshing them.
+[Reviewed source declarations](docs/MANUAL_SOURCE_DECLARATIONS.md) append later
+supplements or separately declared versions to already retrieved reports. Existing
+descriptors remain untouched, and local byte comparison stays a separate check.
 The optional [report-transition archive](docs/REPORT_TRANSITION_BUNDLES.md) retains
 exact initial/application/endpoint files for a supplied contiguous segment without
 changing the existing research or native-source archive formats.

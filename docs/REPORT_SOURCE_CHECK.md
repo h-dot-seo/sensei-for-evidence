@@ -137,3 +137,10 @@ bundle. Ordinary review/inventory views still correctly say their supplied diges
 are unverified and `document_bytes_verification` is `NOT_PERFORMED`. Existing
 semantic hashes, counts, CSV exports, queues and bundle bytes remain unchanged.
 The separate command's result must not be relabeled as human review completion.
+
+## Adding a separate source declaration
+
+[Reviewed source declaration intake](MANUAL_SOURCE_DECLARATIONS.md) can append a
+new descriptor to an already retrieved report. It does not compute an expected
+digest or replace an older null-digest row. Existing descriptors remain separate;
+a matching byte check for one new source does not verify the whole catalog.

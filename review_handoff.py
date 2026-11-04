@@ -109,6 +109,15 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit unassessed pending/unavailable report selection and a supported supplied transition.',
                                 'Locator/reason, optional new source declarations and separate exact-target review.'],
          boundary='No file is acquired or read. Mock contexts, already retrieved reports, same-state edits and reversals are unsupported. Source changes can stale retained assertions; no review is renewed.'),
+    dict(workflow_id='report_source_declarations', title='Append reviewed source declarations without replacing prior versions',
+         guide_paths=['docs/MANUAL_SOURCE_DECLARATIONS.md', 'docs/REPORT_REVIEWS.md', 'docs/REPORT_SOURCE_CHECK.md'],
+         entrypoints=[dict(script='report_source_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')] +
+                     [dict(script='report_source_check.py', arguments=[command, '--help'])
+                      for command in ('template', 'check')],
+         required_human_inputs=['Existing retrieved report, new explicit source IDs, literal descriptors, declaration metadata and separate exact-input import review.',
+                                'For a separate local byte check: a non-null supplied digest, explicit file mapping and trusted root; source inspection requires supported POSIX access.'],
+         boundary='Declarations do not retrieve or authenticate documents, replace old descriptors, select a preferred version or change counts/membership. New same-report sources can stale retained reviews and document-bound work without renewal. Old null digests remain unbound. Local byte checking is separate and native Windows fails closed; no source locator is followed automatically.'),
     dict(workflow_id='descriptive_inventory', title='Append supplied candidate-study descriptions before inclusion',
          guide_paths=['docs/MANUAL_INVENTORY_INTAKE.md', 'docs/REPORT_STUDY_INVENTORY.md', 'docs/INVENTORY_CANDIDATE_REVIEWS.md'],
          entrypoints=[dict(script='inventory_intake.py', arguments=[command, '--help'])

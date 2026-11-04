@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "source": {
+        "source_id": "source-extra-one",
+        "report_id": "report-one",
+        "source_locator": "synthetic://source-extra-one",
+        "document_version": "Fictional additional supplied document; not a preferred or verified version",
+        "document_sha256": null
+      },
+      "declared_by": "Fictional declarer",
+      "declared_at": "2026-11-04",
+      "declaration_note": "Synthetic source-catalog assertion only; no file was read or authenticated."
+    },
+    {
+      "source": {
+        "source_id": "source-extra-three",
+        "report_id": "report-three",
+        "source_locator": "synthetic://source-extra-three",
+        "document_version": "Fictional additional supplied document; not a preferred or verified version",
+        "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "declared_by": "Fictional declarer",
+      "declared_at": "2026-11-04",
+      "declaration_note": "Synthetic source-catalog assertion only; no file was read or authenticated."
+    }
+  ]
+}

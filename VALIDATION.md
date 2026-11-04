@@ -1746,3 +1746,93 @@ independently authored context tests and one static discovery regression. Python
 compilation, changed-guide links and whitespace checks pass. Publication audit
 checks 293 text files and exact manifest verification passes with 292 listed files.
 Exact-head CI uses the existing Ubuntu/Windows by Python 3.10/3.12 matrix.
+
+Reviewed source-declaration append increment (2026-11-04): the new
+report_source_intake.py connects already retrieved reports to template, target,
+assemble and verify commands for explicit new source descriptors. It fills the
+practical gap between initial report registration/retrieval transitions and later
+supplements or separately declared versions. This operation never fetches or
+reads a document, computes a document digest, edits/replaces an old descriptor,
+selects a preferred version, changes eligibility or renews a prior assertion.
+
+The candidate document uses the existing five-field source schema with separate
+supplied declarer/date/note metadata. Templates fill only an explicitly selected
+report ID; human fields and source identity/locator/version remain null, with an
+explicit null digest allowed for unbound bytes. Completed rows require real dates,
+new globally unique IDs and a retrieved report, irrespective of pending/included/
+excluded full-text choice. A valid-looking digest remains an unverified supplied
+assertion. Distinct IDs with matching locator/digest remain distinct; no identity
+merging or current-version selection occurs. New rows can be appended to absent,
+empty or existing source stages without changing old catalog order.
+
+An independent reviewer inspected actual runtime code and documentation and
+independently authored 13 context regressions. All 13 pass in this POSIX environment;
+the one actual safe local-byte observation is skipped on unsupported platforms,
+while no-read template behavior remains tested. The combined new intake/context
+suite passes 34 tests, and the related source/report/study/inventory/work/navigation
+suite passes 215. Additional read-only probes rejected 14 malformed/collision
+cases, stale targets and tampered receipts. No actionable runtime defect was found,
+and local import fingerprint coverage was checked. This is targeted code review
+and synthetic software testing, not a comprehensive security or scientific audit,
+provider validation, or proof of source/people identity. Runtime SHA-256:
+b17449bbe2eb1c04309b398d9e3a431dfa1eee7a25486f6c1cb8cf59a671218b.
+
+The 21 general intake tests cover unfinished templates/reviews, exact append and
+all-other-field preservation, retrieved eligibility variants, rejected unavailable/
+unknown reports, source-ID collisions, strict document/row/review shapes and JSON
+types, real dates, literal Unicode, explicit null/digest validation, whole-input/
+candidate-order/implementation review binding, before/after catalogs and pointers,
+resealed replay attacks, whole-input invalidity and mock-context refusal. Bounds
+cover 100 versus 101 candidates, input sizes and serialized outputs. API/CLI tests
+exercise inert locators, Unicode under ASCII process streams, spaces/equals in paths,
+all commands, ordinary research snapshots, exclusive output, observed dangling
+links, inspection failures and rendering/encoding preflight.
+
+Independent context tests show that even an unselected new descriptor on the same
+report can stale retained full-text/study/inventory positions and descriptive
+inventory source bindings; unrelated report contexts stay unchanged. Document-bound
+work and its direct dependents can become stale while supplied COMPLETE assertions
+remain untouched. An indirect dependent or work without document-source opt-in is
+not automatically rebound or invalidated. New IDs conflicting with retained stale
+references on another report fail whole-protocol validation. CSV import ledgers,
+search context and mapped raw-row provenance are preserved. Separate result-source
+comparison distinguishes unchanged selected descriptors/results from changed whole
+report catalogs; no result-source association is automatically repaired.
+
+A retained null-digest descriptor stays unbound when a new descriptor has a supplied
+digest. A separate explicit local byte comparison can match the new source while
+leaving old declarations, review hashes and protocol verification claims unchanged.
+The test uses only short fictional bytes. Actual byte access remains the existing
+checker’s POSIX-only safe path; native Windows/unsupported access fails closed.
+No source read, authentication or review completion is inferred by this intake.
+
+All nine documented synthetic CLI commands passed in an outside, space-named
+output directory with explicitly fictional review metadata. The fixture adds two
+source declarations (four to six) while preserving every other raw field and
+record/report flow. Before/after report views show stale context without renewal;
+the separate byte-check template retains null path/size and performs no inspection.
+Ordinary bundle creation/verification succeeds for the enriched protocol.
+
+All 42 prior files in the combined relevant source/extraction/native/report/inventory
+replay dependency sets remain byte-unchanged. Saved extraction-transition, typed
+native, report-transition, inventory application, NBIB batch and ordinary research
+artifacts all continue to verify. The only existing runtime change is read-only
+handoff navigation. Its catalog now has fourteen groups and 61 help-only entrypoints,
+including source-declaration and separate byte-check routes; no file is inspected
+or operation recommended/executed merely by discovering the route.
+
+Limits remain 100 candidates, 10 MB candidate/review inputs and 50 MB protocol/
+application inputs/outputs, not hard CPU/memory ceilings. Exclusive output creation
+is not an atomic path-race/ancestor-alias defense. Ordinary archives do not retain
+this detached review/declaration history, and existing transition archive kinds
+are deliberately not expanded. Old descriptors cannot be edited, removed, silently
+filled or superseded here. No actual literature, private source data, experimental
+procedure or clinical inference is introduced. Census stays NOT_ESTABLISHED and
+conclusions NOT_READY.
+
+Final full Linux suite: 1,431 tests, 1,430 passed and one native-Windows-only test
+skipped (415.691 seconds). This increment adds 35 tests: 21 general intake tests,
+13 independently authored context regressions and one static discovery test.
+Compilation, changed-guide links and whitespace checks pass. Publication audit
+checks 298 text files; exact manifest verification passes with 297 listed files.
+The existing exact-head CI matrix covers Ubuntu/Windows and Python 3.10/3.12.

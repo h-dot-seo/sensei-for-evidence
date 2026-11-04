@@ -192,3 +192,10 @@ supplied human choice and explicit study declaration after structural validation
 They retain these positions unchanged and never infer a vote or correct outcome.
 The original protocol and separate application record are needed for replay;
 this review projection does not become an embedded decision history.
+
+## Reviewed append of new source declarations
+
+[Source declaration intake](MANUAL_SOURCE_DECLARATIONS.md) provides a separate
+reviewed append path for an already retrieved report, including later supplements.
+It preserves existing declarations and reviews, does not fill old null digests or
+select a preferred version, and exposes changed source contexts without renewal.
