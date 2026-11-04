@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.83.0-selected-pubmed-metadata",
+  "release": "0.84.0-local-result-passages",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 354,
+  "file_count": 362,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 35280,
-      "sha256": "20961997b7ced8c0b31e16bd8458fdd05a8d4cc7e1458e91086914975a8b0ca0"
+      "bytes": 35703,
+      "sha256": "dce50056782c5560cff34fd7bc8168aedea47c9c6a45b3c8b8b2c543218cddf3"
     },
     {
       "path": "RIGHTS.md",
@@ -40,18 +40,18 @@
     },
     {
       "path": "SECURITY.md",
-      "bytes": 2818,
-      "sha256": "21b65229f8229752a2e57a66d9bd7b9045b501692a13ae7b474731e56bb0cc3e"
+      "bytes": 3420,
+      "sha256": "a2e3e7b3f852b100952c840f4682c8a22c7aa67ff0d5891fd80f0f58681c7546"
     },
     {
       "path": "SKILL.md",
-      "bytes": 2843,
-      "sha256": "ed40f7b1c3f9eb4439a05842e8d7042cdadf09c69706d20c18a7ff5f784875c1"
+      "bytes": 3328,
+      "sha256": "236346600631f821cde3108f13d89b6912ecfcda9b2d77546e61377f37725cb4"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 174099,
-      "sha256": "8a2d0b7935f0dba6f3541c413a6abd9e6bdce2eb11c4ba259180dd135b4fccc4"
+      "bytes": 177858,
+      "sha256": "2b2b94c348aaf3b0d5fa30f1f19969338f6e8fb83357e9df729ca326aa393adf"
     },
     {
       "path": "adapter_integrity.py",
@@ -165,8 +165,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 4882,
-      "sha256": "685fabf5f65408854d4cbc3eb405fcb3363a7f29933f783d9297301e5a1c9d2b"
+      "bytes": 5352,
+      "sha256": "f4507f728972c3dfea82b62fad6488a5dc235ff85d64286b8846926f79b7fb17"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -230,8 +230,8 @@
     },
     {
       "path": "docs/EXTRACTION_WORKSHEETS.md",
-      "bytes": 9339,
-      "sha256": "78bb6b59764540603d9dbf4034d2cd348af70df5e5f5728a2afb4a96ae51ddcc"
+      "bytes": 9862,
+      "sha256": "ca3926b06fedb6e42c50384dd796c18ef52840956a01cd9c96b33c0d34b654dd"
     },
     {
       "path": "docs/FIRST_RUN.md",
@@ -275,8 +275,8 @@
     },
     {
       "path": "docs/MANUAL_RESULT_INTAKE.md",
-      "bytes": 10232,
-      "sha256": "2228ec41cc159b29f69123cab01c49db5d4184126cb1881aa3d5d4d02828f766"
+      "bytes": 10755,
+      "sha256": "6b9c25a5f64f0401e580534968faed76ec906e20aac6fdbcc712705363a1ba1f"
     },
     {
       "path": "docs/MANUAL_SOURCE_DECLARATIONS.md",
@@ -295,8 +295,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 17098,
-      "sha256": "685a8ecf213dffc0f2f0bf69443134c09c62147e8b5835929d918515d2a5c9dc"
+      "bytes": 17348,
+      "sha256": "6e6a1825c60b0013640f859a114693c6eb660709f3ed5d4b717690d519386421"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -389,6 +389,11 @@
       "sha256": "d90bd6718faf3c49ad1a672943d971bbbaaa1a34e85f199cf1da8f42ae66b599"
     },
     {
+      "path": "docs/RESULT_PASSAGE_CHECK.md",
+      "bytes": 8411,
+      "sha256": "43f790a3fe777d8ea2a0e8961b92953312501612f6808e66f88b7dbd3ed99cdc"
+    },
+    {
       "path": "docs/RESULT_SOURCE_REVIEW.md",
       "bytes": 8746,
       "sha256": "171c9b78183cec9c127f29969cbb11f507fa8030774780122f00c90ef7dd1b59"
@@ -440,8 +445,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 34565,
-      "sha256": "40a4caa689c236aad0a8751d2f3635bd088d95c52f44ce4857335518f76dfa5e"
+      "bytes": 34970,
+      "sha256": "61b66733fa673c18e2725132f1a202e3b651cabd03e5d5144eb4758988be4cb6"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -864,6 +869,26 @@
       "sha256": "261c6447fc92bf81039d451119ff760e0e42c27439704f8083601b1c3797697b"
     },
     {
+      "path": "examples/result-passage-candidates.json",
+      "bytes": 1015,
+      "sha256": "483c7eb649274039210306f01035c97d7053df459d5e457eaf9a2ff715115844"
+    },
+    {
+      "path": "examples/result-passage-manifest.json",
+      "bytes": 1067,
+      "sha256": "1ae988960cd0628077be5bffe373bf328f99bdcb230c2fc821d6f06702d2d026"
+    },
+    {
+      "path": "examples/result-passage-protocol.json",
+      "bytes": 1629,
+      "sha256": "8ac3aa44b17a91605f006ec332c7b3892d0b33906e70e96607e30b23c7c3f4ab"
+    },
+    {
+      "path": "examples/result-passage-source.txt",
+      "bytes": 417,
+      "sha256": "1cdc7953681763648f10c75ad4d00730adf5b86913ed7635c919d09f48820c9b"
+    },
+    {
       "path": "examples/result-source-current.json",
       "bytes": 15722,
       "sha256": "be8f0e25e246f5c4e69a1199a8e6d6fc47309d787d6534976ca3b5e11627bd96"
@@ -1179,14 +1204,19 @@
       "sha256": "bba5e1437fa9713291ad10f65acd2b2b3a695bae981686be9068fff4c568715b"
     },
     {
+      "path": "result_passage_check.py",
+      "bytes": 31661,
+      "sha256": "95358e182b17b39298b1e79cbe5ffd8c1340556427e0a20744e436811d50e9c1"
+    },
+    {
       "path": "result_source_review.py",
       "bytes": 14908,
       "sha256": "5fd34ef114e522a9d9251fe62ed940eb30b0630794952496453ab2356b394d7e"
     },
     {
       "path": "review_handoff.py",
-      "bytes": 52543,
-      "sha256": "5d27ced5d9da261469c2c5826d5f9f8cc3a40a90e472b4ac97d98bd9017932ad"
+      "bytes": 53426,
+      "sha256": "bf61ca82ea579c119944aa15a440dd79e28b9f779e51d35865e8493e5df0b900"
     },
     {
       "path": "ris_export_parser.py",
@@ -1614,6 +1644,16 @@
       "sha256": "a9b5de375a474a3496cd7e4d25ce6fbe1f960698a4922b7c890bd52f0dc856bc"
     },
     {
+      "path": "test_result_passage_check.py",
+      "bytes": 33718,
+      "sha256": "8765cb6b59225c6da97229a8c10a612b79923c5c5c9a2ba51a459cf01c288b72"
+    },
+    {
+      "path": "test_result_passage_journey.py",
+      "bytes": 4739,
+      "sha256": "ef8d2f0e05da146c651070d48d1303c8544aa619f4a7265c776e84c88b6c0fb4"
+    },
+    {
       "path": "test_result_source_review.py",
       "bytes": 21593,
       "sha256": "9575372ccea6a6d5124562a175972a9d3083005c34083917a0dbf2037af15a3f"
@@ -1680,8 +1720,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 23420,
-      "sha256": "36c60883d4de69c631d73a002c0293ce86330112e045acff67250dbffa1fcbbc"
+      "bytes": 24139,
+      "sha256": "3f2256614eaf77c993a9951dd0e00d81fcda71f569d4180a503d4789b1eba1cb"
     },
     {
       "path": "test_synthesis_review.py",

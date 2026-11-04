@@ -161,3 +161,12 @@ For a transcription correction to an existing finding, use
 [explicit result text correction](RESULT_CORRECTIONS.md) rather than assigning a
 new ID and counting another result. Its narrow result/limitations changes require
 a separate human review and never renew this intake's original associations.
+
+## Inspect selected verbatim passages
+
+After completing a manual candidate, use [source passage checking](RESULT_PASSAGE_CHECK.md)
+to inspect explicitly mapped UTF-8 source files and compare selected byte ranges
+with verbatim quotes beside the candidate fields. This separate local check neither
+fills result values nor establishes that a quote supports them. Its observation is
+not embedded or automatically verified by intake; retain both records and use the
+ordinary independent human review before importing a result.

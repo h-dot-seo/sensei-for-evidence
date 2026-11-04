@@ -153,3 +153,12 @@ service is contacted. Source authenticity, document bytes, reading, scientific o
 clinical correctness, complete extraction and a complete literature census remain
 unestablished or unperformed. No biological experiment or clinical action is
 designed or executed by this worksheet.
+
+## Inspect selected verbatim passages
+
+After completing a manual candidate, use [source passage checking](RESULT_PASSAGE_CHECK.md)
+to inspect explicitly mapped UTF-8 source files and compare selected byte ranges
+with verbatim quotes beside the candidate fields. This separate local check neither
+fills result values nor establishes that a quote supports them. Its observation is
+not embedded or automatically verified by intake; retain both records and use the
+ordinary independent human review before importing a result.

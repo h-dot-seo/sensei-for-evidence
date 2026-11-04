@@ -88,3 +88,10 @@ text. It reuses the strict native parser without changing its grammar. Exact-PMI
 batch reconciliation is non-positional; CSV rows retain native record fields and
 acquisition/discovery provenance. Unchanged collection review controls research
 import. No metadata record automatically becomes screening, full text or evidence.
+
+`result_passage_check.py` is a separate bounded local source reader. It validates
+completed manual candidates and all explicit mappings before descriptor-relative
+source access, compares declared hashes and exact UTF-8 byte quotations, and shows
+selected text beside unchanged fields. It neither imports results nor claims
+semantic support. The ordinary intake target/review remains separate; source-file
+observations are not a new persistent protocol approval ledger.

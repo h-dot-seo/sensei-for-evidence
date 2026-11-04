@@ -27,6 +27,8 @@ never calls models:
   Similar IDs are not merged; repeated IDs are not verified duplicate publications.
 - Record screening, report retrieval/full-text decisions, study IDs and reasoned
   exclusions, with separate record/result/report counts.
+- Explicit local UTF-8 passage checks beside supplied extraction fields, with
+  source hashes, byte ranges and quotes kept separate from scientific acceptance.
 - Supplied nonclinical comparison conditions with model, concentration/exposure,
   observation-time anchors, comparator and causal limitations; no procedure or inference.
 - Multiple result rows per source, including null findings, with extraction-level
@@ -466,3 +468,7 @@ remain separate from search completeness, identity decisions and extracted evide
 After identifier discovery, [selected PubMed metadata acquisition](docs/PUBMED_METADATA.md)
 can obtain bounded EFetch MEDLINE title/abstract candidates. It preserves literal
 PMID links and native source fields without silently screening or extracting evidence.
+
+For the reading-to-extraction step, [selected source passage checks](docs/RESULT_PASSAGE_CHECK.md)
+show exact UTF-8 quotes beside unchanged manual result values. Source and quote
+matching never replaces human interpretation or the separate result intake review.

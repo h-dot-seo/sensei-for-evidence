@@ -271,3 +271,7 @@ extraction remain separate human-reviewed stages.
 The selected PubMed metadata route links parser help and the offline rehearsal in
 [PUBMED_METADATA.md](PUBMED_METADATA.md). Navigation never invokes EFetch. Selecting
 records, transmitting identifiers and reviewing acquired metadata remain explicit.
+
+The [source passage route](RESULT_PASSAGE_CHECK.md) exposes template/catalog/check
+help only. A person explicitly maps local sources and chooses passages. Handoff
+never opens those files, and exact quotation matches never approve scientific fields.

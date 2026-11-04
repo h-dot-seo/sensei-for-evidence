@@ -1,0 +1,65 @@
+{
+  "question": "How can supplied fictional result fields and exact local passages be inspected without semantic inference?",
+  "version": "synthetic-passage-observation-v1",
+  "inclusion_criteria": [
+    "Fictional nonclinical reports for software testing only"
+  ],
+  "exclusion_criteria": [
+    "Fictional outside-scope labels"
+  ],
+  "search_plan": [
+    {
+      "search_id": "synthetic-search",
+      "source": "synthetic-index",
+      "query": "fictional labels",
+      "window": "2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "synthetic-search",
+      "source": "synthetic-index",
+      "query": "fictional labels",
+      "window": "2026",
+      "searched_at": "Fictional supplied time",
+      "record_ids": [
+        "record-one"
+      ],
+      "complete": false,
+      "total_count": null,
+      "has_more": null
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "record-one",
+      "decision": "include",
+      "reason": "Fictional supplied screening assertion."
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-one",
+      "record_ids": [
+        "record-one"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_ids": [
+        "study-one"
+      ],
+      "locator": "synthetic://report-one"
+    }
+  ],
+  "evidence": [],
+  "gaps": [],
+  "report_sources": [
+    {
+      "source_id": "source-main",
+      "report_id": "report-one",
+      "source_locator": "synthetic://never-opened/source-main",
+      "document_version": "Fictional UTF-8 LF source version 1",
+      "document_sha256": "1cdc7953681763648f10c75ad4d00730adf5b86913ed7635c919d09f48820c9b"
+    }
+  ]
+}

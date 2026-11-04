@@ -2417,3 +2417,58 @@ The prior d211f8aca1e912ea15139b76f847427905066b3d workflow run 41877285628 was
 reported completed/success at 17:48 UTC on 2026-11-04. All matrix step results were
 successful; two per-job summary states still lagged at in_progress at that read.
 New exact-head CI is checked separately after publication.
+
+The exact published metadata head baef66823ac1d924d7af073f88276541e01fa5a8
+passed all four Ubuntu/Windows × Python 3.10/3.12 jobs in run 41881573568.
+
+## 2026-11-04 local source passages beside manual extraction fields
+
+Added a read-only local reading-to-extraction bridge, not an approval wrapper.
+A source catalog exposes explicitly mapped, byte-matched UTF-8 physical lines and
+positions. A separate check compares selected verbatim quotes and byte ranges
+beside unchanged completed candidate fields. Manifest protocol/candidate/descriptor
+hashes, source-reference/report membership, nonnull declared document hashes and
+all later selections are validated before opening any source directory. Source
+locators remain inert. No source selection, scientific field, mechanism label,
+reviewer or intake decision is inferred.
+
+One descriptor-relative, no-follow, nonblocking regular-file read both collects
+and hashes each bounded source. Hard-linked/nonregular/unsafe paths, changed reads,
+size/hash mismatches and unsupported text prevent quote exposure for that source.
+Native Windows local source checks fail closed; template and metadata validation
+remain available. Rerun with original files and the recorded implementation for
+reproducibility. The detached observation is unsigned, not a persistent ledger or
+proof of execution, source authenticity, semantic support or complete reading.
+
+Independent review exercised metadata-before-read, bindings, symlink/hardlink/FIFO
+and directory refusals, changed-read observations, mismatch non-disclosure, UTF-8
+boundaries/BOM/CRLF/CR and Unicode line separators, output preflight and safe error
+rendering. It identified excessive span/catalog/repeated-field expansion, raw-root
+normalization and cyclic Python-input issues; all were fixed and independently
+rechecked. Forty-two focused/journey tests passed, as did 105 related source/intake
+regressions. No remaining review blocker was found. This is not a full security
+audit; a privileged concurrent filesystem attacker is outside the stated boundary.
+
+Limits: 20 sources, 1 MB/source, 5 MB total, 200 passages, 32,768 bytes for both quote
+and selected span, 10 MB manifest, 50 MB output, 5,000 catalog lines/source and
+20,000 total. Metadata/output expansion is streamed and preflighted before source
+reads; catalog lines are counted before object construction. Human text rendering
+uses incremental budgets and control-safe quoting. These bounds are not hard CPU
+or memory isolation. Root spellings are retained by the CLI for validation; an API
+Path object may already have normalized its spelling before entry.
+
+The six-command fictional journey runs template, catalog, check, separate result
+review target, explicitly supplied import review and application verification. It
+checks unchanged identification/screening PRISMA counts, unchanged supplied fields,
+separate source-check scope in the intake receipt, and NOT_READY conclusions.
+No real source, network/API/model call, credential, private corpus or expenditure
+was used. The checked-in source is LF UTF-8 and contains no experimental procedure.
+
+Final frozen-byte Linux regression: 1,764 tests in 320.029 seconds, with 1,763
+passed and one native-Windows-only skip. All Python source/test hashes remained
+unchanged across the run. Forty-one checker tests, one six-command source-to-intake
+journey and one navigation regression are new. The catalog now has 24 static routes
+and 99 parser-help entrypoints. Nine changed-guide local link checks, compilation,
+whitespace, limited publication audit and regenerated inventory checks pass.
+Exact published-head Ubuntu/Windows × Python 3.10/3.12 CI is checked after push;
+local POSIX results do not substitute for the native-Windows fail-closed checks.

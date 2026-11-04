@@ -71,6 +71,13 @@ SUPPLIED_INPUT_WORKFLOW_SCOPE = (
     'The legacy manual_input_workflow remains a separate mock receipt rehearsal, not the only input route.'
 )
 SUPPLIED_INPUT_WORKFLOWS = [
+    dict(workflow_id='result_passage_check', title='Compare selected source passages with manual result fields',
+         guide_paths=['docs/RESULT_PASSAGE_CHECK.md'],
+         entrypoints=[dict(script='result_passage_check.py', arguments=[command, '--help'])
+                      for command in ('template', 'catalog', 'check')],
+         required_human_inputs=['Completed manual result candidates, existing nonnull source digests and explicit source-file mappings',
+                                'Human-selected field associations, UTF-8 byte ranges and verbatim quotes; separate result intake review'],
+         boundary='Help-only navigation never reads source files. Explicit catalog/check use bounded local UTF-8 sources only. Exact text matches do not establish entailment, mechanism correctness or scientific acceptance; candidate fields and protocol remain unchanged.'),
     dict(workflow_id='pubmed_metadata', title='Acquire explicitly selected PubMed metadata candidates',
          guide_paths=['docs/PUBMED_METADATA.md'],
          entrypoints=[dict(script='pubmed_metadata.py', arguments=[command, '--help'])

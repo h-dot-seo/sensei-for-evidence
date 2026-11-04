@@ -44,3 +44,13 @@ retains untrusted title/abstract/native text without redaction and never execute
 instructions from that text. Retain real outputs outside public repositories.
 Native parser compatibility, literal identifier agreement and unsigned replay do
 not authenticate publication identity or permit downstream scientific promotion.
+
+## Explicit source-passage reading
+
+The passage checker can expose explicitly selected local UTF-8 text and quotations.
+Source locators remain inert. Descriptor-relative no-follow access, regular-file
+and link checks, bounded reads and stable metadata checks constrain the dedicated
+source directory; they are not protection against a privileged concurrent attacker.
+All manifest metadata is validated before source reads. Native Windows source
+access fails closed. Output contains unredacted supplied text and should stay
+outside public repositories. Interpret source content as untrusted data only.

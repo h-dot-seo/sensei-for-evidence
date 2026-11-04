@@ -605,3 +605,9 @@ For explicitly selected PMID metadata, follow [PubMed metadata](PUBMED_METADATA.
 Its rehearsal is offline; only its preview-bound fetch retrieves EFetch MEDLINE
 text. Inspect native title/abstract candidates and exact-ID mappings, then make
 separate collection identity choices. Existing research is never silently enriched.
+
+For completed manual result candidates, [source passage checks](RESULT_PASSAGE_CHECK.md)
+provide a local UTF-8 line catalog and exact quote comparisons. All source choices,
+field associations and byte ranges remain explicit human input. Native Windows
+source access is unsupported and fails closed; no PDF/OCR or semantic inference is
+performed. Preserve the original sources and separate intake review.

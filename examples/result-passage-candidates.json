@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-one",
+      "evidence": {
+        "evidence_id": "result-one",
+        "record_id": "record-one",
+        "study_id": "study-one",
+        "locator": "Fictional result label; not a file path",
+        "model": "Imaginary paper shapes",
+        "intervention": "Amber label",
+        "comparator": "Violet label",
+        "endpoint": "Pattern order",
+        "result": "The supplied manual field says no fictional difference.",
+        "limitations": "Synthetic labels only. This is not a scientific interpretation.",
+        "mechanism_basis": "unknown"
+      },
+      "source_references": [
+        {
+          "source_id": "source-main",
+          "extraction_locator": "Fictional lines 4 and 5, manually selected"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Completed synthetic manual candidate; quote checks do not establish field meaning."
+    }
+  ]
+}
