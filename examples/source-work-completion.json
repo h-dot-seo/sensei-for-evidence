@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "work_package_id": "WP-MEMBERSHIP-SOURCES",
+  "artifact_locator": "synthetic://membership-limitations-note",
+  "acceptance_verified": true,
+  "completed_by": "Fictional software-test completer",
+  "completed_at": "2026-11-04",
+  "completion_note": "Fictional software rehearsal asserts completion of a note retaining report-specific extraction gaps, not completion of the search or extraction."
+}

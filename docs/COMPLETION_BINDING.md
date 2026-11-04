@@ -119,3 +119,8 @@ source descriptors and whole same-report source context to opted-in work bases
 and their direct dependents. Completion binding inherits those context changes
 without changing recorded COMPLETE status or certifying acceptance. Legacy work
 without the new field keeps its previous source scope and hash semantics.
+
+[Reviewed work completion](WORK_COMPLETION_INTAKE.md) provides a separate exact-target
+review and replay path for one existing unfinished task. It records only supplied
+completion/locator/acceptance and the reviewed source binding, preserves earlier
+COMPLETE assertions, and does not inspect artifacts or assess acceptance.

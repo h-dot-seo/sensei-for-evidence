@@ -154,3 +154,8 @@ conclusions or a claim of exhaustive research.
 For later tasks that explicitly cite existing results, use the separate
 [evidence-work intake](EVIDENCE_WORK_INTAKE.md). This source-work contract remains
 unchanged and does not accept evidence-review work or convert prior tasks.
+
+[Reviewed work completion](WORK_COMPLETION_INTAKE.md) provides a separate exact-target
+review and replay path for one existing unfinished task. It records only supplied
+completion/locator/acceptance and the reviewed source binding, preserves earlier
+COMPLETE assertions, and does not inspect artifacts or assess acceptance.

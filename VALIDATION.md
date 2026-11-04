@@ -1935,3 +1935,81 @@ intake/workflow regressions and one static discovery regression. Compilation,
 changed-guide links and whitespace checks pass. Publication audit checks 303 text
 files; exact manifest verification passes with 302 listed files. The existing
 exact-head CI matrix covers Ubuntu/Windows and Python 3.10/3.12.
+
+## Reviewed work-completion increment (2026-11-04)
+
+Added a separate single-work completion intake without changing the research,
+planning or completion engine. A blank template selects only an existing
+unfinished normalized work ID. A supplied candidate names an artifact locator,
+exact true acceptance assertion and literal completer/date/note. A separately
+filled exact-target review is required before COMPLETE, locator, acceptance and
+the reviewed current completion binding are recorded. No artifact is accessed and
+no acceptance criterion is independently assessed. Existing COMPLETE work cannot
+be refreshed, reopened or replaced, including stale/unbound assertions.
+
+All other raw fields and rows remain unchanged, including implicit raw IDs,
+source/evidence links, document catalogs, extraction, contexts, reviews and opaque
+metadata. Every planning assertion and basis remains unchanged. Other work's
+completion assertions and bases remain unchanged. Completing a prerequisite can
+change dependent normalized blocked_by lists without editing dependent raw work;
+the target and receipt expose these derived changes. Stale/unbound COMPLETE
+prerequisites remain visible and satisfy the unchanged engine's dependency rule;
+this is not a recursive acceptance certificate or a hidden new gate.
+
+The fifteen documented commands were executed outside the repository in a
+space-named directory and separately as a regression test. Existing reviewed work
+intake first grows two work packages to four without changing four result rows.
+Two separately reviewed fictional completion applications then mark the source
+limitations note and the result-linked traceability note COMPLETE. The dependent
+limitations task becomes unblocked but stays PLANNED. Both new completion bindings
+match current metadata. Research flows, result rows and planning bases are
+unchanged; census remains NOT_ESTABLISHED and conclusions NOT_READY. The generated
+ordinary research archive verifies, but does not contain detached completion
+history. Existing report/extraction archive kinds are deliberately not expanded.
+
+Actual independent code/document review found no substantive defect. The worker
+independently authored focused regression tests rather than merely reviewing the
+parent's tests. This is a targeted software review, not a comprehensive security,
+artifact-authenticity or scientific audit. The final validation counts are recorded
+below. The parent-authored exact guide journey and static discovery test are
+separate from the independent tests.
+
+All 45 prior files in the combined work/source/inventory/extraction/native/report/
+batch/research replay dependency sets remain byte-unchanged. Eight saved artifact
+kinds still verify: evidence-work application, source-declaration application,
+inventory application, extraction-transition archive, typed native archive,
+report-transition archive, NBIB batch archive and ordinary research archive.
+Among existing runtime files only read-only handoff discovery changes: sixteen
+static groups and 69 help-only entrypoints. Discovery neither selects applicable
+work nor runs the suggested commands.
+
+The first standalone discovery run encountered a 30-second process timeout in
+unchanged report_source_check.py check --help while the host was slow. Its unchanged
+rerun passed all 16 tests and all 69 help entrypoints in 17.619 seconds; no timeout
+was weakened. The combined neighboring regression suite passed 190 tests in
+24.606 seconds before any later independent test additions.
+
+Candidate/review limits remain 10 MB and protocol/application limits 50 MB, with
+one selected completion per application, not hard CPU/memory ceilings. Output
+preparation and exclusive creation do not guarantee atomic path-race or ancestor
+alias protection. Completer/reviewer labels and dates are unsigned assertions,
+not identity or chronology verification. Supplied completion notes, reviews and
+snapshots remain detached from the persisted four fields. No work is executed,
+source review renewed, clinical guideline approved or development stage advanced.
+
+The independent final suite has 23 passing tests (3.997 seconds), including
+current/stale planning-rank preservation, mock adapter integrity and CSV collection
+provenance. Its actual code/docs review checked runtime SHA-256
+`b8c8318b5914f2aabd5bb134d2a79db13bc19f22b22229d17cc23a5ab7952494`.
+These checks are distinct from native-platform CI and do not claim adversarial
+path-race testing or inspection of any real research deliverable.
+
+Final full Linux suite: 1,495 tests, 1,494 passed and one native-Windows-only test
+skipped (283.235 seconds), including all three late-added independent regressions.
+This increment adds 25 tests: 23 independently authored intake regressions, one
+parent-authored fifteen-command journey and one static discovery regression.
+The final focused intake/journey suite also passed all 24 tests. Compilation,
+98 changed-guide local links, whitespace and limited publication checks pass.
+Publication audit checks 309 text files; exact manifest verification passes with
+308 listed files. The existing exact-head remote matrix runs Ubuntu/Windows and
+Python 3.10/3.12; its terminal status is verified separately after publication.

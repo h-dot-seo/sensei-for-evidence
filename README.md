@@ -116,6 +116,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
 | `native_collection_bundle.py create PROTOCOL.json NEW.zip [--ris INDEX=ARTIFACT.json] [--nbib INDEX=ARTIFACT.json] [--nbib-batch INDEX=ARTIFACT.json] [--text]` / `verify BUNDLE.zip [--text]` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
+| `work_completion_intake.py template/target/assemble/verify ...` | Record one explicit unfinished-work completion with separate exact-target review, source binding and dependency-change cues, without artifact checks or acceptance assessment |
 | `evidence_work_intake.py template/target/assemble/verify ...` | Append explicitly reviewed result-linked work packages with human deliverables/dependencies, without changing existing research or generating scientific tasks |
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
 | `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
@@ -416,3 +417,8 @@ parameters, changing observations or validating scientific claims.
 [Reviewed evidence-work intake](docs/EVIDENCE_WORK_INTAKE.md) connects existing
 result IDs to human-authored review deliverables and explicit prerequisites. It
 adds only PLANNED tasks and preserves prior source work, evidence and assertions.
+
+[Reviewed work completion](docs/WORK_COMPLETION_INTAKE.md) links an explicitly supplied
+artifact/acceptance assertion to the reviewed work/source basis without editing
+other research or renewing existing COMPLETE assertions. Dependency changes are
+shown separately from scientific readiness; artifact content is not inspected.

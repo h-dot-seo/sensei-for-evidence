@@ -230,3 +230,8 @@ Optional [descriptive study inventory](REPORT_STUDY_INVENTORY.md) has a summary
 and detailed read-only view, not a pending-work queue. Candidate descriptions and
 proposed blank targets do not create included memberships, required studies,
 review approvals or extraction tasks.
+
+[Reviewed work completion](WORK_COMPLETION_INTAKE.md) provides a separate exact-target
+review and replay path for one existing unfinished task. It records only supplied
+completion/locator/acceptance and the reviewed source binding, preserves earlier
+COMPLETE assertions, and does not inspect artifacts or assess acceptance.

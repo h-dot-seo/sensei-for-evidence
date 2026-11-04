@@ -162,3 +162,8 @@ or transmitted; keep actual private work and generated files outside this public
 repository. Hashes do not establish source truth, reading, causal inference,
 independent studies, exhaustive research or satisfaction of acceptance criteria.
 Census remains NOT_ESTABLISHED and conclusions NOT_READY.
+
+[Reviewed work completion](WORK_COMPLETION_INTAKE.md) provides a separate exact-target
+review and replay path for one existing unfinished task. It records only supplied
+completion/locator/acceptance and the reviewed source binding, preserves earlier
+COMPLETE assertions, and does not inspect artifacts or assess acceptance.

@@ -170,6 +170,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Exact existing normalized result IDs, authored question/deliverable/acceptance criterion, explicit dependencies and proposal metadata.',
                                 'Separate exact-input review; optional evidence-scoped contexts must satisfy existing overlap rules.'],
          boundary='Only new PLANNED evidence-review work is appended. No result, scientific task, dependency, priority or completion is generated. Source-review work is not converted, and own source_refs/document_source_ids are rejected. Existing raw identity defaults and planning/completion assertions remain unchanged; direct dependencies are not recursive source approval.'),
+    dict(workflow_id='work_completion', title='Record one supplied work completion after exact-target review',
+         guide_paths=['docs/WORK_COMPLETION_INTAKE.md', 'docs/COMPLETION_BINDING.md', 'docs/LOCAL_ARTIFACT_REVIEW.md'],
+         entrypoints=[dict(script='work_completion_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Exact existing unfinished work ID, supplied artifact locator and true acceptance assertion',
+                                'Completer/date/note and a separate exact-target completion review'],
+         boundary='Only one unfinished work completion is recorded; no artifact access, acceptance assessment or scientific approval. Existing COMPLETE assertions cannot be renewed or reopened. Stale/unbound prerequisite completions remain visible and unchanged; derived dependency blocking may change.'),
     dict(workflow_id='collection_archives', title='Preserve protocol snapshots and selected native source bindings',
          guide_paths=['docs/COLLECTION_BUNDLES.md', 'docs/BATCH_COLLECTION_BUNDLES.md', 'docs/NATIVE_COLLECTION_BUNDLES.md', 'docs/BATCH_TO_EVIDENCE.md'],
          entrypoints=[dict(script=script, arguments=[command, '--help'])
