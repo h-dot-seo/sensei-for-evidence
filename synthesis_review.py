@@ -20,7 +20,7 @@ BOUNDARY = ('PRISMA-oriented supplied-data snapshot, not a final systematic revi
 
 def snapshot(protocol):
     research = run(protocol)
-    reports = report_flow(protocol) if 'reports' in protocol else None
+    reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     queues = status(protocol)
     synthesis = research['synthesis']
     supplied = synthesis['stage'] == 'SUPPLIED'
@@ -91,6 +91,8 @@ def snapshot(protocol):
         synthesis_boundary=synthesis['boundary'], boundary=BOUNDARY)
     if reports is not None and 'report_study_coverage' in reports:
         result['report_study_coverage'] = copy.deepcopy(reports['report_study_coverage'])
+    if 'screening_review' in research:
+        result['screening_review'] = copy.deepcopy(research['screening_review'])
     return result
 
 
@@ -139,6 +141,10 @@ def render_text(result):
     if 'report_study_coverage' in result:
         lines.append('Declared report-study membership coverage (not exhaustive extraction): '
                      + show(result['report_study_coverage']))
+    if 'screening_review' in result:
+        lines.extend(['Supplied screening reviewer positions (not adjudication): '
+                      + show(result['screening_review']['record_review_ledger']),
+                      result['screening_review']['boundary']])
     lines.extend(['Recorded context inventory: ' + show(result['context_ledger']),
                   'Recorded appraisal inventory: ' + show(result['appraisal_ledger']),
                   'Record identity: NOT_ESTABLISHED; exact supplied IDs only.',

@@ -45,8 +45,10 @@ SPECS = {
 }
 OPTIONAL_SPECS = {
     'report_study_memberships_without_results': ('reports evidence', 'Read the exact included report-study membership and record traceable results if in scope. A result for this study in another report does not fill this membership; presence is not exhaustive extraction or study independence.'),
+    'records_with_screening_review_cues': ('screening_reviews screening searches', 'Inspect each supplied reviewer position, source binding and any differing or unclear labels. Resolve eligibility outside this tool if appropriate; never choose a majority, authenticate reviewers or renew hashes automatically. Canonical screening remains a separate supplied decision.'),
 }
-OPTIONAL_QUEUE_DOMAINS = {'report_study_memberships_without_results': 'report_study'}
+OPTIONAL_QUEUE_DOMAINS = {'report_study_memberships_without_results': 'report_study',
+                        'records_with_screening_review_cues': 'record'}
 
 BOUNDARY = ('Read-only navigation and supplied-data handoff, not a generated scientific report. '
             'Queues are protocol-wide even when a work package is selected. Optional missing stages '
@@ -86,7 +88,7 @@ def input_locations(protocol, queue, sections, items):
             values=[]
             if domain=='record':
                 if section in ('searches','reports'): values=row.get('record_ids',[])
-                elif section in ('screening','evidence'): values=[row.get('record_id')]
+                elif section in ('screening','evidence','screening_reviews'): values=[row.get('record_id')]
             elif domain=='evidence':
                 if section=='evidence': values=[row.get('evidence_id',row.get('record_id'))]
                 elif section in ('appraisals','experimental_units','synthesis_statements'): values=row.get('evidence_ids',[])
@@ -146,7 +148,7 @@ def handoff(protocol, work_package_id=None):
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
     implementation['search_manifest.py'] = hashlib.sha256(Path(__file__).with_name('search_manifest.py').read_bytes()).hexdigest()
     implementation['receipt_intake.py'] = hashlib.sha256(Path(__file__).with_name('receipt_intake.py').read_bytes()).hexdigest()
-    return dict(schema_version=1, question=state['question'], protocol_version=state['protocol_version'],
+    result = dict(schema_version=1, question=state['question'], protocol_version=state['protocol_version'],
                 protocol_sha256=state['protocol_sha256'], engine_sha256=implementation,
                 hash_scope=state['hash_scope'], work_selection=works['selection'],
                 record_flow=copy.deepcopy(synthesis['record_flow']), report_stage=synthesis['report_stage'],
@@ -166,6 +168,11 @@ def handoff(protocol, work_package_id=None):
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'screening_reviews' in protocol:
+        result['engine_sha256']['screening_review.py'] = hashlib.sha256(Path(__file__).with_name('screening_review.py').read_bytes()).hexdigest()
+        result['detailed_views'].append(dict(script='screening_review.py', arguments=['PROTOCOL.json','--text'],
+                                            purpose='Exact source targets and separate supplied screening reviewer positions; no automatic adjudication'))
+    return result
 
 
 def render_text(result):

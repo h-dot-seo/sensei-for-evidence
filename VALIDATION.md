@@ -608,3 +608,20 @@ The related report/comparison suite passes 96 tests. All 26 report-bearing examp
 outputs retain exactly equal default report JSON and CSV; 29 unchanged and 27
 changed-input comparison cases retain equal JSON/text with shared current engine
 fingerprints. No identifier is removed or normalized to satisfy a serializer.
+
+Supplied screening-review increment (2026-11-04): 649 tests in the suite; Linux
+run: 648 passed and one native-Windows-only test skipped. Thirty-six independent
+new tests cover strict assertions/dates/hashes, exact record/reviewer identities,
+multiple current positions, unclear/stale separation, unchanged canonical counts,
+linear source catalogs, conservative source/criteria binding, CSV mapped-row
+provenance, source/canonical decision independence, detached output, optional
+status/audit/handoff/snapshot/comparison projections, seven-file bundles and
+portable UTF-8/control-safe exclusive-output CLI behavior. The fictional journey
+checks four records, five assertions, one stale source match, no automatic
+eligibility decision and unchanged input bytes. All 29 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison projections and report
+CSV bytes, excluding implementation fingerprints. Informational assertions leave
+existing planning/completion/synthesis bases unchanged. The initial model permits
+one active assertion per exact record/reviewer label and performs no adjudication,
+reviewer authentication, source retrieval, medical fact check or scientific review.
+Publication audit and exact manifest verification pass; all new inputs are fictional.

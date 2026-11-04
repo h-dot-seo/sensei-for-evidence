@@ -66,6 +66,8 @@ def report_flow(protocol, *, include_csv=True):
                 boundary='PRISMA-oriented supplied-data ledger; not a claim of full PRISMA compliance or complete search')
     if plural_studies:
         result['report_study_coverage'] = baseline['report_study_coverage']
+    if 'screening_review' in baseline:
+        result['screening_review'] = baseline['screening_review']
     if not include_csv:
         del result['report_csv']
     return result

@@ -119,3 +119,10 @@ no approvals, and can save only a new unreviewed candidate file.
 With a selected WP, `prerequisite_review_view` suggests the existing work_review
 command with `--include-prerequisites`. It is an argument array, never executed by
 the handoff. See [prerequisite review](PREREQUISITE_REVIEW.md) for scope boundaries.
+
+Opt-in [screening reviewer assertions](SCREENING_REVIEWS.md) add a protocol-wide
+record queue and a detailed `screening_review.py` view. Navigation identifies the
+original reviewer, canonical screening and search rows. A missing/current/stale
+or differing position is a manual review cue, not an automatic eligibility
+decision or a new work dependency. Review labels do not authenticate a person,
+establish independent screening or verify a medical fact.

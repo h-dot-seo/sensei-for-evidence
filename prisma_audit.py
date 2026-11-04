@@ -62,7 +62,7 @@ def work_traceability(research, record_ids, report_rows, report_supplied):
 
 def export_audit(protocol):
     research=run(protocol)
-    reports=report_flow(protocol) if 'reports' in protocol else None
+    reports=report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     occurrences=[]; retained=[]; repeated=[]; first={}; occurrences_by_record=defaultdict(list)
     for si,search in enumerate(protocol['searches']):
         for ri,rid in enumerate(search['record_ids']):
@@ -194,6 +194,8 @@ def export_audit(protocol):
         result['source_context_ledger'] = source_contexts
     if membership_coverage is not None:
         result['report_study_coverage'] = copy.deepcopy(membership_coverage)
+    if 'screening_review' in research:
+        result['screening_review'] = copy.deepcopy(research['screening_review'])
     return result
 
 
@@ -211,6 +213,9 @@ def render_text(result):
         lines.append('Pre-extraction source contexts (not evidence or applicability): ' + show(result['source_context_ledger']))
     if 'report_study_coverage' in result:
         lines.append('Explicit report-study membership coverage (not exhaustive extraction): ' + show(result['report_study_coverage']))
+    if 'screening_review' in result:
+        lines.extend(['Supplied screening reviewer positions (not adjudication): ' + show(result['screening_review']['record_review_ledger']),
+                      result['screening_review']['boundary']])
     lines.extend(['Partition checks (not completeness): '+show(result['partition_checks']),
                   'Reason groups: '+show(result['reasons']),'Declared search accounting: '+show(result['search_plan_audit']),
                   'Work and deliverable traceability (not task coverage): '+show(result['work_traceability']),

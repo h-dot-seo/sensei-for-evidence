@@ -16,7 +16,7 @@ BOUNDARY = ('Queues describe supplied data and operator assertions only. Depende
 
 def status(protocol):
     research = run(protocol)
-    reports = report_flow(protocol) if 'reports' in protocol else None
+    reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     records = {rid for row in protocol['searches'] for rid in row['record_ids']}
     screened = {row['record_id'] for row in protocol['screening']}
     plan = research['search_plan_audit']
@@ -58,6 +58,9 @@ def status(protocol):
     if reports is not None and 'report_study_coverage' in reports:
         queues['report_study_memberships_without_results'] = copy.deepcopy(
             reports['report_study_coverage']['missing_report_study_memberships'])
+    if 'screening_review' in research:
+        queues['records_with_screening_review_cues'] = copy.deepcopy(
+            research['screening_review']['records_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     return dict(question=research['question'], protocol_version=research['protocol_version'],
@@ -114,6 +117,9 @@ def render_text(result):
         lines.append('Included report-study memberships without result rows: '
                      + count('report_study_memberships_without_results'))
         lines.append('Membership presence is not exhaustive extraction or independent study verification.')
+    if 'records_with_screening_review_cues' in result['queues']:
+        lines.append('Records with supplied screening-review cues: ' + count('records_with_screening_review_cues'))
+        lines.append('Reviewer assertions do not adjudicate eligibility or replace recorded screening decisions.')
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
     lines.append('Record identity: exact supplied IDs only; identities not independently verified.')

@@ -104,6 +104,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `research_bundle.py create PROTOCOL.json OUTPUT.zip` | Create a new portable supplied-data bundle |
 | `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
 | `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings |
+| `screening_review.py PROTOCOL.json [--record-id ID] [--template] [--text]` | Inspect source-bound supplied reviewer positions or prepare blank assertions without deciding eligibility |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -251,3 +252,8 @@ They preserve applicability uncertainty and remain separate from extracted evide
 plural study declarations while keeping legacy record/report counts unchanged.
 Missing report-study result memberships stay visible without inferring identity,
 independence, study-level eligibility or exhaustive extraction.
+
+[Supplied screening reviewer positions](docs/SCREENING_REVIEWS.md) preserve
+separate title/abstract judgments, source/criteria hashes and differing or stale
+assertions after collection. They never vote, adjudicate eligibility, authenticate
+reviewers or replace canonical screening and PRISMA counts.

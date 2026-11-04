@@ -333,6 +333,14 @@ Bundle verification also rejects malformed manifest containers, noninteger schem
 versions and invalid file metadata with ordinary validation errors. These checks
 establish input consistency, not authenticity or scientific correctness.
 
+## Supplied screening reviewer positions
+
+For separate human title/abstract positions before canonical screening, use
+`python screening_review.py PROTOCOL.json --text`. Add `--template` to prepare
+unfilled assertions and `--output NEW_PATH` to save a separate JSON report without
+overwrite. See [screening reviewer positions](SCREENING_REVIEWS.md) for exact source
+binding, disagreement, source-change and non-adjudication behavior.
+
 ## Offline run-to-run comparison
 
 ```sh

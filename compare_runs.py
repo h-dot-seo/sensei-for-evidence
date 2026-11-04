@@ -36,6 +36,29 @@ def entity_changes(before, after, id_field):
                 unchanged_count=len(shared) - len(changed))
 
 
+def screening_review_changes(left, right):
+    """Compare supplied reviewer assertions and recomputed labels, not adjudication."""
+    a, b = left.get('screening_review'), right.get('screening_review')
+    before_rows = {} if a is None else {row['review']['review_id']: row for row in a['review_ledger']}
+    after_rows = {} if b is None else {row['review']['review_id']: row for row in b['review_ledger']}
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        assertion_changes=entity_changes([row['review'] for row in before_rows.values()],
+                                        [row['review'] for row in after_rows.values()], 'review_id'),
+        review_comparisons=[dict(review_id=rid, before=copy.deepcopy(before_rows.get(rid)),
+                                 after=copy.deepcopy(after_rows.get(rid)))
+                            for rid in sorted(set(before_rows) | set(after_rows))],
+        record_projection_changes=entity_changes([] if a is None else a['record_review_ledger'],
+                                                 [] if b is None else b['record_review_ledger'], 'record_id'),
+        before_records_with_review_cues=None if a is None else copy.deepcopy(a['records_with_review_cues']),
+        after_records_with_review_cues=None if b is None else copy.deepcopy(b['records_with_review_cues']),
+        boundary=('Exact supplied review IDs and recomputed source-match/canonical-label comparisons only. '
+                  'Unchanged assertions can become stale after source or criteria changes. Canonical screening '
+                  'remains separate; review agreement is not adjudication, verified reviewer independence or eligibility correctness. '
+                  'No assertion is renewed or automatically applied.'))
+
+
 def report_study_comparison(before, after, left, right, left_reports, right_reports):
     """Compare exact declared pairs, never positional pointers or guessed identities.
 
@@ -343,6 +366,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
     if has_plural_studies(before) or has_plural_studies(after):
         result['report_study_comparison'] = report_study_comparison(
             before, after, left, right, left_reports, right_reports)
+    if 'screening_review' in left or 'screening_review' in right:
+        result['screening_review_changes'] = screening_review_changes(left, right)
     return result
 
 
@@ -385,6 +410,15 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'screening_review_changes' in result:
+        screening = result['screening_review_changes']
+        lines.extend(['', 'Supplied screening review comparison (not adjudication):',
+                      'Before/after review stage: ' + show(dict(before=screening['before_stage'], after=screening['after_stage'])),
+                      'Changed reviewer assertions: ' + show(screening['assertion_changes']),
+                      'Changed record review projections: ' + show(screening['record_projection_changes']),
+                      'Before/after records with review cues: ' + show(dict(before=screening['before_records_with_review_cues'], after=screening['after_records_with_review_cues']))])
+        lines.extend('Review before/after: ' + show(row) for row in screening['review_comparisons'])
+        lines.append(screening['boundary'])
     if 'report_study_comparison' in result:
         pairs = result['report_study_comparison']
         lines.extend(['', 'Explicit report-study comparison (exact supplied pairs, not verified identity):',

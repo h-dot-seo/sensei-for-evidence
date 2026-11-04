@@ -24,7 +24,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     if include_prerequisites and work_package_id is None:
         raise ValueError("prerequisite review requires a selected work package")
     research = run(protocol)
-    reports = report_flow(protocol) if 'reports' in protocol else None
+    reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     work = {row['work_package_id']: row for row in research['work_packages']}
     if work_package_id is not None and work_package_id not in work:
         raise ValueError('unknown work package ID')

@@ -149,3 +149,13 @@ not execute collection, screening, extraction or artifact acceptance. The fixed
 census and conclusion boundaries remain unchanged. The seven-file research bundle
 does not archive this standalone audit; retain its canonical protocol hash and
 implementation hashes alongside any separately saved export.
+
+## Separate supplied screening reviewer positions
+
+When `screening_reviews` is explicitly supplied, the audit also preserves
+`screening_review`: original reviewer assertions, source targets, current/stale
+bindings, comparison cues and the independent canonical screening row. It does
+not add reviewer judgments to screened/included/excluded node counts or change
+any membership partition. Two matching labels are not consensus; opposing labels
+are not automatically resolved. See [the screening review workflow](SCREENING_REVIEWS.md)
+for the fictional example, source-hash scope and medical/source-verification limits.

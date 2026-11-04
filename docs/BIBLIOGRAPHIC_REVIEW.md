@@ -136,3 +136,9 @@ another internally consistent record. Source authenticity, publication identity,
 complete coverage, clinical applicability and scientific conclusions remain
 unverified after a successful import. Keep real exports, protocols and generated
 artifacts private and outside the public repository.
+
+After collection, [supplied screening reviewer positions](SCREENING_REVIEWS.md)
+can retain separate title/abstract assessments against the exact criteria and
+mapped source-row context. Adding those assertions is allowed enrichment, not a
+new import or automatic screening decision. Original CSV history remains intact;
+conflicting or stale reviewer positions do not alter canonical PRISMA counts.
