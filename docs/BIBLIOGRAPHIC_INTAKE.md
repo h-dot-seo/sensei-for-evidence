@@ -12,6 +12,12 @@ development work. A separate [explicit reconciliation workflow](BIBLIOGRAPHIC_RE
 can append an incomplete search after supplied row choices and export-level review.
 The existing synthetic mock-receipt workflow remains separate.
 
+For local PubMed-format `.nbib` files, use the
+[lossless NBIB preparation bridge](PUBMED_NBIB_INTAKE.md). It retains the native
+source and supplies a CSV derivative to this unchanged importer. Repeated native
+tags and record text remain in original-value columns; no identity resolution is
+automated. Keep the separate native artifact for full-file conversion replay.
+
 ## Reproduce the synthetic journey
 
 All records in `examples/bibliographic-export.csv` are fictional. The source-work

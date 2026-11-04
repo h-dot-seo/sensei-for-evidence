@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.58.0-manual-condition-intake",
+  "release": "0.59.0-pubmed-nbib-preparation",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 219,
+  "file_count": 224,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22602,
-      "sha256": "6f3fc1f2fdb7ea826f4afbb580d572fd19c230086cfa20c95c23ce4b5767ecd0"
+      "bytes": 23360,
+      "sha256": "3dad809f7a4e5622c3b7c9b0a298a6569126e16203d7bfe2d13d540b6587283d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 74039,
-      "sha256": "1bfd9766bfc9126654898062b3c982e45fcb9d3ef9c4f3e7e8888c8c0b7f3e50"
+      "bytes": 76699,
+      "sha256": "385c88774990f840694a17a77c4b11b5a21c81c6605d518d35960b25a1ce8f4b"
     },
     {
       "path": "adapter_integrity.py",
@@ -130,8 +130,8 @@
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
-      "bytes": 7250,
-      "sha256": "bd2c6cf825d2249fe7ed2760e14247da882ebdb0642860a8a620eb933da0a920"
+      "bytes": 7619,
+      "sha256": "249adf32df628af4cad3f27990bec23be5468d845359a5620180c75da8089fb1"
     },
     {
       "path": "docs/BIBLIOGRAPHIC_REVIEW.md",
@@ -227,6 +227,11 @@
       "path": "docs/PRISMA_AUDIT.md",
       "bytes": 11136,
       "sha256": "601db6034b383be94c7143f37dbe36a95480349ad19e3a99b96bacd8667eb524"
+    },
+    {
+      "path": "docs/PUBMED_NBIB_INTAKE.md",
+      "bytes": 9259,
+      "sha256": "829b5cd8487fb1985fac4cfbfbf0284dd6f731fb8a2167a450366e1cd9ae3dea"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -484,6 +489,11 @@
       "sha256": "d6b794b82a961d2a7925b4ec102515413e3d38dde38894b3b74004a111ad36f8"
     },
     {
+      "path": "examples/pubmed-export.nbib",
+      "bytes": 736,
+      "sha256": "bfd5fd7c43e9d3799b604ceea59d4974819e74d5d445dc9ddd040899cac93757"
+    },
+    {
       "path": "examples/rationale-links.json",
       "bytes": 28851,
       "sha256": "10bad6fa4bee49a71dc1cc96a80e3d7e47729217d35c7e9a38b905d816a12034"
@@ -612,6 +622,16 @@
       "path": "json_io.py",
       "bytes": 2306,
       "sha256": "2cf22521af031246fdb66510442ce801080b54129f54873633b0c53a0e6e2abc"
+    },
+    {
+      "path": "nbib_export_parser.py",
+      "bytes": 5252,
+      "sha256": "5ac9b759b873f39408fcffb88a8680558327c8df2dda0a672496469f22761f64"
+    },
+    {
+      "path": "nbib_intake.py",
+      "bytes": 13226,
+      "sha256": "ff46600c293f4b1def8a82b6b1771e2c30d8ecaacef33bc0d2d88de68c3ae249"
     },
     {
       "path": "offline_adapter.py",
@@ -882,6 +902,11 @@
       "path": "test_multi_result.py",
       "bytes": 4701,
       "sha256": "6f9ecb819575122f8bf7e30a848ad18b6d978b2ee2e60172ced10064269b9ca5"
+    },
+    {
+      "path": "test_nbib_intake.py",
+      "bytes": 24595,
+      "sha256": "e31e99aeca4a9407ac488528a0691716e694b3a8a66fc8fb38a95055ae48556d"
     },
     {
       "path": "test_offline_adapter.py",

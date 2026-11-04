@@ -1012,3 +1012,38 @@ Whole-condition document associations and human metadata remain detached from
 the enriched protocol and ordinary bundle. No real source reading, scientific or
 clinical fact verification, generated experimental parameter, biological execution
 instruction, numerical calculation or causal acceptance was performed or added.
+
+Local PubMed NBIB preparation increment (2026-11-04): 1,060 tests in the suite;
+Linux run: 1,059 passed and one native-Windows-only test skipped. Eighteen new
+independently written tests cover strict fixed-column parsing, initial BOM,
+UTF-8 and mixed physical line endings, exact record/field spans, repeated authors,
+folded values, unknown tags, repeated PMID occurrences, literal leading zeros,
+malformed/orphan fields, ambiguous record boundaries and zero/invalid identifiers.
+The focused six-suite run passes 145 tests. Independent read-only review found
+no blocking issue; an additional 80-case synthetic probe verifies complete byte
+partition, mixed line endings, controls, repeated identifiers, CSV preservation
+and full conversion replay. During implementation review, a bare-CR CSV quoting
+edge was found and fixed by quoting every derived cell; the regression passes.
+Tampered/resealed and unknown fields, boolean/integer substitutions, altered
+implementation hashes, non-JSON values, cycles, overflowing bounds and invalid
+protocols fail closed. CLI tests cover strict JSON/UTF-8, unfilled required inputs,
+safe text, exclusive output and serialization preflight before file creation.
+Symlink probes run where the host permits creating symlinks.
+The entirely fictional CLI preview/native verification/CSV extraction/review/
+assembly/status/audit/bundle journey succeeds. Three native occurrences remain
+three collection rows; explicit fictional choices map them to two canonical
+search memberships. The search remains incomplete with two pending records and
+no screening, report or evidence decisions. Independent tests also cover an
+explicit withheld occurrence and retained native columns in screening targets.
+The unchanged CSV ledger retains each record's original text, ordered field JSON,
+native spans and full-file hash. The separate native wrapper must accompany the
+protocol for full-file separator/BOM provenance and conversion replay; ordinary
+bundle verification does not independently verify or embed that wrapper.
+All 39 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing Python file is byte-unchanged, and
+previously saved result-intake, result-correction and condition-intake records
+still replay. Publication audit checks 225 text files and exact manifest
+verification passes. This supports a documented strict subset, not every NBIB
+variant. No provider connection, real citation/paper corpus, source authentication,
+automatic identity resolution, completeness or medical-validity assertion,
+biological execution instruction or generated scientific finding was added.

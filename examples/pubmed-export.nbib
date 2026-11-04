@@ -1,0 +1,20 @@
+PMID- 999999999901
+TI  - Fictional bibliographic fixture with a folded
+      title, not a real publication
+AU  - Fictional Author A
+AU  - Fictional Author B
+AB  - Synthetic metadata for software validation only.
+      No scientific findings or experimental instructions are supplied.
+AID - fictional-article-label [pii]
+ZZZ - Uninterpreted synthetic extension
+
+PMID- 999999999901
+TI  - A second occurrence with the same supplied identifier
+AU  - Fictional Author A
+OT  - Duplicate occurrence retained for explicit human reconciliation
+
+PMID- 999999999902
+TI  - Fictional bibliographic fixture with a folded
+      title, not a real publication
+AU  - Fictional Author A
+OT  - Similar text does not establish publication or study identity
