@@ -93,8 +93,10 @@ and ordinary bundle retain all original-value columns. They do not run the nativ
 batch verifier. **Keep `new-batch.json` with the protocol and ordinary bundle.**
 It is required for complete native-file provenance, including separators, and
 native-conversion replay. The existing `collection_bundle.py --nbib` accepts
-single-file wrappers only; a batch wrapper cannot be substituted for one. This
-increment does not add a portable batch-native collection archive.
+single-file wrappers only; a batch wrapper cannot be substituted for one.
+For one portable archive containing the wrapper, every original file and their
+exact historical import bindings, use the separate optional
+[batch-native collection bundle](BATCH_COLLECTION_BUNDLES.md).
 
 `verify` reparses every retained native file and rebuilds the complete grouping,
 CSV and intake using the recorded protocol, source order, labels, timestamp and

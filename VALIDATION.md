@@ -1167,3 +1167,36 @@ engine fingerprints and replay behavior. New documentation links resolve;
 publication audit checks 237 text files, and exact manifest verification passes.
 No live acquisition, automatic deduplication, query/page association validation,
 review renewal, scientific conclusion or completeness claim is introduced.
+
+Portable native batch collection increment (2026-11-04): 1,153 tests in the suite;
+Linux run: 1,152 passed and one native-Windows-only test skipped. Thirty-one
+independently written batch-archive tests pass, with 108 passing tests in the
+focused five-suite intake/review/collection run. A separate independent code
+audit could not be started because the worker limit was reached; implementation
+self-review and independently authored regression tests are not represented as
+that additional audit or as scientific validation.
+The new opt-in format retains exact original native members alongside their
+batch wrappers and the unchanged ordinary research bundle. Tests cover exact
+BOM/line-ending/source-span bytes, repeated identifiers and identical files,
+generated import/source paths, partial attachment, exact historical common-base
+binding after later enrichment, stale/mismatched wrappers, canonical ordering,
+strict types, per-wrapper/aggregate quotas and implementation fingerprints.
+Hostile ZIP, duplicate/extra/missing/traversal/symlink/compression/encryption/CRC/
+size attacks and resealed wrapper/source/binding/summary changes are rejected.
+All verification is in memory without extraction or network connections. CLI
+JSON/text paths and create API preflight serialization before exclusive output;
+dangling final entries are rejected through the existing batch output guard.
+The documented synthetic CLI packaging/replay succeeds for the prior increment's
+unchanged two-file/five-occurrence batch and explicitly reviewed protocol. Both
+standalone native members equal their retained originals and SHA-256 values.
+Copying only the archive into a separate temporary working directory and running
+the verifier there succeeds without the original input locations. Replay still
+requires a separate checkout of the recorded implementation; source code is not
+embedded. Earlier saved batch preparation and ordinary research ZIP also verify.
+All 122 previously committed Python files remain byte-unchanged, so existing
+single-file collection and intake implementation fingerprints are preserved.
+Documentation links resolve, publication audit checks 240 text files, and exact
+manifest verification passes. Packaging does not import records, renew review,
+infer native formats for unselected imports, deduplicate source occurrences or
+establish complete retrieval, source authenticity, human authenticity or research
+readiness. Windows and both supported Python versions are checked in exact-head CI.

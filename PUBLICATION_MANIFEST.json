@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.62.0-multi-file-nbib-preparation",
+  "release": "0.63.0-portable-native-batch-collections",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 236,
+  "file_count": 239,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 25412,
-      "sha256": "0d70ec337d428e3b9c2a912f22ad50a4ef8e78f6ce70ca3f29961f1febb10b23"
+      "bytes": 25982,
+      "sha256": "3ec4f04224d96cbc1a20194907a8cdc627f86f145e8648d6fac3f817e75b1b4d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 85776,
-      "sha256": "51ed408dcd9a882262b1f291a43e7249366bdcd3876db84ef42ab7eeaa43e8b9"
+      "bytes": 88280,
+      "sha256": "c70375ef24d455c65c250bb17050d436a1f442e51aa4b480b19f17b5d3b6fa60"
     },
     {
       "path": "adapter_integrity.py",
@@ -72,6 +72,11 @@
       "path": "audit_publication.py",
       "bytes": 1969,
       "sha256": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08"
+    },
+    {
+      "path": "batch_collection_bundle.py",
+      "bytes": 18225,
+      "sha256": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01"
     },
     {
       "path": "bibliographic_intake.py",
@@ -134,6 +139,11 @@
       "sha256": "70bfb5b39d74f1cf7644190de1b48c45017389b3adbebd187947061cdab72e7d"
     },
     {
+      "path": "docs/BATCH_COLLECTION_BUNDLES.md",
+      "bytes": 8707,
+      "sha256": "774b96410772f99447a54e93b98575d54b2dad802b2d2f50788b17b3cf9c83d5"
+    },
+    {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
       "bytes": 7619,
       "sha256": "249adf32df628af4cad3f27990bec23be5468d845359a5620180c75da8089fb1"
@@ -150,8 +160,8 @@
     },
     {
       "path": "docs/COLLECTION_BUNDLES.md",
-      "bytes": 7126,
-      "sha256": "2900cdb316e1512033a6a9c5d43e6f1ebd025d8d0aa7a350799fecc0da8597fc"
+      "bytes": 7398,
+      "sha256": "2538c70ebeebf6784249bd4b2137de26176d64b91d33ff075e62286db2749425"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -240,8 +250,8 @@
     },
     {
       "path": "docs/PUBMED_NBIB_BATCH.md",
-      "bytes": 8950,
-      "sha256": "81d7fab55e857396ec5b82c8e585eed24f967b959fc52def0fccb6baaba3fce7"
+      "bytes": 9080,
+      "sha256": "adf2bb9eff748d8e905385ec144ec0be6b275e413b4cbd5d96a48ea8220f3bad"
     },
     {
       "path": "docs/PUBMED_NBIB_INTAKE.md",
@@ -847,6 +857,11 @@
       "path": "test_artifact_review.py",
       "bytes": 8237,
       "sha256": "c065ed04b3598d13625536c68b13c89f6e8ee2601eab680aaf7c139e078c04c4"
+    },
+    {
+      "path": "test_batch_collection_bundle.py",
+      "bytes": 36696,
+      "sha256": "cc5e654f53d77bb9c667c5b302fd4c7c40bfb0a591f5a3f1dfe157d87146b56c"
     },
     {
       "path": "test_bibliographic_intake.py",

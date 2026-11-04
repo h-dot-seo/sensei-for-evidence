@@ -12,6 +12,11 @@ ordinary research bundle retains CSV provenance but does not independently
 verify the separate native wrapper. Ordinary bundles remain unchanged. The new
 opt-in collection bundle verifies both layers and their exact association.
 
+This format accepts single-file wrappers only. For multi-file batch wrappers and
+their separate original-source members, use the independent
+[batch-native collection format](BATCH_COLLECTION_BUNDLES.md). Existing single-file
+archive bytes and replay rules are unchanged.
+
 ## Use existing, explicitly reviewed collection records
 
 First complete the fictional NBIB preparation and explicit reconciliation journey

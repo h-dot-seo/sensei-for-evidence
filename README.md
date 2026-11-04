@@ -94,6 +94,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `nbib_intake.py preview PROTOCOL.json EXPORT.nbib --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve native PubMed-format field occurrences and verify a CSV derivative for explicit reconciliation |
 | `nbib_batch_intake.py preview PROTOCOL.json --export ID=EXPORT.nbib [--export ID=OTHER.nbib] --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve each explicitly grouped native file and prepare one unreviewed CSV intake for one incomplete search |
 | `collection_bundle.py create PROTOCOL.json NEW.zip --nbib INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Carry selected native wrappers with the research bundle and replay their exact import associations |
+| `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
 | `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
@@ -271,6 +272,11 @@ single-file native wrappers, not batch wrappers, with the ordinary research bund
 checked against its exact historical import, while imports without supplied
 native wrappers remain visible. Packaging never changes collection or research
 decisions and does not establish search completeness.
+
+[Batch-native collection bundles](docs/BATCH_COLLECTION_BUNDLES.md) extend portable
+delivery through a separate format that retains every original file alongside
+its batch wrapper and ordinary research bundle. Exact historical import links
+and all native member bytes are replayed; partial attachment stays explicit.
 
 [Explicit source-work intake](docs/SOURCE_WORK_INTAKE.md) connects selected
 planned searches or records to human-authored review tasks through blank drafts,
