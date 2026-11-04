@@ -844,3 +844,36 @@ removed-source retention, detached outputs and crossed-ID reuse rejection. Two
 documentation qualifications were clarified: inherited search ordering can stale
 source context, and only removed selected descriptions produce unresolved selected
 IDs. Publication audit checks 200 text files and exact manifest verification passes.
+
+Detached manual-result intake increment (2026-11-04): 944 tests in the suite;
+Linux run: 943 passed and one native-Windows-only test skipped. Eighteen new
+independent regressions cover completed candidate batches, strict schemas and
+literal IDs, actual scalar/plural report memberships, same-report document
+selections, explicit and implicit evidence-ID collisions, null findings, and
+unchanged prior rows and unrelated protocol fields. The focused five-suite run
+passes 118 tests. All 37 prior valid example projections remain exactly equal,
+including implementation fingerprints. Every existing canonical engine file is
+byte-for-byte unchanged; only the standalone intake fingerprints its new module.
+CSV collection followed by supplied screening/report/source declarations, manual
+result intake, exact replay and seven-file bundle verification succeeds without
+mock extraction or modifying retained bibliographic history. Both original and
+appended protocols undergo core and complete report reconciliation, covering the
+legacy scalar-report validation path. Mock-adapter ledgers are explicitly refused.
+Tests reject changed original inputs, candidate/source metadata, review targets,
+implementation bytes, result rows, counts, receipt fields, unknown fields and
+merely resealed derived data. A fully consistent alternate human assertion still
+replays by design: these unsigned records are not authenticated history. Resource
+bounds, strict JSON numbers, UTF-8/control-safe output, source-inert execution and
+exclusive file creation are exercised. Independent read-only review found no
+blocking issue and also probed source-location tampering, JSON schema number types,
+symlink/input overwrite refusal and oversized file rejection before output.
+The documented fictional target/explicit review/application/replay/audit/bundle
+journey succeeds. Two explicit result rows are appended to the two existing rows;
+all report counts and included study labels stay unchanged. The null-finding row
+is retained as supplied text. Document associations and human extraction/review
+metadata remain only in the detached application record, not a new persistent
+protocol binding. Later ordinary views or bundle verification do not check those
+associations; original inputs, detached records and code must be retained separately.
+Publication audit checks 204 text files and exact manifest verification passes.
+No private corpus, real source retrieval, medical fact checking or biological
+execution guidance was used or added.

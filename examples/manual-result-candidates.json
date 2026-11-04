@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-one",
+      "evidence": {
+        "evidence_id": "result-C-manual",
+        "record_id": "record-one",
+        "study_id": "study-C",
+        "locator": "synthetic://report-one/result-C-manual",
+        "model": "Fictional model label for bookkeeping only",
+        "intervention": "Fictional comparison label",
+        "comparator": "Fictional reference label",
+        "endpoint": "Fictional endpoint label",
+        "result": "No difference was reported in this entirely fictional test observation.",
+        "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+        "mechanism_basis": "unknown"
+      },
+      "source_references": [
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional page/section for result-C-manual in source-supplement"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Human-supplied fixture for software testing, not an actual extraction or a scientific finding."
+    },
+    {
+      "report_id": "report-one",
+      "evidence": {
+        "evidence_id": "result-A-second",
+        "record_id": "record-one",
+        "study_id": "study-A",
+        "locator": "synthetic://report-one/result-A-second",
+        "model": "Fictional model label for bookkeeping only",
+        "intervention": "Fictional comparison label",
+        "comparator": "Fictional reference label",
+        "endpoint": "Fictional endpoint label",
+        "result": "A direction-only fictional observation is retained without an inferred effect size.",
+        "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+        "mechanism_basis": "unknown"
+      },
+      "source_references": [
+        {
+          "source_id": "source-main",
+          "extraction_locator": "Fictional page/section for result-A-second in source-main"
+        },
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional page/section for result-A-second in source-supplement"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Human-supplied fixture for software testing, not an actual extraction or a scientific finding."
+    }
+  ]
+}

@@ -110,6 +110,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `report_study_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility |
 | `report_study_inventory.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Describe explicit candidate studies before full-text inclusion without creating memberships or eligibility |
 | `report_study_inventory_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Record separate human positions on described candidates before report inclusion, without declaring memberships |
+| `result_intake.py target/assemble/verify ...` | Explicitly review and append supplied manual result rows with detached document associations and exact-input replay |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -301,3 +302,7 @@ automatically accepting it, or changing legacy task hashes when omitted.
 [Inventory-candidate eligibility positions](docs/INVENTORY_CANDIDATE_REVIEWS.md)
 keep human opinions on described candidates separate from report inclusion and
 included-membership reviews. Try `examples/report-study-inventory-reviews.json`.
+
+[Manual result intake](docs/MANUAL_RESULT_INTAKE.md) connects a collected, screened
+and included report to explicit supplied results without using mock extraction
+or changing prior evidence. Document associations stay in a separate replay record.
