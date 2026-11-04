@@ -151,3 +151,8 @@ scientific acceptance or development readiness.
 For later snapshots, [detached appraisal context comparison](APPRAISAL_SOURCE_REVIEW.md)
 shows literal appraisal/result/source changes after exact historical replay. It
 adds no current-applicability label to stored appraisals and never renews review.
+
+The separate [appraisal-transition archive](APPRAISAL_TRANSITION_BUNDLES.md) can now
+retain exact original/application/endpoint bytes for explicitly ordered appraisal
+imports. Other transition archive formats remain unchanged. Segment verification
+is historical consistency, not a new appraisal or proof of complete history.

@@ -213,6 +213,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Actual initial/endpoint protocols and explicitly ordered source-work, evidence-work or completion application records',
                                 'Recorded implementation; retained assertions apply to their recorded step context'],
          boundary='Only source-work intake, evidence-work intake and single-work completion steps are replayed. No review/completion is renewed, artifact inspected or acceptance assessed. Explicit step IDs do not enumerate all derived impacts. Earlier/later and complete project history remain unestablished.'),
+    dict(workflow_id='appraisal_transition_archive', title='Preserve a supplied contiguous appraisal-import segment',
+         guide_paths=['docs/APPRAISAL_TRANSITION_BUNDLES.md'],
+         entrypoints=[dict(script='appraisal_transition_bundle.py', arguments=[command, '--help'])
+                      for command in ('create', 'verify')],
+         required_human_inputs=['Actual initial/endpoint protocol bytes and explicitly ordered appraisal intake application records',
+                                'Separately retained recorded implementation; original assertions keep their historical step context'],
+         boundary='Only detached appraisal intake steps are replayed. No method or judgement is generated, review renewed or validity assessed. Read-only comparison is not a transition. The selected segment does not establish complete appraisal history, independent reviewers or source reading.'),
 ]
 
 

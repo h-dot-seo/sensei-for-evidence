@@ -437,3 +437,8 @@ remain separate; changed work/synthesis/completion source cues do not renew revi
 exactly replayed imported appraisal IDs and their original result/source snapshots
 through later supplied edits. Literal drift is separate from scientific validity;
 no appraisal, work completion or prior reviewer assertion is renewed.
+
+[Appraisal-transition archives](docs/APPRAISAL_TRANSITION_BUNDLES.md) preserve exact
+original/import/endpoint bytes for an explicitly selected contiguous appraisal
+segment. Existing archives stay unchanged; source snapshots and supplied reviews
+retain their historical scope without asserting complete history or current validity.

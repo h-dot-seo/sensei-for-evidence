@@ -2197,3 +2197,39 @@ Inputs and canonical/rendered outputs are capped at 50 MB each, not hard memory 
 CPU ceilings. Only historical appraisal/result pairs are expanded; added links and
 unrelated current evidence are not reviewed. Exact replay remains unsigned and
 does not establish lineage, authorship, reading or appraisal applicability.
+
+The published appraisal-comparison head was also rerun locally in full: 1,590
+tests in 279.800 seconds, 1,589 passed and one native-Windows-only skip. Exact
+remote-head matrix run remained queued at the next increment's local validation;
+no remote success is inferred from the local result.
+
+## 2026-11-04 portable appraisal transition segment
+
+Added a separate deterministic appraisal-transition archive without changing
+existing archive formats. Exact original/application/endpoint bytes are retained;
+only explicitly ordered detached appraisal intake records are dispatched through
+the existing verifier. Historical reviewer/result/source snapshots and downstream
+status cues remain in their recorded step context, without renewal or scientific
+validity claims. Read-only comparisons are not accepted as transition steps.
+
+Full Linux regression run: 1,620 tests in 259.884 seconds, 1,619 passed and one
+native-Windows-only skip. Three further reviewer-requested wrapper regressions
+cover legacy no-report input, resealed mapped-source snapshot tampering and retained
+completion assertions with changed derived bindings. All 32 final new wrapper and
+CLI-journey tests passed. One operator discovery regression brings this increment
+to 33 new tests and 19 static routes with 78 parser-help entrypoints.
+
+An independent read-only reviewer found no blocking issue, ran the initial 27
+wrapper tests and probed nine protocol fixtures, including source catalogs,
+planning/completion, document bindings, legacy IDs and inventory reviews. Their
+minor docstring correction and branch-regression suggestions were incorporated.
+This is implementation testing, not scientific validation, source authentication,
+reviewer independence verification or a complete security audit.
+
+Compile, changed-guide link and whitespace checks passed; limited publication
+scanner and complete-byte manifest validation are rerun before publication.
+The archive caps exact bytes at 50 MB and steps at 20, rejects unknown/duplicate
+members, unsafe file types, compression, altered metadata and inconsistent replay.
+No extraction, locator resolution, source reading or external/model call occurs.
+Unsigned assertions, partial selected history and no atomic path-race defense
+remain explicit limitations. Exact-head remote CI is verified separately.

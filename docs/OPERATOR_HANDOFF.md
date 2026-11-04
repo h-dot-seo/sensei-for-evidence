@@ -250,3 +250,7 @@ quality score, method choice or scientific acceptance is generated.
 original protocol, retained appraisal application and a later valid snapshot.
 The appraisal route exposes its parser help without choosing or executing it.
 Literal drift stays separate from scientific validity or renewed human review.
+
+[Appraisal-transition archives](APPRAISAL_TRANSITION_BUNDLES.md) retain explicitly
+ordered appraisal imports with actual initial/endpoint snapshots. This separate
+route exposes create/verify help only; it does not select a segment or perform review.

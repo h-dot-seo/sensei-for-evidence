@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.78.0-detached-appraisal-source-review",
+  "release": "0.79.0-appraisal-transition-archive",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 324,
+  "file_count": 328,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 33175,
-      "sha256": "ad9fb912cbd8291f8d1c1e4b89218dc4434d6767adbae631d0f3c26aabe2a1b8"
+      "bytes": 33507,
+      "sha256": "aad5ae80f560a6a246e720eb1af70f28f4a81b81214eb19918ffa91d3b7c8a25"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 159581,
-      "sha256": "83ef1df1754ba604f780c2bb5a427091e480dd3870632a56b279464770f62c09"
+      "bytes": 161900,
+      "sha256": "5689eef02012a509ffb9eecfb1a9016d50a0a0271181620315770871397c8767"
     },
     {
       "path": "adapter_integrity.py",
@@ -72,6 +72,11 @@
       "path": "appraisal_source_review.py",
       "bytes": 9362,
       "sha256": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf"
+    },
+    {
+      "path": "appraisal_transition_bundle.py",
+      "bytes": 16970,
+      "sha256": "7dfab0ca0732cdb79e72c8b33b9652a987aeca0253e41e1f3ea58c0b9ef4765c"
     },
     {
       "path": "artifact_review.py",
@@ -147,6 +152,11 @@
       "path": "docs/APPRAISAL_SOURCE_REVIEW.md",
       "bytes": 4510,
       "sha256": "65603be4bc3b50c765c1ca6759d82be1550947b0ab1cdfe327bd16d8a294acb5"
+    },
+    {
+      "path": "docs/APPRAISAL_TRANSITION_BUNDLES.md",
+      "bytes": 5226,
+      "sha256": "eb63d1149b91dfdfef437f93a8ab2a1375055912487df819490b13cc8be1e91d"
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -235,8 +245,8 @@
     },
     {
       "path": "docs/MANUAL_APPRAISAL_INTAKE.md",
-      "bytes": 9695,
-      "sha256": "ad6d649c5985ff8313d65eeab6bd42f33c5c091179c8c3bd4148448bedc746f4"
+      "bytes": 10021,
+      "sha256": "f812e1229b80756242ef016f45f6f3100d92423720cb1e6bb748f042639014b3"
     },
     {
       "path": "docs/MANUAL_CONDITION_INTAKE.md",
@@ -275,8 +285,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 15841,
-      "sha256": "8960322e9b247b0f4d8cb532bd211827e87fe3e703fdb9f43d7796b5a41e5adb"
+      "bytes": 16092,
+      "sha256": "9d9b07fb7b715ed6851bf13db4ebf1280785981a883aef460544d90cc38350d6"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -1095,8 +1105,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 48050,
-      "sha256": "c01acb21c4df8618607082a6625e51ac449f41f598e79f3a3564aeed0308fb3b"
+      "bytes": 48958,
+      "sha256": "4eb27675e9f683b6fc1befcaef7cb6e3714533e2f6dbb318fad4415452a57c31"
     },
     {
       "path": "ris_export_parser.py",
@@ -1177,6 +1187,16 @@
       "path": "test_appraisal_source_review.py",
       "bytes": 12598,
       "sha256": "6bdf6c516fd875fab4ba8ee97a35ca994cd1e72b45a7ecd2ed7fcf643cbb577b"
+    },
+    {
+      "path": "test_appraisal_transition_bundle.py",
+      "bytes": 30364,
+      "sha256": "54759441df93c3e36cf426ba479492b6a592b145ab7e4a819e598cd938b97864"
+    },
+    {
+      "path": "test_appraisal_transition_journey.py",
+      "bytes": 2947,
+      "sha256": "34cfe65907d7e6417fa3560e87b5cef438615e6220013023d68f40de6c98ed03"
     },
     {
       "path": "test_artifact_review.py",
@@ -1545,8 +1565,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 19469,
-      "sha256": "0dcb640ef9aa40e062960de8e27198bdc88577f3d040119007aea34a57c65f70"
+      "bytes": 20286,
+      "sha256": "cc02f3c0faf68c13f0e45086bf99d42a3c9cd2fe8e9d6896e8216c17c0e7dd9f"
     },
     {
       "path": "test_synthesis_review.py",
