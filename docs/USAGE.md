@@ -586,3 +586,9 @@ For opt-in local file comparison, see [explicit source-byte checks](REPORT_SOURC
 The separate manifest maps exact source IDs to local relative files; no document
 is fetched or interpreted. Only supported secure POSIX access is used, and an
 observation never upgrades the ordinary protocol's source or human-review status.
+
+To record a human full-text include/exclude choice, use [detached report decision
+records](REPORT_DECISIONS.md). Save the application record first, then replay it
+against the original protocol before exporting the candidate. Existing results
+must remain structurally compatible; no reviewer consensus or study identity is
+inferred.

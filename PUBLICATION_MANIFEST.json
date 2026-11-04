@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.50.0-local-source-byte-check",
+  "release": "0.51.0-detached-report-decisions",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 186,
+  "file_count": 190,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 19142,
-      "sha256": "90544043a56e0e8558196c31455b9ebcb880113273e319bc1cef8d58e8c471b1"
+      "bytes": 19471,
+      "sha256": "10384843a816583a3425435b0387905f1133aaf77bab4e69be5cc2f5192f62e8"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 54133,
-      "sha256": "d0ac33ee0434bc8abe717908b0c776b945cafc6638107057bc25db0d0516ab04"
+      "bytes": 56414,
+      "sha256": "2022f8d0c9e2f6a9f32f059b710b9c5c5881cd788cccb3822c3d083df266c704"
     },
     {
       "path": "adapter_integrity.py",
@@ -209,9 +209,14 @@
       "sha256": "35c8480ad49dbf051478245e28994f425e80f209972a2a5de712678621d0b7aa"
     },
     {
+      "path": "docs/REPORT_DECISIONS.md",
+      "bytes": 9349,
+      "sha256": "bd5fb84a0b7dcf1f0a0358112a65822d3464eff8f36c5a9874297786888cae01"
+    },
+    {
       "path": "docs/REPORT_REVIEWS.md",
-      "bytes": 10859,
-      "sha256": "76afd3404e2b49e3ac78c4624f4d3ed5b3637e73d8c60a4c75338f127b5ede9c"
+      "bytes": 11295,
+      "sha256": "5daef7edf9dfd2fc278d250002f231762214309e7f1eaabb2d6323633acd27ec"
     },
     {
       "path": "docs/REPORT_SOURCE_CHECK.md",
@@ -260,8 +265,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 33460,
-      "sha256": "a7aa1b1f22b3e5a40e80bc199bb1fd47e5bfff6c54ebee42c1ce11defbcfcde9"
+      "bytes": 33793,
+      "sha256": "457957944106e6d84ad7004f8e0583e6fa7d8164a4c63fd1dd6c20870d8cfce9"
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
@@ -424,6 +429,11 @@
       "sha256": "10bad6fa4bee49a71dc1cc96a80e3d7e47729217d35c7e9a38b905d816a12034"
     },
     {
+      "path": "examples/report-decision-document.json",
+      "bytes": 579,
+      "sha256": "5c3d22117a6428275fdbbdeaf1f8899cb559c71b7aae171a5e9a14b338c6efb7"
+    },
+    {
       "path": "examples/report-protocol.json",
       "bytes": 1662,
       "sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78"
@@ -552,6 +562,11 @@
       "path": "receipt_intake.py",
       "bytes": 7870,
       "sha256": "f456e9f618d173da7495c0e412d93ec565a5fb9c824bae90a55b6b704df34b39"
+    },
+    {
+      "path": "report_decision.py",
+      "bytes": 13199,
+      "sha256": "d59c7abafeb3a866416857bd13b260da7eb5378a3f72eb14970fb319b443eb8e"
     },
     {
       "path": "report_links.py",
@@ -807,6 +822,11 @@
       "path": "test_record_provenance.py",
       "bytes": 4972,
       "sha256": "73d5f98d2c642b654136c3e7c49d5a4c1a52b35a6da2e9e248035d5112a0c4a5"
+    },
+    {
+      "path": "test_report_decisions.py",
+      "bytes": 29443,
+      "sha256": "2f2d9fb40be5ee7f4f81c2727b5fd89eb7a0537d3db7ad53184dbc16b5da63af"
     },
     {
       "path": "test_report_reviews.py",

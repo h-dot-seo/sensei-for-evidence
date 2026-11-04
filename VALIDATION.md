@@ -749,3 +749,33 @@ relative mappings remain in the detached result and may still be sensitive.
 Publication audit and exact manifest verification pass. No real document, private
 record, source retrieval, scientific fact check or biological execution guidance
 was used or added.
+
+Detached full-text report-decision increment (2026-11-04): 875 tests in the suite;
+Linux run: 874 passed and one native-Windows-only test skipped. Thirty new tests
+cover blank human targets, strict dates/hash/schema types, literal scalar/plural
+membership choices, retrieved pending/excluded transitions, controlled legacy
+scalar removal, whole-input staleness, unchanged metadata and reviewer assertions,
+source-linked inventory independence, preserved orphan study-review context, and
+complete pre/post report reconciliation. Scalar-only inputs without optional
+ledgers reject exclusions or membership changes that invalidate retained results.
+The focused seven-suite run passes 234 tests. All 35 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison projections and report
+CSV bytes. Canonical engine files remain unchanged; the separate application
+record additionally fingerprints its decision implementation. An independent test
+writer supplied 29 regressions and passed a 192-test report-family run; a separate
+read-only code/document review found no implementation defect. A final transition
+regression and explicit UTF-8 file reads were added before the final full run.
+Replay rejects modified original inputs, candidate rows, target/context snapshots,
+counts, hashes, unknown fields and changed implementation bindings. The tests
+also deliberately allow a newly consistent, resealed rationale assertion: these
+editable records are not authenticated or immutable historical evidence. CLI
+round trips save one detached record first and export a new protocol only after
+replay, reject collisions and malformed JSON, preserve original files, and escape
+supplied controls. The documented fictional target/application/replay/comparison/
+audit/seven-file-bundle journey succeeds. It includes report three only because
+the human fixture expressly names candidate X, retaining all five descriptive
+assertions and both prior result rows. No embedded history, review consensus,
+source authenticity, reading, per-study scientific eligibility or chronological
+authority is inferred. Publication audit and exact manifest verification pass.
+No private inputs, real paper, medical fact checking or biological execution
+instructions were used or added.

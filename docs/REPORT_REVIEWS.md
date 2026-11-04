@@ -184,3 +184,11 @@ selected local files with non-null supplied document digests. This does not chan
 this read-only review projection: its `document_bytes_verification` remains
 `NOT_PERFORMED`, and a separate local match does not authenticate the source,
 prove reading, renew a position or adjudicate eligibility.
+
+## Separate canonical decision application
+
+[Detached full-text decision records](REPORT_DECISIONS.md) can apply a separately
+supplied human choice and explicit study declaration after structural validation.
+They retain these positions unchanged and never infer a vote or correct outcome.
+The original protocol and separate application record are needed for replay;
+this review projection does not become an embedded decision history.

@@ -286,3 +286,8 @@ memberships, prior review targets, results or pending-work queues.
 local document with its supplied source digest through a bounded no-follow file
 checker. Detached observations never certify reading, authenticity or eligibility,
 change canonical state, or follow locators. Unsupported platforms fail closed.
+
+[Explicit full-text decision records](docs/REPORT_DECISIONS.md) apply a separately
+supplied human include/exclude choice and exact study declaration to a detached
+candidate. Replay against the original input precedes protocol export; conflicting
+result links are rejected rather than deleted, and reviewer positions never vote.
