@@ -176,3 +176,11 @@ For a person's position on an individual declared study, use the separate
 [exact report-study review workflow](REPORT_STUDY_REVIEWS.md). It records explicit
 reviewed-source IDs without comparing its opinion to report inclusion as if the
 units were interchangeable. Report-level positions and hashes remain unchanged.
+
+## Optional local byte comparison
+
+[Explicit local source-byte checks](REPORT_SOURCE_CHECK.md) can separately compare
+selected local files with non-null supplied document digests. This does not change
+this read-only review projection: its `document_bytes_verification` remains
+`NOT_PERFORMED`, and a separate local match does not authenticate the source,
+prove reading, renew a position or adjudicate eligibility.

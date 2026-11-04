@@ -581,3 +581,8 @@ For candidate descriptions before a full-text inclusion decision, use the
 [study inventory workflow](REPORT_STUDY_INVENTORY.md). Supply a report ID and an
 explicit human study label to generate a blank source-linked scaffold without
 creating an included membership or eligibility judgment.
+
+For opt-in local file comparison, see [explicit source-byte checks](REPORT_SOURCE_CHECK.md).
+The separate manifest maps exact source IDs to local relative files; no document
+is fetched or interpreted. Only supported secure POSIX access is used, and an
+observation never upgrades the ordinary protocol's source or human-review status.

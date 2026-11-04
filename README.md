@@ -281,3 +281,8 @@ canonical study outcome, changing PRISMA counts or filtering extracted results.
 human descriptions on retrieved reports before their full-text inclusion decision.
 Novel-label scaffolds do not count as stored assertions or change included study
 memberships, prior review targets, results or pending-work queues.
+
+[Explicit local source-byte checks](docs/REPORT_SOURCE_CHECK.md) compare a selected
+local document with its supplied source digest through a bounded no-follow file
+checker. Detached observations never certify reading, authenticity or eligibility,
+change canonical state, or follow locators. Unsupported platforms fail closed.

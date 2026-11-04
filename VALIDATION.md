@@ -721,3 +721,31 @@ screening. Candidate eligibility-review migration remains deferred rather than
 silently replacing the old membership-presence scope. Publication audit and exact
 manifest verification pass. No real full text, private records, source retrieval,
 scientific fact checking or biological experiment instructions were used.
+
+Explicit local report-source byte-check increment (2026-11-04): 845 tests in the
+suite; Linux run: 844 passed and one native-Windows-only test skipped. Thirty-two
+new tests cover exact source/report/descriptor binding, null-digest source-first
+scaffolds, whole-input validation before access, strict bounded manifests,
+case-folded duplicate paths, unlisted sources, descriptor-versus-criteria context,
+CSV mapped provenance, detached outputs and unchanged canonical/bundle bytes.
+The focused seven-suite run passes 212 tests. All 34 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison projections and report
+CSV bytes. The existing canonical engine files are unchanged by this standalone
+command; its separate result fingerprints both itself and the reused artifact
+checker. Independent read-only review found no blocking issue, ran the initial
+26 new tests plus 56 artifact/inventory tests, and probed resource-limit and race
+boundaries. Those probes became permanent tests for entry/aggregate limits,
+same-size rewrite, stat/open replacement and unchanged unavailable retrieval.
+The final 32-test suite passes locally. Native-Windows byte access is deliberately
+unsupported and fails closed; cross-platform tests exercise that boundary rather
+than claim source bytes were checked there. A fictional 225-byte file matches its
+supplied descriptor while two other source IDs remain uninspected. Symlinked
+roots/parents/files, hardlinks, FIFOs, missing files and changed reads do not become
+successful observations. A match does not prove authenticity, reading, eligibility
+or durable file state, and never changes protocol assertions or review hashes.
+Only an explicit local manifest is inspected; locators remain inert. Source text
+and discovered absolute filesystem paths are omitted, while supplied metadata and
+relative mappings remain in the detached result and may still be sensitive.
+Publication audit and exact manifest verification pass. No real document, private
+record, source retrieval, scientific fact check or biological execution guidance
+was used or added.
