@@ -52,8 +52,8 @@ that the supplied reason caused them. No planning or synthesis review is renewed
 Unchanged search summaries can still contain missing sources.
 
 CLI behavior:
-- No note, or a structurally valid matching note: normal comparison JSON, exit 0.
-- Structurally valid mismatching note: comparison JSON including MISMATCH, exit 1.
+- No note, or a structurally valid matching note: comparison JSON (or `--text` summary), exit 0.
+- Structurally valid mismatching note: comparison JSON (or `--text` summary) including MISMATCH, exit 1.
 - Invalid note/protocol/read error: error on stderr, exit 1, no comparison report.
 
 Other comparison fields remain unchanged. The note does not become embedded in

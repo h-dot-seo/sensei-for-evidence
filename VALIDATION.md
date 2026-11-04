@@ -487,3 +487,17 @@ scope changes; comparison locates those changes without reopening work or
 claiming historical acceptance reasons. Independent review found no blockers.
 An additional unchanged-input/nonmutation check passed across all 26 valid
 synthetic protocol examples. Publication audit and complete manifest checks pass.
+
+Readable protocol-comparison increment (2026-11-04): 485 tests in the suite;
+Linux run: 484 passed and one native-Windows-only test skipped. Twenty new
+independently written tests cover text/API/default-JSON parity, CRLF inputs,
+UTF-8 under forced ASCII stdout, deterministic repeated output, immutable input
+files/objects, safe hostile control/format text, exact input/engine fingerprints,
+field/scope differences, all context/work IDs, retained stale/unbound states,
+missing stages, empty/add/remove scopes, prerequisite status versus order, and
+matching/mismatching/invalid amendment notes with unchanged exit behavior.
+Independent review found no implementation defects. All 26 valid synthetic
+examples additionally rendered deterministically without mutation, preserving
+input/implementation hashes and NOT_READY bounds. Publication audit and complete
+manifest verification pass. The text view is a projection, not scientific prose
+or automatic acceptance; full JSON remains the default structured record.

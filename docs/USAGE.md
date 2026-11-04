@@ -324,6 +324,7 @@ establish input consistency, not authenticity or scientific correctness.
 
 ```sh
 python compare_runs.py before-protocol.json after-protocol.json
+python compare_runs.py before-protocol.json after-protocol.json --text
 ```
 
 Both inputs must pass current workflow and optional report reconciliation. The

@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from evidence_workflow import run
 from context_links import nonempty_text, iso_date, id_list
-from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes as canonical
+from json_io import configure_utf8_stdio, parse_json, quoted_display, canonical_json_bytes as canonical
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
 
@@ -257,12 +257,102 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
 
 
+def render_text(result):
+    """Project the comparison without hiding unchanged stale completion assertions."""
+    show = quoted_display
+    lines = ['Supplied protocol comparison (not scientific reassessment)',
+             'Before version: ' + show(result['before_version']),
+             'After version: ' + show(result['after_version']),
+             'Before protocol SHA-256: ' + result['before_protocol_sha256'],
+             'After protocol SHA-256: ' + result['after_protocol_sha256'],
+             'Hash scope: ' + result['hash_scope'],
+             'Implementation SHA-256 fingerprints (not authentication): ' + show(result['engine_sha256']),
+             'Input change flags: ' + show({key: result[key] for key in ('has_changes', 'version_changed', 'unversioned_change')}),
+             'Changed protocol fields: ' + show(result['changed_protocol_fields']),
+             'Identity warnings: ' + show(result['identity_warnings']),
+             'Record IDs added: ' + show(result['record_ids_added']),
+             'Record IDs removed: ' + show(result['record_ids_removed']),
+             'Before record/result counts: ' + show(result['before_counts']),
+             'After record/result counts: ' + show(result['after_counts']),
+             'Before report counts (null means not supplied): ' + show(result['before_report_counts']),
+             'After report counts (null means not supplied): ' + show(result['after_report_counts'])]
+    note = result['amendment_review']
+    lines.extend(['', 'Supplied amendment note stage: ' + note['stage']])
+    if note['stage'] == 'SUPPLIED':
+        lines.extend(['Note binding (not approval): ' + note['binding_status'],
+                      'Supplied note: ' + show(note['assertion']),
+                      'Note input hash matches: ' + show(note['input_hash_matches']),
+                      'Note version matches: ' + show(note['version_matches']),
+                      'Actual changed fields: ' + show(note['actual_changed_fields']),
+                      'Undeclared changed fields: ' + show(note['undeclared_changed_fields']),
+                      'Declared but unchanged fields: ' + show(note['declared_but_unchanged_fields']),
+                      'Observed transitions (not causal attribution): ' + show(note['observed_state_transitions']),
+                      note['boundary']])
+    lines.extend(['', 'Changed entity rows (field names only; not change significance):'])
+    changed_entities = False
+    for name, changes in sorted(result['entity_changes'].items()):
+        if changes['added_ids'] or changes['removed_ids'] or changes['changed']:
+            changed_entities = True
+            lines.append(name + ': ' + show(changes))
+    if not changed_entities:
+        lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    lines.extend(['', 'Context comparison (all supplied context IDs):'])
+    for row in result['context_work_impact']['contexts']:
+        def context_state(snapshot):
+            return None if snapshot is None else dict(review_status=snapshot['context']['review_status'],
+                                                      date_roles=snapshot['date_roles'])
+        lines.extend(['Context: ' + show(row['context_id']),
+                      'Before/after supplied review: ' + show(dict(before=context_state(row['before']), after=context_state(row['after']))),
+                      'Context cues: ' + show(row['comparison_cues']),
+                      'Changed context fields: ' + show(row['changed_context_fields']),
+                      'Linked evidence changes: ' + show(row['linked_evidence_changes']),
+                      'Explicit work IDs for manual comparison: ' + show(row['work_ids_for_manual_comparison'])])
+    lines.extend(['', 'Completion comparison (all work IDs; unchanged stale/unbound assertions remain visible):'])
+    for row in result['completion_work_impact']['work_packages']:
+        def work_state(snapshot):
+            if snapshot is None:
+                return None
+            work, review = snapshot['work_package'], snapshot['completion_review']
+            return dict(status=work['status'], blocked_by=work['blocked_by'],
+                        completion_source_status=review['source_match_status'],
+                        supplied_basis_sha256=review['supplied_basis_sha256'],
+                        current_basis_sha256=review['current_basis_sha256'])
+        lines.extend(['Work: ' + show(row['work_package_id']),
+                      'Before supplied state: ' + show(work_state(row['before'])),
+                      'After supplied state: ' + show(work_state(row['after'])),
+                      'Completion cues: ' + show(row['comparison_cues']),
+                      'Changed work fields: ' + show(row['changed_work_fields']),
+                      'Changed completion-basis fields (null means no two-sided basis): ' + show(row['changed_completion_basis_fields'])])
+        details = row['work_source_changes']
+        if details is None:
+            lines.append('Work/source comparison: no two-sided basis for added/removed work.')
+        else:
+            lines.append('Changed work/source sections: ' + show(details['changed_sections']))
+            for name, value in details.items():
+                if name == 'changed_sections':
+                    continue
+                if ((isinstance(value, list) and value)
+                        or (isinstance(value, dict) and (value['added_ids'] or value['removed_ids'] or value['changed']))):
+                    lines.append(name + ': ' + show(value))
+        for side in ('before', 'after'):
+            snapshot = row[side]
+            lines.append(side.capitalize() + ' direct prerequisite source labels: ' +
+                         show(None if snapshot is None else snapshot['direct_prerequisite_completion_sources']))
+        lines.append('Direct prerequisite changes/order: ' + show(row['direct_prerequisite_completion_changes']))
+    lines.extend(['', 'Empty change cues are not acceptance or completeness; no sources or artifact bytes were verified.',
+                  'Full assertion snapshots and unchanged entity details remain in the default JSON output.',
+                  result['context_work_impact']['boundary'], result['completion_work_impact']['boundary'],
+                  result['boundary'], 'Census: ' + result['census_claim'], 'Conclusion: ' + result['conclusion_readiness']])
+    return '\n'.join(lines) + '\n'
+
+
 def main():
     configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('before', type=Path)
     parser.add_argument('after', type=Path)
     parser.add_argument('--amendment',type=Path,help='optional supplied change-note JSON; checked, never approved')
+    parser.add_argument('--text', action='store_true', help='read-only comparison summary; default remains full JSON')
     args = parser.parse_args()
     try:
         result = compare_protocols(parse_json(args.before.read_text(encoding='utf-8')),
@@ -270,7 +360,10 @@ def main():
                                    parse_json(args.amendment.read_bytes()) if args.amendment else _NO_AMENDMENT)
     except (ValueError, OSError, KeyError, TypeError) as error:
         parser.exit(1, str(error) + '\n')
-    print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    if args.text:
+        print(render_text(result), end='')
+    else:
+        print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
     if args.amendment and result['amendment_review']['binding_status']=='MISMATCH':parser.exit(1)
 
 

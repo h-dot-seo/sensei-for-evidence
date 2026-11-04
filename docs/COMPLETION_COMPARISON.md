@@ -91,3 +91,31 @@ NOT_PERFORMED. No hash is automatically renewed, work reopened, dependency
 bypassed, priority generated, clinical/research decision made or artifact bytes
 verified. Census and conclusion readiness stay NOT_ESTABLISHED and NOT_READY.
 This standalone comparison is not added to the portable bundle.
+
+## Readable comparison output
+
+```sh
+python compare_runs.py examples/completion-binding.json examples/completion-amendment.json --text
+python compare_runs.py examples/first-run-enriched.json examples/first-run-note-complete.json --amendment examples/work-note-amendment.json --text
+```
+
+`--text` renders the same computed comparison without repeating full assertion
+snapshots. Default output remains full JSON. The summary includes the two input
+hashes, implementation fingerprints and version labels, unversioned-change and positional-ID warnings,
+changed protocol fields, record/report counts, changed entity IDs/field names,
+context review labels/dates, and every work ID's before/after completion states
+and hashes. Work/source changes and direct prerequisite order/labels remain
+separate. Unchanged STALE_SOURCE and UNBOUND_COMPLETION assertions stay visible.
+
+When a note is supplied, its assertion, input/version matches, scope mismatches
+and observed state transitions remain visible. A matching note is not approval;
+a mismatching note still produces the report and exits with code 1. Invalid
+inputs or notes produce an error and no report. Supplying `--text` changes only
+presentation, not validation, exit codes, files, hashes or recorded work status.
+
+Supplied strings use the shared quoted display so control/format characters
+cannot impersonate headings or terminal output. Missing report stages stay
+null, not zero. Empty change cues are not completeness or acceptance. Full
+source/assertion details and unchanged entity details remain in the JSON view;
+keep that output when a structured audit record is needed. The text view is
+not a generated scientific narrative or a recommendation about what to do next.

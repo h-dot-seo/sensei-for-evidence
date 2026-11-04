@@ -96,7 +96,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `prisma_reports.py PROTOCOL.json` | Add report/full-text/study and extraction-queue accounting |
 | `research_bundle.py create PROTOCOL.json OUTPUT.zip` | Create a new portable supplied-data bundle |
 | `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
-| `compare_runs.py BEFORE.json AFTER.json` | Show mechanical input/ledger changes and version warnings |
+| `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, completion-source differences and version warnings |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -220,3 +220,7 @@ prerequisite labels and explicit nonverification states without changing work st
 work/source sections and direct prerequisite labels across two supplied snapshots.
 It separates own artifact-locator changes from source-basis changes without
 reconstructing historical acceptance reasons or reopening completed work.
+
+Add `--text` to [protocol comparison](docs/COMPLETION_COMPARISON.md#readable-comparison-output)
+for a read-only summary with exact input hashes, changed field names, all work
+source states and amendment-binding results. Full JSON remains the default.
