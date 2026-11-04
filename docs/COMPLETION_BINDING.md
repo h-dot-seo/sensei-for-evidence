@@ -75,3 +75,34 @@ or stale completion assertion; inspect the review queues before deciding what to
 do. This flag is not an automatic execution gate or recommendation. Existing
 artifact checks remain opt-in and separate. No criterion, clinical applicability,
 regulatory stage, evidence adequacy or scientific conclusion is validated.
+
+## Portable CSV and bundle summary
+
+`research_bundle.py create` appends completion columns to `work-packages.csv`:
+
+- `supplied_artifact_locator` and `supplied_acceptance_verified` retain the
+  supplied assertions as CSV text. Missing fields are empty; booleans display as
+  True/False. They are not independent file or acceptance checks.
+- `completion_source_status`, `supplied_completion_basis_sha256` and
+  `current_completion_basis_sha256` distinguish matching, stale, unbound and
+  unfinished assertions. The supplied hash is empty when absent, including for
+  legacy COMPLETE work; the current target is available for unfinished work too.
+- `completion_acceptance_assessment` and
+  `completion_artifact_content_verification` remain NOT_PERFORMED.
+- `direct_prerequisite_completion_sources` is a JSON array of exact direct
+  prerequisite IDs, supplied work statuses and completion-source labels, in the
+  supplied dependency order. An empty array means no direct links, not readiness.
+  It does not recursively certify earlier prerequisites.
+
+Existing CSV columns retain their order. Formula-like artifact locators receive
+the same conservative CSV escaping as other supplied text; original protocol and
+research JSON retain their unescaped values. CSV is an export, not an input for
+renewing completion hashes. No source status modifies the supplied COMPLETE or
+blocked_by assertions.
+
+The bundle summary counts unbound and stale completed work separately and keeps
+nonverification and NOT_READY limits visible. A zero count is not proof that work
+or science is complete. Regeneration verification detects altered CSV labels even
+if an archive's file hashes were rewritten. It verifies consistency with supplied
+inputs and the recorded engine, not whether the assertions are true. Existing
+bundles still require their recorded implementation bytes for verification.

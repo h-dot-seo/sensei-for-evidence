@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.36.0-prerequisite-completion-cues",
+  "release": "0.37.0-completion-binding-exports",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 129,
+  "file_count": 130,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13191,
-      "sha256": "ec820bd622c12fc7985f421d36c2d60f90dc3cb63daa3388f3ce728fc14d358f"
+      "bytes": 13450,
+      "sha256": "526ec42941ffdb252274c62582b057f0f9aea74da345b0ebd120f08ef37f1a75"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 32428,
-      "sha256": "7b8cc26c715ec0b7a64e1996447f7f702fb93a89c5b886359004b3e02b9c182a"
+      "bytes": 33492,
+      "sha256": "ccba0a8830e8109fc1a6638c73f66b9f31ace1cceef89365d4cc3876ed919a22"
     },
     {
       "path": "adapter_integrity.py",
@@ -110,8 +110,8 @@
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
-      "bytes": 4619,
-      "sha256": "696aec63e2475609ebc98586435a3b354e8e63bcb11c5db571a294a55d821d06"
+      "bytes": 6492,
+      "sha256": "1ca5a1c79b28b8603ecd1732573bdf1f7fef1b25ab0cca02b54a21123aa38d5d"
     },
     {
       "path": "docs/CONTEXT_AMENDMENTS.md",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 29019,
-      "sha256": "0f311ce637a7087c079ce87248431093aa121e8edf5fd01cbfef7922aa4fa3c7"
+      "bytes": 29563,
+      "sha256": "a7571bf142ee7e53d670f4592656cc6777a4ecb5c324031adf45e7490b39fab6"
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
@@ -405,8 +405,8 @@
     },
     {
       "path": "research_bundle.py",
-      "bytes": 14735,
-      "sha256": "9514da8b9021a8e47ff65b0a7db858b035088087f57fa195ec96a3a9dd289a23"
+      "bytes": 16809,
+      "sha256": "ea1434a8e604d5b0144b19bc1f8fa85c2597f05f6054506bb7793aca269241fd"
     },
     {
       "path": "research_status.py",
@@ -472,6 +472,11 @@
       "path": "test_completion_binding.py",
       "bytes": 7845,
       "sha256": "38be4e01db57bb3b1ed9c5220e5a294cb597461e5334b1e6742008d780558230"
+    },
+    {
+      "path": "test_completion_export.py",
+      "bytes": 10842,
+      "sha256": "1d2681d4807e617c4046aeb48026708590ce905ce291b0d49fe566151dcb572d"
     },
     {
       "path": "test_context_links.py",

@@ -459,3 +459,18 @@ no engine gate, automatic reopening, hash renewal or recursive acceptance claim.
 Publication audit and complete inventory verification pass on the final files.
 Independent read-only review found no blocking issues; its suggested ordering,
 determinism and cross-packet isolation cases were added as executable regressions.
+
+Completion-binding export increment (2026-11-04): 441 tests in the suite;
+Linux run: 440 passed and one native-Windows-only test skipped. Twelve new tests
+cover current/stale/unbound/unfinished completion CSV fields, unchanged supplied
+status and hashes, explicit nonverification labels, direct prerequisite order,
+unrelated-work isolation, formula-like artifact escaping with unaltered JSON,
+deterministic bundle verification, rehashed fabricated-label rejection,
+source-review work, explicit false versus missing acceptance fields, all direct
+prerequisite labels, three-level link scope and empty-work readiness bounds.
+The existing 31-column CSV prefix has an executable compatibility regression and is
+preserved; summary counts do not infer acceptance. Public audit and inventory
+verification pass. Independent review additionally compared the unchanged CSV
+prefix and reproducible ZIP output across all 25 valid synthetic examples.
+Independent review found no blockers; its four suggested edge cases are now
+executable tests rather than manual checks alone.

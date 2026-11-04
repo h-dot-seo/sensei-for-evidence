@@ -35,6 +35,10 @@ def build_bundle(raw):
     csv_text=reports.pop('report_csv') if reports is not None else 'report_id,record_ids,retrieval,decision,reason,study_id,locator\n'
     out=io.StringIO(newline=''); writer=csv.writer(out,lineterminator='\n')
     columns=['work_package_id','status','question','deliverable','acceptance_criterion','evidence_ids','depends_on','blocked_by','context_ids','context_review_pending','appraisal_ids','evidence_without_recorded_appraisal','supplied_priority_rank','current_priority_rank','planning_source_status','planning_rationale','planning_uncertainty','planner','planned_at','planning_basis_sha256','current_planning_basis_sha256','experimental_unit_ids','evidence_without_experimental_unit','experimental_stage','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues','linked_synthesis_statement_ids','work_type','source_refs']
+    columns += ['supplied_artifact_locator','supplied_acceptance_verified','completion_source_status',
+                'supplied_completion_basis_sha256','current_completion_basis_sha256',
+                'completion_acceptance_assessment','completion_artifact_content_verification',
+                'direct_prerequisite_completion_sources']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -42,11 +46,24 @@ def build_bundle(raw):
     context_by_work = {row['work_package_id']: row for row in research['context']['work_package_context']}
     appraisal_by_work = {row['work_package_id']: row for row in research['appraisal']['work_package_appraisals']}
     planning_by_work = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
+    completion_by_work = {row['work_package_id']: row for row in research['planning']['completion_ledger']}
+    work_by_id = {row['work_package_id']: row for row in research['work_packages']}
     for wp in sorted(research['work_packages'],key=lambda w:w['work_package_id']):
         wid = wp['work_package_id']
         exported = dict(wp, work_type=wp.get('work_type','evidence_review'), source_refs=wp.get('source_refs',[]), context_review_pending=context_by_work[wid]['context_review_pending'],
                         appraisal_ids=appraisal_by_work[wid]['appraisal_ids'],
                         evidence_without_recorded_appraisal=appraisal_by_work[wid]['evidence_without_recorded_appraisal'])
+        completion = completion_by_work[wid]
+        exported.update(supplied_artifact_locator=wp.get('artifact_locator', ''),
+                        supplied_acceptance_verified=wp.get('acceptance_verified', ''),
+                        completion_source_status=completion['source_match_status'],
+                        supplied_completion_basis_sha256=completion['supplied_basis_sha256'] or '',
+                        current_completion_basis_sha256=completion['current_basis_sha256'],
+                        completion_acceptance_assessment=completion['acceptance_assessment'],
+                        completion_artifact_content_verification=completion['artifact_content_verification'],
+                        direct_prerequisite_completion_sources=[dict(work_package_id=dep,
+                            supplied_work_status=work_by_id[dep]['status'],
+                            source_match_status=completion_by_work[dep]['source_match_status']) for dep in wp['depends_on']])
         planning = planning_by_work[wid]
         assertion = planning['assertion'] or {}
         exported.update(supplied_priority_rank=assertion.get('priority_rank', ''),
@@ -95,6 +112,10 @@ def build_bundle(raw):
              'Supplied claim positions are not votes or inferred support, refutation or causality.\n'
              'Source-review work may precede extraction; its completion assertion does not approve a receipt or establish scientific readiness.\n'
              f"Work packages: {len(research['work_packages'])}\n"
+             f"Completed work without source binding: {sum(row['source_match_status'] == 'UNBOUND_COMPLETION' for row in completion_by_work.values())}\n"
+             f"Completed work with stale source binding: {sum(row['source_match_status'] == 'STALE_SOURCE' for row in completion_by_work.values())}\n"
+             'Completion-source matches are not artifact-byte verification or acceptance; recorded work states are unchanged.\n'
+             'CSV prerequisite completion-source labels cover direct supplied links only, not recursive acceptance.\n'
              f"Work without supplied planning ranks: {len(research['planning']['work_without_planning_assertion'])}\n"
              f"Work with stale planning source bindings: {len(research['planning']['work_with_stale_planning_assertion'])}\n"
              'Planning ranks are supplied assertions, not advice; dependencies remain separate.\n'

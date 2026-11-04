@@ -517,3 +517,13 @@ Reporting states and causal limitations are preserved without scientific inferen
 Explicit `work_type: source_review` can use empty evidence_ids only with validated
 source_refs to declared searches or enumerated records. Legacy evidence work still
 requires extracted result IDs. See [source-review work](SOURCE_REVIEW_WORK.md).
+
+
+### Completion assertions in work-package exports
+
+Bundles append [completion-source columns](COMPLETION_BINDING.md#portable-csv-and-bundle-summary)
+to `work-packages.csv` while preserving the previous column order. Supplied
+artifact/acceptance fields, current versus supplied basis hashes, nonverification
+labels and direct prerequisite source labels stay separate from recorded work
+status. The bounded summary includes unbound and stale completion counts. Matching
+hashes or a valid ZIP never certify scientific or deliverable acceptance.

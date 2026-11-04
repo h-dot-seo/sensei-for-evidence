@@ -211,3 +211,7 @@ never verifies acceptance, renews a hash or automatically reopens work.
 Selected work views also expose [direct prerequisite completion cues](docs/PREREQUISITE_REVIEW.md#completion-source-cues-without-expanding-packets):
 CURRENT/STALE/UNBOUND source labels remain visible even when full prerequisite
 packets are omitted. Recorded unblocking stays separate from acceptance review.
+
+[Portable work-package CSV exports](docs/COMPLETION_BINDING.md#portable-csv-and-bundle-summary)
+also preserve supplied completion assertions, source-binding hashes, direct
+prerequisite labels and explicit nonverification states without changing work status.
