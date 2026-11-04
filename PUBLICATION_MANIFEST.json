@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.43.0-explicit-multistudy-reports",
+  "release": "0.44.0-report-study-comparison",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 153,
+  "file_count": 154,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 16247,
-      "sha256": "0894a9000a6e3142d17d009cb4a859e6c1f32f2ab6089dccd75838a03025ad18"
+      "bytes": 16281,
+      "sha256": "7bf5abeab566acf88ba903731adb14521e268abc040e7edfbe1d6ef664877a4b"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 41094,
-      "sha256": "29cf372012f5de35ed3b1f661673cd9b212f04ab9ad42356e8a98dd09072c05d"
+      "bytes": 42362,
+      "sha256": "ec2f9b282a5aa8d84865322e5e7856714916e4fb9e9045241d52d467b7bf9d79"
     },
     {
       "path": "adapter_integrity.py",
@@ -90,8 +90,8 @@
     },
     {
       "path": "compare_runs.py",
-      "bytes": 29336,
-      "sha256": "89049e9faa049b155b54329db9ac7b68ab12b0e6f824219327fe6e7408ab38af"
+      "bytes": 36975,
+      "sha256": "ff8661f54f34e1495c0bcc1e46eb77109cb8e42a0ca13418547b3af76e723e52"
     },
     {
       "path": "context_links.py",
@@ -170,8 +170,8 @@
     },
     {
       "path": "docs/MULTI_STUDY_REPORTS.md",
-      "bytes": 6775,
-      "sha256": "3ac8e01dc045eef3c44da878ef28a546bfe78829365ef1788cf71612cc23ca48"
+      "bytes": 9928,
+      "sha256": "1064980a2e35bcb02f3b2effc6240ee8d7d04ba0a7556eee13699dba73bf24fb"
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
@@ -230,8 +230,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 30631,
-      "sha256": "68082e1c4ba1a29dc4960266cf555bcfe358cd9b3bab28b2ea74250885a741f0"
+      "bytes": 31399,
+      "sha256": "4a6ae18c82fa4f94de642ab538df6eb5389afe67aaa365b2dc3aaf9202a679d7"
     },
     {
       "path": "docs/WORK_NAVIGATION.md",
@@ -677,6 +677,11 @@
       "path": "test_record_provenance.py",
       "bytes": 4972,
       "sha256": "73d5f98d2c642b654136c3e7c49d5a4c1a52b35a6da2e9e248035d5112a0c4a5"
+    },
+    {
+      "path": "test_report_study_comparison.py",
+      "bytes": 25616,
+      "sha256": "e2198689b844884d61966e11f618e1fcfaaa4b50a9c77b7488192ced1b659f70"
     },
     {
       "path": "test_report_study_memberships.py",

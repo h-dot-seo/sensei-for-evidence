@@ -8,6 +8,7 @@ from evidence_workflow import run
 from context_links import nonempty_text, iso_date, id_list, source_context_linkage
 from json_io import configure_utf8_stdio, parse_json, quoted_display, canonical_json_bytes as canonical
 from prisma_reports import report_flow
+from report_links import has_plural_studies, report_study_coverage, report_study_ids
 from research_bundle import engine_hashes
 
 _NO_AMENDMENT = object()
@@ -33,6 +34,88 @@ def entity_changes(before, after, id_field):
     return dict(added_ids=sorted(set(right) - set(left)),
                 removed_ids=sorted(set(left) - set(right)), changed=changed,
                 unchanged_count=len(shared) - len(changed))
+
+
+def report_study_comparison(before, after, left, right, left_reports, right_reports):
+    """Compare exact declared pairs, never positional pointers or guessed identities.
+
+    Inputs and normalized rows have already passed the workflow/report validators.
+    Scalar declarations are projected on both sides when either side opts in.
+    """
+    def snapshot(protocol, research, reports):
+        if reports is None:
+            return 'NOT_SUPPLIED', None, {}
+        by_id = {row['report_id']: row for row in reports['report_ledger']}
+        evidence = {row['evidence_id']: row for row in research['evidence']}
+        positions = {row['report_id']: i for i, row in enumerate(protocol['reports'])}
+        coverage = report_study_coverage(protocol, by_id, research['evidence'])
+        pairs = {}
+        for row in coverage['membership_ledger']:
+            report = by_id[row['report_id']]
+            pairs[(row['report_id'], row['study_id'])] = dict(
+                report=copy.deepcopy(report), input_pointer=row['input_pointer'],
+                report_input_pointer=f"/reports/{positions[row['report_id']]}",
+                declaration_form='study_ids' if 'study_ids' in report else 'study_id',
+                declared_study_ids=report_study_ids(report),
+                evidence_ids=copy.deepcopy(row['evidence_ids']),
+                linked_evidence=[copy.deepcopy(evidence[eid]) for eid in row['evidence_ids']],
+                has_result_rows=row['has_result_rows'])
+        return 'SUPPLIED', coverage['counts'], pairs
+
+    left_stage, left_counts, old = snapshot(before, left, left_reports)
+    right_stage, right_counts, new = snapshot(after, right, right_reports)
+    rows = []
+    for report_id, study_id in sorted(set(old) | set(new)):
+        key = (report_id, study_id)
+        a, b = old.get(key), new.get(key)
+        retained = a is not None and b is not None
+        fields = changed_fields({} if a is None else a['report'],
+                                {} if b is None else b['report'])
+        evidence = entity_changes([] if a is None else a['linked_evidence'],
+                                  [] if b is None else b['linked_evidence'], 'evidence_id')
+        pointer_changed = a['input_pointer'] != b['input_pointer'] if retained else None
+        cues = []
+        if a is None:
+            cues.append('MEMBERSHIP_ADDED')
+        elif b is None:
+            cues.append('MEMBERSHIP_REMOVED')
+        else:
+            if set(fields) - {'study_id', 'study_ids'}:
+                cues.append('REPORT_ASSERTIONS_CHANGED')
+            if a['declaration_form'] != b['declaration_form']:
+                cues.append('DECLARATION_FORM_CHANGED')
+            if a['declared_study_ids'] != b['declared_study_ids']:
+                cues.append('DECLARED_STUDY_ORDER_OR_SET_CHANGED')
+            if pointer_changed:
+                cues.append('INPUT_LOCATION_CHANGED')
+            if a['has_result_rows'] != b['has_result_rows']:
+                cues.append('RESULT_PRESENCE_CHANGED')
+        if evidence['added_ids'] or evidence['removed_ids'] or evidence['changed']:
+            cues.append('LINKED_RESULT_ASSERTIONS_CHANGED')
+        rows.append(dict(report_id=report_id, study_id=study_id,
+                         membership_status='RETAINED' if retained else ('ADDED' if a is None else 'REMOVED'),
+                         before=a, after=b, changed_report_fields=fields,
+                         linked_evidence_changes=evidence, input_pointer_changed=pointer_changed,
+                         comparison_cues=cues))
+    return dict(
+        before_report_ledger_stage=left_stage, after_report_ledger_stage=right_stage,
+        before_counts=left_counts, after_counts=right_counts,
+        added_memberships=[dict(report_id=rid, study_id=sid) for rid, sid in sorted(set(new) - set(old))],
+        removed_memberships=[dict(report_id=rid, study_id=sid) for rid, sid in sorted(set(old) - set(new))],
+        retained_count=len(set(old) & set(new)),
+        unchanged_count=sum(canonical(old[key]) == canonical(new[key]) for key in set(old) & set(new)),
+        memberships=rows, change_significance='NOT_ASSESSED',
+        study_identity_verification='NOT_ESTABLISHED', study_eligibility_assessment='NOT_PERFORMED',
+        extraction_completeness='NOT_ESTABLISHED',
+        boundary=('Exact supplied (report_id, study_id) pairs only. Input pointers locate rows within each snapshot; '
+                  'they are not longitudinal identities. Scalar-to-singleton conversion and reordering retain exact pairs. '
+                  'Changed literal IDs are additions/removals, not inferred renames, merges or splits. '
+                  'Retained pairs mean matching supplied labels, not verified source/study identity or independence. '
+                  'Report and attached-result snapshots expose changed assertions, not verified source contents. '
+                  'Unchanged count requires identical pair snapshots including locations, declaration order and linked results; '
+                  'empty cues are not scientific acceptance. Result presence is not complete extraction or study-level eligibility. '
+                  'This focused view excludes search, screening, context, appraisal and work changes; inspect the full comparison. '
+                  'No scientific, clinical or regulatory significance is determined.'))
 
 
 
@@ -243,7 +326,7 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
                                       right['search_plan_audit']['search_plan_ledger'], 'search_id'),
     }
     implementation = dict(engine_hashes(), **{'compare_runs.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    return dict(engine_sha256=implementation, before_protocol_sha256=hashlib.sha256(left_bytes).hexdigest(),
+    result = dict(engine_sha256=implementation, before_protocol_sha256=hashlib.sha256(left_bytes).hexdigest(),
                 after_protocol_sha256=hashlib.sha256(right_bytes).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON inputs; object key order ignored, list order retained; not authentication',
                 has_changes=changed, before_version=before['version'], after_version=after['version'],
@@ -257,6 +340,10 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
                 before_report_counts=left_reports['report_flow'] if left_reports else None,
                 after_report_counts=right_reports['report_flow'] if right_reports else None,
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if has_plural_studies(before) or has_plural_studies(after):
+        result['report_study_comparison'] = report_study_comparison(
+            before, after, left, right, left_reports, right_reports)
+    return result
 
 
 def render_text(result):
@@ -298,6 +385,27 @@ def render_text(result):
             lines.append(name + ': ' + show(changes))
     if not changed_entities:
         lines.append('No changed entity rows; inspect changed protocol fields for other input changes.')
+    if 'report_study_comparison' in result:
+        pairs = result['report_study_comparison']
+        lines.extend(['', 'Explicit report-study comparison (exact supplied pairs, not verified identity):',
+                      'Before/after report ledger stage: ' + show(dict(before=pairs['before_report_ledger_stage'], after=pairs['after_report_ledger_stage'])),
+                      'Before/after pair counts (null means reports not supplied): ' + show(dict(before=pairs['before_counts'], after=pairs['after_counts'])),
+                      'Added pairs: ' + show(pairs['added_memberships']),
+                      'Removed pairs: ' + show(pairs['removed_memberships']),
+                      'Retained / identical pair snapshots: ' + show(dict(retained=pairs['retained_count'], unchanged=pairs['unchanged_count']))])
+        for row in pairs['memberships']:
+            def pair_state(snapshot):
+                return None if snapshot is None else {key: snapshot[key] for key in (
+                    'input_pointer', 'report_input_pointer', 'declaration_form', 'declared_study_ids',
+                    'evidence_ids', 'has_result_rows')}
+            lines.extend(['Pair: ' + show(dict(report_id=row['report_id'], study_id=row['study_id'])),
+                          'Membership status: ' + row['membership_status'],
+                          'Before/after supplied membership: ' + show(dict(before=pair_state(row['before']), after=pair_state(row['after']))),
+                          'Pair cues: ' + show(row['comparison_cues']),
+                          'Changed report fields: ' + show(row['changed_report_fields']),
+                          'Linked result changes: ' + show(row['linked_evidence_changes'])])
+        lines.extend(['Pair verification boundaries: ' + show({key: pairs[key] for key in (
+            'change_significance', 'study_identity_verification', 'study_eligibility_assessment', 'extraction_completeness')}), pairs['boundary']])
     lines.extend(['', 'Context comparison (all supplied context IDs):'])
     for row in result['context_work_impact']['contexts']:
         def context_state(snapshot):

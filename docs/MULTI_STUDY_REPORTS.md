@@ -78,6 +78,9 @@ For opted-in protocols, `report_study_coverage` adds a separate membership ledge
 Membership IDs are exact input pointers such as `/reports/0/study_ids/1`; mixed
 legacy scalar reports use `/reports/1/study_id`. Each membership lists matching
 result IDs from that report and study, plus a result-presence flag.
+These pointers identify locations in that one input, not stable identities across
+versions. Reordering reports or studies changes the pointers without changing
+the exact supplied report-study pairs.
 
 PRISMA audit adds a separate report-study-membership partition, while existing
 record and report partitions stay unchanged. Status and handoff add
@@ -91,6 +94,55 @@ result citations or direct record source references, including other studies in
 those reports. This extra source context is **not** an inferred work requirement,
 new dependency or acceptance criterion. A planned-search reference alone does
 not expand into every record/report in that search.
+
+## Compare membership migrations without guessing identity
+
+```sh
+python compare_runs.py before-protocol.json after-protocol.json
+python compare_runs.py before-protocol.json after-protocol.json --text
+```
+
+When either validated input uses `study_ids`, the comparison adds
+`report_study_comparison`. Both sides are projected, including legacy scalar
+memberships on the side without the plural field. Legacy-to-legacy comparisons
+keep their previous JSON and text structure.
+
+Memberships are matched only by the exact pair of `report_id` and `study_id`.
+The output keeps these as separate fields, without a delimiter-based key:
+
+- Converting `study_id: "study-A"` to `study_ids: ["study-A"]` retains the pair.
+  Declaration form and changed input location remain visible.
+- Reordering report rows or the declared study list retains matching pairs and
+  exposes changed locations/order, rather than creating or removing studies.
+- Changing a literal report or study ID removes the old pair and adds the new
+  pair, even if locators, result IDs or other content are identical. There is no
+  automatic rename, merge, split or identity reconciliation.
+- The same study ID in two reports yields two separate pairs. Adding a result
+  for one does not change the other. Moving a result between pairs is shown as a
+  removal and addition of that exact result ID at the affected pairs.
+
+Each pair has before/after report assertions, declaration form and original study
+order, input pointers, attached result IDs and full normalized result assertions.
+Changed report fields and changed attached-result fields are listed separately.
+Changing a source record link, locator or result value is therefore visible even
+when the pair and result IDs stay the same. Partial result additions can change
+pair coverage while existing report-level extraction counters stay unchanged.
+
+`retained_count` means only that the same supplied pair exists on both sides.
+`unchanged_count` is stricter: the entire pair snapshot, including input locations,
+declaration order, report assertions and attached results, must be identical.
+Neither count verifies source/study identity, independence or scientific meaning.
+For an absent report ledger, the stage is `NOT_SUPPLIED` and pair counts are null;
+an explicitly empty ledger is `SUPPLIED` with zero counts. Included memberships
+only are projected; nonincluded report metadata remains in the ordinary report
+entity comparison and is not converted into study eligibility assertions.
+
+The readable view shows both membership states, changed fields and explicit
+verification limits. Full assertion snapshots remain in JSON. This focused view
+does not compare underlying searches, screening, context, appraisal or work
+assertions; use the full comparison for those sections. No review is renewed,
+no missing result is manufactured, and no clinical/development validity or
+study-level eligibility is inferred from a label or a retained pair.
 
 ## Compatibility and safety
 

@@ -364,6 +364,17 @@ with each historical run's engine. Output records implementation SHA-256 values,
 including the comparator, for reproducibility; retain those source bytes when
 archiving a comparison. The hashes do not authenticate amendment history.
 
+If either input explicitly declares report `study_ids`, an additional
+`report_study_comparison` matches exact `(report_id, study_id)` pairs, including
+scalar declarations on the other side. Reordering or scalar-to-singleton migration
+retains pairs but shows changed pointers/form; pointers are not longitudinal IDs.
+Changed literal IDs are removals/additions, never inferred renames. Separate
+report/result changes and pair counts expose partial result coverage without
+changing existing report-level accounting. Absent report ledgers retain null
+counts rather than becoming empty ledgers. Legacy-only comparison shapes are
+unchanged. See [multiple studies within a report](MULTI_STUDY_REPORTS.md) for the
+snapshot fields, verification limits and migration examples.
+
 ## Optional supplied search-page ledgers
 
 ```sh

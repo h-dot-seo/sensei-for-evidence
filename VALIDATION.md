@@ -577,3 +577,20 @@ fingerprints. Report/result-presence counters retain their legacy meaning, and
 separate membership coverage does not assert per-study eligibility, independence
 or exhaustive extraction. Only explicit included-report declarations enable this
 migration; no real literature or scientific validation data is included.
+
+Report-study comparison increment (2026-11-04): 608 tests in the suite; Linux
+run: 607 passed and one native-Windows-only test skipped. Twenty-four independent
+new tests cover scalar/singleton migration, report/study reordering, literal pair
+identity and delimiter collisions, renamed IDs, partial result presence, result
+reassignment between studies/reports, changed source record links and locators,
+nonincluded metadata, included-to-excluded transitions, absent versus empty
+ledgers, immutable deterministic snapshots, invalid declarations and portable
+UTF-8/control-safe CLI output. The related comparison/membership suite passes
+79 tests. Independent comparison against the prior comparator preserves legacy
+JSON and text for 28 unchanged and 26 changed-input fixtures, excluding only the
+comparator fingerprint. New pair projections are conditional on plural opt-in;
+existing entity diffs and PRISMA counters are unchanged. Pair matching uses exact
+two-field identities, never positional pointers, locators or inferred renames.
+No source authenticity, study identity, eligibility, extraction completeness or
+scientific/clinical significance is established by a retained or unchanged pair.
+The comparison is read-only; its test inputs remain entirely fictional.

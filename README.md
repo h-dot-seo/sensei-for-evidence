@@ -103,7 +103,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `prisma_reports.py PROTOCOL.json` | Add report/full-text/study and extraction-queue accounting |
 | `research_bundle.py create PROTOCOL.json OUTPUT.zip` | Create a new portable supplied-data bundle |
 | `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
-| `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, completion-source differences and version warnings |
+| `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
