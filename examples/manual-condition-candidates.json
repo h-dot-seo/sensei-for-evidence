@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-one",
+      "experimental_unit": {
+        "experiment_id": "condition-A-manual",
+        "evidence_ids": [
+          "result-A",
+          "result-A-second"
+        ],
+        "source_locator": "synthetic://condition/source",
+        "model": {
+          "kind": "other",
+          "label": "Fictional non-operational signal model",
+          "source_locator": "synthetic://model",
+          "limitations": "Synthetic descriptor only; no organism, material or validated assay."
+        },
+        "treatment": {
+          "label": "Fictional perturbation A",
+          "source_locator": "synthetic://treatment",
+          "concentration": {
+            "status": "reported",
+            "value": "synthetic-level-A",
+            "unit": "fictional concentration unit",
+            "source_locator": "synthetic://condition/source"
+          },
+          "exposure_time": {
+            "status": "reported",
+            "value": "synthetic-window-A",
+            "unit": "fictional duration unit",
+            "source_locator": "synthetic://condition/source"
+          }
+        },
+        "comparator": {
+          "status": "reported",
+          "label": "Fictional comparator B",
+          "source_locator": "synthetic://comparator",
+          "concentration": {
+            "status": "not_applicable",
+            "reason": "No numeric comparator amount applies to this fictional description.",
+            "source_locator": "synthetic://condition/source"
+          },
+          "exposure_time": {
+            "status": "unknown",
+            "reason": "Comparator exposure duration is unknown in the synthetic source.",
+            "source_locator": "synthetic://condition/source"
+          }
+        },
+        "observation_times": [
+          {
+            "evidence_id": "result-A",
+            "time": {
+              "status": "reported",
+              "value": "synthetic observation A",
+              "unit": "fictional elapsed unit",
+              "source_locator": "synthetic://condition/source"
+            },
+            "reference_event": {
+              "status": "reported",
+              "value": "Fictional source-defined event A; not assumed to be treatment start",
+              "source_locator": "synthetic://reference-event"
+            }
+          },
+          {
+            "evidence_id": "result-A-second",
+            "time": {
+              "status": "not_reported",
+              "reason": "The synthetic source does not report this outcome observation time.",
+              "source_locator": "synthetic://condition/source"
+            },
+            "reference_event": {
+              "status": "unknown",
+              "reason": "Reference event is unknown in the synthetic source.",
+              "source_locator": "synthetic://reference-event"
+            }
+          }
+        ],
+        "causal_basis": "unknown",
+        "causal_statement": "Fictional supplied description only; no causal relation is established.",
+        "causal_limitations": "No necessity, sufficiency, specificity, independence or clinical translation has been assessed.",
+        "causal_source_locator": "synthetic://causal-assertion",
+        "limitations": "A synthetic condition-pair record, not a procedure or independent replicate."
+      },
+      "source_references": [
+        {
+          "source_id": "source-main",
+          "extraction_locator": "Fictional descriptive condition section; whole-record source association only"
+        },
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional descriptive condition section; whole-record source association only"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Synthetic transcription of supplied condition descriptions; no real source reading, observation, procedure or scientific acceptance."
+    },
+    {
+      "report_id": "report-one",
+      "experimental_unit": {
+        "experiment_id": "condition-C-manual",
+        "evidence_ids": [
+          "result-C-manual"
+        ],
+        "source_locator": "synthetic://condition-C/source",
+        "model": {
+          "kind": "unknown",
+          "label": "Fictional model label with classification unassessed",
+          "source_locator": "synthetic://model",
+          "limitations": "Synthetic descriptor only; no organism, material or validated assay."
+        },
+        "treatment": {
+          "label": "Fictional perturbation A",
+          "source_locator": "synthetic://treatment",
+          "concentration": {
+            "status": "unknown",
+            "reason": "The fictional supplied amount lacks interpretable units; no amount or unit is inferred.",
+            "source_locator": "synthetic://condition-C/amount"
+          },
+          "exposure_time": {
+            "status": "not_reported",
+            "reason": "Fictional exposure duration not provided.",
+            "source_locator": "synthetic://condition-C/exposure"
+          }
+        },
+        "comparator": {
+          "status": "not_reported",
+          "reason": "The fictional descriptor contains no comparator detail.",
+          "source_locator": "synthetic://condition-C/comparator"
+        },
+        "observation_times": [
+          {
+            "evidence_id": "result-C-manual",
+            "time": {
+              "status": "not_reported",
+              "reason": "The synthetic source does not report this outcome observation time.",
+              "source_locator": "synthetic://condition/source"
+            },
+            "reference_event": {
+              "status": "unknown",
+              "reason": "Reference event is unknown in the synthetic source.",
+              "source_locator": "synthetic://reference-event"
+            }
+          }
+        ],
+        "causal_basis": "unknown",
+        "causal_statement": "Fictional supplied description only; no causal relation is established.",
+        "causal_limitations": "No necessity, sufficiency, specificity, independence or clinical translation has been assessed.",
+        "causal_source_locator": "synthetic://causal-assertion",
+        "limitations": "A synthetic condition-pair record, not a procedure or independent replicate."
+      },
+      "source_references": [
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional descriptive condition section; whole-record source association only"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Synthetic transcription of supplied condition descriptions; no real source reading, observation, procedure or scientific acceptance."
+    }
+  ]
+}

@@ -10,6 +10,11 @@ The concrete gap was that free-text model/intervention/comparator descriptions
 could not reliably distinguish conditions for multiple outcomes. The bounded v1
 contract makes the comparison scope explicit without inferring missing values.
 
+For reviewed append-only entry into an existing protocol, use
+[manual condition intake](MANUAL_CONDITION_INTAKE.md). It retains explicit document
+selections and human review in a detached replay record, while preserving existing
+results and using this condition schema unchanged.
+
 ## Synthetic journey
 
 ```sh

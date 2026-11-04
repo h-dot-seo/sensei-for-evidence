@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.57.0-extraction-worksheet",
+  "release": "0.58.0-manual-condition-intake",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 215,
+  "file_count": 219,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22109,
-      "sha256": "2a9a7674e2bbfa7e5c25e2450ed1ee8b2389d3330433bf5fe71134731f14fb9d"
+      "bytes": 22602,
+      "sha256": "6f3fc1f2fdb7ea826f4afbb580d572fd19c230086cfa20c95c23ce4b5767ecd0"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 71104,
-      "sha256": "0d53c6e5c97df4866adabb9a3fb2556e17ea38f2baa9953bc04a24dae5a0a7c2"
+      "bytes": 74039,
+      "sha256": "1bfd9766bfc9126654898062b3c982e45fcb9d3ef9c4f3e7e8888c8c0b7f3e50"
     },
     {
       "path": "adapter_integrity.py",
@@ -92,6 +92,11 @@
       "path": "compare_runs.py",
       "bytes": 59969,
       "sha256": "055f3a727c86e4f7625018e048a4d5fe6635755500f22f0f9415a0f04dce6c64"
+    },
+    {
+      "path": "condition_intake.py",
+      "bytes": 19729,
+      "sha256": "dd5afab1482c0fd88dd6c2a223f8c2fa58a3ad65977be0b8dbed41e667033725"
     },
     {
       "path": "context_links.py",
@@ -155,8 +160,8 @@
     },
     {
       "path": "docs/EXPERIMENT_CONDITIONS.md",
-      "bytes": 11346,
-      "sha256": "a4519dcf953f15432c6594eeaa3909ba07c1052b077f7e027bdff99c6182cc37"
+      "bytes": 11627,
+      "sha256": "b607eb54583dcaf2566f031787fa62196eb2f45501efac3ffb94662c3894ec73"
     },
     {
       "path": "docs/EXTRACTION_WORKSHEETS.md",
@@ -177,6 +182,11 @@
       "path": "docs/LOCAL_ARTIFACT_REVIEW.md",
       "bytes": 4888,
       "sha256": "ac32e9eef47579e99f6a469eef620c0676d8f448cdd308291ec7a6729acf2574"
+    },
+    {
+      "path": "docs/MANUAL_CONDITION_INTAKE.md",
+      "bytes": 11250,
+      "sha256": "ea4d67389414eb25a1deb5f23a72598a6593eb32b018985b6eee50dedb93359b"
     },
     {
       "path": "docs/MANUAL_RESULT_INTAKE.md",
@@ -412,6 +422,11 @@
       "path": "examples/local-sources/fictional-report.txt",
       "bytes": 225,
       "sha256": "bdbfec26d1ed84f0f6759d680dfce5ae9fef589cab1c6cf8257cad5c89963c91"
+    },
+    {
+      "path": "examples/manual-condition-candidates.json",
+      "bytes": 6777,
+      "sha256": "9025dbf15fad205ad127a998244f7b0d0048fb109394bc631232a48fdb81627e"
     },
     {
       "path": "examples/manual-receipt-fixture.json",
@@ -812,6 +827,11 @@
       "path": "test_completion_impact.py",
       "bytes": 17514,
       "sha256": "23897e3702abb20c3b99df5a6c5cd3576b2989734d2ae064907a9ba1e2eb405c"
+    },
+    {
+      "path": "test_condition_intake.py",
+      "bytes": 29667,
+      "sha256": "cdb0da2b7413854bb2ce32d8c66d37ab3c41b718603a157a202e9cf03daff9e5"
     },
     {
       "path": "test_context_links.py",

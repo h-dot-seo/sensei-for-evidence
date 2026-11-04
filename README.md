@@ -114,6 +114,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `result_source_review.py ORIGINAL.json APPLICATION.json CURRENT.json [--text]` | Replay a manual intake record, then separately compare current result rows, report links and supplied document context |
 | `result_correction.py target/assemble/verify ...` | Apply explicitly reviewed result/limitations text corrections without changing extraction IDs, row order or counts |
 | `result_extraction.py PROTOCOL.json --report-id ID --study-id ID --record-id ID [--text]` | Join exact report-study context and existing results with a deliberately blank manual intake candidate |
+| `condition_intake.py target/assemble/verify ...` | Append explicitly reviewed supplied condition metadata with detached document associations, preserving all existing results |
 
 Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
 examples, ID migration, stage definitions, strict JSON rules and limitations.
@@ -323,3 +324,8 @@ and downstream assertions are not renewed or scientifically reassessed.
 document declarations, existing pair-results and explicitly linked contexts before
 new result entry. Only caller-selected report/study/record IDs are prefilled;
 source selection, scientific fields and human metadata remain blank.
+
+[Supplied condition intake](docs/MANUAL_CONDITION_INTAKE.md) appends completed
+comparison descriptions through explicit human review and exact replay. It binds
+existing result rows and chosen document declarations without generating experimental
+parameters, changing observations or validating scientific claims.

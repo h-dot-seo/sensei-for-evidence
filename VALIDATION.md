@@ -974,3 +974,41 @@ manual filling, the existing target/review/assembly/replay/bundle journey succee
 Publication audit checks 216 text files and exact manifest verification passes.
 No actual source reading, private corpus, medical fact checking, biological
 execution guidance, inferred findings or automated scientific approval was added.
+
+Supplied-condition intake increment (2026-11-04): 1,042 tests in the suite;
+Linux run: 1,041 passed and one native-Windows-only test skipped. Twenty-four new
+independently written tests cover append-only preservation, absent/empty stages,
+existing-condition prefixes, ordered raw evidence snapshots, raw explicit IDs,
+report/study/source ownership, condition-ID collisions and outcome reassignment,
+cross-record/study rejection, existing nested reporting-state rules, optional
+sampling/statistics coverage, textual values, and the 100-candidate boundary.
+The focused eight-suite run passes 144 tests. Blank or stale human reviews fail;
+full replay rejects altered/resealed counts, snapshots, targets and candidates,
+while consistently reauthored unsigned assertions remain explicitly unauthenticated.
+Tests cover deep detachment, exact schema/date checks, implementation fingerprints,
+strict UTF-8/JSON, quoted controls, exclusive output and encoded size bounds before
+file creation. Independent read-only implementation/documentation review found no
+production issue, with additional mock/source-mutation, output-symlink, surrogate,
+BOM and overflowing-number probes. The final full suite passes after corrections
+to test-only fixture/helper assumptions; no production defect was found.
+Valid CSV and mock-adapter condition enrichment preserve earlier provenance.
+The mock test establishes reports and source descriptors in the original base;
+later descriptor/report/result changes still fail existing integrity checks.
+CSV import through result intake/correction and condition enrichment retains both
+earlier replay records. Existing planning/synthesis/completion assertions remain
+literally unchanged while established source-binding checks expose affected
+staleness; no completion status or human review is automatically renewed.
+All 39 prior valid example projections, including implementation fingerprints,
+remain exactly equal. Every pre-existing Python file, including condition schema,
+intake and correction implementations, remains byte-unchanged. Previously saved
+intake/correction records still replay. The fictional CLI target/review/assembly/
+replay/status/comparison/bundle journey succeeds: two comparison descriptions
+cover three of four result rows, leaving result B unlinked, with record/report
+flows unchanged. The absent stage's null unlinked queue remains distinct from a
+supplied empty ledger. Counts concern stored condition pairs, never independent
+experimental units, biological replicates or sample size.
+Publication audit checks 220 text files and exact manifest verification passes.
+Whole-condition document associations and human metadata remain detached from
+the enriched protocol and ordinary bundle. No real source reading, scientific or
+clinical fact verification, generated experimental parameter, biological execution
+instruction, numerical calculation or causal acceptance was performed or added.
