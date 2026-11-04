@@ -125,3 +125,10 @@ exact record reference with their report. See [document-linked work](WORK_DOCUME
 for source-catalog binding, direct-dependent staleness and portable review views.
 Omitting the field retains the original record/search scope and semantic hashes;
 no document version, reading or acceptance is implicitly bound or verified.
+
+## Add result-linked work through a separate review
+
+[Evidence-work intake](EVIDENCE_WORK_INTAKE.md) provides template, target, assembly
+and replay for human-authored PLANNED work linked to existing normalized result
+IDs. It does not convert source work, generate scientific questions or complete
+prerequisites. Existing direct-dependency document bindings remain unchanged.

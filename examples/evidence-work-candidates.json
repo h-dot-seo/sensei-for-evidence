@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "work_package": {
+        "work_package_id": "WP-RESULT-TRACE-NOTE",
+        "work_type": "evidence_review",
+        "question": "Which supplied result identifiers and recorded limitations belong in this fictional traceability note?",
+        "deliverable": "A result-linked traceability note retaining the supplied labels, locations and uncertainty.",
+        "acceptance_criterion": "A human checks each explicit result link and records unresolved identity, source and extraction limits without claiming independent support.",
+        "evidence_ids": [
+          "result-C-manual",
+          "result-A-second"
+        ],
+        "depends_on": [
+          "WP-MEMBERSHIP-SOURCES"
+        ],
+        "status": "PLANNED"
+      },
+      "proposed_by": "Fictional software-test proposer",
+      "proposed_at": "2026-11-04",
+      "proposal_note": "Supplied synthetic review work only; no experimental design, priority or execution is generated."
+    },
+    {
+      "work_package": {
+        "work_package_id": "WP-RESULT-LIMITS-NOTE",
+        "work_type": "evidence_review",
+        "question": "Which unresolved limitations remain attached to the selected fictional result?",
+        "deliverable": "A limitations note tied to the existing result and prerequisite traceability task.",
+        "acceptance_criterion": "A human records the supplied caveats without inventing effect sizes, a clinical recommendation, an experiment or completion.",
+        "evidence_ids": [
+          "result-C-manual"
+        ],
+        "depends_on": [
+          "WP-RESULT-TRACE-NOTE"
+        ],
+        "status": "PLANNED"
+      },
+      "proposed_by": "Fictional software-test proposer",
+      "proposed_at": "2026-11-04",
+      "proposal_note": "Supplied synthetic review work only; no experimental design, priority or execution is generated."
+    }
+  ]
+}

@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
-                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work',
+                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work','evidence_review_work',
                 'collection_archives','report_transition_archive','extraction_transition_archive']
 
 
@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),61)
+        self.assertEqual(len(entries),65)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -138,6 +138,16 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertIn('Only registration, retrieval-update and full-text',scope)
         self.assertIn('result and condition operations are outside',scope)
         self.assertIn('earlier/later history is unassessed',scope)
+
+    def test_evidence_work_route_retains_explicit_review_and_scope(self):
+        catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        route = catalog['evidence_review_work']
+        self.assertEqual(route['entrypoints'], [dict(script='evidence_work_intake.py', arguments=[c,'--help'])
+                                               for c in ('template','target','assemble','verify')])
+        self.assertIn('docs/EVIDENCE_WORK_INTAKE.md', route['guide_paths'])
+        for text in ['Only new PLANNED', 'No result, scientific task', 'Source-review work is not converted',
+                     'source_refs/document_source_ids are rejected', 'not recursive source approval']:
+            self.assertIn(text, route['boundary'])
 
     def test_source_declaration_route_separates_append_from_byte_inspection(self):
         catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}

@@ -150,3 +150,7 @@ Nothing is redacted. Keep real files outside the public repository and review
 access before sharing. This tool manages source-linked review work; it does not
 generate biological execution procedures, clinical recommendations, causal
 conclusions or a claim of exhaustive research.
+
+For later tasks that explicitly cite existing results, use the separate
+[evidence-work intake](EVIDENCE_WORK_INTAKE.md). This source-work contract remains
+unchanged and does not accept evidence-review work or convert prior tasks.

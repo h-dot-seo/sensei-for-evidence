@@ -163,6 +163,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit typed planned-search/record references.',
                                 'Human question, deliverable, acceptance criterion, dependencies and separate proposal review.'],
          boundary='Only supplied PLANNED source-review work is appended. No task, priority, dependency, execution or completion is inferred from queues or from this catalog.'),
+    dict(workflow_id='evidence_review_work', title='Append explicit result-linked review work and deliverables',
+         guide_paths=['docs/EVIDENCE_WORK_INTAKE.md', 'docs/SOURCE_REVIEW_WORK.md', 'docs/WORK_DOCUMENT_SOURCES.md'],
+         entrypoints=[dict(script='evidence_work_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Exact existing normalized result IDs, authored question/deliverable/acceptance criterion, explicit dependencies and proposal metadata.',
+                                'Separate exact-input review; optional evidence-scoped contexts must satisfy existing overlap rules.'],
+         boundary='Only new PLANNED evidence-review work is appended. No result, scientific task, dependency, priority or completion is generated. Source-review work is not converted, and own source_refs/document_source_ids are rejected. Existing raw identity defaults and planning/completion assertions remain unchanged; direct dependencies are not recursive source approval.'),
     dict(workflow_id='collection_archives', title='Preserve protocol snapshots and selected native source bindings',
          guide_paths=['docs/COLLECTION_BUNDLES.md', 'docs/BATCH_COLLECTION_BUNDLES.md', 'docs/NATIVE_COLLECTION_BUNDLES.md', 'docs/BATCH_TO_EVIDENCE.md'],
          entrypoints=[dict(script=script, arguments=[command, '--help'])

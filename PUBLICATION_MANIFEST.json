@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.73.0-reviewed-source-declarations",
+  "release": "0.74.0-reviewed-evidence-work",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 297,
+  "file_count": 302,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 30773,
-      "sha256": "d9e5689e63c893e527311057cd51f624e6a021e8e1b519aee95ef850c45d2f39"
+      "bytes": 31243,
+      "sha256": "dd0b3d0270878b9639be191dd9264d5d20fd62c32cbc81c8159e81d924975c84"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 134926,
-      "sha256": "b8d0d5742ff7625dbfdc2b28205de3f05131f7375017ace0b571049c9561fe26"
+      "bytes": 141858,
+      "sha256": "c32b6bcd96656a7a2714e0b71522ef1a3412f3c89f8f0c2a40275af35fcbeaa7"
     },
     {
       "path": "adapter_integrity.py",
@@ -184,6 +184,11 @@
       "sha256": "14bb0424dc7fa14c901a5408c276ec6da0edec82afb03a22b2304c12b2a1b890"
     },
     {
+      "path": "docs/EVIDENCE_WORK_INTAKE.md",
+      "bytes": 10160,
+      "sha256": "6f34578894f762d059a7ae5db13fd14fbd36bcd121581c1f3a62d380d983398c"
+    },
+    {
       "path": "docs/EXPERIMENT_CONDITIONS.md",
       "bytes": 11627,
       "sha256": "b607eb54583dcaf2566f031787fa62196eb2f45501efac3ffb94662c3894ec73"
@@ -250,8 +255,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 14486,
-      "sha256": "aa632de4f06947eefd45f42ffa1df662a25b28371ea95d39bccc3320a1b90af3"
+      "bytes": 14569,
+      "sha256": "aea4971aeeb85143ae744bf54c4991dc97f2156673a65add8ff7cd9d4bff864f"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -370,13 +375,13 @@
     },
     {
       "path": "docs/SOURCE_REVIEW_WORK.md",
-      "bytes": 7970,
-      "sha256": "b8fb393c5b21b90529076857427682ed63ccc6b6d00d711097458988459fb16a"
+      "bytes": 8346,
+      "sha256": "e75887eb2b74263cd944e6b85c94700b30a4b68f5ee59863e9956a096dcc5697"
     },
     {
       "path": "docs/SOURCE_WORK_INTAKE.md",
-      "bytes": 9067,
-      "sha256": "b8fe34078688fe07a9634b70dc54566b82a6d8eb00610d8eb74be21314adfc45"
+      "bytes": 9298,
+      "sha256": "df2f6e28fbac2f73c436ae0c50dd88dcf91a3f716b700116487a66c5997cc4bf"
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
@@ -402,6 +407,11 @@
       "path": "docs/WORK_REVIEW.md",
       "bytes": 7568,
       "sha256": "5394dab87632f01cb01558febd79138a94ef4ae9b5d487bbe66b56401cec07c1"
+    },
+    {
+      "path": "evidence_work_intake.py",
+      "bytes": 22009,
+      "sha256": "3acbfaed060e19235f9fd2d16de15a3352e4c2893d83906622288af153a52fa4"
     },
     {
       "path": "evidence_workflow.py",
@@ -547,6 +557,16 @@
       "path": "examples/context-protocol.json",
       "bytes": 3472,
       "sha256": "2e11ef358da850c03e6a51988d45f4fb43ce8d7056f0c739fb416b86825237d8"
+    },
+    {
+      "path": "examples/evidence-work-candidates.json",
+      "bytes": 1894,
+      "sha256": "9e832b3cb733097d5459ed525743ec9e8cb820bd645b9d137b52886ff416d93d"
+    },
+    {
+      "path": "examples/evidence-work-references.json",
+      "bytes": 96,
+      "sha256": "71f2c46f8cabfcf70e67d6b40b9a8a8cf0c92293d89369d9d105ec7045f417cb"
     },
     {
       "path": "examples/experiment-review.json",
@@ -1010,8 +1030,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 43998,
-      "sha256": "19f8807040f85eec4826f685e0c53bea8648c5a125b32fb9ca52013d572b7e3a"
+      "bytes": 45091,
+      "sha256": "d9a2e5db68f51c34358852d1bf41e9e5c5c605aaaefc046dbb8e1ffe133ed995"
     },
     {
       "path": "ris_export_parser.py",
@@ -1172,6 +1192,11 @@
       "path": "test_documented_demo.py",
       "bytes": 2425,
       "sha256": "d871b964f252c51279a6b6b3df43e99c2550a8a265854c2ade506cb22df8eba1"
+    },
+    {
+      "path": "test_evidence_work_intake.py",
+      "bytes": 43661,
+      "sha256": "e3ffd47a7a34144222d1e9356eb168d59f23a7230fa92a68c4ce25e9cde118f6"
     },
     {
       "path": "test_evidence_workflow.py",
@@ -1440,8 +1465,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 16065,
-      "sha256": "aa9076ece76da6225697fa448c49b191f5a1a625b0829ad013dc1aa5fb76b027"
+      "bytes": 16877,
+      "sha256": "63062c9e5ec489f6fa7b85d39ecb96b9f578383cfc1a08ab3f4c279dffeda36f"
     },
     {
       "path": "test_synthesis_review.py",

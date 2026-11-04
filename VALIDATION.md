@@ -1836,3 +1836,102 @@ skipped (415.691 seconds). This increment adds 35 tests: 21 general intake tests
 Compilation, changed-guide links and whitespace checks pass. Publication audit
 checks 298 text files; exact manifest verification passes with 297 listed files.
 The existing exact-head CI matrix covers Ubuntu/Windows and Python 3.10/3.12.
+
+Reviewed evidence-work intake increment (2026-11-04): evidence_work_intake.py adds
+a separate template/target/assemble/verify path from existing supplied results to
+explicitly authored PLANNED evidence-review work. Source-work intake keeps its
+narrower existing contract. No scientific question, deliverable, acceptance
+criterion, dependency, priority, completion, clinical recommendation or experiment
+is generated; these task fields require supplied human content and a separate
+exact-target import review.
+
+Independent code, fixture, documentation and discovery review found no actionable
+runtime defect. The independent reviewer authored all 38 new intake regressions,
+which pass, and ran 130 combined new/neighboring tests successfully. Those 130
+include the new intake and existing source intake, navigation, document scope,
+context and manual result intake checks; they are not 130 newly authored tests.
+The independent test also executes all twelve documented CLI commands with
+explicit fictional review metadata. These are targeted synthetic code/workflow
+checks, not a comprehensive security or scientific audit or provider/source
+validation. Reviewed runtime SHA-256:
+3acbfaed060e19235f9fd2d16de15a3352e4c2893d83906622288af153a52fa4.
+
+Templates copy only explicit existing normalized result IDs and fixed
+PLANNED/evidence_review structure. Work ID, question, deliverable, acceptance
+criterion, depends_on and proposer/date/note remain null; no missing dependency is
+silently treated as independence. Existing raw evidence IDs are used exactly.
+Legacy rows lacking evidence_id use the engine's established record_id identity,
+exposed as LEGACY_RECORD_ID versus EXPLICIT_EVIDENCE_ID in target snapshots. Raw
+rows are never rewritten to materialize defaults. An arbitrary record/report/
+study label cannot substitute for a different explicit result ID.
+
+New candidates must have nonempty unique known result IDs, explicit dependencies,
+real dates and only permitted fields. Optional context/context_ids preserve the
+existing evidence-scoped overlap rules without deciding guideline/development
+applicability. Source refs and own document_source_ids are rejected. Explicit
+source-work dependencies retain the existing direct document-context binding;
+there is no automatic source-work conversion, transfer of selected documents,
+transitive approval or evidence creation. Existing and same-batch prerequisites,
+including forward references, are supported; unknown/self/duplicate/cyclic links
+are rejected. Completed/in-progress work, artifact/acceptance/completion fields,
+priority ranks, new planning assertions and unknown fields cannot enter here.
+
+Targets retain the whole original input and ordered proposals, appended work
+snapshots, original raw/normalized result snapshots and pointers, identity origins,
+mapped record provenance, new planning targets and implementation fingerprints.
+Appended-work pointers address the candidate; selected-result pointers address
+the original. Assembly appends only supplied work objects and checks preservation
+of every existing raw field and work prefix, normalized old work, research flows,
+results and old planning/completion targets/assertions. CSV and mock provenance
+remain under the existing integrity validators. Full replay compares the complete
+record; changed input/result/candidate/implementation or resealed tampering fails.
+Consistently rewritten unsigned assertions can still replay and are not proof of
+identity, chronology, independent review or execution.
+
+The independent tests cover legacy evidence/work IDs without materialization,
+repeated result selection across different tasks, unfinished templates and blank
+reviews, strict JSON/schema/type/date validation, all prohibited work fields,
+context mismatch, explicit document-scoped source dependencies, existing current/
+stale planning/completion assertions, CSV/mock provenance, exact snapshots,
+whole-input validation, replay/engine binding, candidate/byte limits, mutability,
+UTF-8/control escaping and no network/source opening. CLI tests cover all commands,
+strict malformed inputs, exclusive outputs, actual available symlink behavior,
+mocked dangling-entry/inspection failures and output rendering/encoding preflight.
+Absence of reports remains distinct from an explicitly empty report catalog, which
+cannot coexist with extracted evidence under existing report membership checks.
+
+The twelve-command extraction-to-work guide was separately executed outside the
+repository in a space-named directory. Result intake first grows result rows from
+two to four. Work intake then grows work packages from two to four with all four
+results and record/report accounting unchanged. One new task explicitly depends
+on existing source-review work, and the second depends on the first. Both remain
+PLANNED and blocked by their supplied unfinished prerequisite; no priority or
+execution is inferred. Packet, status, PRISMA audit and ordinary research bundle
+views retain the explicit links and limits. The compatible standalone fixture also
+passes without deleting current extraction or fabricating evidence.
+
+All 43 prior files in the combined relevant work/source/extraction/native/report/
+inventory replay dependency sets remain byte-unchanged. Seven saved artifact kinds
+continue to verify: source-declaration application, extraction-transition archive,
+typed native archive, report-transition archive, inventory application, NBIB batch
+archive and ordinary research bundle. Among existing runtime files only read-only
+handoff discovery changes. The catalog now has fifteen groups and 65 help-only
+entrypoints. The added route is static and does not infer task applicability,
+execute commands or change existing source-work navigation.
+
+Persisted work/result/context links and dependencies are distinguished from
+separate proposal/review assertions and historical result snapshots. Ordinary
+archives do not retain this application/original input; existing transition archive
+kinds are not expanded. Existing work edits, progress/completion, project-wide
+replanning, scientific/clinical decisions and current extraction-source approval
+remain unsupported. Limits are 100 candidates, 10 MB reference/candidate/review
+inputs and 50 MB protocols/applications, not hard CPU/memory ceilings. Exclusive
+creation is not an atomic path-race/ancestor-alias defense. All fixtures are
+synthetic; census remains NOT_ESTABLISHED and conclusions NOT_READY.
+
+Final full Linux suite: 1,470 tests, 1,469 passed and one native-Windows-only test
+skipped (278.490 seconds). The increment adds 39 tests: 38 independently authored
+intake/workflow regressions and one static discovery regression. Compilation,
+changed-guide links and whitespace checks pass. Publication audit checks 303 text
+files; exact manifest verification passes with 302 listed files. The existing
+exact-head CI matrix covers Ubuntu/Windows and Python 3.10/3.12.
