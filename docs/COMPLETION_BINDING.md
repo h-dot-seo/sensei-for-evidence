@@ -106,3 +106,8 @@ or science is complete. Regeneration verification detects altered CSV labels eve
 if an archive's file hashes were rewritten. It verifies consistency with supplied
 inputs and the recorded engine, not whether the assertions are true. Existing
 bundles still require their recorded implementation bytes for verification.
+
+To locate changed fields between two supplied snapshots, use
+[completion amendment comparison](COMPLETION_COMPARISON.md). It compares current
+recomputed work/source sections and direct prerequisite labels; an old hash alone
+cannot reconstruct the original reviewed input or establish why it changed.

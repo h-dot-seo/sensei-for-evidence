@@ -91,6 +91,81 @@ def context_work_impact(left, right):
                           'No clinical applicability, recommendation, regulatory status, stage transition or priority is determined.'))
 
 
+def completion_work_impact(before, after, left, right):
+    """Locate differences between recomputed work bases, not original acceptance reasons."""
+    def snapshots(research):
+        work = {row['work_package_id']: row for row in research['work_packages']}
+        completion = {row['work_package_id']: row for row in research['planning']['completion_ledger']}
+        bases = {row['work_package_id']: row['basis'] for row in research['planning']['review_targets']}
+        packets = {wid: dict(work_package=copy.deepcopy(row), completion_review=copy.deepcopy(completion[wid]),
+                            direct_prerequisite_completion_sources=[dict(work_package_id=dep,
+                                supplied_work_status=work[dep]['status'],
+                                source_match_status=completion[dep]['source_match_status']) for dep in row['depends_on']])
+                   for wid, row in work.items()}
+        return packets, bases
+
+    old, old_bases = snapshots(left)
+    new, new_bases = snapshots(right)
+    source_fields = sorted(set(left['planning']['source_scope_fields']) | set(right['planning']['source_scope_fields']))
+    source_changes = changed_fields({key: before.get(key) for key in source_fields},
+                                    {key: after.get(key) for key in source_fields})
+    rows = []
+    for wid in sorted(set(old) | set(new)):
+        a, b = old.get(wid), new.get(wid)
+        shared = a is not None and b is not None
+        details = None
+        basis_fields = None
+        fields = changed_fields({} if a is None else a['work_package'], {} if b is None else b['work_package'])
+        prerequisite_changes = entity_changes([] if a is None else a['direct_prerequisite_completion_sources'],
+                                              [] if b is None else b['direct_prerequisite_completion_sources'], 'work_package_id')
+        before_ids = [] if a is None else [row['work_package_id'] for row in a['direct_prerequisite_completion_sources']]
+        after_ids = [] if b is None else [row['work_package_id'] for row in b['direct_prerequisite_completion_sources']]
+        prerequisite_changes.update(before_ids=before_ids, after_ids=after_ids, order_changed=before_ids != after_ids)
+        cues = []
+        if a is None:
+            cues.append('WORK_ADDED')
+        if b is None:
+            cues.append('WORK_REMOVED')
+        if shared:
+            ab, bb = old_bases[wid], new_bases[wid]
+            basis_fields = changed_fields(a['completion_review']['basis'], b['completion_review']['basis'])
+            details = dict(changed_sections=changed_fields(ab, bb),
+                           shared_source_fields_changed=copy.deepcopy(source_changes),
+                           work_scope_fields_changed=changed_fields(ab['work_scope'], bb['work_scope']),
+                           direct_dependency_scope_changes=entity_changes(ab['direct_dependency_scopes'], bb['direct_dependency_scopes'], 'work_package_id'),
+                           evidence_changes=entity_changes(ab['evidence'], bb['evidence'], 'evidence_id'),
+                           context_changes=entity_changes(ab['contexts'], bb['contexts'], 'context_id'),
+                           appraisal_changes=entity_changes(ab['appraisals'], bb['appraisals'], 'appraisal_id'),
+                           experimental_unit_changes=entity_changes(ab.get('experimental_context', {}).get('units', []),
+                                                                    bb.get('experimental_context', {}).get('units', []), 'experiment_id'),
+                           rationale_statement_changes=entity_changes(ab.get('rationale_statements', []),
+                                                                       bb.get('rationale_statements', []), 'statement_id'))
+            if basis_fields:
+                cues.append('RECOMPUTED_COMPLETION_BASIS_CHANGED')
+            if a['completion_review']['source_match_status'] != b['completion_review']['source_match_status']:
+                cues.append('COMPLETION_SOURCE_LABEL_CHANGED')
+            if any(field in fields for field in ('status', 'blocked_by')):
+                cues.append('RECORDED_WORK_STATE_CHANGED')
+            if any(field in fields for field in ('artifact_locator', 'acceptance_verified', 'completion_basis_sha256')):
+                cues.append('SUPPLIED_COMPLETION_FIELDS_CHANGED')
+            if basis_fields and a['work_package']['status'] == b['work_package']['status'] == 'COMPLETE':
+                cues.append('RECORDED_COMPLETE_STATUS_RETAINED_AFTER_BASIS_CHANGE')
+        if prerequisite_changes['added_ids'] or prerequisite_changes['removed_ids'] or prerequisite_changes['changed'] or prerequisite_changes['order_changed']:
+            cues.append('DIRECT_PREREQUISITE_COMPLETION_ROWS_CHANGED')
+        rows.append(dict(work_package_id=wid, before=a, after=b,
+                         changed_work_fields=fields, changed_completion_basis_fields=basis_fields,
+                         work_source_changes=details, direct_prerequisite_completion_changes=prerequisite_changes,
+                         comparison_cues=cues, change_significance='NOT_ASSESSED', acceptance_assessment='NOT_PERFORMED'))
+    return dict(work_packages=rows,
+                boundary=('Both supplied snapshots are recomputed with the current engine; changes are not historical acceptance reasons or causal attribution. '
+                          'Work/source details reuse the documented planning scope, including shared search/report context and only direct dependency work scopes. '
+                          'Own artifact locator changes are separate from work/source changes; artifact bytes are not inspected. '
+                          'Direct prerequisite completion labels do not recursively certify acceptance and may change without changing the dependent basis. '
+                          'An already-stale assertion may remain stale with no new changes. Retained COMPLETE status or a new supplied hash proves no reassessment. '
+                          'Added/removed work has null two-sided basis details. Positional-ID warnings still apply. '
+                          'No work is reopened, hash renewed, acceptance verified or scientific/clinical significance inferred.'))
+
+
 
 def amendment_review(assertion, before, after, left, right):
     """Match an external supplied change note to exact inputs; never approve it."""
@@ -173,7 +248,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
                 version_changed=version_changed, unversioned_change=changed and not version_changed,
                 changed_protocol_fields=changed_fields(before, after),
                 record_ids_added=sorted(new_records - old_records), record_ids_removed=sorted(old_records - new_records),
-                entity_changes=entities, amendment_review=amendment_review(amendment,before,after,left,right), context_work_impact=context_work_impact(left,right), positional_work_package_ids=positional_ids,
+                entity_changes=entities, amendment_review=amendment_review(amendment,before,after,left,right), context_work_impact=context_work_impact(left,right),
+                completion_work_impact=completion_work_impact(before,after,left,right), positional_work_package_ids=positional_ids,
                 identity_warnings=identity_warnings,
                 before_counts=left['flow'], after_counts=right['flow'],
                 before_report_counts=left_reports['report_flow'] if left_reports else None,

@@ -474,3 +474,16 @@ verification pass. Independent review additionally compared the unchanged CSV
 prefix and reproducible ZIP output across all 25 valid synthetic examples.
 Independent review found no blockers; its four suggested edge cases are now
 executable tests rather than manual checks alone.
+
+Completion amendment-comparison increment (2026-11-04): 465 tests in the suite;
+Linux run: 464 passed and one native-Windows-only test skipped. Twenty-four new
+independently written tests cover current/unfinished/already-stale assertions,
+own locator versus source scope, exact evidence/context/appraisal/experimental/
+rationale changes, shared search context, prerequisite locator/status/order,
+progress exclusions, retained hashes/statuses, positional-ID warnings, added and
+removed work, detached snapshots and deterministic CLI comparison without a note.
+The synthetic amendment fixture preserves an old COMPLETE hash after explicit
+scope changes; comparison locates those changes without reopening work or
+claiming historical acceptance reasons. Independent review found no blockers.
+An additional unchanged-input/nonmutation check passed across all 26 valid
+synthetic protocol examples. Publication audit and complete manifest checks pass.

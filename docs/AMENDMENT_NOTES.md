@@ -60,3 +60,8 @@ Other comparison fields remain unchanged. The note does not become embedded in
 protocols, work CSV or research bundles; retain it separately if authorized. This
 is a pairwise check, not a signed log, complete amendment history or regulatory
 change-control system. It makes no medical, clinical, scientific or legal decision.
+
+The standalone [completion comparison](COMPLETION_COMPARISON.md) is also produced
+without a note. It separates changed work/source scope, own artifact locators and
+direct prerequisite source labels. A matching note does not approve those changes
+or prove that a retained COMPLETE status was actually reassessed.

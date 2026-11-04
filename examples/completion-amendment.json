@@ -1,0 +1,209 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "synthetic-completion-amendment-2",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [
+    {
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "searched_at": "2026-01-01",
+      "window": "2020-2026",
+      "record_ids": [
+        "r1",
+        "r2"
+      ],
+      "total_count": 2,
+      "complete": true,
+      "has_more": false,
+      "search_id": "search-primary",
+      "pages": [
+        {
+          "page_number": 1,
+          "record_ids": [
+            "r1"
+          ],
+          "has_more": true
+        },
+        {
+          "page_number": 2,
+          "record_ids": [
+            "r2"
+          ],
+          "has_more": false
+        }
+      ]
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 1",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "reporter",
+      "result": "reporter changed",
+      "limitations": "no rescue experiment A newly supplied fictional limitation remains unresolved.",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e1"
+    },
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 2",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "orthogonal synthetic readout",
+      "result": "no change observed",
+      "limitations": "synthetic negative result; precision unassessed",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e2"
+    }
+  ],
+  "gaps": [
+    {
+      "question": "Does rescue reverse the endpoint?",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "deliverable": "Source-linked synthetic mechanism uncertainty review",
+      "acceptance_criterion": "Document observed and unassessed endpoints, source limitations and unresolved appraisal inputs; no go/no-go inference. Preserve the revised fictional scope.",
+      "context": "preclinical mechanism; clinical translation unassessed",
+      "context_ids": [
+        "ctx-development"
+      ],
+      "work_package_id": "WP-MECHANISM",
+      "status": "COMPLETE",
+      "artifact_locator": "synthetic://mechanism-note-amended",
+      "acceptance_verified": true,
+      "completion_basis_sha256": "79d39984ade7a5551d6b3ee5af7ecccca1d0bb4b34645f888219c7ad1c5e0936"
+    },
+    {
+      "work_package_id": "WP-TRANSLATION",
+      "question": "Which applicability gaps need review before interpreting the synthetic model for a broader setting?",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "deliverable": "Synthetic guideline-to-development applicability review packet",
+      "acceptance_criterion": "Reviewer records population/model limitations and unknown development/regulatory claims with locators; no clinical recommendation.",
+      "context_ids": [
+        "ctx-guideline",
+        "ctx-development"
+      ],
+      "depends_on": [
+        "WP-MECHANISM"
+      ],
+      "status": "PLANNED"
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-1",
+      "record_ids": [
+        "r1"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "s1",
+      "locator": "synthetic section"
+    }
+  ],
+  "contexts": [
+    {
+      "context_id": "ctx-guideline",
+      "domain": "clinical_guideline",
+      "title": "Synthetic guideline placeholder",
+      "issuer": "Synthetic standards group",
+      "locator": "synthetic://guideline/section-1",
+      "version": "synthetic-v1",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic adult population; no real patient guidance",
+      "relevance_statement": "A supplied clinical context motivates a translation gap, not efficacy inference.",
+      "applicability": "Synthetic cell-model evidence cannot establish applicability to the supplied synthetic clinical population.",
+      "limitations": "Entirely synthetic; no guideline retrieved or currency verified.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [
+        "e1"
+      ]
+    },
+    {
+      "context_id": "ctx-development",
+      "domain": "drug_development",
+      "title": "Synthetic development context",
+      "issuer": "Synthetic development group",
+      "locator": "synthetic://development/memo-1",
+      "version": "fictional-development-v2",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic preclinical research",
+      "relevance_statement": "Mechanistic uncertainty motivates an evidence review work package.",
+      "applicability": "Applies only to the supplied synthetic model.",
+      "limitations": "Synthetic planning context only; no safety package, regulatory clearance or development-stage transition is established.",
+      "development_stage": "discovery (supplied synthetic assertion)",
+      "regulatory_status": "unknown",
+      "evidence_ids": [
+        "e2"
+      ],
+      "review_status": "reviewed",
+      "reviewer": "synthetic-reviewer",
+      "reviewed_at": "2026-01-03"
+    }
+  ],
+  "appraisals": [
+    {
+      "appraisal_id": "appraisal-1",
+      "method": "Synthetic method placeholder; not a validated rubric",
+      "method_version": "synthetic-v1",
+      "method_locator": "synthetic://method/example",
+      "reviewer": "synthetic-reviewer",
+      "assessed_at": "2026-01-03",
+      "evidence_ids": [
+        "e1"
+      ],
+      "limitations": "Synthetic supplied assertion only; method suitability and source authenticity not checked.",
+      "domains": [
+        {
+          "name": "Synthetic reporting domain",
+          "judgement": "unclear",
+          "rationale": "Synthetic record does not state a relevant design detail.",
+          "source_locator": "synthetic section 1"
+        }
+      ]
+    }
+  ],
+  "search_plan": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "search-secondary",
+      "source": "synthetic-secondary-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    }
+  ]
+}
