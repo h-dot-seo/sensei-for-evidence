@@ -9,7 +9,7 @@ BOUNDARY = ('Ranks, rationale and planner labels are supplied assertions, not in
             'quality. Stale ranks are historical and excluded from current rank groups. '
             'Optional statement links are supplied rationale references, not support or refutation judgments. '
             'Dependency order and scientific/clinical readiness are not changed.')
-PROGRESS_FIELDS = {'status', 'blocked_by', 'artifact_locator', 'acceptance_verified'}
+PROGRESS_FIELDS = {'status', 'blocked_by', 'artifact_locator', 'acceptance_verified', 'completion_basis_sha256'}
 
 
 def digest(value):
@@ -97,8 +97,25 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
                 other_statement_evidence_ids=sorted(set(statement['evidence_ids'])-set(work_by_id[wid]['evidence_ids'])),
                 rationale_support_assessment='NOT_PERFORMED')
                 for statement in targets[wid]['basis']['rationale_statements']]
+    completion=[]
+    for wid in sorted(work_by_id):
+        item=work_by_id[wid]
+        if 'completion_basis_sha256' in item:
+            supplied_hash=item['completion_basis_sha256']
+            if item['status']!='COMPLETE':raise ValueError('completion basis requires COMPLETE work assertion')
+            if not isinstance(supplied_hash,str) or len(supplied_hash)!=64 or any(c not in '0123456789abcdef' for c in supplied_hash):
+                raise ValueError('completion_basis_sha256 must be lowercase SHA-256 hex')
+        basis=dict(schema_version=1,work_source_basis_sha256=targets[wid]['basis_sha256'],artifact_locator=item.get('artifact_locator'))
+        current_hash=digest(basis)
+        state=('NOT_COMPLETE' if item['status']!='COMPLETE' else
+               'UNBOUND_COMPLETION' if 'completion_basis_sha256' not in item else
+               'CURRENT_SOURCE' if item['completion_basis_sha256']==current_hash else 'STALE_SOURCE')
+        completion.append(dict(work_package_id=wid,source_match_status=state,basis=basis,current_basis_sha256=current_hash,
+                               supplied_basis_sha256=item.get('completion_basis_sha256'),acceptance_assessment='NOT_PERFORMED',
+                               artifact_content_verification='NOT_PERFORMED'))
     return dict(schema_version=1, source_scope_fields=list(source_scope), source_scope_sha256=source_hash,
-                review_targets=[targets[wid] for wid in sorted(targets)], planning_ledger=ledger,
+                review_targets=[targets[wid] for wid in sorted(targets)], planning_ledger=ledger, completion_ledger=completion,
+                completion_boundary='Completion binding reuses the planning work/source basis plus the literal artifact locator. It does not verify artifact bytes, criteria satisfaction or scientific acceptance; recorded status and dependencies are unchanged.',
                 current_rank_groups=[dict(supplied_priority_rank=rank, work_package_ids=groups[rank],
                                           tie=len(groups[rank]) > 1) for rank in sorted(groups)],
                 work_without_planning_assertion=missing, work_with_stale_planning_assertion=stale,

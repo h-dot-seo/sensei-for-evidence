@@ -38,6 +38,8 @@ SPECS = {
     'dependency_unblocked_planned_work': ('gaps', 'Review the proposed deliverable and acceptance criterion. Unblocked means only that recorded dependencies are complete, not scientific approval.'),
     'blocked_work': ('gaps', 'Inspect the recorded prerequisite work; no dependency is bypassed or work automatically started.'),
     'work_in_progress': ('gaps', 'Review the supplied progress assertion and remaining deliverable work; no progress is inferred.'),
+    'completed_work_without_source_binding': ('gaps', 'Inspect the supplied completion criteria, artifact and evidence scope; no hash-bound completion basis was supplied. Do not copy a target hash as acceptance.'),
+    'completed_work_with_stale_source_binding': ('gaps', 'Compare changed work/evidence/context or artifact locator and reassess completion manually. Recorded COMPLETE/dependencies are not automatically changed.'),
     'completed_work_assertions': ('gaps', 'Inspect the supplied artifact locator and acceptance assertion. This tool does not open artifacts or certify acceptance.'),
 }
 
@@ -55,7 +57,7 @@ QUEUE_DOMAINS = {
     **dict.fromkeys(('evidence_without_experimental_unit','evidence_without_recorded_appraisal','evidence_without_statement_citation'), 'evidence'),
     **dict.fromkeys(('units_with_unresolved_conditions','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues'), 'experiment'),
     **dict.fromkeys(('statements_without_evidence_positions','statements_with_unresolved_positions','pending_synthesis_statement_reviews','stale_synthesis_statement_reviews'), 'statement'),
-    **dict.fromkeys(('work_without_planning_assertion','work_with_stale_planning_assertion','dependency_unblocked_planned_work','blocked_work','work_in_progress','completed_work_assertions'), 'work_package'),
+    **dict.fromkeys(('work_without_planning_assertion','work_with_stale_planning_assertion','dependency_unblocked_planned_work','blocked_work','work_in_progress','completed_work_assertions','completed_work_without_source_binding','completed_work_with_stale_source_binding'), 'work_package'),
     'context_review_pending': 'context', 'incomplete_searches': 'search_index',
 }
 
@@ -113,7 +115,7 @@ def handoff(protocol, work_package_id=None):
         summaries.append(dict(work_package=copy.deepcopy(packet['work_package']),
                              work_type=packet['work_type'],source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
                              source_input_counts=copy.deepcopy(packet['source_input_counts']),
-                             planning=copy.deepcopy(packet['planning_assertion']),
+                             planning=copy.deepcopy(packet['planning_assertion']),completion_review=copy.deepcopy(packet['completion_review']),
                              claim_positions=copy.deepcopy(packet['claim_positions']),
                              contexts=[copy.deepcopy(row['context']) for row in packet['contexts']],
                              recorded_review_gaps=copy.deepcopy(packet['recorded_review_gaps']),
@@ -166,6 +168,7 @@ def render_text(result):
         lines.extend(['Work: ' + show(item['work_package']), 'Work type: ' + item['work_type'],
                       'Source review inputs (not extracted evidence): ' + show(item['source_review_inputs']),
                       'Source input counts: ' + show(item['source_input_counts']), 'Supplied planning: ' + show(item['planning']),
+                      'Completion source binding (not acceptance): ' + show(item['completion_review']),
                       'Guideline/development context: ' + show(item['contexts'])])
         for claim in item['claim_positions']:
             statement=claim['statement']

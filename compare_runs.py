@@ -118,6 +118,7 @@ def amendment_review(assertion, before, after, left, right):
         return [dict(id=k,before=a.get(k),after=b.get(k)) for k in sorted(set(a)|set(b))
                 if k not in a or k not in b or canonical(a[k])!=canonical(b[k])]
     changes=dict(
+        completion=transitions(left['planning']['completion_ledger'],right['planning']['completion_ledger'],'work_package_id',('source_match_status',)),
         planning=transitions(left['planning']['planning_ledger'],right['planning']['planning_ledger'],'work_package_id',('source_match_status','current_priority_rank')),
         synthesis=transitions(left['synthesis']['statement_ledger'],right['synthesis']['statement_ledger'],'statement_id',('source_match_status','support_status')),
         work=transitions(left['work_packages'],right['work_packages'],'work_package_id',('status','blocked_by')),

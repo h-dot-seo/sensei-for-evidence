@@ -127,6 +127,7 @@ def review_artifacts(protocol,manifest,root):
     research=run(protocol)
     if 'reports' in protocol:report_flow(protocol)
     work={row['work_package_id']:row for row in research['work_packages']}
+    completion={row['work_package_id']:row['source_match_status'] for row in research['planning']['completion_ledger']}
     rows=validate_manifest(manifest,work) # Validate ALL metadata before opening artifacts.
     if not secure_open_supported():
         raise ValueError('secure descriptor-relative no-follow file access unavailable; no artifacts inspected')
@@ -137,7 +138,7 @@ def review_artifacts(protocol,manifest,root):
         for entry,parts in rows:
             item=work[entry['work_package_id']]
             results.append(dict(entry,**check_file(root_fd,parts,entry),
-                supplied_work_status=item['status'],question=item['question'],deliverable=item['deliverable'],
+                supplied_work_status=item['status'],completion_source_status=completion[entry['work_package_id']],question=item['question'],deliverable=item['deliverable'],
                 acceptance_criterion=item['acceptance_criterion'],supplied_acceptance_verified=item.get('acceptance_verified'),
                 depends_on=list(item['depends_on']),blocked_by=list(item['blocked_by']),
                 acceptance_assessment='NOT_PERFORMED'))

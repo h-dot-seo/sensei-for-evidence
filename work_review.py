@@ -37,6 +37,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     candidate_receipts = {row['sha256']: row for row in protocol.get('adapter_receipts', {}).get('receipts', [])
                           if row['target_type'] == 'extraction'}
     planning = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
+    completion = {row['work_package_id']:row for row in research['planning']['completion_ledger']}
     planning_targets = {row['work_package_id']: row for row in research['planning']['review_targets']}
     experiment_links = {row['evidence_id']: row['experiment_id'] for row in research['experiments']['evidence_links']}
     planned_searches = {row['search_id']:row for row in research['search_plan_audit']['search_plan_ledger']}
@@ -116,7 +117,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
             work_type=item.get('work_type','evidence_review'),source_review_inputs=source_inputs,
             source_input_counts=dict(planned_searches=sum(ref['kind']=='planned_search' for ref in item.get('source_refs',[])),
                                      enumerated_records=sum(ref['kind']=='record' for ref in item.get('source_refs',[]))),
-            planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
+            completion_review=copy.deepcopy(completion[wid]), planning_assertion=copy.deepcopy(planning[wid]), planning_review_target=copy.deepcopy(planning_targets[wid]),
             dependencies=[copy.deepcopy(work[dependency]) for dependency in item['depends_on']],
             results=result_rows, sources=source_rows, contexts=context_rows, appraisals=appraisal_rows,
             synthesis_stage=research['synthesis']['stage'],
@@ -188,7 +189,7 @@ def navigation_summary(result):
                          question=work['question'],deliverable=work['deliverable'],acceptance_criterion=work['acceptance_criterion'],
                          depends_on=copy.deepcopy(work['depends_on']),blocked_by=copy.deepcopy(work['blocked_by']),
                          artifact_locator=work.get('artifact_locator'),acceptance_verified=work.get('acceptance_verified'),
-                         planning=copy.deepcopy(packet['planning_assertion']),recorded_review_gaps=gaps,
+                         planning=copy.deepcopy(packet['planning_assertion']),completion_review=copy.deepcopy(packet['completion_review']),recorded_review_gaps=gaps,
                          source_review_inputs=copy.deepcopy(packet['source_review_inputs']),
                          statement_review_statuses=[dict(statement_id=row['statement']['statement_id'],
                              source_match_status=row['statement']['source_match_status'],support_status=row['statement']['support_status'],
@@ -219,6 +220,7 @@ def render_brief(result):
                       'Acceptance criterion: '+show(row['acceptance_criterion']),
                       'Depends on: '+show(row['depends_on'])+'; blocked by: '+show(row['blocked_by']),
                       'Supplied artifact/acceptance (not checked): '+show(dict(artifact_locator=row['artifact_locator'],acceptance_verified=row['acceptance_verified'])),
+                      'Completion source status (not acceptance): '+show(row['completion_review']['source_match_status']),
                       'Planning source status: '+show(row['planning']['source_match_status'])])
         assertion=row['planning']['assertion']
         if assertion is not None:
@@ -255,6 +257,7 @@ def render_text(result):
                       'Acceptance criterion: ' + show(work['acceptance_criterion']),
                       'Dependencies: ' + show(work['depends_on']), 'Blocked by: ' + show(work['blocked_by']),
                       'Scope counts: ' + show(packet['scope_counts']),
+                      'Completion source binding (not acceptance): ' + show(packet['completion_review']),
                       'Supplied planning assertion: ' + show(packet['planning_assertion']),
                       'Current planning basis hash (review target only): ' + show(packet['planning_review_target']['basis_sha256']),
                       'Recorded review gaps: ' + show(packet['recorded_review_gaps']),

@@ -203,3 +203,7 @@ review cues. It shortens the review view without choosing the next task.
 reason, scope and version labels to the exact inputs of compare_runs, with observed
 review/work-state transitions. Matching notes are not change approval or legal,
 scientific or regulatory validation.
+
+[Completion source binding](docs/COMPLETION_BINDING.md) flags unbound/stale COMPLETE
+assertions after work/source/locator changes, reusing planning source scope. It
+never verifies acceptance, renews a hash or automatically reopens work.

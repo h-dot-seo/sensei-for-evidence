@@ -122,3 +122,7 @@ lexical all-work order. This order is not priority or scientific readiness.
 For a compact view, use [work navigation](WORK_NAVIGATION.md) with `--brief`
 instead of `--text`. It groups supplied work states and shows deliverables,
 acceptance criteria and existing review cues without choosing a next task.
+
+[Completion source binding](COMPLETION_BINDING.md) separately shows whether a
+supplied completion basis still matches current work/source/locator metadata.
+It does not assess acceptance or automatically reopen completed work.

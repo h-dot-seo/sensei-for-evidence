@@ -50,6 +50,8 @@ def status(protocol):
         dependency_unblocked_planned_work=sorted(row['work_package_id'] for row in work if row['status'] == 'PLANNED' and not row['blocked_by']),
         blocked_work=[dict(work_package_id=row['work_package_id'], blocked_by=row['blocked_by']) for row in sorted(work,key=lambda row:row['work_package_id']) if row['blocked_by']],
         work_in_progress=sorted(row['work_package_id'] for row in work if row['status'] == 'IN_PROGRESS'),
+        completed_work_without_source_binding=sorted(row['work_package_id'] for row in research['planning']['completion_ledger'] if row['source_match_status']=='UNBOUND_COMPLETION'),
+        completed_work_with_stale_source_binding=sorted(row['work_package_id'] for row in research['planning']['completion_ledger'] if row['source_match_status']=='STALE_SOURCE'),
         completed_work_assertions=sorted(row['work_package_id'] for row in work if row['status'] == 'COMPLETE'),
     )
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
@@ -99,6 +101,8 @@ def render_text(result):
         ('Dependency-blocked work', 'blocked_work'),
         ('Work in progress', 'work_in_progress'),
         ('Completed work assertions', 'completed_work_assertions'),
+        ('Completed work without source binding', 'completed_work_without_source_binding'),
+        ('Completed work with stale source binding', 'completed_work_with_stale_source_binding'),
     ]
     lines = ['Supplied research status', 'Search plan: ' + result['search_plan_status']]
     lines.extend(label + ': ' + count(key) for label, key in labels)

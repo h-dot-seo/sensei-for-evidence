@@ -71,3 +71,7 @@ This report is a point-in-time standalone view, with protocol, manifest and
 implementation hashes. It is not automatically embedded in PRISMA exports or the
 seven-file research bundle. Files can change after checking; a matching digest
 never proves authenticity, scientific correctness or adequate acceptance criteria.
+
+Byte-check rows also show `completion_source_status` from the existing work review.
+A byte match does not make stale/unbound [completion metadata](COMPLETION_BINDING.md)
+current and never changes supplied status or acceptance.

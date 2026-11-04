@@ -433,3 +433,16 @@ Independent adversarial review found no blockers. The synthetic reason binds a
 receipt-note completion snapshot while missing search and scientific-readiness
 limits remain visible. Notes are external supplied assertions, not protocol
 amendments performed by the tool, authenticated authorship or approved decisions.
+
+Completion-source binding increment (2026-11-03): 419 tests in the suite;
+Linux run: 418 passed and one native-Windows-only test skipped. Thirteen new tests
+cover existing acceptance guards, strict optional hash/status rules, unbound legacy
+completion, current/stale source classes, criteria/evidence/context/own-locator
+changes, no self-binding, pre-completion targets, direct prerequisite scope,
+unrelated context isolation, queue/handoff/brief/bundle propagation and immutable
+outputs. Amendment transitions and matching artifact bytes with stale completion
+are tested separately. Independent review compared legacy planning targets across
+24 runnable historical examples and found them unchanged. Direct-dependency scope
+limits and artifact-byte nonverification are explicit. Recorded COMPLETE and
+mechanical dependency unblocking remain unchanged; no hash or acceptance is
+renewed automatically and no scientific/clinical decision is made.
