@@ -179,10 +179,12 @@ remain separate, unperformed assessments.
 The optional [report-study review ledger](REPORT_STUDY_REVIEWS.md) now preserves
 separate human eligibility positions and reviewed-source ID selections for exact
 pairs. It does not turn those positions into canonical study selection or filter
-results. Inventory-based eligibility-review targets remain unimplemented; do not
-change report eligibility merely to obtain study-review targets.
+results. Separate [inventory-candidate review targets](INVENTORY_CANDIDATE_REVIEWS.md)
+are available before inclusion; do not change report eligibility merely to obtain
+study-review targets. The two review scopes and hashes remain distinct.
 
 A separate [descriptive inventory](REPORT_STUDY_INVENTORY.md) now allows explicit
 candidate descriptions before full-text report inclusion. It does not change the
 legacy study_id/study_ids membership rules or use inventory to authorize results.
-Inventory-based eligibility review and canonical selection remain separate work.
+Inventory-based human positions use the separate candidate-review scope;
+canonical study selection remains unimplemented.

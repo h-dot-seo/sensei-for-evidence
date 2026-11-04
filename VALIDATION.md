@@ -811,3 +811,36 @@ acceptance, source authenticity or scientific readiness. Publication audit and
 exact manifest verification pass. Only fictional sources and management records
 were used; no real corpus, medical fact checking or biological execution guidance
 was added.
+
+Inventory-candidate eligibility-review increment (2026-11-04): 926 tests in the
+suite; Linux run: 925 passed and one native-Windows-only test skipped. Thirty new
+independent regressions cover exact schemas/identities, dates/hashes/selections,
+whole ordered same-pair description bindings, source/criteria changes, eligibility
+and membership independence, differing positions, stale description preservation,
+known crossed-reference rejection, missing-reference retention only when stale,
+and removed-description orphan views without fresh templates or queue entries.
+The focused ten-suite run passes 260 tests. All 36 prior valid examples retain
+equal core/report/audit/status/handoff/synthesis/comparison views except engine
+fingerprints. An isolated checkout of the prior commit confirms exact reports.csv
+and work-packages.csv bytes for all 36 examples. Existing membership-review,
+planning and completion source semantics are not migrated or auto-renewed.
+CLI tests cover full-input validation, exact selection, blank human fields and
+source/description choices, create-only outputs, UTF-8 and escaped controls.
+Mapped CSV-provenance enrichment produces current targets without dropping raw
+collection context. Optional full-text decision snapshots retain exact same-report
+candidate positions; explicit inclusion preserves those assertions and their
+source labels, and exact-input replay rejects altered snapshots. No vote or
+canonical study selection is inferred from any position.
+The documented fictional inspection/template/status/handoff/audit/seven-file
+bundle journey succeeds. Five review assertions retain four current-context
+positions and one stale orphan; three described candidates have review cues.
+The existing five descriptions and two result rows remain unchanged. A current
+review of a stale description never upgrades the description or verifies reading.
+No real source, private corpus, medical fact check or biological execution guidance
+was used or added.
+Independent read-only review found no blocking issue and confirmed relocation,
+unrelated-description and review-metadata boundaries, full-removal orphan behavior,
+removed-source retention, detached outputs and crossed-ID reuse rejection. Two
+documentation qualifications were clarified: inherited search ordering can stale
+source context, and only removed selected descriptions produce unresolved selected
+IDs. Publication audit checks 200 text files and exact manifest verification passes.

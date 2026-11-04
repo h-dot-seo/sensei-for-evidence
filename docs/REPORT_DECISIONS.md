@@ -97,8 +97,10 @@ claimed by successful structural assembly.
 
 The target binds the canonical hash of the **entire original protocol**, the
 complete prior report row, its existing report-source target and exact same-report
-review, study-review and inventory snapshots with their presence stages. Mapped
-search/CSV context is retained in the report source hash. The original protocol
+review, study-review and inventory snapshots with their presence stages. When
+`report_study_inventory_reviews` is supplied, same-report candidate-review
+snapshots and their supplied stage are also retained, without choosing a winner.
+Mapped search/CSV context is retained in the report source hash. The original protocol
 remains required because these selected snapshots do not reproduce every source
 body or arbitrary input field.
 

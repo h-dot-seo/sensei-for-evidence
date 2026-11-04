@@ -158,10 +158,10 @@ results and review/extraction queues remain unchanged by inventory descriptions.
 `inventory_completeness`, study identity and independence remain `NOT_ESTABLISHED`;
 `eligibility_assessment` and document-byte verification remain `NOT_PERFORMED`.
 
-This increment does not expand existing report-study review templates to candidates
-outside included memberships, and it does not add canonical per-study selection.
-An explicit future versioned migration would be needed to use candidate inventory
-as an eligibility-review target. Do not mark a report included to bypass that limit.
+The separate [inventory-candidate review scope](INVENTORY_CANDIDATE_REVIEWS.md)
+now permits explicit human eligibility positions on these descriptions before
+report inclusion. It does not migrate included-membership review hashes or add
+canonical selection. Do not mark a report included merely to review a candidate.
 
 Omitting the key preserves legacy projection shapes. `[]` opts in; null is invalid.
 Empty inventory without reports is allowed, while nonempty assertions require

@@ -103,6 +103,35 @@ def report_study_review_changes(left, right):
                   'No canonical study selection, result filtering, consensus or identity inference is performed.'))
 
 
+def report_study_inventory_review_changes(left, right):
+    """Compare candidate positions in their separate inventory-description scope."""
+    a, b = left.get('report_study_inventory_review'), right.get('report_study_inventory_review')
+    old = {} if a is None else {row['review']['review_id']: row for row in a['review_ledger']}
+    new = {} if b is None else {row['review']['review_id']: row for row in b['review_ledger']}
+    def pairs(view):
+        if view is None:
+            return {}
+        targets = {(row['report_id'], row['study_id']): row for row in view['candidate_targets']}
+        reviews = {(row['report_id'], row['study_id']): row for row in view['candidate_review_ledger']}
+        return {key: dict(target=targets[key], review=reviews[key]) for key in targets}
+    before, after = pairs(a), pairs(b)
+    return dict(
+        before_stage='NOT_SUPPLIED' if a is None else a['stage'],
+        after_stage='NOT_SUPPLIED' if b is None else b['stage'],
+        assertion_changes=entity_changes([row['review'] for row in old.values()],
+                                        [row['review'] for row in new.values()], 'review_id'),
+        review_comparisons=[dict(review_id=rid, before=copy.deepcopy(old.get(rid)), after=copy.deepcopy(new.get(rid)))
+                            for rid in sorted(set(old) | set(new))],
+        pair_comparisons=[dict(report_id=key[0], study_id=key[1], before=copy.deepcopy(before.get(key)), after=copy.deepcopy(after.get(key)))
+                          for key in sorted(set(before) | set(after))],
+        before_counts=None if a is None else copy.deepcopy(a['counts']),
+        after_counts=None if b is None else copy.deepcopy(b['counts']),
+        boundary=('Supplied inventory-candidate positions and exact description/source context only. '
+                  'Retained orphan assertions do not prove valid history or create pending tasks. '
+                  'Candidate positions are not compared as agreement with canonical report decisions or membership reviews. '
+                  'No source reading, description correctness, identity, consensus or canonical selection is established.'))
+
+
 def report_review_changes(left, right):
     """Compare document declarations and human assertions without source verification."""
     a, b = left.get('report_review'), right.get('report_review')
@@ -514,6 +543,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
         result['report_study_review_changes'] = report_study_review_changes(left, right)
     if 'report_study_inventory' in left or 'report_study_inventory' in right:
         result['report_study_inventory_changes'] = report_study_inventory_changes(left, right)
+    if 'report_study_inventory_review' in left or 'report_study_inventory_review' in right:
+        result['report_study_inventory_review_changes'] = report_study_inventory_review_changes(left, right)
     if 'screening_decision_history' in left or 'screening_decision_history' in right:
         result['screening_decision_changes'] = screening_decision_changes(left, right)
     return result
@@ -568,6 +599,15 @@ def render_text(result):
         for row in inventory['pair_comparisons']:
             lines.append('Exact described pair before/after: ' + show(row))
         lines.append(inventory['boundary'])
+    if 'report_study_inventory_review_changes' in result:
+        review = result['report_study_inventory_review_changes']
+        lines.extend(['', 'Supplied inventory-candidate position comparison (not canonical selection):',
+                      'Before/after review stages: ' + show(dict(before=review['before_stage'], after=review['after_stage'])),
+                      'Changed assertions: ' + show(review['assertion_changes']),
+                      'Before/after candidate review counts: ' + show(dict(before=review['before_counts'], after=review['after_counts']))])
+        lines.extend('Candidate position before/after: ' + show(row) for row in review['review_comparisons'])
+        lines.extend('Exact candidate context before/after: ' + show(row) for row in review['pair_comparisons'])
+        lines.append(review['boundary'])
     if 'report_study_review_changes' in result:
         review = result['report_study_review_changes']
         lines.extend(['', 'Supplied report-study position comparison (not canonical eligibility):',

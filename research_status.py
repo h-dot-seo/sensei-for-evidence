@@ -67,6 +67,9 @@ def status(protocol):
     if 'report_study_review' in research:
         queues['study_memberships_with_review_cues'] = copy.deepcopy(
             research['report_study_review']['current_memberships_with_review_cues'])
+    if 'report_study_inventory_review' in research:
+        queues['inventory_candidates_with_review_cues'] = copy.deepcopy(
+            research['report_study_inventory_review']['current_candidates_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     result = dict(question=research['question'], protocol_version=research['protocol_version'],
@@ -85,6 +88,12 @@ def status(protocol):
         result['report_study_inventory'] = dict(
             stage=inventory['stage'], counts=copy.deepcopy(inventory['counts']),
             scope='supplied_descriptions_not_included_memberships_or_pending_tasks', boundary=inventory['boundary'])
+    if 'report_study_inventory_review' in research:
+        review = research['report_study_inventory_review']
+        result['report_study_inventory_review'] = dict(
+            stage=review['stage'], counts=copy.deepcopy(review['counts']),
+            orphan_review_assertions=copy.deepcopy(review['orphan_review_assertions']),
+            orphan_scope='unverified_retained_assertions_not_pending_tasks', boundary=review['boundary'])
     if 'report_study_review' in research:
         review = research['report_study_review']
         result['report_study_review'] = dict(
@@ -154,6 +163,12 @@ def render_text(result):
         lines.append('Retained orphan assertions: ' + str(len(result['report_study_review']['orphan_review_assertions']))
                      + '; retrospective supplied records, not proof of past membership or pending tasks.')
         lines.append('Study positions do not adjudicate report decisions or filter extracted results.')
+    if 'inventory_candidates_with_review_cues' in result['queues']:
+        lines.append('Described inventory candidates with supplied review cues: ' + count('inventory_candidates_with_review_cues'))
+        lines.append('Retained orphan candidate assertions: '
+                     + str(len(result['report_study_inventory_review']['orphan_review_assertions']))
+                     + '; retrospective context, not pending selection tasks.')
+        lines.append('Candidate positions do not create included memberships or verify descriptions, reading or eligibility.')
     if 'reports_with_review_cues' in result['queues']:
         lines.append('Reports with supplied full-text review cues: ' + count('reports_with_review_cues'))
         lines.append('Source digests and human positions are supplied assertions, not verified document bytes, reading or eligibility.')

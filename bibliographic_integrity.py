@@ -17,6 +17,7 @@ ENRICHMENT_FIELDS = {
     'appraisals', 'version', 'planning_decisions', 'synthesis_statements',
     'experimental_units', 'bibliographic_imports', 'screening_reviews', 'screening_decision_history',
     'report_sources', 'report_reviews', 'report_study_reviews', 'report_study_inventory',
+    'report_study_inventory_reviews',
 }
 ENTRY_FIELDS = {
     'intake', 'prior_protocol_body', 'prior_prefix_count', 'resolutions',

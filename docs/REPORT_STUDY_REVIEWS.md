@@ -173,8 +173,9 @@ change that flag. `canonical_study_selection` remains `NOT_MODELED`.
 This increment is post-inclusion bookkeeping. The existing schema permits plural
 study memberships only on included retrieved reports. Do not mark a report included
 just to obtain study-review templates. The separate descriptive inventory below
-does not yet supply an inventory-based eligibility-review scope or canonical
-per-study selection/result filtering.
+now has a separate [candidate-review scope](INVENTORY_CANDIDATE_REVIEWS.md),
+without canonical per-study selection or result filtering. This membership-review
+scope and its hashes remain unchanged.
 
 Omitting `report_study_reviews` preserves legacy projection shapes. `[]` opts in;
 null is invalid. Empty opt-in without reports is allowed, while nonempty rows

@@ -16,6 +16,7 @@ from screening_links import link_screening_reviews
 from report_review_links import link_report_reviews
 from report_study_review_links import link_report_study_reviews
 from report_study_inventory_links import link_report_study_inventory
+from report_study_inventory_review_links import link_report_study_inventory_reviews
 from screening_decision_links import link_screening_decisions
 
 
@@ -198,6 +199,8 @@ def run(protocol):
         result['report_study_review'] = link_report_study_reviews(protocol, bibliographic_collection)
     if 'report_study_inventory' in protocol:
         result['report_study_inventory'] = link_report_study_inventory(protocol, bibliographic_collection)
+    if 'report_study_inventory_reviews' in protocol:
+        result['report_study_inventory_review'] = link_report_study_inventory_reviews(protocol, bibliographic_collection)
     if 'screening_decision_history' in protocol:
         result['screening_decision_history'] = link_screening_decisions(protocol, bibliographic_collection)
     return result

@@ -72,6 +72,10 @@ def _target(protocol, report_id, research):
                         ('report_study_inventory', 'inventory')]:
         target[prefix+'_stage'] = 'SUPPLIED' if key in protocol else 'NOT_SUPPLIED'
         target[prefix+'_snapshots'] = copy.deepcopy([r for r in protocol.get(key, []) if r['report_id'] == report_id])
+    if 'report_study_inventory_reviews' in protocol:
+        target['inventory_review_stage'] = 'SUPPLIED'
+        target['inventory_review_snapshots'] = copy.deepcopy(
+            [r for r in protocol['report_study_inventory_reviews'] if r['report_id'] == report_id])
     target['target_sha256'] = digest(target)
     return target
 
