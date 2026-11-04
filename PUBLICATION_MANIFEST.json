@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.44.0-report-study-comparison",
+  "release": "0.44.1-csv-independent-comparison",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 42362,
-      "sha256": "ec2f9b282a5aa8d84865322e5e7856714916e4fb9e9045241d52d467b7bf9d79"
+      "bytes": 43407,
+      "sha256": "e6481f0d82c6fbae2419e4223108c1f1c5fd6c4ac28a67b93fb797f534484293"
     },
     {
       "path": "adapter_integrity.py",
@@ -90,8 +90,8 @@
     },
     {
       "path": "compare_runs.py",
-      "bytes": 36975,
-      "sha256": "ff8661f54f34e1495c0bcc1e46eb77109cb8e42a0ca13418547b3af76e723e52"
+      "bytes": 37013,
+      "sha256": "76fafea9195ef8c215277dee7ad318c54308e8fe0639836055b20c18db8cd492"
     },
     {
       "path": "context_links.py",
@@ -170,8 +170,8 @@
     },
     {
       "path": "docs/MULTI_STUDY_REPORTS.md",
-      "bytes": 9928,
-      "sha256": "1064980a2e35bcb02f3b2effc6240ee8d7d04ba0a7556eee13699dba73bf24fb"
+      "bytes": 10256,
+      "sha256": "c4cc0463d06652f6f27876567863d09b1d51fe6a84b9ecdc838c9b06d3e28b43"
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
@@ -470,8 +470,8 @@
     },
     {
       "path": "prisma_reports.py",
-      "bytes": 4277,
-      "sha256": "ee27494ccb5af8c70853978076d8ae0d938aa7858829d7ded7b97b7911684b15"
+      "bytes": 4807,
+      "sha256": "baccf70ebb89fca56bf29ef8bc73752718e1e9a93456ddfcf4806a3b84a7b0b6"
     },
     {
       "path": "receipt_intake.py",
@@ -680,8 +680,8 @@
     },
     {
       "path": "test_report_study_comparison.py",
-      "bytes": 25616,
-      "sha256": "e2198689b844884d61966e11f618e1fcfaaa4b50a9c77b7488192ced1b659f70"
+      "bytes": 29892,
+      "sha256": "567f0a77b87803d13223d8fc5d6326409f3d1b230a63398defb6090b55880b83"
     },
     {
       "path": "test_report_study_memberships.py",

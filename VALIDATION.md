@@ -594,3 +594,17 @@ two-field identities, never positional pointers, locators or inferred renames.
 No source authenticity, study identity, eligibility, extraction completeness or
 scientific/clinical significance is established by a retained or unchanged pair.
 The comparison is read-only; its test inputs remain entirely fictional.
+
+CSV-independent comparison correction (2026-11-04): the first membership-diff CI
+run passed both Python 3.12 jobs but exposed a Python 3.10 CSV serialization
+failure for an embedded NUL in an otherwise valid supplied JSON ID. The original
+literal-identity regression remains intact. The comparator now requests validated
+report projections without constructing unused CSV; default CSV exports and all
+report/evidence validators are unchanged. Five new tests simulate an unavailable
+CSV writer, cover every scalar/plural pairing, preserve NUL IDs, compare full
+default/no-CSV projections and enforce strict keyword/Boolean options. The suite
+now has 613 tests; Linux run: 612 passed and one native-Windows-only test skipped.
+The related report/comparison suite passes 96 tests. All 26 report-bearing example
+outputs retain exactly equal default report JSON and CSV; 29 unchanged and 27
+changed-input comparison cases retain equal JSON/text with shared current engine
+fingerprints. No identifier is removed or normalized to satisfy a serializer.

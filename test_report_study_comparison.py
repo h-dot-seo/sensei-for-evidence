@@ -7,9 +7,11 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from compare_runs import compare_protocols, render_text
 from json_io import quoted_display
+from prisma_reports import report_flow
 
 ROOT = Path(__file__).resolve().parent
 
@@ -413,6 +415,84 @@ class ReportStudyComparisonTests(unittest.TestCase):
                     self.assertIn(quoted_display(row[side]['input_pointer']), text)
         self.assertIn(result['boundary'], text)
         self.assertIn('"has_result_rows": false', text)
+
+    def test_comparison_never_constructs_csv_writer_for_any_declaration_form(self):
+        scalar, plural = fixture(False), fixture()
+        for before, after in ((scalar, scalar), (scalar, plural), (plural, scalar), (plural, plural)):
+            expected = compare_protocols(before, after)
+            with self.subTest(before_plural='study_ids' in before['reports'][0],
+                              after_plural='study_ids' in after['reports'][0]):
+                with patch('prisma_reports.csv.writer', side_effect=AssertionError('comparison must not serialize CSV')) as writer:
+                    self.assertEqual(compare_protocols(before, after), expected)
+                    writer.assert_not_called()
+
+    def test_no_csv_report_flow_is_exact_default_projection(self):
+        protocols = [fixture(False), fixture(), fixture(second_study=True), second_report(fixture())]
+        empty = fixture()
+        empty['reports'] = []
+        empty['evidence'] = []
+        protocols.append(empty)
+        for protocol in protocols:
+            with self.subTest(reports=protocol['reports']):
+                original = copy.deepcopy(protocol)
+                expected = report_flow(protocol)
+                self.assertIn('report_csv', expected)
+                self.assertEqual(report_flow(protocol, include_csv=True), expected)
+                expected.pop('report_csv')
+                with patch('prisma_reports.csv.writer', side_effect=AssertionError('CSV was disabled')) as writer:
+                    actual = report_flow(protocol, include_csv=False)
+                    writer.assert_not_called()
+                self.assertNotIn('report_csv', actual)
+                self.assertEqual(actual, expected)
+                self.assertEqual(protocol, original)
+
+    def test_no_csv_path_preserves_nul_literal_ids_without_serialization(self):
+        protocol = fixture()
+        protocol['reports'][0]['report_id'] = 'report\x00literal'
+        protocol['reports'][0]['study_ids'] = ['study\x00literal']
+        protocol['evidence'][0]['study_id'] = 'study\x00literal'
+        with patch('prisma_reports.csv.writer', side_effect=AssertionError('CSV was disabled')):
+            result = report_flow(protocol, include_csv=False)
+            comparison = block(protocol, protocol)
+        self.assertEqual(result['report_ledger'][0]['report_id'], 'report\x00literal')
+        self.assertEqual(result['report_ledger'][0]['study_ids'], ['study\x00literal'])
+        self.assertEqual(comparison['memberships'][0]['report_id'], 'report\x00literal')
+        self.assertEqual(comparison['memberships'][0]['study_id'], 'study\x00literal')
+
+    def test_no_csv_and_default_paths_enforce_same_report_validation(self):
+        invalid = []
+        for plural in (False, True):
+            bad = fixture(plural)
+            bad['evidence'][0]['study_id'] = 'undeclared'
+            invalid.append(bad)
+            bad = fixture(plural)
+            bad['reports'][0]['locator'] = ''
+            invalid.append(bad)
+            bad = fixture(plural)
+            bad['reports'][0]['record_ids'] = ['not-an-included-record']
+            invalid.append(bad)
+            bad = fixture(plural)
+            bad['reports'].append(copy.deepcopy(bad['reports'][0]))
+            invalid.append(bad)
+        bad = fixture()
+        bad['reports'][0]['study_ids'] = []
+        invalid.append(bad)
+        for protocol in invalid:
+            errors = []
+            for include_csv in (True, False):
+                with self.subTest(protocol=protocol, include_csv=include_csv):
+                    with self.assertRaises(ValueError) as error:
+                        report_flow(protocol, include_csv=include_csv)
+                    errors.append(str(error.exception))
+            self.assertEqual(errors[0], errors[1])
+
+    def test_include_csv_requires_keyword_and_strict_boolean(self):
+        protocol = fixture()
+        for invalid in (None, 0, 1, '', 'false', [], {}, object()):
+            with self.subTest(value=invalid), self.assertRaises((TypeError, ValueError)):
+                report_flow(protocol, include_csv=invalid)
+        with self.assertRaises(TypeError):
+            report_flow(protocol, False)
 
     def test_portable_cli_json_text_unicode_control_escaping_and_read_only(self):
         before = fixture()

@@ -106,6 +106,10 @@ When either validated input uses `study_ids`, the comparison adds
 `report_study_comparison`. Both sides are projected, including legacy scalar
 memberships on the side without the plural field. Legacy-to-legacy comparisons
 keep their previous JSON and text structure.
+The comparator consumes validated report ledgers without constructing intermediate
+CSV. Runtime-specific CSV character restrictions therefore do not alter or reject
+an otherwise valid JSON identity during comparison. Default report CSV export is
+unchanged; no ID is stripped, normalized or replaced to satisfy a CSV serializer.
 
 Memberships are matched only by the exact pair of `report_id` and `study_id`.
 The output keeps these as separate fields, without a delimiter-based key:

@@ -298,8 +298,8 @@ def amendment_review(assertion, before, after, left, right):
 
 def compare_protocols(before, after, amendment=_NO_AMENDMENT):
     left, right = run(before), run(after)
-    left_reports = report_flow(before) if 'reports' in before else None
-    right_reports = report_flow(after) if 'reports' in after else None
+    left_reports = report_flow(before, include_csv=False) if 'reports' in before else None
+    right_reports = report_flow(after, include_csv=False) if 'reports' in after else None
     left_bytes, right_bytes = canonical(before), canonical(after)
     changed = left_bytes != right_bytes
     version_changed = canonical(before['version']) != canonical(after['version'])
