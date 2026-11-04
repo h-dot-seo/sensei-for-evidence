@@ -258,3 +258,7 @@ route exposes create/verify help only; it does not select a segment or perform r
 [Reviewed context intake](MANUAL_CONTEXT_INTAKE.md) supplies a blank draft and exact
 import-review path for new guideline/development contexts. It does not assign them
 to existing work or upgrade their own pending/reviewed status.
+
+[Existing-work context assignment](WORK_CONTEXT_INTAKE.md) exposes explicit-link
+preparation and exact review, including direct-dependent source-basis changes.
+No supplied completion or planning hash is renewed by this operation.

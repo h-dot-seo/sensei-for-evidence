@@ -447,3 +447,8 @@ retain their historical scope without asserting complete history or current vali
 appends complete human-authored source/evidence contexts without inventing clinical
 or regulatory judgements. New contexts stay unassigned, and existing work links,
 planning/completion bases and each context's own review status remain unchanged.
+
+[Reviewed existing-work context assignment](docs/WORK_CONTEXT_INTAKE.md) appends
+only explicitly selected context links to named work. Before/after targets expose
+selected and direct-dependent source-basis changes while preserving stored ranks,
+completion assertions and hashes, without automatic applicability or review renewal.

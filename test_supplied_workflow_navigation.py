@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
-                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','context_intake','source_review_work','evidence_review_work','work_completion',
+                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','context_intake','work_context_assignment','source_review_work','evidence_review_work','work_completion',
                 'collection_archives','report_transition_archive','extraction_transition_archive','work_transition_archive','appraisal_transition_archive']
 
 
@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),82)
+        self.assertEqual(len(entries),86)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -150,6 +150,15 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         for phrase in ['Conflicting positions remain separate', 'no score, consensus', 'not proof of reading',
                        'hashes are not renewed', 'source-status cues may change']:
             self.assertIn(phrase, route['boundary'])
+
+    def test_work_context_route_exposes_staleness_without_renewal(self):
+        catalog={r['workflow_id']:r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
+        route=catalog['work_context_assignment']
+        self.assertEqual(route['guide_paths'],['docs/WORK_CONTEXT_INTAKE.md'])
+        self.assertEqual(route['entrypoints'],[dict(script='work_context_intake.py',arguments=[c,'--help'])
+                                             for c in ('template','target','assemble','verify')])
+        for phrase in ['context-ID suffixes','direct dependents','no review is renewed','stored hashes remain unchanged']:
+            self.assertIn(phrase,route['boundary'])
 
     def test_context_route_separates_import_from_applicability_and_assignment(self):
         catalog = {r['workflow_id']: r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}

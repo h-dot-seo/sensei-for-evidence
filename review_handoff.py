@@ -171,6 +171,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit domain/scope and source or result links, complete supplied context assertions and own review status',
                                 'Separate exact-input import review; no scientific, clinical or regulatory judgement is generated'],
          boundary='Only new contexts append and remain unassigned. Import review never changes context review_status or authorship. Existing work/synthesis links and planning/completion bases stay unchanged. Source links do not promote eligibility or evidence; no guideline currency or regulatory validity is established.'),
+    dict(workflow_id='work_context_assignment', title='Link explicit existing contexts to named work',
+         guide_paths=['docs/WORK_CONTEXT_INTAKE.md'],
+         entrypoints=[dict(script='work_context_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit raw work IDs and existing context IDs to append, without replacement or inferred applicability',
+                                'Separate exact-target review including changed selected/direct-dependent source bases'],
+         boundary='Only selected context-ID suffixes change. Context assertions, ranks, completion statuses and stored hashes remain unchanged. Source bases can stale for selected work and direct dependents; no review is renewed, work reopened or context automatically inherited.'),
     dict(workflow_id='source_review_work', title='Append explicit source-review work proposals',
          guide_paths=['docs/SOURCE_WORK_INTAKE.md', 'docs/SOURCE_REVIEW_WORK.md'],
          entrypoints=[dict(script='source_work_intake.py', arguments=[command, '--help'])

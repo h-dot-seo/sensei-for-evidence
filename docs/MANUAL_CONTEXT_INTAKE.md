@@ -126,3 +126,7 @@ call, scientific judgement, clinical recommendation or experimental procedure is
 performed. Existing transition archives do not support this application kind.
 Private supplied text is retained without redaction; keep real inputs outside the
 public repository. Census stays NOT_ESTABLISHED and conclusions NOT_READY.
+
+After import, [existing-work context assignment](WORK_CONTEXT_INTAKE.md) is a
+separate reviewed step for explicit links. It exposes changed selected/dependent
+source bases while preserving all stored planning/completion assertions.

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "assignments": [
+    {
+      "work_package_id": "WP-GUIDELINE-SOURCES",
+      "context_ids": [
+        "ctx-source-guideline-supplied"
+      ]
+    }
+  ]
+}

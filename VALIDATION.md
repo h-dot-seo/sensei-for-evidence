@@ -2276,3 +2276,46 @@ not hard resource ceilings. No external/model calls, source reading, guideline
 currency assessment, clinical judgement or regulatory determination is performed.
 Unsigned assertions and non-atomic path-race/ancestor-alias limits remain explicit.
 Final exact-head remote CI is checked separately after publication.
+
+The exact published unassigned-context head passed all four Ubuntu/Windows ×
+Python 3.10/3.12 jobs: run 41869085129, commit
+6f73dae815b4b11a8fa8fb11fbd569488ab85e18.
+
+## 2026-11-04 reviewed existing-work context assignment
+
+Added a separate append-only context-ID assignment operation for explicitly named
+existing raw work IDs. It neither imports contexts nor infers their applicability.
+Before/after targets expose selected and direct-dependent source-basis changes,
+while preserving old context-ID ordering, all other raw fields, supplied planning
+ranks, completion states/artifacts/acceptance and original hashes. Stale completion
+still satisfies the existing dependency rule; work is not reopened or reassessed.
+
+Full Linux regression: 1,683 tests in 625.897 seconds, 1,682 passed and one
+native-Windows-only skip. Twenty-nine new tests comprise 27 intake regressions,
+one eight-command context-to-work continuation and one discovery test. The focused
+intake/discovery run passed 48 tests in 19.120 seconds; the documented continuation
+passed separately. Operator discovery now has 21 static routes and 86 parser-help
+entrypoints. Existing workflow/engine and archive formats are unchanged.
+
+Independent read-only review found no blocking defects, probing completion/source
+fixtures, selected/direct-dependent basis changes, preserved ranks and COMPLETE
+assertions, positional versus explicit IDs, 26 malformed/no-op inputs, exact replay,
+CLI duplicate keys, no-overwrite and dangling-link refusal. Additional persistent
+tests cover explicit default-looking IDs, nonrecursive change propagation and stale
+completed direct dependents without reopening. This is code-behavior review, not
+clinical validation, source authentication or a full security audit.
+
+Compile, local guide links, whitespace and limited publication audit pass. The
+exact inventory is regenerated and checked before publication. Bounds are 100
+assignments, 100 context IDs per assignment, 10 MB candidate/reference/review and
+50 MB protocol/application; these are not hard CPU/memory limits. Templates select
+no contexts and expose an unfiltered catalog, not a compatibility recommendation.
+Unknown/repeated/already-assigned links, no-ops and positional work-ID targets are
+rejected. Context rows and own reviewer/status stay unchanged. Source/evidence
+scope compatibility uses the existing engine and does not establish applicability.
+
+Snapshots remain detached unsigned assertions. No source/artifact is opened and no
+external/model call is made. Private text is not redacted; output creation does
+not claim atomic path-race or ancestor-alias protection. Existing work-transition
+archives do not support this new application kind. Exact-head matrix CI is checked
+separately after push; local success is not a substitute for remote verification.
