@@ -3,6 +3,7 @@ import copy
 import hashlib
 from context_links import nonempty_text, iso_date, id_list
 from json_io import canonical_json_bytes
+from work_document_links import selected_document_work, link_work_documents
 
 BOUNDARY = ('Ranks, rationale and planner labels are supplied assertions, not independently '
             'verified priorities or advice. Source matching is content consistency, not planning '
@@ -16,7 +17,14 @@ def digest(value):
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
-def link_planning(protocol, evidence, work, context, appraisal, experiments=None, synthesis=None):
+def link_planning(protocol, evidence, work, context, appraisal, experiments=None, synthesis=None, bibliographic_collection=None):
+    """Derive document bindings internally; an external binding map is not input.
+
+    The optional collection uses the existing already-validated bibliographic
+    provenance contract. The public workflow supplies it from intake validation.
+    """
+    opted = selected_document_work(work)
+    document_sources = link_work_documents(protocol, work, bibliographic_collection) if opted else {}
     if 'experimental_units' in protocol and (not isinstance(experiments, dict) or experiments.get('stage') != 'SUPPLIED'):
         raise ValueError('supplied experimental units require validated experiment binding')
     supplied = protocol.get('planning_decisions', [])
@@ -74,6 +82,12 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
             evidence=[copy.deepcopy(evidence_by_id[eid]) for eid in sorted(refs)],
             contexts=[copy.deepcopy(context_by_id[cid]) for cid in sorted(row.get('context_ids', []))],
             appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if refs.intersection(item['evidence_ids'])])
+        if wid in opted:
+            basis['document_source_context'] = copy.deepcopy(document_sources[wid])
+        direct_documents = [dict(work_package_id=dep, document_source_context=copy.deepcopy(document_sources[dep]))
+                            for dep in row['depends_on'] if dep in opted]
+        if direct_documents:
+            basis['direct_dependency_document_sources'] = direct_documents
         if experiments is not None and experiments['stage'] == 'SUPPLIED':
             basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if refs.intersection(item['evidence_ids'])])
         if 'rationale_statement_ids' in decisions.get(wid,{}):

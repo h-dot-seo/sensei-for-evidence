@@ -779,3 +779,35 @@ source authenticity, reading, per-study scientific eligibility or chronological
 authority is inferred. Publication audit and exact manifest verification pass.
 No private inputs, real paper, medical fact checking or biological execution
 instructions were used or added.
+
+Opt-in document-linked source-work increment (2026-11-04): 896 tests in the suite;
+Linux run: 895 passed and one native-Windows-only test skipped. Twenty-one new
+regressions cover exact source/report/record linkage, strict opt-in lists and work
+types, partial record intersection, null digests and unavailable retrieval,
+selected-source deletion, whole same-report catalog changes, pointer-independent
+bindings, supplied review/inventory exclusions, CSV-import provenance, direct-only
+dependency propagation, completion guards and detached packet/export projections.
+The focused nine-suite run passes 138 tests. All 35 prior valid example views
+remain equal except implementation fingerprints. An isolated checkout of the
+previous commit also confirms exact reports.csv and work-packages.csv bytes for
+all 35 prior valid examples. Legacy source scopes and semantic planning/completion
+hashes remain unchanged when document_source_ids is absent.
+An independent test writer supplied 19 passing regressions. Separate read-only
+review identified a direct-helper trust gap in an initial caller-supplied derived
+binding map; the CLI/run path was not exposed. The final planning helper now
+computes document bindings internally from source declarations and validated CSV
+provenance and does not accept that external map. Two additional regressions cover
+rejection and one-time opt-in preparation. Independent recheck passes 156 related
+tests and confirms the route is closed, with no remaining findings.
+The fictional four-work-package CLI/brief/handoff/comparison/bundle journey shows
+that a selected document version edit stales own and direct-dependent completion
+bindings, while recorded COMPLETE status and blocking stay unchanged. Transitive
+and legacy bases retain their prior semantics; direct stale-prerequisite labels
+remain visible. Conditional CSV columns preserve selected descriptors and context,
+not document bytes or verification. Same-report unselected catalog changes can
+stale the opted scope by design; unrelated report-source edits do not. No source
+or work is selected automatically, and a matching hash never establishes reading,
+acceptance, source authenticity or scientific readiness. Publication audit and
+exact manifest verification pass. Only fictional sources and management records
+were used; no real corpus, medical fact checking or biological execution guidance
+was added.

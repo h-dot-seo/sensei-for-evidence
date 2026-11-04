@@ -291,3 +291,8 @@ change canonical state, or follow locators. Unsupported platforms fail closed.
 supplied human include/exclude choice and exact study declaration to a detached
 candidate. Replay against the original input precedes protocol export; conflicting
 result links are rejected rather than deleted, and reviewer positions never vote.
+
+[Document-linked source work](docs/WORK_DOCUMENT_SOURCES.md) optionally binds named
+report-source versions to a source-review task and its direct dependents. Changed
+document context can stale planning/completion assertions without reopening work,
+automatically accepting it, or changing legacy task hashes when omitted.

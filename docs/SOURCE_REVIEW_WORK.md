@@ -112,3 +112,11 @@ results, and never opens or verifies artifact locators.
 For explicitly authorized local byte checks, [local artifact review](LOCAL_ARTIFACT_REVIEW.md)
 accepts a separate manifest/root and checks bounded regular-file size and SHA-256.
 This POSIX-only opt-in never fetches locators or changes work/acceptance assertions.
+
+## Explicit document-version scope
+
+Source-review work may optionally select `document_source_ids` that share an
+exact record reference with their report. See [document-linked work](WORK_DOCUMENT_SOURCES.md)
+for source-catalog binding, direct-dependent staleness and portable review views.
+Omitting the field retains the original record/search scope and semantic hashes;
+no document version, reading or acceptance is implicitly bound or verified.

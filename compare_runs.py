@@ -342,6 +342,10 @@ def completion_work_impact(before, after, left, right):
                                 supplied_work_status=work[dep]['status'],
                                 source_match_status=completion[dep]['source_match_status']) for dep in row['depends_on']])
                    for wid, row in work.items()}
+        for wid, packet in packets.items():
+            for key in ('document_source_context', 'direct_dependency_document_sources'):
+                if key in bases[wid]:
+                    packet[key] = copy.deepcopy(bases[wid][key])
         return packets, bases
 
     old, old_bases = snapshots(left)
@@ -380,6 +384,10 @@ def completion_work_impact(before, after, left, right):
                                                                     bb.get('experimental_context', {}).get('units', []), 'experiment_id'),
                            rationale_statement_changes=entity_changes(ab.get('rationale_statements', []),
                                                                        bb.get('rationale_statements', []), 'statement_id'))
+            for key in ('document_source_context', 'direct_dependency_document_sources'):
+                if key in ab or key in bb:
+                    details[key] = dict(before=copy.deepcopy(ab.get(key)), after=copy.deepcopy(bb.get(key)),
+                                        changed=canonical(ab.get(key)) != canonical(bb.get(key)))
             if basis_fields:
                 cues.append('RECOMPUTED_COMPLETION_BASIS_CHANGED')
             if a['completion_review']['source_match_status'] != b['completion_review']['source_match_status']:
@@ -682,6 +690,10 @@ def render_text(result):
             for name, value in details.items():
                 if name == 'changed_sections':
                     continue
+                if name in ('document_source_context', 'direct_dependency_document_sources'):
+                    if value['changed']:
+                        lines.append(name + ' (supplied context, not verified bytes or acceptance): ' + show(value))
+                    continue
                 if ((isinstance(value, list) and value)
                         or (isinstance(value, dict) and (value['added_ids'] or value['removed_ids'] or value['changed']))):
                     lines.append(name + ': ' + show(value))
@@ -689,6 +701,10 @@ def render_text(result):
             snapshot = row[side]
             lines.append(side.capitalize() + ' direct prerequisite source labels: ' +
                          show(None if snapshot is None else snapshot['direct_prerequisite_completion_sources']))
+            if snapshot is not None:
+                for key in ('document_source_context', 'direct_dependency_document_sources'):
+                    if key in snapshot:
+                        lines.append(side.capitalize() + ' ' + key + ': ' + show(snapshot[key]))
         lines.append('Direct prerequisite changes/order: ' + show(row['direct_prerequisite_completion_changes']))
     lines.extend(['', 'Empty change cues are not acceptance or completeness; no sources or artifact bytes were verified.',
                   'Full assertion snapshots and unchanged entity details remain in the default JSON output.',

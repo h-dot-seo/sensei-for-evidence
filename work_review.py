@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from evidence_workflow import run
+from work_document_links import BOUNDARY as DOCUMENT_SOURCE_BOUNDARY
 from context_links import source_context_linkage
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
@@ -161,6 +162,10 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 evidence_without_recorded_appraisal=sorted(eid for eid in evidence_ids if not appraisal_links[eid]),
                 source_indices_with_unresolved_accounting=[row['search_index'] for row in source_rows if not row['accounting']['complete']]),
             decision_status='NO_AUTOMATED_DECISION'))
+        for field in ('document_source_context', 'direct_dependency_document_sources'):
+            if field in planning_targets[wid]['basis']:
+                packets[-1][field] = copy.deepcopy(planning_targets[wid]['basis'][field])
+                packets[-1]['document_source_boundary'] = DOCUMENT_SOURCE_BOUNDARY
         if reports is not None and 'report_study_coverage' in reports:
             report_ids = {row['report']['report_id'] for row in result_rows if row['report'] is not None}
             report_ids.update(row['report']['report_id'] for row in source_inputs if row.get('report') is not None)
@@ -217,6 +222,9 @@ def navigation_summary(result):
                              work_positions=[{key:p[key] for key in ('evidence_id','claim_component','aspect','relation')} for p in row['work_positions']],
                              other_statement_evidence_ids=copy.deepcopy(row['other_statement_evidence_ids'])) for row in packet['claim_positions']],
                          scope_counts=copy.deepcopy(packet['scope_counts'])))
+        for field in ('document_source_context', 'direct_dependency_document_sources', 'document_source_boundary'):
+            if field in packet:
+                rows[-1][field] = copy.deepcopy(packet[field])
         source_contexts = [dict(context_id=row['context']['context_id'],
                                 review_status=row['context']['review_status'],
                                 shared_source_refs=copy.deepcopy(row['shared_source_refs']))
@@ -251,6 +259,9 @@ def render_brief(result):
                       'Completion source status (not acceptance): '+show(row['completion_review']['source_match_status']),
                       'Direct prerequisite completion sources (not acceptance): '+show(row['direct_prerequisite_completion_reviews']),
                       'Planning source status: '+show(row['planning']['source_match_status'])])
+        for field in ('document_source_context', 'direct_dependency_document_sources', 'document_source_boundary'):
+            if field in row:
+                lines.append(field + ': ' + show(row[field]))
         assertion=row['planning']['assertion']
         if assertion is not None:
             lines.append('Supplied planning rationale/uncertainty: '+show({key:assertion[key] for key in ('rationale','uncertainty')}))
@@ -297,6 +308,9 @@ def render_text(result):
                       'Recorded review gaps: ' + show(packet['recorded_review_gaps']),
                       'Report stage: ' + show(packet['report_stage']),
                       'Context links: ' + show(packet['context_link_status'])])
+        for field in ('document_source_context', 'direct_dependency_document_sources', 'document_source_boundary'):
+            if field in packet:
+                lines.append(field + ': ' + show(packet[field]))
         for field in ('artifact_locator', 'acceptance_verified'):
             if field in work:
                 lines.append('Supplied ' + field + ': ' + show(work[field]))

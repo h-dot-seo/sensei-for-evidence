@@ -166,7 +166,8 @@ def run(protocol):
     appraisal = link_appraisals(protocol, evidence, work)
     experiments = link_experiments(protocol, evidence)
     synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments)
-    planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis)
+    planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis,
+                             bibliographic_collection=bibliographic_collection)
     included = sum(d['decision'] == 'include' for d in decisions.values())
     result = dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,

@@ -11,7 +11,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -39,6 +39,9 @@ def build_bundle(raw):
                 'supplied_completion_basis_sha256','current_completion_basis_sha256',
                 'completion_acceptance_assessment','completion_artifact_content_verification',
                 'direct_prerequisite_completion_sources']
+    document_binding_enabled = any('document_source_ids' in row for row in research['work_packages'])
+    if document_binding_enabled:
+        columns += ['document_source_ids', 'document_source_context', 'direct_dependency_document_sources']
     writer.writerow(columns)
     def safe(value):
         text=json.dumps(value,ensure_ascii=False) if isinstance(value,(list,dict)) else str(value)
@@ -47,6 +50,7 @@ def build_bundle(raw):
     appraisal_by_work = {row['work_package_id']: row for row in research['appraisal']['work_package_appraisals']}
     planning_by_work = {row['work_package_id']: row for row in research['planning']['planning_ledger']}
     completion_by_work = {row['work_package_id']: row for row in research['planning']['completion_ledger']}
+    planning_basis_by_work = {row['work_package_id']: row['basis'] for row in research['planning']['review_targets']}
     work_by_id = {row['work_package_id']: row for row in research['work_packages']}
     for wp in sorted(research['work_packages'],key=lambda w:w['work_package_id']):
         wid = wp['work_package_id']
@@ -64,6 +68,11 @@ def build_bundle(raw):
                         direct_prerequisite_completion_sources=[dict(work_package_id=dep,
                             supplied_work_status=work_by_id[dep]['status'],
                             source_match_status=completion_by_work[dep]['source_match_status']) for dep in wp['depends_on']])
+        if document_binding_enabled:
+            basis = planning_basis_by_work[wid]
+            exported.update(document_source_ids=wp.get('document_source_ids', []),
+                            document_source_context=basis.get('document_source_context', ''),
+                            direct_dependency_document_sources=basis.get('direct_dependency_document_sources', []))
         planning = planning_by_work[wid]
         assertion = planning['assertion'] or {}
         exported.update(supplied_priority_rank=assertion.get('priority_rank', ''),

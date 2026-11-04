@@ -111,3 +111,11 @@ To locate changed fields between two supplied snapshots, use
 [completion amendment comparison](COMPLETION_COMPARISON.md). It compares current
 recomputed work/source sections and direct prerequisite labels; an old hash alone
 cannot reconstruct the original reviewed input or establish why it changed.
+
+## Optional document-source context
+
+[Document-linked source work](WORK_DOCUMENT_SOURCES.md) adds explicit selected
+source descriptors and whole same-report source context to opted-in work bases
+and their direct dependents. Completion binding inherits those context changes
+without changing recorded COMPLETE status or certifying acceptance. Legacy work
+without the new field keeps its previous source scope and hash semantics.

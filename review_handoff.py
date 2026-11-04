@@ -161,6 +161,9 @@ def handoff(protocol, work_package_id=None):
             summaries[-1]['source_context_links'] = source_links
         if 'report_study_coverage' in packet:
             summaries[-1]['report_study_coverage'] = copy.deepcopy(packet['report_study_coverage'])
+        for key in ('document_source_context', 'direct_dependency_document_sources', 'document_source_boundary'):
+            if key in packet:
+                summaries[-1][key] = copy.deepcopy(packet[key])
     implementation = dict(synthesis['engine_sha256'], **works['engine_sha256'])
     implementation['review_handoff.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
@@ -240,6 +243,9 @@ def render_text(result):
             lines.append('Pre-extraction typed context links (not applicability): ' + show(item['source_context_links']))
         if 'report_study_coverage' in item:
             lines.append('Linked-report study memberships (not work requirements): ' + show(item['report_study_coverage']))
+        for key in ('document_source_context', 'direct_dependency_document_sources', 'document_source_boundary'):
+            if key in item:
+                lines.append(key + ' (not byte verification or acceptance): ' + show(item[key]))
         for claim in item['claim_positions']:
             statement=claim['statement']
             lines.append('Claim: ' + show(dict(statement_id=statement['statement_id'],text=statement['text'],
