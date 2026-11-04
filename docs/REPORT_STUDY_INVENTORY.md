@@ -14,6 +14,12 @@ generated artifacts belong outside this public repository. No source is retrieve
 opened or authenticated, no scientific fact is checked, and no biological experiment
 is designed or executed by this workflow.
 
+To append completed descriptions without editing the protocol by hand, use
+[reviewed descriptive inventory intake](MANUAL_INVENTORY_INTAKE.md). It requires
+current source context and a separate review, preserves prior descriptions, and
+never creates included memberships or results. The inspection/scaffold command
+below remains unchanged.
+
 ## Reproduce the fictional inventory
 
 ```sh
@@ -84,9 +90,10 @@ prove that the source actually contains that candidate.
 2. Supply an explicit candidate label and generate a separate template. The tool
    fills report ID, study ID and current source hash only. Inventory ID, recorder,
    date, description, locator and source selection remain null.
-3. After actual human inspection, fill the missing fields honestly and copy only
-   completed assertion rows into a separate working protocol. Never copy a new
-   hash just to clear a stale-context label.
+3. After actual human inspection, fill the missing fields honestly. Prefer the
+   [reviewed append workflow](MANUAL_INVENTORY_INTAKE.md) to avoid copying rows
+   directly into a protocol. It requires a separate exact-input review and retains
+   a replayable application. Never copy a new hash just to clear a stale-context label.
 4. Keep inclusion, study review and extraction decisions separate. The inventory
    command never makes them or supplies supporting scientific evidence.
 

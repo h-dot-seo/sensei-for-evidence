@@ -1583,3 +1583,86 @@ CPU limits; exclusive creation is not an atomic path-race defense. No actual
 literature, private research data, source retrieval, automated deduplication,
 scientific decision or completeness assertion is introduced. Census and readiness
 remain NOT_ESTABLISHED and NOT_READY respectively.
+
+Reviewed descriptive inventory intake increment (2026-11-04): 1,360 tests in the
+suite; final Linux run: 1,359 passed and one native-Windows-only test skipped.
+Thirty-six new tests cover this workflow: 28 general tests and eight separately
+authored regression tests focused on review staleness and CSV provenance. The
+final related inventory/reconciliation/full-text/navigation suite passes 177
+tests. An independent reviewer inspected the actual new runtime, fixture, guide
+and static discovery wiring. The reusable independent probe ran 54 passing tests:
+11 new targeted probes plus 43 existing inventory regressions. Three supplemental
+checks covered 100 candidates, sequential appends and inert source locators.
+No blocking implementation defect was found. Documentation was clarified to
+scope JSON output claims to this intake and distinguish new assertions from
+already-stored rows. This is targeted code review and synthetic verification, not
+a comprehensive security audit, scientific review, provider validation or proof
+of source/reviewer identity. Runtime SHA-256 reviewed and tested:
+6944a2bbeab09b9afc61a9c8374f4e06805ba439354c5297dfdfe4e119850057.
+
+The new inventory_intake.py connects existing descriptive candidate study
+inventory to template, target, assemble and verify commands. The unfinished draft
+fills only explicitly selected report/study IDs and the current inventory source
+basis. Description, assertion ID, recorder, date, location and source selection
+remain null; no eligibility or scientific field is invented. Completed new rows
+require retrieved reports, existing same-report descriptors, explicit source IDs
+and the exact current source context. Pending, included and excluded retrieved
+reports are supported without changing their decisions or memberships. Stale new
+assertions, invalid source selections, duplicate IDs/recorder tuples and mock
+adapter contexts are rejected rather than repaired or stripped.
+
+Targets include the whole original protocol, ordered candidates, current
+report/record/inventory source context, explicit selected descriptors and exact
+implementation. Mapped CSV provenance is included. A separate explicit review is
+required before append; blank human fields, changed unrelated context, changed
+candidates, stale targets or implementation drift fail. Assembly preserves all
+prior raw fields, including old inventory assertions, opaque metadata, version,
+searches, CSV ledger, screening, memberships, results, sources and work. Exact
+record/report flow equality is checked. The detached receipt records before/after
+inventory counts, review assertions and source snapshots, and full replay checks
+every field rather than trusting editable checksums.
+
+All nine documented CLI commands pass using only supplied fictional review data
+in an outside, space-named directory. The example adds one description: assertions
+5 to 6 and described pairs 4 to 5; the original stale description remains stale.
+Five reports, three included study labels, two result rows and existing accounting
+remain unchanged. A separate regression proves that the described candidate is
+still ineligible for an extraction worksheet until a separate explicit full-text
+choice declares membership. Even then, scientific result fields remain blank and
+the unfinished extraction is rejected by result intake.
+
+Independent regression tests cover pending/included pairs and all supported
+human eligibility positions. Adding a second recorder's description to the same
+pair makes the old eligibility review stale while preserving its raw assertion,
+canonical memberships and results. An unrelated pair does not stale that review.
+Report-wide source catalog changes, including an unselected descriptor, remain
+bound. Existing stale/orphan history is retained; a new stale assertion is refused.
+No review winner, consensus, renewal, new task or downstream scientific reassessment
+is inferred. Persistent inventory rows/source hashes are distinguished from the
+detached import review and source snapshots.
+
+Other tests cover strict JSON/container types, cycles/surrogates/nonfinite values,
+real dates, exact schema/row/byte limits, literal preservation, whole-input invalidity,
+reordered candidates, resealed replay attacks, source selection and file safety.
+CLI coverage includes all commands, Unicode under ASCII streams, spaces/equals in
+paths, exclusive output and observed dangling symlinks, inspection failure and
+encoding/rendering-before-write. Source URLs/paths are inert; independent read
+tracing observed only the expected implementation files. No document was acquired,
+opened, interpreted or authenticated.
+
+All 32 prior files in the combined relevant native/archive/intake replay dependency
+sets remain byte-unchanged. Saved RIS, NBIB batch, typed native archive, ordinary
+research, report registration and report-transition artifacts still verify.
+Only read-only handoff navigation changes among existing runtime Python files;
+its catalog now has twelve groups and 53 help-only entrypoints. Publication audit
+checks 289 text files and exact manifest verification passes. Exact-head CI covers
+Windows/Ubuntu with Python 3.10 and 3.12.
+
+Unsupported scope stays explicit: no editing/replacing old inventory assertions,
+review renewal, identity resolution, automatic study discovery or inclusion,
+source-document authentication, verified chronology, complete extraction or
+full-history packaging. Ordinary bundles do not retain/replay this application;
+original input, application and recorded code must be retained separately. Output
+size limits are not hard memory/CPU ceilings, and exclusive creation is not an
+atomic defense against concurrent path replacement. Census and readiness remain
+NOT_ESTABLISHED and NOT_READY. Real/private research stays outside the repository.

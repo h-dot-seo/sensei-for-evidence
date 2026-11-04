@@ -137,6 +137,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `report_review.py PROTOCOL.json [--report-id ID] [--template] [--text]` | Inspect supplied full-text versions and reviewer positions without verifying documents or changing decisions |
 | `report_study_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility |
 | `report_study_inventory.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Describe explicit candidate studies before full-text inclusion without creating memberships or eligibility |
+| `inventory_intake.py template PROTOCOL.json --report-id ID --study-id ID --candidate-output NEW.json` / `target` / `assemble` / `verify` | Append explicitly supplied descriptive inventory with separate exact-input review, preserving eligibility and result counts |
 | `report_study_inventory_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Record separate human positions on described candidates before report inclusion, without declaring memberships |
 | `result_intake.py target/assemble/verify ...` | Explicitly review and append supplied manual result rows with detached document associations and exact-input replay |
 | `result_source_review.py ORIGINAL.json APPLICATION.json CURRENT.json [--text]` | Replay a manual intake record, then separately compare current result rows, report links and supplied document context |
@@ -350,6 +351,10 @@ changing the existing research or native-source archive formats.
 human opinions on individual studies from report inclusion. Explicit source-ID
 selections and unresolved orphan assertions remain visible without choosing a
 canonical study outcome, changing PRISMA counts or filtering extracted results.
+
+[Reviewed inventory intake](docs/MANUAL_INVENTORY_INTAKE.md) appends completed
+descriptions without manually editing the protocol. It preserves old assertions
+and research counts; it does not infer study membership or renew prior reviews.
 
 [Descriptive candidate inventory](docs/REPORT_STUDY_INVENTORY.md) permits source-linked
 human descriptions on retrieved reports before their full-text inclusion decision.

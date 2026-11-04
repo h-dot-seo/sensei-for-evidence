@@ -109,6 +109,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit unassessed pending/unavailable report selection and a supported supplied transition.',
                                 'Locator/reason, optional new source declarations and separate exact-target review.'],
          boundary='No file is acquired or read. Mock contexts, already retrieved reports, same-state edits and reversals are unsupported. Source changes can stale retained assertions; no review is renewed.'),
+    dict(workflow_id='descriptive_inventory', title='Append supplied candidate-study descriptions before inclusion',
+         guide_paths=['docs/MANUAL_INVENTORY_INTAKE.md', 'docs/REPORT_STUDY_INVENTORY.md', 'docs/INVENTORY_CANDIDATE_REVIEWS.md'],
+         entrypoints=[dict(script='inventory_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit retrieved report and human candidate-study label, completed description, recorder/date and selected same-report source IDs.',
+                                'Current supplied inventory source basis and separate exact-input import review.'],
+         boundary='Descriptive inventory is not inclusion, eligibility, study independence or result extraction. New stale assertions and mock-adapter inputs are rejected. Existing descriptions and reviews remain; additional same-pair descriptions can stale earlier candidate positions without renewal.'),
     dict(workflow_id='full_text_decision', title='Apply a separate supplied full-text eligibility choice',
          guide_paths=['docs/REPORT_DECISIONS.md', 'docs/REPORT_REVIEWS.md'],
          entrypoints=[dict(script='report_decision.py', arguments=[command, '--help'])

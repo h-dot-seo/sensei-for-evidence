@@ -1,0 +1,18 @@
+{
+  "candidates": [
+    {
+      "description": "Fictional candidate description, not scientific evidence.",
+      "inventory_id": "fictional-new",
+      "recorded_at": "2026-11-04",
+      "recorded_by": "Fictional recorder",
+      "report_id": "report-three",
+      "source_basis_sha256": "65e31c95b3dbd3a4277faf58fe490ae5ea1739aebe9600de24e5dac04312e507",
+      "source_ids": [
+        "source-candidate"
+      ],
+      "source_locator": "synthetic:section",
+      "study_id": "candidate-new"
+    }
+  ],
+  "schema_version": 1
+}

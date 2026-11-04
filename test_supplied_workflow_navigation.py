@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['native_collection','screening_decision','report_registration','report_retrieval',
-                'full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work',
+                'descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','source_review_work',
                 'collection_archives','report_transition_archive']
 
 
@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),49)
+        self.assertEqual(len(entries),53)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -118,6 +118,9 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         catalog={r['workflow_id']:r for r in review_handoff.handoff(self.protocol)['supplied_input_workflows']}
         self.assertIn('docs/RIS_INTAKE.md',catalog['native_collection']['guide_paths'])
         self.assertIn('file-occurrence labels are not publication identity',catalog['native_collection']['boundary'])
+        self.assertIn('docs/MANUAL_INVENTORY_INTAKE.md',catalog['descriptive_inventory']['guide_paths'])
+        self.assertIn('not inclusion',catalog['descriptive_inventory']['boundary'])
+        self.assertIn('without renewal',catalog['descriptive_inventory']['boundary'])
         self.assertIn('No report grouping',catalog['report_registration']['boundary'])
         self.assertIn('Mock-adapter',catalog['report_registration']['boundary'])
         self.assertIn('already retrieved',catalog['report_retrieval']['boundary'])
