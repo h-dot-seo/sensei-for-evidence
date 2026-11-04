@@ -172,6 +172,11 @@ condition intake history. Data is not redacted;
 real inputs and outputs belong outside the public repository and should only be
 shared with authorized recipients.
 
+To rehearse a later unused planned search after extraction, follow the
+[second-search continuation](SECOND_SEARCH_CONTINUATION.md). It retains this
+snapshot and all earlier decisions while exposing changed source context and
+separate raw-row/search-membership counts. It does not rerun an already used search.
+
 For real supplied inputs, create fresh blank choices and targets, inspect sources,
 and supply actual decisions through the individual guides: [NBIB batch](PUBMED_NBIB_BATCH.md),
 [collection review](BIBLIOGRAPHIC_REVIEW.md), [screening](SCREENING_DECISIONS.md),

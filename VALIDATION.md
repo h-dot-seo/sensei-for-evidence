@@ -1424,3 +1424,46 @@ files. A saved report-transition archive still verifies. Guide links resolve,
 publication audit checks 271 text files and exact manifest verification passes.
 No new module, schema, protocol mutation operation or source-retrieval capability
 is introduced. Exact-head CI covers Windows/Ubuntu with Python 3.10 and 3.12.
+
+Second planned-search continuation rehearsal (2026-11-04): 1,247 tests in the
+suite; final Linux run: 1,246 passed and one native-Windows-only test skipped.
+The focused collection/native-archive/source-comparison/walkthrough run passes
+99 tests. Seventeen walkthrough tests now exercise the original 30 commands plus
+13 continuation commands; nine new assertions cover the added path. A separate
+manual execution of all 43 documented commands also passes. All inputs and
+review/identity decisions are prewritten fictional software-test assertions.
+A new independent assessment/review worker could not be created because of the
+agent limit. This increment received self-review and regression execution, not a
+separate independent code audit; earlier independent handoff reviews do not cover
+this new walkthrough.
+The continuation uses the original ledger-free common base for a native wrapper
+and the later result/condition-enriched protocol for exact collection review.
+The already declared, unused secondary search explicitly links one row to record A
+and introduces record D awaiting screening. No new engine is added: existing
+reconciliation already supports this operation. Tests retain every earlier output
+file byte, the original import prefix, screening history, reports/sources, results,
+conditions and version label. Only a second incomplete search and flat historical
+import receipt are appended. Wrong current review targets, intermediate-base reuse,
+immutable-plan edits and repeated executed search IDs are rejected.
+Accounting remains unit-specific: seven raw rows, six promoted row occurrences,
+one withheld row, five search memberships, four exact record IDs and one repeated
+exact-ID membership across searches. There are still two retrieved reports, one
+included study and two result rows; new record D is pending and report B remains
+unassessed. Zero missing planned searches does not clear incomplete searches,
+unknown totals, missing conditions or scientific-readiness bounds.
+The prior result application still replays against its actual original. Current
+result rows, mappings and selected document descriptors are unchanged, while one
+shared report-source context changes because record A gains a search occurrence.
+Both result rows reference that context, not two changed documents. The retained
+screening receipt reports STALE_SOURCE while matches_current_screening remains
+true; no eligibility decision, review renewal, correction or re-import is inferred.
+A verified two-wrapper native archive preserves three exact original NBIB files
+and both historical import bindings, and verifies after relocation with the
+recorded implementation available. Wrong-index wrapper substitution is rejected.
+Detached applications and the entire intermediate history remain outside this
+archive's coverage. All runtime Python files and old review targets are unchanged;
+only the existing walkthrough test file changes among prior Python files.
+Guide links resolve, publication audit checks 275 text files and exact manifest
+verification passes. No actual retrieval, reading, source authentication, identity
+resolution, scientific review or completeness claim is performed. Exact-head CI
+checks Windows and Ubuntu with both supported Python versions.

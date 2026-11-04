@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.68.1-result-review-navigation",
+  "release": "0.68.2-second-search-rehearsal",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 270,
+  "file_count": 274,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27979,
-      "sha256": "df84fb9c1d023dbf19b578bd1d4e6b7fa4dc373bbe8aec87117e2c35ba2e7378"
+      "bytes": 28168,
+      "sha256": "bd2fa7f5cfcdace1c4dd914689bf20a73f674042186e14f5ab973a79f7f8c2e0"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 105179,
-      "sha256": "020b4749adc4b59db785d9621c8671cb71f12bc72542cdec7260b195c84c088a"
+      "bytes": 108442,
+      "sha256": "86e2ba44369c093a9d04e117a915dc60a3b1338ee2993d42299e79fca397266c"
     },
     {
       "path": "adapter_integrity.py",
@@ -145,8 +145,8 @@
     },
     {
       "path": "docs/BATCH_TO_EVIDENCE.md",
-      "bytes": 11714,
-      "sha256": "ecb6889ab7e7d70a67893db1ca0a1542ee1136469069d068a36f8600ca44e3ec"
+      "bytes": 12025,
+      "sha256": "208073bdb635f33139429dfeef00ff72276467871031845f52a2318ec695ce7a"
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
@@ -332,6 +332,11 @@
       "path": "docs/SEARCH_MANIFEST.md",
       "bytes": 7484,
       "sha256": "b7132d24a87bcbb85677ccfafdbd761ae62f9e8cbb9f332c181cb9b451d673e4"
+    },
+    {
+      "path": "docs/SECOND_SEARCH_CONTINUATION.md",
+      "bytes": 7715,
+      "sha256": "b2fe686db7681fd0e9ab9b140df77cb773ef57ebaf07ddcb6159e9afd30be19c"
     },
     {
       "path": "docs/SOURCE_CONTEXTS.md",
@@ -724,6 +729,21 @@
       "sha256": "d7b8f6485c32d8c526e29757c4f132c7ae383feacf6b31ef16e169fe764da5b6"
     },
     {
+      "path": "examples/second-search/choices.json",
+      "bytes": 554,
+      "sha256": "a65e05ba6648d8632e3a38cb660cdbcf365d7cffda91da2ea2a43eff3834f66d"
+    },
+    {
+      "path": "examples/second-search/export.nbib",
+      "bytes": 358,
+      "sha256": "649314a205fe326e6c6434fd6fb5390f55163f3ac252e3432dae802c50706a32"
+    },
+    {
+      "path": "examples/second-search/review.json",
+      "bytes": 903,
+      "sha256": "e45521bf227d61f99507d84279c287752a30131f69fa258f7d69749ccca4a939"
+    },
+    {
       "path": "examples/source-context-protocol.json",
       "bytes": 4508,
       "sha256": "45a33d2bc6915f55e053df12b4dc4172593be12ae10f3426765d9832850a1404"
@@ -995,8 +1015,8 @@
     },
     {
       "path": "test_batch_to_evidence_walkthrough.py",
-      "bytes": 12876,
-      "sha256": "dd6a07a0e5f8ed1d0c81ace6cede5d574278c03a23e863b0308e7c004c6745ea"
+      "bytes": 23163,
+      "sha256": "9ce17c1c161213e89fcf85ab400e52c9b1becbc59a04a59cc9b0cdc4e3e0ce1d"
     },
     {
       "path": "test_bibliographic_intake.py",

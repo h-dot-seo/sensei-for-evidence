@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "resolutions": [
+    {
+      "candidate_id": "csv-row-000001",
+      "disposition": "same_record",
+      "record_id": "record-A",
+      "rationale": "Prewritten fictional identity choice for software rehearsal only; no publication identity is verified."
+    },
+    {
+      "candidate_id": "csv-row-000002",
+      "disposition": "new_record",
+      "record_id": "record-D",
+      "rationale": "Prewritten fictional identity choice for software rehearsal only; no publication identity is verified."
+    }
+  ],
+  "review": null
+}

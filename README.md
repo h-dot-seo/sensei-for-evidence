@@ -62,6 +62,9 @@ For supplied citation files rather than mock provider receipts, follow the
 explicit reconciliation, screening, reports, retrieval, results, missing
 nonclinical context and a verified original-source bundle. Every decision is a
 prewritten fictional assertion, not a review performed by the tools.
+Then use the [second-search continuation](docs/SECOND_SEARCH_CONTINUATION.md) to
+append another originally planned search while retaining prior results and
+checking changed source context.
 
 Python 3.10+, no third-party dependencies. Run from the repository root:
 

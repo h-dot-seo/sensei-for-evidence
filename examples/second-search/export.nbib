@@ -1,0 +1,9 @@
+PMID- 999999999901
+TI  - Fictional overlapping record in a separately declared search
+AU  - Fictional Author A
+OT  - Identity is supplied separately, not inferred from this identifier
+
+PMID- 999999999904
+TI  - Fictional new candidate awaiting human screening
+AU  - Fictional Author D
+ZZZ - Software test only, not an actual publication or scientific finding
