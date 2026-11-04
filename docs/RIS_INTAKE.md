@@ -147,9 +147,12 @@ consistent wrapper: hashes are not signatures or authentication.
 Keep the wrapper and recorded implementation. Ordinary research bundles retain
 CSV provenance and embedded native record metadata, but do not independently
 verify this RIS conversion or retain all native separators. The existing
-single/batch **NBIB** collection archives do not accept RIS wrappers. This increment
-adds no RIS archive, mixed-format archive or complete research-history archive.
-A separately retained RIS wrapper can be replayed using the recorded code.
+single/batch **NBIB** collection archives do not accept RIS wrappers. The separate
+[typed native collection archive](NATIVE_COLLECTION_BUNDLES.md) now accepts explicit
+RIS bindings and can retain them alongside supported NBIB wrappers and original
+files. It verifies each selected wrapper against its exact historical CSV import,
+not merely a matching search name. It is not a complete research-history archive.
+A separately retained RIS wrapper can still be replayed using the recorded code.
 
 The native parser allows at most 10,000,000 bytes, 100,000 records and 200,000
 physical lines. The derived CSV must also satisfy the existing CSV parser's byte,

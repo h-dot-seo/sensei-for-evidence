@@ -148,12 +148,12 @@ SUPPLIED_INPUT_WORKFLOWS = [
                                 'Human question, deliverable, acceptance criterion, dependencies and separate proposal review.'],
          boundary='Only supplied PLANNED source-review work is appended. No task, priority, dependency, execution or completion is inferred from queues or from this catalog.'),
     dict(workflow_id='collection_archives', title='Preserve protocol snapshots and selected native source bindings',
-         guide_paths=['docs/COLLECTION_BUNDLES.md', 'docs/BATCH_COLLECTION_BUNDLES.md', 'docs/BATCH_TO_EVIDENCE.md'],
+         guide_paths=['docs/COLLECTION_BUNDLES.md', 'docs/BATCH_COLLECTION_BUNDLES.md', 'docs/NATIVE_COLLECTION_BUNDLES.md', 'docs/BATCH_TO_EVIDENCE.md'],
          entrypoints=[dict(script=script, arguments=[command, '--help'])
-                      for script in ('research_bundle.py', 'collection_bundle.py', 'batch_collection_bundle.py')
+                      for script in ('research_bundle.py', 'collection_bundle.py', 'batch_collection_bundle.py', 'native_collection_bundle.py')
                       for command in ('create', 'verify')],
          required_human_inputs=['An explicit protocol snapshot and new output path.',
-                                'For native collection bundles, explicitly selected wrapper files and historical import indices.'],
+                                'For native collection bundles, explicitly selected wrapper files and historical import indices; the typed archive also requires explicit ris, nbib or nbib_batch format.'],
          boundary='Ordinary bundles do not retain detached application history. Native formats and wrappers are not inferred. Native archives preserve selected source/import associations, not full research history or authenticated sources.'),
     dict(workflow_id='report_transition_archive', title='Preserve a contiguous supplied report-transition segment',
          guide_paths=['docs/REPORT_TRANSITION_BUNDLES.md'],

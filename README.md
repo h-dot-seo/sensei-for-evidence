@@ -69,7 +69,9 @@ checking changed source context.
 
 For supported RIS exports, use [source-preserving RIS intake](docs/RIS_INTAKE.md)
 with separate explicit identity choices. Its scope is a documented subset, not
-universal database-format compatibility.
+universal database-format compatibility. Preserve supported RIS and NBIB wrappers
+together with exact historical imports using the separate
+[typed native collection archive](docs/NATIVE_COLLECTION_BUNDLES.md).
 
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
@@ -112,6 +114,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `ris_intake.py preview PROTOCOL.json EXPORT.ris --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve strict-subset native RIS bytes/field occurrences and prepare CSV candidates without DOI/ID resolution |
 | `collection_bundle.py create PROTOCOL.json NEW.zip --nbib INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Carry selected native wrappers with the research bundle and replay their exact import associations |
 | `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
+| `native_collection_bundle.py create PROTOCOL.json NEW.zip [--ris INDEX=ARTIFACT.json] [--nbib INDEX=ARTIFACT.json] [--nbib-batch INDEX=ARTIFACT.json] [--text]` / `verify BUNDLE.zip [--text]` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
 | `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |

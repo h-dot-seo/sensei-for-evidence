@@ -17,6 +17,11 @@ their separate original-source members, use the independent
 [batch-native collection format](BATCH_COLLECTION_BUNDLES.md). Existing single-file
 archive bytes and replay rules are unchanged.
 
+For selected RIS and NBIB imports together, use the separate
+[explicitly typed native archive](NATIVE_COLLECTION_BUNDLES.md). It preserves
+original files and exact import bindings across supported wrapper types. These
+older archive formats remain unchanged and do not accept RIS wrappers.
+
 ## Use existing, explicitly reviewed collection records
 
 First complete the fictional NBIB preparation and explicit reconciliation journey

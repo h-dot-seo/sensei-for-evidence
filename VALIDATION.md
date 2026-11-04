@@ -1517,3 +1517,69 @@ transition, two-search native collection and ordinary research artifacts still
 verify, as does the newly retained RIS wrapper. Guide links resolve, publication
 audit checks 281 text files and exact manifest verification passes. Exact-head CI
 covers Windows/Ubuntu with Python 3.10 and 3.12. Census and readiness stay closed.
+
+Explicitly typed native archive increment (2026-11-04): 1,324 tests in the suite;
+final Linux run: 1,323 passed and one native-Windows-only test skipped. Forty-four
+new archive tests pass, and the final related native/reconciliation/archive/
+navigation run passes 197 tests. An independent reviewer inspected the actual new
+archive module, static discovery wiring and guide, and ran 51 separate named
+synthetic checks against the final runtime SHA-256
+5487359956a56b3fd89fd60a89ba92e7e283efc51cdcb0642cfd52d13cc9f046.
+No concrete implementation defect was found within that targeted review. A wording
+overstatement about re-zipping was corrected: identical canonical bytes remain
+valid; changed bytes do not. These checks are not a comprehensive security audit,
+resource-exhaustion proof, provider-format conformance test or scientific review.
+The independent checks are separate from, not added to, the unittest suite count.
+
+The new opt-in native_collection_bundle.py accepts only explicit ris, nbib and
+nbib_batch selections. Each selected wrapper is validated by its format-specific
+existing verifier and must match the entire historical CSV intake reconstructed
+with the ledger's original common base. No file/format/index/identity association
+is inferred. Unique zero-based import indices, exact types, closed format dispatch,
+strict wrapper validation and full canonical archive regeneration reject alternate
+formats, wrong historical imports and resealed derived-output changes. Existing
+intake, review and archive formats remain unchanged and are not reinterpreted.
+
+A mixed synthetic project carries three wrappers, four original native files and
+one uncovered CSV import in one archive. Each import has explicit covered/uncovered
+status; uncovered formats are not guessed and coverage is not search completeness.
+Original RIS BOM/newlines/separators, repeated native fields, identical NBIB files
+and source occurrence order are retained. Single-file sources receive no invented
+source labels; batch labels remain inert metadata and never determine paths.
+The new ZIP preserves the exact protocol inside unchanged research.zip, normalized
+wrapper JSON, separately retained source bytes and exact historical bindings.
+Four documented create/verify CLI commands and a separate relocated verification
+pass outside the repository. The original four-row RIS rehearsal is also bound
+without changing its three promoted/one withheld rows or two pending memberships.
+A separately retained enriched two-search workflow also binds both batch wrappers
+and three original files while preserving its exact protocol and two result rows.
+
+Tests cover all six wrong-format pairings, same source bytes under different
+searches/times, mixed and partial selections, cross-format duplicate indices,
+source/path/type/count/hash/coverage tampering, implementation drift, exact size
+boundaries, strict JSON and noncanonical ZIPs. Existing archive adversarial cases
+are applied to the new format, including traversal, duplicate names, symlinks,
+compression/encryption, CRC and exaggerated-size headers, nested archives,
+prefix/trailer bytes and metadata changes. Byte-identical canonical re-packing is
+explicitly accepted. Exclusive output, observed dangling links, Unicode/ASCII
+streams, equals/space paths and preflight failures are covered. Independent read
+spying observed only local implementation-file reads, not supplied locators;
+network and archive-extraction guards were not called.
+
+All 31 prior files in the new archive's replay-engine dependency set remain
+byte-unchanged. Previously saved RIS, batch-native, ordinary research, report-
+registration and report-transition artifacts still verify. Only read-only handoff
+navigation changes among existing runtime Python files; its catalog now exposes
+49 help-only entrypoints in the same eleven groups. Tests and guide links are
+updated to distinguish the separate new archive from the unchanged RIS wrapper
+and older NBIB-only formats. Publication audit checks 284 text files and the exact
+manifest verifies. Exact-head CI covers Windows/Ubuntu with Python 3.10 and 3.12.
+
+Unsupported scope remains explicit: no additional RIS dialects, multi-file RIS
+intake, mixed-format search intake, embedded runtime, detached application history,
+full research-history archive, downloaded source documents, source/reviewer
+identity authentication or review renewal. File-size limits are not hard memory/
+CPU limits; exclusive creation is not an atomic path-race defense. No actual
+literature, private research data, source retrieval, automated deduplication,
+scientific decision or completeness assertion is introduced. Census and readiness
+remain NOT_ESTABLISHED and NOT_READY respectively.

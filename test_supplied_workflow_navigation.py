@@ -59,7 +59,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),47)
+        self.assertEqual(len(entries),49)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
@@ -125,6 +125,12 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertIn('Optional missing stages',catalog['condition_intake']['boundary'])
         self.assertIn('No task, priority, dependency',catalog['source_review_work']['boundary'])
         self.assertIn('do not retain detached application history',catalog['collection_archives']['boundary'])
+        archive=catalog['collection_archives']
+        self.assertIn('docs/NATIVE_COLLECTION_BUNDLES.md',archive['guide_paths'])
+        self.assertEqual([entry for entry in archive['entrypoints'] if entry['script']=='native_collection_bundle.py'],
+                         [dict(script='native_collection_bundle.py',arguments=[command,'--help'])
+                          for command in ('create','verify')])
+        self.assertIn('explicit ris, nbib or nbib_batch format',' '.join(archive['required_human_inputs']))
         scope=catalog['report_transition_archive']['boundary']
         self.assertIn('Only registration, retrieval-update and full-text',scope)
         self.assertIn('result and condition operations are outside',scope)

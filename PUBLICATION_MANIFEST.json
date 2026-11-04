@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.69.0-ris-native-intake",
+  "release": "0.70.0-typed-native-archives",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 280,
+  "file_count": 283,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 28727,
-      "sha256": "5466b34240bef054ceab425851b4d20761819f0db4889504235248c42d32c555"
+      "bytes": 29238,
+      "sha256": "e1dbba5cab3c2efb5b779b42438c4919f00506f44555ff030d447b62b5c1f88f"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 112298,
-      "sha256": "689e46967790fc520fabfc8837e75ecef29f5f6c28c82cfd80bb6fc80d9b906c"
+      "bytes": 117027,
+      "sha256": "7ae4c0bd7f370d5a9b3f5443da8e9555762ae1975decf550d21321fe607cdae7"
     },
     {
       "path": "adapter_integrity.py",
@@ -140,8 +140,8 @@
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
-      "bytes": 8707,
-      "sha256": "774b96410772f99447a54e93b98575d54b2dad802b2d2f50788b17b3cf9c83d5"
+      "bytes": 8997,
+      "sha256": "b10ed48a62cfaf35dc177e4254862cf89fdd8dfca8a45451bb4d4edd57dabc73"
     },
     {
       "path": "docs/BATCH_TO_EVIDENCE.md",
@@ -165,8 +165,8 @@
     },
     {
       "path": "docs/COLLECTION_BUNDLES.md",
-      "bytes": 7398,
-      "sha256": "2538c70ebeebf6784249bd4b2137de26176d64b91d33ff075e62286db2749425"
+      "bytes": 7688,
+      "sha256": "2e0adf638d5240a923310d727eb50fa5379ba371cbf78e71cd0c8b368929324c"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -229,9 +229,14 @@
       "sha256": "97f563c2c3ff22f19fed70d524423a37e8db7eb1fb797ab667a653f896e01cf9"
     },
     {
+      "path": "docs/NATIVE_COLLECTION_BUNDLES.md",
+      "bytes": 9364,
+      "sha256": "99520960bbc2d627dd232ada0769bec6bc9f7bf15b0800d2c730db882cc63a9a"
+    },
+    {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 13751,
-      "sha256": "f18f247a1b5c4d113fac0f7541b90bcfd8e85f44cdd877e7953dd5d7466499e1"
+      "bytes": 13998,
+      "sha256": "830c36863f3efbad5c3c804065f0fb4b6eeba38ceacf555adc9990a0b4ba1231"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -320,8 +325,8 @@
     },
     {
       "path": "docs/RIS_INTAKE.md",
-      "bytes": 11166,
-      "sha256": "c507c731ddf922e084c753a3a58e8b9579d0300bafc918c3824767ceb51cf606"
+      "bytes": 11419,
+      "sha256": "154bc81089c74c8b02d8041e2f8538a3d5227056769821cdda3c2500fe572c5e"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
@@ -819,6 +824,11 @@
       "sha256": "2cf22521af031246fdb66510442ce801080b54129f54873633b0c53a0e6e2abc"
     },
     {
+      "path": "native_collection_bundle.py",
+      "bytes": 20222,
+      "sha256": "5487359956a56b3fd89fd60a89ba92e7e283efc51cdcb0642cfd52d13cc9f046"
+    },
+    {
       "path": "nbib_batch_intake.py",
       "bytes": 17581,
       "sha256": "580ee96bff4ab39bd227d52dd6a46d70f7dae8b73d0928e1de1a75a91e7b86c3"
@@ -960,8 +970,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 40505,
-      "sha256": "d107eb1fb50dd9639fda25c7ca7dbe033fa6dd6f711fb59890a7357a4c035df0"
+      "bytes": 40646,
+      "sha256": "ad0bde7d90df3bde5dd5641e9b421919b6bc093258ade8f538d87e47e09ff18b"
     },
     {
       "path": "ris_export_parser.py",
@@ -1149,6 +1159,11 @@
       "sha256": "6f9ecb819575122f8bf7e30a848ad18b6d978b2ee2e60172ced10064269b9ca5"
     },
     {
+      "path": "test_native_collection_bundle.py",
+      "bytes": 52908,
+      "sha256": "82734b88e216ddb521978c4521a915f287c4ff0759531fc5590965d792030e1b"
+    },
+    {
       "path": "test_nbib_batch_intake.py",
       "bytes": 27127,
       "sha256": "6c99b1c193896a1bb1015ce1162f370957af2daf15061192eb0d312f9cbadc15"
@@ -1300,8 +1315,8 @@
     },
     {
       "path": "test_ris_intake.py",
-      "bytes": 28077,
-      "sha256": "a5803c9cf7729c2e7d9cf8baed67d068cf20a2418af582b6fe667dc6b29641f0"
+      "bytes": 28238,
+      "sha256": "52548fc153524b4901ca06d6a674eb327f7ffb44439f5457a1670ae1b075e872"
     },
     {
       "path": "test_sampling_links.py",
@@ -1355,8 +1370,8 @@
     },
     {
       "path": "test_supplied_workflow_navigation.py",
-      "bytes": 13354,
-      "sha256": "38439757337e28158288c15201792328edb5c52f9dce7d95b09fff62ffd55492"
+      "bytes": 13872,
+      "sha256": "44fbb1c4ddbc5d0d506b767a54c5e04ec9842f60fca82a91207c7ee40a633827"
     },
     {
       "path": "test_synthesis_review.py",

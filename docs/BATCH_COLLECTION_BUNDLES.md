@@ -12,6 +12,11 @@ NBIB preparation tools and ordinary research bundles are unchanged, including
 their implementation fingerprints. Use the tool for the format actually selected;
 no native format or attachment is inferred from column names or source hashes.
 
+For selected RIS and NBIB imports together, use the separate
+[explicitly typed native archive](NATIVE_COLLECTION_BUNDLES.md). It preserves
+original files and exact import bindings across supported wrapper types. These
+older archive formats remain unchanged and do not accept RIS wrappers.
+
 ## Package an already reviewed batch
 
 First complete the fictional preparation and explicit collection-review journey

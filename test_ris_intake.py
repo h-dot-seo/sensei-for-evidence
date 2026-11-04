@@ -353,7 +353,9 @@ class RisIntakeTests(unittest.TestCase):
         for link in re.findall(r'\]\(([^)]+)\)',doc):
             if not link.startswith('https://'):self.assertTrue((path.parent/link.split('#')[0]).is_file(),link)
         self.assertIn('unindented multiline abstracts are outside this initial subset',doc)
-        self.assertIn('adds no RIS archive',doc)
+        self.assertIn('NATIVE_COLLECTION_BUNDLES.md',doc)
+        self.assertIn('not a complete research-history archive',doc)
+        self.assertIn('NBIB** collection archives do not accept RIS wrappers',doc)
         self.assertIn('not universal RIS compatibility',doc)
         self.assertIn('ris_intake.py', (ROOT/'README.md').read_text(encoding='utf-8'))
 

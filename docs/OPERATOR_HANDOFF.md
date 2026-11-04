@@ -75,7 +75,7 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
 The JSON now also contains `supplied_input_workflows`, a static catalog of eleven
 existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
 the same catalog. Each group names its guide files, required human inputs,
-operation limits and parser-help argument arrays. The 47 entry points all end in
+operation limits and parser-help argument arrays. The 49 entry points all end in
 `--help`: they explain command syntax, not execute research or write a draft.
 
 The routes cover:
@@ -91,6 +91,9 @@ The routes cover:
 - Later result-source comparison and separately reviewed result-text corrections.
 - Explicit optional source-review work proposals.
 - Ordinary/native collection archives and a separate report-transition segment.
+  The new [typed native archive](NATIVE_COLLECTION_BUNDLES.md) accepts explicitly
+  selected RIS, single NBIB and NBIB batch wrappers in one snapshot, bound to
+  their exact historical imports. It does not infer formats or attach missing sources.
 
 Use the [NBIB-to-evidence rehearsal](BATCH_TO_EVIDENCE.md) to see these stages
 connected with prewritten fictional inputs. It is not an actual review. The
