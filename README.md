@@ -54,6 +54,8 @@ New to the tools? Follow the [first offline run](docs/FIRST_RUN.md): 11 tested
 commands from a declared question and mock receipt through explicit supplied
 reviews, PRISMA accounting, nonclinical/context work and a verified bundle.
 Human-authored inputs and automatic bookkeeping are separated at each step.
+The [operator handoff](docs/OPERATOR_HANDOFF.md) also lists supplied-input routes
+and parser-help entry points without selecting or executing any operation.
 
 For supplied citation files rather than mock provider receipts, follow the
 [NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md): two native files through

@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.67.0-report-transition-segments",
+  "release": "0.68.0-supplied-workflow-discovery",
   "date": "2026-11-04",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 269,
+  "file_count": 270,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27822,
-      "sha256": "49ad0edb98f99ab3ac5845bcf85b082cf861d574588d0088d6c02f88ad45f7f2"
+      "bytes": 27979,
+      "sha256": "df84fb9c1d023dbf19b578bd1d4e6b7fa4dc373bbe8aec87117e2c35ba2e7378"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 100068,
-      "sha256": "a36cda765c7ff3ca70e3a6e2065ade62b0937310ae2e320096f144bee1d0a76a"
+      "bytes": 102881,
+      "sha256": "77d51be0dd0e6699297e476ffa83642e2d55568e60d83a2207486a732ca99eb8"
     },
     {
       "path": "adapter_integrity.py",
@@ -230,8 +230,8 @@
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
-      "bytes": 9289,
-      "sha256": "2cb083e0333e73551a97ce7cd219114d3cd3dfada34bfb2c414a5fbc2fcb7b0c"
+      "bytes": 12429,
+      "sha256": "b00fc84d7ae828a99c45be2bbff7d7b3d6394f03280d39847c25831ab3dc78ae"
     },
     {
       "path": "docs/OUTCOME_STATISTICS.md",
@@ -925,8 +925,8 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 28490,
-      "sha256": "3430a4cea42fc606474e2a0988fc6955e90052382e33b4a89992682868cd11e2"
+      "bytes": 38821,
+      "sha256": "031ba267ead3163bcfcc9ae2e4ebe0f275f0c2e30f5f2cc9c589fe810c2a1b06"
     },
     {
       "path": "screening_decision.py",
@@ -1302,6 +1302,11 @@
       "path": "test_statistics_links.py",
       "bytes": 11880,
       "sha256": "dcac06ca31d12f8630e4536774a2c850fcc044c0980b58857f1f70808233f53a"
+    },
+    {
+      "path": "test_supplied_workflow_navigation.py",
+      "bytes": 11255,
+      "sha256": "d2db8058f1903c2d68e5729be24dff09739b39cdd0a07ab6d31512067f34992a"
     },
     {
       "path": "test_synthesis_review.py",

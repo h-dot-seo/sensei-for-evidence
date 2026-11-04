@@ -62,6 +62,96 @@ BOUNDARY = ('Read-only navigation and supplied-data handoff, not a generated sci
             'No search, source reading, AI inference, appraisal, claim adjudication, work execution, '
             'review renewal or clinical decision is performed. Commands are argument arrays to inspect, not executed actions.')
 
+# Static discovery, never derived applicability or an executable research plan.
+SUPPLIED_INPUT_WORKFLOW_SCOPE = (
+    'Static protocol-independent catalog, not queue-based eligibility or a recommended execution order. '
+    'The same routes are shown for every protocol and work selection. Entry points display parser help '
+    'only; the handoff does not execute them, fill IDs, inspect external files or validate prospective '
+    'inputs. Read each guide, supply actual human decisions and use the operation-specific validators. '
+    'The legacy manual_input_workflow remains a separate mock receipt rehearsal, not the only input route.'
+)
+SUPPLIED_INPUT_WORKFLOWS = [
+    dict(workflow_id='native_collection', title='Supplied native citation files and explicit collection review',
+         guide_paths=['docs/PUBMED_NBIB_INTAKE.md', 'docs/PUBMED_NBIB_BATCH.md', 'docs/BIBLIOGRAPHIC_REVIEW.md', 'docs/BATCH_TO_EVIDENCE.md'],
+         entrypoints=[dict(script='nbib_intake.py', arguments=['preview', '--help']),
+                      dict(script='nbib_intake.py', arguments=['verify', '--help']),
+                      dict(script='nbib_batch_intake.py', arguments=['preview', '--help']),
+                      dict(script='nbib_batch_intake.py', arguments=['verify', '--help']),
+                      dict(script='bibliographic_review.py', arguments=['template', '--help']),
+                      dict(script='bibliographic_review.py', arguments=['target', '--help']),
+                      dict(script='bibliographic_review.py', arguments=['assemble', '--help'])],
+         required_human_inputs=['Explicit local files, declared search and supplied search occasion; batch grouping is a human assertion.',
+                                'Row-level identity/non-promotion choices and separate exact-target collection review.',
+                                'The documented ledger-free common base and an unused declared search; never erase existing research to make a base.'],
+         boundary='No retrieval, file discovery, identity merging, screening or completeness inference. Native wrappers and original bytes must be retained separately from the CSV derivative.'),
+    dict(workflow_id='screening_decision', title='Separate supplied screening positions and canonical decisions',
+         guide_paths=['docs/SCREENING_REVIEWS.md', 'docs/SCREENING_DECISIONS.md'],
+         entrypoints=[dict(script='screening_review.py', arguments=['--help']),
+                      dict(script='screening_decision.py', arguments=['target', '--help']),
+                      dict(script='screening_decision.py', arguments=['assemble', '--help']),
+                      dict(script='screening_decision.py', arguments=['inspect', '--help'])],
+         required_human_inputs=['Explicit enumerated record ID and actual source review.',
+                                'Human eligibility choice, reason, adjudicator, date, rationale and source locator.'],
+         boundary='Collection promotion is not screening. Reviewer positions do not infer consensus or alter canonical screening; supplied decision history is not authenticated chronology.'),
+    dict(workflow_id='report_registration', title='Register explicitly mapped new reports',
+         guide_paths=['docs/MANUAL_REPORT_INTAKE.md'],
+         entrypoints=[dict(script='report_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit included, unmapped record selection and human report identity/grouping.',
+                                'Supplied retrieval state, optional document declarations and separate registration review.'],
+         boundary='No report grouping is selected here. New decisions stay pending. Mock-adapter contexts and legacy evidence without a report ledger are unsupported by this intake; no provenance is erased.'),
+    dict(workflow_id='report_retrieval', title='Record supplied retrieval outcomes for existing reports',
+         guide_paths=['docs/REPORT_RETRIEVAL_UPDATES.md'],
+         entrypoints=[dict(script='report_retrieval.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit unassessed pending/unavailable report selection and a supported supplied transition.',
+                                'Locator/reason, optional new source declarations and separate exact-target review.'],
+         boundary='No file is acquired or read. Mock contexts, already retrieved reports, same-state edits and reversals are unsupported. Source changes can stale retained assertions; no review is renewed.'),
+    dict(workflow_id='full_text_decision', title='Apply a separate supplied full-text eligibility choice',
+         guide_paths=['docs/REPORT_DECISIONS.md', 'docs/REPORT_REVIEWS.md'],
+         entrypoints=[dict(script='report_decision.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit already retrieved report and actual full-text assessment.',
+                                'Human choice/reason and explicit study declaration for inclusion; existing downstream links must remain valid.'],
+         boundary='Retrieval is not inclusion. No report-study membership, majority decision, reading or eligibility correctness is inferred. Existing validators decide input compatibility.'),
+    dict(workflow_id='result_intake', title='Append explicitly supplied traceable result rows',
+         guide_paths=['docs/MANUAL_RESULT_INTAKE.md', 'docs/EXTRACTION_WORKSHEETS.md'],
+         entrypoints=[dict(script='result_extraction.py', arguments=['--help'])] +
+                     [dict(script='result_intake.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit included/retrieved report, mapped record, declared study and selected document references.',
+                                'Source-linked human result rows, extraction metadata and separate import review.'],
+         boundary='Mock-adapter inputs are unsupported for manual result intake. No result, effect size, independent study, complete extraction or scientific acceptance is generated.'),
+    dict(workflow_id='condition_intake', title='Append supplied descriptive nonclinical context',
+         guide_paths=['docs/MANUAL_CONDITION_INTAKE.md', 'docs/EXPERIMENT_CONDITIONS.md'],
+         entrypoints=[dict(script='condition_intake.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit report/result IDs and supplied document references.',
+                                'Descriptive condition context with honest unknown/not-reported fields and separate import review.'],
+         boundary='No concentration, exposure, timing, comparator, causal interpretation or experimental procedure is invented. Optional missing stages are not automatically required work.'),
+    dict(workflow_id='source_review_work', title='Append explicit source-review work proposals',
+         guide_paths=['docs/SOURCE_WORK_INTAKE.md', 'docs/SOURCE_REVIEW_WORK.md'],
+         entrypoints=[dict(script='source_work_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Explicit typed planned-search/record references.',
+                                'Human question, deliverable, acceptance criterion, dependencies and separate proposal review.'],
+         boundary='Only supplied PLANNED source-review work is appended. No task, priority, dependency, execution or completion is inferred from queues or from this catalog.'),
+    dict(workflow_id='collection_archives', title='Preserve protocol snapshots and selected native source bindings',
+         guide_paths=['docs/COLLECTION_BUNDLES.md', 'docs/BATCH_COLLECTION_BUNDLES.md', 'docs/BATCH_TO_EVIDENCE.md'],
+         entrypoints=[dict(script=script, arguments=[command, '--help'])
+                      for script in ('research_bundle.py', 'collection_bundle.py', 'batch_collection_bundle.py')
+                      for command in ('create', 'verify')],
+         required_human_inputs=['An explicit protocol snapshot and new output path.',
+                                'For native collection bundles, explicitly selected wrapper files and historical import indices.'],
+         boundary='Ordinary bundles do not retain detached application history. Native formats and wrappers are not inferred. Native archives preserve selected source/import associations, not full research history or authenticated sources.'),
+    dict(workflow_id='report_transition_archive', title='Preserve a contiguous supplied report-transition segment',
+         guide_paths=['docs/REPORT_TRANSITION_BUNDLES.md'],
+         entrypoints=[dict(script='report_transition_bundle.py', arguments=[command, '--help'])
+                      for command in ('create', 'verify')],
+         required_human_inputs=['Exact original and endpoint protocols, explicitly ordered supported application files and a new archive path.'],
+         boundary='Only registration, retrieval-update and full-text applications are replayed as steps. Search, screening, result and condition operations are outside this segment; earlier/later history is unassessed. No embedded code is loaded or executed.')
+]
+
 
 QUEUE_DOMAINS = {
     **dict.fromkeys(('missing_planned_searches',), 'search'),
@@ -198,6 +288,8 @@ def handoff(protocol, work_package_id=None):
                     template_arguments=['receipt_intake.py','template','BASE_PROTOCOL.json'],
                     check_arguments=['receipt_intake.py','check','BASE_PROTOCOL.json','FILLED_MOCK_RECEIPTS.json','--text'],
                     scope='Synthetic entry rehearsal only; null template fields need supplied facts, checks never approve receipts'),
+                supplied_input_workflows=copy.deepcopy(SUPPLIED_INPUT_WORKFLOWS),
+                supplied_input_workflow_scope=SUPPLIED_INPUT_WORKFLOW_SCOPE,
                 manual_work_remaining=['Authorized literature and full-text retrieval', 'Human eligibility and extraction',
                                        'Guideline currency and applicability review', 'Scientific appraisal and claim adjudication',
                                        'Work execution and independent deliverable acceptance'],
@@ -270,8 +362,16 @@ def render_text(result):
                 source_match_status=statement['source_match_status'],support_status=statement['support_status'],
                 position_stage=claim['position_stage'],work_evidence_ids=claim['work_evidence_ids'],
                 other_statement_evidence_ids=claim['other_statement_evidence_ids'],positions=claim['work_positions'],scope=claim['scope'])))
+    lines.append('\nSupplied-input workflow discovery (static, not a recommended task order):')
+    lines.append(result['supplied_input_workflow_scope'])
+    for workflow in result['supplied_input_workflows']:
+        lines.extend(['Workflow: ' + show(workflow['workflow_id']) + ': ' + show(workflow['title']),
+                      'Guides: ' + show(workflow['guide_paths']),
+                      'Parser-help entry points (not executed): ' + show(workflow['entrypoints']),
+                      'Required human inputs: ' + show(workflow['required_human_inputs']),
+                      'Limits: ' + show(workflow['boundary'])])
     lines.extend(['', 'Detailed read-only views (replace the PROTOCOL.json placeholder; arguments are not shell commands):',
-                  show(result['detailed_views']), 'Optional prerequisite packet view: ' + show(result['prerequisite_review_view']), 'Separate manual receipt entry workflow (not for overwriting this protocol): ' + show(result['manual_input_workflow']),
+                  show(result['detailed_views']), 'Optional prerequisite packet view: ' + show(result['prerequisite_review_view']), 'Separate mock receipt rehearsal (not for overwriting this protocol): ' + show(result['manual_input_workflow']),
                   'Manual work not performed: ' + show(result['manual_work_remaining']),
                   'Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', result['boundary']])
     return '\n'.join(lines) + '\n'

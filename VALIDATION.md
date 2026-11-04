@@ -1357,3 +1357,40 @@ and exact manifest verification passes. No actual reading, source acquisition,
 human authentication, eligibility validity, complete searching or scientific
 readiness is established. Exact-head CI checks both supported Python versions on
 Windows and Ubuntu.
+
+Supplied-workflow handoff discovery increment (2026-11-04): 1,237 tests in the
+suite; final Linux run: 1,236 passed and one native-Windows-only test skipped.
+Eleven new self-authored navigation tests pass; the focused seven-suite handoff,
+receipt, archive and walkthrough run passes 124 tests. Independent read-only code
+review examined implementation, focused tests and documentation, ran 99 existing
+handoff/archive/walkthrough tests plus all 11 new tests, and found no blockers.
+Its two suggested improvements were incorporated: expose native verification as
+the CSV-intake export route, and distinguish execution of existing verifiers from
+loading/executing embedded code.
+The additive handoff catalog has ten static workflow groups and 41 valid parser-
+help entry points. Every --help array was executed independently and by tests;
+all return usage without creating output files. Linked guides cover native
+collection, explicit screening, report registration/retrieval/full-text choices,
+result/condition intake, optional source-review work and distinct archive scopes.
+The catalog is identical across manual, bibliographic and mock contexts and WP
+selections. It is discovery, not applicability, queue-based eligibility, automatic
+selection or a recommended task order. No protocol ID/path is interpolated into
+these arrays and the handoff never executes them. Unsupported mock contexts and
+missing human inputs remain explicit rather than inferred away.
+The original mock manual_input_workflow object, queues, matching-row navigation,
+selected-work scope, protocol hash and closed scientific bounds are preserved.
+Independent old/new comparison confirms equality after excluding the two additive
+catalog fields and the expected handoff implementation fingerprint. Tests cover
+deep-copy isolation, deterministic output, malicious/control display strings,
+unchanged protocol bytes, malformed-input refusal, no network/execution and JSON/
+text CLI use with paths containing spaces and a leading-dash work ID.
+Only review_handoff.py changed among 131 previously committed Python files. It is
+outside the research-bundle engine and intake/segment verifier fingerprint sets;
+all prior replay engines and receipt targets remain unchanged. Saved registration,
+report-transition, native batch collection and ordinary research artifacts still
+verify. Documentation links resolve, publication audit checks 271 text files and
+exact manifest verification passes. Native archives remain selected-source
+association checks; report-transition archives remain report-only segments, not
+complete research history. No new research operation, scientific assessment,
+source retrieval, task generation, parameter inference or readiness claim occurs.
+Exact-head CI checks Windows and Ubuntu with both supported Python versions.

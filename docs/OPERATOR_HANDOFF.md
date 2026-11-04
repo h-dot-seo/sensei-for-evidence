@@ -70,6 +70,59 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
    is a source-match value, not scientific approval; never copy it merely to
    clear a stale-review queue. Work artifact acceptance is not inspected here.
 
+## Discover supplied-input workflows without executing them
+
+The JSON now also contains `supplied_input_workflows`, a static catalog of ten
+existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
+the same catalog. Each group names its guide files, required human inputs,
+operation limits and parser-help argument arrays. The 41 entry points all end in
+`--help`: they explain command syntax, not execute research or write a draft.
+
+The routes cover:
+
+- Supplied single-file or batch NBIB preparation, native verification/CSV intake
+  export, and separate collection reconciliation/review.
+- Separate screening reviewer positions and explicit canonical decisions.
+- Report registration, later retrieval assertions and full-text choices.
+- Supplied result rows and descriptive nonclinical condition metadata.
+- Explicit optional source-review work proposals.
+- Ordinary/native collection archives and a separate report-transition segment.
+
+Use the [NBIB-to-evidence rehearsal](BATCH_TO_EVIDENCE.md) to see these stages
+connected with prewritten fictional inputs. It is not an actual review. The
+catalog is intentionally identical for an empty declared plan, a manual or
+bibliographic protocol, and a mock-adapter protocol, including when one WP is
+selected. Its presence does **not** assert that an operation accepts the current
+input. For example, report registration/retrieval and manual result intake reject
+mock-adapter contexts. Read the listed guide and run the existing operation's own
+validators with honestly supplied inputs. Do not delete receipts to bypass a
+restriction.
+
+The catalog does not select records, group reports, assign studies, decide
+eligibility, infer parameters, create tasks or rank next steps. It does not turn
+optional missing conditions or inventory candidates into required work. Existing
+queues and matching-row pointers stay unchanged and protocol-wide; workflow
+catalog order is documentation order, not recommended execution or priority.
+No actual protocol path, source ID or WP name is interpolated into these help
+arrays. They are displayed data and are never executed by the handoff.
+
+The original `manual_input_workflow` field remains unchanged and is explicitly
+shown as a separate mock receipt rehearsal. It is no longer the only discoverable
+entry path. Existing detailed read-only views and selected work/prerequisite
+scope also remain unchanged.
+
+Archive choices have different coverage. Native collection archives retain
+explicitly selected wrapper/import associations, not every detached review.
+Report-transition archives replay only a supplied contiguous registration,
+retrieval-update and full-text segment, not search, screening, result or condition
+steps. Neither is a complete authenticated research history. Preserve the
+required original inputs, application records and recorded implementation as each
+guide explains.
+
+The handoff's own implementation fingerprint changes with this navigation catalog.
+Its file is outside the existing research-bundle engine set; no intake/verifier
+implementation or old receipt target is changed to add these discovery links.
+
 ## Scope and manual limits
 
 All queues remain **protocol-wide**, including when one WP is selected. Selecting
