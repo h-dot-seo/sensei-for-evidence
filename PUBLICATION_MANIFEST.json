@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 178939,
-      "sha256": "b086c0549fea2c8e3372486e498af4bc8769e6de2c379dee6b691a6880cc1de4"
+      "bytes": 179575,
+      "sha256": "657d07cf54c7036b1f18cf0988c13d77e74cdcba16de0860e66d5363eded6272"
     },
     {
       "path": "adapter_integrity.py",
@@ -1645,8 +1645,8 @@
     },
     {
       "path": "test_result_passage_check.py",
-      "bytes": 33718,
-      "sha256": "8765cb6b59225c6da97229a8c10a612b79923c5c5c9a2ba51a459cf01c288b72"
+      "bytes": 33909,
+      "sha256": "3677a9e9b78f2d0a10386186781c6a85e1997ce99b472681c3af19bcca3d0cd6"
     },
     {
       "path": "test_result_passage_journey.py",

@@ -2489,3 +2489,12 @@ An independent rerun returned the same result. Temporary files were kept in a
 dedicated workspace directory. These were synthetic/offline checks; no live
 PubMed search or retrieval was performed. Full cross-platform CI is recorded
 separately after publication and is not implied by this focused result.
+
+The first cross-platform run for `69843997` exposed an existing passage-check
+test mismatch on Windows: its native temporary-directory spelling was rejected
+for backslashes before the mocked unsupported-platform check. The test now uses
+a portable inert root spelling for that gate and separately checks rejection of
+Windows backslashes, with source opening forbidden in both cases. The original
+failure was reproduced locally before editing. The passage checker and journey
+modules then ran 42 tests: 19 passed and 23 skipped for unsupported POSIX source
+access on native Windows. This changes test setup, not source-access behavior.

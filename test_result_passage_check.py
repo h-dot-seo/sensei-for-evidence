@@ -243,13 +243,15 @@ class PassageTests(unittest.TestCase):
             with self.subTest(path=value): self.reject(m=m)
 
     def test_unsafe_roots_and_platform_fail_closed(self):
-        for root in ('/', '.', '//', 'a/../b', 'a/.git/b', 'a/.AWS', '/tmp/.CoDeX/x', './foo', '/tmp/a/./b'):
+        for root in ('/', '.', '//', 'a/../b', 'a/.git/b', 'a/.AWS', '/tmp/.CoDeX/x', './foo', '/tmp/a/./b', 'C:\\synthetic-root'):
             with patch.object(pc, 'open_root', side_effect=AssertionError('unsafe root not opened')):
                 with self.assertRaises(ValueError): pc.check_passages(self.p, self.c, self.m, root)
         with patch.object(pc, 'secure_open_supported', return_value=False), \
              patch.object(pc, 'open_root', side_effect=AssertionError('no unsupported read')):
             with self.assertRaisesRegex(ValueError, 'unavailable.*Windows'):
-                pc.check_passages(self.p, self.c, self.m, self.root)
+                # Use a portable spelling so unsafe Windows backslashes do not
+                # short-circuit the platform gate this assertion exercises.
+                pc.check_passages(self.p, self.c, self.m, 'synthetic-source-root')
 
     def test_metadata_failure_takes_precedence_over_unsupported_platform(self):
         m = copy.deepcopy(self.m); m['passages'][-1]['quote'] = False
