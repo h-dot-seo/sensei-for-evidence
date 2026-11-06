@@ -1,6 +1,7 @@
 """Synthetic offline coverage. Never invokes an external service."""
 import base64
 import copy
+import errno
 import http.client
 import io
 import json
@@ -247,21 +248,38 @@ class DiscoveryTests(unittest.TestCase):
         transport.assert_not_called()
         self.assertEqual(a['derived']['stop_reason'], 'elapsed_limit')
 
-    def test_cli_no_overwrite_and_dangling_link_preflight(self):
+    def _assert_cli_output_preflight(self, dangling=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             input_path = root / 'spec.json'
             input_path.write_text(json.dumps(spec()))
             output = root / 'output.json'
-            output.write_text('untouched')
-            for path in (output, root / 'dangling'):
-                if path != output:
-                    path.symlink_to(root / 'absent')
-                with patch.object(sys, 'argv', ['pubmed_discovery.py', 'fetch', str(input_path), '--preview-sha256', p.preview(spec())['preview_sha256'], '--output', str(path)]), patch.object(p, 'fetch', side_effect=AssertionError('must not fetch')):
-                    with self.assertRaises(SystemExit) as raised:
-                        p.main()
-                    self.assertEqual(raised.exception.code, 1)
-            self.assertEqual(output.read_text(), 'untouched')
+            if dangling:
+                try:
+                    output.symlink_to(root / 'absent')
+                except NotImplementedError:
+                    self.skipTest('symlink creation unavailable')
+                except OSError as error:
+                    if getattr(error, 'winerror', None) in (50, 1314) or error.errno in (errno.ENOSYS, errno.ENOTSUP):
+                        self.skipTest('symlink creation unsupported or requires Windows privilege')
+                    raise
+            else:
+                output.write_text('untouched')
+            with patch.object(sys, 'argv', ['pubmed_discovery.py', 'fetch', str(input_path), '--preview-sha256', p.preview(spec())['preview_sha256'], '--output', str(output)]), patch.object(p, 'fetch', side_effect=AssertionError('must not fetch')), patch('sys.stderr', new=io.StringIO()):
+                with self.assertRaises(SystemExit) as raised:
+                    p.main()
+                self.assertEqual(raised.exception.code, 1)
+            if dangling:
+                self.assertTrue(output.is_symlink())
+                self.assertFalse((root / 'absent').exists())
+            else:
+                self.assertEqual(output.read_text(), 'untouched')
+
+    def test_cli_existing_output_preflight_before_network(self):
+        self._assert_cli_output_preflight()
+
+    def test_cli_dangling_output_preflight_before_network(self):
+        self._assert_cli_output_preflight(dangling=True)
 
 
 if __name__ == '__main__':

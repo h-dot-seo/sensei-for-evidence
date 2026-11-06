@@ -1,7 +1,7 @@
 {
   "project": "sensei-for-evidence",
   "release": "0.84.0-local-result-passages",
-  "date": "2026-11-04",
+  "date": "2026-11-06",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 177858,
-      "sha256": "2b2b94c348aaf3b0d5fa30f1f19969338f6e8fb83357e9df729ca326aa393adf"
+      "bytes": 178939,
+      "sha256": "b086c0549fea2c8e3372486e498af4bc8769e6de2c379dee6b691a6880cc1de4"
     },
     {
       "path": "adapter_integrity.py",
@@ -1515,8 +1515,8 @@
     },
     {
       "path": "test_pubmed_discovery.py",
-      "bytes": 14899,
-      "sha256": "64bd31db79fad177170d880c6119587aba5aaaec6f806e2dd0a0eb44101feb55"
+      "bytes": 15705,
+      "sha256": "0853f22a90325dcc01508ec38237821e39633dfe7dc1bc2b3f97c354ea79b118"
     },
     {
       "path": "test_pubmed_discovery_journey.py",
@@ -1525,8 +1525,8 @@
     },
     {
       "path": "test_pubmed_metadata.py",
-      "bytes": 28928,
-      "sha256": "047de678ae853868206f0e3e72f6f0036e0372d87d29c4b63356227ad243db99"
+      "bytes": 29688,
+      "sha256": "0a4fb4fe36b11199856546a21238875528f429fda9a4e0c6d6408177f5d47a00"
     },
     {
       "path": "test_pubmed_metadata_journey.py",

@@ -2472,3 +2472,20 @@ and 99 parser-help entrypoints. Nine changed-guide local link checks, compilatio
 whitespace, limited publication audit and regenerated inventory checks pass.
 Exact published-head Ubuntu/Windows × Python 3.10/3.12 CI is checked after push;
 local POSIX results do not substitute for the native-Windows fail-closed checks.
+
+## 2026-11-06 PubMed validation without Windows symlink privileges
+
+The discovery and metadata output-preflight tests now separate existing-file
+protection from dangling-link protection. Ordinary output and no-network checks
+always run. Only the link case is skipped when symlink creation is explicitly
+unsupported or Windows requires an unavailable privilege; unrelated filesystem
+errors still fail. Supported platforms still check that the link is retained and
+its absent target is not created. Runtime acquisition behavior is unchanged.
+
+On Windows with Python 3.12.10, the focused command
+`python -m unittest test_pubmed_discovery test_pubmed_metadata test_pubmed_transport_regressions -v`
+ran 36 tests: 34 passed and two link cases skipped for missing Windows privileges.
+An independent rerun returned the same result. Temporary files were kept in a
+dedicated workspace directory. These were synthetic/offline checks; no live
+PubMed search or retrieval was performed. Full cross-platform CI is recorded
+separately after publication and is not implied by this focused result.
