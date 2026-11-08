@@ -110,8 +110,10 @@ not a complete compliance checker, search backend or scientific review.
 
 ## End-to-end and CI verification
 
-`test_cli_e2e.py` runs the synthetic workflow through actual CLI subprocesses and
-checks failed inputs and reproducible output. GitHub Actions runs standard-library
+`tests/test_cli_e2e.py` runs the synthetic workflow through actual CLI subprocesses and
+checks failed inputs and reproducible output. The suite is the `tests/` package:
+`python -m unittest discover -v` from the repository root recurses into it, and one
+module runs as `python -m unittest tests.test_cli_e2e -v`. GitHub Actions runs standard-library
 tests, publication scanning and manifest byte verification on Linux and Windows
 with Python 3.10 and 3.12. Actions are commit-pinned; token permissions are read-only,
 checkout does not persist credentials, no secrets or deployment steps are used.

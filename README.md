@@ -98,8 +98,15 @@ experimental/clinical recommendation.
 
 Exact usage of every script and subcommand: [command reference](docs/COMMANDS.md); narratives by stage: [workflows](docs/WORKFLOWS.md).
 
+Layout: every command-line script is a module at the repository root and runs as
+`python <script>.py ...` from there, next to the engine modules it imports; the synthetic
+test suite is the `tests/` package that `python -m unittest discover -v` recurses into.
+The dispatcher `sensei.py` lists those scripts and runs one of them without changing any
+documented command.
+
 | Entry points | Purpose |
 |---|---|
+| `sensei.py` | `list` prints every root script with its first docstring sentence and the operator-handoff routes with their guides, executing nothing; `run <script> [args...]` runs one root script exactly as `python <script>` does |
 | `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
 | `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |

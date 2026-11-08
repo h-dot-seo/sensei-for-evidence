@@ -8,6 +8,12 @@ requirements, strict JSON rules, ID migration, stage definitions and compatibili
 in [detailed usage](USAGE.md); the [operator handoff](OPERATOR_HANDOFF.md) shows the
 same supplied-input routes as parser-help entry points without executing them.
 
+Layout: the command-line scripts and the engine modules they import are flat modules at
+the repository root, so every command below runs as `python <script>.py ...` from there;
+the synthetic test suite is the `tests/` package. `python sensei.py list` prints the same
+scripts and the operator-handoff routes, and `python sensei.py run <script> ...` runs one
+of them without changing its arguments, output or exit status.
+
 Shared conventions:
 
 - Inputs are supplied JSON protocols, candidate documents or explicitly authorized local
@@ -33,6 +39,14 @@ applies the separately supplied review to that target and writes a detached appl
 record; `verify` replays the application against the original protocol and, with
 `--protocol-output`, exports the resulting protocol. No blank is interpreted as agreement,
 and no step fills a decision, judgement or label on your behalf.
+
+## Dispatcher
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python sensei.py [-h] {list,run} ...` | Discover and run the root scripts from one entry point; the documented `python <script>` form stays the primary one | [Commands at a glance](../README.md#commands-at-a-glance) |
+| `python sensei.py list [-h]` | Print every root script that has a main entry point with the first sentence of its docstring, then the supplied-input routes of the operator handoff catalog with their scripts and guides; nothing is executed and only this repository's own files are read | [Operator handoff](OPERATOR_HANDOFF.md) |
+| `python sensei.py run [-h] script ...` | Execute one listed root script with the remaining arguments exactly as `python <script> ...` would, without a shell; any other name is rejected before anything runs, and the script keeps its own output, exit status and boundaries | this reference |
 
 ## Start, status and navigation
 
@@ -221,7 +235,8 @@ and no step fills a decision, judgement or label on your behalf.
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python -m unittest discover -v` | Run the synthetic test suite, including the tests that execute the documented walkthrough command blocks | [End-to-end and CI verification](USAGE.md#end-to-end-and-ci-verification), [validation record](../VALIDATION.md) |
+| `python -m unittest discover -v` | Run the synthetic test suite, the `tests/` package, including the tests that execute the documented walkthrough command blocks | [End-to-end and CI verification](USAGE.md#end-to-end-and-ci-verification), [validation record](../VALIDATION.md) |
+| `python -m unittest tests.test_<module> -v` | Run one module of the `tests/` package, for example `tests.test_dispatcher` or `tests.test_cli_e2e` | [End-to-end and CI verification](USAGE.md#end-to-end-and-ci-verification) |
 | `python audit_publication.py` | Limited public-file/type/secret-pattern scan of the checkout; a pass is not proof of anonymity or clearance | [Publication inventory checks](USAGE.md#publication-inventory-checks), [security](../SECURITY.md) |
 | `python verify_manifest.py` | Verify the complete published inventory against exact checkout bytes; unlisted files and link-like paths fail | [Publication inventory checks](USAGE.md#publication-inventory-checks), [publication boundary](../PUBLICATION.md) |
 
