@@ -2537,3 +2537,56 @@ change resolves, and the pre-existing Python 3.15 junction-test error remained. 
 published head is checked on the Ubuntu/Windows × Python 3.10/3.12 matrix after push.
 Publication audit and the regenerated manifest pass. All fixtures are fictional;
 no real statement, source, model call or network request was involved.
+
+## 2026-11-08 Conclusion readiness gates (0.86.0-conclusion-readiness)
+
+`readiness_links.py` (added to the bundle engine files), `readiness_review.py` and
+`readiness_intake.py` implement the workflow's step 9 as mechanical bookkeeping plus
+supplied records. The engine derives twelve gates from the existing ledgers (declared
+plan, supplied searches, screening, reports, record-level extraction, appraisal of
+cited results, statement reviews, result citations, challenges recorded, challenges
+resolved, contexts, work), each CLOSED, OPEN or NOT_APPLICABLE with exact open items
+and one basis sentence, and hashes the canonical gate ledger. Only three cases are
+NOT_APPLICABLE (no declared plan, no report ledger, record-level extraction when a
+report ledger exists); gates whose stage is not supplied stay OPEN with empty items.
+`reports_resolved` also lists included records that map to no report, and legacy
+scalar report rows are read as supplied, so what `run` accepts is unchanged.
+A supplied `readiness_assertions` row names an assessor, date, scope statement,
+rationale, limitations, separate evidence_sufficiency and conclusion_readiness labels
+and the examined `gates_sha256`; reopening work or an amendment note is required for a
+NOT_READY/INSUFFICIENT pair. A READY assertion is permitted while gates are open and
+is recorded with the open gates at the asserted snapshot. Assertions are labeled
+CURRENT_GATES or STALE_GATES against the current hash. The intake mirrors the
+challenge intake: template bound to the current hash, target rejecting a stale hash,
+separate `import_readiness_assertions` review, exact replay, and preservation checks
+that include record flow, report counts, synthesis, challenge and the gate ledger.
+Status adds a `readiness` summary and two text lines without new queues; the handoff
+gains a detailed view and one catalog route with four parser-help entry points (26
+routes, 107 entry points); the synthesis snapshot, bundle summary, version comparison
+and amendment transitions expose the section; the mock adapter context allows it as
+an enrichment. Every hard-coded `conclusion_readiness: NOT_READY` and `census_claim`
+is unchanged, and the engine adds `mechanical_conclusion_readiness: NOT_READY`.
+
+Two new test modules cover gate derivation on `examples/synthesis-review.json` with
+and without challenges, the fixture hash equality, staleness after statement,
+appraisal and screening changes, missing-stage rules, index pointers for searches,
+READY-with-open-gates recording, reopening rules, enum/date/field strictness, status/
+handoff/snapshot/bundle/comparison surfaces, text-control quoting, the adapter
+context, intake replay and tampering, exclusive CLI outputs and the documented
+eight-command rehearsal in `docs/CONCLUSION_READINESS.md`. Because the engine file
+set changed, the walkthrough fixture refresh rewrote ten `target_sha256` values
+(nine under `examples/batch-to-evidence/` and `examples/second-search/review.json`).
+The full suite ran on native Windows with Python 3.15 in a dedicated temporary
+directory: Ran 1826 tests in 410.592s; FAILED (errors=1, skipped=45). The one error
+is the pre-existing `test_verify_manifest...test_native_windows_junction_rejected`
+TypeError under Python 3.15, unrelated to this change and left as is.
+The two new modules also pass under the locally installed Python 3.13, and every
+changed module parses with Python 3.10 syntax rules. Compilation, the CRLF scan, the
+limited publication audit and the regenerated manifest pass. Exact published-head
+Ubuntu/Windows × Python 3.10/3.12 CI is checked after push.
+
+Not claimed: a closed gate is not evidence sufficiency, census or conclusion
+readiness; a READY assertion is a supplied human label bound to a gate snapshot, not
+a mechanical conclusion, and no assertion is assessed, adjudicated or promoted. The
+gate hash binds the gate snapshot only, not every protocol byte. All fixtures are
+fictional; no real statement, source, model call or network request was involved.

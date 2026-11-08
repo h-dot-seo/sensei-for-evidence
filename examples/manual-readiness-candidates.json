@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "readiness_assertions": [
+    {
+      "assertion_id": "readiness-supplied-1",
+      "assessor": "Fictional readiness assessor",
+      "assessed_at": "2026-11-08",
+      "evidence_sufficiency": "INSUFFICIENT",
+      "conclusion_readiness": "NOT_READY",
+      "gates_sha256": "c6751c2959881e25218a00ecb4558a4eb8c3e25d84432800365d777de44abb1f",
+      "scope_statement": "Fictional scope: the supplied synthetic mechanism question as bounded by the two recorded synthesis statements; no clinical, development or regulatory claim is in scope.",
+      "rationale": "Fictional rationale: the template listed open gates, including a pending statement review, a cited result without a recorded appraisal, statements without a recorded independent challenge and unfinished work; the assessor records the evidence as insufficient and the conclusion as not ready.",
+      "limitations": "Fictional assertion for software validation only; no source was read and no scientific judgement about any real statement, evidence base or decision is made.",
+      "reopening": {
+        "work_package_id": "WP-MECHANISM"
+      }
+    }
+  ]
+}

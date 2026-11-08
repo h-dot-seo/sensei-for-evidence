@@ -56,6 +56,11 @@ never calls models:
   conclusion width and outcome, bound to the challenged statements' current bases.
   A material gap must name existing reopening work or an amendment; nothing is
   generated, adjudicated, upheld or refuted.
+- Mechanical conclusion-readiness gates (search plan, searches, screening, reports,
+  extraction, appraisal of cited results, statement reviews, citations, challenges,
+  contexts, work) with exact open items and a gate-ledger hash, plus supplied
+  evidence-sufficiency and conclusion-readiness assertions bound to that hash.
+  Closing every gate is bookkeeping, not sufficiency; the mechanical label stays NOT_READY.
 
 Only explicit PubMed ESearch discovery and EFetch selected metadata acquisition
 make live requests. No full-text retrieval, guideline currency verification,
@@ -131,6 +136,8 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `appraisal_intake.py template/target/assemble/verify ...` | Append explicitly supplied result-linked method/domain appraisals after separate review; preserve disagreement and expose source-status changes without scores or review renewal |
 | `challenge_intake.py template PROTOCOL.json REFERENCES.json [--candidate-output NEW.json]` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Append explicitly supplied independent challenges to existing synthesis statements after separate review; bind them to the challenged statements and expose open material gaps without upholding or refuting any statement |
+| `readiness_review.py PROTOCOL.json [--text]` | Show the mechanical conclusion-readiness gate ledger, its open items and hash, and supplied readiness assertions bound to it; closed gates are bookkeeping, not sufficiency |
+| `readiness_intake.py template PROTOCOL.json [--candidate-output NEW.json]` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Append explicitly supplied evidence-sufficiency and conclusion-readiness assertions bound to the current gate ledger after separate review; a READY assertion while gates are open stays visible with those gates, and nothing is promoted |
 | `work_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APPLICATION.json ...` / `verify BUNDLE.zip` | Retain and replay an explicit contiguous source-work/evidence-work/completion segment with exact original bytes, without renewing completion or assessing artifacts |
 | `work_completion_intake.py template/target/assemble/verify ...` | Record one explicit unfinished-work completion with separate exact-target review, source binding and dependency-change cues, without artifact checks or acceptance assessment |
 | `evidence_work_intake.py template/target/assemble/verify ...` | Append explicitly reviewed result-linked work packages with human deliverables/dependencies, without changing existing research or generating scientific tasks |
@@ -202,6 +209,10 @@ study/result accounting and supplied statement review journey.
 
 See [independent challenge records](docs/INDEPENDENT_CHALLENGE.md) for the fictional
 statement → challenge → reopening journey and the distinct-label rule.
+
+See [conclusion readiness gates](docs/CONCLUSION_READINESS.md) for the fictional
+gate ledger → supplied sufficiency/readiness assertion → reopening journey and why
+closed gates are not evidence sufficiency.
 
 See [nonclinical condition records](docs/EXPERIMENT_CONDITIONS.md) for the fictional
 model/condition → result → WP/synthesis review journey.

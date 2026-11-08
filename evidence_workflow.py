@@ -10,6 +10,7 @@ from adapter_integrity import validate_adapter_protocol
 from planning_links import link_planning
 from synthesis_links import link_synthesis
 from challenge_links import link_challenges
+from readiness_links import link_readiness
 from experiment_links import link_experiments
 from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
 from report_links import has_plural_studies, validate_reports, validate_evidence_membership, report_study_coverage
@@ -171,7 +172,13 @@ def run(protocol):
     challenge = link_challenges(protocol, synthesis, work)
     planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis,
                              bibliographic_collection=bibliographic_collection)
-    included = sum(d['decision'] == 'include' for d in decisions.values())
+    included_ids = {rid for rid, decision in decisions.items() if decision['decision'] == 'include'}
+    extraction_pending = sorted(rid for rid in included_ids if rid not in extracted_records)
+    readiness = link_readiness(protocol, search_plan_audit=search_plan_audit, coverage=coverage,
+                               record_ids=set(records), screened_ids=set(decisions), included_ids=included_ids,
+                               evidence=evidence, extraction_pending=extraction_pending, context=context,
+                               appraisal=appraisal, synthesis=synthesis, challenge=challenge, work=work)
+    included = len(included_ids)
     result = dict(question=protocol['question'], protocol_version=protocol['version'],
                 search_ledger=protocol['searches'], screening_ledger=protocol['screening'], coverage=coverage,
                 search_plan_audit=search_plan_audit,
@@ -183,8 +190,8 @@ def run(protocol):
                           excluded=len(decisions)-included, included=included, extracted=len(evidence),
                           extracted_records=len(extracted_records),
                           extracted_studies=len({row['study_id'] for row in evidence})),
-                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis, challenge=challenge, experiments=experiments,
-                extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
+                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis, challenge=challenge, readiness=readiness, experiments=experiments,
+                extraction_pending=extraction_pending,
                 extraction_pending_scope='title_abstract_included_records_without_any_result_row',
                 extraction_completeness='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',

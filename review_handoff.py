@@ -196,6 +196,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Exact existing statement IDs, a challenger label distinct from every recorded reviewer/appraiser label, the strongest alternative explanation, missing discriminating evidence, citation-integrity findings, conclusion width and outcome',
                                 'Separate exact-target import review; no challenge text, outcome or independence is generated or verified'],
          boundary='Only new supplied challenge records are appended and bound to the current challenged-statement bases. A MATERIAL_GAP outcome must name existing reopening work or an amendment note; statements, reviews, appraisals and work states are unchanged. Label distinctness is not verified independence, and no statement is upheld or refuted.'),
+    dict(workflow_id='readiness_intake', title='Record supplied evidence-sufficiency and conclusion-readiness assertions bound to the gate ledger',
+         guide_paths=['docs/CONCLUSION_READINESS.md'],
+         entrypoints=[dict(script='readiness_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['The current gate snapshot hash and open-gate list from the template, an assessor label, assessment date, scope statement, rationale and limitations',
+                                'Separate evidence_sufficiency and conclusion_readiness labels; existing reopening work or an amendment note when NOT_READY with INSUFFICIENT evidence; separate exact-target import review'],
+         boundary='Only new supplied readiness assertions are appended and bound by hash to the current mechanical gate ledger. Closed gates are bookkeeping, not sufficiency; a READY assertion may be recorded while gates are open and keeps those open gates visible. No sufficiency or readiness is assessed, generated, adjudicated or promoted, and the mechanical conclusion readiness stays NOT_READY.'),
     dict(workflow_id='context_intake', title='Record supplied unassigned guideline and development contexts',
          guide_paths=['docs/MANUAL_CONTEXT_INTAKE.md', 'docs/SOURCE_CONTEXTS.md'],
          entrypoints=[dict(script='context_intake.py', arguments=[command, '--help'])
@@ -403,6 +410,7 @@ def handoff(protocol, work_package_id=None):
     implementation['prisma_audit.py'] = hashlib.sha256(Path(__file__).with_name('prisma_audit.py').read_bytes()).hexdigest()
     implementation['search_manifest.py'] = hashlib.sha256(Path(__file__).with_name('search_manifest.py').read_bytes()).hexdigest()
     implementation['receipt_intake.py'] = hashlib.sha256(Path(__file__).with_name('receipt_intake.py').read_bytes()).hexdigest()
+    implementation['readiness_review.py'] = hashlib.sha256(Path(__file__).with_name('readiness_review.py').read_bytes()).hexdigest()
     result = dict(schema_version=1, question=state['question'], protocol_version=state['protocol_version'],
                 protocol_sha256=state['protocol_sha256'], engine_sha256=implementation,
                 hash_scope=state['hash_scope'], work_selection=works['selection'],
@@ -413,6 +421,7 @@ def handoff(protocol, work_package_id=None):
                                 dict(script='prisma_audit.py',arguments=['PROTOCOL.json'],purpose='Machine-readable accounting members, reason groups and record/report/study/result links'),
                                 dict(script='research_status.py',arguments=['PROTOCOL.json','--text'],purpose='Protocol-wide queues'),
                                 dict(script='synthesis_review.py',arguments=['PROTOCOL.json','--text'],purpose='Full result/source/condition/n/statistics/claim traces'),
+                                dict(script='readiness_review.py',arguments=['PROTOCOL.json','--text'],purpose='Mechanical readiness gate ledger with open items and supplied readiness assertions; closed gates are bookkeeping, not sufficiency'),
                                 dict(script='work_review.py',arguments=['PROTOCOL.json']+(['--work-package='+work_package_id] if work_package_id is not None else [])+['--text'],purpose='Detailed work evidence and applicability packet')],
                 prerequisite_review_view=None if work_package_id is None else dict(script='work_review.py',arguments=['PROTOCOL.json','--work-package='+work_package_id,'--include-prerequisites','--text'],purpose='Selected work plus explicit transitive prerequisite packets; no scientific approval'),
                 manual_input_workflow=dict(precondition='Use a separate declared-plan base with empty searches/evidence and no adapter receipts; do not erase current research',

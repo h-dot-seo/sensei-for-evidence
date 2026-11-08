@@ -84,6 +84,7 @@ def snapshot(protocol):
         challenge_stage=research['challenge']['stage'],
         challenge_ledger=copy.deepcopy(research['challenge']['challenge_ledger']),
         challenge_boundary=research['challenge']['boundary'],
+        readiness=copy.deepcopy(research['readiness']),
         evidence_citation_index=[citations[eid] for eid in sorted(citations)],
         evidence_without_statement_citation=None if not supplied else copy.deepcopy(synthesis['evidence_without_statement_citation']),
         experimental_stage=research['experiments']['stage'],
@@ -138,6 +139,9 @@ def render_text(result):
     lines.append('Review queues (null means stage not supplied): ' + show(result['review_queues']))
     lines.append('Supplied synthesis stage: ' + result['synthesis_stage'])
     lines.append('Supplied independent challenge stage: ' + result['challenge_stage'])
+    lines.append('Mechanical readiness gates and supplied readiness assertions (bookkeeping and human assertions, not sufficiency): '
+                 + show({key: result['readiness'][key] for key in ('open_gate_ids', 'closed_gate_ids', 'not_applicable_gate_ids', 'gates_sha256',
+                                                                  'stage', 'current_assertion_ids', 'stale_assertion_ids', 'assertion_ledger')}))
     for item in result['statements']:
         lines.extend(['', 'Supplied synthesis statement: ' + show(item['statement']),
                       'Cited extraction/source trace: ' + show(item['citations']),

@@ -11,7 +11,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py', 'readiness_links.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -134,6 +134,9 @@ def build_bundle(raw):
              'Planning ranks are supplied assertions, not advice; dependencies remain separate.\n'
              f"Context review pending: {len(research['context']['review_pending'])}\n"
              f"Result rows without recorded appraisal: {len(research['appraisal']['evidence_without_recorded_appraisal'])}\n"
+             f"Open readiness gates: {len(research['readiness']['open_gate_ids'])}\n"
+             f"Supplied readiness assertions: {'current ' + str(len(research['readiness']['current_assertion_ids'])) + ', stale ' + str(len(research['readiness']['stale_assertion_ids'])) if research['readiness']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
+             'Closed gates are mechanical bookkeeping, not evidence sufficiency; supplied readiness assertions are human assertions bound to a gate snapshot.\n'
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')
     payloads={'protocol.json':raw,'research.json':json_bytes(research),'reports.json':json_bytes(reports),
               'reports.csv':csv_text.encode(),'work-packages.csv':out.getvalue().encode(),'summary.md':summary.encode()}
