@@ -61,7 +61,7 @@ New IDs must be unique across the existing ledger and the batch; existing record
 cannot be replaced or merged. Identical challenger labels across rows do not make
 them one challenge or independent of each other.
 
-## Eleven-command synthetic challenge-to-review rehearsal
+## Ten-command synthetic challenge-to-review rehearsal
 
 Use a new existing `OUTPUT` directory outside this repository. All fixture
 explanations, findings, labels and outcomes are fictional software data, not a
@@ -114,7 +114,8 @@ and stale bindings appear as queues in `research_status.py` and as handoff steps
 with their input rows in `review_handoff.py`. The synthesis snapshot shows each
 statement's challenges beside its citations. Bundles record the challenge stage in
 the summary and keep challenge rows in `protocol.json`. Version comparison lists
-added, removed and changed challenges and their binding/reopening transitions.
+added, removed and changed challenges and, when an amendment note is supplied,
+their binding/reopening transitions.
 
 ## Replay, preservation and limits
 
