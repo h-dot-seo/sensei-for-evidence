@@ -6,7 +6,7 @@ Release preparation date: 2026-11-02 (Asia/Seoul).
 - Limited public-file/type/secret-pattern scan: passed.
 - Manual selected-content review: no actual conversation, researcher corpus, private
   configuration, credential, real experiment or article/book/figure asset selected.
-- Examples: synthetic; no scientific or persona-predictive validation claimed.
+- Examples: synthetic; no scientific validation claimed.
 - Private history import: none; new public repository with a separate initial history.
 
 The scanner is not a complete secret detector, anonymizer or legal clearance tool.
@@ -26,12 +26,12 @@ Second increment: 10 tests passed; failure boundaries and deterministic repeated
 
 Third increment: 13 tests passed, including supplied-evidence rejection and deterministic output. No external model/search integration tested.
 
-Fourth increment: CLI end-to-end scenarios and failure recovery added. Local tests: 15 passed. Remote CI status is recorded separately in the private development log.
+Fourth increment: CLI end-to-end scenarios and failure recovery added. Local tests: 15 passed. Remote CI status is recorded in the repository's GitHub Actions history.
 
-Fifth increment: 18 local tests passed. New CLI paths, source boundaries, deterministic output and tamper/no-overwrite checks are covered. See private development log for remote matrix CI.
+Fifth increment: 18 local tests passed. New CLI paths, source boundaries, deterministic output and tamper/no-overwrite checks are covered. Remote matrix CI results are in the GitHub Actions history.
 
-Cloud reconciliation (2026-11-03): hdbio's fifth-increment ZIP/CSV/summary exporter
-was consolidated with implementation fingerprinting, strict JSON parsing and
+Consolidation (2026-11-03): the fifth-increment ZIP/CSV/summary exporter was
+consolidated with implementation fingerprinting, strict JSON parsing and
 record-only support. All 26 tests passed, including the original 18 and eight
 integration cases. The duplicate JSON-envelope prototype is not published.
 Schema 2 intentionally rejects prototype schema 1 and changed implementation
@@ -2498,3 +2498,14 @@ Windows backslashes, with source opening forbidden in both cases. The original
 failure was reproduced locally before editing. The passage checker and journey
 modules then ran 42 tests: 19 passed and 23 skipped for unsupported POSIX source
 access on native Windows. This changes test setup, not source-access behavior.
+
+## 2026-11-08 Public boundary cleanup (0.84.1-public-boundary-cleanup)
+
+Removed an internal host name and references to a private development log from
+this record; remote CI results are the public GitHub Actions history. Reworded the
+shared boundary boilerplate to this project's scope and aligned `docs/USAGE.md`
+with the opt-in PubMed wording of the README. The owner approved the separately
+invoked PubMed ESearch/EFetch clients as part of the public release boundary; this
+decision is recorded in PUBLICATION.md. The test workflow now also runs on `main`,
+and this cleanup precedes merging the workflow branch into `main`. No code path,
+test or fixture changed; the manifest was regenerated for the edited text files.

@@ -21,3 +21,10 @@ Inventory verification rejects unlisted checkout files and symlink/path ambiguit
 in addition to checking listed bytes. Git metadata, generated Python caches and
 the manifest itself are excluded. This is not a secret detector, authorship
 signature or permission to publish material outside the selected public scope.
+
+## Owner decision on live PubMed requests (2026-11-08)
+
+The separately invoked PubMed ESearch/EFetch clients described in SECURITY.md are
+an approved part of this public release boundary. All other processing remains
+offline, no credential or API key is supported, and live query/output artifacts
+stay outside this repository.

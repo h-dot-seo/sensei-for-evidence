@@ -21,7 +21,8 @@ replace a reproducible search, claim-linked evidence or an explicit uncertainty 
 
 No private research projects, experiment results, evidence databases, article/book
 full text, extracted figures, paid databases or real patent-census datasets are included.
-This repository does not itself execute searches, read papers, run an LLM, determine
+Apart from the separately invoked, preview-bound PubMed ESearch/EFetch clients, this
+repository does not execute searches; it does not read papers, run an LLM, determine
 scientific adequacy or deliver a legal freedom-to-operate opinion.
 
 ## Quick start

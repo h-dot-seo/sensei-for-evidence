@@ -1,7 +1,7 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.84.0-local-result-passages",
-  "date": "2026-11-06",
+  "release": "0.84.1-public-boundary-cleanup",
+  "date": "2026-11-08",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
@@ -15,8 +15,8 @@
     },
     {
       "path": ".github/workflows/tests.yml",
-      "bytes": 719,
-      "sha256": "c8b7f561edcb36a3bb1c58bd09f5dabf8c837042ddc12b8c76a95b397c6e342f"
+      "bytes": 727,
+      "sha256": "5c005874d212d26d7259fd9c52a13aa13e4c75ad668396f8f1c34908896f5bfd"
     },
     {
       "path": ".gitignore",
@@ -25,8 +25,8 @@
     },
     {
       "path": "PUBLICATION.md",
-      "bytes": 1361,
-      "sha256": "42ae69352e6e33329d17939cd873006eebc61888d8b42f6a69ea7e043099b749"
+      "bytes": 1689,
+      "sha256": "d139ff7252cf067ea6df106b3f75e2ee7052efd113c60af92ad556446e81918f"
     },
     {
       "path": "README.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 179575,
-      "sha256": "657d07cf54c7036b1f18cf0988c13d77e74cdcba16de0860e66d5363eded6272"
+      "bytes": 180276,
+      "sha256": "32586fe6b5a963bbca4d8d4d1e849a470c8634f675f66d6c76dfe93af17fd65c"
     },
     {
       "path": "adapter_integrity.py",
@@ -445,8 +445,8 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 34970,
-      "sha256": "61b66733fa673c18e2725132f1a202e3b651cabd03e5d5144eb4758988be4cb6"
+      "bytes": 35055,
+      "sha256": "9a78ce58acc87e3b693c5edd787ec5ae68c48c5b034d78671dd1c01031515aec"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
