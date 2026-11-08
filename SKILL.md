@@ -26,8 +26,9 @@ Never treat private project datasets or textbook contents as bundled framework a
 
 ## Executable increment
 
-See the README workflow section for the new local CLI and explicit limitations.
-Use only authorized inputs; shipped examples are entirely synthetic.
+See docs/COMMANDS.md for every local CLI and docs/WORKFLOWS.md for the workflow
+narratives and explicit limitations. Use only authorized inputs; shipped examples
+are entirely synthetic.
 
 For optional live PubMed identifier discovery, read docs/PUBMED_DISCOVERY.md first.
 Preview is offline; fetch transmits the exact query/date parameters to NCBI and

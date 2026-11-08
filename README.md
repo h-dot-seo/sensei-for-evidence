@@ -3,93 +3,68 @@
 질문 정의부터 검색·선별·추출·근거 검토·후속 작업까지 연결하는 추적 가능한 연구 워크플로입니다.
 A method-first framework for traceable evidence research and bounded conclusions.
 
+한국어 안내: [docs/README.ko.md](docs/README.ko.md)
+
 **Search completion is not evidence sufficiency.** A consistent file, completed
 work-package assertion or reproducible bundle is not a completed scientific study.
 
+## Purpose and scope
+
+| | |
+|---|---|
+| Does | Standard-library Python tools reconcile **supplied data** (search plans, receipts, citation files, screening, reports, results, context, appraisals, statements, challenges, work) into traceable ledgers, review queues, deterministic bundles and version comparisons, exposing what is missing, stale or unreviewed. |
+| Does not | Search literature (only the explicitly invoked, preview-bound PubMed ESearch/EFetch clients make live requests), retrieve full text, read papers, call models, verify guideline currency, authenticate search pages, source locators or reviewer claims, appraise, meta-analyse, recommend clinically or give legal opinions. Census stays `NOT_ESTABLISHED`; conclusion readiness stays `NOT_READY`. |
+
 ## What is implemented
 
-Standard-library Python tools reconcile **supplied data**. The optional, explicitly
-invoked PubMed clients can fetch bounded PMID lists and selected metadata; the core
-never calls models:
+- **Collect**: preview-bound, keyless PubMed identifier discovery and explicit selected-PMID
+  EFetch MEDLINE title/abstract acquisition with retained native observations, explicit
+  caps/failures and separate unreviewed intake; declared search plans and optional page
+  ledgers exposing missing sources, count mismatches, overlap, truncation and incomplete
+  pagination; offline mock receipts with hash-bound review gates; exact CSV/NBIB/RIS export
+  provenance with explicit identity reconciliation that promotes only incomplete searches
+  into screening queues.
+- **Screen**: per-record search-occurrence provenance with exact-ID-only deduplication
+  (similar IDs are never merged, repeated IDs are not verified duplicates); record screening,
+  report retrieval/full-text decisions, study IDs and reasoned exclusions with separate
+  record/result/report counts; explicit multiple study IDs per report.
+- **Extract**: multiple result rows per source including null findings, with extraction-level
+  IDs and locators; local UTF-8 passage checks kept separate from scientific acceptance;
+  supplied nonclinical comparison conditions (model, concentration/exposure, time anchors,
+  comparator, causal limitations) without procedure or inference.
+- **Contextualize and appraise**: supplied guideline/development context with applicability
+  limits, reviewer status and evidence/work links; pre-extraction source context on searches,
+  records and source-review work; supplied appraisal methods and domain judgements with
+  provenance and missing-appraisal coverage, never a score or consensus.
+- **Plan and work**: dependency-aware work packages, deliverables and explicit completion
+  assertions, including source-review work before extraction; supplied planning ranks that
+  never override dependencies; per-work-package review packets joining source lineage,
+  applicability limits and appraisal provenance without decisions.
+- **Synthesize, challenge, assess readiness**: PRISMA-oriented synthesis snapshots with exact
+  citations, visible uncited evidence and source-bound reviews; supplied independent
+  challenges (distinct challenger label, strongest alternative explanation, missing
+  discriminating evidence, citation-integrity findings, conclusion width, outcome) bound to
+  the statements' current bases, where a material gap must name reopening work or an
+  amendment; twelve mechanical readiness gates with exact open items and a gate-ledger
+  hash, plus supplied sufficiency/readiness assertions bound to that hash. Closed gates are
+  bookkeeping, not sufficiency; the mechanical label stays NOT_READY.
+- **Archive and compare**: deterministic offline ZIP bundles with SHA-256 checks, regeneration
+  verification and CSV exports; typed native-collection and transition archives;
+  version-to-version mechanical comparison with optional amendment notes.
 
-- Optional preview-bound, keyless PubMed identifier discovery with retained native
-  response observations, explicit caps/failures and separate unreviewed CSV intake.
-- Explicit selected-PMID EFetch MEDLINE acquisition with title/abstract candidates,
-  literal identifier reconciliation, retained native fields and separate intake.
-- Declared search plans and optional page ledgers, including missing sources,
-  count mismatches, overlap, truncation and incomplete pagination.
-- Provider-neutral mock search/extraction receipts with hash-bound operator review
-  gates; unreviewed proposals never enter accepted evidence. Mock adapters stay offline.
-- Local UTF-8 CSV export provenance, strict-subset NBIB/RIS native wrappers,
-  and explicit supplied identity reconciliation with raw-row retention and
-  incomplete-search promotion into screening queues.
-- Per-record search-occurrence provenance with exact-ID-only deduplication.
-  Similar IDs are not merged; repeated IDs are not verified duplicate publications.
-- Record screening, report retrieval/full-text decisions, study IDs and reasoned
-  exclusions, with separate record/result/report counts.
-- Explicit local UTF-8 passage checks beside supplied extraction fields, with
-  source hashes, byte ranges and quotes kept separate from scientific acceptance.
-- Supplied nonclinical comparison conditions with model, concentration/exposure,
-  observation-time anchors, comparator and causal limitations; no procedure or inference.
-- Multiple result rows per source, including null findings, with extraction-level
-  IDs and traceable locators. Included reports may explicitly declare multiple
-  study IDs, with separate report-study result-presence accounting.
-- Supplied clinical-guideline and drug-development context, applicability limits,
-  reviewer status and evidence/work-package links.
-- Explicit pre-extraction source context linked to declared searches or enumerated
-  records and source-review work, without inventing evidence or study IDs.
-- Supplied appraisal methods and domain judgements, with reviewer provenance and
-  missing-appraisal coverage. No appraisal score or consensus is inferred.
-- Dependency-aware work packages, deliverables and explicit completion assertions,
-  including source-review work before any result has been extracted.
-- PRISMA-oriented synthesis review snapshots with exact result citations, visible
-  uncited evidence and source-bound supplied reviews; no generated conclusions.
-- Supplied planning ranks with rationale/uncertainty and source-staleness checks;
-  ranks never override dependencies or become automated recommendations.
-- Per-work-package review packets joining source lineage, guideline/development
-  applicability limits, appraisal provenance and local review gaps without decisions.
-- Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
-  CSV exports, plus version-to-version mechanical comparison.
-- Supplied independent challenges to synthesis statements: a challenger label
-  distinct from every recorded reviewer/appraiser label, the strongest alternative
-  explanation, missing discriminating evidence, citation-integrity findings,
-  conclusion width and outcome, bound to the challenged statements' current bases.
-  A material gap must name existing reopening work or an amendment; nothing is
-  generated, adjudicated, upheld or refuted.
-- Mechanical conclusion-readiness gates (search plan, searches, screening, reports,
-  extraction, appraisal of cited results, statement reviews, citations, challenges,
-  contexts, work) with exact open items and a gate-ledger hash, plus supplied
-  evidence-sufficiency and conclusion-readiness assertions bound to that hash.
-  Closing every gate is bookkeeping, not sufficiency; the mechanical label stays NOT_READY.
+## Start here
 
-Only explicit PubMed ESearch discovery and EFetch selected metadata acquisition
-make live requests. No full-text retrieval, guideline currency verification,
-scientific appraisal, meta-analysis, clinical recommendation or legal opinion is performed. Search pages, source locators and reviewer claims are not authenticated.
-Census and conclusion readiness remain `NOT_ESTABLISHED` and `NOT_READY`.
+- [First offline run](docs/FIRST_RUN.md): 11 tested commands from a declared question and
+  mock receipt to supplied reviews, PRISMA accounting, context work and a verified bundle.
+- [NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md), then the
+  [second-search continuation](docs/SECOND_SEARCH_CONTINUATION.md): citation files through
+  reconciliation, screening, reports, results and an original-source bundle.
+- [RIS intake](docs/RIS_INTAKE.md) for the supported RIS subset, archived with NBIB wrappers
+  by the [typed native collection archive](docs/NATIVE_COLLECTION_BUNDLES.md).
+- [Operator handoff](docs/OPERATOR_HANDOFF.md): one read-only sheet of manual queues and
+  every supplied-input route, executing nothing.
 
 ## Quick start
-
-New to the tools? Follow the [first offline run](docs/FIRST_RUN.md): 11 tested
-commands from a declared question and mock receipt through explicit supplied
-reviews, PRISMA accounting, nonclinical/context work and a verified bundle.
-Human-authored inputs and automatic bookkeeping are separated at each step.
-The [operator handoff](docs/OPERATOR_HANDOFF.md) also lists supplied-input routes
-and parser-help entry points without selecting or executing any operation.
-
-For supplied citation files rather than mock provider receipts, follow the
-[NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md): two native files through
-explicit reconciliation, screening, reports, retrieval, results, missing
-nonclinical context and a verified original-source bundle. Every decision is a
-prewritten fictional assertion, not a review performed by the tools.
-Then use the [second-search continuation](docs/SECOND_SEARCH_CONTINUATION.md) to
-append another originally planned search while retaining prior results and
-checking changed source context.
-
-For supported RIS exports, use [source-preserving RIS intake](docs/RIS_INTAKE.md)
-with separate explicit identity choices. Its scope is a documented subset, not
-universal database-format compatibility. Preserve supported RIS and NBIB wrappers
-together with exact historical imports using the separate
-[typed native collection archive](docs/NATIVE_COLLECTION_BUNDLES.md).
 
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
@@ -117,72 +92,117 @@ The **entirely synthetic** demo deliberately remains unfinished:
 - Bundle verification can pass while all scientific-readiness bounds remain closed.
 
 It illustrates bookkeeping and test behavior, not research findings or an
-experimental/clinical recommendation. Comparing the demo with itself reports no
-input changes; use two supplied protocol versions for a real mechanical comparison.
+experimental/clinical recommendation.
 
-## Choose a command
+## Commands at a glance
 
-| Command | Purpose |
+Exact usage of every script and subcommand: [command reference](docs/COMMANDS.md); narratives by stage: [workflows](docs/WORKFLOWS.md).
+
+| Entry points | Purpose |
 |---|---|
-| `review_handoff.py PROTOCOL.json [--work-package ID] [--text]` | Read-only operator sheet: manual queues, input locations, work deliverables and detailed-view navigation |
-| `receipt_intake.py template BASE.json` / `check BASE.json RECEIPTS.json [--text] [--protocol-output NEW.json]` | Guide synthetic manual receipt entry and inspect unreviewed candidates through the existing adapter |
-| `bibliographic_intake.py preview PROTOCOL.json EXPORT.csv --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--text]` | Retain exact local CSV bytes and inspect detached unreviewed candidates |
-| `nbib_intake.py preview PROTOCOL.json EXPORT.nbib --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve native PubMed-format field occurrences and verify a CSV derivative for explicit reconciliation |
-| `nbib_batch_intake.py preview PROTOCOL.json --export ID=EXPORT.nbib [--export ID=OTHER.nbib] --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve each explicitly grouped native file and prepare one unreviewed CSV intake for one incomplete search |
-| `ris_intake.py preview PROTOCOL.json EXPORT.ris --search-id ID --searched-at TEXT [--output NEW.json] [--text]` / `verify ARTIFACT.json [--intake-output NEW.json OR --csv-output NEW.csv] [--text]` | Preserve strict-subset native RIS bytes/field occurrences and prepare CSV candidates without DOI/ID resolution |
-| `collection_bundle.py create PROTOCOL.json NEW.zip --nbib INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Carry selected native wrappers with the research bundle and replay their exact import associations |
-| `batch_collection_bundle.py create PROTOCOL.json NEW.zip --batch INDEX=ARTIFACT.json [--text]` / `verify BUNDLE.zip [--text]` | Package selected batch wrappers and every exact native source file with historical import bindings and canonical replay |
-| `native_collection_bundle.py create PROTOCOL.json NEW.zip [--ris INDEX=ARTIFACT.json] [--nbib INDEX=ARTIFACT.json] [--nbib-batch INDEX=ARTIFACT.json] [--text]` / `verify BUNDLE.zip [--text]` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required |
-| `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
-| `appraisal_intake.py template/target/assemble/verify ...` | Append explicitly supplied result-linked method/domain appraisals after separate review; preserve disagreement and expose source-status changes without scores or review renewal |
-| `challenge_intake.py template PROTOCOL.json REFERENCES.json [--candidate-output NEW.json]` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Append explicitly supplied independent challenges to existing synthesis statements after separate review; bind them to the challenged statements and expose open material gaps without upholding or refuting any statement |
-| `readiness_review.py PROTOCOL.json [--text]` | Show the mechanical conclusion-readiness gate ledger, its open items and hash, and supplied readiness assertions bound to it; closed gates are bookkeeping, not sufficiency |
-| `readiness_intake.py template PROTOCOL.json [--candidate-output NEW.json]` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Append explicitly supplied evidence-sufficiency and conclusion-readiness assertions bound to the current gate ledger after separate review; a READY assertion while gates are open stays visible with those gates, and nothing is promoted |
-| `work_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APPLICATION.json ...` / `verify BUNDLE.zip` | Retain and replay an explicit contiguous source-work/evidence-work/completion segment with exact original bytes, without renewing completion or assessing artifacts |
-| `work_completion_intake.py template/target/assemble/verify ...` | Record one explicit unfinished-work completion with separate exact-target review, source binding and dependency-change cues, without artifact checks or acceptance assessment |
-| `evidence_work_intake.py template/target/assemble/verify ...` | Append explicitly reviewed result-linked work packages with human deliverables/dependencies, without changing existing research or generating scientific tasks |
-| `report_intake.py template/target/assemble/verify ...` | Register explicitly mapped new reports and optional document declarations through separate review, leaving full-text decisions pending |
-| `report_retrieval.py template/target/assemble/verify ...` | Review supplied retrieval-state transitions for existing unassessed reports without remapping records, replacing sources or renewing reviews |
-| `report_source_intake.py template/target/assemble/verify ...` | Append explicitly reviewed new source declarations to retrieved reports, preserving prior catalogs and stale reviews without byte verification |
-| `report_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay an explicitly selected contiguous registration/retrieval/full-text segment, not complete research history |
-| `extraction_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APP.json [...]` / `verify BUNDLE.zip` | Retain and replay a contiguous reviewed result/correction/condition segment with historical source context, not complete extraction history |
-| `bibliographic_review.py template ARTIFACT.json` / `target PROTOCOL.json ARTIFACT.json CHOICES.json` / `assemble PROTOCOL.json ARTIFACT.json REVIEW.json [--protocol-output NEW.json] [--text]` | Bind explicit collection choices and supplied review to an append-only incomplete search |
-| `offline_adapter.py PROTOCOL.json FIXTURE.json [--reviews REVIEWS.json] [--protocol-output OUTPUT.json]` | Run the synthetic adapter contract and review gates |
-| `synthesis_review.py PROTOCOL.json [--text]` | Review stage counts, supplied statement citations and unresolved limits |
-| `work_review.py PROTOCOL.json [--work-package ID] [--text]` | Join evidence/context/uncertainty around a work deliverable |
-| `research_status.py PROTOCOL.json [--text]` | View mechanical review queues and unknown stages |
-| `validate_run.py STATE.json` | Validate selected state/release consistency rules |
-| `evidence_workflow.py PROTOCOL.json` | Reconcile search, screening, results, context, appraisal and work |
-| `search_manifest.py PROTOCOL.json [--text]` | Freeze exact query specs and source-wise receipt, interruption and overlap accounting without executing searches |
-| `prisma_audit.py PROTOCOL.json [--text]` | Export unit-specific members, exclusion reasons, identity links and supplied-count partitions |
-| `prisma_reports.py PROTOCOL.json` | Add report/full-text/study and extraction-queue accounting |
-| `research_bundle.py create PROTOCOL.json OUTPUT.zip` | Create a new portable supplied-data bundle |
-| `research_bundle.py verify OUTPUT.zip` | Check hashes, implementation bytes and regenerated outputs |
-| `compare_runs.py BEFORE.json AFTER.json [--text]` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings |
-| `screening_review.py PROTOCOL.json [--record-id ID] [--template] [--text]` | Inspect source-bound supplied reviewer positions or prepare blank assertions without deciding eligibility |
-| `screening_decision.py target/assemble/inspect ...` | Apply only an explicit supplied screening choice to a new candidate, retaining source/reviewer decision receipts |
-| `report_review.py PROTOCOL.json [--report-id ID] [--template] [--text]` | Inspect supplied full-text versions and reviewer positions without verifying documents or changing decisions |
-| `report_study_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility |
-| `report_study_inventory.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Describe explicit candidate studies before full-text inclusion without creating memberships or eligibility |
-| `inventory_intake.py template PROTOCOL.json --report-id ID --study-id ID --candidate-output NEW.json` / `target` / `assemble` / `verify` | Append explicitly supplied descriptive inventory with separate exact-input review, preserving eligibility and result counts |
-| `report_study_inventory_review.py PROTOCOL.json [--report-id ID --study-id ID] [--template] [--text]` | Record separate human positions on described candidates before report inclusion, without declaring memberships |
-| `result_intake.py target/assemble/verify ...` | Explicitly review and append supplied manual result rows with detached document associations and exact-input replay |
-| `result_source_review.py ORIGINAL.json APPLICATION.json CURRENT.json [--text]` | Replay a manual intake record, then separately compare current result rows, report links and supplied document context |
-| `result_correction.py target/assemble/verify ...` | Apply explicitly reviewed result/limitations text corrections without changing extraction IDs, row order or counts |
-| `result_extraction.py PROTOCOL.json --report-id ID --study-id ID --record-id ID [--text]` | Join exact report-study context and existing results with a deliberately blank manual intake candidate |
-| `condition_intake.py target/assemble/verify ...` | Append explicitly reviewed supplied condition metadata with detached document associations, preserving all existing results |
+| `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
+| `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
+| `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
+| `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
+| `pubmed_discovery.py`, `pubmed_metadata.py` | Optional preview-bound live ESearch/EFetch; the only networked commands |
+| `screening_review.py`, `screening_decision.py` | Supplied reviewer positions; explicit supplied screening decisions |
+| the ten `report_*.py` command-line scripts, `inventory_intake.py` | Report registration, retrieval updates, source declarations and byte checks, full-text positions and decisions, report-study positions and inventory |
+| `result_*.py`, `condition_intake.py` | Worksheets, passage checks, manual result intake, drift comparison, text corrections, nonclinical conditions |
+| `context_intake.py`, `work_context_intake.py`, `appraisal_intake.py`, `appraisal_source_review.py` | Supplied context and work assignment; supplied appraisals and later comparison |
+| `synthesis_review.py`, `challenge_intake.py`, `readiness_review.py`, `readiness_intake.py` | Synthesis snapshot; independent challenges; readiness gates and sufficiency/readiness assertions |
+| `work_review.py`, `source_work_intake.py`, `evidence_work_intake.py`, `work_completion_intake.py`, `artifact_review.py` | Work packets; reviewed work proposals and completion; artifact byte checks |
+| `research_bundle.py`, `*_bundle.py`, `compare_runs.py`, `validate_run.py` | Deterministic bundles and archives; version comparison; state validation |
 
-Use [detailed usage and compatibility](docs/USAGE.md) for field requirements,
-examples, ID migration, stage definitions, strict JSON rules and limitations.
-Existing bundles require their recorded implementation bytes for verification.
-Comparison hashes ignore object key order but retain list order; exact-input bundle
-hashes preserve original bytes. Neither kind of hash is a signature.
+## Documentation
+
+Start and reference
+- [First offline run](docs/FIRST_RUN.md)
+- [Operator handoff](docs/OPERATOR_HANDOFF.md)
+- [NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md)
+- [Second-search continuation](docs/SECOND_SEARCH_CONTINUATION.md)
+- [Command reference](docs/COMMANDS.md)
+- [Workflows](docs/WORKFLOWS.md)
+- [Detailed usage and compatibility](docs/USAGE.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [한국어 안내](docs/README.ko.md)
+- [Validation history](docs/VALIDATION_HISTORY.md)
+
+Search plans, receipts and source work
+- [Search manifest](docs/SEARCH_MANIFEST.md)
+- [Receipt intake](docs/RECEIPT_INTAKE.md)
+- [Adapter contract](docs/ADAPTER_CONTRACT.md)
+- [Source-review work](docs/SOURCE_REVIEW_WORK.md)
+- [Source work intake](docs/SOURCE_WORK_INTAKE.md)
+- [Source contexts](docs/SOURCE_CONTEXTS.md)
+- [Work document sources](docs/WORK_DOCUMENT_SOURCES.md)
+
+Citation files and collection
+- [CSV intake](docs/BIBLIOGRAPHIC_INTAKE.md)
+- [NBIB intake](docs/PUBMED_NBIB_INTAKE.md)
+- [NBIB batch](docs/PUBMED_NBIB_BATCH.md)
+- [RIS intake](docs/RIS_INTAKE.md)
+- [Collection review](docs/BIBLIOGRAPHIC_REVIEW.md)
+- [Collection bundles](docs/COLLECTION_BUNDLES.md)
+- [Batch collection bundles](docs/BATCH_COLLECTION_BUNDLES.md)
+- [Native collection bundles](docs/NATIVE_COLLECTION_BUNDLES.md)
+- [PubMed discovery](docs/PUBMED_DISCOVERY.md)
+- [PubMed metadata](docs/PUBMED_METADATA.md)
+
+Screening and reports
+- [Screening reviews](docs/SCREENING_REVIEWS.md)
+- [Screening decisions](docs/SCREENING_DECISIONS.md)
+- [PRISMA audit](docs/PRISMA_AUDIT.md)
+- [Multi-study reports](docs/MULTI_STUDY_REPORTS.md)
+- [Report intake](docs/MANUAL_REPORT_INTAKE.md)
+- [Retrieval updates](docs/REPORT_RETRIEVAL_UPDATES.md)
+- [Source declarations](docs/MANUAL_SOURCE_DECLARATIONS.md)
+- [Source check](docs/REPORT_SOURCE_CHECK.md)
+- [Report reviews](docs/REPORT_REVIEWS.md)
+- [Report decisions](docs/REPORT_DECISIONS.md)
+- [Report-study reviews](docs/REPORT_STUDY_REVIEWS.md)
+- [Study inventory](docs/REPORT_STUDY_INVENTORY.md)
+- [Inventory intake](docs/MANUAL_INVENTORY_INTAKE.md)
+- [Candidate reviews](docs/INVENTORY_CANDIDATE_REVIEWS.md)
+- [Report transitions](docs/REPORT_TRANSITION_BUNDLES.md)
+
+Results and conditions
+- [Extraction worksheets](docs/EXTRACTION_WORKSHEETS.md)
+- [Passage check](docs/RESULT_PASSAGE_CHECK.md)
+- [Result intake](docs/MANUAL_RESULT_INTAKE.md)
+- [Result source review](docs/RESULT_SOURCE_REVIEW.md)
+- [Result corrections](docs/RESULT_CORRECTIONS.md)
+- [Condition intake](docs/MANUAL_CONDITION_INTAKE.md)
+- [Experiment conditions](docs/EXPERIMENT_CONDITIONS.md)
+- [Outcome statistics](docs/OUTCOME_STATISTICS.md)
+- [Claim comparison](docs/CLAIM_COMPARISON.md)
+- [Extraction transitions](docs/EXTRACTION_TRANSITION_BUNDLES.md)
+
+Context, appraisal, synthesis and readiness
+- [Context intake](docs/MANUAL_CONTEXT_INTAKE.md)
+- [Work context intake](docs/WORK_CONTEXT_INTAKE.md)
+- [Context amendments](docs/CONTEXT_AMENDMENTS.md)
+- [Appraisal intake](docs/MANUAL_APPRAISAL_INTAKE.md)
+- [Appraisal source review](docs/APPRAISAL_SOURCE_REVIEW.md)
+- [Appraisal transitions](docs/APPRAISAL_TRANSITION_BUNDLES.md)
+- [Synthesis review](docs/SYNTHESIS_REVIEW.md)
+- [Independent challenge](docs/INDEPENDENT_CHALLENGE.md)
+- [Conclusion readiness](docs/CONCLUSION_READINESS.md)
+
+Planning, work and completion
+- [Work review](docs/WORK_REVIEW.md)
+- [Work navigation](docs/WORK_NAVIGATION.md)
+- [Prerequisite review](docs/PREREQUISITE_REVIEW.md)
+- [Planning assertions](docs/PLANNING_ASSERTIONS.md)
+- [Rationale links](docs/PLANNING_RATIONALE_LINKS.md)
+- [Amendment notes](docs/AMENDMENT_NOTES.md)
+- [Completion binding](docs/COMPLETION_BINDING.md)
+- [Completion comparison](docs/COMPLETION_COMPARISON.md)
+- [Evidence work intake](docs/EVIDENCE_WORK_INTAKE.md)
+- [Completion intake](docs/WORK_COMPLETION_INTAKE.md)
+- [Work transitions](docs/WORK_TRANSITION_BUNDLES.md)
+- [Artifact review](docs/LOCAL_ARTIFACT_REVIEW.md)
 
 ## Research method and publication boundary
-
-The framework supports plan, run, status, method and audit intents. Choose
-question-appropriate established methods, preserve contradictions and uncertainty,
-and distinguish supplied observations from interpretation and decisions.
 
 - [Workflow instructions](SKILL.md)
 - [Architecture and methodological boundaries](docs/ARCHITECTURE.md)
@@ -194,302 +214,3 @@ Only generic code, documentation and synthetic fixtures are included. No private
 research corpus, account information, article/book full text, figures, real
 experimental results or scientific validation data are included. No license has
 been selected by the owner yet.
-
-See [the mock adapter contract](docs/ADAPTER_CONTRACT.md) for the synthetic
-search → receipt review → extraction review → report/status/bundle example.
-
-See [work review packets](docs/WORK_REVIEW.md) for the synthetic guideline,
-development and research-management handoff example.
-
-See [supplied planning assertions](docs/PLANNING_ASSERTIONS.md) for recording a
-rank, checking changed source context and keeping priority separate from dependencies.
-
-See [synthesis review snapshots](docs/SYNTHESIS_REVIEW.md) for the record/report/
-study/result accounting and supplied statement review journey.
-
-See [independent challenge records](docs/INDEPENDENT_CHALLENGE.md) for the fictional
-statement → challenge → reopening journey and the distinct-label rule.
-
-See [conclusion readiness gates](docs/CONCLUSION_READINESS.md) for the fictional
-gate ledger → supplied sufficiency/readiness assertion → reopening journey and why
-closed gates are not evidence sufficiency.
-
-See [nonclinical condition records](docs/EXPERIMENT_CONDITIONS.md) for the fictional
-model/condition → result → WP/synthesis review journey.
-
-Outcome- and arm-specific sample reporting is available in the fictional
-[`sampling-review.json`](examples/sampling-review.json) workflow. It exposes
-missing n semantics and independence explanations without inferring sample size
-or assessing statistics. See [condition metadata](docs/EXPERIMENT_CONDITIONS.md#outcome-specific-sample-reporting).
-
-[`statistics-review.json`](examples/statistics-review.json) demonstrates supplied
-arm summaries, statistical metadata and explicitly oriented effect-direction
-text. [Outcome statistics review](docs/OUTCOME_STATISTICS.md) explains missing
-fields and literal-label cues without numerical or scientific inference.
-
-[`claim-comparison.json`](examples/claim-comparison.json) adds human-supplied
-observation/causal claim positions alongside source-linked results, n and statistics.
-[Claim-position comparison](docs/CLAIM_COMPARISON.md) explains exact scope,
-stale review and why positions are not independent votes or inferred conclusions.
-
-Start with the [operator handoff journey](docs/OPERATOR_HANDOFF.md) to see which
-steps remain human work and reproduce evidence → claim/guideline → WP → bundle
-review using real CLI commands on the fictional fixture.
-
-The [PRISMA-oriented accounting export](docs/PRISMA_AUDIT.md) exposes exact member
-IDs and record/report/study/result links for audit, without certifying a complete
-search or PRISMA compliance. Try `examples/prisma-audit.json`.
-
-Before connecting provider output to research, use the [search query/receipt manifest](docs/SEARCH_MANIFEST.md)
-with `examples/search-manifest.json` to inspect exact requests, missing runtime
-fields and source-wise unresolved receipts. No query translation or execution occurs.
-
-For manual-entry rehearsal, start with [receipt intake](docs/RECEIPT_INTAKE.md).
-It generates deliberately unfilled request/page fields and checks a filled mock
-fixture without accepting reviews or overwriting existing research.
-
-[Source-review work packages](docs/SOURCE_REVIEW_WORK.md) connect unreviewed manual
-receipts to search/screening/extraction deliverables without fabricating evidence
-IDs. Try `examples/source-work-protocol.json` with the existing work/handoff CLIs.
-
-PRISMA audit JSON also exposes [work/deliverable traceability](docs/PRISMA_AUDIT.md#work-and-deliverable-traceability):
-explicit source/result work references, indirect report links and unverified
-artifact assertions, without treating task completion as source approval.
-
-[Opt-in local artifact review](docs/LOCAL_ARTIFACT_REVIEW.md) checks explicitly
-listed synthetic local files against supplied size/SHA-256 expectations using
-safe POSIX directory descriptors. Unsupported platforms fail closed; matching
-bytes are never acceptance of a work package or scientific conclusion.
-
-[Guideline/development amendment comparison](docs/CONTEXT_AMENDMENTS.md) extends
-compare_runs with explicit context→result→work snapshots and retained-review-label
-cues. Version/access/review dates, applicability and uncertainty stay separate;
-no clinical significance, regulatory decision or new priority is inferred.
-
-[Prerequisite review packets](docs/PREREQUISITE_REVIEW.md) open a selected WP and
-its explicit transitive prerequisites together, preserving source/experimental/
-guideline gaps and supplied planning rationale beside deliverables and completion
-criteria. Dependency-first display is not an automated research decision.
-
-[Planning rationale citations](docs/PLANNING_RATIONALE_LINKS.md) connect existing
-human planning assertions to supplied hypotheses and challenging/unresolved
-positions. They add source-change tracking, not automated rationale validation,
-refutation, clinical decisions or new priorities.
-
-[Compact work navigation](docs/WORK_NAVIGATION.md) adds `work_review.py --brief`
-for packet-scoped status groups, deliverables, completion criteria and existing
-review cues. It shortens the review view without choosing the next task.
-
-[Supplied amendment notes](docs/AMENDMENT_NOTES.md) optionally bind a human change
-reason, scope and version labels to the exact inputs of compare_runs, with observed
-review/work-state transitions. Matching notes are not change approval or legal,
-scientific or regulatory validation.
-
-[Completion source binding](docs/COMPLETION_BINDING.md) flags unbound/stale COMPLETE
-assertions after work/source/locator changes, reusing planning source scope. It
-never verifies acceptance, renews a hash or automatically reopens work.
-
-Selected work views also expose [direct prerequisite completion cues](docs/PREREQUISITE_REVIEW.md#completion-source-cues-without-expanding-packets):
-CURRENT/STALE/UNBOUND source labels remain visible even when full prerequisite
-packets are omitted. Recorded unblocking stays separate from acceptance review.
-
-[Portable work-package CSV exports](docs/COMPLETION_BINDING.md#portable-csv-and-bundle-summary)
-also preserve supplied completion assertions, source-binding hashes, direct
-prerequisite labels and explicit nonverification states without changing work status.
-
-[Completion amendment comparison](docs/COMPLETION_COMPARISON.md) identifies changed
-work/source sections and direct prerequisite labels across two supplied snapshots.
-It separates own artifact-locator changes from source-basis changes without
-reconstructing historical acceptance reasons or reopening completed work.
-
-Add `--text` to [protocol comparison](docs/COMPLETION_COMPARISON.md#readable-comparison-output)
-for a read-only summary with exact input hashes, changed field names, all work
-source states and amendment-binding results. Full JSON remains the default.
-
-[Local bibliographic CSV intake](docs/BIBLIOGRAPHIC_INTAKE.md) preserves exact export
-bytes, original rows and an explicit search-plan association in a detached,
-unreviewed artifact. Duplicate occurrences and locator conflicts remain visible;
-byte-consistency verification does not authenticate the source or promote rows
-into screening, PRISMA counts, guideline links or development evidence.
-
-[Native PubMed NBIB preparation](docs/PUBMED_NBIB_INTAKE.md) retains original file
-bytes, repeated fields and exact native spans while producing a verified CSV
-derivative for the same human reconciliation path. No PMID, title or URL is
-resolved or used for automatic identity decisions. Keep the detached native
-artifact with the resulting protocol; ordinary bundles retain the CSV provenance
-but do not independently verify the native conversion.
-
-[Multiple-file NBIB preparation](docs/PUBMED_NBIB_BATCH.md) groups explicitly
-selected downloads before one human collection review, retaining per-file native
-bytes and row provenance. Repeated identifiers and identical files are not
-automatically removed; grouping is not verified pagination or search completeness.
-Keep the detached batch wrapper alongside the protocol and ordinary bundle.
-
-[Portable collection bundles](docs/COLLECTION_BUNDLES.md) optionally preserve
-single-file native wrappers, not batch wrappers, with the ordinary research bundle. Each attachment is
-checked against its exact historical import, while imports without supplied
-native wrappers remain visible. Packaging never changes collection or research
-decisions and does not establish search completeness.
-
-[Batch-native collection bundles](docs/BATCH_COLLECTION_BUNDLES.md) extend portable
-delivery through a separate format that retains every original file alongside
-its batch wrapper and ordinary research bundle. Exact historical import links
-and all native member bytes are replayed; partial attachment stays explicit.
-
-[Explicit source-work intake](docs/SOURCE_WORK_INTAKE.md) connects selected
-planned searches or records to human-authored review tasks through blank drafts,
-exact-context review and append-only replay. Dependencies and task meaning must
-be supplied; no priority, completion or scientific work is invented.
-
-[Explicit CSV reconciliation](docs/BIBLIOGRAPHIC_REVIEW.md) connects those artifacts
-to screening through supplied per-row identity/withholding choices and a separate
-exact-context review. Repeated imports retain flat source provenance and raw-row
-accounting while appending only incomplete searches, with no eligibility decisions.
-
-[Pre-extraction context links](docs/SOURCE_CONTEXTS.md) connect supplied guideline
-and development questions to exact typed source references and source-review work.
-They preserve applicability uncertainty and remain separate from extracted evidence.
-
-[Multiple studies in one report](docs/MULTI_STUDY_REPORTS.md) supports explicit
-plural study declarations while keeping legacy record/report counts unchanged.
-Missing report-study result memberships stay visible without inferring identity,
-independence, study-level eligibility or exhaustive extraction.
-
-[Supplied screening reviewer positions](docs/SCREENING_REVIEWS.md) preserve
-separate title/abstract judgments, source/criteria hashes and differing or stale
-assertions after collection. They never vote, adjudicate eligibility, authenticate
-reviewers or replace canonical screening and PRISMA counts.
-
-[Explicit supplied screening decisions](docs/SCREENING_DECISIONS.md) connect those
-positions to a separately authored human choice. Target-bound assembly retains
-before/after rows and source/reviewer snapshots, refuses structural conflicts,
-and never votes, authenticates chronology or verifies medical correctness.
-
-[Supplied full-text reviewer positions](docs/REPORT_REVIEWS.md) bind separate human
-positions to declared document versions and mapped record context. Read-only
-scaffolds preserve missing/unverified digests, source coverage and disagreement;
-no document reading, consensus or per-study eligibility is inferred.
-
-[Manual report registration](docs/MANUAL_REPORT_INTAKE.md) connects explicitly
-included screening records to new report rows and supplied document declarations
-before full-text assessment. Retrieval and identity remain supplied assertions;
-no report eligibility, study membership, result or nonclinical parameter is inferred.
-[Supplied retrieval updates](docs/REPORT_RETRIEVAL_UPDATES.md) then record a later
-retrieval outcome for pending/unavailable reports without duplicate registration.
-Changed source contexts expose stale retained reviews rather than refreshing them.
-[Reviewed source declarations](docs/MANUAL_SOURCE_DECLARATIONS.md) append later
-supplements or separately declared versions to already retrieved reports. Existing
-descriptors remain untouched, and local byte comparison stays a separate check.
-The optional [report-transition archive](docs/REPORT_TRANSITION_BUNDLES.md) retains
-exact initial/application/endpoint files for a supplied contiguous segment without
-changing the existing research or native-source archive formats.
-The separate [extraction-transition archive](docs/EXTRACTION_TRANSITION_BUNDLES.md)
-retains ordered result intake, text correction and descriptive condition records.
-Earlier wording and source selections remain bound to their recorded step context;
-no prior review or downstream assertion is renewed.
-
-[Exact report-study reviewer positions](docs/REPORT_STUDY_REVIEWS.md) distinguish
-human opinions on individual studies from report inclusion. Explicit source-ID
-selections and unresolved orphan assertions remain visible without choosing a
-canonical study outcome, changing PRISMA counts or filtering extracted results.
-
-[Reviewed inventory intake](docs/MANUAL_INVENTORY_INTAKE.md) appends completed
-descriptions without manually editing the protocol. It preserves old assertions
-and research counts; it does not infer study membership or renew prior reviews.
-
-[Descriptive candidate inventory](docs/REPORT_STUDY_INVENTORY.md) permits source-linked
-human descriptions on retrieved reports before their full-text inclusion decision.
-Novel-label scaffolds do not count as stored assertions or change included study
-memberships, prior review targets, results or pending-work queues.
-
-[Explicit local source-byte checks](docs/REPORT_SOURCE_CHECK.md) compare a selected
-local document with its supplied source digest through a bounded no-follow file
-checker. Detached observations never certify reading, authenticity or eligibility,
-change canonical state, or follow locators. Unsupported platforms fail closed.
-
-[Explicit full-text decision records](docs/REPORT_DECISIONS.md) apply a separately
-supplied human include/exclude choice and exact study declaration to a detached
-candidate. Replay against the original input precedes protocol export; conflicting
-result links are rejected rather than deleted, and reviewer positions never vote.
-
-[Document-linked source work](docs/WORK_DOCUMENT_SOURCES.md) optionally binds named
-report-source versions to a source-review task and its direct dependents. Changed
-document context can stale planning/completion assertions without reopening work,
-automatically accepting it, or changing legacy task hashes when omitted.
-
-[Inventory-candidate eligibility positions](docs/INVENTORY_CANDIDATE_REVIEWS.md)
-keep human opinions on described candidates separate from report inclusion and
-included-membership reviews. Try `examples/report-study-inventory-reviews.json`.
-
-[Manual result intake](docs/MANUAL_RESULT_INTAKE.md) connects a collected, screened
-and included report to explicit supplied results without using mock extraction
-or changing prior evidence. Document associations stay in a separate replay record.
-
-[Detached result-source comparison](docs/RESULT_SOURCE_REVIEW.md) checks later
-result/source drift against a replayed manual intake record. Differences stay
-separate from approval, source authenticity and scientific interpretation.
-
-[Explicit result text corrections](docs/RESULT_CORRECTIONS.md) preserve an existing
-finding's ID and count while applying separately reviewed wording changes. Before/
-after rows and supplied sources stay in a detached replay record; earlier reviews
-and downstream assertions are not renewed or scientifically reassessed.
-
-[Manual extraction worksheets](docs/EXTRACTION_WORKSHEETS.md) gather available
-document declarations, existing pair-results and explicitly linked contexts before
-new result entry. Only caller-selected report/study/record IDs are prefilled;
-source selection, scientific fields and human metadata remain blank.
-
-[Supplied condition intake](docs/MANUAL_CONDITION_INTAKE.md) appends completed
-comparison descriptions through explicit human review and exact replay. It binds
-existing result rows and chosen document declarations without generating experimental
-parameters, changing observations or validating scientific claims.
-
-[Reviewed evidence-work intake](docs/EVIDENCE_WORK_INTAKE.md) connects existing
-result IDs to human-authored review deliverables and explicit prerequisites. It
-adds only PLANNED tasks and preserves prior source work, evidence and assertions.
-
-[Reviewed work completion](docs/WORK_COMPLETION_INTAKE.md) links an explicitly supplied
-artifact/acceptance assertion to the reviewed work/source basis without editing
-other research or renewing existing COMPLETE assertions. Dependency changes are
-shown separately from scientific readiness; artifact content is not inspected.
-
-[Work-transition archives](docs/WORK_TRANSITION_BUNDLES.md) preserve selected proposal
-and completion records with their actual initial/endpoint protocols. Replaying
-a historical segment does not renew acceptance or establish complete project history.
-
-[Reviewed appraisal intake](docs/MANUAL_APPRAISAL_INTAKE.md) records human-authored
-method/domain assertions against exact result IDs. Existing conflicting positions
-remain separate; changed work/synthesis/completion source cues do not renew reviews.
-
-[Detached appraisal context comparison](docs/APPRAISAL_SOURCE_REVIEW.md) follows
-exactly replayed imported appraisal IDs and their original result/source snapshots
-through later supplied edits. Literal drift is separate from scientific validity;
-no appraisal, work completion or prior reviewer assertion is renewed.
-
-[Appraisal-transition archives](docs/APPRAISAL_TRANSITION_BUNDLES.md) preserve exact
-original/import/endpoint bytes for an explicitly selected contiguous appraisal
-segment. Existing archives stay unchanged; source snapshots and supplied reviews
-retain their historical scope without asserting complete history or current validity.
-
-[Reviewed guideline/development context intake](docs/MANUAL_CONTEXT_INTAKE.md)
-appends complete human-authored source/evidence contexts without inventing clinical
-or regulatory judgements. New contexts stay unassigned, and existing work links,
-planning/completion bases and each context's own review status remain unchanged.
-
-[Reviewed existing-work context assignment](docs/WORK_CONTEXT_INTAKE.md) appends
-only explicitly selected context links to named work. Before/after targets expose
-selected and direct-dependent source-basis changes while preserving stored ranks,
-completion assertions and hashes, without automatic applicability or review renewal.
-
-[Bounded optional PubMed discovery](docs/PUBMED_DISCOVERY.md) closes the gap between
-manual export collection and live identifier discovery. Preview is offline; only a
-matching explicitly invoked fetch contacts NCBI. Raw observations and stop reasons
-remain separate from search completeness, identity decisions and extracted evidence.
-
-After identifier discovery, [selected PubMed metadata acquisition](docs/PUBMED_METADATA.md)
-can obtain bounded EFetch MEDLINE title/abstract candidates. It preserves literal
-PMID links and native source fields without silently screening or extracting evidence.
-
-For the reading-to-extraction step, [selected source passage checks](docs/RESULT_PASSAGE_CHECK.md)
-show exact UTF-8 quotes beside unchanged manual result values. Source and quote
-matching never replaces human interpretation or the separate result intake review.
