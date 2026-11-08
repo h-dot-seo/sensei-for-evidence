@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.86.0-conclusion-readiness",
+  "release": "0.86.1-documentation-restructure",
   "date": "2026-11-08",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 376,
+  "file_count": 380,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 38199,
-      "sha256": "7c24ac20698ab60c3c92937ba95da3548a155df7ea6d955360886582265bce42"
+      "bytes": 12912,
+      "sha256": "8548a3d1a2570c9c4d8ebab2a7a162a8e387ede8cf82d2c4a384cd937062176c"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 4702,
-      "sha256": "607c691674f4dc59e98542502b3779bc063677bacc1d8cdb08c7c0fb2695224b"
+      "bytes": 4739,
+      "sha256": "54defeb3e498ba56fa213c4a2703036e57a4bc4618dca83beb8217efd608f30d"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 186389,
-      "sha256": "3dc50d7e8eea1775cae74ed0a8f5ee20eaba182f6344e6b097bb365ab11188e4"
+      "bytes": 3217,
+      "sha256": "abf9abab7426b286856128ac10e20b65dd357431a4a0cf5d7f2065319dd69ec0"
     },
     {
       "path": "adapter_integrity.py",
@@ -209,6 +209,11 @@
       "sha256": "2e0adf638d5240a923310d727eb50fa5379ba371cbf78e71cd0c8b368929324c"
     },
     {
+      "path": "docs/COMMANDS.md",
+      "bytes": 39169,
+      "sha256": "0f99048503752a7ad33f883013fc72cb8462017f093ebe9bdd84b5b7f1975e09"
+    },
+    {
       "path": "docs/COMPLETION_BINDING.md",
       "bytes": 7547,
       "sha256": "e6bc9822802ac82174b8ae12973268f24cf937e80fbe7fda362ac93f1e6cfc33"
@@ -364,6 +369,11 @@
       "sha256": "91de37ee1882f496fee4c445e73b4bc503e16354dbbac395433db991c757a2dd"
     },
     {
+      "path": "docs/README.ko.md",
+      "bytes": 16897,
+      "sha256": "2273cc5244619e586f500c3589d37c71bbd8df4fd7c2581dcc5fbc7d117cbf35"
+    },
+    {
       "path": "docs/RECEIPT_INTAKE.md",
       "bytes": 8076,
       "sha256": "35c8480ad49dbf051478245e28994f425e80f209972a2a5de712678621d0b7aa"
@@ -467,6 +477,16 @@
       "path": "docs/USAGE.md",
       "bytes": 35055,
       "sha256": "9a78ce58acc87e3b693c5edd787ec5ae68c48c5b034d78671dd1c01031515aec"
+    },
+    {
+      "path": "docs/VALIDATION_HISTORY.md",
+      "bytes": 190274,
+      "sha256": "896aa92427fb869dc5db0b1220c9f9736e18ea425252ef9c76b93ef4895c4965"
+    },
+    {
+      "path": "docs/WORKFLOWS.md",
+      "bytes": 29262,
+      "sha256": "3748251b209b6893a27f624da49febb27e5b0888ce62a6cca20b2a68afd15b0b"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
