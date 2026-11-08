@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "resolutions": [
+    {
+      "candidate_id": "csv-row-000001",
+      "disposition": "same_record",
+      "record_id": "record-A",
+      "rationale": "Prewritten fictional identity choice for software rehearsal only; no publication identity is verified."
+    },
+    {
+      "candidate_id": "csv-row-000002",
+      "disposition": "new_record",
+      "record_id": "record-D",
+      "rationale": "Prewritten fictional identity choice for software rehearsal only; no publication identity is verified."
+    }
+  ],
+  "review": {
+    "target_sha256": "8fd2b815607c652d4919ba0ecac1399af397be30c4e82739e2e89a5516ed2d61",
+    "reviewer": "Fictional secondary collection reviewer",
+    "reviewed_at": "2026-11-04",
+    "rationale": "Prewritten software-test assertion for an explicitly separate planned search; not actual reading or review.",
+    "decision": "import_for_screening"
+  }
+}

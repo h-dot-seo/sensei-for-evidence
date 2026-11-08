@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "source_id": "source-main",
+      "report_id": "report-one",
+      "source_descriptor_sha256": "90eabf96d3f37d5ed2117406212de1dedb03ba70486b6cb1b801ca4d48b764c9",
+      "path": "fictional-report.txt",
+      "bytes": 225
+    }
+  ]
+}

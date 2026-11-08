@@ -1,0 +1,12 @@
+{
+  "adjudicator": "Fictional walkthrough reviewer",
+  "decided_at": "2026-11-04",
+  "decision": "include",
+  "rationale": "Synthetic title/abstract bookkeeping only, not actual reading.",
+  "reason": "Prewritten fictional in-scope assertion.",
+  "receipt_id": "fictional-screen-record-A",
+  "record_id": "record-A",
+  "schema_version": 1,
+  "source_locator": "synthetic://walkthrough/screen/record-A",
+  "target_sha256": "099524fceab8076a008f581aabd60fcd30279a738d80d11e8466adfa2f7e12b6"
+}

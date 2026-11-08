@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "mode": "mock",
+  "provider_id": "synthetic-provider",
+  "adapter_version": "1",
+  "search_responses": [
+    {
+      "request": {
+        "search_id": "search-primary",
+        "source": "synthetic-index",
+        "query": "synthetic mechanism",
+        "window": "2020-2026",
+        "searched_at": "2026-01-01",
+        "request_id": "mock-search-request-1"
+      },
+      "pages": [
+        {
+          "response_id": "mock-page-1",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 1,
+          "has_more": true,
+          "total_count": 2,
+          "records": [
+            {
+              "record_id": "r1",
+              "source_locator": "synthetic://r1",
+              "title": "Synthetic record r1"
+            }
+          ]
+        },
+        {
+          "response_id": "mock-page-2",
+          "request_id": "mock-search-request-1",
+          "retrieved_at": "2026-11-03T00:00:00Z",
+          "page_number": 2,
+          "has_more": false,
+          "total_count": 2,
+          "records": [
+            {
+              "record_id": "r2",
+              "source_locator": "synthetic://r2",
+              "title": "Synthetic record r2"
+            }
+          ]
+        }
+      ],
+      "total_count": 2
+    }
+  ],
+  "extraction_candidates": [
+    {
+      "candidate_id": "candidate-1",
+      "request_id": "mock-search-request-1",
+      "record_id": "r1",
+      "source_locator": "synthetic://r1",
+      "source_text": "Entirely synthetic source. reporter changed",
+      "supporting_quote": "reporter changed",
+      "extraction_request_id": "mock-extraction-1",
+      "extractor_id": "synthetic-mock-extractor",
+      "extractor_version": "1",
+      "instruction": "Propose a structured result from the supplied synthetic text; do not infer validity.",
+      "proposal": {
+        "record_id": "r1",
+        "study_id": "s1",
+        "locator": "synthetic section 1",
+        "model": "synthetic cell model",
+        "intervention": "perturbation",
+        "comparator": "vehicle",
+        "endpoint": "reporter",
+        "result": "reporter changed",
+        "limitations": "no rescue experiment",
+        "mechanism_basis": "intervention",
+        "evidence_id": "e1"
+      }
+    },
+    {
+      "candidate_id": "candidate-2",
+      "request_id": "mock-search-request-1",
+      "record_id": "r1",
+      "source_locator": "synthetic://r1",
+      "source_text": "Entirely synthetic source. no change observed",
+      "supporting_quote": "no change observed",
+      "extraction_request_id": "mock-extraction-2",
+      "extractor_id": "synthetic-mock-extractor",
+      "extractor_version": "1",
+      "instruction": "Propose a structured result from the supplied synthetic text; do not infer validity.",
+      "proposal": {
+        "record_id": "r1",
+        "study_id": "s1",
+        "locator": "synthetic section 2",
+        "model": "synthetic cell model",
+        "intervention": "perturbation",
+        "comparator": "vehicle",
+        "endpoint": "orthogonal synthetic readout",
+        "result": "no change observed",
+        "limitations": "synthetic negative result; precision unassessed",
+        "mechanism_basis": "intervention",
+        "evidence_id": "e2"
+      }
+    }
+  ]
+}

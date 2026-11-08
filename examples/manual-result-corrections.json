@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "evidence_id": "result-C-manual",
+      "report_id": "report-one",
+      "changes": {
+        "result": "Corrected fictional null-finding wording for this software example. No real observation or source reassessment is claimed."
+      },
+      "source_references": [
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional supplement section C; supplied location only"
+        }
+      ],
+      "corrected_by": "Fictional extractor",
+      "corrected_at": "2026-11-04",
+      "correction_note": "Synthetic transcription correction to the existing finding, not a new result or an assertion of scientific validity."
+    },
+    {
+      "evidence_id": "result-A-second",
+      "report_id": "report-one",
+      "changes": {
+        "limitations": "Corrected fictional caveat: the direction-only wording does not provide a numerical effect size. Source reading and scientific validity remain unestablished."
+      },
+      "source_references": [
+        {
+          "source_id": "source-main",
+          "extraction_locator": "Fictional main document section A; supplied location only"
+        },
+        {
+          "source_id": "source-supplement",
+          "extraction_locator": "Fictional supplement note A; supplied location only"
+        }
+      ],
+      "corrected_by": "Fictional extractor",
+      "corrected_at": "2026-11-04",
+      "correction_note": "Synthetic correction of a limitation attached to the existing result. No other metadata is revised or reassessed."
+    }
+  ]
+}

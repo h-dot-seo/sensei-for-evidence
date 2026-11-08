@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "before_sha256": "14598976dfdb6a64c70b4edc18961b98aca44147e88a1418d297f610838205dd",
+  "after_sha256": "487ec3a20c08128c229c37c046e2bd3c2f7f152ddfbf42ffaa7d4d4a0b0a8ac6",
+  "from_version": "synthetic-first-run-enriched-v1",
+  "to_version": "synthetic-first-run-note-complete-v2",
+  "reason": "Fictional operator records completion of a receipt-review note only; this does not accept missing searches or scientific evidence.",
+  "authored_by": "fictional-operator",
+  "authored_at": "2026-11-03",
+  "scope_fields": [
+    "gaps",
+    "version"
+  ]
+}

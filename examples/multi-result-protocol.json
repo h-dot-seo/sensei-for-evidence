@@ -1,0 +1,134 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "1",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [
+    {
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "searched_at": "2026-01-01",
+      "window": "2020-2026",
+      "record_ids": [
+        "r1",
+        "r2"
+      ],
+      "total_count": 2,
+      "complete": true,
+      "has_more": false
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 1",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "reporter",
+      "result": "reporter changed",
+      "limitations": "no rescue experiment",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e1"
+    },
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 2",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "orthogonal synthetic readout",
+      "result": "no change observed",
+      "limitations": "synthetic negative result; precision unassessed",
+      "mechanism_basis": "intervention",
+      "evidence_id": "e2"
+    }
+  ],
+  "gaps": [
+    {
+      "question": "Does rescue reverse the endpoint?",
+      "evidence_ids": [
+        "e1",
+        "e2"
+      ],
+      "deliverable": "rescue experiment plan",
+      "acceptance_criterion": "controls, endpoint and analysis prespecified",
+      "context": "preclinical mechanism; clinical translation unassessed",
+      "context_ids": [
+        "ctx-guideline",
+        "ctx-development"
+      ]
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-1",
+      "record_ids": [
+        "r1"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "s1",
+      "locator": "synthetic section"
+    }
+  ],
+  "contexts": [
+    {
+      "context_id": "ctx-guideline",
+      "domain": "clinical_guideline",
+      "title": "Synthetic guideline placeholder",
+      "issuer": "Synthetic standards group",
+      "locator": "synthetic://guideline/section-1",
+      "version": "synthetic-v1",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic adult population; no real patient guidance",
+      "relevance_statement": "A supplied clinical context motivates a translation gap, not efficacy inference.",
+      "applicability": "Cell-model evidence does not directly establish population applicability.",
+      "limitations": "Entirely synthetic; no guideline retrieved or currency verified.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [
+        "e1"
+      ]
+    },
+    {
+      "context_id": "ctx-development",
+      "domain": "drug_development",
+      "title": "Synthetic development context",
+      "issuer": "Synthetic development group",
+      "locator": "synthetic://development/memo-1",
+      "version": "synthetic-v1",
+      "accessed_at": "2026-01-02",
+      "population_or_setting": "Synthetic preclinical research",
+      "relevance_statement": "Mechanistic uncertainty motivates an evidence review work package.",
+      "applicability": "Applies only to the supplied synthetic model.",
+      "limitations": "Not a regulatory status determination or development recommendation.",
+      "development_stage": "preclinical (supplied assertion)",
+      "regulatory_status": "unknown",
+      "evidence_ids": [
+        "e2"
+      ],
+      "review_status": "reviewed",
+      "reviewer": "synthetic-reviewer",
+      "reviewed_at": "2026-01-03"
+    }
+  ]
+}

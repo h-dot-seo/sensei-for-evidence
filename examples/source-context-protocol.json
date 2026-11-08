@@ -1,0 +1,82 @@
+{
+  "question": "Which fictional guideline and development source questions should be recorded before evidence extraction?",
+  "version": "synthetic-source-context-v1",
+  "inclusion_criteria": ["Fictional in-scope records for software testing only"],
+  "exclusion_criteria": ["Fictional out-of-scope records for software testing only"],
+  "search_plan": [
+    {"search_id": "local-primary", "source": "synthetic-index", "query": "fictional mechanism context", "window": "2020-2026"},
+    {"search_id": "local-secondary", "source": "synthetic-development-index", "query": "fictional development context", "window": "2020-2026"}
+  ],
+  "searches": [
+    {"search_id": "local-primary", "source": "synthetic-index", "query": "fictional mechanism context", "window": "2020-2026", "searched_at": "synthetic supplied timestamp", "record_ids": ["synthetic-r1", "synthetic-r2"], "complete": false, "total_count": null, "has_more": null}
+  ],
+  "screening": [
+    {"record_id": "synthetic-r2", "decision": "exclude", "reason": "Fictional exclusion for software testing; source context is not eligibility."}
+  ],
+  "evidence": [],
+  "gaps": [
+    {
+      "work_package_id": "WP-GUIDELINE-SOURCES",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [{"kind": "planned_search", "search_id": "local-primary"}, {"kind": "record", "record_id": "synthetic-r1"}],
+      "context_ids": ["ctx-source-guideline"],
+      "question": "Which supplied guideline context needs source and applicability review before extraction?",
+      "deliverable": "A source-linked list of unanswered context questions and limitations.",
+      "acceptance_criterion": "The operator records exact source references and unresolved applicability without asserting clinical validity."
+    },
+    {
+      "work_package_id": "WP-DEVELOPMENT-SOURCES",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [{"kind": "planned_search", "search_id": "local-secondary"}, {"kind": "record", "record_id": "synthetic-r2"}],
+      "context_ids": ["ctx-source-development"],
+      "depends_on": ["WP-GUIDELINE-SOURCES"],
+      "question": "Which missing source and development assumptions require clarification?",
+      "deliverable": "A supplied context-source reconciliation note, including the missing planned source.",
+      "acceptance_criterion": "No development milestone, study identity, eligibility decision or regulatory approval is inferred."
+    }
+  ],
+  "contexts": [
+    {
+      "context_id": "ctx-source-guideline",
+      "context_scope": "source_review",
+      "domain": "clinical_guideline",
+      "title": "Fictional guideline context for pre-extraction software testing",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/guideline",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional setting",
+      "relevance_statement": "The operator records a question for later source review, not an applicability finding.",
+      "applicability": "unknown",
+      "limitations": "No actual guideline was retrieved or assessed; no recommendations were extracted.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [],
+      "source_refs": [{"kind": "planned_search", "search_id": "local-primary"}, {"kind": "record", "record_id": "synthetic-r2"}],
+      "review_status": "pending"
+    },
+    {
+      "context_id": "ctx-source-development",
+      "context_scope": "source_review",
+      "domain": "drug_development",
+      "title": "Fictional development context for pre-extraction software testing",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/development",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional development setting",
+      "relevance_statement": "The operator records missing-source questions without making a development decision.",
+      "applicability": "unknown",
+      "limitations": "No real development dossier or regulatory status was verified.",
+      "development_stage": "unknown",
+      "regulatory_status": "unknown",
+      "evidence_ids": [],
+      "source_refs": [{"kind": "planned_search", "search_id": "local-secondary"}, {"kind": "record", "record_id": "synthetic-r2"}],
+      "review_status": "reviewed",
+      "reviewer": "Fictional operator assertion",
+      "reviewed_at": "2026-11-04"
+    }
+  ]
+}

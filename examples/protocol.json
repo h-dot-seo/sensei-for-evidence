@@ -1,0 +1,62 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "1",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [
+    {
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "searched_at": "2026-01-01",
+      "window": "2020-2026",
+      "record_ids": [
+        "r1",
+        "r2"
+      ],
+      "total_count": 2,
+      "complete": true,
+      "has_more": false
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [
+    {
+      "record_id": "r1",
+      "study_id": "s1",
+      "locator": "synthetic section 1",
+      "model": "synthetic cell model",
+      "intervention": "perturbation",
+      "comparator": "vehicle",
+      "endpoint": "reporter",
+      "result": "reporter changed",
+      "limitations": "no rescue experiment",
+      "mechanism_basis": "intervention"
+    }
+  ],
+  "gaps": [
+    {
+      "question": "Does rescue reverse the endpoint?",
+      "evidence_ids": [
+        "r1"
+      ],
+      "deliverable": "rescue experiment plan",
+      "acceptance_criterion": "controls, endpoint and analysis prespecified",
+      "context": "preclinical mechanism; clinical translation unassessed"
+    }
+  ]
+}

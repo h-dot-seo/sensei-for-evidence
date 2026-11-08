@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "request_id": "synthetic-metadata",
+  "occurrence_indices": [
+    0,
+    2
+  ],
+  "batch_size": 20,
+  "max_requests": 1
+}

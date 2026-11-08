@@ -1,0 +1,17 @@
+{
+  "adjudicator": "Fictional decision recorder",
+  "decided_at": "2026-11-04",
+  "decision": "include",
+  "rationale": "Explicit fictional choice for software testing, not computed consensus.",
+  "reason": "Fictional supplied full-text inclusion choice.",
+  "receipt_id": "fictional-report-choice-1",
+  "report_id": "report-three",
+  "schema_version": 1,
+  "source_locator": "fictional://human-full-text-decision",
+  "study_declaration": {
+    "study_ids": [
+      "candidate-X"
+    ]
+  },
+  "target_sha256": "557edd5cd51c3448dae109fc1573ee91da0e4c5eef983c895def4ff5b2b40980"
+}

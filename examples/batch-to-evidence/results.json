@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "candidates": [
+    {
+      "report_id": "report-A",
+      "evidence": {
+        "evidence_id": "result-1",
+        "record_id": "record-A",
+        "study_id": "study-A",
+        "locator": "synthetic://report-A/result-1",
+        "model": "Fictional model label for bookkeeping only",
+        "intervention": "Fictional comparison label",
+        "comparator": "Fictional reference label",
+        "endpoint": "Fictional endpoint label",
+        "result": "No difference was reported in this entirely fictional test observation.",
+        "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+        "mechanism_basis": "unknown"
+      },
+      "source_references": [
+        {
+          "source_id": "source-A",
+          "extraction_locator": "Fictional section 1"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Human-supplied fixture for software testing, not an actual extraction or a scientific finding."
+    },
+    {
+      "report_id": "report-A",
+      "evidence": {
+        "evidence_id": "result-2",
+        "record_id": "record-A",
+        "study_id": "study-A",
+        "locator": "synthetic://report-A/result-2",
+        "model": "Fictional model label for bookkeeping only",
+        "intervention": "Fictional comparison label",
+        "comparator": "Fictional reference label",
+        "endpoint": "Fictional endpoint label",
+        "result": "A direction-only fictional observation is retained without an inferred effect size.",
+        "limitations": "Synthetic data only. Source correctness, study independence, reading and clinical relevance are not established.",
+        "mechanism_basis": "unknown"
+      },
+      "source_references": [
+        {
+          "source_id": "source-A",
+          "extraction_locator": "Fictional section 2"
+        }
+      ],
+      "extracted_by": "Fictional extractor",
+      "extracted_at": "2026-11-04",
+      "extraction_note": "Human-supplied fixture for software testing, not an actual extraction or a scientific finding."
+    }
+  ]
+}

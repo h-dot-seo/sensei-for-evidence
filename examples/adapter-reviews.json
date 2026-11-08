@@ -1,0 +1,29 @@
+[
+  {
+    "target_type": "search",
+    "target_id": "search-primary",
+    "target_sha256": "f40c8e9fed329a981bdb42c63a8b9a28fc61b8dab6daa8ce6379214af8d3b778",
+    "decision": "accept",
+    "reviewer": "synthetic-reviewer",
+    "reviewed_at": "2026-11-03",
+    "rationale": "Synthetic fixture review assertion only."
+  },
+  {
+    "target_type": "extraction",
+    "target_id": "candidate-1",
+    "target_sha256": "81e09edd8cfaa89072a2b23286cdc73412a28ecb20afb5fc4319a78deff5e7a0",
+    "decision": "accept",
+    "reviewer": "synthetic-reviewer",
+    "reviewed_at": "2026-11-03",
+    "rationale": "Synthetic fixture review assertion only."
+  },
+  {
+    "target_type": "extraction",
+    "target_id": "candidate-2",
+    "target_sha256": "66ca11cde35fb1be9f464931c862ae98638f0edccfcbc58b2bb7855c7eb455b3",
+    "decision": "accept",
+    "reviewer": "synthetic-reviewer",
+    "reviewed_at": "2026-11-03",
+    "rationale": "Synthetic fixture review assertion only."
+  }
+]

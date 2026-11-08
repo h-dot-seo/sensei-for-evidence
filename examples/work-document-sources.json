@@ -1,0 +1,246 @@
+{
+  "question": "How can fictional results from several explicitly declared studies in one report remain separately traceable?",
+  "version": "synthetic-work-document-sources-v1",
+  "inclusion_criteria": [
+    "Fictional in-scope reports for software testing only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope reports for software testing only"
+  ],
+  "search_plan": [
+    {
+      "search_id": "synthetic-search",
+      "source": "synthetic-index",
+      "query": "fictional multi-study report",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "synthetic-search",
+      "source": "synthetic-index",
+      "query": "fictional multi-study report",
+      "window": "2020-2026",
+      "searched_at": "synthetic supplied timestamp",
+      "record_ids": [
+        "record-one",
+        "record-two"
+      ],
+      "complete": false,
+      "total_count": null,
+      "has_more": null
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "record-one",
+      "decision": "include",
+      "reason": "Fictional operator eligibility assertion for testing."
+    },
+    {
+      "record_id": "record-two",
+      "decision": "include",
+      "reason": "Fictional operator eligibility assertion for testing."
+    }
+  ],
+  "reports": [
+    {
+      "report_id": "report-one",
+      "record_ids": [
+        "record-one"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_ids": [
+        "study-A",
+        "study-B",
+        "study-C"
+      ],
+      "locator": "synthetic://report-one"
+    },
+    {
+      "report_id": "report-two",
+      "record_ids": [
+        "record-two"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "study-A",
+      "locator": "synthetic://report-two"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "result-A",
+      "record_id": "record-one",
+      "study_id": "study-A",
+      "locator": "synthetic://report-one/result-A",
+      "model": "Fictional nonclinical system A",
+      "intervention": "Fictional comparison label A",
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint A",
+      "result": "Synthetic observation for software testing; no real measurement.",
+      "limitations": "Study identity, independence and scientific validity have not been verified.",
+      "mechanism_basis": "unknown"
+    },
+    {
+      "evidence_id": "result-B",
+      "record_id": "record-one",
+      "study_id": "study-B",
+      "locator": "synthetic://report-one/result-B",
+      "model": "Fictional nonclinical system B",
+      "intervention": "Fictional comparison label B",
+      "comparator": "Fictional reference label",
+      "endpoint": "Fictional endpoint B",
+      "result": "Different synthetic observation for software testing; no real measurement.",
+      "limitations": "Sharing a report does not establish the same study, independence or replication.",
+      "mechanism_basis": "unknown"
+    }
+  ],
+  "gaps": [
+    {
+      "work_package_id": "WP-DOCUMENTS",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        }
+      ],
+      "question": "Which supplied document-version context was used for this fictional source note?",
+      "deliverable": "A fictional source-linked review note preserving unresolved limitations.",
+      "acceptance_criterion": "A person records the supplied context without certifying reading, source authenticity or eligibility.",
+      "status": "COMPLETE",
+      "artifact_locator": "fictional://note/WP-DOCUMENTS",
+      "acceptance_verified": true,
+      "depends_on": [],
+      "document_source_ids": [
+        "source-main"
+      ],
+      "completion_basis_sha256": "f6aa581f058f107cb5410c81d0658dfdf53a9a3d9264ba7e9ccb1a76c220d06c"
+    },
+    {
+      "work_package_id": "WP-DIRECT",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        }
+      ],
+      "question": "Which supplied document-version context was used for this fictional source note?",
+      "deliverable": "A fictional source-linked review note preserving unresolved limitations.",
+      "acceptance_criterion": "A person records the supplied context without certifying reading, source authenticity or eligibility.",
+      "status": "COMPLETE",
+      "artifact_locator": "fictional://note/WP-DIRECT",
+      "acceptance_verified": true,
+      "depends_on": [
+        "WP-DOCUMENTS"
+      ],
+      "completion_basis_sha256": "66bac897893882970eb15bd456b16e5686f685be1fd77a59cd54653627f4436b"
+    },
+    {
+      "work_package_id": "WP-TRANSITIVE",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        }
+      ],
+      "question": "Which supplied document-version context was used for this fictional source note?",
+      "deliverable": "A fictional source-linked review note preserving unresolved limitations.",
+      "acceptance_criterion": "A person records the supplied context without certifying reading, source authenticity or eligibility.",
+      "status": "COMPLETE",
+      "artifact_locator": "fictional://note/WP-TRANSITIVE",
+      "acceptance_verified": true,
+      "depends_on": [
+        "WP-DIRECT"
+      ],
+      "completion_basis_sha256": "bf667aabb089d02fcf90ce9b097b3918fe83fd2a0fc034f8b6ebe9e9ff3aa529"
+    },
+    {
+      "work_package_id": "WP-LEGACY",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-one"
+        }
+      ],
+      "question": "Which supplied document-version context was used for this fictional source note?",
+      "deliverable": "A fictional source-linked review note preserving unresolved limitations.",
+      "acceptance_criterion": "A person records the supplied context without certifying reading, source authenticity or eligibility.",
+      "status": "COMPLETE",
+      "artifact_locator": "fictional://note/WP-LEGACY",
+      "acceptance_verified": true,
+      "depends_on": [],
+      "completion_basis_sha256": "9b8fbd3a18cc16a4117b53de93c956067c735e9690cb5d0467e29c77facf63a1"
+    }
+  ],
+  "report_sources": [
+    {
+      "source_id": "source-main",
+      "report_id": "report-one",
+      "source_locator": "fictional://source-main",
+      "document_version": "fictional edition 1",
+      "document_sha256": "bdbfec26d1ed84f0f6759d680dfce5ae9fef589cab1c6cf8257cad5c89963c91"
+    },
+    {
+      "source_id": "source-unbound",
+      "report_id": "report-one",
+      "source_locator": "fictional://supplement-not-supplied",
+      "document_version": "unbound fictional supplement",
+      "document_sha256": null
+    },
+    {
+      "source_id": "source-uninspected",
+      "report_id": "report-two",
+      "source_locator": "fictional://uninspected",
+      "document_version": "fictional other edition",
+      "document_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "planning_decisions": [
+    {
+      "work_package_id": "WP-DIRECT",
+      "priority_rank": 1,
+      "rationale": "Fictional supplied ordering, not a recommendation.",
+      "uncertainty": "Source authenticity and reading are not established.",
+      "planner": "Fictional planner",
+      "planned_at": "2026-11-04",
+      "basis_sha256": "449b2c4a3902b6636b63ee2527bd46c956c5eeb9cb78d77b07eccc5c6e2a402c"
+    },
+    {
+      "work_package_id": "WP-DOCUMENTS",
+      "priority_rank": 2,
+      "rationale": "Fictional supplied ordering, not a recommendation.",
+      "uncertainty": "Source authenticity and reading are not established.",
+      "planner": "Fictional planner",
+      "planned_at": "2026-11-04",
+      "basis_sha256": "332ea3f8a2ae9c7a3dfd8e02d2436e83d0ecc7f43a3055208b7075d2470a4471"
+    },
+    {
+      "work_package_id": "WP-LEGACY",
+      "priority_rank": 3,
+      "rationale": "Fictional supplied ordering, not a recommendation.",
+      "uncertainty": "Source authenticity and reading are not established.",
+      "planner": "Fictional planner",
+      "planned_at": "2026-11-04",
+      "basis_sha256": "135d0cf918a07e1f10be2e67bab54cc28ed28e01aedfed0ed9ce394d757539a0"
+    },
+    {
+      "work_package_id": "WP-TRANSITIVE",
+      "priority_rank": 4,
+      "rationale": "Fictional supplied ordering, not a recommendation.",
+      "uncertainty": "Source authenticity and reading are not established.",
+      "planner": "Fictional planner",
+      "planned_at": "2026-11-04",
+      "basis_sha256": "2710458e567d7b8e9248ed2887ff54cccce902f9bb193c037586fe6e44dee975"
+    }
+  ]
+}

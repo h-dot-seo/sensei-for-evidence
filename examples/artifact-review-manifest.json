@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "artifacts": [
+    {
+      "work_package_id": "WP-RECEIPT-REVIEW",
+      "artifact_locator": "synthetic://receipt-review-note",
+      "path": "receipt-review.txt",
+      "bytes": 351,
+      "sha256": "f64a947a6f3f334dc5df4550b14a9886de42ca520030b2e430cf821b96e6e940"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "question": "How should a synthetic mechanism be tested?",
+  "version": "1",
+  "inclusion_criteria": [
+    "synthetic intervention study"
+  ],
+  "exclusion_criteria": [
+    "outside synthetic scope"
+  ],
+  "searches": [],
+  "screening": [
+    {
+      "record_id": "r1",
+      "decision": "include",
+      "reason": "in scope"
+    },
+    {
+      "record_id": "r2",
+      "decision": "exclude",
+      "reason": "outside scope"
+    }
+  ],
+  "evidence": [],
+  "gaps": [],
+  "reports": [
+    {
+      "report_id": "report-1",
+      "record_ids": [
+        "r1"
+      ],
+      "retrieval": "retrieved",
+      "decision": "include",
+      "study_id": "s1",
+      "locator": "synthetic section"
+    }
+  ],
+  "contexts": [],
+  "appraisals": [],
+  "search_plan": [
+    {
+      "search_id": "search-primary",
+      "source": "synthetic-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "search-secondary",
+      "source": "synthetic-secondary-index",
+      "query": "synthetic mechanism",
+      "window": "2020-2026"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "decision": "import_results",
+  "rationale": "Prewritten synthetic bookkeeping assertion for this exact fixture only; not actual review.",
+  "receipt_id": "fictional-journey-results",
+  "reviewed_at": "2026-11-04",
+  "reviewer": "Fictional walkthrough reviewer",
+  "schema_version": 1,
+  "target_sha256": "4a5511ed74c0ce699fb4e860d9ab367f2302929fa10fa0e2264b378887c940ac"
+}

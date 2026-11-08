@@ -1,0 +1,22 @@
+{
+  "question": "How should fictional bibliographic candidates enter an auditable research ledger?",
+  "version": "synthetic-bibliographic-base-v1",
+  "inclusion_criteria": [
+    "Fictional in-scope records for software testing only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope records for software testing only"
+  ],
+  "search_plan": [
+    {
+      "search_id": "discovery-primary",
+      "source": "pubmed",
+      "query": "fictional mechanism",
+      "window": "query_defined"
+    }
+  ],
+  "searches": [],
+  "screening": [],
+  "evidence": [],
+  "gaps": []
+}

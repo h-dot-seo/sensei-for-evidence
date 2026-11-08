@@ -1,0 +1,126 @@
+{
+  "question": "How can fictional title/abstract reviewer positions stay separate from recorded eligibility decisions?",
+  "version": "synthetic-screening-review-v1",
+  "inclusion_criteria": [
+    "Fictional in-scope source description, judged by a human for software demonstration only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope source description; no actual medical criterion"
+  ],
+  "search_plan": [
+    {
+      "search_id": "demo-search",
+      "source": "synthetic-index",
+      "query": "fictional screening review",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "demo-search",
+      "source": "synthetic-index",
+      "query": "fictional screening review",
+      "window": "2020-2026",
+      "searched_at": "fictional supplied timestamp",
+      "record_ids": [
+        "record-alpha",
+        "record-beta",
+        "record-gamma",
+        "record-delta"
+      ],
+      "complete": false,
+      "total_count": null,
+      "has_more": null,
+      "supplied_material_note": "Fictional source identifiers only. No real title, abstract or paper has been retrieved or reviewed."
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "record-beta",
+      "decision": "exclude",
+      "reason": "Fictional recorded scope decision; not automatically reconciled with reviewer positions."
+    }
+  ],
+  "reports": [],
+  "evidence": [],
+  "gaps": [
+    {
+      "work_package_id": "WP-SCREENING-NOTE",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-alpha"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-beta"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-gamma"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-delta"
+        }
+      ],
+      "question": "Which supplied review positions still need human source or eligibility reconciliation?",
+      "deliverable": "A separately authored eligibility rationale with unresolved limitations.",
+      "acceptance_criterion": "A human records the final screening assertions when appropriate; the software neither votes nor authenticates the review."
+    }
+  ],
+  "screening_reviews": [
+    {
+      "review_id": "review-alpha-one",
+      "record_id": "record-alpha",
+      "reviewer": "Fictional reviewer A",
+      "reviewed_at": "2026-11-04",
+      "decision": "include",
+      "rationale": "Fictional supplied include position; not an independently checked source reading.",
+      "source_locator": "synthetic://record-alpha/title-abstract",
+      "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+    },
+    {
+      "review_id": "review-alpha-two",
+      "record_id": "record-alpha",
+      "reviewer": "Fictional reviewer B",
+      "reviewed_at": "2026-11-04",
+      "decision": "exclude",
+      "rationale": "Opposing fictional supplied scope position, retained without majority adjudication.",
+      "source_locator": "synthetic://record-alpha/title-abstract",
+      "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+    },
+    {
+      "review_id": "review-beta-one",
+      "record_id": "record-beta",
+      "reviewer": "Fictional reviewer A",
+      "reviewed_at": "2026-11-04",
+      "decision": "include",
+      "rationale": "Fictional position differs from the separately recorded exclusion.",
+      "source_locator": "synthetic://record-beta/title-abstract",
+      "source_basis_sha256": "5964ab1a3e1b3c23c3b25b8a282bbbcfa72054b25e269b83f256d93adc080285"
+    },
+    {
+      "review_id": "review-gamma-one",
+      "record_id": "record-gamma",
+      "reviewer": "Fictional reviewer C",
+      "reviewed_at": "2026-11-04",
+      "decision": "unclear",
+      "rationale": "Fictional source description leaves eligibility unresolved.",
+      "source_locator": "synthetic://record-gamma/title-abstract",
+      "source_basis_sha256": "0fefb30dc4278e15b66b4c33751426423ed98f45d7171676268d426550527b8a"
+    },
+    {
+      "review_id": "review-gamma-earlier",
+      "record_id": "record-gamma",
+      "reviewer": "Fictional reviewer D",
+      "reviewed_at": "2026-11-03",
+      "decision": "include",
+      "rationale": "Fictional earlier-question assertion retained only to demonstrate stale source context.",
+      "source_locator": "synthetic://record-gamma/title-abstract",
+      "source_basis_sha256": "3a75f2b7fbdf12db447e4b3b23a8a384cdf29bca9c7b763f22939f6e25d0f27b"
+    }
+  ]
+}

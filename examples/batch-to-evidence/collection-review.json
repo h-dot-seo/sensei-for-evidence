@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "resolutions": [
+    {
+      "candidate_id": "csv-row-000001",
+      "disposition": "new_record",
+      "record_id": "record-A",
+      "rationale": "Fictional first canonical record assertion."
+    },
+    {
+      "candidate_id": "csv-row-000002",
+      "disposition": "same_record",
+      "record_id": "record-A",
+      "rationale": "Explicit fictional same-record assertion, not inferred from the repeated identifier."
+    },
+    {
+      "candidate_id": "csv-row-000003",
+      "disposition": "new_record",
+      "record_id": "record-B",
+      "rationale": "Explicit separate fictional record despite similar title text."
+    },
+    {
+      "candidate_id": "csv-row-000004",
+      "disposition": "do_not_promote",
+      "record_id": null,
+      "rationale": "Fictional collection triage only; not a screening exclusion or duplicate verdict."
+    },
+    {
+      "candidate_id": "csv-row-000005",
+      "disposition": "new_record",
+      "record_id": "record-C",
+      "rationale": "Fictional separate record assertion."
+    }
+  ],
+  "review": {
+    "target_sha256": "371fc51123ba95af8634d6a6ac83a1b727e31d5edcc4056dcba48a45019f8590",
+    "reviewer": "Fictional walkthrough reviewer",
+    "reviewed_at": "2026-11-04",
+    "rationale": "Prewritten synthetic collection assertion for the exact five rows only.",
+    "decision": "import_for_screening"
+  }
+}

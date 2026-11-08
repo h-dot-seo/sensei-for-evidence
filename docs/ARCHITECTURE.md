@@ -71,3 +71,27 @@ arithmetic, duplicate reference IDs and release flags/citation/artifact linkage.
 does not authenticate a search receipt, inspect a paper, assess bias, establish legal
 status, verify a storage location or certify scientific sufficiency. Its output must
 not be represented as independent scientific validation.
+
+## Optional identifier discovery transport
+
+The separately invoked [bounded PubMed client](PUBMED_DISCOVERY.md) can transmit
+an explicit preview-bound request to NCBI. Its native observations are detached
+from protocol state. A later explicit conversion supplies unreviewed identifier
+CSV to existing collection review; no search-plan amendment, identity resolution,
+screening or evidence extraction is automatic. ESearch identifier counts are not
+article-reading coverage or source/census authentication. Mock adapters keep their
+existing offline semantics.
+
+Selected metadata acquisition is separate again: `pubmed_metadata.py` consumes a
+verified discovery plus explicit occurrence selection and retains EFetch MEDLINE
+text. It reuses the strict native parser without changing its grammar. Exact-PMID
+batch reconciliation is non-positional; CSV rows retain native record fields and
+acquisition/discovery provenance. Unchanged collection review controls research
+import. No metadata record automatically becomes screening, full text or evidence.
+
+`result_passage_check.py` is a separate bounded local source reader. It validates
+completed manual candidates and all explicit mappings before descriptor-relative
+source access, compares declared hashes and exact UTF-8 byte quotations, and shows
+selected text beside unchanged fields. It neither imports results nor claims
+semantic support. The ordinary intake target/review remains separate; source-file
+observations are not a new persistent protocol approval ledger.

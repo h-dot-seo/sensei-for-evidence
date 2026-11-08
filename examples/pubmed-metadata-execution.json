@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-01-01T01:00:00+00:00",
+  "attempts": [
+    {
+      "parameters": {
+        "db": "pubmed",
+        "rettype": "medline",
+        "retmode": "text",
+        "id": "11,13"
+      },
+      "status": 200,
+      "headers": {
+        "content-type": "text/plain; charset=UTF-8"
+      },
+      "started_at": "2026-01-01T01:00:00+00:00",
+      "elapsed_seconds": 0.1,
+      "body_base64": "UE1JRC0gMTMNClRJICAtIEZpY3Rpb25hbCBtZWNoYW5pc20gY2FuZGlkYXRlIHRoaXJ0ZWVuLg0KQUIgIC0gU3ludGhldGljIGFic3RyYWN0IGZpcnN0IHBoeXNpY2FsIGxpbmUuDQogICAgICBTeW50aGV0aWMgY29udGludWF0aW9uLCBub3QgZXZpZGVuY2UuDQoNClBNSUQtIDExClRJICAtIEZpY3Rpb25hbCBtZWNoYW5pc20gY2FuZGlkYXRlIGVsZXZlbi4K",
+      "body_complete": true,
+      "error": null
+    }
+  ],
+  "stop_reason": "selected_ids_received"
+}

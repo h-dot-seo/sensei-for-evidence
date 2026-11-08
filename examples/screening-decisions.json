@@ -1,0 +1,338 @@
+{
+  "question": "How can fictional title/abstract reviewer positions stay separate from recorded eligibility decisions?",
+  "version": "synthetic-screening-review-v1",
+  "inclusion_criteria": [
+    "Fictional in-scope source description, judged by a human for software demonstration only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope source description; no actual medical criterion"
+  ],
+  "search_plan": [
+    {
+      "search_id": "demo-search",
+      "source": "synthetic-index",
+      "query": "fictional screening review",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "demo-search",
+      "source": "synthetic-index",
+      "query": "fictional screening review",
+      "window": "2020-2026",
+      "searched_at": "fictional supplied timestamp",
+      "record_ids": [
+        "record-alpha",
+        "record-beta",
+        "record-gamma",
+        "record-delta"
+      ],
+      "complete": false,
+      "total_count": null,
+      "has_more": null,
+      "supplied_material_note": "Fictional source identifiers only. No real title, abstract or paper has been retrieved or reviewed."
+    }
+  ],
+  "screening": [
+    {
+      "record_id": "record-beta",
+      "decision": "exclude",
+      "reason": "Fictional recorded scope decision; not automatically reconciled with reviewer positions."
+    },
+    {
+      "record_id": "record-alpha",
+      "decision": "exclude",
+      "reason": "Fictional explicitly supplied revised exclusion."
+    }
+  ],
+  "reports": [],
+  "evidence": [],
+  "gaps": [
+    {
+      "work_package_id": "WP-SCREENING-NOTE",
+      "work_type": "source_review",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "record",
+          "record_id": "record-alpha"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-beta"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-gamma"
+        },
+        {
+          "kind": "record",
+          "record_id": "record-delta"
+        }
+      ],
+      "question": "Which supplied review positions still need human source or eligibility reconciliation?",
+      "deliverable": "A separately authored eligibility rationale with unresolved limitations.",
+      "acceptance_criterion": "A human records the final screening assertions when appropriate; the software neither votes nor authenticates the review."
+    }
+  ],
+  "screening_reviews": [
+    {
+      "review_id": "review-alpha-one",
+      "record_id": "record-alpha",
+      "reviewer": "Fictional reviewer A",
+      "reviewed_at": "2026-11-04",
+      "decision": "include",
+      "rationale": "Fictional supplied include position; not an independently checked source reading.",
+      "source_locator": "synthetic://record-alpha/title-abstract",
+      "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+    },
+    {
+      "review_id": "review-alpha-two",
+      "record_id": "record-alpha",
+      "reviewer": "Fictional reviewer B",
+      "reviewed_at": "2026-11-04",
+      "decision": "exclude",
+      "rationale": "Opposing fictional supplied scope position, retained without majority adjudication.",
+      "source_locator": "synthetic://record-alpha/title-abstract",
+      "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+    },
+    {
+      "review_id": "review-beta-one",
+      "record_id": "record-beta",
+      "reviewer": "Fictional reviewer A",
+      "reviewed_at": "2026-11-04",
+      "decision": "include",
+      "rationale": "Fictional position differs from the separately recorded exclusion.",
+      "source_locator": "synthetic://record-beta/title-abstract",
+      "source_basis_sha256": "5964ab1a3e1b3c23c3b25b8a282bbbcfa72054b25e269b83f256d93adc080285"
+    },
+    {
+      "review_id": "review-gamma-one",
+      "record_id": "record-gamma",
+      "reviewer": "Fictional reviewer C",
+      "reviewed_at": "2026-11-04",
+      "decision": "unclear",
+      "rationale": "Fictional source description leaves eligibility unresolved.",
+      "source_locator": "synthetic://record-gamma/title-abstract",
+      "source_basis_sha256": "0fefb30dc4278e15b66b4c33751426423ed98f45d7171676268d426550527b8a"
+    },
+    {
+      "review_id": "review-gamma-earlier",
+      "record_id": "record-gamma",
+      "reviewer": "Fictional reviewer D",
+      "reviewed_at": "2026-11-03",
+      "decision": "include",
+      "rationale": "Fictional earlier-question assertion retained only to demonstrate stale source context.",
+      "source_locator": "synthetic://record-gamma/title-abstract",
+      "source_basis_sha256": "3a75f2b7fbdf12db447e4b3b23a8a384cdf29bca9c7b763f22939f6e25d0f27b"
+    }
+  ],
+  "screening_decision_history": {
+    "schema_version": 1,
+    "source_contexts": [
+      {
+        "search_context_sha256": "cbb6f37bef3f386fd6b37458353d59aed8b7fd822ddccf3e3a4768e74379f565",
+        "search": {
+          "search_id": "demo-search",
+          "source": "synthetic-index",
+          "query": "fictional screening review",
+          "window": "2020-2026",
+          "searched_at": "fictional supplied timestamp",
+          "record_ids": [
+            "record-alpha",
+            "record-beta",
+            "record-gamma",
+            "record-delta"
+          ],
+          "complete": false,
+          "total_count": null,
+          "has_more": null,
+          "supplied_material_note": "Fictional source identifiers only. No real title, abstract or paper has been retrieved or reviewed."
+        }
+      }
+    ],
+    "receipts": [
+      {
+        "receipt_id": "decision-alpha-first",
+        "receipt_index": 0,
+        "previous_receipt_sha256": null,
+        "target": {
+          "schema_version": 1,
+          "target_type": "screening_decision",
+          "record_id": "record-alpha",
+          "input_protocol_sha256": "4e59f7bc471180f01f55b2a8c36ad846762eb98267d8e7833eca3bac6de95dcc",
+          "receipt_index": 0,
+          "previous_receipt_sha256": null,
+          "prior_screening": null,
+          "source_target": {
+            "record_id": "record-alpha",
+            "source_basis": {
+              "schema_version": 1,
+              "scope": "title_abstract_supplied_context",
+              "record_id": "record-alpha",
+              "question": "How can fictional title/abstract reviewer positions stay separate from recorded eligibility decisions?",
+              "inclusion_criteria": [
+                "Fictional in-scope source description, judged by a human for software demonstration only"
+              ],
+              "exclusion_criteria": [
+                "Fictional out-of-scope source description; no actual medical criterion"
+              ],
+              "occurrences": [
+                {
+                  "input_pointer": "/searches/0/record_ids/0",
+                  "search_index": 0,
+                  "record_index": 0,
+                  "search_context_sha256": "cbb6f37bef3f386fd6b37458353d59aed8b7fd822ddccf3e3a4768e74379f565"
+                }
+              ],
+              "bibliographic_rows": []
+            },
+            "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+          },
+          "source_context_refs": [
+            {
+              "search_index": 0,
+              "input_pointer": "/searches/0",
+              "search_context_sha256": "cbb6f37bef3f386fd6b37458353d59aed8b7fd822ddccf3e3a4768e74379f565"
+            }
+          ],
+          "review_stage": "SUPPLIED",
+          "review_snapshots": [
+            {
+              "review_id": "review-alpha-one",
+              "record_id": "record-alpha",
+              "reviewer": "Fictional reviewer A",
+              "reviewed_at": "2026-11-04",
+              "decision": "include",
+              "rationale": "Fictional supplied include position; not an independently checked source reading.",
+              "source_locator": "synthetic://record-alpha/title-abstract",
+              "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+            },
+            {
+              "review_id": "review-alpha-two",
+              "record_id": "record-alpha",
+              "reviewer": "Fictional reviewer B",
+              "reviewed_at": "2026-11-04",
+              "decision": "exclude",
+              "rationale": "Opposing fictional supplied scope position, retained without majority adjudication.",
+              "source_locator": "synthetic://record-alpha/title-abstract",
+              "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+            }
+          ],
+          "target_sha256": "e2bf15377d9119f93efaf983ff34a402092c7fd68ec68876dc733ba36d2f3ae0"
+        },
+        "assertion": {
+          "adjudicator": "Fictional decision recorder",
+          "decided_at": "2026-11-04",
+          "decision": "include",
+          "rationale": "Fictional software demonstration choice; opposing reviewer positions are retained, not independently adjudicated.",
+          "reason": "Fictional explicitly supplied initial inclusion.",
+          "receipt_id": "decision-alpha-first",
+          "record_id": "record-alpha",
+          "schema_version": 1,
+          "source_locator": "synthetic://record-alpha/decision-note",
+          "target_sha256": "e2bf15377d9119f93efaf983ff34a402092c7fd68ec68876dc733ba36d2f3ae0"
+        },
+        "result_screening": {
+          "record_id": "record-alpha",
+          "decision": "include",
+          "reason": "Fictional explicitly supplied initial inclusion."
+        },
+        "receipt_sha256": "5d738a510e3008baefd2a6179dbcfbc829cf77a4e7e409b2c873218ab11780ee"
+      },
+      {
+        "receipt_id": "decision-alpha-revised",
+        "receipt_index": 1,
+        "previous_receipt_sha256": "5d738a510e3008baefd2a6179dbcfbc829cf77a4e7e409b2c873218ab11780ee",
+        "target": {
+          "schema_version": 1,
+          "target_type": "screening_decision",
+          "record_id": "record-alpha",
+          "input_protocol_sha256": "ff68dd2aad86b620fa6d21cf3fcae402bd2a0b582a712a550cec09977acf90e6",
+          "receipt_index": 1,
+          "previous_receipt_sha256": "5d738a510e3008baefd2a6179dbcfbc829cf77a4e7e409b2c873218ab11780ee",
+          "prior_screening": {
+            "record_id": "record-alpha",
+            "decision": "include",
+            "reason": "Fictional explicitly supplied initial inclusion."
+          },
+          "source_target": {
+            "record_id": "record-alpha",
+            "source_basis": {
+              "schema_version": 1,
+              "scope": "title_abstract_supplied_context",
+              "record_id": "record-alpha",
+              "question": "How can fictional title/abstract reviewer positions stay separate from recorded eligibility decisions?",
+              "inclusion_criteria": [
+                "Fictional in-scope source description, judged by a human for software demonstration only"
+              ],
+              "exclusion_criteria": [
+                "Fictional out-of-scope source description; no actual medical criterion"
+              ],
+              "occurrences": [
+                {
+                  "input_pointer": "/searches/0/record_ids/0",
+                  "search_index": 0,
+                  "record_index": 0,
+                  "search_context_sha256": "cbb6f37bef3f386fd6b37458353d59aed8b7fd822ddccf3e3a4768e74379f565"
+                }
+              ],
+              "bibliographic_rows": []
+            },
+            "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+          },
+          "source_context_refs": [
+            {
+              "search_index": 0,
+              "input_pointer": "/searches/0",
+              "search_context_sha256": "cbb6f37bef3f386fd6b37458353d59aed8b7fd822ddccf3e3a4768e74379f565"
+            }
+          ],
+          "review_stage": "SUPPLIED",
+          "review_snapshots": [
+            {
+              "review_id": "review-alpha-one",
+              "record_id": "record-alpha",
+              "reviewer": "Fictional reviewer A",
+              "reviewed_at": "2026-11-04",
+              "decision": "include",
+              "rationale": "Fictional supplied include position; not an independently checked source reading.",
+              "source_locator": "synthetic://record-alpha/title-abstract",
+              "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+            },
+            {
+              "review_id": "review-alpha-two",
+              "record_id": "record-alpha",
+              "reviewer": "Fictional reviewer B",
+              "reviewed_at": "2026-11-04",
+              "decision": "exclude",
+              "rationale": "Opposing fictional supplied scope position, retained without majority adjudication.",
+              "source_locator": "synthetic://record-alpha/title-abstract",
+              "source_basis_sha256": "7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049"
+            }
+          ],
+          "target_sha256": "6e6396c353a1015eb831c2b0217120c6956c09709db0d3c43907d2855ce4a9d3"
+        },
+        "assertion": {
+          "adjudicator": "Fictional decision recorder",
+          "decided_at": "2026-11-03",
+          "decision": "exclude",
+          "rationale": "Fictional revised choice with a deliberately earlier supplied date to show that chain order, not dates, records applications. No scientific judgment is claimed.",
+          "reason": "Fictional explicitly supplied revised exclusion.",
+          "receipt_id": "decision-alpha-revised",
+          "record_id": "record-alpha",
+          "schema_version": 1,
+          "source_locator": "synthetic://record-alpha/decision-note",
+          "target_sha256": "6e6396c353a1015eb831c2b0217120c6956c09709db0d3c43907d2855ce4a9d3"
+        },
+        "result_screening": {
+          "record_id": "record-alpha",
+          "decision": "exclude",
+          "reason": "Fictional explicitly supplied revised exclusion."
+        },
+        "receipt_sha256": "929345da9e2a777b1e6221f146368ee3e8582882484974b4b1dc941aa6ff4de3"
+      }
+    ]
+  }
+}

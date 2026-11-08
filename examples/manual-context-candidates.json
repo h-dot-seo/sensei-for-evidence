@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "contexts": [
+    {
+      "context_id": "ctx-source-guideline-supplied",
+      "context_scope": "source_review",
+      "domain": "clinical_guideline",
+      "title": "Fictional guideline context for pre-extraction software testing",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/guideline",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional setting",
+      "relevance_statement": "The operator records a question for later source review, not an applicability finding.",
+      "applicability": "unknown",
+      "limitations": "No actual guideline was retrieved or assessed; no recommendations were extracted.",
+      "recommendation_strength": "unknown",
+      "evidence_certainty": "unknown",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "planned_search",
+          "search_id": "local-primary"
+        },
+        {
+          "kind": "record",
+          "record_id": "synthetic-r2"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "context_id": "ctx-source-development-supplied",
+      "context_scope": "source_review",
+      "domain": "drug_development",
+      "title": "Fictional development context for pre-extraction software testing",
+      "issuer": "Fictional source only",
+      "locator": "synthetic://context/development",
+      "version": "fictional-v1",
+      "accessed_at": "2026-11-04",
+      "population_or_setting": "Unassessed fictional development setting",
+      "relevance_statement": "The operator records missing-source questions without making a development decision.",
+      "applicability": "unknown",
+      "limitations": "No real development dossier or regulatory status was verified.",
+      "development_stage": "unknown",
+      "regulatory_status": "unknown",
+      "evidence_ids": [],
+      "source_refs": [
+        {
+          "kind": "planned_search",
+          "search_id": "local-secondary"
+        },
+        {
+          "kind": "record",
+          "record_id": "synthetic-r2"
+        }
+      ],
+      "review_status": "reviewed",
+      "reviewer": "Fictional operator assertion",
+      "reviewed_at": "2026-11-04"
+    }
+  ]
+}
