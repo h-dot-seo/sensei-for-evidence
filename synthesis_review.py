@@ -61,7 +61,9 @@ def snapshot(protocol):
             appraisals=[dict(appraisal=copy.deepcopy(row),
                              cited_evidence_ids=sorted(refs.intersection(row['evidence_ids'])),
                              other_appraisal_evidence_ids=sorted(set(row['evidence_ids'])-refs))
-                        for row in research['appraisal']['appraisal_ledger'] if refs.intersection(row['evidence_ids'])]))
+                        for row in research['appraisal']['appraisal_ledger'] if refs.intersection(row['evidence_ids'])],
+            challenges=[copy.deepcopy(row) for row in research['challenge']['challenge_ledger']
+                        if statement['statement_id'] in row['statement_ids']]))
     implementation = dict(engine_hashes())
     for name in ('synthesis_review.py', 'research_status.py'):
         implementation[name] = hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
@@ -79,6 +81,9 @@ def snapshot(protocol):
         search_plan_audit=copy.deepcopy(research['search_plan_audit']),
         review_queues=copy.deepcopy(queues['queues']), synthesis_stage=synthesis['stage'], statements=statements,
         statement_review_targets=copy.deepcopy(synthesis['review_targets']),
+        challenge_stage=research['challenge']['stage'],
+        challenge_ledger=copy.deepcopy(research['challenge']['challenge_ledger']),
+        challenge_boundary=research['challenge']['boundary'],
         evidence_citation_index=[citations[eid] for eid in sorted(citations)],
         evidence_without_statement_citation=None if not supplied else copy.deepcopy(synthesis['evidence_without_statement_citation']),
         experimental_stage=research['experiments']['stage'],
@@ -132,13 +137,15 @@ def render_text(result):
     lines.append('Record-level extraction queue scope: ' + result['record_extraction_scope'])
     lines.append('Review queues (null means stage not supplied): ' + show(result['review_queues']))
     lines.append('Supplied synthesis stage: ' + result['synthesis_stage'])
+    lines.append('Supplied independent challenge stage: ' + result['challenge_stage'])
     for item in result['statements']:
         lines.extend(['', 'Supplied synthesis statement: ' + show(item['statement']),
                       'Cited extraction/source trace: ' + show(item['citations']),
                       'Unresolved condition scope: ' + item['experimental_gap_scope'],
                       'Supplied comparison conditions and linkage scope: ' + show(item['experimental_units']),
                       'Explicit context linkage scope: ' + show(item['contexts']),
-                      'Appraisal linkage scope: ' + show(item['appraisals'])])
+                      'Appraisal linkage scope: ' + show(item['appraisals']),
+                      'Recorded independent challenges (supplied, not adjudicated): ' + show(item['challenges'])])
     lines.append('Results without explicit statement citations: ' + show(result['evidence_without_statement_citation']))
     uncited = set(result['evidence_without_statement_citation'] or [])
     for row in result['evidence_citation_index']:

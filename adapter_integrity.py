@@ -172,7 +172,7 @@ def validate_adapter_protocol(protocol):
     if not isinstance(base.get('search_plan'), list) or not base['search_plan']:
         raise ValueError('adapter base protocol requires declared search plan')
     # These enrichments do not change what was searched, screened or extracted.
-    allowed = {'searches', 'evidence', 'adapter_receipts', 'gaps', 'contexts', 'appraisals', 'version', 'planning_decisions', 'synthesis_statements', 'experimental_units'}
+    allowed = {'searches', 'evidence', 'adapter_receipts', 'gaps', 'contexts', 'appraisals', 'version', 'planning_decisions', 'synthesis_statements', 'experimental_units', 'challenges'}
     if digest({k: v for k, v in protocol.items() if k not in allowed}) != digest({k: v for k, v in base.items() if k not in allowed}):
         raise ValueError('reviewed adapter protocol context changed; reassemble and review again')
     provider = ledger.get('provider')

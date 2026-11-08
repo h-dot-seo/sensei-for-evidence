@@ -9,6 +9,7 @@ from appraisal_links import link_appraisals
 from adapter_integrity import validate_adapter_protocol
 from planning_links import link_planning
 from synthesis_links import link_synthesis
+from challenge_links import link_challenges
 from experiment_links import link_experiments
 from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
 from report_links import has_plural_studies, validate_reports, validate_evidence_membership, report_study_coverage
@@ -167,6 +168,7 @@ def run(protocol):
     appraisal = link_appraisals(protocol, evidence, work)
     experiments = link_experiments(protocol, evidence)
     synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments)
+    challenge = link_challenges(protocol, synthesis, work)
     planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis,
                              bibliographic_collection=bibliographic_collection)
     included = sum(d['decision'] == 'include' for d in decisions.values())
@@ -181,7 +183,7 @@ def run(protocol):
                           excluded=len(decisions)-included, included=included, extracted=len(evidence),
                           extracted_records=len(extracted_records),
                           extracted_studies=len({row['study_id'] for row in evidence})),
-                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis, experiments=experiments,
+                evidence=evidence, work_packages=work, execution_order=order, context=context, appraisal=appraisal, planning=planning, synthesis=synthesis, challenge=challenge, experiments=experiments,
                 extraction_pending=sorted(r for r, d in decisions.items() if d['decision'] == 'include' and r not in extracted_records),
                 extraction_pending_scope='title_abstract_included_records_without_any_result_row',
                 extraction_completeness='NOT_ESTABLISHED',

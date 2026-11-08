@@ -128,7 +128,8 @@ class HandoffTests(unittest.TestCase):
            'experimental_units':[dict(experiment_id='target',evidence_ids=['target'])],
            'appraisals':[dict(appraisal_id='target',evidence_ids=['target'])],
            'contexts':[dict(context_id='target')], 'synthesis_statements':[dict(statement_id='target',evidence_ids=['target'])],
-           'gaps':[dict(work_package_id='target')], 'planning_decisions':[dict(work_package_id='target')]}
+           'gaps':[dict(work_package_id='target')], 'planning_decisions':[dict(work_package_id='target')],
+           'challenges':[dict(challenge_id='target',statement_ids=['target'],reopening=dict(work_package_id='target'))]}
         for queue,(sections,_) in SPECS.items():
             items=[dict(search_index=0)] if queue=='incomplete_searches' else [dict(work_package_id='target')] if queue=='blocked_work' else ['target']
             with self.subTest(queue=queue):

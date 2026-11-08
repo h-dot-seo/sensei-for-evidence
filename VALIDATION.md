@@ -2509,3 +2509,31 @@ invoked PubMed ESearch/EFetch clients as part of the public release boundary; th
 decision is recorded in PUBLICATION.md. The test workflow now also runs on `main`,
 and this cleanup precedes merging the workflow branch into `main`. No code path,
 test or fixture changed; the manifest was regenerated for the edited text files.
+## 2026-11-08 Independent challenge records (0.85.0-independent-challenge)
+
+`challenge_intake.py` and the engine module `challenge_links.py` implement the
+workflow's step 8 as supplied records. A challenge names existing synthesis
+statements, a challenger label, the strongest alternative explanation, missing
+discriminating evidence, citation-integrity findings on cited results, a
+conclusion-width label and one of three outcomes. The engine rejects a challenger
+label that matches a recorded reviewer, position-recorder or appraiser label on the
+challenged statements, binds each challenge to the challenged statements' current
+review bases, requires a MATERIAL_GAP outcome to name existing reopening work or an
+amendment note, and derives statements without a recorded challenge, open material
+gaps, unresolved challenges and stale bindings. Status, handoff, synthesis snapshot,
+bundle summary and version comparison expose the new section; the operator catalog
+gained one route with four parser-help entry points (103 in total). The mock
+adapter context allows the new section as an enrichment that does not change what
+was searched, screened or extracted. Nothing adjudicates, generates or verifies a
+challenge; a distinct label is labeled LABEL_DISTINCT_ONLY, not independence.
+
+Two new test modules cover engine validation, binding staleness, reopening rules,
+label collisions, intake replay/tampering, CLI exclusive outputs, adapter
+preservation and the documented ten-command rehearsal in `docs/INDEPENDENT_CHALLENGE.md`.
+The full suite passed on Ubuntu with Python 3.12: 1795 tests in 167.973s.
+A native Windows run with Python 3.15 before the fixture refresh ran 1778 tests: the
+batch walkthrough class failed in setUpClass on the fixture hash mismatch that this
+change resolves, and the pre-existing Python 3.15 junction-test error remained. The
+published head is checked on the Ubuntu/Windows × Python 3.10/3.12 matrix after push.
+Publication audit and the regenerated manifest pass. All fixtures are fictional;
+no real statement, source, model call or network request was involved.

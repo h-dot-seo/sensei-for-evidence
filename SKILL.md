@@ -49,3 +49,12 @@ files with existing nonnull source declarations and complete candidate bindings.
 Never treat a matching quote as evidence that a paraphrase, mechanism label or
 causal claim is correct. Keep source choice, interpretation and intake approval
 separate, preserve mismatches, and do not automatically repair or refresh assertions.
+
+For step 8, record an independent challenge with `challenge_intake.py` after reading
+docs/INDEPENDENT_CHALLENGE.md. Use a challenger label distinct from every recorded
+reviewer, position-recorder and appraiser label on the challenged statements; a
+matching label is rejected, and a distinct label is still not verified independence.
+Supply the strongest alternative explanation, missing discriminating evidence,
+citation-integrity findings, conclusion width and outcome yourself. A MATERIAL_GAP
+outcome must name existing reopening work or an amendment note. Never treat a
+recorded SURVIVES outcome as proof, or an UNRESOLVED outcome as a defect.
