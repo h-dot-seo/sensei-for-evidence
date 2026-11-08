@@ -38,6 +38,14 @@ sufficiency, conclusion readiness and release readiness separately. A material g
 reopens targeted investigation under a new run/amendment. An unresolved answer is
 a legitimate outcome. Do not broaden a conclusion because planned searching ended.
 
+`challenge_intake.py` records such challenges as supplied assertions bound to the
+challenged statements' current bases, after a separate import review. The engine
+rejects a challenger label that matches a recorded reviewer, position-recorder or
+appraiser label on the challenged statements, lists statements without a recorded
+challenge and challenges with open material gaps, and marks challenges whose
+statements changed afterwards as stale. It does not generate or adjudicate a
+challenge, verify independence, or alter statements, reviews or work states.
+
 ## Four state layers
 
 | State | Records |

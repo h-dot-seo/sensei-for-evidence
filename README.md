@@ -50,6 +50,12 @@ never calls models:
   applicability limits, appraisal provenance and local review gaps without decisions.
 - Deterministic offline ZIP bundles, SHA-256 checks, regeneration verification and
   CSV exports, plus version-to-version mechanical comparison.
+- Supplied independent challenges to synthesis statements: a challenger label
+  distinct from every recorded reviewer/appraiser label, the strongest alternative
+  explanation, missing discriminating evidence, citation-integrity findings,
+  conclusion width and outcome, bound to the challenged statements' current bases.
+  A material gap must name existing reopening work or an amendment; nothing is
+  generated, adjudicated, upheld or refuted.
 
 Only explicit PubMed ESearch discovery and EFetch selected metadata acquisition
 make live requests. No full-text retrieval, guideline currency verification,
@@ -124,6 +130,7 @@ input changes; use two supplied protocol versions for a real mechanical comparis
 | `native_collection_bundle.py create PROTOCOL.json NEW.zip [--ris INDEX=ARTIFACT.json] [--nbib INDEX=ARTIFACT.json] [--nbib-batch INDEX=ARTIFACT.json] [--text]` / `verify BUNDLE.zip [--text]` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required |
 | `source_work_intake.py template PROTOCOL.json REFERENCES.json` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Review and append explicit human-authored source-review tasks without changing existing research decisions |
 | `appraisal_intake.py template/target/assemble/verify ...` | Append explicitly supplied result-linked method/domain appraisals after separate review; preserve disagreement and expose source-status changes without scores or review renewal |
+| `challenge_intake.py template PROTOCOL.json REFERENCES.json [--candidate-output NEW.json]` / `target PROTOCOL.json CANDIDATES.json --output NEW.json` / `assemble PROTOCOL.json CANDIDATES.json REVIEW.json --output NEW.json` / `verify ORIGINAL.json APPLICATION.json [--protocol-output NEW.json]` | Append explicitly supplied independent challenges to existing synthesis statements after separate review; bind them to the challenged statements and expose open material gaps without upholding or refuting any statement |
 | `work_transition_bundle.py create INITIAL.json ENDPOINT.json NEW.zip --application APPLICATION.json ...` / `verify BUNDLE.zip` | Retain and replay an explicit contiguous source-work/evidence-work/completion segment with exact original bytes, without renewing completion or assessing artifacts |
 | `work_completion_intake.py template/target/assemble/verify ...` | Record one explicit unfinished-work completion with separate exact-target review, source binding and dependency-change cues, without artifact checks or acceptance assessment |
 | `evidence_work_intake.py template/target/assemble/verify ...` | Append explicitly reviewed result-linked work packages with human deliverables/dependencies, without changing existing research or generating scientific tasks |
@@ -192,6 +199,9 @@ rank, checking changed source context and keeping priority separate from depende
 
 See [synthesis review snapshots](docs/SYNTHESIS_REVIEW.md) for the record/report/
 study/result accounting and supplied statement review journey.
+
+See [independent challenge records](docs/INDEPENDENT_CHALLENGE.md) for the fictional
+statement → challenge → reopening journey and the distinct-label rule.
 
 See [nonclinical condition records](docs/EXPERIMENT_CONDITIONS.md) for the fictional
 model/condition → result → WP/synthesis review journey.

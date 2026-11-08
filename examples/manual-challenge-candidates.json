@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "challenges": [
+    {
+      "challenge_id": "challenge-supplied-1",
+      "challenger": "Fictional independent challenger",
+      "challenged_at": "2026-11-08",
+      "statement_ids": [
+        "statement-1"
+      ],
+      "alternative_explanation": "A synthetic assay artefact could change the recorded reporter endpoint without the proposed intervention mechanism.",
+      "missing_discriminating_evidence": [
+        "Rescue or reversal experiment under the same synthetic conditions",
+        "Vehicle-only time course with the same reporter readout"
+      ],
+      "citation_integrity_findings": [
+        {
+          "evidence_id": "e1",
+          "finding": "The cited locator names one synthetic section; abstract-only status and figure provenance are not declared."
+        }
+      ],
+      "conclusion_width": "WITHIN_CITED_EVIDENCE",
+      "outcome": "MATERIAL_GAP",
+      "reopening": {
+        "work_package_id": "WP-MECHANISM"
+      },
+      "limitations": "Fictional challenge for software validation only; no source was read and no experiment is proposed as advice.",
+      "independence_declaration": "Fictional label distinct from the recorded reviewer and appraiser labels; independence is asserted, not verified.",
+      "basis_sha256": "8973da8beb8a49fd3ec4050829a5c36992ce6f587313f13ca893fa3ea4787332"
+    },
+    {
+      "challenge_id": "challenge-supplied-2",
+      "challenger": "Fictional independent challenger",
+      "challenged_at": "2026-11-08",
+      "statement_ids": [
+        "statement-2"
+      ],
+      "alternative_explanation": "The separate secondary-endpoint result may reflect the same synthetic perturbation rather than a distinct effect.",
+      "missing_discriminating_evidence": [
+        "A recorded appraisal for result e2"
+      ],
+      "citation_integrity_findings": [],
+      "conclusion_width": "NOT_ASSESSED",
+      "outcome": "UNRESOLVED",
+      "reopening": {
+        "amendment_note": "Fictional amendment: record an appraisal for result e2 before challenging the secondary-endpoint statement further."
+      },
+      "limitations": "Fictional unresolved challenge; the pending statement review is unchanged.",
+      "independence_declaration": "Fictional label distinct from the recorded reviewer labels; independence is asserted, not verified.",
+      "basis_sha256": "99fa7443b652eba016709cf59090b5cc16645bc82462d496094f68df2b92a6a4"
+    }
+  ]
+}

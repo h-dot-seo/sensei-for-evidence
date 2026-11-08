@@ -34,6 +34,10 @@ SPECS = {
     'pending_synthesis_statement_reviews': ('synthesis_statements', 'Inspect claim wording, exact citations, positions and source limitations before recording a human review. Do not copy a target hash as scientific approval.'),
     'stale_synthesis_statement_reviews': ('synthesis_statements', 'Compare changed statement sources and reassess the supplied review; do not renew the basis hash automatically.'),
     'evidence_without_statement_citation': ('evidence synthesis_statements', 'Decide whether each uncited result belongs in a statement; uncited does not itself mean an omission error.'),
+    'statements_without_independent_challenge': ('synthesis_statements challenges', 'Arrange a challenger whose label differs from the recorded reviewers and appraisers to examine the strongest alternative explanation, missing discriminating evidence, citation integrity and conclusion width. No challenge is generated here.'),
+    'challenges_with_open_material_gaps': ('challenges gaps', 'Pursue the recorded reopening work or amendment before relying on the challenged statement. A recorded gap is not a refutation and does not change the statement.'),
+    'unresolved_challenges': ('challenges', 'Decide what evidence would resolve the recorded challenge. An unresolved outcome is legitimate and must not be closed by default or by elapsed time.'),
+    'stale_challenge_bindings': ('challenges synthesis_statements', 'The challenged statements or their cited evidence/appraisal context changed after the challenge; re-examine before relying on the recorded outcome. No binding is renewed automatically.'),
     'work_without_planning_assertion': ('gaps planning_decisions', 'Decide whether a supplied planning rank is useful. Record rationale and uncertainty; no rank is generated.'),
     'work_with_stale_planning_assertion': ('gaps planning_decisions', 'Review changed evidence/work scope before re-recording a planning assertion. Ranks never override prerequisites.'),
     'dependency_unblocked_planned_work': ('gaps', 'Review the proposed deliverable and acceptance criterion. Unblocked means only that recorded dependencies are complete, not scientific approval.'),
@@ -185,6 +189,13 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Exact existing result IDs within one supplied study per appraisal; authored method, domain judgements and provenance',
                                 'Separate exact-target import review; no method or judgement is generated'],
          boundary='Only new supplied appraisal records are appended. Conflicting positions remain separate; no score, consensus or method suitability is inferred. Mapped source catalogs are context, not proof of reading. Existing planning/synthesis/completion hashes are not renewed; derived source-status cues may change.'),
+    dict(workflow_id='challenge_intake', title='Record supplied independent challenges to synthesis statements',
+         guide_paths=['docs/INDEPENDENT_CHALLENGE.md', 'docs/SYNTHESIS_REVIEW.md'],
+         entrypoints=[dict(script='challenge_intake.py', arguments=[command, '--help'])
+                      for command in ('template', 'target', 'assemble', 'verify')],
+         required_human_inputs=['Exact existing statement IDs, a challenger label distinct from every recorded reviewer/appraiser label, the strongest alternative explanation, missing discriminating evidence, citation-integrity findings, conclusion width and outcome',
+                                'Separate exact-target import review; no challenge text, outcome or independence is generated or verified'],
+         boundary='Only new supplied challenge records are appended and bound to the current challenged-statement bases. A MATERIAL_GAP outcome must name existing reopening work or an amendment note; statements, reviews, appraisals and work states are unchanged. Label distinctness is not verified independence, and no statement is upheld or refuted.'),
     dict(workflow_id='context_intake', title='Record supplied unassigned guideline and development contexts',
          guide_paths=['docs/MANUAL_CONTEXT_INTAKE.md', 'docs/SOURCE_CONTEXTS.md'],
          entrypoints=[dict(script='context_intake.py', arguments=[command, '--help'])
@@ -264,7 +275,8 @@ QUEUE_DOMAINS = {
     **dict.fromkeys(('reports_pending_retrieval','reports_not_retrieved','reports_pending_assessment','included_reports_without_extraction'), 'report'),
     **dict.fromkeys(('evidence_without_experimental_unit','evidence_without_recorded_appraisal','evidence_without_statement_citation'), 'evidence'),
     **dict.fromkeys(('units_with_unresolved_conditions','units_without_outcome_sampling','units_with_unresolved_sampling','units_without_outcome_statistics','units_with_statistics_review_cues'), 'experiment'),
-    **dict.fromkeys(('statements_without_evidence_positions','statements_with_unresolved_positions','pending_synthesis_statement_reviews','stale_synthesis_statement_reviews'), 'statement'),
+    **dict.fromkeys(('statements_without_evidence_positions','statements_with_unresolved_positions','pending_synthesis_statement_reviews','stale_synthesis_statement_reviews','statements_without_independent_challenge'), 'statement'),
+    **dict.fromkeys(('challenges_with_open_material_gaps','unresolved_challenges','stale_challenge_bindings'), 'challenge'),
     **dict.fromkeys(('work_without_planning_assertion','work_with_stale_planning_assertion','dependency_unblocked_planned_work','blocked_work','work_in_progress','completed_work_assertions','completed_work_without_source_binding','completed_work_with_stale_source_binding'), 'work_package'),
     'context_review_pending': 'context', 'incomplete_searches': 'search_index',
 }
@@ -305,6 +317,14 @@ def input_locations(protocol, queue, sections, items):
         return [f'/reports/{index}' for index, row in enumerate(protocol.get('reports', []))
                 if any((row['report_id'], study_id) in pairs for study_id in report_study_ids(row))]
     ids={item if isinstance(item,str) else item[domain + '_id'] for item in items or []}
+    linked_statements, linked_work = set(), set()
+    if domain == 'challenge':
+        for row in protocol.get('challenges', []) if isinstance(protocol.get('challenges'), list) else []:
+            if isinstance(row, dict) and row.get('challenge_id') in ids:
+                linked_statements.update(sid for sid in (row.get('statement_ids') or []) if isinstance(sid, str))
+                reopening = row.get('reopening')
+                if isinstance(reopening, dict) and isinstance(reopening.get('work_package_id'), str):
+                    linked_work.add(reopening['work_package_id'])
     matches=[]
     for section in sections:
         entries=protocol.get(section, [])
@@ -312,6 +332,7 @@ def input_locations(protocol, queue, sections, items):
         for index,row in enumerate(entries):
             if not isinstance(row,dict): continue
             values=[]
+            wanted=ids
             if domain=='record':
                 if section in ('searches','reports'): values=row.get('record_ids',[])
                 elif section in ('screening','evidence','screening_reviews'): values=[row.get('record_id')]
@@ -321,12 +342,17 @@ def input_locations(protocol, queue, sections, items):
             elif domain=='work_package':
                 if section=='gaps': values=[row.get('work_package_id',f'WP-{index+1:03}')]
                 elif section=='planning_decisions': values=[row.get('work_package_id')]
+            elif domain=='statement' and section=='challenges': values=row.get('statement_ids',[])
+            elif domain=='challenge':
+                if section=='challenges': values=[row.get('challenge_id')]
+                elif section=='synthesis_statements': values=[row.get('statement_id')]; wanted=linked_statements
+                elif section=='gaps': values=[row.get('work_package_id',f'WP-{index+1:03}')]; wanted=linked_work
             else:
                 fields={'search':('search_plan','searches'), 'report':('reports','report_sources','report_reviews'),
                         'experiment':('experimental_units',), 'statement':('synthesis_statements',),
                         'context':('contexts',)}
                 if section in fields[domain]: values=[row.get(domain + '_id')]
-            if isinstance(values,list) and any(isinstance(value,str) and value in ids for value in values):
+            if isinstance(values,list) and any(isinstance(value,str) and value in wanted for value in values):
                 matches.append('/' + section + '/' + str(index))
     return matches
 

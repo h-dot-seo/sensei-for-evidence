@@ -156,7 +156,7 @@ class SynthesisTests(unittest.TestCase):
                  searches=[dict(search_id='zero',source='synthetic',query='synthetic zero',window='synthetic',
                                 searched_at='synthetic',record_ids=[],total_count=0,complete=True,has_more=False,
                                 pages=[dict(page_number=1,record_ids=[],has_more=False)])],
-                 screening=[],reports=[],evidence=[],gaps=[],contexts=[],appraisals=[],synthesis_statements=[],experimental_units=[])
+                 screening=[],reports=[],evidence=[],gaps=[],contexts=[],appraisals=[],synthesis_statements=[],experimental_units=[],challenges=[])
         result = snapshot(p)
         self.assertTrue(all(value == [] for value in result['review_queues'].values()))
         self.assertEqual(result['census_claim'], 'NOT_ESTABLISHED')
