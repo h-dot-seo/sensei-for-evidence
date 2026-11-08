@@ -58,3 +58,13 @@ Supply the strongest alternative explanation, missing discriminating evidence,
 citation-integrity findings, conclusion width and outcome yourself. A MATERIAL_GAP
 outcome must name existing reopening work or an amendment note. Never treat a
 recorded SURVIVES outcome as proof, or an UNRESOLVED outcome as a defect.
+
+For step 9, inspect the mechanical gate ledger with `readiness_review.py` and
+record a readiness assertion with `readiness_intake.py` after reading
+docs/CONCLUSION_READINESS.md. Gates close when supplied bookkeeping items are empty;
+a closed gate is never evidence sufficiency. Supply evidence_sufficiency and
+conclusion_readiness separately, bound to the template's current gates_sha256, with
+a scope statement, rationale and limitations. A NOT_READY assertion with INSUFFICIENT
+evidence must name existing reopening work or an amendment note. A READY assertion
+may close scope deliberately while gates are open; those open gates stay recorded
+beside it. The mechanical conclusion readiness of every tool remains NOT_READY.

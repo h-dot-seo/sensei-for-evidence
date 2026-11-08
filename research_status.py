@@ -75,6 +75,20 @@ def status(protocol):
         queues['inventory_candidates_with_review_cues'] = copy.deepcopy(
             research['report_study_inventory_review']['current_candidates_with_review_cues'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
+    readiness = research['readiness']
+    readiness_summary = dict(
+        stage=readiness['stage'], gates_sha256=readiness['gates_sha256'],
+        counts=dict(open_gates=len(readiness['open_gate_ids']), closed_gates=len(readiness['closed_gate_ids']),
+                    not_applicable_gates=len(readiness['not_applicable_gate_ids']),
+                    supplied_assertions=len(readiness['assertion_ledger']) if readiness['stage'] == 'SUPPLIED' else None,
+                    current_assertions=None if readiness['current_assertion_ids'] is None else len(readiness['current_assertion_ids']),
+                    stale_assertions=None if readiness['stale_assertion_ids'] is None else len(readiness['stale_assertion_ids'])),
+        open_gate_ids=copy.deepcopy(readiness['open_gate_ids']),
+        current_assertion_ids=copy.deepcopy(readiness['current_assertion_ids']),
+        stale_assertion_ids=copy.deepcopy(readiness['stale_assertion_ids']),
+        mechanical_conclusion_readiness='NOT_READY',
+        scope='mechanical_gate_bookkeeping_and_supplied_assertions_not_review_queues_or_sufficiency',
+        boundary=readiness['boundary'])
     implementation = dict(engine_hashes(), **{'research_status.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     result = dict(question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
@@ -83,7 +97,7 @@ def status(protocol):
                 report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
                 deduplication_scope=research['deduplication_scope'],
                 record_identity_verification=research['record_identity_verification'],
-                counts=counts, queues=queues,
+                counts=counts, queues=queues, readiness=readiness_summary,
                 record_extraction_scope=research['extraction_pending_scope'],
                 extraction_completeness='NOT_ESTABLISHED', census_claim='NOT_ESTABLISHED',
                 conclusion_readiness='NOT_READY', boundary=BOUNDARY)
@@ -186,6 +200,15 @@ def render_text(result):
         lines.append('Historical differences are retrospective comparisons, not automatically unfinished work or invalid prior decisions.')
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
+    readiness = result['readiness']
+    lines.append('Open readiness gates: ' + str(readiness['counts']['open_gates']))
+    if readiness['stage'] == 'SUPPLIED':
+        lines.append('Supplied readiness assertions: current ' + str(readiness['counts']['current_assertions'])
+                     + ', stale ' + str(readiness['counts']['stale_assertions']))
+    else:
+        lines.append('Supplied readiness assertions: not supplied')
+    lines.append('Closed gates are mechanical bookkeeping, not evidence sufficiency; supplied readiness assertions '
+                 'are human assertions bound to a gate snapshot, not mechanical conclusions.')
     lines.append('Record identity: exact supplied IDs only; identities not independently verified.')
     lines.extend(['Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', result['boundary']])
     return '\n'.join(lines) + '\n'

@@ -46,6 +46,16 @@ challenge and challenges with open material gaps, and marks challenges whose
 statements changed afterwards as stale. It does not generate or adjudicate a
 challenge, verify independence, or alter statements, reviews or work states.
 
+`readiness_links.py` turns the same ledgers into twelve mechanical gates (plan,
+searches, screening, reports, extraction, appraisal of cited results, statement
+reviews, citations, challenges recorded and resolved, contexts, work), each with
+exact open items, and hashes that gate ledger. `readiness_intake.py` records
+supplied evidence-sufficiency and conclusion-readiness assertions bound to that
+hash, with explicit reopening for a NOT_READY/INSUFFICIENT pair, and
+`readiness_review.py` shows both. Closing every gate is necessary bookkeeping, not
+sufficiency; the assertions are human, hash-bound and never promoted, so the
+mechanical conclusion readiness stays NOT_READY.
+
 ## Four state layers
 
 | State | Records |

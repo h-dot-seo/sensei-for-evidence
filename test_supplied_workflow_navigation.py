@@ -18,7 +18,7 @@ from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parent
 WORKFLOW_IDS = ['result_passage_check','pubmed_metadata','pubmed_discovery','native_collection','screening_decision','report_registration','report_retrieval',
-                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','challenge_intake','context_intake','work_context_assignment','source_review_work','evidence_review_work','work_completion',
+                'report_source_declarations','descriptive_inventory','full_text_decision','result_intake','result_review_continuation','condition_intake','appraisal_intake','challenge_intake','readiness_intake','context_intake','work_context_assignment','source_review_work','evidence_review_work','work_completion',
                 'collection_archives','report_transition_archive','extraction_transition_archive','work_transition_archive','appraisal_transition_archive']
 
 
@@ -61,7 +61,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),103)
+        self.assertEqual(len(entries),107)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
                 checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],

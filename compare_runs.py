@@ -474,6 +474,7 @@ def amendment_review(assertion, before, after, left, right):
         planning=transitions(left['planning']['planning_ledger'],right['planning']['planning_ledger'],'work_package_id',('source_match_status','current_priority_rank')),
         synthesis=transitions(left['synthesis']['statement_ledger'],right['synthesis']['statement_ledger'],'statement_id',('source_match_status','support_status')),
         challenge=transitions(left['challenge']['challenge_ledger'],right['challenge']['challenge_ledger'],'challenge_id',('source_match_status','reopening_status')),
+        readiness=transitions(left['readiness']['gate_ledger'],right['readiness']['gate_ledger'],'gate_id',('status',)),
         work=transitions(left['work_packages'],right['work_packages'],'work_package_id',('status','blocked_by')),
         search_plan=dict(before={k:copy.deepcopy(left['search_plan_audit'][k]) for k in ('plan_status','missing_search_ids','incomplete_search_ids')},
                          after={k:copy.deepcopy(right['search_plan_audit'][k]) for k in ('plan_status','missing_search_ids','incomplete_search_ids')}))
@@ -514,6 +515,7 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
         'contexts': entity_changes(left['context']['context_ledger'], right['context']['context_ledger'], 'context_id'),
         'appraisals': entity_changes(left['appraisal']['appraisal_ledger'], right['appraisal']['appraisal_ledger'], 'appraisal_id'),
         'challenges': entity_changes(left['challenge']['challenge_ledger'], right['challenge']['challenge_ledger'], 'challenge_id'),
+        'readiness_assertions': entity_changes(left['readiness']['assertion_ledger'], right['readiness']['assertion_ledger'], 'assertion_id'),
         'reports': entity_changes(left_reports['report_ledger'] if left_reports else [],
                                   right_reports['report_ledger'] if right_reports else [], 'report_id'),
         'search_plan': entity_changes(left['search_plan_audit']['search_plan_ledger'],
