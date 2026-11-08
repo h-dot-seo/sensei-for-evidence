@@ -30,6 +30,14 @@ See docs/COMMANDS.md for every local CLI and docs/WORKFLOWS.md for the workflow
 narratives and explicit limitations. Use only authorized inputs; shipped examples
 are entirely synthetic.
 
+To see which local commands exist, run `python sensei.py list` from the repository
+root: it prints every root script with its first docstring sentence and the
+supplied-input routes of the operator handoff with their guides, executing nothing.
+`python sensei.py run <script> [arguments]` runs one listed script exactly as
+`python <script> [arguments]` does. Keep the documented `python <script>` form in
+guides and records, and never treat the listing as a recommended order or as evidence
+that a step was done.
+
 For optional live PubMed identifier discovery, read docs/PUBMED_DISCOVERY.md first.
 Preview is offline; fetch transmits the exact query/date parameters to NCBI and
 requires a matching preview hash plus authorization to share that query. Never

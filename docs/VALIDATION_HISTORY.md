@@ -2641,3 +2641,71 @@ condenses documentation. The command reference records parser usage lines, not v
 workflows, and the Korean guide translates the documented scope without adding a
 capability. Documentation size and link resolution say nothing about scientific adequacy;
 census remains `NOT_ESTABLISHED` and the mechanical conclusion readiness `NOT_READY`.
+
+## 2026-11-08 Test package and dispatcher (0.87.0-test-package-and-dispatcher)
+
+The 106 `test_*.py` modules moved from the repository root into the new `tests/` package
+(`tests/__init__.py` is one docstring line), so the root now shows the command-line scripts
+and the engine modules only. `python -m unittest discover -v` from the repository root
+recurses into the package and loads the modules as `tests.test_<name>`; the CI command in
+`.github/workflows/tests.yml` is unchanged. Inside the moved modules the 79 repository-root
+definitions `ROOT = Path(__file__).resolve().parent` became `Path(__file__).resolve().parents[1]`,
+each use checked individually: every use of `ROOT` is a repository-root use (fixtures under
+`examples/`, guides under `docs/`, script paths and `cwd` for subprocesses, the README read by
+the RIS intake test, and the implementation-byte reads that the extraction worksheet test
+guards); none used the directory as a scratch base. The 28 cross-test imports in 16 modules
+became `from tests.test_<name> import ...`. The 27 modules that locate `examples/` and scripts
+relative to the current directory are unchanged, because discovery neither changes the
+working directory nor removes the start directory from `sys.path`. The walkthrough tests still
+build command paths from `ROOT` and read the guides under `docs/`; the catalog navigation and
+operator journey tests still run the parser-help entry points with a temporary current
+directory. No fenced command block of any guide changed, and no implementation module changed.
+
+The new `sensei.py` is a standard-library dispatcher that makes the root scripts discoverable
+without changing them. `python sensei.py list` prints every root script that has a top-level
+`main()` or `__main__` block (58 scripts, found by parsing the files rather than importing
+them) with the first sentence of its docstring, then the 26 supplied-input routes of
+`review_handoff.SUPPLIED_INPUT_WORKFLOWS` with their scripts and their 52 guide paths;
+`review_handoff` is imported only inside `list`, and the dispatcher imports no repository module
+at startup. `python sensei.py run <script> [arguments...]` accepts exactly the listed file names
+(anything else, including engine modules, paths, the dispatcher itself and case variants, exits 2
+with a one-line message before anything runs) and executes the script with
+`runpy.run_path(..., run_name='__main__')` after setting `sys.argv`, so output, parser name, exit
+status and boundary text are those of the script; no shell is involved, and the dispatcher works
+from any current directory because it resolves scripts next to its own file. The twelve tests in
+`tests/test_dispatcher.py` check the listing against an independent scan of the root, the
+first-sentence rendering, every catalog route with its scripts and guides, control-character
+escaping, byte-identical output versus direct invocation from a temporary directory, `--help` and
+exit-status pass-through, the rejection list, that nothing is created in the current directory,
+and that neither importing the dispatcher nor `run` loads the catalog modules. README "Commands at
+a glance", `docs/COMMANDS.md`, `docs/USAGE.md`, `SKILL.md` and the Korean guide describe the
+layout and the dispatcher; the documented `python <script>` commands remain the primary form.
+
+Deliberately not moved: the implementation modules stay flat at the root. Fixtures bind
+`offline_adapter.py` bytes and review targets bind engine bytes through `ENGINE_FILES` and the
+`implementation_hashes` tuples, so packaging them would change those bytes and bindings.
+`offline_adapter.py`, every `ENGINE_FILES` module and the walkthrough fixture `target_sha256`
+values are byte-identical to the previous release, and the fixture refresh script was therefore
+not run. The 2026-11-06 entry above quotes the focused command
+`python -m unittest test_pubmed_discovery ...` as it was run that day; it is kept verbatim as a
+record and is not a current instruction (the modules are now `tests.test_pubmed_discovery` and
+so on).
+
+Verification on native Windows with Python 3.15 in a dedicated temporary directory: before the
+move, `python -m unittest discover -q` on a byte-identical copy of the tree ran
+`Ran 1826 tests in 402.834s`; `FAILED (errors=1, skipped=45)`. After the move and the new module:
+`Ran 1838 tests in 450.444s`; `FAILED (errors=1, skipped=45)`, exactly 1826 + 12 dispatcher tests. The one error
+is the pre-existing `tests.test_verify_manifest...test_native_windows_junction_rejected`
+TypeError under Python 3.15, unrelated to this change and left as is. The dispatcher module
+also passes under the locally installed Python 3.13. Compilation, the CRLF scan, a local link
+checker (every relative link target and heading anchor in the Markdown files of the root,
+`docs/` and `examples/`, all catalog guide paths and every file named in SKILL.md), the limited
+publication audit and the regenerated manifest (383 files) pass. `python sensei.py list` and
+`python sensei.py run` were executed by hand from the repository root and from a temporary
+directory. Exact published-head Ubuntu/Windows x Python 3.10/3.12 CI is checked after push.
+
+Not claimed: no behavior, boundary text, fixture or documented command changed; the dispatcher
+adds no capability beyond discovery and pass-through, and its listing is neither a recommended
+execution order nor a workflow validation nor evidence that any step was done. Matching test
+counts show that the same tests were collected, not scientific adequacy; census remains
+`NOT_ESTABLISHED` and the mechanical conclusion readiness `NOT_READY`.
