@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.89.1-crosswalk-zip-errors` (2026-11-10). This file is the
+Current release: `0.90.0-status-markdown` (2026-11-10). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -51,25 +51,52 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-10 Crosswalk ZIP-error integration (0.89.1-crosswalk-zip-errors)
+## 2026-11-10 Status ZIP-error integration (0.90.0-status-markdown)
 
-Integrated the upstream detached implementation-inspector correction into the native
-count-crosswalk release. DEFLATE and LZMA failures while reading a ZIP manifest now
-produce the existing sanitized INVALID report with exit 1, in JSON and quoted text,
-without a traceback. BZIP2 errors retain the existing OSError handling. Four added
-synthetic tests exercise actual corrupted compressed bytes with readable ZIP central
-directories and valid stored/DEFLATE/BZIP2/LZMA archives. Input bytes stay unchanged.
-The count-crosswalk implementation, engine, adapter and bound fixtures are unchanged.
+Integrated the upstream detached implementation-inspector correction before the
+first publication of the status-Markdown increment. DEFLATE and LZMA ZIP-manifest
+decoder failures now produce the existing sanitized INVALID report and exit 1 in
+JSON and quoted text, without a traceback; existing BZIP2 error handling remains.
+Four additional synthetic tests cover actual corrupt compressed bytes with valid
+ZIP directories, input nonmutation and valid stored/DEFLATE/BZIP2/LZMA archives.
+The status renderer, count crosswalk, engine, adapter and bound fixtures are unchanged.
 
 Local Python 3.12.14 integration validation: `python -m unittest discover -q`
-reported `Ran 1881 tests in 155.429s`, `OK (skipped=1)`, with no failures/errors.
+reported `Ran 1905 tests in 157.292s`, `OK (skipped=1)`, with no failures/errors.
 The only skip is the existing native-Windows junction test. Focused inspector,
-dispatcher and crosswalk validation ran 55 tests in 8.657s, OK without skips.
+dispatcher and status validation ran 56 tests in 10.628s, OK without skips.
 Compileall, regenerated manifest and publication audit passed. Integrated inspector
-code/tests exactly match the upstream correction; no other existing Python, engine,
-adapter, fixture or guide command bytes changed.
-This is malformed-input handling, not artifact verification, scientific adequacy or
-source authentication. Census stays NOT_ESTABLISHED; readiness stays NOT_READY.
+code/tests exactly match the upstream correction. Status-renderer code/tests/guide,
+crosswalk, engine, adapter, fixtures and existing guide command bytes are unchanged.
+The release remains 0.90.0-status-markdown. This fix does not establish artifact
+verification, source authentication or scientific adequacy. Census remains
+NOT_ESTABLISHED and readiness remains NOT_READY.
+
+## 2026-11-10 Supplied-data status Markdown (0.90.0-status-markdown)
+
+Added `views_export.py status` as a detached read-only rendering of the unchanged
+`research_status.status()` result. Fixed-label integer/null count tables accompany
+all status fields, optional retrospective records and complete queues. Supplied
+values use quoted JSON lines inside backtick fences longer than their contents;
+control/format and Unicode line separators cannot escape those blocks. Missing
+stages remain distinct from empty lists and zero. No join, pointer or decision is
+invented. No engine, adapter, protected guide block or bound fixture changed.
+
+Twenty-four synthetic tests cover complete status preservation across protocol
+examples, unknown/empty stages, nested pointers, hostile Markdown/control strings,
+long fences, deterministic bytes/key permutations, no mutation/network/clock,
+implementation/output hashes, compact receipts, schema/count rejection, strict
+JSON, all three size bounds, existing paths, Windows dangling links and exact guide
+replay. The guide was also run separately with ASCII-configured stdout.
+
+Local Python 3.12.14: focused status tests ran 24 tests in 2.221s, OK with no skips.
+`python -m unittest discover -q` ran 1,901 tests in 153.369s, OK (skipped=1),
+with no failures/errors; the skip is the existing native-Windows junction test.
+Compileall, regenerated publication manifest and publication audit passed. All 305
+existing Python/example files and all existing guide sh blocks stayed byte-identical.
+No Markdown renderer compatibility, source authentication, scientific sufficiency,
+PRISMA figure, completed review or authorized sharing is established. Census stays
+NOT_ESTABLISHED and conclusion stays NOT_READY. Real files and receipts are private.
 
 ## 2026-11-10 Native count crosswalk (0.89.0-prisma-count-crosswalk)
 

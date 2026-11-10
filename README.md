@@ -58,6 +58,12 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 - **Export counts**: native, conservative PRISMA-oriented crosswalk CSV with explicit
   search-arm choices, blank unknown stages and a full pending-work receipt.
 
+- **Share status**: detached Markdown with all supplied status fields and review
+  queues, quoted data, unknown-versus-zero counts and an output fingerprint receipt.
+
+See [shareable status](docs/SHAREABLE_VIEWS.md) for the tested read-only Markdown
+rehearsal and safe sharing boundaries.
+
 See [native count crosswalk](docs/PRISMA_FLOW_TEMPLATE.md) for the tested rehearsal
 and the distinction from external PRISMA diagram templates.
 
@@ -118,6 +124,7 @@ documented command.
 | `sensei.py` | `list` prints every root script with its first docstring sentence and the operator-handoff routes with their guides, executing nothing; `run <script> [args...]` runs one root script exactly as `python <script>` does |
 | `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
 | `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
+| `views_export.py status` | Save supplied-data status Markdown with every queue and a separate receipt; no readiness judgement |
 | `prisma_flow_template.py` | Export a native supplied-count crosswalk CSV, not an external PRISMA template |
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |

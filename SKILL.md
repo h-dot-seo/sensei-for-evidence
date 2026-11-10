@@ -94,3 +94,12 @@ Leave exact-ID repeat and screening cells blank unless the operator explicitly
 selects `--include-exact-id-accounting`; never relabel repeats as publication
 deduplication. Preserve the receipt with its pending stages, plan/page issues and
 count differences. No source transmission or scientific conclusion is authorized.
+
+### Share supplied status
+
+For a local status document, use `views_export.py status PROTOCOL --output NEW.md`
+after reading `docs/SHAREABLE_VIEWS.md`. This only renders `research_status.status()`;
+keep all queues, unknown stages, optional retrospective context and negative claims.
+`--text` changes the stdout receipt, not the Markdown. Keep real files private and
+outside the public checkout; exporting does not authorize sending or publishing them.
+Do not interpret mechanical counts or closed gates as scientific readiness.
