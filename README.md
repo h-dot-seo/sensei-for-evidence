@@ -17,6 +17,8 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 
 ## What is implemented
 
+- **Check the checkout**: read-only inventory, Python syntax and one synthetic status
+  smoke check without bytecode writes; not research validation or full CI.
 - **Collect**: preview-bound, keyless PubMed identifier discovery and explicit selected-PMID
   EFetch MEDLINE title/abstract acquisition with retained native observations, explicit
   caps/failures and separate unreviewed intake; declared search plans and optional page
@@ -87,7 +89,7 @@ and the distinction from external PRISMA diagram templates.
 Python 3.10+, no third-party dependencies. Run from the repository root:
 
 ```sh
-python -m unittest discover -v
+python sensei.py check
 python review_handoff.py examples/claim-comparison.json --work-package WP-TRANSLATION --text
 python research_status.py examples/review-demo.json --text
 python evidence_workflow.py examples/review-demo.json
@@ -96,6 +98,10 @@ python research_bundle.py create examples/review-demo.json ../synthetic-review.z
 python research_bundle.py verify ../synthetic-review.zip
 python compare_runs.py examples/review-demo.json examples/review-demo.json
 ```
+
+Full verification (several minutes): `python -m unittest discover -v`, then
+`python audit_publication.py` and `python verify_manifest.py`. The smoke check is
+not the test suite, CI matrix or research validation. See [checkout smoke check](docs/CHECKOUT_CHECK.md).
 
 The ZIP output must not already exist. Keep real research inputs and generated
 bundles outside this public repository: bundles preserve all supplied data without
@@ -119,12 +125,17 @@ Exact usage of every script and subcommand: [command reference](docs/COMMANDS.md
 Layout: every command-line script is a module at the repository root and runs as
 `python <script>.py ...` from there, next to the engine modules it imports; the synthetic
 test suite is the `tests/` package that `python -m unittest discover -v` recurses into.
-The dispatcher `sensei.py` lists those scripts and runs one of them without changing any
+For your own files from any directory, use
+`python PATH/TO/sensei-for-evidence/research_status.py ./my-protocol.json` or
+`python PATH/TO/sensei-for-evidence/sensei.py run research_status.py ./my-protocol.json`.
+Relative input/output paths resolve against your current directory. Guide example paths
+are repository-relative, so run those guides from the repository root.
+The dispatcher `sensei.py` checks the checkout, lists those scripts and runs one of them without changing any
 documented command.
 
 | Entry points | Purpose |
 |---|---|
-| `sensei.py` | `list` prints every root script with its first docstring sentence and the operator-handoff routes with their guides, executing nothing; `run <script> [args...]` runs one root script exactly as `python <script>` does |
+| `sensei.py` | `check` runs a bounded checkout smoke check; `list` prints every root script with its first docstring sentence and the operator-handoff routes with their guides, executing nothing; `run <script> [args...]` runs one root script exactly as `python <script>` does |
 | `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
 | `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
 | `views_export.py status` | Save supplied-data status Markdown with every queue and a separate receipt; no readiness judgement |

@@ -2942,3 +2942,38 @@ The guide was also replayed manually with byte-identical files. Python 3.10 gram
 parsing, compileall, manifest verification, publication audit and UTF-8/LF checks
 passed. Local results do not assert Windows behavior, remote CI completion, universal
 spreadsheet safety or scientific adequacy.
+
+## 2026-11-10 Bounded checkout smoke check (0.93.0-checkout-smoke-check)
+
+Added `sensei.py check` for a read-only first-hour checkout check. The strict
+publication verifier is unchanged: listed-byte drift, missing files, malformed
+metadata and unsafe entries fail. Ordinary unlisted additions warn only in this
+smoke command; strict publication verification still rejects them. Only listed
+Python sources are compiled in memory, then one synthetic status fixture must
+retain NOT_ESTABLISHED and NOT_READY. Bytecode writes are disabled, the status
+subprocess has a 30-second timeout, and inventory/syntax failure skips later steps.
+This checks consistency with the local manifest, not publisher authentication.
+
+English/Korean quick starts now begin with the smoke command; full tests and
+maintainer audit/manifest checks remain separate and required. Direct scripts
+remain the primary form. Caller-relative input/output paths and repository-relative
+guide examples are distinguished explicitly. The new guide and English README
+quick-start block are replayed by tests, with Korean command-block parity asserted.
+The release header is advanced from the stale 0.91 label through the actual 0.92
+base to 0.93. No packaging, license, Python floor, engine, adapter, existing fixture
+or protected executable guide-block changes are included.
+
+Local Python 3.12.14: focused dispatcher/smoke tests reported `Ran 20 tests in
+13.185s`, `OK`, no skips or failures. The full suite reported `Ran 1943 tests in
+156.945s`, `OK (skipped=1)`, no failures/errors; the skip is the existing native
+Windows junction test on Linux. Coverage includes untouched checkout/caller files,
+no new bytecode, tracked drift/missing files, invalid manifests and verifier imports,
+unlisted invalid Python, unsafe links, listed syntax failure, bad status JSON/labels,
+nonzero exit, timeout, caller-relative input and executable documentation replay.
+
+A separate smoke demonstration passed in 0.602s over 201 manifest-listed Python
+files. This is an observation, not a universal runtime guarantee; inventory cost
+scales with the checkout and additions. Compileall, Python 3.10 grammar parsing,
+UTF-8/LF, exact engine/adapter and protected guide-block comparisons, manifest and
+publication audit passed. These are local synthetic results, not remote CI results,
+research validation, scientific sufficiency or evidence of Windows execution.

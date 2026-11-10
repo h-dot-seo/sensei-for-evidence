@@ -4,9 +4,9 @@
 its docstring, then the supplied-input routes of the operator handoff catalog with their
 scripts and guides. `run SCRIPT [ARGUMENTS ...]` executes one root script exactly as
 `python SCRIPT [ARGUMENTS ...]` does, without a shell. The documented `python <script>`
-form stays the primary one; this dispatcher only makes the scripts discoverable.
-Nothing beyond the standard library is imported until `list` needs the catalog, and the
-dispatcher reads only this repository's own files.
+form stays the primary one. `check` performs a read-only checkout/inventory smoke check
+and runs one synthetic status fixture; it is not research validation or the test suite.
+Repository modules are imported lazily by the subcommands that need them.
 """
 import argparse
 import ast
@@ -14,6 +14,7 @@ import json
 import re
 import runpy
 import sys
+import subprocess
 import unicodedata
 from pathlib import Path
 
@@ -25,6 +26,73 @@ BOUNDARY = ('Listing only: no script was executed, no file outside this reposito
             '`python SCRIPT ...`; it adds no scientific judgement, authentication or model call. '
             'Census stays NOT_ESTABLISHED and the mechanical conclusion readiness stays NOT_READY '
             'in every tool output.')
+
+
+CHECK_BOUNDARY = ('Repository/inventory smoke check of this checkout; not the test suite, CI matrix '
+                  'or research validation. No scientific judgement, authentication, model call or '
+                  'network request. Census stays NOT_ESTABLISHED; conclusion readiness stays NOT_READY.')
+
+
+def check_checkout():
+    """Check listed bytes and syntax, then one synthetic status; never write bytecode."""
+    previous = sys.dont_write_bytecode
+    sys.dont_write_bytecode = True
+    try:
+        if str(ROOT) not in sys.path:
+            sys.path.insert(0, str(ROOT))
+        from verify_manifest import verify
+        from json_io import parse_json
+        errors = verify(ROOT)
+        extras = [error for error in errors if error.endswith(': unlisted file')]
+        failures = [error for error in errors if not error.endswith(': unlisted file')]
+        if failures:
+            print('FAIL inventory: checkout differs from the published release')
+            for error in failures:
+                print('  ' + plain(error))
+            print('SKIP syntax and synthetic status: inventory failed')
+            return 1
+        manifest = parse_json((ROOT / 'PUBLICATION_MANIFEST.json').read_text(encoding='utf-8'))
+        if manifest.get('project') != 'sensei-for-evidence':
+            print('FAIL inventory: expected sensei-for-evidence publication manifest')
+            print('SKIP syntax and synthetic status: inventory failed')
+            return 1
+        print('PASS inventory: listed files match the checkout manifest (not authentication)')
+        if extras:
+            print('WARN inventory: unlisted additions; strict verify_manifest.py still fails')
+            for error in extras:
+                print('  ' + plain(error))
+        sources = [row['path'] for row in manifest['files'] if row['path'].endswith('.py')]
+        try:
+            for name in sources:
+                compile((ROOT / name).read_bytes(), name, 'exec', dont_inherit=True)
+        except (OSError, SyntaxError, ValueError) as error:
+            print('FAIL syntax: ' + plain(error))
+            print('SKIP synthetic status: syntax failed')
+            return 1
+        print('PASS syntax: ' + str(len(sources)) + ' manifest-listed Python files; no bytecode written')
+        try:
+            result = subprocess.run(
+                [sys.executable, '-B', str(ROOT / 'research_status.py'),
+                 str(ROOT / 'examples' / 'review-demo.json')],
+                cwd=ROOT, capture_output=True, timeout=30)
+            if result.returncode != 0:
+                raise ValueError('status exited ' + str(result.returncode))
+            status = parse_json(result.stdout.decode('utf-8'))
+            if (not isinstance(status, dict)
+                    or status.get('census_claim') != 'NOT_ESTABLISHED'
+                    or status.get('conclusion_readiness') != 'NOT_READY'):
+                raise ValueError('synthetic status boundaries did not match')
+        except (OSError, ValueError, subprocess.TimeoutExpired) as error:
+            print('FAIL synthetic status: ' + plain(error))
+            return 1
+        print('PASS synthetic status: NOT_ESTABLISHED / NOT_READY')
+        return 0
+    except (OSError, ValueError, TypeError, ImportError, SyntaxError) as error:
+        print('FAIL checkout: ' + plain(error))
+        return 1
+    finally:
+        sys.dont_write_bytecode = previous
+        print(CHECK_BOUNDARY)
 
 
 def plain(text):
@@ -124,12 +192,14 @@ def build_parser():
     parser = argparse.ArgumentParser(prog=SELF, description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter,
                                      epilog=BOUNDARY)
-    subparsers = parser.add_subparsers(dest='command', metavar='{list,run}', required=True)
+    subparsers = parser.add_subparsers(dest='command', metavar='{list,run,check}', required=True)
     subparsers.add_parser('list', help='print the root scripts with a command line and the catalog routes',
                           description='Print every root script that has a main entry point, with the first '
                                       'sentence of its docstring, then the supplied-input routes of the '
                                       'operator handoff catalog with their scripts and guides.',
                           epilog=BOUNDARY)
+    subparsers.add_parser('check', help='read-only checkout/inventory and synthetic status smoke check',
+                          description=CHECK_BOUNDARY, epilog='Writes no bytecode; does not run the full suite.')
     runner = subparsers.add_parser('run', help='run one root script exactly as `python SCRIPT ...` would',
                                    description='Execute the named root script with the remaining arguments, '
                                                'without a shell. Only file names printed by `list` are accepted; '
@@ -146,6 +216,8 @@ def main():
             stream.reconfigure(encoding='utf-8', errors=getattr(stream, 'errors', None) or 'strict')
     parser = build_parser()
     args = parser.parse_args()
+    if args.command == 'check':
+        parser.exit(check_checkout())
     if args.command == 'list':
         sys.stdout.write(render_listing(entry_point_scripts(), catalog_routes()))
         return

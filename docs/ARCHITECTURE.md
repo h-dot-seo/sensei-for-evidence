@@ -1,5 +1,15 @@
 # SENSEI evidence workflow
 
+## Checkout entry point
+
+`sensei.py` provides discovery, transparent script dispatch and a bounded read-only
+`check`. The check uses the unchanged strict publication verifier, compiles only
+manifest-listed Python source in memory, then runs one synthetic status with bytecode
+writes disabled. Unlisted ordinary files warn without relaxing publication verification;
+changed/missing listed files and unsafe inventory entries fail before fixture execution.
+This is not authentication, the full suite, CI or research validation. Engine and
+adapter semantics are unchanged. See [checkout check](CHECKOUT_CHECK.md).
+
 ## Entry and neutral discovery
 
 Resolve the research target, use context and decision-critical scope. Conduct neutral

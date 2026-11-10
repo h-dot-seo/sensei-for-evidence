@@ -7,6 +7,11 @@ for the combined synthetic demonstration.
 질문 정의부터 근거 수집·종합·반론 검토·결론 범위 판단까지 연결하는 연구 방법 프레임워크입니다.
 A method-first framework for traceable evidence research and bounded conclusions.
 
+Use `python PATH/TO/sensei-for-evidence/research_status.py ./my-protocol.json` or
+`python PATH/TO/sensei-for-evidence/sensei.py run research_status.py ./my-protocol.json`
+from your own working directory. Relative inputs and outputs remain relative to that
+directory; guide examples still run from the repository root.
+
 ## Core principle
 
 **Search completion is not evidence sufficiency.** A persuasive narrative does not
@@ -30,9 +35,13 @@ scientific adequacy or deliver a legal freedom-to-operate opinion.
 Python 3.10+, standard library only:
 
 ```sh
+python3 sensei.py check
 python3 validate_run.py examples/state.json
-python3 -m unittest discover -v
 ```
+
+Full verification (several minutes): `python3 -m unittest discover -v`,
+`python3 audit_publication.py`, and `python3 verify_manifest.py`. The
+[checkout smoke check](CHECKOUT_CHECK.md) is not the full suite, CI or research validation.
 
 The pending synthetic state passes consistency checks while its conclusion remains
 `NOT_READY`. A valid file is not a completed study. `COMPLETE` additionally requires
