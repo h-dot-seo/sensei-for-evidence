@@ -39,8 +39,10 @@ quotes supplied values. The command writes no output files; JSON goes to stdout.
 Bounds are 50,000,000 input bytes, 5,000,000 JSON/manifest bytes, 5,000,000 bytes per
 source file, 100,000 JSON nodes/archive entries and 10,000 hash declarations.
 Malformed JSON, duplicate keys, nonfinite numbers, oversized or encrypted manifests
-fail closed. Filesystem checks are not a sandbox against concurrent path replacement;
-inspect stable directories under your control.
+fail closed. Corrupt DEFLATE, BZIP2 or LZMA manifest data produces the same INVALID
+report with exit 1, in JSON or quoted text, without a decoder traceback. Filesystem
+checks are not a sandbox against concurrent path replacement; inspect stable
+directories under your control.
 
 The report lists candidate verify usage from the current command reference for
 recorded modules. These are hints, not artifact-type detection: retained wrappers

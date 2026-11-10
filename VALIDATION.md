@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.88.0-implementation-check` (2026-11-10). This file is the
+Current release: `0.88.1-implementation-zip-errors` (2026-11-10). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -50,6 +50,29 @@ redistribution rights. Local test results do not establish that a remote publica
 succeeded; the public CI history is the record of published heads.
 
 ## Latest change
+
+## 2026-11-10 Corrupt ZIP manifest diagnostics (0.88.1-implementation-zip-errors)
+
+The detached implementation inspector now normalizes DEFLATE and LZMA decoder
+failures at the ZIP-manifest read boundary. Corrupt manifests produce the existing
+complete INVALID report and exit 1 without a traceback in JSON and quoted text.
+BZIP2 rejection remains covered by the existing OSError handling. No engine,
+adapter, bound walkthrough fixture or existing guide command block changed.
+
+Four new synthetic tests generate actual ZIP files, corrupt compressed manifest
+data while retaining readable central directories, confirm the native decoder
+failures, and check sanitized reports and unchanged input bytes. Valid stored,
+DEFLATE, BZIP2 and LZMA archives still match. The pre-fix DEFLATE and LZMA cases
+both reproduced uncaught decoder errors.
+
+Local Python 3.12.14 validation: `python -m unittest discover -q` reported
+`Ran 1858 tests in 140.230s`, `OK (skipped=1)`, with no failures or errors.
+Focused inspector and dispatcher validation ran 32 tests, OK. The documented guide
+was replayed separately: all 28 engine files and the supplied publication manifest
+matched. `compileall`, manifest verification and the limited publication audit
+passed; changed files are UTF-8 without BOM and LF. This is malformed-input
+handling, not artifact verification, source authentication, scientific adequacy or
+release provenance. Census stays NOT_ESTABLISHED and readiness stays NOT_READY.
 
 ## 2026-11-10 Implementation revision inspection (0.88.0-implementation-check)
 

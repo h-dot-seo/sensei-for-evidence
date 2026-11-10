@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.88.0-implementation-check",
+  "release": "0.88.1-implementation-zip-errors",
   "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5327,
-      "sha256": "af805634b96a1831939b684c810647ec933a28a9461e73b1a77f5d8a32317295"
+      "bytes": 6806,
+      "sha256": "aad1d541a70e51e4f14c5deb69b5ce0e2a5db3ea1740a0e24bd94d399eb58ecb"
     },
     {
       "path": "adapter_integrity.py",
@@ -260,8 +260,8 @@
     },
     {
       "path": "docs/IMPLEMENTATION_REVISIONS.md",
-      "bytes": 3532,
-      "sha256": "2643a36c4791ba489adcc1f319a3d96edbe1c8e25ce02cde8ebc5f9cd7c9ef9e"
+      "bytes": 3676,
+      "sha256": "1dceaec98f50c3c1f643ed1edd7e6c253e25247d2dd4a7473f24f6fa35fffb05"
     },
     {
       "path": "docs/INDEPENDENT_CHALLENGE.md",
@@ -485,8 +485,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 197642,
-      "sha256": "adf78d01911f729329b23168d4e46717cd74808c3132f94c662011fa21127c90"
+      "bytes": 199116,
+      "sha256": "7deaaf2dd2c02ff270d2c9d35080e876dc30b0cf1499f7ac3d1aca156ad138be"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1100,8 +1100,8 @@
     },
     {
       "path": "implementation_check.py",
-      "bytes": 9390,
-      "sha256": "4e4204b0af93ae8c432a78c6fd9bea58f0baf0b451134f5e5c7320da5618b152"
+      "bytes": 9574,
+      "sha256": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f"
     },
     {
       "path": "inventory_intake.py",
@@ -1550,8 +1550,8 @@
     },
     {
       "path": "tests/test_implementation_check.py",
-      "bytes": 10491,
-      "sha256": "c81bd1d5ccf968a5a54dd46d6f1855f6462259aa94001fa03b711930d59d27d9"
+      "bytes": 14062,
+      "sha256": "6a1daacc44f8cd01684cbb84d5d1d8136cb9604ef200a4c8f9a6c5f255c91bb7"
     },
     {
       "path": "tests/test_inventory_intake.py",

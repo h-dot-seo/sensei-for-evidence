@@ -4,15 +4,18 @@ import hashlib
 import io
 import importlib
 import json
+import lzma
 from pathlib import Path
 import re
 import shlex
+import struct
 import subprocess
 import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 import zipfile
+import zlib
 import implementation_check as check
 import research_bundle
 
@@ -126,6 +129,67 @@ class ImplementationCheckTests(unittest.TestCase):
         with patch.object(check, 'MAX_JSON_BYTES', 100):
             with self.assertRaises(ValueError):
                 check.artifact_json(archive)
+
+    def test_zip_supported_compression(self):
+        for compression in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED,
+                            zipfile.ZIP_BZIP2, zipfile.ZIP_LZMA):
+            with self.subTest(compression=compression):
+                archive = self.root / 'synthetic-compressed.zip'
+                with zipfile.ZipFile(archive, 'w', compression=compression) as stream:
+                    stream.writestr('manifest.json', self.artifact.read_bytes())
+                self.assertEqual(check.inspect_artifact(archive, self.root)['status'], 'MATCH')
+
+    def assert_corrupt_manifest_report(self, compression, decoder_error, input_error):
+        archive = self.root / 'synthetic-corrupt.zip'
+        with zipfile.ZipFile(archive, 'w', compression=compression) as stream:
+            stream.writestr('manifest.json', self.artifact.read_bytes())
+        raw = bytearray(archive.read_bytes())
+        with zipfile.ZipFile(io.BytesIO(raw)) as stream:
+            entry = stream.getinfo('manifest.json')
+        name_size, extra_size = struct.unpack_from('<HH', raw, entry.header_offset + 26)
+        start = entry.header_offset + 30 + name_size + extra_size
+        # Corrupt only compressed data, leaving a valid ZIP directory and headers.
+        if compression == zipfile.ZIP_LZMA:
+            properties_size = struct.unpack_from('<H', raw, start + 2)[0]
+            raw[start + 4 + properties_size] = 255
+        else:
+            raw[start] = 6 if compression == zipfile.ZIP_DEFLATED else 0
+        archive.write_bytes(raw)
+        self.assertTrue(zipfile.is_zipfile(archive))
+        with zipfile.ZipFile(archive) as stream:
+            self.assertEqual(stream.namelist(), ['manifest.json'])
+            with self.assertRaises(decoder_error):
+                stream.read('manifest.json')
+        with self.assertRaises(input_error):
+            check.artifact_json(archive)
+        before = {p.name: p.read_bytes() for p in self.root.iterdir()}
+        expected = dict(status='INVALID', error='Input unreadable, malformed or outside inspection limits.',
+                        boundary=check.BOUNDARY, census_claim='NOT_ESTABLISHED',
+                        conclusion_readiness='NOT_READY')
+        for text in (False, True):
+            with self.subTest(text=text):
+                command = [sys.executable, str(ROOT / 'implementation_check.py'), 'inspect',
+                           str(archive), '--engine-root', str(self.root)]
+                if text:
+                    command.append('--text')
+                result = subprocess.run(command, cwd=ROOT, capture_output=True, encoding='utf-8')
+                self.assertEqual(result.returncode, 1, result.stderr)
+                self.assertEqual(result.stderr, '')
+                if text:
+                    self.assertEqual(result.stdout, ''.join(
+                        key + ': ' + check.quoted_display(value) + '\n' for key, value in expected.items()))
+                else:
+                    self.assertEqual(json.loads(result.stdout), expected)
+        self.assertEqual(before, {p.name: p.read_bytes() for p in self.root.iterdir()})
+
+    def test_zip_corrupt_deflate_manifest(self):
+        self.assert_corrupt_manifest_report(zipfile.ZIP_DEFLATED, zlib.error, ValueError)
+
+    def test_zip_corrupt_lzma_manifest(self):
+        self.assert_corrupt_manifest_report(zipfile.ZIP_LZMA, lzma.LZMAError, ValueError)
+
+    def test_zip_corrupt_bzip2_manifest(self):
+        self.assert_corrupt_manifest_report(zipfile.ZIP_BZIP2, OSError, OSError)
 
     def test_symlink_and_dangling_source_rejected(self):
         self.source.unlink()
