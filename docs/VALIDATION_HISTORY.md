@@ -2758,3 +2758,63 @@ matched. `compileall`, manifest verification and the limited publication audit
 passed; changed files are UTF-8 without BOM and LF. This is malformed-input
 handling, not artifact verification, source authentication, scientific adequacy or
 release provenance. Census stays NOT_ESTABLISHED and readiness stays NOT_READY.
+
+## 2026-11-10 Native count crosswalk (0.89.0-prisma-count-crosswalk)
+
+Added `prisma_flow_template.py` as a separate read-only derivation of the unchanged
+PRISMA audit. It writes one exclusively created native CSV, not an official or
+import-compatible external template. Search arms are supplied by input index;
+unknown arms and unsupported rows stay blank. Exact-ID repeats and screened counts
+are blank without an explicit opt-in. Missing report stages remain distinct from
+supplied empty ledgers. Receipt JSON/text retain every mapping, plan/page issue,
+pending node, mechanical count difference and implementation/CSV fingerprint.
+No engine, adapter, protected walkthrough or bound fixture changed.
+
+Twenty-two synthetic tests cover expected cells, nonaggregation, optional IDs,
+blank-versus-zero, pending states, incomplete/page issues, formula escaping,
+control-safe text, deterministic hashes/nonmutation, invalid assignments, strict
+JSON, input/CSV/stdout limits, exclusive output, dangling links and the documented
+rehearsal. The guide was also executed separately with ASCII-configured stdout.
+
+Local Python 3.12.14: final `python -m unittest discover -q` ran 1,876 tests,
+OK (skipped=1), with no failures/errors. Focused crosswalk tests: 22 passed.
+`compileall`, publication manifest verification and publication audit passed.
+No external template compatibility, source authentication, completed review,
+scientific validity or independent deduplication is claimed. No third-party template
+text or external tool is included. Census stays NOT_ESTABLISHED; conclusion stays
+NOT_READY. Keep real source labels, reasons, CSVs and receipts private.
+
+## 2026-11-10 Windows crosswalk output correction (0.89.0-prisma-count-crosswalk)
+
+The first PR CI run exposed a real Windows difference: opening a dangling symlink
+with `xb` can create its missing target. The new writer now uses the existing
+intake convention of `lstat` rejection before exclusive creation. A platform-neutral
+regression also verifies that existing entries and inspection errors prevent any
+open. The original Windows symlink test remains enabled, not skipped or weakened.
+Stable output paths are required; concurrent replacement and ancestor aliases are
+not a supported security boundary. No existing engine or intake module changed.
+
+Focused crosswalk tests: 23 passed. Final local full suite: 1,877 tests, OK
+(skipped=1), no failures/errors. Compileall, publication audit and regenerated
+manifest passed. The failed first CI run is retained as evidence; the corrected
+published head requires a separate four-platform CI result.
+
+## 2026-11-10 Crosswalk ZIP-error integration (0.89.1-crosswalk-zip-errors)
+
+Integrated the upstream detached implementation-inspector correction into the native
+count-crosswalk release. DEFLATE and LZMA failures while reading a ZIP manifest now
+produce the existing sanitized INVALID report with exit 1, in JSON and quoted text,
+without a traceback. BZIP2 errors retain the existing OSError handling. Four added
+synthetic tests exercise actual corrupted compressed bytes with readable ZIP central
+directories and valid stored/DEFLATE/BZIP2/LZMA archives. Input bytes stay unchanged.
+The count-crosswalk implementation, engine, adapter and bound fixtures are unchanged.
+
+Local Python 3.12.14 integration validation: `python -m unittest discover -q`
+reported `Ran 1881 tests in 155.429s`, `OK (skipped=1)`, with no failures/errors.
+The only skip is the existing native-Windows junction test. Focused inspector,
+dispatcher and crosswalk validation ran 55 tests in 8.657s, OK without skips.
+Compileall, regenerated manifest and publication audit passed. Integrated inspector
+code/tests exactly match the upstream correction; no other existing Python, engine,
+adapter, fixture or guide command bytes changed.
+This is malformed-input handling, not artifact verification, scientific adequacy or
+source authentication. Census stays NOT_ESTABLISHED; readiness stays NOT_READY.

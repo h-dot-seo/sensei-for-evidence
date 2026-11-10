@@ -189,3 +189,10 @@ The optional [descriptive study inventory](REPORT_STUDY_INVENTORY.md) is preserv
 separately from PRISMA membership nodes. A candidate description on a pending or
 excluded report is not an included study and never changes inclusion/extraction
 counts or partition checks.
+
+## Native count crosswalk
+
+Use [prisma_flow_template.py](PRISMA_FLOW_TEMPLATE.md) for an exclusively created,
+conservative native CSV derived from this audit. It leaves ambiguous cells blank
+by default and retains unfinished stages in its receipt. It is not an external
+PRISMA template or an import-compatible diagram file.

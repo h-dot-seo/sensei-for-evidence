@@ -118,3 +118,12 @@ observations are not a new persistent protocol approval ledger.
 It walks recorded hash declarations and compares selected local source bytes and
 supplied publication manifests without executing that source or replaying artifacts.
 Byte identity does not cover unhashed imports, authenticate provenance or verify inputs.
+
+## Detached count crosswalk
+
+`prisma_flow_template.py` calls the unchanged `prisma_audit.export_audit` and
+serializes a native crosswalk, not an external template. Search classification is
+supplied by input index; downstream counts retain whole-protocol scope. Unknown,
+withheld and unsupported values stay blank; missing report data stays distinct
+from an explicitly empty report ledger. It does not change engine state or bundle
+verification. See [the crosswalk contract](PRISMA_FLOW_TEMPLATE.md).

@@ -470,3 +470,9 @@ retain list order; exact-input bundle hashes preserve original bytes. Neither ki
 hash is a signature. Keep real research inputs and generated bundles outside this
 public repository: bundles preserve all supplied data without redaction, and no
 upload or external request is made by these commands.
+
+## Export a native count crosswalk
+
+The [native crosswalk](PRISMA_FLOW_TEMPLATE.md) derives a local CSV from supplied
+PRISMA accounting, with explicit per-search method choices and a full pending-state
+receipt. It never supplies missing counts or certifies diagram compatibility.

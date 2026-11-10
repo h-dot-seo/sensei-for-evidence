@@ -55,6 +55,12 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 - **Inspect implementation drift**: read-only per-file hash diagnostics for old bundles
   and detached records, with optional supplied publication-manifest matching.
 
+- **Export counts**: native, conservative PRISMA-oriented crosswalk CSV with explicit
+  search-arm choices, blank unknown stages and a full pending-work receipt.
+
+See [native count crosswalk](docs/PRISMA_FLOW_TEMPLATE.md) for the tested rehearsal
+and the distinction from external PRISMA diagram templates.
+
 ## Start here
 
 - [First offline run](docs/FIRST_RUN.md): 11 tested commands from a declared question and
@@ -112,6 +118,7 @@ documented command.
 | `sensei.py` | `list` prints every root script with its first docstring sentence and the operator-handoff routes with their guides, executing nothing; `run <script> [args...]` runs one root script exactly as `python <script>` does |
 | `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
 | `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
+| `prisma_flow_template.py` | Export a native supplied-count crosswalk CSV, not an external PRISMA template |
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
 | `pubmed_discovery.py`, `pubmed_metadata.py` | Optional preview-bound live ESearch/EFetch; the only networked commands |
