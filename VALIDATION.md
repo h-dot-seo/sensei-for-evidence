@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.89.0-prisma-count-crosswalk` (2026-11-10). This file is the
+Current release: `0.89.1-crosswalk-zip-errors` (2026-11-10). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -50,6 +50,26 @@ redistribution rights. Local test results do not establish that a remote publica
 succeeded; the public CI history is the record of published heads.
 
 ## Latest change
+
+## 2026-11-10 Crosswalk ZIP-error integration (0.89.1-crosswalk-zip-errors)
+
+Integrated the upstream detached implementation-inspector correction into the native
+count-crosswalk release. DEFLATE and LZMA failures while reading a ZIP manifest now
+produce the existing sanitized INVALID report with exit 1, in JSON and quoted text,
+without a traceback. BZIP2 errors retain the existing OSError handling. Four added
+synthetic tests exercise actual corrupted compressed bytes with readable ZIP central
+directories and valid stored/DEFLATE/BZIP2/LZMA archives. Input bytes stay unchanged.
+The count-crosswalk implementation, engine, adapter and bound fixtures are unchanged.
+
+Local Python 3.12.14 integration validation: `python -m unittest discover -q`
+reported `Ran 1881 tests in 155.429s`, `OK (skipped=1)`, with no failures/errors.
+The only skip is the existing native-Windows junction test. Focused inspector,
+dispatcher and crosswalk validation ran 55 tests in 8.657s, OK without skips.
+Compileall, regenerated manifest and publication audit passed. Integrated inspector
+code/tests exactly match the upstream correction; no other existing Python, engine,
+adapter, fixture or guide command bytes changed.
+This is malformed-input handling, not artifact verification, scientific adequacy or
+source authentication. Census stays NOT_ESTABLISHED; readiness stays NOT_READY.
 
 ## 2026-11-10 Native count crosswalk (0.89.0-prisma-count-crosswalk)
 

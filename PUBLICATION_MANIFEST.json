@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.89.0-prisma-count-crosswalk",
+  "release": "0.89.1-crosswalk-zip-errors",
   "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 7934,
-      "sha256": "731db3442d4bacb1625da8f02e709eb8f291ded984518041aa8b95571edf4047"
+      "bytes": 9302,
+      "sha256": "5832a9bbd31a7417ec1fa40422f61c73db2ac009d157fee49c98acf388ce4ca2"
     },
     {
       "path": "adapter_integrity.py",
@@ -260,8 +260,8 @@
     },
     {
       "path": "docs/IMPLEMENTATION_REVISIONS.md",
-      "bytes": 3532,
-      "sha256": "2643a36c4791ba489adcc1f319a3d96edbe1c8e25ce02cde8ebc5f9cd7c9ef9e"
+      "bytes": 3676,
+      "sha256": "1dceaec98f50c3c1f643ed1edd7e6c253e25247d2dd4a7473f24f6fa35fffb05"
     },
     {
       "path": "docs/INDEPENDENT_CHALLENGE.md",
@@ -490,8 +490,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 200246,
-      "sha256": "2a7260091c44e14beba2ec8648d2578a8bf78d0eb6d58226cf4f264063dcb49e"
+      "bytes": 203090,
+      "sha256": "6617116565219fb7c568bb74759f6681323f082e0d1403394641127c87ddf893"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1105,8 +1105,8 @@
     },
     {
       "path": "implementation_check.py",
-      "bytes": 9390,
-      "sha256": "4e4204b0af93ae8c432a78c6fd9bea58f0baf0b451134f5e5c7320da5618b152"
+      "bytes": 9574,
+      "sha256": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f"
     },
     {
       "path": "inventory_intake.py",
@@ -1560,8 +1560,8 @@
     },
     {
       "path": "tests/test_implementation_check.py",
-      "bytes": 10491,
-      "sha256": "c81bd1d5ccf968a5a54dd46d6f1855f6462259aa94001fa03b711930d59d27d9"
+      "bytes": 14062,
+      "sha256": "6a1daacc44f8cd01684cbb84d5d1d8136cb9604ef200a4c8f9a6c5f255c91bb7"
     },
     {
       "path": "tests/test_inventory_intake.py",

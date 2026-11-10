@@ -3,10 +3,12 @@ import argparse
 import hashlib
 import io
 import json
+import lzma
 from pathlib import Path
 import re
 import stat
 import zipfile
+import zlib
 from json_io import configure_utf8_stdio, parse_json, quoted_display
 from verify_manifest import link_like
 
@@ -51,8 +53,11 @@ def artifact_json(path):
             entry = manifests[0]
             if entry.file_size > MAX_JSON_BYTES or entry.flag_bits & 1:
                 raise ValueError('archive manifest is oversized or encrypted')
-            with archive.open(entry) as stream:
-                raw = stream.read(MAX_JSON_BYTES + 1)
+            try:
+                with archive.open(entry) as stream:
+                    raw = stream.read(MAX_JSON_BYTES + 1)
+            except (zlib.error, lzma.LZMAError):
+                raise ValueError('archive manifest cannot be decompressed') from None
     if len(raw) > MAX_JSON_BYTES:
         raise ValueError('JSON exceeds byte limit')
     value = parse_json(raw)

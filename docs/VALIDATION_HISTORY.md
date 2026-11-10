@@ -2736,6 +2736,29 @@ publication manifest matched. UTF-8 without BOM and LF were checked for changed 
 No live service, scientific adequacy, source authenticity, complete census or release
 provenance is claimed.
 
+## 2026-11-10 Corrupt ZIP manifest diagnostics (0.88.1-implementation-zip-errors)
+
+The detached implementation inspector now normalizes DEFLATE and LZMA decoder
+failures at the ZIP-manifest read boundary. Corrupt manifests produce the existing
+complete INVALID report and exit 1 without a traceback in JSON and quoted text.
+BZIP2 rejection remains covered by the existing OSError handling. No engine,
+adapter, bound walkthrough fixture or existing guide command block changed.
+
+Four new synthetic tests generate actual ZIP files, corrupt compressed manifest
+data while retaining readable central directories, confirm the native decoder
+failures, and check sanitized reports and unchanged input bytes. Valid stored,
+DEFLATE, BZIP2 and LZMA archives still match. The pre-fix DEFLATE and LZMA cases
+both reproduced uncaught decoder errors.
+
+Local Python 3.12.14 validation: `python -m unittest discover -q` reported
+`Ran 1858 tests in 140.230s`, `OK (skipped=1)`, with no failures or errors.
+Focused inspector and dispatcher validation ran 32 tests, OK. The documented guide
+was replayed separately: all 28 engine files and the supplied publication manifest
+matched. `compileall`, manifest verification and the limited publication audit
+passed; changed files are UTF-8 without BOM and LF. This is malformed-input
+handling, not artifact verification, source authentication, scientific adequacy or
+release provenance. Census stays NOT_ESTABLISHED and readiness stays NOT_READY.
+
 ## 2026-11-10 Native count crosswalk (0.89.0-prisma-count-crosswalk)
 
 Added `prisma_flow_template.py` as a separate read-only derivation of the unchanged
@@ -2775,3 +2798,23 @@ Focused crosswalk tests: 23 passed. Final local full suite: 1,877 tests, OK
 (skipped=1), no failures/errors. Compileall, publication audit and regenerated
 manifest passed. The failed first CI run is retained as evidence; the corrected
 published head requires a separate four-platform CI result.
+
+## 2026-11-10 Crosswalk ZIP-error integration (0.89.1-crosswalk-zip-errors)
+
+Integrated the upstream detached implementation-inspector correction into the native
+count-crosswalk release. DEFLATE and LZMA failures while reading a ZIP manifest now
+produce the existing sanitized INVALID report with exit 1, in JSON and quoted text,
+without a traceback. BZIP2 errors retain the existing OSError handling. Four added
+synthetic tests exercise actual corrupted compressed bytes with readable ZIP central
+directories and valid stored/DEFLATE/BZIP2/LZMA archives. Input bytes stay unchanged.
+The count-crosswalk implementation, engine, adapter and bound fixtures are unchanged.
+
+Local Python 3.12.14 integration validation: `python -m unittest discover -q`
+reported `Ran 1881 tests in 155.429s`, `OK (skipped=1)`, with no failures/errors.
+The only skip is the existing native-Windows junction test. Focused inspector,
+dispatcher and crosswalk validation ran 55 tests in 8.657s, OK without skips.
+Compileall, regenerated manifest and publication audit passed. Integrated inspector
+code/tests exactly match the upstream correction; no other existing Python, engine,
+adapter, fixture or guide command bytes changed.
+This is malformed-input handling, not artifact verification, scientific adequacy or
+source authentication. Census stays NOT_ESTABLISHED; readiness stays NOT_READY.
