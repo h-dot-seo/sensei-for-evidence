@@ -146,3 +146,12 @@ writer and receipt preflight. Local aliases keep each partition in its own group
 two explicit unit bridges are dashed and detached study/result nodes stay detached.
 This module is not an engine input; engine files and bundle payloads are unchanged.
 See [accounting flow](ACCOUNTING_FLOW.md) for boundaries and rendering limitations.
+
+## Detached records CSV
+
+`records_csv.py` flattens only existing `export_audit()` ledgers and uses
+`report_study_ids` for mapped report memberships. It stays outside ENGINE_FILES.
+`views_export.py records` preflights the CSV and receipt before exclusive creation;
+failed new writes are cleaned up on stable paths. Missing stages, display search
+labels and separate report/result study lists remain explicit. See
+[records CSV](RECORDS_CSV.md). No engine, adapter, fixture or bundle contract changes.

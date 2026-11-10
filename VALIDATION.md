@@ -214,3 +214,44 @@ audit and UTF-8/LF checks passed. The first focused run exposed a mock receipt
 without a schema key; receipt-label selection now preserves that compatibility
 and all tests pass. External renderer acceptance and remote CI are not asserted
 by these local results.
+
+## 2026-11-10 Detached records CSV (0.92.0-records-csv)
+
+Added `views_export.py records PROTOCOL --output NEW_CSV`, rendering only existing
+record, occurrence, report and evidence audit ledgers. Authoritative search indices
+are occurrence-aligned; optional/duplicated display search IDs retain their positions.
+Report memberships and result study IDs stay separate. Stage columns distinguish
+not-supplied reports/reviews from available empty data. Bibliographic pointers and
+existing screening-review cues are optional, never new adjudications.
+
+The standard-library serializer is outside ENGINE_FILES. Every cell string uses
+CSV safety escaping, list cells use JSON, and all cells are quoted to retain CR/LF.
+Scalar NUL is rejected consistently across CSV runtimes. Input, CSV and stdout
+receipt are bounded before exclusive output creation. A failed new CSV write is
+removed on stable paths; OS cleanup failure can still leave an incomplete file.
+Existing files/links are refused. The data-only CSV requires its separate boundary
+receipt; real outputs remain unredacted and private. No model, network, clock,
+source authentication, scientific judgement or PRISMA interchange claim is added.
+Census remains NOT_ESTABLISHED and conclusion readiness remains NOT_READY.
+
+Engine, adapter, all fixture bytes and the seven-file bundle contract are unchanged.
+The existing status Markdown is byte-identical to the base (10,777 bytes). Existing
+flow serialization code is unchanged; its view implementation fingerprint changes
+honestly. Existing status/flow receipt formats and writer semantics are preserved.
+English/Korean documentation and a tested two-command CSV rehearsal were added.
+
+Local Python 3.12.14 complete suite: `Ran 1935 tests in 150.304s`,
+`OK (skipped=1)`, no failures/errors. The skip is the existing native-Windows
+junction test on Linux. Focused records/status/flow/dispatcher: `Ran 66 tests in
+13.320s`, `OK`. Records-only: `Ran 17 tests in 1.253s`, `OK`. Tests cover original
+ledger values, optional columns, missing versus empty stages, hostile formulas,
+quotes/CR/LF/NUL, deterministic key permutation, no input mutation, CSV errors,
+size/receipt preflight, exclusive destinations, failed-write cleanup and guide replay.
+The initial focused run exposed a test assumption that top-level example protocols
+include bibliographic collection data; a separate synthetic audit fixture now tests
+that column explicitly. No production failure or test weakening resulted.
+
+The guide was also replayed manually with byte-identical files. Python 3.10 grammar
+parsing, compileall, manifest verification, publication audit and UTF-8/LF checks
+passed. Local results do not assert Windows behavior, remote CI completion, universal
+spreadsheet safety or scientific adequacy.

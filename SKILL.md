@@ -111,3 +111,11 @@ a detached supplied-count view; read `docs/ACCOUNTING_FLOW.md`. Keep partition
 groups separate, preserve unknown stages and unit-bridge nonconservation warnings.
 Do not call it an official PRISMA diagram or render/upload it through a service
 without authorization. Counts and fingerprints can still disclose private work.
+
+### Export supplied records
+
+For a requested local record worksheet, read `docs/RECORDS_CSV.md` and use
+`views_export.py records PROTOCOL --output NEW.csv`. Preserve the receipt, missing
+stages, authoritative search indices and separate report/result study IDs. Cues
+are existing reviewer comparisons, never adjudication. Keep unredacted files outside
+the public checkout; exporting grants no permission to share.
