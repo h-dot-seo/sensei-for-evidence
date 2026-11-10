@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.87.0-test-package-and-dispatcher` (2026-11-08). This file is the
+Current release: `0.88.1-implementation-zip-errors` (2026-11-10). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -50,6 +50,56 @@ redistribution rights. Local test results do not establish that a remote publica
 succeeded; the public CI history is the record of published heads.
 
 ## Latest change
+
+## 2026-11-10 Corrupt ZIP manifest diagnostics (0.88.1-implementation-zip-errors)
+
+The detached implementation inspector now normalizes DEFLATE and LZMA decoder
+failures at the ZIP-manifest read boundary. Corrupt manifests produce the existing
+complete INVALID report and exit 1 without a traceback in JSON and quoted text.
+BZIP2 rejection remains covered by the existing OSError handling. No engine,
+adapter, bound walkthrough fixture or existing guide command block changed.
+
+Four new synthetic tests generate actual ZIP files, corrupt compressed manifest
+data while retaining readable central directories, confirm the native decoder
+failures, and check sanitized reports and unchanged input bytes. Valid stored,
+DEFLATE, BZIP2 and LZMA archives still match. The pre-fix DEFLATE and LZMA cases
+both reproduced uncaught decoder errors.
+
+Local Python 3.12.14 validation: `python -m unittest discover -q` reported
+`Ran 1858 tests in 140.230s`, `OK (skipped=1)`, with no failures or errors.
+Focused inspector and dispatcher validation ran 32 tests, OK. The documented guide
+was replayed separately: all 28 engine files and the supplied publication manifest
+matched. `compileall`, manifest verification and the limited publication audit
+passed; changed files are UTF-8 without BOM and LF. This is malformed-input
+handling, not artifact verification, source authentication, scientific adequacy or
+release provenance. Census stays NOT_ESTABLISHED and readiness stays NOT_READY.
+
+## 2026-11-10 Implementation revision inspection (0.88.0-implementation-check)
+
+Added the detached read-only `implementation_check.py inspect` diagnostic, outside
+ENGINE_FILES, with nested engine/implementation/adapter hash declarations, escaped
+JSON pointers, bounded strict JSON and ZIP-manifest input, safe bare source names,
+shared cross-platform link-like rejection and independent supplied-manifest matching.
+It prints complete per-file differences before exit 1 and candidate documented verify
+usage without executing selected source code. Matching bytes are not verification,
+authentication, provenance, input replay or scientific readiness. No engine module,
+adapter, protected guide command block or bound walkthrough fixture changed.
+
+The new executable guide uses fictional review-demo data. Sixteen focused synthetic
+tests cover all hash shapes, malformed declarations/JSON, missing and changed sources,
+conflicting declarations, byte/node/hash limits, ZIP duplicate/oversized manifests,
+links/reparse rejection, independent manifest matching, safe text and exit status,
+self-inclusion of current implementation sets and exact guide replay.
+
+Local Python 3.12.14 validation: `python -m unittest discover -q` ran 1,854 tests
+(1,838 existing + 16 new), OK with one platform skip and no failures or errors.
+Focused inspector and dispatcher validation ran 28 tests, OK. `compileall`,
+`verify_manifest.py` and `audit_publication.py` passed. The guide was also replayed
+manually outside the checkout: all 28 recorded engine files and the supplied
+publication manifest matched. UTF-8 without BOM and LF were checked for changed files.
+No live service, scientific adequacy, source authenticity, complete census or release
+provenance is claimed.
+
 
 - 2026-11-08 Test package and dispatcher (`0.87.0-test-package-and-dispatcher`): the 106
   test modules moved from the repository root into the `tests/` package (79

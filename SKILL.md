@@ -77,3 +77,9 @@ a scope statement, rationale and limitations. A NOT_READY assertion with INSUFFI
 evidence must name existing reopening work or an amendment note. A READY assertion
 may close scope deliberately while gates are open; those open gates stay recorded
 beside it. The mechanical conclusion readiness of every tool remains NOT_READY.
+
+For implementation drift in old artifacts, use `implementation_check.py inspect`
+after reading docs/IMPLEMENTATION_REVISIONS.md. Supply `--engine-root` and optional
+repeatable `--manifest` paths explicitly. It executes nothing and checks only recorded
+bytes, never input validity or scientific readiness. Use the historical verifier
+separately from a trusted matching revision with all required original inputs.

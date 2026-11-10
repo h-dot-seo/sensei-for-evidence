@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.87.0-test-package-and-dispatcher",
-  "date": "2026-11-08",
+  "release": "0.88.1-implementation-zip-errors",
+  "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 383,
+  "file_count": 386,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13515,
-      "sha256": "62efc7ba270fa9fc5c9a1261a0aa8fd6c445f0edfdfc6038d288f835dc466845"
+      "bytes": 13883,
+      "sha256": "92c39b9d8ea9b0898c145fab9d055f8ea2fac99fe2de357c1805491f75e862ed"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 5251,
-      "sha256": "ba123160592f7cd0e3db3581f0be6e936c576eb51a1acc2d087801e4ca5fac07"
+      "bytes": 5664,
+      "sha256": "25d7ac16c3ad130c2d303f5c39c92a4407dab04f712dc295a27673ac7fd5d006"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3582,
-      "sha256": "bf5cccec45f82fc84f4416e00887154b7c5337758baa1fcecf4eed43f0521281"
+      "bytes": 6806,
+      "sha256": "aad1d541a70e51e4f14c5deb69b5ce0e2a5db3ea1740a0e24bd94d399eb58ecb"
     },
     {
       "path": "adapter_integrity.py",
@@ -175,8 +175,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 6588,
-      "sha256": "e654ffeba411d7beac4e667af8aa1c41089194f3c995bf33eeb2a5a3a28f7a91"
+      "bytes": 6927,
+      "sha256": "564a193b9d86d7ace70c5a171e06fa9fd4cd3208950ba53019857ab717f01b73"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -210,8 +210,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 40740,
-      "sha256": "d82d1f8f6e0c45fc5987dd83ff95998083af66dd8d3194d87439b690f94e0180"
+      "bytes": 41081,
+      "sha256": "37fe51dd4ee4695fa31df1b2d76552f33bfadf14bbab42e7d2bf6b96b2ff113e"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -257,6 +257,11 @@
       "path": "docs/FIRST_RUN.md",
       "bytes": 7144,
       "sha256": "dcbf3e3a905e6164033658845aa9a8fec4c92974dcbc5c4f96b19450124d4e95"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_REVISIONS.md",
+      "bytes": 3676,
+      "sha256": "1dceaec98f50c3c1f643ed1edd7e6c253e25247d2dd4a7473f24f6fa35fffb05"
     },
     {
       "path": "docs/INDEPENDENT_CHALLENGE.md",
@@ -370,8 +375,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 17307,
-      "sha256": "ad09dc5ce0536214eb256d8d8c038fdfdfa06c9d5a8991b46f154dddb2bb82ed"
+      "bytes": 17604,
+      "sha256": "0fe66ecdf1426ae45016537108c3d8b7944c13984bdc29a712ffd15c25c6a384"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -475,13 +480,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 35239,
-      "sha256": "332e39f7e9cecaf3a9ae8d986d666f52c824b39900a39d5587c28626d97e72e7"
+      "bytes": 35205,
+      "sha256": "75a65a0ba198991d9dfa056b6ec2cb5560dad073754c01c5177ee7bb142b0d22"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 195891,
-      "sha256": "8efad298bac86a24c62f7b62ce69912ea6a39505cfce1571464a48db232f223b"
+      "bytes": 199116,
+      "sha256": "7deaaf2dd2c02ff270d2c9d35080e876dc30b0cf1499f7ac3d1aca156ad138be"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1094,6 +1099,11 @@
       "sha256": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66"
     },
     {
+      "path": "implementation_check.py",
+      "bytes": 9574,
+      "sha256": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f"
+    },
+    {
       "path": "inventory_intake.py",
       "bytes": 21497,
       "sha256": "6944a2bbeab09b9afc61a9c8374f4e06805ba439354c5297dfdfe4e119850057"
@@ -1537,6 +1547,11 @@
       "path": "tests/test_first_run_walkthrough.py",
       "bytes": 5424,
       "sha256": "dbf0707786eb2d12e9acb249622b986ce38a8fdaeae0e77bebe886011ad3f333"
+    },
+    {
+      "path": "tests/test_implementation_check.py",
+      "bytes": 14062,
+      "sha256": "6a1daacc44f8cd01684cbb84d5d1d8136cb9604ef200a4c8f9a6c5f255c91bb7"
     },
     {
       "path": "tests/test_inventory_intake.py",

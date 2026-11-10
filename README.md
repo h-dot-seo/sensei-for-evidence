@@ -52,6 +52,9 @@ work-package assertion or reproducible bundle is not a completed scientific stud
   verification and CSV exports; typed native-collection and transition archives;
   version-to-version mechanical comparison with optional amendment notes.
 
+- **Inspect implementation drift**: read-only per-file hash diagnostics for old bundles
+  and detached records, with optional supplied publication-manifest matching.
+
 ## Start here
 
 - [First offline run](docs/FIRST_RUN.md): 11 tested commands from a declared question and
@@ -120,7 +123,12 @@ documented command.
 | `work_review.py`, `source_work_intake.py`, `evidence_work_intake.py`, `work_completion_intake.py`, `artifact_review.py` | Work packets; reviewed work proposals and completion; artifact byte checks |
 | `research_bundle.py`, `*_bundle.py`, `compare_runs.py`, `validate_run.py` | Deterministic bundles and archives; version comparison; state validation |
 
+See [implementation revisions](docs/IMPLEMENTATION_REVISIONS.md) to diagnose old
+artifacts without executing historical code.
+
 ## Documentation
+
+- [Implementation revision inspection](docs/IMPLEMENTATION_REVISIONS.md)
 
 Start and reference
 - [First offline run](docs/FIRST_RUN.md)

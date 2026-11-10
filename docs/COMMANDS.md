@@ -231,6 +231,12 @@ and no step fills a decision, judgement or label on your behalf.
 | `python appraisal_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output` | Retain exact original/import/endpoint bytes for an explicitly selected contiguous appraisal segment | [Appraisal transition bundles](APPRAISAL_TRANSITION_BUNDLES.md) |
 | `python appraisal_transition_bundle.py verify [-h] [--text] bundle` | Replay the retained appraisal segment without renewing reviews or assessing validity | [Appraisal transition bundles](APPRAISAL_TRANSITION_BUNDLES.md) |
 
+## Implementation revision diagnostics
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python implementation_check.py inspect [-h] [--engine-root ENGINE_ROOT] [--manifest MANIFEST] [--text] artifact` | Compare recorded hashes without executing artifact code; manifest is repeatable | [Implementation revisions](IMPLEMENTATION_REVISIONS.md) |
+
 ## Tests and publication checks
 
 | Usage | Purpose | Guide |
