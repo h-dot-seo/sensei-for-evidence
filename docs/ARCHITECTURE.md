@@ -137,3 +137,12 @@ status/audit/handoff modules, adapter bindings and the bundle payload set unchan
 The detached file and separate bounded receipt use exclusive output creation with
 `lstat` rejection of existing entries. See [shareable status](SHAREABLE_VIEWS.md) for
 Markdown escaping, unknown-versus-zero and partial-file boundaries.
+
+## Detached accounting flow
+
+`accounting_flow.py` serializes fixed vocabulary and counts from
+`prisma_audit.export_audit()`. `views_export.py flow` uses the existing exclusive
+writer and receipt preflight. Local aliases keep each partition in its own group;
+two explicit unit bridges are dashed and detached study/result nodes stay detached.
+This module is not an engine input; engine files and bundle payloads are unchanged.
+See [accounting flow](ACCOUNTING_FLOW.md) for boundaries and rendering limitations.
