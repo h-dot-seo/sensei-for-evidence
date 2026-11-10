@@ -476,3 +476,12 @@ upload or external request is made by these commands.
 The [native crosswalk](PRISMA_FLOW_TEMPLATE.md) derives a local CSV from supplied
 PRISMA accounting, with explicit per-search method choices and a full pending-state
 receipt. It never supplies missing counts or certifies diagram compatibility.
+
+## Save a supplied-data status view
+
+The [shareable status guide](SHAREABLE_VIEWS.md) saves existing mechanical status
+counts and complete queues as detached Markdown. Supplied strings stay quoted and
+fenced; absent stages remain distinct from zero, and historical records do not become
+pending work. The receipt fingerprints the file without duplicating it on stdout.
+No protocol, engine judgement or bundle payload changes; sharing remains a separate
+authorized action.

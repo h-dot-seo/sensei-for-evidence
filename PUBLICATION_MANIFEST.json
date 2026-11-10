@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.89.1-crosswalk-zip-errors",
+  "release": "0.90.0-status-markdown",
   "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 389,
+  "file_count": 392,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14301,
-      "sha256": "e528ff72423d53d74f21dda53777d1b05e9cbbd34d9b25834b1b73de3089d739"
+      "bytes": 14720,
+      "sha256": "81c22c63c6fcbe6beb755348e482e28d64c79ced5f899badc0e070a506ae5900"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 6349,
-      "sha256": "eba4d79c3894dabc23b120562065f0217974c0bd9cdb3a858f756810f6f74118"
+      "bytes": 6877,
+      "sha256": "4c9eff6eb40ce4d43e08efab00c4bbf9044fa91c5f8552ba2fe6b7f9a4227870"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 9302,
-      "sha256": "5832a9bbd31a7417ec1fa40422f61c73db2ac009d157fee49c98acf388ce4ca2"
+      "bytes": 11121,
+      "sha256": "42f25adbe3e27efdfb03f25cb9ebc35148a2ecd3379b8335be4ec4bc303ddc53"
     },
     {
       "path": "adapter_integrity.py",
@@ -175,8 +175,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 7428,
-      "sha256": "64c9ceba3524fb49de6a7db75d6d5fd9a68bc36c46f258fb7cd48847ae32ebf2"
+      "bytes": 8031,
+      "sha256": "01f4c196dae42151b303e3b7d5b32adc719a225184b1eb02ac57c4794814e34b"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -210,8 +210,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 41419,
-      "sha256": "1245cb05d4e36022a6ad1e0e75a176b63e255ef9f231cd2b0f7446bdcc05ddd1"
+      "bytes": 41837,
+      "sha256": "d7c9db0e216feece98f5d94858d48e68391cd331acfec3e09df030c7d625b936"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -380,8 +380,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 18057,
-      "sha256": "75e95fe71d7dd256c5d903ceefebccd88b1ac73a5f11462f470a57d5f122fa50"
+      "bytes": 18590,
+      "sha256": "69fa1b3f4a1f3e67b5490aaa9fc4eb4d0f5fe74a9fc06e6a185d9ef930adac41"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -464,6 +464,11 @@
       "sha256": "b2fe686db7681fd0e9ab9b140df77cb773ef57ebaf07ddcb6159e9afd30be19c"
     },
     {
+      "path": "docs/SHAREABLE_VIEWS.md",
+      "bytes": 4435,
+      "sha256": "4fcb448661addaf162b223bd146abb39c6214812b1babffabab36c9ecae44975"
+    },
+    {
       "path": "docs/SOURCE_CONTEXTS.md",
       "bytes": 6159,
       "sha256": "05039623686f72d7905284e03e8698a57ac20c84bae6332350d58331db7f90a4"
@@ -490,13 +495,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 203090,
-      "sha256": "6617116565219fb7c568bb74759f6681323f082e0d1403394641127c87ddf893"
+      "bytes": 206284,
+      "sha256": "81cd17a5d109286f2e8123d0fca45add9acaa425c377fcfa049ae632631f4ecf"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 29543,
-      "sha256": "018e444020471fb6bcb65e6087ac5cf834b45c98a14f24702b6dae6ec8701e73"
+      "bytes": 30016,
+      "sha256": "058530be0e080db7a9f42567ae5a4ccb37efb911b176f1035843b310836d3f2f"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1874,6 +1879,11 @@
       "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
     },
     {
+      "path": "tests/test_views_export.py",
+      "bytes": 18691,
+      "sha256": "ae6a64e34698511e0584e1dc6c645612f0e6aece1eaa717e77393d69a9ae9470"
+    },
+    {
       "path": "tests/test_work_completion_intake.py",
       "bytes": 22302,
       "sha256": "77881b1689179735faa5afd78a1663b52197e337ee94add42b05f3a1194551ac"
@@ -1927,6 +1937,11 @@
       "path": "verify_manifest.py",
       "bytes": 4941,
       "sha256": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d"
+    },
+    {
+      "path": "views_export.py",
+      "bytes": 10610,
+      "sha256": "6be648ff8f78b91ea4a9eae54711289acb26e27bf324a2f3f67df47008b6aaf1"
     },
     {
       "path": "work_completion_intake.py",

@@ -127,3 +127,13 @@ supplied by input index; downstream counts retain whole-protocol scope. Unknown,
 withheld and unsupported values stay blank; missing report data stays distinct
 from an explicitly empty report ledger. It does not change engine state or bundle
 verification. See [the crosswalk contract](PRISMA_FLOW_TEMPLATE.md).
+
+## Detached status Markdown
+
+`views_export.py status` renders only `research_status.status()` with fixed count
+labels and quoted/fenced values, preserving every existing field, queue and pointer.
+It derives no new joins or decisions, stays outside ENGINE_FILES and leaves existing
+status/audit/handoff modules, adapter bindings and the bundle payload set unchanged.
+The detached file and separate bounded receipt use exclusive output creation with
+`lstat` rejection of existing entries. See [shareable status](SHAREABLE_VIEWS.md) for
+Markdown escaping, unknown-versus-zero and partial-file boundaries.
