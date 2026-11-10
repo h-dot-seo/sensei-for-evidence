@@ -67,5 +67,5 @@ are required; concurrent replacement and ancestor aliases are not a security bou
 Counts, protocol hashes and implementation fingerprints can disclose private work
 or enable correlation even without supplied labels. Keep real files outside this
 public repository. Saving does not upload or authorize sharing. Existing status
-Markdown, audit engine and bundle payload contracts are unchanged. DOT, records CSV
-and handoff Markdown remain separate follow-up work.
+Markdown, audit engine and bundle payload contracts are unchanged. A detached [records CSV](RECORDS_CSV.md) is also available.
+DOT and handoff Markdown remain separate follow-up work.

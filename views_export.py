@@ -1,5 +1,6 @@
 """Render supplied-data accounting views as text files, not PRISMA diagrams or reports."""
 import argparse
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -8,6 +9,7 @@ import re
 from json_io import configure_utf8_stdio, parse_json, quoted_display
 from research_status import BOUNDARY as STATUS_BOUNDARY, status
 from accounting_flow import export_flow
+from records_csv import export_records, write_records
 
 MAX_BYTES = 16 * 1024 * 1024
 SCHEMA = 'sensei.status-markdown.v1'
@@ -176,6 +178,7 @@ def export_status(protocol):
 
 def render_text(receipt):
     lines = ['Supplied-data accounting flow receipt' if receipt.get('schema') == 'sensei.accounting-flow.v1'
+             else 'Supplied-data records CSV receipt' if receipt.get('schema') == 'sensei.records-csv.v1'
              else 'Supplied-data status Markdown receipt']
     lines.extend(key + ': ' + quoted_display(receipt[key]) for key in sorted(receipt))
     return '\n'.join(lines) + '\n'
@@ -210,23 +213,27 @@ def main():
     command.add_argument('--format', choices=('mermaid',), default='mermaid')
     command.add_argument('--output', type=Path, required=True, metavar='NEW_MMD')
     command.add_argument('--text', action='store_true', help='print a quoted receipt instead of JSON')
+    command = commands.add_parser('records', help='save supplied-record accounting CSV')
+    command.add_argument('protocol', type=Path)
+    command.add_argument('--output', type=Path, required=True, metavar='NEW_CSV')
+    command.add_argument('--text', action='store_true', help='print a quoted receipt instead of JSON')
     args = parser.parse_args()
     try:
         with args.protocol.open('rb') as source:
             raw = source.read(MAX_BYTES + 1)
         if len(raw) > MAX_BYTES:
             raise ValueError('protocol exceeds size limit')
-        exporter = export_status if args.command == 'status' else export_flow
+        exporter = {'status': export_status, 'flow': export_flow, 'records': export_records}[args.command]
         receipt, markdown = exporter(parse_json(raw))
         stdout = (render_text(receipt) if args.text else json.dumps(
             receipt, ensure_ascii=True, sort_keys=True, indent=2, allow_nan=False) + '\n').encode('utf-8')
         if len(stdout) > MAX_BYTES:
-            label = 'status' if args.command == 'status' else 'flow'
+            label = args.command
             raise ValueError(label + ' receipt exceeds size limit; narrow the supplied protocol')
         # Both complete serializations pass before the only output is created.
-        _write_new(args.output, markdown)
-    except (ValueError, OSError, KeyError, TypeError, UnicodeError, RecursionError) as error:
-        label = 'Status Markdown error: ' if args.command == 'status' else 'Accounting flow error: '
+        (write_records if args.command == 'records' else _write_new)(args.output, markdown)
+    except (csv.Error, ValueError, OSError, KeyError, TypeError, UnicodeError, RecursionError) as error:
+        label = 'Status Markdown error: ' if args.command == 'status' else 'Records CSV error: ' if args.command == 'records' else 'Accounting flow error: '
         parser.exit(1, label + quoted_display(str(error)) + '\n')
     print(stdout.decode('utf-8'), end='')
 

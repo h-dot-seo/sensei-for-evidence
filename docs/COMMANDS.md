@@ -54,7 +54,8 @@ and no step fills a decision, judgement or label on your behalf.
 |---|---|---|
 | `python review_handoff.py [-h] [--work-package WORK_PACKAGE] [--text] protocol` | Read-only operator sheet: manual queues, input locations, work deliverables, detailed-view navigation and the static supplied-input workflow catalog | [Operator handoff](OPERATOR_HANDOFF.md) |
 | `python research_status.py [-h] [--text] protocol` | View mechanical review queues and unknown stages | [Concise research status](USAGE.md#concise-research-status) |
-| `python views_export.py [-h] {status,flow} ...` | Discover detached status Markdown and supplied-accounting Mermaid text; no renderer or scientific judgement | [Shareable status](SHAREABLE_VIEWS.md) |
+| `python views_export.py [-h] {status,flow,records} ...` | Discover detached status Markdown, supplied-accounting Mermaid text and records CSV; no renderer or scientific judgement | [Shareable status](SHAREABLE_VIEWS.md) |
+| `python views_export.py records [-h] --output NEW_CSV [--text] protocol` | Save existing record joins as detached CSV with a separate receipt | [Records CSV](RECORDS_CSV.md) |
 | `python views_export.py status [-h] --output NEW_MD [--text] protocol` | Write a new read-only status Markdown file preserving every status field/queue; stdout is only a JSON or quoted receipt | [Shareable status](SHAREABLE_VIEWS.md) |
 | `python views_export.py flow [-h] [--format {mermaid}] --output NEW_MMD [--text] protocol` | Write a new supplied-accounting flow text file from existing audit partitions; no official diagram or renderer | [Accounting flow](ACCOUNTING_FLOW.md) |
 | `python evidence_workflow.py [-h] protocol` | Reconcile search, screening, results, context, appraisal and work | [Search-to-work-package workflow](USAGE.md#search-to-work-package-workflow) |
@@ -264,6 +265,7 @@ in every bundle, so verification fails closed on implementation drift.
 | `challenge_links.py` | Record supplied independent challenges to synthesis statements without adjudicating them ([guide](INDEPENDENT_CHALLENGE.md)) |
 | `context_links.py` | Validate supplied guideline/development context links without judging their validity |
 | `csv_export_parser.py` | Parse local bibliographic CSV bytes without resolving or merging records |
+| `records_csv.py` | Detached CSV serializer of existing audit joins, outside ENGINE_FILES |
 | `csv_safety.py` | Conservative text escaping for spreadsheet-facing CSV cells |
 | `experiment_links.py` | Validate supplied nonclinical comparison conditions, never prescribe experiments |
 | `json_io.py` | Strict shared JSON decoding, UTF-8 stdio and the shared quoting helper for `--text` renderings |

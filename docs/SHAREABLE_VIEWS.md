@@ -67,5 +67,6 @@ and ancestor aliases are not a supported security boundary.
 The file and receipt are unredacted. Review them before sharing; keep real research
 questions, IDs, pointers and outputs outside the public repository. This command
 does not upload or authorize sharing anything. A separate [accounting flow](ACCOUNTING_FLOW.md) command now writes Mermaid text.
-DOT, records CSV and handoff Markdown remain deferred. No model/network integration
+A separate [records CSV](RECORDS_CSV.md) command preserves existing record joins.
+DOT and handoff Markdown remain deferred. No model/network integration
 or new scientific judgement is included.
