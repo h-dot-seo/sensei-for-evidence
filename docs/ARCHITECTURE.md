@@ -113,3 +113,8 @@ source access, compares declared hashes and exact UTF-8 byte quotations, and sho
 selected text beside unchanged fields. It neither imports results nor claims
 semantic support. The ordinary intake target/review remains separate; source-file
 observations are not a new persistent protocol approval ledger.
+
+`implementation_check.py` is a detached read-only diagnostic outside ENGINE_FILES.
+It walks recorded hash declarations and compares selected local source bytes and
+supplied publication manifests without executing that source or replaying artifacts.
+Byte identity does not cover unhashed imports, authenticate provenance or verify inputs.

@@ -138,9 +138,9 @@ derived results even if their manifest hashes were changed, but does not authent
 the original protocol. CSV formula-leading cells are escaped. Store real bundles
 outside this public repository; no uploads or external calls are made.
 
-Bundle schema 2 additionally records the exact implementation bytes for
-`evidence_workflow.py`, `prisma_reports.py`, `context_links.py`, `search_audit.py`,
-`csv_safety.py`, `appraisal_links.py`, `json_io.py` and `research_bundle.py`. Retain that
+Bundle schema 2 additionally records the exact implementation bytes for all 28
+modules listed in `ENGINE_FILES` in `research_bundle.py`, including the bundle
+verifier itself and its recorded helpers. Retain that
 source revision with each bundle; verification fails closed on implementation
 drift. Duplicate JSON keys and nonstandard numeric constants are rejected. A
 record-only protocol is supported: `reports.json` is null, report CSV contains

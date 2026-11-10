@@ -2709,3 +2709,29 @@ adds no capability beyond discovery and pass-through, and its listing is neither
 execution order nor a workflow validation nor evidence that any step was done. Matching test
 counts show that the same tests were collected, not scientific adequacy; census remains
 `NOT_ESTABLISHED` and the mechanical conclusion readiness `NOT_READY`.
+
+## 2026-11-10 Implementation revision inspection (0.88.0-implementation-check)
+
+Added the detached read-only `implementation_check.py inspect` diagnostic, outside
+ENGINE_FILES, with nested engine/implementation/adapter hash declarations, escaped
+JSON pointers, bounded strict JSON and ZIP-manifest input, safe bare source names,
+shared cross-platform link-like rejection and independent supplied-manifest matching.
+It prints complete per-file differences before exit 1 and candidate documented verify
+usage without executing selected source code. Matching bytes are not verification,
+authentication, provenance, input replay or scientific readiness. No engine module,
+adapter, protected guide command block or bound walkthrough fixture changed.
+
+The new executable guide uses fictional review-demo data. Sixteen focused synthetic
+tests cover all hash shapes, malformed declarations/JSON, missing and changed sources,
+conflicting declarations, byte/node/hash limits, ZIP duplicate/oversized manifests,
+links/reparse rejection, independent manifest matching, safe text and exit status,
+self-inclusion of current implementation sets and exact guide replay.
+
+Local Python 3.12.14 validation: `python -m unittest discover -q` ran 1,854 tests
+(1,838 existing + 16 new), OK with one platform skip and no failures or errors.
+Focused inspector and dispatcher validation ran 28 tests, OK. `compileall`,
+`verify_manifest.py` and `audit_publication.py` passed. The guide was also replayed
+manually outside the checkout: all 28 recorded engine files and the supplied
+publication manifest matched. UTF-8 without BOM and LF were checked for changed files.
+No live service, scientific adequacy, source authenticity, complete census or release
+provenance is claimed.

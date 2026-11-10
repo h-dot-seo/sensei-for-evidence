@@ -186,3 +186,8 @@ ZIP 출력 경로는 미리 존재하면 안 됩니다. 실제 연구 입력과 
   [WORK_TRANSITION_BUNDLES.md](WORK_TRANSITION_BUNDLES.md) · [LOCAL_ARTIFACT_REVIEW.md](LOCAL_ARTIFACT_REVIEW.md)
 - 저장소 수준 문서: [SKILL.md](../SKILL.md) 에이전트용 워크플로 지침 · [VALIDATION.md](../VALIDATION.md) 현재 검증 스냅숏 ·
   [PUBLICATION.md](../PUBLICATION.md) 공개 범위 · [SECURITY.md](../SECURITY.md) 보안 경계 · [RIGHTS.md](../RIGHTS.md) 권리
+
+이전 번들이나 기록의 구현 해시가 달라졌다면
+[구현 리비전 검사](IMPLEMENTATION_REVISIONS.md)를 참고하세요.
+`implementation_check.py inspect`는 기록된 파일 바이트만 비교하며, 과거 코드를
+실행하거나 연구 결과를 검증하지 않습니다.
