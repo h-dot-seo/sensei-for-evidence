@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.90.0-status-markdown",
+  "release": "0.91.0-accounting-flow",
   "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 392,
+  "file_count": 395,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 14720,
-      "sha256": "81c22c63c6fcbe6beb755348e482e28d64c79ced5f899badc0e070a506ae5900"
+      "bytes": 15018,
+      "sha256": "ea351e549af8f19946c4c32df0b51644851e288bf07679a5fcd4c8bcd767ffc0"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,18 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 6877,
-      "sha256": "4c9eff6eb40ce4d43e08efab00c4bbf9044fa91c5f8552ba2fe6b7f9a4227870"
+      "bytes": 7310,
+      "sha256": "aa923ab178a102ce92cd0799cf5557643c2cc6d66b74cf1c899e80815e7977ef"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 11121,
-      "sha256": "42f25adbe3e27efdfb03f25cb9ebc35148a2ecd3379b8335be4ec4bc303ddc53"
+      "bytes": 13539,
+      "sha256": "04cff71b5fed82bf9701f8c07e421011e3e9da8a09bcbd5cd979e569baafdd09"
+    },
+    {
+      "path": "accounting_flow.py",
+      "bytes": 6853,
+      "sha256": "d1eeeeb5fd32bb68e85cca46e8cb32764aa17f3c62a0f29499c8189217e59f68"
     },
     {
       "path": "adapter_integrity.py",
@@ -154,6 +159,11 @@
       "sha256": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e"
     },
     {
+      "path": "docs/ACCOUNTING_FLOW.md",
+      "bytes": 4116,
+      "sha256": "e3752ffb0f40ad55fe3b785fd1635ab328d46f05e7407404cc7743035321ed1b"
+    },
+    {
       "path": "docs/ADAPTER_CONTRACT.md",
       "bytes": 9267,
       "sha256": "1afa9ded9a849bf1c8959a0266b7b63cb3d1eafb1db474742133b702ef29757c"
@@ -175,8 +185,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 8031,
-      "sha256": "01f4c196dae42151b303e3b7d5b32adc719a225184b1eb02ac57c4794814e34b"
+      "bytes": 8542,
+      "sha256": "2ca2f4b6e3b2307ddc425910bb707cca54593adeadd6cb08ce999a4257d1bc99"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -210,8 +220,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 41837,
-      "sha256": "d7c9db0e216feece98f5d94858d48e68391cd331acfec3e09df030c7d625b936"
+      "bytes": 42108,
+      "sha256": "c293794a3653e684bbae7f341f2c11ba92971612fe7d3f7102866e85d9153810"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -380,8 +390,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 18590,
-      "sha256": "69fa1b3f4a1f3e67b5490aaa9fc4eb4d0f5fe74a9fc06e6a185d9ef930adac41"
+      "bytes": 19028,
+      "sha256": "4af8ab3bcf92eb5cbaddcee853493995e1e9e515a85b0500df5e8286e64aeb84"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -465,8 +475,8 @@
     },
     {
       "path": "docs/SHAREABLE_VIEWS.md",
-      "bytes": 4435,
-      "sha256": "4fcb448661addaf162b223bd146abb39c6214812b1babffabab36c9ecae44975"
+      "bytes": 4481,
+      "sha256": "861212b2d2e14ccd24517542ab688592d23a1b258dc7916f26c990f72546830e"
     },
     {
       "path": "docs/SOURCE_CONTEXTS.md",
@@ -495,13 +505,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 206284,
-      "sha256": "81cd17a5d109286f2e8123d0fca45add9acaa425c377fcfa049ae632631f4ecf"
+      "bytes": 208702,
+      "sha256": "9387428281ae21bfde2b7cecbaba6e2a3ac5ae101ed7953e83cd6ab3a3a41f89"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 30016,
-      "sha256": "058530be0e080db7a9f42567ae5a4ccb37efb911b176f1035843b310836d3f2f"
+      "bytes": 30452,
+      "sha256": "133d473efd5589056ccbb71595dbf82fd83cdebda92195e0ca878b13b8271729"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1379,6 +1389,11 @@
       "sha256": "51df426029979484e08d487d57a825717190a9e2b4624adcff8b013dcf848170"
     },
     {
+      "path": "tests/test_accounting_flow.py",
+      "bytes": 10246,
+      "sha256": "148e051c96516b043c7ffef2d202990071a04cb6336808ea0e2a3d2b90aa93d9"
+    },
+    {
       "path": "tests/test_amendment_review.py",
       "bytes": 7159,
       "sha256": "06268af633284a8c4ac710edc9e7dcbcf72be0053306cfa97ed25cb719586ee8"
@@ -1940,8 +1955,8 @@
     },
     {
       "path": "views_export.py",
-      "bytes": 10610,
-      "sha256": "6be648ff8f78b91ea4a9eae54711289acb26e27bf324a2f3f67df47008b6aaf1"
+      "bytes": 11400,
+      "sha256": "586ce32a55cf3a7190af7bddc5db5c42df75fc4545fbbad423da4e28ba36ae2a"
     },
     {
       "path": "work_completion_intake.py",

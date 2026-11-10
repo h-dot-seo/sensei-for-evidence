@@ -485,3 +485,11 @@ fenced; absent stages remain distinct from zero, and historical records do not b
 pending work. The receipt fingerprints the file without duplicating it on stdout.
 No protocol, engine judgement or bundle payload changes; sharing remains a separate
 authorized action.
+
+## Save supplied-accounting flow text
+
+The [accounting flow guide](ACCOUNTING_FLOW.md) saves Mermaid text from existing
+audit nodes and partitions. Every partition is a separate group; repeated labels
+are the same quantity, never additive counts. Dashed bridges change units.
+Missing stages remain unknown, and study/result nodes stay detached. No renderer,
+source transmission or readiness judgement is included. Keep counts private.

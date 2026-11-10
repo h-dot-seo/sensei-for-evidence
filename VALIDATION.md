@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.90.0-status-markdown` (2026-11-10). This file is the
+Current release: `0.91.0-accounting-flow` (2026-11-10). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -178,3 +178,39 @@ Focused crosswalk tests: 23 passed. Final local full suite: 1,877 tests, OK
 (skipped=1), no failures/errors. Compileall, publication audit and regenerated
 manifest passed. The failed first CI run is retained as evidence; the corrected
 published head requires a separate four-platform CI result.
+
+## 2026-11-10 Supplied-accounting flow text (0.91.0-accounting-flow)
+
+Added `views_export.py flow --format mermaid` with a detached, bounded Mermaid
+text serialization of existing audit nodes and partition checks. Each partition
+uses local aliases in a separate labelled group; repeated quantities are not
+additive. Two dashed unit bridges explicitly reject count conservation, while
+study/result nodes outside partitions stay detached. Optional report-study
+membership partitions follow the supplied audit. Missing stages and plans remain
+not supplied rather than zero. Labels contain only fixed vocabulary and counts,
+not supplied questions, identifiers, reasons or locators. The visible boundary
+retains NOT_ESTABLISHED/NOT_READY; validated fingerprints appear in comments.
+
+The new serializer does not enter ENGINE_FILES. Engine, adapter, fixture bytes,
+existing guide sh blocks and the seven-file bundle contract are unchanged. The
+existing status Markdown document remained byte-identical (10,777 bytes) in the
+synthetic fixture comparison. Its receipt intentionally fingerprints the updated
+view module. The same lstat/xb writer, input/document/receipt bounds and explicit
+partial-write limitation apply. No renderer, network, source authentication,
+scientific judgement, official PRISMA diagram or exhaustive privacy audit is claimed.
+
+Synthetic tests cover all valid protocol examples, partition aliases, detached
+nodes, optional memberships, unknown stages, key-order determinism, input
+preservation, hostile supplied strings, invalid vocabulary/counts/fingerprints,
+size rejection, exclusive creation, JSON/text receipts and executable documentation.
+The fixed Mermaid grammar is checked locally without an external renderer; this
+is not a promise of acceptance or identical display in every rendering application.
+
+Final local complete suite: `Ran 1918 tests in 142.589s`; `OK (skipped=1)` with only the
+native-Windows junction test skipped on Linux. Focused flow/status/dispatcher:
+49 tests in 10.291s, OK. The new guide was also executed manually (two equal
+files). Python 3.10 syntax parsing, compileall, manifest verification, publication
+audit and UTF-8/LF checks passed. The first focused run exposed a mock receipt
+without a schema key; receipt-label selection now preserves that compatibility
+and all tests pass. External renderer acceptance and remote CI are not asserted
+by these local results.

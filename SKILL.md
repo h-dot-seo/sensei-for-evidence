@@ -103,3 +103,11 @@ keep all queues, unknown stages, optional retrospective context and negative cla
 `--text` changes the stdout receipt, not the Markdown. Keep real files private and
 outside the public checkout; exporting does not authorize sending or publishing them.
 Do not interpret mechanical counts or closed gates as scientific readiness.
+
+### Save accounting flow text
+
+Use `views_export.py flow PROTOCOL --format mermaid --output NEW.mmd` only for
+a detached supplied-count view; read `docs/ACCOUNTING_FLOW.md`. Keep partition
+groups separate, preserve unknown stages and unit-bridge nonconservation warnings.
+Do not call it an official PRISMA diagram or render/upload it through a service
+without authorization. Counts and fingerprints can still disclose private work.

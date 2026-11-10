@@ -125,6 +125,7 @@ documented command.
 | `review_handoff.py`, `research_status.py` | Read-only operator sheet with manual queues and supplied-input routes; review queues |
 | `evidence_workflow.py`, `prisma_reports.py`, `prisma_audit.py` | Reconcile search → screening → results → work; report/full-text accounting; PRISMA-oriented export |
 | `views_export.py status` | Save supplied-data status Markdown with every queue and a separate receipt; no readiness judgement |
+| `views_export.py flow` | Save accounting-only Mermaid text with separate partitions and unit bridges; no official diagram or renderer |
 | `prisma_flow_template.py` | Export a native supplied-count crosswalk CSV, not an external PRISMA template |
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
@@ -243,3 +244,6 @@ Only generic code, documentation and synthetic fixtures are included. No private
 research corpus, account information, article/book full text, figures, real
 experimental results or scientific validation data are included. No license has
 been selected by the owner yet.
+
+See [supplied-data accounting flow](docs/ACCOUNTING_FLOW.md) for a tested detached
+Mermaid text view of existing audit counts, not an official PRISMA diagram.

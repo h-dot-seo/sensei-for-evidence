@@ -54,8 +54,9 @@ and no step fills a decision, judgement or label on your behalf.
 |---|---|---|
 | `python review_handoff.py [-h] [--work-package WORK_PACKAGE] [--text] protocol` | Read-only operator sheet: manual queues, input locations, work deliverables, detailed-view navigation and the static supplied-input workflow catalog | [Operator handoff](OPERATOR_HANDOFF.md) |
 | `python research_status.py [-h] [--text] protocol` | View mechanical review queues and unknown stages | [Concise research status](USAGE.md#concise-research-status) |
-| `python views_export.py [-h] {status} ...` | Discover the detached status Markdown renderer; no diagram, records or handoff serializer | [Shareable status](SHAREABLE_VIEWS.md) |
+| `python views_export.py [-h] {status,flow} ...` | Discover detached status Markdown and supplied-accounting Mermaid text; no renderer or scientific judgement | [Shareable status](SHAREABLE_VIEWS.md) |
 | `python views_export.py status [-h] --output NEW_MD [--text] protocol` | Write a new read-only status Markdown file preserving every status field/queue; stdout is only a JSON or quoted receipt | [Shareable status](SHAREABLE_VIEWS.md) |
+| `python views_export.py flow [-h] [--format {mermaid}] --output NEW_MMD [--text] protocol` | Write a new supplied-accounting flow text file from existing audit partitions; no official diagram or renderer | [Accounting flow](ACCOUNTING_FLOW.md) |
 | `python evidence_workflow.py [-h] protocol` | Reconcile search, screening, results, context, appraisal and work | [Search-to-work-package workflow](USAGE.md#search-to-work-package-workflow) |
 | `python prisma_reports.py [-h] protocol` | Add report/full-text/study and extraction-queue accounting | [Report retrieval and full-text screening](USAGE.md#report-retrieval-and-full-text-screening) |
 | `python validate_run.py [-h] state` | Validate selected state/release consistency rules | [Quick start](USAGE.md#quick-start), [validator boundary](ARCHITECTURE.md#validator-boundary) |

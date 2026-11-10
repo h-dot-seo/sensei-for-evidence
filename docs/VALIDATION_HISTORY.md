@@ -2865,3 +2865,39 @@ crosswalk, engine, adapter, fixtures and existing guide command bytes are unchan
 The release remains 0.90.0-status-markdown. This fix does not establish artifact
 verification, source authentication or scientific adequacy. Census remains
 NOT_ESTABLISHED and readiness remains NOT_READY.
+
+## 2026-11-10 Supplied-accounting flow text (0.91.0-accounting-flow)
+
+Added `views_export.py flow --format mermaid` with a detached, bounded Mermaid
+text serialization of existing audit nodes and partition checks. Each partition
+uses local aliases in a separate labelled group; repeated quantities are not
+additive. Two dashed unit bridges explicitly reject count conservation, while
+study/result nodes outside partitions stay detached. Optional report-study
+membership partitions follow the supplied audit. Missing stages and plans remain
+not supplied rather than zero. Labels contain only fixed vocabulary and counts,
+not supplied questions, identifiers, reasons or locators. The visible boundary
+retains NOT_ESTABLISHED/NOT_READY; validated fingerprints appear in comments.
+
+The new serializer does not enter ENGINE_FILES. Engine, adapter, fixture bytes,
+existing guide sh blocks and the seven-file bundle contract are unchanged. The
+existing status Markdown document remained byte-identical (10,777 bytes) in the
+synthetic fixture comparison. Its receipt intentionally fingerprints the updated
+view module. The same lstat/xb writer, input/document/receipt bounds and explicit
+partial-write limitation apply. No renderer, network, source authentication,
+scientific judgement, official PRISMA diagram or exhaustive privacy audit is claimed.
+
+Synthetic tests cover all valid protocol examples, partition aliases, detached
+nodes, optional memberships, unknown stages, key-order determinism, input
+preservation, hostile supplied strings, invalid vocabulary/counts/fingerprints,
+size rejection, exclusive creation, JSON/text receipts and executable documentation.
+The fixed Mermaid grammar is checked locally without an external renderer; this
+is not a promise of acceptance or identical display in every rendering application.
+
+Final local complete suite: `Ran 1918 tests in 142.589s`; `OK (skipped=1)` with only the
+native-Windows junction test skipped on Linux. Focused flow/status/dispatcher:
+49 tests in 10.291s, OK. The new guide was also executed manually (two equal
+files). Python 3.10 syntax parsing, compileall, manifest verification, publication
+audit and UTF-8/LF checks passed. The first focused run exposed a mock receipt
+without a schema key; receipt-label selection now preserves that compatibility
+and all tests pass. External renderer acceptance and remote CI are not asserted
+by these local results.
