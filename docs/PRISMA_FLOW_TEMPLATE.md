@@ -96,6 +96,10 @@ verify a separately saved crosswalk.
 
 Only the requested CSV is written, using exclusive creation after both CSV and
 stdout are serialized and checked. Existing files and dangling links are refused.
+An explicit directory-entry check precedes exclusive creation because Windows can
+follow a dangling symlink even in exclusive mode. As with other intake writers,
+paths must remain stable; this is not a race-proof defense against concurrent
+replacement or ancestor aliases.
 Protocol input, encoded CSV and encoded stdout each have a 16 MiB limit. If a
 derived output exceeds the cap, narrow the supplied protocol; nothing is truncated.
 All data is read before output creation, so the input cannot be overwritten.

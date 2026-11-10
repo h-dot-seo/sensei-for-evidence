@@ -116,3 +116,18 @@ provenance is claimed.
   both `FAILED (errors=1, skipped=45)` with only the pre-existing Python 3.15
   junction-test TypeError in `tests.test_verify_manifest`, left as is.
   Full entry: [test package and dispatcher](docs/VALIDATION_HISTORY.md#2026-11-08-test-package-and-dispatcher-0870-test-package-and-dispatcher).
+
+## 2026-11-10 Windows crosswalk output correction (0.89.0-prisma-count-crosswalk)
+
+The first PR CI run exposed a real Windows difference: opening a dangling symlink
+with `xb` can create its missing target. The new writer now uses the existing
+intake convention of `lstat` rejection before exclusive creation. A platform-neutral
+regression also verifies that existing entries and inspection errors prevent any
+open. The original Windows symlink test remains enabled, not skipped or weakened.
+Stable output paths are required; concurrent replacement and ancestor aliases are
+not a supported security boundary. No existing engine or intake module changed.
+
+Focused crosswalk tests: 23 passed. Final local full suite: 1,877 tests, OK
+(skipped=1), no failures/errors. Compileall, publication audit and regenerated
+manifest passed. The failed first CI run is retained as evidence; the corrected
+published head requires a separate four-platform CI result.

@@ -187,6 +187,22 @@ def render_text(result):
     return '\n'.join(lines + ['Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY', BOUNDARY]) + '\n'
 
 
+def _write_new(path, raw):
+    """Reject existing entries before exclusive creation, including Windows links.
+
+    Like the other intake writers, this assumes stable paths. It is not a
+    race-proof defense against concurrent replacement or ancestor aliases.
+    """
+    try:
+        path.lstat()
+    except FileNotFoundError:
+        pass
+    else:
+        raise FileExistsError('output directory entry already exists')
+    with path.open('xb') as target:
+        target.write(raw)
+
+
 def main():
     configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -208,8 +224,7 @@ def main():
         if len(stdout) > MAX_BYTES:
             raise ValueError('crosswalk receipt exceeds size limit; narrow the supplied protocol')
         # Preflight both complete serializations before creating the only output.
-        with args.output.open('xb') as target:
-            target.write(output)
+        _write_new(args.output, output)
     except (ValueError, OSError, KeyError, TypeError, UnicodeError, RecursionError) as error:
         parser.exit(1, 'PRISMA crosswalk error: ' + quoted_display(str(error)) + '\n')
     print(stdout.decode('utf-8'), end='')

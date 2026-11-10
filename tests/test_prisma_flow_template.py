@@ -14,7 +14,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import prisma_flow_template as flow
 from json_io import parse_json
@@ -252,6 +252,16 @@ class CrosswalkTests(unittest.TestCase):
             self.assertNotEqual(result.returncode, 0)
             self.assertTrue(output.is_symlink())
             self.assertFalse(missing.exists())
+
+    def test_existing_entry_and_inspection_error_prevent_open_on_every_platform(self):
+        path = Mock(spec=Path)
+        with self.assertRaises(FileExistsError):
+            flow._write_new(path, b'fictional')
+        path.open.assert_not_called()
+        path.lstat.side_effect = PermissionError('fictional inspection failure')
+        with self.assertRaises(PermissionError):
+            flow._write_new(path, b'fictional')
+        path.open.assert_not_called()
 
     def test_invalid_json_and_arm_failure_create_nothing(self):
         with tempfile.TemporaryDirectory() as directory:
