@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.88.0-implementation-check",
+  "release": "0.89.0-prisma-count-crosswalk",
   "date": "2026-11-10",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 386,
+  "file_count": 389,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 13883,
-      "sha256": "92c39b9d8ea9b0898c145fab9d055f8ea2fac99fe2de357c1805491f75e862ed"
+      "bytes": 14301,
+      "sha256": "e528ff72423d53d74f21dda53777d1b05e9cbbd34d9b25834b1b73de3089d739"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 5664,
-      "sha256": "25d7ac16c3ad130c2d303f5c39c92a4407dab04f712dc295a27673ac7fd5d006"
+      "bytes": 6349,
+      "sha256": "eba4d79c3894dabc23b120562065f0217974c0bd9cdb3a858f756810f6f74118"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5327,
-      "sha256": "af805634b96a1831939b684c810647ec933a28a9461e73b1a77f5d8a32317295"
+      "bytes": 6984,
+      "sha256": "2685313cd9be7cee0203d963bf287f15551a9e6a51c295a3a160ea0219d382ad"
     },
     {
       "path": "adapter_integrity.py",
@@ -175,8 +175,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 6927,
-      "sha256": "564a193b9d86d7ace70c5a171e06fa9fd4cd3208950ba53019857ab717f01b73"
+      "bytes": 7428,
+      "sha256": "64c9ceba3524fb49de6a7db75d6d5fd9a68bc36c46f258fb7cd48847ae32ebf2"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -210,8 +210,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 41081,
-      "sha256": "37fe51dd4ee4695fa31df1b2d76552f33bfadf14bbab42e7d2bf6b96b2ff113e"
+      "bytes": 41419,
+      "sha256": "1245cb05d4e36022a6ad1e0e75a176b63e255ef9f231cd2b0f7446bdcc05ddd1"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -350,8 +350,13 @@
     },
     {
       "path": "docs/PRISMA_AUDIT.md",
-      "bytes": 11678,
-      "sha256": "a2dcc308ca87832e55d725149ec6b724f4253f6db880c4d0ae4ecc208dd3c853"
+      "bytes": 12003,
+      "sha256": "656886313374a1398194e66301cd110e2e28ea6a69f7634b87939d4b28f0dbc9"
+    },
+    {
+      "path": "docs/PRISMA_FLOW_TEMPLATE.md",
+      "bytes": 6644,
+      "sha256": "71abdea91a31341181e029a7f092197d650f7222a2c84db2b9a1b8190e51066d"
     },
     {
       "path": "docs/PUBMED_DISCOVERY.md",
@@ -375,8 +380,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 17604,
-      "sha256": "0fe66ecdf1426ae45016537108c3d8b7944c13984bdc29a712ffd15c25c6a384"
+      "bytes": 18057,
+      "sha256": "75e95fe71d7dd256c5d903ceefebccd88b1ac73a5f11462f470a57d5f122fa50"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -485,13 +490,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 197642,
-      "sha256": "adf78d01911f729329b23168d4e46717cd74808c3132f94c662011fa21127c90"
+      "bytes": 199296,
+      "sha256": "ef27885dfbd20253a1c0d1c57eb3e66318916048186aa835a12d145728a0e6ed"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 29262,
-      "sha256": "3748251b209b6893a27f624da49febb27e5b0888ce62a6cca20b2a68afd15b0b"
+      "bytes": 29543,
+      "sha256": "018e444020471fb6bcb65e6087ac5cf834b45c98a14f24702b6dae6ec8701e73"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1149,6 +1154,11 @@
       "sha256": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee"
     },
     {
+      "path": "prisma_flow_template.py",
+      "bytes": 12100,
+      "sha256": "4a3b021d1567266c3ba16a9f93dd98d9129e1cb2b363a8582574d4a08513067b"
+    },
+    {
       "path": "prisma_reports.py",
       "bytes": 5524,
       "sha256": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562"
@@ -1612,6 +1622,11 @@
       "path": "tests/test_prisma_audit.py",
       "bytes": 10876,
       "sha256": "f00f8ca7bc2e1a34d6e775c9d4843e19a55a90f88984c861a860194e3f1cc7bc"
+    },
+    {
+      "path": "tests/test_prisma_flow_template.py",
+      "bytes": 16001,
+      "sha256": "d16cb511951c66c6e9974fd63f6f75eddfbed93391cfc15ce65b9f27dc78910a"
     },
     {
       "path": "tests/test_prisma_reports.py",

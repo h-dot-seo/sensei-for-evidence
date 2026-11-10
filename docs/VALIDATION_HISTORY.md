@@ -2735,3 +2735,28 @@ manually outside the checkout: all 28 recorded engine files and the supplied
 publication manifest matched. UTF-8 without BOM and LF were checked for changed files.
 No live service, scientific adequacy, source authenticity, complete census or release
 provenance is claimed.
+
+## 2026-11-10 Native count crosswalk (0.89.0-prisma-count-crosswalk)
+
+Added `prisma_flow_template.py` as a separate read-only derivation of the unchanged
+PRISMA audit. It writes one exclusively created native CSV, not an official or
+import-compatible external template. Search arms are supplied by input index;
+unknown arms and unsupported rows stay blank. Exact-ID repeats and screened counts
+are blank without an explicit opt-in. Missing report stages remain distinct from
+supplied empty ledgers. Receipt JSON/text retain every mapping, plan/page issue,
+pending node, mechanical count difference and implementation/CSV fingerprint.
+No engine, adapter, protected walkthrough or bound fixture changed.
+
+Twenty-two synthetic tests cover expected cells, nonaggregation, optional IDs,
+blank-versus-zero, pending states, incomplete/page issues, formula escaping,
+control-safe text, deterministic hashes/nonmutation, invalid assignments, strict
+JSON, input/CSV/stdout limits, exclusive output, dangling links and the documented
+rehearsal. The guide was also executed separately with ASCII-configured stdout.
+
+Local Python 3.12.14: final `python -m unittest discover -q` ran 1,876 tests,
+OK (skipped=1), with no failures/errors. Focused crosswalk tests: 22 passed.
+`compileall`, publication manifest verification and publication audit passed.
+No external template compatibility, source authentication, completed review,
+scientific validity or independent deduplication is claimed. No third-party template
+text or external tool is included. Census stays NOT_ESTABLISHED; conclusion stays
+NOT_READY. Keep real source labels, reasons, CSVs and receipts private.

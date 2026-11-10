@@ -83,3 +83,14 @@ after reading docs/IMPLEMENTATION_REVISIONS.md. Supply `--engine-root` and optio
 repeatable `--manifest` paths explicitly. It executes nothing and checks only recorded
 bytes, never input validity or scientific readiness. Use the historical verifier
 separately from a trusted matching revision with all required original inputs.
+
+### Native count-crosswalk export
+
+When a local count worksheet is requested, use `prisma_flow_template.py PROTOCOL
+--output NEW.csv` and only supply `--search-arm INDEX=databases|registers` from an
+explicit operator classification. Follow `docs/PRISMA_FLOW_TEMPLATE.md`. This is a
+native crosswalk, not an official or import-compatible external PRISMA template.
+Leave exact-ID repeat and screening cells blank unless the operator explicitly
+selects `--include-exact-id-accounting`; never relabel repeats as publication
+deduplication. Preserve the receipt with its pending stages, plan/page issues and
+count differences. No source transmission or scientific conclusion is authorized.
