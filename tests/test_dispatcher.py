@@ -2,6 +2,7 @@
 import ast
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -101,8 +102,10 @@ class DispatcherRunTests(unittest.TestCase):
             with self.subTest(arguments=arguments[1:]):
                 expected = direct('research_status.py', *arguments)
                 with tempfile.TemporaryDirectory(prefix='sensei dispatcher ') as folder:
-                    result = dispatch('run', 'research_status.py', *arguments, cwd=folder)
-                    self.assertEqual(list(Path(folder).iterdir()), [])
+                    local = Path(folder) / 'my-protocol.json'
+                    shutil.copyfile(protocol, local)
+                    result = dispatch('run', 'research_status.py', local.name, *arguments[1:], cwd=folder)
+                    self.assertEqual(list(Path(folder).iterdir()), [local])
                 self.assertEqual(expected.returncode, 0, expected.stderr)
                 self.assertEqual((result.returncode, result.stdout, result.stderr), (0, expected.stdout, b''))
                 self.assertIn(b'NOT_READY', result.stdout)
@@ -150,7 +153,7 @@ class DispatcherRunTests(unittest.TestCase):
             self.assertEqual(list(Path(folder).iterdir()), [])
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(result.stdout.startswith(b'usage: sensei.py'))
-        for phrase in (b'list', b'run', b'NOT_READY', b'no network request'):
+        for phrase in (b'list', b'run', b'check', b'{list,run,check}', b'NOT_READY', b'no network request'):
             self.assertIn(phrase, result.stdout)
 
     def test_startup_and_run_import_no_catalog_module(self):

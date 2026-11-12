@@ -41,7 +41,7 @@ Python 3.10 이상이면 되고, 서드파티 패키지는 필요 없습니다. 
 실행합니다. 아래 명령은 영어 README의 Quick start와 같습니다.
 
 ```sh
-python -m unittest discover -v
+python sensei.py check
 python review_handoff.py examples/claim-comparison.json --work-package WP-TRANSLATION --text
 python research_status.py examples/review-demo.json --text
 python evidence_workflow.py examples/review-demo.json
@@ -50,6 +50,17 @@ python research_bundle.py create examples/review-demo.json ../synthetic-review.z
 python research_bundle.py verify ../synthetic-review.zip
 python compare_runs.py examples/review-demo.json examples/review-demo.json
 ```
+
+전체 검증(수 분 소요): `python -m unittest discover -v`를 실행하고
+`python audit_publication.py`와 `python verify_manifest.py`도 실행하세요.
+`check`는 저장소 파일·문법·가상 상태만 확인하며 전체 테스트, CI 매트릭스나 연구 검증을
+대신하지 않습니다. [빠른 저장소 점검](CHECKOUT_CHECK.md)을 참고하세요.
+
+자기 파일은 어느 디렉터리에서든
+`python PATH/TO/sensei-for-evidence/research_status.py ./my-protocol.json` 또는
+`python PATH/TO/sensei-for-evidence/sensei.py run research_status.py ./my-protocol.json`으로
+처리할 수 있습니다. 상대 입력·출력 경로는 현재 작업 디렉터리 기준입니다. 안내 문서의
+예제 경로는 저장소 루트 기준이므로 문서의 리허설은 루트에서 실행하세요.
 
 ZIP 출력 경로는 미리 존재하면 안 됩니다. 실제 연구 입력과 생성된 번들은 이 공개 저장소
 바깥에 두세요. 번들은 넘겨 준 데이터를 가공 없이 그대로 보존합니다. 위 명령은 어떤

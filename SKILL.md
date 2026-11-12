@@ -38,6 +38,15 @@ supplied-input routes of the operator handoff with their guides, executing nothi
 guides and records, and never treat the listing as a recommended order or as evidence
 that a step was done.
 
+For a fast first-hour checkout check, run `python sensei.py check`. It checks listed
+bytes and syntax, then one synthetic status, without bytecode writes. It does not
+replace the test suite, CI matrix or research validation. Unlisted additions are warnings;
+the strict publication verifier still rejects them. See docs/CHECKOUT_CHECK.md.
+For your own files from another directory, use
+`python PATH/TO/sensei-for-evidence/sensei.py run research_status.py ./my-protocol.json`
+or the direct script path; relative inputs/outputs resolve against the current directory.
+Run guides with repository-relative examples from the repository root.
+
 For optional live PubMed identifier discovery, read docs/PUBMED_DISCOVERY.md first.
 Preview is offline; fetch transmits the exact query/date parameters to NCBI and
 requires a matching preview hash plus authorization to share that query. Never
