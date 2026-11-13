@@ -284,3 +284,11 @@ in every bundle, so verification fails closed on implementation drift.
 | `search_audit.py` | Compare supplied searches with a declared search plan, without running searches |
 | `synthesis_links.py` | Trace supplied synthesis statements without judging entailment or writing conclusions |
 | `work_document_links.py` | Bind explicitly selected supplied document descriptors to source-review work |
+
+## Explicit continuation RIS intake
+
+The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
+through `ris_continuation_intake.py preview --dialect
+ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
+synthetic walkthrough stops at an unfilled review template. Strict RIS and native
+archive formats remain unchanged; retain continuation wrappers separately.

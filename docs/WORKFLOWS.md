@@ -506,3 +506,11 @@ view of existing audit joins, with a separate bounded receipt. Preserve authorit
 search indices, distinct report/result study lists and absent-stage markers.
 [Records CSV](RECORDS_CSV.md) includes the tested rehearsal and privacy limits.
 No cue is adjudicated; no bundle payload or engine state changes.
+
+## Explicit continuation RIS intake
+
+The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
+through `ris_continuation_intake.py preview --dialect
+ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
+synthetic walkthrough stops at an unfilled review template. Strict RIS and native
+archive formats remain unchanged; retain continuation wrappers separately.

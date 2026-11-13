@@ -173,3 +173,7 @@ publication identity, search or extraction completeness, PRISMA compliance,
 scientific correctness or clinical suitability is established. Keep real/private
 exports outside this public repository. All supplied metadata, abstracts and
 attachment locator text are retained without redaction or rights clearance.
+
+The separate [explicit continuation dialect](RIS_CONTINUATION_INTAKE.md) is
+not admitted to existing native archives; keep its wrapper separately. Its parser
+does not relax or replace the strict RIS route documented here.

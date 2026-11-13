@@ -3011,3 +3011,44 @@ suite passed without relaxing the verifier or changing production code.
 These are synthetic/local results, not provider compatibility, source authenticity,
 complete search, scientific validity or remote Windows CI results. RIS continuation
 wrappers and native archive expansion remain separate future increments.
+
+## 2026-11-14 Declared RIS continuation intake (0.95.0-ris-continuation)
+
+Roadmap #34(b) adds an independent parser/wrapper pair with an explicit versioned
+dialect, untagged continuation and empty-paragraph rules. Byte provenance and
+reconstruction verification preserve all fields, repetitions, framing and inert
+values. Malformed tag-like lines, tabs, TY continuation and orphans fail closed.
+Existing strict RIS modules, core ENGINE_FILES, native archive implementations,
+adapter and all old walkthrough command blocks are byte-identical. Native archive
+admission is explicitly deferred. Discovery exposes two new help entrypoints.
+
+New synthetic tests cover grammar boundaries, BOM/CRLF/CR spans, resource limits,
+tampering, cross-format rejection and four exact documented commands stopping at
+the unfilled review template. No real data, provider claim, network request,
+identity matching or scientific inference is introduced.
+
+Local Python 3.12 full suite: `Ran 1960 tests in 137.817s`,
+`OK (skipped=1)`, no failures/errors. The skip is the existing native-Windows
+junction check on Linux. New focused suite: 10/10 pass. Combined strict RIS and
+navigation regression before the final additional test: 66/66 pass. Independent
+review found no blockers and independently reran the new tests plus dispatcher
+regression (22/22). Publication audit (409 files), manifest, compileall, Python
+3.10 grammar, UTF-8/LF and protected-byte checks passed.
+
+The first full run (1959 tests) found one stale dispatcher catalog expectation:
+the new wrapper had been added to discovery but not that exact expected list.
+Updating the list, without weakening its equality check, resolved it. An early
+focused run also exposed an overbroad tag-like pattern that rejected ordinary
+hyphenated narrative; the grammar was narrowed to documented tag-shaped separators
+and focused cases rerun. Neither correction changes the strict RIS parser.
+All results are synthetic and local, not exporter compatibility, research validity,
+source authenticity or a claim about remote CI. Native archive admission and
+additional identity hints remain separate future work.
+
+Post-publication CI correction: Ubuntu matrix jobs passed, while both Windows
+jobs exposed a test-harness path-tokenization error in the new guide replay.
+The test had inserted a host-native path before POSIX shell tokenization, stripping
+Windows backslashes. It now tokenizes the documented command first and substitutes
+the path in individual arguments. A Windows-backslash/space-path regression was
+added; no parser, wrapper or published guide command was changed. The corrected
+head requires a new full local run and all four CI jobs before merge.

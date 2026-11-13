@@ -74,7 +74,7 @@ class DispatcherListingTests(unittest.TestCase):
         rendered = sensei.catalog_routes()
         self.assertEqual([row[0] for row in rendered], [route['workflow_id'] for route in routes])
         self.assertEqual(rendered[0][3], routes[0]['guide_paths'])
-        self.assertEqual(rendered[3][2], ['nbib_intake.py', 'nbib_batch_intake.py', 'ris_intake.py', 'bibliographic_review.py'])
+        self.assertEqual(rendered[3][2], ['nbib_intake.py', 'nbib_batch_intake.py', 'ris_intake.py', 'ris_continuation_intake.py', 'bibliographic_review.py'])
 
     def test_list_carries_boundary_text(self):
         for phrase in ('no script was executed', 'no network request', 'NOT_ESTABLISHED', 'NOT_READY'):

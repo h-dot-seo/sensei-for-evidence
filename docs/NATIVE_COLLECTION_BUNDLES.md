@@ -148,3 +148,7 @@ compliance claim. Full-text and result-transition receipts still need their own
 retention. Census stays `NOT_ESTABLISHED`; conclusion readiness stays `NOT_READY`.
 All source text and metadata are retained without redaction. Keep private or real
 research and generated archives outside this public repository.
+
+The separate [explicit continuation dialect](RIS_CONTINUATION_INTAKE.md) is
+not admitted to existing native archives; keep its wrapper separately. Its parser
+does not relax or replace the strict RIS route documented here.

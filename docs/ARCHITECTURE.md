@@ -169,3 +169,11 @@ See [accounting flow](ACCOUNTING_FLOW.md) for boundaries and rendering limitatio
 failed new writes are cleaned up on stable paths. Missing stages, display search
 labels and separate report/result study lists remain explicit. See
 [records CSV](RECORDS_CSV.md). No engine, adapter, fixture or bundle contract changes.
+
+## Explicit continuation RIS intake
+
+The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
+through `ris_continuation_intake.py preview --dialect
+ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
+synthetic walkthrough stops at an unfilled review template. Strict RIS and native
+archive formats remain unchanged; retain continuation wrappers separately.

@@ -270,3 +270,11 @@ Mermaid text view of existing audit counts, not an official PRISMA diagram.
 
 See [records CSV](docs/RECORDS_CSV.md) for the tested export, column meanings and
 unredacted-data sharing boundary.
+
+## Explicit continuation RIS intake
+
+The separate [declared continuation dialect](docs/RIS_CONTINUATION_INTAKE.md) preserves native bytes
+through `ris_continuation_intake.py preview --dialect
+ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
+synthetic walkthrough stops at an unfilled review template. Strict RIS and native
+archive formats remain unchanged; retain continuation wrappers separately.
