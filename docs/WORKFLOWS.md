@@ -532,3 +532,12 @@ A separate human import review binds exact CSV bytes, protocol and implementatio
 Read-only cells and source hashes must remain unchanged; blank rows are skipped,
 partial/stale rows and duplicate reviewer pairs fail. No canonical decision or
 reviewer supersession is inferred. Real sheets remain outside the public repository.
+
+## Blank human-decision sheets
+
+[Export a separate blank decisions sheet](SCREENING_DECISION_SHEETS.md) with
+`screening_decision_sheet.py export PROTOCOL --output NEW.csv`. At most 100
+records; optional repeated `--record-id` keeps explicit selection order. Read-only
+prior screening and review snapshots never prefill human choices. This export does
+not implement batch target/assemble/verify, modify canonical decisions or import
+reviewer positions. Preserve source/protocol hashes; real sheets stay private.

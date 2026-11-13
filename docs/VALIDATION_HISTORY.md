@@ -3110,3 +3110,30 @@ I/O failures and races are not atomic transactions and may leave partial output;
 the guide states that boundary. No local test failures occurred. These are synthetic
 offline checks, not source reading, reviewer identity or eligibility validation.
 
+
+## 2026-11-14 Blank human-decision sheets (0.98.0-blank-decision-sheet)
+
+A small export-only #33 increment reuses the existing source-sheet and screening
+review views. At most 100 explicitly ordered or all enumerated records are shown;
+all seven human decision fields remain empty. Exact prior canonical rows and
+supplied review ledgers/cues are read-only JSON with export-time protocol, source
+and review-context hashes. No vote, recommended choice, sequential decision target,
+receipt, canonical mutation or batch edited-sheet intake is introduced. The guide
+keeps the positions/decisions distinction and pending batch application explicit.
+
+Local Python 3.12 full suite: `Ran 1993 tests in 140.367s`, `OK (skipped=1)`.
+Focused decision/source-sheet/intake/navigation: 56 tests pass (12 new decision
+sheet tests). Independent review ran 58 decision/source/review tests successfully,
+compared ENGINE_FILES against the prior release and found no blockers. Publication
+audit: 420 files, pass; manifest, compileall, Python 3.10 grammar, ENGINE_FILES and
+offline_adapter byte preservation pass. Existing executable sh blocks are unchanged;
+the new guide runs verbatim with tokenization before Windows path substitution.
+Catalog: 26 routes, 114 help entrypoints. No test failures occurred.
+
+Cases cover conflict/stale context without a winner, all human fields blank,
+literal/escaped ID collisions, ordered selection and unknown/duplicate rejection,
+100-record bound, whole-protocol validation, drift hashes, incompatible positions
+intake headers, empty catalog, byte bounds, exclusive output and synthetic CLI
+walkthrough. These are offline bookkeeping checks, not source reading, identity,
+scientific assessment or real spreadsheet interoperability certification.
+

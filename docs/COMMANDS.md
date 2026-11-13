@@ -314,3 +314,9 @@ A separate human import review binds exact CSV bytes, protocol and implementatio
 Read-only cells and source hashes must remain unchanged; blank rows are skipped,
 partial/stale rows and duplicate reviewer pairs fail. No canonical decision or
 reviewer supersession is inferred. Real sheets remain outside the public repository.
+
+## Blank decision-sheet export
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_decision_sheet.py export PROTOCOL [--record-id ID] [--display-column NAME] --output NEW.csv [--text]` | Bounded blank human-decision scaffold; read-only context, no batch application | [Decision sheets](SCREENING_DECISION_SHEETS.md) |
