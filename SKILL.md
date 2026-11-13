@@ -140,3 +140,12 @@ through `ris_continuation_intake.py preview --dialect
 ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
 synthetic walkthrough stops at an unfilled review template. Strict RIS and native
 archive formats remain unchanged; retain continuation wrappers separately.
+
+## Blank screening-position spreadsheet
+
+[Export a blank transcription sheet](docs/SCREENING_SHEETS.md) with
+`screening_sheet.py export PROTOCOL --output NEW.csv`. Optional repeated
+`--display-column NAME` selects literal retained values, never guessed titles.
+Human assertion columns remain empty; this is export only, not edited-sheet
+intake, screening performed or a canonical decision. Preserve export-time source
+hashes and keep real sheets outside the public repository.
