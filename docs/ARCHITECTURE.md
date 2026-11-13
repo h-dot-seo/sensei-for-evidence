@@ -186,3 +186,7 @@ archive formats remain unchanged; retain continuation wrappers separately.
 Human assertion columns remain empty; this is export only, not edited-sheet
 intake, screening performed or a canonical decision. Preserve export-time source
 hashes and keep real sheets outside the public repository.
+
+`screening_sheet_intake.py` is a separate append-only wrapper over the existing
+screening export/review validators. It binds exact CSV bytes and import review in
+a detached replayable application; ENGINE_FILES and canonical decisions stay unchanged.

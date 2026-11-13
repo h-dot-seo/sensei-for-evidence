@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.96.0-blank-screening-sheet` (2026-11-14). This file is the
+Current release: `0.97.0-screening-sheet-intake` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,33 +54,29 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Blank screening-position sheet export (0.96.0-blank-screening-sheet)
+## 2026-11-14 Reviewed screening-sheet positions intake (0.97.0-screening-sheet-intake)
 
-First bounded #33 increment: a new export-only spreadsheet scaffold reuses the
-existing screening_review.template targets. Human assertion cells remain empty;
-formula-safe display IDs stay distinct from literal JSON IDs and source hashes.
-Optional retained-column selection is literal, ordered and separate from human
-locator fields. No title inference, edited-sheet intake, screening decision,
-review supersession or archive/schema change is introduced. Current source hashes
-do not refresh old assertions. Documentation explicitly keeps the intake gap open.
+Second bounded #33 increment: a separate wrapper appends human-supplied CSV
+positions after exact-target import review. Export-time protocol/source hashes
+and every read-only cell are checked against the existing export. Blank human
+rows are explicitly skipped; partial rows, formula/escape ambiguity, duplicate
+review IDs and record/reviewer pairs fail closed. Original CSV bytes, spans,
+review cues and implementation hashes remain in a detached replayable application.
+Canonical screening and old positions are never overwritten or renewed.
 
-Existing core ENGINE_FILES, all parsers/intake wrappers, native archive modules,
-adapter, fixed fixtures and executable guide blocks remain unchanged. Discovery
-adds one export help entrypoint (26 routes, 110 entrypoints). New guide commands
-are tested with tokenization before host-path substitution, including Windows.
+Local Python 3.12 full suite: `Ran 1981 tests in 140.201s`, `OK (skipped=1)`.
+Focused intake/export/navigation: 44 tests pass, including 10 new intake tests.
+The synthetic guide commands execute verbatim with tokenization before host-path
+substitution. Publication audit: 417 files, pass; manifest, compileall, Python 3.10
+grammar and unchanged ENGINE_FILES/offline_adapter checks pass. Existing executable
+sh blocks remain byte-identical. Catalog: 26 routes, 113 help entrypoints.
 
-Local Python 3.12 full suite: `Ran 1971 tests in 138.846s`,
-`OK (skipped=1)`, no failures/errors. The skip is the existing native-Windows
-junction check on Linux. New export tests plus screening review, dispatcher and
-navigation: 82/82 pass, also independently rerun. Independent review found no
-blockers and additionally checked CR/LF/quote-bearing ID round trips and output
-refusal. Publication audit (412 files), manifest, compileall, Python 3.10 grammar
-and protected-byte checks passed. Synthetic cases cover escaped/literal ID
-collisions, exact source targets, stale prior assertions, literal ordered display
-values, no network use, row/byte bounds, blank manual displays, empty protocols,
-invalid inputs, exclusive paths and the exact guide command.
+Independent review identified a multi-output preflight gap: an already-existing
+report path could be discovered after a candidate was written. Both destinations,
+parent directories, alias equality and serialized sizes are now checked before
+writing; regression tests cover existing destinations, identical paths and absent
+parents with no candidate creation. Exclusive creation remains the final guard.
+I/O failures and races are not atomic transactions and may leave partial output;
+the guide states that boundary. No local test failures occurred. These are synthetic
+offline checks, not source reading, reviewer identity or eligibility validation.
 
-No test failure occurred during this increment. These are local synthetic checks,
-not researcher identity, source reading, eligibility assessment or live-provider
-compatibility. Edited-sheet intake and reviewed append-only positions remain the
-next separate increment; this release only exports a blank scaffold.

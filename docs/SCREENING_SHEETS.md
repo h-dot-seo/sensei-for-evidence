@@ -2,9 +2,8 @@
 
 `screening_sheet.py export` is a spreadsheet-facing transcription scaffold built
 on the existing `screening_review.template`. It does not perform screening,
-import edited cells, adjudicate positions or write canonical decisions. It does
-not close the intake gap yet: reviewed append-only sheet intake is a separate
-future increment. Existing [JSON review workflow](SCREENING_REVIEWS.md) remains
+import edited cells, adjudicate positions or write canonical decisions. Reviewed append-only edited-sheet intake is now available through the separate
+[positions intake wrapper](SCREENING_SHEET_INTAKE.md). Existing [JSON review workflow](SCREENING_REVIEWS.md) remains
 available and unchanged. Reviewer supersession is not implemented.
 
 ## Synthetic walkthrough
@@ -35,7 +34,7 @@ atomic publication or a guarantee against ancestor-path alias races.
 - `readonly_record_id_json`: exact literal ID encoded as a JSON string. A literal
   apostrophe ID and an escaped formula-like ID can look the same in `record_id`;
   the source hash and this exact value keep them distinct. Do not strip apostrophes
-  heuristically. Future intake must compare the exported escaped form exactly.
+  heuristically. The separate intake compares the exported escaped form exactly.
 - `readonly_export_protocol_sha256`: hash of supplied export-time protocol JSON,
   not authentication, currentness or approval.
 - `readonly_retained_locators_json`: ordered literal values and source pointers
@@ -74,7 +73,7 @@ protocol equality, since unrelated protocol state may differ.
 Human dates must remain `YYYY-MM-DD`; prevent spreadsheet locale reformatting.
 Human positions use the existing literal `include`, `exclude`, `unclear` values,
 not a vendor label mapping. Do not treat a completed CSV as an accepted import or
-an approved decision. It remains private working material until a separately
-reviewed intake exists. Real sheets may contain unredacted abstracts and must not
+an approved decision. It remains private working material until separately
+reviewed intake succeeds. Real sheets may contain unredacted abstracts and must not
 be committed here. No source reading, reviewer identity/independence, adjudication,
 search completion or scientific validity is established by exporting this sheet.
