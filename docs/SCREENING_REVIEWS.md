@@ -157,3 +157,7 @@ The separate [full-text report review workflow](REPORT_REVIEWS.md) now offers
 report-level document-version declarations and supplied human positions. It does
 not reuse title/abstract target hashes as a substitute for full-text context and
 does not change canonical report decisions.
+
+For a spreadsheet-facing blank scaffold, see [screening sheets](SCREENING_SHEETS.md).
+This export does not import edited cells, refresh stale assertions or implement
+reviewer supersession; the JSON workflow above remains unchanged.

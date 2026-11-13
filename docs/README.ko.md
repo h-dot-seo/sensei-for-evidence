@@ -105,7 +105,7 @@ ZIP 출력 경로는 미리 존재하면 안 됩니다. 실제 연구 입력과 
 | 검색 계획·영수증 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | 질의와 영수증 명세 고정, 수동 영수증 입력 리허설, 검토 게이트가 있는 오프라인 모의 어댑터 |
 | 서지 파일 수집 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | CSV/NBIB/RIS 내보내기 파일을 바이트 그대로 보존한 뒤 명시적 동일성 판단으로 선별 대기열에 연결 |
 | 선택적 PubMed | `pubmed_discovery.py`, `pubmed_metadata.py` | 미리보기 해시에 묶인 ESearch 식별자 탐색과 EFetch 제목·초록 수집. 유일한 네트워크 명령 |
-| 선별 | `screening_review.py`, `screening_decision.py` | 검토자 입장 기록과, 사람이 내린 선별 결정의 명시적 적용 |
+| 선별 | `screening_review.py`, `screening_decision.py`, `screening_sheet.py` | 검토자 입장 기록과, 사람이 내린 선별 결정의 명시적 적용 |
 | 보고서·전문 | `report_intake.py`, `report_retrieval.py`, `report_source_intake.py`, `report_source_check.py`, `report_review.py`, `report_decision.py`, `report_study_review.py`, `report_study_inventory.py`, `inventory_intake.py`, `report_study_inventory_review.py` | 보고서 등록, 입수 상태 갱신, 출처 선언과 로컬 바이트 확인, 전문 검토 입장과 결정, 보고서-연구 단위 입장과 서술적 목록 |
 | 결과·조건 | `result_extraction.py`, `result_passage_check.py`, `result_intake.py`, `result_source_review.py`, `result_correction.py`, `condition_intake.py` | 빈 추출 워크시트, 원문 구절 대조, 수동 결과 입력, 출처 변동 비교, 문구 수정, 비임상 비교 조건 기록 |
 | 맥락·평가 | `context_intake.py`, `work_context_intake.py`, `appraisal_intake.py`, `appraisal_source_review.py` | 가이드라인·개발 맥락 기록과 작업 배정, 평가 기록과 이후 맥락 변동 비교 |
@@ -250,3 +250,10 @@ ZIP 출력 경로는 미리 존재하면 안 됩니다. 실제 연구 입력과 
 문법을 명시적으로 선언하며 원본 바이트를 보존합니다. 기존 strict RIS와
 native 아카이브는 바꾸지 않고, 새 래퍼는 별도로 보관합니다. 네 명령 예제는
 빈 검토 양식에서 멈추며 동일성 판단이나 연구 결론을 만들지 않습니다.
+
+## 빈 선별 입장 CSV
+
+[전사용 CSV 내보내기](SCREENING_SHEETS.md)는 기존 source hash와 원본 식별자를
+보존하고 사람 작성 열은 모두 비워 둡니다. 선택한 보존 원문 열은 읽기 전용
+표시로만 제공하며, CSV 내보내기는 선별 수행·결정·작성 시트 입수가 아닙니다.
+실제 자료는 공개 저장소 밖에 보관하고 오래된 hash를 새 값으로 갈아 끼우지 마세요.

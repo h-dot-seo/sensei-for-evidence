@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.95.0-ris-continuation` (2026-11-14). This file is the
+Current release: `0.96.0-blank-screening-sheet` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,43 +54,33 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Declared RIS continuation intake (0.95.0-ris-continuation)
+## 2026-11-14 Blank screening-position sheet export (0.96.0-blank-screening-sheet)
 
-Roadmap #34(b) adds an independent parser/wrapper pair with an explicit versioned
-dialect, untagged continuation and empty-paragraph rules. Byte provenance and
-reconstruction verification preserve all fields, repetitions, framing and inert
-values. Malformed tag-like lines, tabs, TY continuation and orphans fail closed.
-Existing strict RIS modules, core ENGINE_FILES, native archive implementations,
-adapter and all old walkthrough command blocks are byte-identical. Native archive
-admission is explicitly deferred. Discovery exposes two new help entrypoints.
+First bounded #33 increment: a new export-only spreadsheet scaffold reuses the
+existing screening_review.template targets. Human assertion cells remain empty;
+formula-safe display IDs stay distinct from literal JSON IDs and source hashes.
+Optional retained-column selection is literal, ordered and separate from human
+locator fields. No title inference, edited-sheet intake, screening decision,
+review supersession or archive/schema change is introduced. Current source hashes
+do not refresh old assertions. Documentation explicitly keeps the intake gap open.
 
-New synthetic tests cover grammar boundaries, BOM/CRLF/CR spans, resource limits,
-tampering, cross-format rejection and four exact documented commands stopping at
-the unfilled review template. No real data, provider claim, network request,
-identity matching or scientific inference is introduced.
+Existing core ENGINE_FILES, all parsers/intake wrappers, native archive modules,
+adapter, fixed fixtures and executable guide blocks remain unchanged. Discovery
+adds one export help entrypoint (26 routes, 110 entrypoints). New guide commands
+are tested with tokenization before host-path substitution, including Windows.
 
-Local Python 3.12 full suite: `Ran 1960 tests in 137.817s`,
+Local Python 3.12 full suite: `Ran 1971 tests in 138.846s`,
 `OK (skipped=1)`, no failures/errors. The skip is the existing native-Windows
-junction check on Linux. New focused suite: 10/10 pass. Combined strict RIS and
-navigation regression before the final additional test: 66/66 pass. Independent
-review found no blockers and independently reran the new tests plus dispatcher
-regression (22/22). Publication audit (409 files), manifest, compileall, Python
-3.10 grammar, UTF-8/LF and protected-byte checks passed.
+junction check on Linux. New export tests plus screening review, dispatcher and
+navigation: 82/82 pass, also independently rerun. Independent review found no
+blockers and additionally checked CR/LF/quote-bearing ID round trips and output
+refusal. Publication audit (412 files), manifest, compileall, Python 3.10 grammar
+and protected-byte checks passed. Synthetic cases cover escaped/literal ID
+collisions, exact source targets, stale prior assertions, literal ordered display
+values, no network use, row/byte bounds, blank manual displays, empty protocols,
+invalid inputs, exclusive paths and the exact guide command.
 
-The first full run (1959 tests) found one stale dispatcher catalog expectation:
-the new wrapper had been added to discovery but not that exact expected list.
-Updating the list, without weakening its equality check, resolved it. An early
-focused run also exposed an overbroad tag-like pattern that rejected ordinary
-hyphenated narrative; the grammar was narrowed to documented tag-shaped separators
-and focused cases rerun. Neither correction changes the strict RIS parser.
-All results are synthetic and local, not exporter compatibility, research validity,
-source authenticity or a claim about remote CI. Native archive admission and
-additional identity hints remain separate future work.
-
-Post-publication CI correction: Ubuntu matrix jobs passed, while both Windows
-jobs exposed a test-harness path-tokenization error in the new guide replay.
-The test had inserted a host-native path before POSIX shell tokenization, stripping
-Windows backslashes. It now tokenizes the documented command first and substitutes
-the path in individual arguments. A Windows-backslash/space-path regression was
-added; no parser, wrapper or published guide command was changed. The corrected
-head requires a new full local run and all four CI jobs before merge.
+No test failure occurred during this increment. These are local synthetic checks,
+not researcher identity, source reading, eligibility assessment or live-provider
+compatibility. Edited-sheet intake and reviewed append-only positions remain the
+next separate increment; this release only exports a blank scaffold.
