@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -16,6 +17,11 @@ import ris_continuation_intake as intake
 import ris_intake
 
 ROOT = Path(__file__).resolve().parents[1]
+
+def guide_arguments(command, output):
+    # Parse the documented shell tokens before inserting host-native path bytes.
+    return [token.replace('OUTPUT/', str(output) + '/') for token in shlex.split(command)]
+
 
 class ContinuationTests(unittest.TestCase):
     def setUp(self):
@@ -138,15 +144,19 @@ class ContinuationTests(unittest.TestCase):
                 self.assertEqual(output.read_bytes(), b'keep-existing-bytes')
                 self.assertEqual(retained.read_bytes(), intake.artifact_bytes(self.prepare()))
 
+    def test_guide_tokenization_retains_windows_and_space_paths(self):
+        for folder in (r'C:\Users\Fictional User\Temp', '/tmp/fictional user'):
+            args = guide_arguments('python wrapper.py --output OUTPUT/file.json --text', folder)
+            self.assertEqual(args, ['python', 'wrapper.py', '--output', folder+'/file.json', '--text'])
+
     def test_documented_commands_exactly_and_exclusive_outputs(self):
-        blocks = re.findall(r'```sh\n(.*?)```', (ROOT/'docs/RIS_CONTINUATION_INTAKE.md').read_text(), re.S)
+        blocks = re.findall(r'```sh\n(.*?)```', (ROOT/'docs/RIS_CONTINUATION_INTAKE.md').read_text(encoding='utf-8'), re.S)
         self.assertEqual(len(blocks), 1)
         commands = [line for line in blocks[0].splitlines() if line.strip()]
         self.assertEqual(len(commands), 4)
         with tempfile.TemporaryDirectory() as td:
-            import shlex
             for command in commands:
-                args = shlex.split(command.replace('OUTPUT/', td+'/'))
+                args = guide_arguments(command, td)
                 args[0] = sys.executable
                 result = subprocess.run(args, cwd=ROOT, capture_output=True)
                 self.assertEqual(result.returncode, 0, result.stderr)

@@ -86,3 +86,11 @@ and focused cases rerun. Neither correction changes the strict RIS parser.
 All results are synthetic and local, not exporter compatibility, research validity,
 source authenticity or a claim about remote CI. Native archive admission and
 additional identity hints remain separate future work.
+
+Post-publication CI correction: Ubuntu matrix jobs passed, while both Windows
+jobs exposed a test-harness path-tokenization error in the new guide replay.
+The test had inserted a host-native path before POSIX shell tokenization, stripping
+Windows backslashes. It now tokenizes the documented command first and substitutes
+the path in individual arguments. A Windows-backslash/space-path regression was
+added; no parser, wrapper or published guide command was changed. The corrected
+head requires a new full local run and all four CI jobs before merge.
