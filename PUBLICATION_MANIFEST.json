@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.94.0-keyed-csv-journey",
+  "release": "0.95.0-ris-continuation",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 403,
+  "file_count": 408,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 16613,
-      "sha256": "3013a270c96fa249e50a0c0ae37f06c7a405322166affdbc3100256fed75a60d"
+      "bytes": 17041,
+      "sha256": "149280a8950d79d6c0db99d8e3f8421ffe7a78bac93839b62ce00403f51459ab"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 8600,
-      "sha256": "443eb1e409ce62001bd29e68e78fe8ad553583a5dca0cf74a20e686659905464"
+      "bytes": 9028,
+      "sha256": "93a85f340b2467874613f7e8ffc08c99d3604406cdf005dd0a270a19a8e5b7dd"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 21160,
-      "sha256": "0989fbae6bcb66020063f4883af304d9b6fc01ff670952ed9fde4b5af3b23853"
+      "bytes": 4819,
+      "sha256": "405d07c71f8d4e98a137fbe21413040a7b07381b312f0516e7c101dabd91aa94"
     },
     {
       "path": "accounting_flow.py",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 9894,
-      "sha256": "7c0c2b7a8b77e5b6869565eab00340b5e704c72ff84e06f3df62b4dab3187b6c"
+      "bytes": 10317,
+      "sha256": "7740e0e3e3aa6e5bf349fc6360af3d2a60daa8addc239f5a27ec03ed10900b5c"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -225,8 +225,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 42630,
-      "sha256": "39503a7b506668dcbd594feb85b8b6b773784112115f43d1142c93ea58a5cc04"
+      "bytes": 43053,
+      "sha256": "c049e518a66184347667c254f44f626dc198fcdeebfc5edf5405c5470c42accf"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -340,8 +340,8 @@
     },
     {
       "path": "docs/NATIVE_COLLECTION_BUNDLES.md",
-      "bytes": 9364,
-      "sha256": "99520960bbc2d627dd232ada0769bec6bc9f7bf15b0800d2c730db882cc63a9a"
+      "bytes": 9587,
+      "sha256": "40b9a23b011e5cdc237edbf1e73d9f24d66686ed206072510f98617ca6f0dddc"
     },
     {
       "path": "docs/OPERATOR_HANDOFF.md",
@@ -400,8 +400,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 21167,
-      "sha256": "c1b768374d3d0eada57f8ac607d61904eb477cf12b47788c4a96353634b1f831"
+      "bytes": 21594,
+      "sha256": "197394369b1122c9ae0aeee298c44a08f452bf1a51041f760c833f27ff56dbf5"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -464,9 +464,14 @@
       "sha256": "171c9b78183cec9c127f29969cbb11f507fa8030774780122f00c90ef7dd1b59"
     },
     {
+      "path": "docs/RIS_CONTINUATION_INTAKE.md",
+      "bytes": 4246,
+      "sha256": "d4c3652a3a35dc0e044c8e0f0dc5f060f95fcb78ae0be9099620bbfbeb8955b1"
+    },
+    {
       "path": "docs/RIS_INTAKE.md",
-      "bytes": 11419,
-      "sha256": "154bc81089c74c8b02d8041e2f8538a3d5227056769821cdda3c2500fe572c5e"
+      "bytes": 11642,
+      "sha256": "916cda9462bfe0fea327a10ff6007e599329cee5ba47816afba2913ef55ee084"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
@@ -520,13 +525,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 216156,
-      "sha256": "28572cb137b118486dd501ced334b249a56a294c5453a05e95ae73701c4e2379"
+      "bytes": 218295,
+      "sha256": "bed47ae09c7535e58c0a1aba87b806bb74d4ff5f19013c6620dcb2d5071779c2"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 31188,
-      "sha256": "7584014a1b3c8897a6bc3f6e018847ef916ecca2cd5ef3e9ddc6d5e6cf00cc71"
+      "bytes": 31611,
+      "sha256": "c81180d513b3b174e8d0f36b1147fd0a68dffad9f62798707ac02d63579d9cf0"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -722,6 +727,11 @@
       "path": "examples/context-references.json",
       "bytes": 223,
       "sha256": "fc430a597b144ee21b57d5bc0ae2829e3a327381aaa4ffd3d63aea840b76af21"
+    },
+    {
+      "path": "examples/dialects/continuation.ris",
+      "bytes": 264,
+      "sha256": "73be531493ecf2e84e9ea50c5abaf1bf4a64aa65b86514752107a721a773f7ae"
     },
     {
       "path": "examples/dialects/keyed-csv.csv",
@@ -1345,8 +1355,18 @@
     },
     {
       "path": "review_handoff.py",
-      "bytes": 58354,
-      "sha256": "4e4859d5ccb2aa80aeb266a4a0af4d14ea21978de5f4cc124b8dfa3fa94f604e"
+      "bytes": 58710,
+      "sha256": "1bbeec1046ec90df8b0446670f0c57379b84f44b306cfbb9b83bf201cf90203e"
+    },
+    {
+      "path": "ris_continuation_intake.py",
+      "bytes": 14273,
+      "sha256": "4038698deb3cc1abe9a4ffa8b639eb1a8008931e4c11ce95f31f2bb6d1f0061f"
+    },
+    {
+      "path": "ris_continuation_parser.py",
+      "bytes": 5754,
+      "sha256": "ba9eb550c14f6826212dd13ed2794be276fd4222fb5c0a32a692d0f3b9326ac8"
     },
     {
       "path": "ris_export_parser.py",
@@ -1575,8 +1595,8 @@
     },
     {
       "path": "tests/test_dispatcher.py",
-      "bytes": 10096,
-      "sha256": "b8e54d7e1e44638f06173ddad5bac08ecdf8e79e541a7103a8cd738c9e8a5fcb"
+      "bytes": 10126,
+      "sha256": "3246951b5fb1973c80a4ab43e4abb8e14fc7f8d35bed02101732603691e0f82a"
     },
     {
       "path": "tests/test_documented_demo.py",
@@ -1859,6 +1879,11 @@
       "sha256": "a1b6b38e89a6d770c79eef970022569bc504742ac361d397fc70dd6733bada7d"
     },
     {
+      "path": "tests/test_ris_continuation.py",
+      "bytes": 9297,
+      "sha256": "fb8ccca3dc33a33acb524ead75f70740f5395da0a678a41742c9bc9d75f1d78d"
+    },
+    {
       "path": "tests/test_ris_intake.py",
       "bytes": 28242,
       "sha256": "a1abead23ae949d8c282f3e35ded7fca661c8859267b6e16c5f8ce03960daa12"
@@ -1916,7 +1941,7 @@
     {
       "path": "tests/test_supplied_workflow_navigation.py",
       "bytes": 24182,
-      "sha256": "55be5b838abf988d740e1538ef77504964975a336de88de726a25d84f1bcefab"
+      "sha256": "31aed58bade2496171af45509b0ae3c61f3e48fa627a4b247c951e3b9ecff51c"
     },
     {
       "path": "tests/test_synthesis_review.py",
