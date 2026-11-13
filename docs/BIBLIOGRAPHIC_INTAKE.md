@@ -44,6 +44,12 @@ bibliographic text, not extracted recommendations, applicability or evidence.
 
 ## Explicit inputs and byte provenance
 
+If a CSV has a nonblank key on every row but blank URL or DOI cells, explicitly
+use the same key column for both `--id-column` and `--locator-column`. The locator
+is inert supplied text, not a fetched or authenticated link. Original blank cells
+remain unchanged. See the tested [same-column mapping journey](CSV_KEY_MAPPING.md)
+for `--id-column Key --locator-column Key`; missing/blank keys still fail closed.
+
 - A valid protocol with a nonempty `search_plan` and a selected existing
   `search_id` is required. The exact source, query and window are copied from that
   plan. Extra plan fields are retained and identified as uninterpreted.

@@ -151,6 +151,11 @@ unreviewed artifact. Duplicate occurrences and locator conflicts remain visible;
 byte-consistency verification does not authenticate the source or promote rows
 into screening, PRISMA counts, guideline links or development evidence.
 
+For a nonblank key column with empty URL/DOI cells, the tested
+[same-column mapping](CSV_KEY_MAPPING.md) declares the key as both ID and inert
+locator on every row. Native values are preserved and the journey stops at an
+unfilled review template; no fallback locator or publication identity is guessed.
+
 [Native PubMed NBIB preparation](PUBMED_NBIB_INTAKE.md) retains original file
 bytes, repeated fields and exact native spans while producing a verified CSV
 derivative for the same human reconciliation path. No PMID, title or URL is

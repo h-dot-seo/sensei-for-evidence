@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.93.0-checkout-smoke-check` (2026-11-10). This file is the
+Current release: `0.94.0-keyed-csv-journey` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -53,6 +53,40 @@ redistribution rights. Local test results do not establish that a remote publica
 succeeded; the public CI history is the record of published heads.
 
 ## Latest change
+
+## 2026-11-14 Explicit keyed CSV journey (0.94.0-keyed-csv-journey)
+
+Documented roadmap #34(a): the existing importer can use one explicitly selected,
+nonblank key column for both record ID and inert locator. A three-command guide
+previews, verifies and creates an unfilled review template without rewriting the
+native CSV or changing protocol state. A fictional fixture retains empty URL/DOI
+cells, multiline text, repeated keys and different literal URL values under one
+key. No locator fallback, dialect guessing, publication matching or review approval
+is introduced. Runtime modules, ENGINE_FILES, strict RIS parsers/wrappers, adapter,
+existing fixtures and existing executable guide blocks remain byte-identical.
+
+Seven new tests cover exact same-column mapping, separate occurrences, original
+blank/nonblank values, no invented locator conflicts, BOM/CRLF physical spans,
+missing/blank keys, wrong mappings, malformed input, tamper rejection even after
+resealing, unfilled review state, protocol nonmutation and exact guide replay with
+exclusive-output retries. Independent review found no blockers; its suggested
+same-key/different-URL case was added and independently rerun (7/7 passed).
+
+Local Python 3.12.14 full suite: `Ran 1950 tests in 137.708s`,
+`OK (skipped=1)`, no failures/errors. The skip is the existing native-Windows
+junction test on Linux. Existing parser/intake/review regression: 52 tests in
+2.043s, OK. New focused suite: 7 tests in 0.254s, OK. Publication audit, manifest,
+compileall, Python 3.10 grammar and UTF-8/LF checks passed.
+
+An initial focused assertion expected the template renderer to print NOT_READY;
+the existing renderer instead prints an explicit unfilled-review boundary. The
+test was corrected to assert that unchanged boundary and null draft values.
+The first full run preceded manifest regeneration and failed ten checkout-smoke
+assertions on expected inventory drift. After regenerating the manifest, the full
+suite passed without relaxing the verifier or changing production code.
+These are synthetic/local results, not provider compatibility, source authenticity,
+complete search, scientific validity or remote Windows CI results. RIS continuation
+wrappers and native archive expansion remain separate future increments.
 
 ## 2026-11-10 Bounded checkout smoke check (0.93.0-checkout-smoke-check)
 
