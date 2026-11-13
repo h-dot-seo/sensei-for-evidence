@@ -3083,3 +3083,30 @@ No test failure occurred during this increment. These are local synthetic checks
 not researcher identity, source reading, eligibility assessment or live-provider
 compatibility. Edited-sheet intake and reviewed append-only positions remain the
 next separate increment; this release only exports a blank scaffold.
+
+## 2026-11-14 Reviewed screening-sheet positions intake (0.97.0-screening-sheet-intake)
+
+Second bounded #33 increment: a separate wrapper appends human-supplied CSV
+positions after exact-target import review. Export-time protocol/source hashes
+and every read-only cell are checked against the existing export. Blank human
+rows are explicitly skipped; partial rows, formula/escape ambiguity, duplicate
+review IDs and record/reviewer pairs fail closed. Original CSV bytes, spans,
+review cues and implementation hashes remain in a detached replayable application.
+Canonical screening and old positions are never overwritten or renewed.
+
+Local Python 3.12 full suite: `Ran 1981 tests in 140.201s`, `OK (skipped=1)`.
+Focused intake/export/navigation: 44 tests pass, including 10 new intake tests.
+The synthetic guide commands execute verbatim with tokenization before host-path
+substitution. Publication audit: 417 files, pass; manifest, compileall, Python 3.10
+grammar and unchanged ENGINE_FILES/offline_adapter checks pass. Existing executable
+sh blocks remain byte-identical. Catalog: 26 routes, 113 help entrypoints.
+
+Independent review identified a multi-output preflight gap: an already-existing
+report path could be discovered after a candidate was written. Both destinations,
+parent directories, alias equality and serialized sizes are now checked before
+writing; regression tests cover existing destinations, identical paths and absent
+parents with no candidate creation. Exclusive creation remains the final guard.
+I/O failures and races are not atomic transactions and may leave partial output;
+the guide states that boundary. No local test failures occurred. These are synthetic
+offline checks, not source reading, reviewer identity or eligibility validation.
+

@@ -301,3 +301,16 @@ archive formats remain unchanged; retain continuation wrappers separately.
 Human assertion columns remain empty; this is export only, not edited-sheet
 intake, screening performed or a canonical decision. Preserve export-time source
 hashes and keep real sheets outside the public repository.
+
+## Reviewed screening-sheet positions
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_sheet_intake.py target PROTOCOL SHEET --output TARGET` / `assemble PROTOCOL SHEET REVIEW --output APPLICATION` / `verify PROTOCOL APPLICATION --protocol-output NEW` | Separate exact-input import review; append only supplied screening positions, never canonical decisions | [Screening sheet intake](SCREENING_SHEET_INTAKE.md) |
+
+[Append edited screening positions](SCREENING_SHEET_INTAKE.md) through the separate
+`screening_sheet_intake.py target`, `assemble`, and `verify` workflow.
+A separate human import review binds exact CSV bytes, protocol and implementation.
+Read-only cells and source hashes must remain unchanged; blank rows are skipped,
+partial/stale rows and duplicate reviewer pairs fail. No canonical decision or
+reviewer supersession is inferred. Real sheets remain outside the public repository.

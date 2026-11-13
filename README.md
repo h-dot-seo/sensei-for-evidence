@@ -150,7 +150,7 @@ documented command.
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
 | `pubmed_discovery.py`, `pubmed_metadata.py` | Optional preview-bound live ESearch/EFetch; the only networked commands |
-| `screening_review.py`, `screening_decision.py`, `screening_sheet.py` | Supplied reviewer positions; explicit supplied screening decisions |
+| `screening_review.py`, `screening_decision.py`, `screening_sheet.py`, `screening_sheet_intake.py` | Supplied reviewer positions; explicit supplied screening decisions |
 | the ten `report_*.py` command-line scripts, `inventory_intake.py` | Report registration, retrieval updates, source declarations and byte checks, full-text positions and decisions, report-study positions and inventory |
 | `result_*.py`, `condition_intake.py` | Worksheets, passage checks, manual result intake, drift comparison, text corrections, nonclinical conditions |
 | `context_intake.py`, `work_context_intake.py`, `appraisal_intake.py`, `appraisal_source_review.py` | Supplied context and work assignment; supplied appraisals and later comparison |
@@ -287,3 +287,12 @@ archive formats remain unchanged; retain continuation wrappers separately.
 Human assertion columns remain empty; this is export only, not edited-sheet
 intake, screening performed or a canonical decision. Preserve export-time source
 hashes and keep real sheets outside the public repository.
+
+## Reviewed screening-sheet positions
+
+[Append edited screening positions](docs/SCREENING_SHEET_INTAKE.md) through the separate
+`screening_sheet_intake.py target`, `assemble`, and `verify` workflow.
+A separate human import review binds exact CSV bytes, protocol and implementation.
+Read-only cells and source hashes must remain unchanged; blank rows are skipped,
+partial/stale rows and duplicate reviewer pairs fail. No canonical decision or
+reviewer supersession is inferred. Real sheets remain outside the public repository.

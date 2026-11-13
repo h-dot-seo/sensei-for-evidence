@@ -1,0 +1,9 @@
+{
+  "decision": "import_screening_reviews",
+  "rationale": "Record these synthetic supplied positions only.",
+  "receipt_id": "synthetic-import",
+  "reviewed_at": "2026-11-14",
+  "reviewer": "synthetic-importer",
+  "schema_version": 1,
+  "target_sha256": "b705a493ed40ce16be4ed1a8b176f4076b624ae39698094cf72f3bdefe4b3307"
+}

@@ -1,0 +1,5 @@
+"record_id","source_basis_sha256","readonly_record_id_json","readonly_export_protocol_sha256","readonly_retained_locators_json","review_id","reviewer","reviewed_at","decision","rationale","source_locator"
+"record-alpha","7d7afd492637d7d159bba56cac48da13937b690c062802b627a9b3d54b138049","""record-alpha""","4e59f7bc471180f01f55b2a8c36ad846762eb98267d8e7833eca3bac6de95dcc","","synthetic-review","synthetic-reader","2026-11-14","unclear","Synthetic supplied position only.","synthetic:row-1"
+"record-beta","5964ab1a3e1b3c23c3b25b8a282bbbcfa72054b25e269b83f256d93adc080285","""record-beta""","4e59f7bc471180f01f55b2a8c36ad846762eb98267d8e7833eca3bac6de95dcc","","","","","","",""
+"record-delta","60476971bac60f9c126def3512a8b2413cdbd66e0a0a7a2986e596de5a75be08","""record-delta""","4e59f7bc471180f01f55b2a8c36ad846762eb98267d8e7833eca3bac6de95dcc","","","","","","",""
+"record-gamma","0fefb30dc4278e15b66b4c33751426423ed98f45d7171676268d426550527b8a","""record-gamma""","4e59f7bc471180f01f55b2a8c36ad846762eb98267d8e7833eca3bac6de95dcc","","","","","","",""
