@@ -47,6 +47,10 @@ For your own files from another directory, use
 or the direct script path; relative inputs/outputs resolve against the current directory.
 Run guides with repository-relative examples from the repository root.
 
+For CSV with nonblank keys but empty URL/DOI cells, use docs/CSV_KEY_MAPPING.md:
+declare the key as both ID and inert locator, retain native bytes, then stop at
+the unfilled collection-review template. Never invent missing keys or links.
+
 For optional live PubMed identifier discovery, read docs/PUBMED_DISCOVERY.md first.
 Preview is offline; fetch transmits the exact query/date parameters to NCBI and
 requires a matching preview hash plus authorization to share that query. Never

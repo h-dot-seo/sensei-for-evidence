@@ -26,6 +26,10 @@ and may be reopened through an amendment; never equate exhaustion with sufficien
 
 ## Screening and normalization
 
+The [keyed CSV journey](CSV_KEY_MAPPING.md) uses the unchanged importer with an
+explicit same-column ID/locator mapping. It retains native empty URL/DOI cells
+without derived locators, guessed dialects or automatic identity reconciliation.
+
 Maintain explicit inclusion/exclusion reasons and count reconciliation. Distinguish
 records, reports, studies, results and claims. Link every normalized evidence row to
 source ID, original source hash where available, locator, population/model, intervention,

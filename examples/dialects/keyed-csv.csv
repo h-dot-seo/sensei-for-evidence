@@ -1,0 +1,5 @@
+Key,Title,URL,DOI,Abstract
+fictional-a,Fictional study with no link,,,"Synthetic first line
+Synthetic second line"
+fictional-b,Fictional study with a supplied link,https://example.invalid/fictional-b,,Synthetic abstract
+fictional-a,Fictional repeated key,https://example.invalid/fictional-a-alternate,,Separate synthetic occurrence

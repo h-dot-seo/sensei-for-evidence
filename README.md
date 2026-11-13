@@ -19,6 +19,8 @@ work-package assertion or reproducible bundle is not a completed scientific stud
 
 - **Check the checkout**: read-only inventory, Python syntax and one synthetic status
   smoke check without bytecode writes; not research validation or full CI.
+- **Map keyed CSV exports**: a tested explicit same-column ID/locator journey keeps
+  blank URL/DOI cells and repeated keys without guessed links or identity decisions.
 - **Collect**: preview-bound, keyless PubMed identifier discovery and explicit selected-PMID
   EFetch MEDLINE title/abstract acquisition with retained native observations, explicit
   caps/failures and separate unreviewed intake; declared search plans and optional page
@@ -71,6 +73,9 @@ rehearsal and safe sharing boundaries.
 
 See [native count crosswalk](docs/PRISMA_FLOW_TEMPLATE.md) for the tested rehearsal
 and the distinction from external PRISMA diagram templates.
+
+See [keyed CSV mapping](docs/CSV_KEY_MAPPING.md) when a supplied key is nonblank
+but URL/DOI cells are empty. This uses the existing importer, not a new dialect.
 
 ## Start here
 

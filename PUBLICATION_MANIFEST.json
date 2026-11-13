@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.93.0-checkout-smoke-check",
-  "date": "2026-11-10",
+  "release": "0.94.0-keyed-csv-journey",
+  "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 400,
+  "file_count": 403,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 16281,
-      "sha256": "c5b66fcd7c5e115fa923fedfb241535b511ca6dfd1834f7d742b7140c4e44ba6"
+      "bytes": 16613,
+      "sha256": "3013a270c96fa249e50a0c0ae37f06c7a405322166affdbc3100256fed75a60d"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 8361,
-      "sha256": "ef2a23542ebcd0775a639cade97197705eb8a5e50178e73fa34c55f2885e777b"
+      "bytes": 8600,
+      "sha256": "443eb1e409ce62001bd29e68e78fe8ad553583a5dca0cf74a20e686659905464"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 18891,
-      "sha256": "74c689f60099895e66c716af1a817df1a690104678c344e9f4d2d70045bedfec"
+      "bytes": 21160,
+      "sha256": "0989fbae6bcb66020063f4883af304d9b6fc01ff670952ed9fde4b5af3b23853"
     },
     {
       "path": "accounting_flow.py",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 9653,
-      "sha256": "97cb04a93d6bcf1b1f3c2a0d4d129486cc7a8bbde8e83cddef8edf4bca650cff"
+      "bytes": 9894,
+      "sha256": "7c0c2b7a8b77e5b6869565eab00340b5e704c72ff84e06f3df62b4dab3187b6c"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -200,8 +200,8 @@
     },
     {
       "path": "docs/BIBLIOGRAPHIC_INTAKE.md",
-      "bytes": 7619,
-      "sha256": "249adf32df628af4cad3f27990bec23be5468d845359a5620180c75da8089fb1"
+      "bytes": 8030,
+      "sha256": "20350d497df67250f8d2509122be965b7824bce0b821090b80bfda64b1098f18"
     },
     {
       "path": "docs/BIBLIOGRAPHIC_REVIEW.md",
@@ -247,6 +247,11 @@
       "path": "docs/CONTEXT_AMENDMENTS.md",
       "bytes": 3851,
       "sha256": "14bb0424dc7fa14c901a5408c276ec6da0edec82afb03a22b2304c12b2a1b890"
+    },
+    {
+      "path": "docs/CSV_KEY_MAPPING.md",
+      "bytes": 4067,
+      "sha256": "82bbae2461cd88d585dc15e46ee84d3b6ad5cb9410b6f666591d25986e93a961"
     },
     {
       "path": "docs/EVIDENCE_WORK_INTAKE.md",
@@ -395,8 +400,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 20553,
-      "sha256": "086177e0a8994e6d89c14a2ac6ee7a5be89cb30dfe49cc3a0065a82eb1ddeafb"
+      "bytes": 21167,
+      "sha256": "c1b768374d3d0eada57f8ac607d61904eb477cf12b47788c4a96353634b1f831"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -515,13 +520,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 213884,
-      "sha256": "b5a8fe7b11022fb94cdc925d6e033be75b45eb2e1df5533800a348ef5eb49430"
+      "bytes": 216156,
+      "sha256": "28572cb137b118486dd501ced334b249a56a294c5453a05e95ae73701c4e2379"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 30884,
-      "sha256": "5bf27b2803fa05f6e55c617078900a36857d731df2dd597da0a433f485a3e724"
+      "bytes": 31188,
+      "sha256": "7584014a1b3c8897a6bc3f6e018847ef916ecca2cd5ef3e9ddc6d5e6cf00cc71"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -717,6 +722,11 @@
       "path": "examples/context-references.json",
       "bytes": 223,
       "sha256": "fc430a597b144ee21b57d5bc0ae2829e3a327381aaa4ffd3d63aea840b76af21"
+    },
+    {
+      "path": "examples/dialects/keyed-csv.csv",
+      "bytes": 332,
+      "sha256": "28da36849e658db8397491a22f970b41d5561ab787d0b9ac00a997e4eb9eb58a"
     },
     {
       "path": "examples/evidence-work-candidates.json",
@@ -1552,6 +1562,11 @@
       "path": "tests/test_csv_export_parser.py",
       "bytes": 9218,
       "sha256": "92f9981b234540307bf9cd0d96240510fdd6bbb47d3579a2f90385c9f482c36a"
+    },
+    {
+      "path": "tests/test_csv_key_mapping.py",
+      "bytes": 7786,
+      "sha256": "fb09107943a84898e393e9b28e457bb0e98b4631e2f3ca45151bb9677352f8b9"
     },
     {
       "path": "tests/test_csv_safety.py",
