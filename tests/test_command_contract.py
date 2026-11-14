@@ -30,7 +30,7 @@ class CommandContractTests(unittest.TestCase):
         expected = command_rows((ROOT/'docs/COMMANDS.md').read_text(encoding='utf-8'))
         actual = {(row['script'], (row['subcommand'],) if row['subcommand'] else ()): row for row in result['commands']}
         self.assertEqual(set(actual), set(expected))
-        self.assertEqual(result['coverage']['reviewed_effects'], 26)
+        self.assertEqual(result['coverage']['reviewed_effects'], 32)
         for key, row in actual.items():
             self.assertEqual(row['usage'], expected[key] if row['has_parser'] else None)
             for guide in row['guides']:
@@ -157,6 +157,7 @@ class CommandContractTests(unittest.TestCase):
                 if script.startswith('pubmed_') and sub != 'verify':args += ['--output',str(Path(td)/'new.json')]
                 if script.startswith('pubmed_') and sub == 'fetch':args += ['--preview-sha256','0'*64]
                 if script.startswith('pubmed_') and sub == 'to-intake':args += ['--search-id','synthetic']
+                if script in ('artifact_review.py','report_source_check.py','result_passage_check.py') and sub != 'template':args += ['--root',str(Path(td)/'source-root')]
                 if script == 'collection_export.py':args += ['--output',missing,'--decision','include']
                 with self.subTest(script=script, subcommand=sub):
                     result = subprocess.run([sys.executable,'-B',str(ROOT/script),*args],cwd=td,capture_output=True,timeout=30)

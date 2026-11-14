@@ -20,22 +20,42 @@ not necessarily free of human-input requirements.
 
 ## Reviewed effects, not inferred effects
 
-There are26 reviewed subcommands: the local NBIB intake, bibliographic identity
+There are32 reviewed command entries: the local NBIB intake, bibliographic identity
 review, screening decision, status/PRISMA views, research bundle, base scaffold,
-PubMed discovery/metadata and collection native export. Every other entry is
+PubMed discovery/metadata, collection native export and six local source-observation
+operations in artifact_review, report_source_check and result_passage_check. Every other entry is
 explicitly `NOT_REVIEWED` with `effects=null`. Null means unknown, not read-only,
 safe to run, or permission granted. This is partial #57 coverage, not a complete
 machine contract for all repository operations. Read the guide and implementation
 before using commands without an effects profile.
 
+The remaining143 entries retain unknown effects. The negative-report stdout field
+now also permits json_or_text for these observers, following their existing CLI flag.
+This is additive partial coverage, not a complete contract or external-consumer
+compatibility promise. Existing checker implementations and their schemas are unchanged.
+
 Each reviewed profile names actual input arguments, conditional exclusive output
 arguments, network effect, success channel, handled-error channel and any explicit
-negative report. `inputs` lists file arguments, not every scalar CLI parameter.
+negative report. `inputs` lists file arguments and explicitly supplied root directories, not every scalar CLI parameter.
 Repeated wrapper inputs contain INDEX=PATH. Success applies after accepted inputs;
 profiles do not prove that any particular input will be accepted.
 
 Important distinctions:
 
+- Local source observation check/catalog commands can emit a negative report with
+  exit1 and empty stderr. `report_source_check` and `result_passage_check` may also
+  create the requested JSON `--output` file before returning that1, even when stdout
+  is rendered with `--text`. Inspect the report, not just file existence or exit status.
+  A caught input/access failure instead emits stderr without a stdout report. Ordinary
+  OS write failures may still leave a partial newly created file.
+- `artifact_review` has no output-file option. Its negative report is JSON stdout+1.
+  Source templates inspect metadata only, without opening source roots. Actual checks
+  require the existing secure descriptor-relative no-follow capability and explicit
+  trusted quiescent dedicated root. Native Windows without it refuses before source
+  inspection; there is no fallback or expanded permission. Locators are never fetched.
+- A matching source digest or passage does not establish scientific entailment,
+  fidelity, source authenticity or human acceptance. No observed result updates the
+  protocol, canonical screening or readiness decisions.
 - NBIB `verify` can create a file via `--intake-output` or `--csv-output`.
 - Collection export `verify --output` **reads** an existing native file. `create`
   with no selected bytes reports NO_OUTPUT and creates nothing.

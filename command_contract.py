@@ -65,7 +65,7 @@ def _effects(value):
     _outcome(value['usage_error'], ('exit_code', 'stdout', 'stderr'), (2,), ('empty',), ('argparse_diagnostic',))
     negative = value['negative_report']
     if negative is not None:
-        _outcome(negative, ('condition', 'exit_code', 'stdout', 'stderr'), (1, 2), ('json',), ('empty',))
+        _outcome(negative, ('condition', 'exit_code', 'stdout', 'stderr'), (1, 2), ('json', 'json_or_text'), ('empty',))
         if not isinstance(negative['condition'], str) or not negative['condition']:
             raise ValueError('invalid negative report')
 

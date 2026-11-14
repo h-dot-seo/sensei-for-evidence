@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.125.0-bundle-cli-test-budget",
+  "release": "0.126.0-source-observation-contract",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 503,
+  "file_count": 504,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4299,
-      "sha256": "be5001f48291202124c585096f230368ba7f21bcc13112408b875dd0f987dd08"
+      "bytes": 4379,
+      "sha256": "855c6cfd455b6914f507b75b710bdc167102964afc7026d472ad74ec96dae388"
     },
     {
       "path": "accounting_flow.py",
@@ -140,8 +140,8 @@
     },
     {
       "path": "command_contract.py",
-      "bytes": 8289,
-      "sha256": "ca7b54d92be6619f463f39ce2a61a0e7d48153e9e0676c59c25ce0e31b73b739"
+      "bytes": 8304,
+      "sha256": "885d11dde06888cddbbc501611cc31161c0f137fa8dc4a913ebf929620e41cb5"
     },
     {
       "path": "compare_runs.py",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/AGENT_CONTRACT.md",
-      "bytes": 4457,
-      "sha256": "6be4358f76d83c569948ff809681522c414d1f87a8eb151f5651ef2439416aac"
+      "bytes": 6085,
+      "sha256": "52ee04e312b93d986edfb8dae0afcb0dffac2cb8801f6ded38575a8e33be9498"
     },
     {
       "path": "docs/AMENDMENT_NOTES.md",
@@ -645,8 +645,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 263191,
-      "sha256": "e4101e5b12efea4ab0e3fa3a1d93b72f719b8812829cf0754131a559e23f31a5"
+      "bytes": 264733,
+      "sha256": "2743d6eb3a7d5e2da4b354a62a74a4e38b11537f0cd6dffde708d92714469c8f"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -690,8 +690,8 @@
     },
     {
       "path": "docs/command_contract.json",
-      "bytes": 105429,
-      "sha256": "2e9ab01a3631e202d2d8d0040ec2b78c2fe79e81c09902ac46cc7be93ddd904b"
+      "bytes": 113276,
+      "sha256": "1121683776228713cffc113a6ea995a5b6e5384c55ef56f323d9cbbb2f6e42d5"
     },
     {
       "path": "docs/record_registry.json",
@@ -1880,8 +1880,8 @@
     },
     {
       "path": "tests/test_command_contract.py",
-      "bytes": 13276,
-      "sha256": "3277a1c4af9078146172b0ac7e9c4c217614162937336660e991d15b7f120422"
+      "bytes": 13448,
+      "sha256": "15bdbc22a8c88cf846eb38314e72624c943f552ebecb8325d2fd5db9d37f44d7"
     },
     {
       "path": "tests/test_command_reference.py",
@@ -2377,6 +2377,11 @@
       "path": "tests/test_search_pages.py",
       "bytes": 6160,
       "sha256": "122b0af0432a56c5100d3925722523c98a3f515544cd848942e3b9ffd3b5bb4b"
+    },
+    {
+      "path": "tests/test_source_check_contract.py",
+      "bytes": 8184,
+      "sha256": "830e702f8f6ee3239e2ae80d0e8b9b6186d9179196a02b0e1c25867b89afafad"
     },
     {
       "path": "tests/test_source_contexts.py",

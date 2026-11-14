@@ -3697,3 +3697,25 @@ harness calls and interpreter-surface restoration. Independent AST checks retain
 205 methods and846 original assertions across the seven files. Audit504/manifest503
 and Python3.10 grammar257 passed. No unresolved review blockers; Korean-locale
 Windows, external-export compatibility and prior HTML visual QA remain unverified.
+
+## 2026-11-14: 0.126.0-source-observation-contract
+
+Extended the partial command-effects registry with exactly six local artifact/source/
+passage observation operations. Reviewed coverage is32 of175;143 remain NOT_REVIEWED.
+Negative reports may coexist with exit1 and an optional newly created JSON output;
+text stdout does not change that stored JSON. Caught input/access errors remain a
+separate stderr path. Unsupported secure source access, including native Windows,
+still fails closed before opening the source root. No fallback, remote lookup,
+permission inference, human approval or canonical state update is added.
+
+Actual checkers and ENGINE_FILES are unchanged. The declaration reader accepts the
+existing json_or_text negative channel and all root source bindings are refreshed.
+Source drift still rejects the contract. Synthetic CLI tests cover successful/negative
+source observations, output files, templates, malformed inputs and unavailable secure
+access; scientific fidelity and human acceptance remain outside the observations.
+Full2207 tests in184.505s passed (skip1). Independent17 tests plus seven negative
+stdout-only JSON/text paths passed, with input/source files unchanged. Template-only
+output wording was clarified afterward; final focused checks cover that metadata edit.
+Audit505/manifest504 and Python3.10 grammar258 passed. All actual checker and28
+ENGINE_FILES bytes are unchanged. No unresolved review blockers; Korean-locale
+Windows, external-export compatibility and prior HTML visual QA remain unverified.
