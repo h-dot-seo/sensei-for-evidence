@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.106.0-dispatcher-selection",
+  "release": "0.107.0-passive-review-view",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 452,
+  "file_count": 455,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21363,
-      "sha256": "891ec8365d8b32ccab45ce01c317ed057fd058f329c6be4fe5a5f044f037737c"
+      "bytes": 21653,
+      "sha256": "1756aa64bf534f68f177cea6db8580abe09e40a4892edc2bf8d7b2b953d599b4"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 13208,
-      "sha256": "63d3d671c54b7a7c3d9676c7cbf43567c8a13c20074ee73bf9db0c88ecbeee21"
+      "bytes": 13401,
+      "sha256": "85a8868fb8aee43353bd33d2ce70c0975ccdcfad8e558d24dd5142df41e9d63a"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4797,
-      "sha256": "dbfe4889a7ac6f7fbca0414c08849d94f8e97ae917782a4501065f5e280aae1c"
+      "bytes": 5894,
+      "sha256": "7a3ee92c9b22508edb9efa37c1791fa58314ee308de4a4033d690aaf1cabec01"
     },
     {
       "path": "accounting_flow.py",
@@ -185,8 +185,8 @@
     },
     {
       "path": "docs/ARCHITECTURE.md",
-      "bytes": 13263,
-      "sha256": "08cc019197848286ab0de8e5a263df73dbdf5c750c4c77a0d774de4da6ce72f8"
+      "bytes": 13445,
+      "sha256": "f6aba6794fb536cd83a0fe2b24ca405d3c8d69908788521a3a9cf7ad483c3986"
     },
     {
       "path": "docs/BATCH_COLLECTION_BUNDLES.md",
@@ -225,8 +225,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 47853,
-      "sha256": "32af2fafa23ad984d3debde2cbeba2612853c36c4f6b31b0a42410db9f5c9378"
+      "bytes": 48087,
+      "sha256": "462c912c2409c218fd37e077e535929e9e28dee2338532284d4fcae474bd80cb"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -405,8 +405,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 22064,
-      "sha256": "61375591adfdcb4bbf9ceb28cff11aca2abe0fb0174cbdab9d6d55861ab803ed"
+      "bytes": 22298,
+      "sha256": "fa4bda0d15645ef38a4c39175fe3b7793975cdce298570f6b95af218644668f5"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -482,6 +482,11 @@
       "path": "docs/RESULT_SOURCE_REVIEW.md",
       "bytes": 8746,
       "sha256": "171c9b78183cec9c127f29969cbb11f507fa8030774780122f00c90ef7dd1b59"
+    },
+    {
+      "path": "docs/REVIEW_VIEWS.md",
+      "bytes": 2368,
+      "sha256": "ea2ddcf3ee0e90e7bb8a1c105e734214eb404eb8fe9f04a751b1a090c5bc4a4f"
     },
     {
       "path": "docs/RIS_CONTINUATION_INTAKE.md",
@@ -575,13 +580,13 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 240693,
-      "sha256": "8e5296c454c8b093f6f11252b0f168cefe68240455ebc1fde15bff7d419db97f"
+      "bytes": 241792,
+      "sha256": "4723694bf539ce78e0622e73326797ed73689aa8f1b31f0a6c105cd05ed26bec"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 35751,
-      "sha256": "a3fbfd1298d3346a2fb518de55ceb7b32d6d4329ad964b0815905726f4b2c217"
+      "bytes": 35955,
+      "sha256": "222381b36467564e98fa1eecd7d5e34322a082ffbfb0848b828de2aede753e16"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1444,6 +1449,11 @@
       "sha256": "ad78fde1634310bf0019ceee15087c9ad3a6142d2853b344623f59722ff6c260"
     },
     {
+      "path": "research_view.py",
+      "bytes": 11714,
+      "sha256": "c7209a01cd6f261f862be9bf688ea68549616e18f61da560c1426d83362c4d59"
+    },
+    {
       "path": "result_correction.py",
       "bytes": 18877,
       "sha256": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52"
@@ -2037,6 +2047,11 @@
       "path": "tests/test_research_status.py",
       "bytes": 6072,
       "sha256": "d5686cdc7393de2d2a1150fcf127dfb45d8a5fd82a2b7c4faa13d27e2fb4b35b"
+    },
+    {
+      "path": "tests/test_research_view.py",
+      "bytes": 7961,
+      "sha256": "05f24c281e1cbe55a46df54c1b6df95396ec9adc824fd593f6aef345cb31a4e6"
     },
     {
       "path": "tests/test_result_correction.py",

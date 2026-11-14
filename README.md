@@ -350,3 +350,7 @@ using `report_study_inventory_review_intake.py`. Both inventory and source subse
 are human-supplied, exact-pair bound and append-only; descriptions, membership and
 canonical decisions remain unchanged. Shared safety and complete exclusive outputs
 reuse existing helpers rather than adding another review or filesystem framework.
+
+## Passive local review
+
+[HTML review navigator](docs/REVIEW_VIEWS.md) combines existing supplied views in a local, non-approving page. `python research_view.py examples/claim-comparison.json` writes HTML to stdout; `--output NEW.html` saves an exclusive private file with a JSON receipt.
