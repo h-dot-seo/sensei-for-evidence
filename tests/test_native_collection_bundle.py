@@ -9,6 +9,7 @@ import stat
 import socket
 import struct
 import subprocess
+from tests._cli import run_cli
 import sys
 import tempfile
 import unittest
@@ -369,13 +370,21 @@ class NativeCollectionBundleTests(unittest.TestCase):
             source.write_bytes(encoded(self.protocol)); native.write_bytes(encoded(self.wrapper))
             for selection in ['-1='+str(native),'1.0='+str(native),'true='+str(native),'none',
                               '1='+str(native),'0='+str(root/'absent')]:
-                result=self.invoke('create',source,output,'--nbib-batch',selection)
+                result=run_cli('native_collection_bundle.py', 'create',source,output,'--nbib-batch',selection, cwd=ROOT, encoding='ascii')
+                if selection == '-1='+str(native):
+                    actual = self.invoke('create',source,output,'--nbib-batch',selection)
+                    self.assertEqual((result.returncode, result.stdout, result.stderr),
+                                     (actual.returncode, actual.stdout, actual.stderr))
                 self.assertNotEqual(result.returncode,0)
                 self.assertFalse(output.exists())
                 self.assertNotIn(b'Traceback',result.stderr)
             for raw in [b'\xff', b'{}', b'null', b'{"schema_version":1,"schema_version":1}', b'{"x":NaN}']:
                 native.write_bytes(raw)
-                result=self.invoke('create',source,output,'--nbib-batch','0='+str(native))
+                result=run_cli('native_collection_bundle.py', 'create',source,output,'--nbib-batch','0='+str(native), cwd=ROOT, encoding='ascii')
+                if raw == b'\xff':
+                    actual = self.invoke('create',source,output,'--nbib-batch','0='+str(native))
+                    self.assertEqual((result.returncode, result.stdout, result.stderr),
+                                     (actual.returncode, actual.stdout, actual.stderr))
                 self.assertNotEqual(result.returncode,0)
                 self.assertFalse(output.exists())
                 self.assertNotIn(b'Traceback',result.stderr)

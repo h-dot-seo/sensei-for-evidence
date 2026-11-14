@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.124.0-forward-python-ci",
+  "release": "0.125.0-bundle-cli-test-budget",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4346,
-      "sha256": "92996fda5cd702c187a5597570ce0f687fd71ae51c9494cb15c5940873118ab7"
+      "bytes": 4299,
+      "sha256": "be5001f48291202124c585096f230368ba7f21bcc13112408b875dd0f987dd08"
     },
     {
       "path": "accounting_flow.py",
@@ -645,8 +645,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 261724,
-      "sha256": "569beb2608e0b504d286fb360ced39171c2bb9d5586c1654a8a1132f1a653dd7"
+      "bytes": 263191,
+      "sha256": "e4101e5b12efea4ab0e3fa3a1d93b72f719b8812829cf0754131a559e23f31a5"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -1795,8 +1795,8 @@
     },
     {
       "path": "tests/test_appraisal_transition_bundle.py",
-      "bytes": 30368,
-      "sha256": "02dae5e680cd5d409f29c22d07662bc4bfe7988dfb572cc00cec8c9f062b3e74"
+      "bytes": 30769,
+      "sha256": "c1fe7f1af80584c48048102b05e58ebbe69681e31f90fb963ca83ac6cd3c6ba6"
     },
     {
       "path": "tests/test_appraisal_transition_journey.py",
@@ -1810,8 +1810,8 @@
     },
     {
       "path": "tests/test_batch_collection_bundle.py",
-      "bytes": 36700,
-      "sha256": "e1c2a6c2692e4da67a64961bd11cd9f86ee76a0e8640a310fff8258d5802f0b4"
+      "bytes": 37454,
+      "sha256": "f7c42fc6bfc8715e7b70d9c64e29e1eadebf3cd55d9da503c7afd04e22f2108e"
     },
     {
       "path": "tests/test_batch_to_evidence_walkthrough.py",
@@ -1870,8 +1870,8 @@
     },
     {
       "path": "tests/test_collection_bundle.py",
-      "bytes": 24176,
-      "sha256": "86996ad5af3b875509f129990139cbc361f4cf4c84a84edcb4c31a38245e84ec"
+      "bytes": 24916,
+      "sha256": "f8df87ac2e4be7a531cd3c4a5764a55f3aad89f0575c1295ef60387d87ea603e"
     },
     {
       "path": "tests/test_collection_export.py",
@@ -1995,8 +1995,8 @@
     },
     {
       "path": "tests/test_extraction_transition_bundle.py",
-      "bytes": 26533,
-      "sha256": "ae41748402b1fa9bdd33b6e7285a8d84e3aba387af04affed873de3fc8738118"
+      "bytes": 26935,
+      "sha256": "a920c806d7785462585e008494f9e3a0bf368d612387e2d0601aba2e349a9b10"
     },
     {
       "path": "tests/test_extraction_transition_context.py",
@@ -2035,8 +2035,8 @@
     },
     {
       "path": "tests/test_native_collection_bundle.py",
-      "bytes": 52912,
-      "sha256": "7360c94bd7508e53d26a1c437e96d4329693a54a95da6877a2451e3dd599e677"
+      "bytes": 53678,
+      "sha256": "6b886edc7b5a86c28e88c016cbcbc9683f453b4a955b8b5129aab55d55007340"
     },
     {
       "path": "tests/test_nbib_batch_intake.py",
@@ -2245,8 +2245,8 @@
     },
     {
       "path": "tests/test_report_transition_bundle.py",
-      "bytes": 25217,
-      "sha256": "fafa71be2cdf040059fb0f2935f6d248bbb253425cea651826f8848e884a6011"
+      "bytes": 25615,
+      "sha256": "331af1e3cd95b93c2c987ac11b4bdc6f08aaf85562b9e4ee08227a6f8c19ee18"
     },
     {
       "path": "tests/test_research_bundle.py",
@@ -2475,8 +2475,8 @@
     },
     {
       "path": "tests/test_work_transition_bundle.py",
-      "bytes": 26782,
-      "sha256": "c9708071c8e88ff3781e62fd757993274c7430e966c4e6013d100f1dfa5603bc"
+      "bytes": 27178,
+      "sha256": "024aa06f72b095066a9a47f809dbc55082a2d0cdd90ea1e482764f500c69f56a"
     },
     {
       "path": "tests/test_work_transition_context.py",

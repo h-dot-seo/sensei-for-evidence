@@ -3676,3 +3676,24 @@ cancellation issue was corrected by unique non-PR groups. Audit504/manifest503 a
 Python3.10 grammar257 passed. All107 root modules are byte-identical. No unresolved
 local review blockers. New3.14/3.15 coverage requires actual remote8-job results;
 Korean-locale Windows, external-export compatibility and HTML visual QA remain unverified.
+
+## 2026-11-14: 0.125.0-bundle-cli-test-budget
+
+Moved only repeated create-side invalid-input cases in seven bundle test methods
+to the existing serial trusted-test harness. All original assertions and test method
+inventories remain; this is not a product change or a process-isolation guarantee.
+The49 in-process calls replace repeated startup while17 real subprocess calls remain
+in those tests (previously56). Ten representative create errors compare exact return
+code/stdout/stderr between both paths, and seven malformed-ZIP verifies remain real.
+
+Every other test method, the harness, root modules and ENGINE_FILES are byte-identical.
+In particular, real roundtrip, non-ASCII stdio, PYTHONIOENCODING=ascii/PYTHONUTF8=0,
+exclusive output and documented journey tests retain their actual subprocess behavior.
+The harness's ascii stream option does not simulate Python startup or UTF-8 mode.
+No wall-clock speedup is promised; fixture and in-process bundle costs remain.
+Full2201 tests in176.463s passed (skip1), retaining the prior total. Independent212
+bundle/harness tests passed in48.732s; separate seven-method replay confirmed49
+harness calls and interpreter-surface restoration. Independent AST checks retained
+205 methods and846 original assertions across the seven files. Audit504/manifest503
+and Python3.10 grammar257 passed. No unresolved review blockers; Korean-locale
+Windows, external-export compatibility and prior HTML visual QA remain unverified.
