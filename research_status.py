@@ -133,6 +133,8 @@ def status(protocol, *, research_map=_NO_RESEARCH_MAP):
             record_history=copy.deepcopy(history['record_history']),
             records_with_history_cues=copy.deepcopy(history['records_with_history_cues']),
             scope='retrospective_comparisons_not_pending_tasks', boundary=history['boundary'])
+    if 'output_disclosures' in research:
+        result['output_disclosures'] = copy.deepcopy(research['output_disclosures'])
     if 'question_ledger' in research:
         result['question_ledger'] = copy.deepcopy(research['question_ledger'])
     if research_map is not _NO_RESEARCH_MAP:
@@ -225,6 +227,9 @@ def render_text(result):
         lines.append('Historical differences are retrospective comparisons, not automatically unfinished work or invalid prior decisions.')
     if result['report_stage'] == 'NOT_SUPPLIED':
         lines.append('Title/abstract-included records without any result row: ' + count('record_level_extraction_pending'))
+    if 'output_disclosures' in result:
+        from output_disclosure_review import context_lines
+        lines.extend(context_lines(result['output_disclosures']))
     if 'question_ledger' in result:
         from question_review import context_lines
         lines.extend(context_lines(result['question_ledger']))

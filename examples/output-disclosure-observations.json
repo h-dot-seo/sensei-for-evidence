@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "protocol_sha256": "c50f6200a6477044545fefd6b8b7c9eaae72620fa3bc88e139c4e4bc3b0882a9",
+  "manifest_sha256": "3a8532829f8380cec0ee81679687c8846989059298e57877eb19b9627e2c1e93",
+  "engine_sha256": {
+    "unverified-recorded-engine.py": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "artifacts": [
+    {
+      "work_package_id": "WP-001",
+      "artifact_locator": "synthetic:artifact",
+      "path": "synthetic.txt",
+      "bytes": 19,
+      "sha256": "f31e34c5c504375f8a08a808c8ce34d2ad07b6268028ec9ef3745812ffe87b28",
+      "status": "BYTES_MATCH",
+      "observed_bytes": 19,
+      "observed_sha256": "f31e34c5c504375f8a08a808c8ce34d2ad07b6268028ec9ef3745812ffe87b28",
+      "supplied_work_status": "PLANNED",
+      "completion_source_status": "NOT_COMPLETE",
+      "question": "Does rescue reverse the endpoint?",
+      "deliverable": "rescue experiment plan",
+      "acceptance_criterion": "controls, endpoint and analysis prespecified",
+      "supplied_acceptance_verified": null,
+      "depends_on": [],
+      "blocked_by": [],
+      "acceptance_assessment": "NOT_PERFORMED"
+    }
+  ],
+  "uninspected_work_ids": [],
+  "all_requested_bytes_match": true,
+  "inspection_scope": "Synthetic supplied observation only",
+  "census_claim": "NOT_ESTABLISHED",
+  "conclusion_readiness": "NOT_READY",
+  "boundary": "Synthetic untrusted observation, not live checking"
+}

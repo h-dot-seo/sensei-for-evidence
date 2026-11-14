@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.136.0-supplied-question-ledger` (2026-11-14). This file is the
+Current release: `0.137.0-supplied-output-disclosures` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,24 +55,24 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.136.0-supplied-question-ledger` (2026-11-14).
+Release: `0.137.0-supplied-output-disclosures` (2026-11-14).
 
-Roadmap #42 reader adjustment (a): optional supplied question records and separate
-exact-target append/transition review. OPEN and NARROWED have an explicit transition
-table; terminal labels and same-state renewal are rejected. Question labels are not
-assessed answers. Root question, existing work/statements, readiness gates and all
-prior judgments are unchanged. Optional views and bundle context expose labels and
-STALE bindings without updating old records. External references are opaque labels/hashes.
+Roadmap #44: optional supplied research-output disclosure records, current gate/item
+context, and separate exact-input append/replay with explicit optional saved observations
+and pre-disclosure bundles. RELEASED labels are not actual publication, permission or
+scientific closure; NOT_READY coexistence is exposed without a new gate or rejection.
+Existing gate logic, old records and source/Windows security boundaries are unchanged.
 
-Twelve actual previous48 CLI raw outputs are preserved without question records;
-all 44 pre-label run baselines remain unchanged. Native Windows CRLF expectations
-are explicitly recorded separately, with no runtime newline normalization. Historical
-baseline files stay byte-identical; exact named new engine hashes/source additions
-and optional bundle-summary block are isolated in regression tests.
+Prior49 actual CLI raw-byte baselines remain identical without disclosure records;
+current native newline expectations are explicit. Exact named ENGINE additions and
+optional summary blocks preserve historical baseline data. Saved artifact observations
+are not live checks or authenticated engines; original attachment re-supply is required
+for replay. Real previous artifact output was accepted after its synthetic file was
+removed, while live_bytes_checked remains false. No source path is opened by intake.
 
-Core independent review passed 33 tests plus actual previous48 CLI comparison and
-empty-stage/review/input-preservation probes. The new twelve-command guide executes
-for CSV/NBIB/RIS imports (36 commands). Full 2,302 tests passed in 202.213 s (one platform skip). Final independent
-checks passed 35 and 26 focused tests, regenerated all fixed 15 target hashes
-through seven existing guides / 61 CLI commands, and confirmed all other old
-example bytes preserved. Audit 556 and manifest validation passed.
+Core independent review passed 35 tests / 5.370 s plus actual twelve old/new CLI byte
+comparisons and binding/prefix probes. The eleven-command guide uses fictional saved
+observations and an actual pre-disclosure ZIP. Full 2,313 tests passed in 198.435 s (one platform skip). Final independent
+review passed 36 tests / 5.566 s and independently regenerated fixed15 targets
+through seven prior guides / 61 CLI commands; all other old example bytes are
+preserved. Audit 567 and manifest validation passed.

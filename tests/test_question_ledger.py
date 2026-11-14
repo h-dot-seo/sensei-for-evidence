@@ -13,6 +13,7 @@ import tempfile
 import unittest
 import zipfile
 from evidence_workflow import run
+from tests._disclosure_compat import prior_bytes
 import question_intake as intake
 from question_links import TRANSITIONS, question_basis
 from question_review import review
@@ -52,13 +53,13 @@ class QuestionLedgerTests(unittest.TestCase):
         prior=json.loads((ROOT/'tests/question_legacy_baselines.json').read_bytes())['prior_source_sha256']
         additions=json.loads((ROOT/'tests/question_source_additions.json').read_bytes())
         for name in ('adapter_integrity.py','bibliographic_integrity.py'):
-            source=(ROOT/name).read_bytes();token=b"'evidence_bases', 'question_records'"
+            source=prior_bytes(name);token=b"'evidence_bases', 'question_records'"
             self.assertEqual(source.count(token),1)
             self.assertEqual(hashlib.sha256(source.replace(token,b"'evidence_bases'",1)).hexdigest(),prior[name])
-        source=(ROOT/'evidence_workflow.py').read_bytes();token=additions['engine_hook'].encode()
+        source=prior_bytes('evidence_workflow.py');token=additions['engine_hook'].encode()
         self.assertEqual(source.count(token),1)
         self.assertEqual(hashlib.sha256(source.replace(token,b'',1)).hexdigest(),prior['evidence_workflow.py'])
-        source=(ROOT/'research_bundle.py').read_bytes();token=additions['bundle_summary'].encode()
+        source=prior_bytes('research_bundle.py');token=additions['bundle_summary'].encode()
         self.assertEqual(source.count(token),1);source=source.replace(token,b'',1)
         token=b"'archive_safety.py', 'question_links.py')";self.assertEqual(source.count(token),1)
         source=source.replace(token,b"'archive_safety.py')",1)

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "output_disclosures": [
+    {
+      "assumptions": [],
+      "coverage_disclosure": "Synthetic incomplete coverage",
+      "gates_sha256": "bf1d91059eafa3caa1626122d4d4923598de0b61a0fd185922ef42f96eb14731",
+      "kind": "research_output_disclosure",
+      "limitations_disclosure": "Synthetic only",
+      "readiness_assertion_id": "fictional-assertion",
+      "release_id": "disclosure-one",
+      "release_readiness": "RELEASED_WITHIN_SCOPE",
+      "released_at": "2026-11-14",
+      "released_by": "Fictional recorder",
+      "required_artifacts": [
+        {
+          "work_package_id": "WP-001",
+          "artifact_locator": "synthetic:artifact",
+          "sha256": "f31e34c5c504375f8a08a808c8ce34d2ad07b6268028ec9ef3745812ffe87b28"
+        }
+      ],
+      "scope_statement": "Synthetic scope",
+      "supplied_confidence_label": "Uncertain supplied label",
+      "supplied_recommendation_strength": null,
+      "supplied_relevance_statement": "Supplied relevance, not assessed",
+      "unresolved_issues": []
+    }
+  ]
+}

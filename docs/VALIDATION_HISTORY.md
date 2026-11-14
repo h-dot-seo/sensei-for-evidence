@@ -3949,3 +3949,15 @@ The first compatibility focus (46 tests) found a missing named readiness_review 
 
 
 Full 2,302 tests passed in 202.213 s (one platform skip). Final independent checks passed 35 tests / 5.426 s and 26 tests / 3.237 s, including the three-format new guide; seven old guides / 61 CLI commands independently regenerated all 15 fixed fictional targets exactly. Other old example bytes and historical baseline files are retained. Registry: 195 commands, 32 reviewed and 163 NOT_REVIEWED; 28 names-only protocol keys. Audit 556 and manifest validation passed. Final focused verification follows this result-only documentation update.
+
+
+## 2026-11-14: 0.137.0-supplied-output-disclosures
+
+Roadmap #44: supplied research-output disclosures, exact gate/item set differences, separate review and explicit optional saved-artifact/original-bundle replay. No actual publication, permission, scientific closure or new gate is produced. RELEASED+NOT_READY/INSUFFICIENT is permitted as supplied context with a descriptive queue. Current gate context and saved observations are not historical truth or authenticated source inspection.
+
+Initial focused tests found two fixture-construction assumptions: the bibliographic base has no search rows, and a supplied search must name its declared search-plan ID. Corrected the synthetic search fixture without product-policy changes. Eight core tests passed in 1.077 s; compatibility focus 46 / 10.711 s passed. Independent core 35 / 5.370 s and actual prior49/current50 twelve raw CLI outputs passed. Actual POSIX saved artifact output still replays after deleting its synthetic file, explicitly with live_bytes_checked=false. Observation-boundary changes reject earlier review replay. Native Windows artifact access remains unsupported, not bypassed.
+
+Historical baseline JSON bytes are retained. Exact optional engine hook, allowlist name and bundle-summary additions are separately removed only by named source regressions. Fixed15 synthetic target maintenance, full and final independent validation pending.
+
+
+Full 2,313 tests passed in 198.435 s (one platform skip). Final independent review passed 36 tests / 5.566 s, including the eleven-command saved-observation/pre-disclosure-ZIP guide. Seven previous guides / 61 CLI commands regenerated all 15 fixed fictional target fields exactly; every other old example byte is unchanged. Historical baseline additions are explicitly named and tested. Inventory: 29 protocol keys, 200 commands with 32 reviewed/168 NOT_REVIEWED, audit567/manifest valid, Python3.10 grammar287. Final focused checks follow this result-only documentation update.

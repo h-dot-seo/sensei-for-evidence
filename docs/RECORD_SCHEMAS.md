@@ -181,3 +181,11 @@ Read a received research ZIP without replay: [recorded bundle context](RESEARCH_
 | `kind=detached_question_intake` | 1 | detached_application | `question_intake.py:assemble` | [Guide](QUESTION_LEDGER.md) |
 
 Question target_type is operation-derived (supplied_question_append or supplied_question_transition); it is not a literal-constructor entry. It remains covered by exact replay, not a new general schema.
+
+
+## Supplied output-disclosure record tags
+
+| Discriminator | Version | Role | Constructor | Guide |
+| --- | --- | --- | --- | --- |
+| `target_type=supplied_output_disclosure` | 1 | review_target | `output_disclosure_intake.py:_prepare` | [Guide](OUTPUT_DISCLOSURE.md) |
+| `kind=detached_output_disclosure` | 1 | detached_application | `output_disclosure_intake.py:assemble` | [Guide](OUTPUT_DISCLOSURE.md) |

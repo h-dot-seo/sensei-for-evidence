@@ -1251,6 +1251,32 @@
       "role": "detached_application",
       "schema_version": 1,
       "value": "detached_question_intake"
+    },
+    {
+      "constructor_bindings": [
+        "candidate_protocol_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": [],
+      "discriminator": "target_type",
+      "function": "_prepare",
+      "guide": "OUTPUT_DISCLOSURE.md",
+      "module": "output_disclosure_intake.py",
+      "role": "review_target",
+      "schema_version": 1,
+      "value": "supplied_output_disclosure"
+    },
+    {
+      "constructor_bindings": [],
+      "constructor_expansions": [],
+      "discriminator": "kind",
+      "function": "assemble",
+      "guide": "OUTPUT_DISCLOSURE.md",
+      "module": "output_disclosure_intake.py",
+      "role": "detached_application",
+      "schema_version": 1,
+      "value": "detached_output_disclosure"
     }
   ],
   "untagged_research_manifest": {
