@@ -1,7 +1,7 @@
-# Author the starting and collection documents
+# Author starting, collection and decision documents
 
-These descriptive JSON Schema documents close one authoring path: supply a new base,
-fill bibliographic row choices, then supply the separate exact-target import review.
+These descriptive JSON Schema documents support the authoring path from a new base
+through bibliographic choices and import review to supplied screening/report decisions.
 They help inspect structure **before** invoking the authoritative workflow. They never
 supply choices, copy a new target hash, authenticate a reviewer or authorize an import.
 
@@ -9,6 +9,8 @@ supply choices, copy a new target hash, authenticate a reviewer or authorize an 
 |---|---|---|
 | Recommended ledger-free starting base | `schemas/base-protocol.schema.json` | `protocol_scaffold.py check`, then the chosen intake |
 | Completed row choices, review still null | `schemas/bibliographic-choices.schema.json` | `bibliographic_review.py target` with original protocol and intake |
+| Completed title/abstract screening decision | `schemas/screening-decision.schema.json` | `screening_decision.py assemble` with original protocol and exact target |
+| Completed full-text report decision | `schemas/report-decision.schema.json` | `report_decision.py assemble` with original protocol and exact target |
 | Choices plus separately supplied review | `schemas/bibliographic-reviewed.schema.json` | `bibliographic_review.py assemble` with the exact same context |
 
 Use your editor's filename mapping or explicitly open the schema. **Do not add a
@@ -19,6 +21,10 @@ this tool never downloads it. Repository rights remain governed by [RIGHTS.md](.
 ## Rehearse with existing fictional inputs
 
 ```sh
+python schema_check.py explain schemas/screening-decision.schema.json
+python schema_check.py check schemas/screening-decision.schema.json examples/screening-decision-document.json
+python schema_check.py explain schemas/report-decision.schema.json
+python schema_check.py check schemas/report-decision.schema.json examples/report-decision-document.json
 python schema_check.py explain schemas/base-protocol.schema.json
 python schema_check.py check schemas/base-protocol.schema.json examples/bibliographic-base.json
 python schema_check.py check schemas/bibliographic-choices.schema.json examples/batch-to-evidence/collection-choices.json
@@ -35,10 +41,25 @@ Input digests and diagnostic property names may themselves be sensitive; this is
 an anonymizer. Keep real files outside this public repository and review before sharing.
 
 Continue through [the existing NBIB-to-evidence rehearsal](BATCH_TO_EVIDENCE.md).
-Its tests check these same three authored documents while also running the actual
+Its tests check the three collection-path documents while also running the actual
 intake/target/assembly path. Blank choices and incomplete target reviews deliberately
 fail the completed-document schemas. A passing schema check must never be used to
 skip exact target preparation, separate supplied review, input binding or replay.
+
+## Decisions remain supplied and bound to their actual targets
+
+The screening and report schemas describe completed decision documents, not blank
+target templates or approval receipts. Report inclusion requires exactly one of a
+scalar study_id or nonempty unique study_ids; exclusion requires null. Study labels
+are supplied memberships, not proof of distinct eligible studies. Both decisions
+require an explicit include/exclude, source locator, adjudicator, date, rationale,
+reason, receipt ID and target digest. Structure never supplies these values.
+
+The existing [screening](SCREENING_DECISIONS.md) and [report](REPORT_DECISIONS.md)
+rehearsals check their supplied fictional document before assembly. Their exact-target
+validators still reject stale hashes and mismatching IDs even after a shape match.
+The report schema uses uniqueItems; the checker's1,000-item comparison bound is a
+processing limit, not a new limit on authoritative report study declarations.
 
 ## Deliberately not a second authority
 
@@ -46,7 +67,7 @@ The Python workflow validators remain authoritative. The base schema describes t
 stricter **recommended starting shape**, not every protocol accepted by `run()`.
 Full protocols, other intake candidates, output records and schemas/explain for the
 rest of the system are not included. The explicit test inventory classifies every
-checked-in example, including108 outside this three-document path; no conformance
+checked-in example, including106 outside these five document shapes; no conformance
 claim is made for excluded files. Existing snapshots/schema2 contracts do not change.
 
 Engine-only checks include:

@@ -14,6 +14,7 @@ fictional; keep real/private inputs and generated records outside this repositor
 
 ```sh
 python report_decision.py target examples/report-study-inventory.json --report-id=report-three --output /outside/new-report-target.json --text
+python schema_check.py check schemas/report-decision.schema.json examples/report-decision-document.json
 python report_decision.py assemble examples/report-study-inventory.json examples/report-decision-document.json --output /outside/new-report-application.json --text
 python report_decision.py verify examples/report-study-inventory.json /outside/new-report-application.json --protocol-output /outside/new-decided-protocol.json --text
 python compare_runs.py examples/report-study-inventory.json /outside/new-decided-protocol.json --text
@@ -158,3 +159,5 @@ protocol or detached application record. Keep those files separately when needed
 Repeated decisions require another explicit operation using the last exported
 candidate as the new original input; no append-only or cross-record history is
 inferred.
+
+Inspect the completed decision structure with [authored schemas](SCHEMAS.md) before assembly. This does not supply a human decision, refresh its target, check real calendar dates or replace authoritative protocol/target validation.

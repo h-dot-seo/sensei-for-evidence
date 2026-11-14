@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.122.0-partial-command-contract",
+  "release": "0.123.0-decision-document-shapes",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 499,
+  "file_count": 502,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3806,
-      "sha256": "25fb08a9d45a4dd5745dfb4fbd29c100e6145dc76dbc5ef692c799661d4b676a"
+      "bytes": 3945,
+      "sha256": "6df06e34f7b02b5a1535cb13dc7b94816f7015c23e17ebfc4ec339d05db2095d"
     },
     {
       "path": "accounting_flow.py",
@@ -470,8 +470,8 @@
     },
     {
       "path": "docs/REPORT_DECISIONS.md",
-      "bytes": 9510,
-      "sha256": "55a1965dd7515f5b63f783b50a511406c98404d8c673d52ae3330873cdacb81f"
+      "bytes": 9847,
+      "sha256": "1424925ab965b292a59654a3d3f0169b49aa5fa13b9ff608f82fd5695d3b324f"
     },
     {
       "path": "docs/REPORT_RETRIEVAL_UPDATES.md",
@@ -555,13 +555,13 @@
     },
     {
       "path": "docs/SCHEMAS.md",
-      "bytes": 5948,
-      "sha256": "baaff5deb94627bcf4e91e6ae8081366ad9ceb317ecb36c920ed741bcbc7af5f"
+      "bytes": 7594,
+      "sha256": "7ab0ebd2d054d17a0572e3a56e218d504d557256b6d1b4498c2934755eac76ee"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
-      "bytes": 9949,
-      "sha256": "15a0dcf79a9e7e2e8ae963ad268d7448c1f1dff5305c2266f15a96b54f5b8dd5"
+      "bytes": 10292,
+      "sha256": "52e717f2f3e84de3f3f6a7877db705600e6010cdb9b0d91f8f94e9bfeaa8e824"
     },
     {
       "path": "docs/SCREENING_DECISION_BATCH_APPLICATION.md",
@@ -645,8 +645,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 259035,
-      "sha256": "f4926f57fa7ca8c47f3cbee922e46a01a324651d2ed4d3954253b3b21f2d616f"
+      "bytes": 260205,
+      "sha256": "f03298cc08fc79307a3ad5032592c5f4000567e0afafb6548074c32228c54774"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -1639,6 +1639,16 @@
       "sha256": "ae317597b4b2c2218fe17719170ca919164bf4ac4af54490d268067eebf2be55"
     },
     {
+      "path": "schemas/report-decision.schema.json",
+      "bytes": 2742,
+      "sha256": "ade5ec8167317902da10757cfe4753a8eda8333ec6522472cd2cc4705863ebd8"
+    },
+    {
+      "path": "schemas/screening-decision.schema.json",
+      "bytes": 1533,
+      "sha256": "0b6b9a1a7d551b00c294d0ea67447922b813ddbc4252b331ed7d26efdf133307"
+    },
+    {
       "path": "screening_decision.py",
       "bytes": 7718,
       "sha256": "8e67b499b4f3efe6c134dc1db525e6337021ebff937784fa2afeefa4a2a5aa58"
@@ -1750,8 +1760,8 @@
     },
     {
       "path": "tests/schema_fixture_inventory.json",
-      "bytes": 17151,
-      "sha256": "622c3f3f1f251e667528235e401a75ccf5db76658ffa051ac2b4cc9bfc1d58a8"
+      "bytes": 16854,
+      "sha256": "7b1337b129d2cb15be349055751fa4618091f28d33834eacf96ba8583a88c6fe"
     },
     {
       "path": "tests/test_accounting_flow.py",
@@ -1937,6 +1947,11 @@
       "path": "tests/test_csv_safety.py",
       "bytes": 2202,
       "sha256": "b04fc14540071c54bdcaad13ffc5248ff0ab722ff23d1a80ecdbb9e93d9c48fa"
+    },
+    {
+      "path": "tests/test_decision_schemas.py",
+      "bytes": 7541,
+      "sha256": "c003ea279199ced9b07ec47f45b969e611a27a3f5ee094085003e1f771ccfb2f"
     },
     {
       "path": "tests/test_derived_passage_context.py",
@@ -2301,7 +2316,7 @@
     {
       "path": "tests/test_schema_check.py",
       "bytes": 10424,
-      "sha256": "4a695c87bdf314f70430a86d953c822392db5490651bf58dbb00648888adb8c7"
+      "sha256": "d86196024d64822222941df9c57b362a76c094bb9c48c13daca4306893427609"
     },
     {
       "path": "tests/test_screening_decision_batch.py",
