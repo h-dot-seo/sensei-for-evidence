@@ -625,6 +625,18 @@ produce quadratic output. The bundle50 MB limit is unchanged. Read-only existing
 synthesis/work CLI inputs are not bounded; the HTML view separately limits input
 and output. Start with research_status for large projects.
 
+Work packets now index statement and experimental-unit ledger positions once and
+reuse the selected rows for all experimental-gap lists. Synthesis citations index
+work membership once. This removes repeated full-ledger selection scans without
+changing schema2, original ledger order, other linked IDs or human assertions.
+The deterministic sparse-join regression visits100/200 ledger rows to build an
+index, compared with10,000/40,000 visits for100/200 full scans; timing is not a
+contract. Matching rows are still copied into each packet, so dense links, sorting,
+engine validation and final output size still have their existing costs. Indexes
+also require memory proportional to supplied links. This is not a general linear
+runtime, bounded-memory or unlimited-scale guarantee. View implementation hashes
+change; ENGINE_FILES and canonical research outputs do not.
+
 ## Legacy agent-state validator
 
 Python 3.10+, standard library only:

@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.120.0-own-nbib-walkthrough` (2026-11-14). This file is the
+Current release: `0.121.0-indexed-review-joins` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,12 +55,18 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.120.0-own-nbib-walkthrough` (2026-11-14).
+Release: `0.121.0-indexed-review-joins` (2026-11-14).
 
-The existing local-NBIB guide now completes explicit collection review, separate
-screening and archive checks using14 replayed commands. Fictional choices are supplied
-between blocks, not inferred. Blank/stale human-input refusal, native-byte retention,
-source preservation and output exclusivity are tested. No runtime or ENGINE_FILES
-change and no new hash-bound review fixture chain. Full 2173 tests in 171.384s passed (skip1), independent 2 passed with all
-14 guide commands replayed. Audit 495 / manifest 494 and Python3.10 grammar 252
-passed. No unresolved review blockers.
+Review views now build internal evidence-to-ledger-position indexes instead of
+rescanning every statement/unit for each packet and every work row for each citation.
+Rows retain ledger order, linked-ID details and independent copies. Schema2, canonical
+outputs and ENGINE_FILES are unchanged; view implementation hashes change. Sparse
+selection visits are tested deterministically; dense output can still be quadratic.
+Six new tests cover scan-oracle equivalence across valid examples, selected/prerequisite
+packets, order, duplicates, missing links, source preservation and actual view joins.
+Full2179 tests in171.435s passed (skip1). Independent11 tests,1000 randomized
+index cases,60 randomized full protocols and10 experimental-ledger examples passed.
+Prior-release comparison across43 valid examples also matched except changed view
+implementation hashes. Audit496/manifest495 and Python3.10 grammar253 passed.
+No unresolved review blockers; external-export compatibility and HTML visual QA
+remain unverified.

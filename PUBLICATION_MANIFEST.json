@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.120.0-own-nbib-walkthrough",
+  "release": "0.121.0-indexed-review-joins",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 494,
+  "file_count": 495,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3397,
-      "sha256": "892936b175a7e8e47512e6fc9cb5a02cfdc0cce6df18364f1848010240fb4506"
+      "bytes": 3831,
+      "sha256": "1b5594f92eef51606c5042b8de81cd4a30554ade261f5fdc561becf14ca357f3"
     },
     {
       "path": "accounting_flow.py",
@@ -630,13 +630,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 37834,
-      "sha256": "35076f4cd02b4c519c7674d40a1b25b7ac1927da771fc261baeebdb3ddb0c909"
+      "bytes": 38703,
+      "sha256": "43455056e1114550618b2d03cbfdf3e81891d4e3ae27a6ba2c66c5654ac2c976"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 256944,
-      "sha256": "db6779c4cd7a90bddfc9265e5277c442f4a8792b8bd0931ee0b4920cea55318c"
+      "bytes": 258004,
+      "sha256": "8790ba7b48200411fd06074e60f9c77f4ce0c8c5ab21295af3e9bfbec20b30f4"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -1700,8 +1700,8 @@
     },
     {
       "path": "synthesis_review.py",
-      "bytes": 15614,
-      "sha256": "64559ed7cea4041a6c55d8b591b4f5fa6db2d05a1dfabcecd220a7222dd72eb4"
+      "bytes": 15759,
+      "sha256": "c9071c7719e47896b57999448515a17e8a3c11f2cd8e32b1558228e0949da1bf"
     },
     {
       "path": "tests/__init__.py",
@@ -2384,6 +2384,11 @@
       "sha256": "b42d169c5eddd6f3605d62fb5c093aa9e187ac958c1e6c63a594417d585365a4"
     },
     {
+      "path": "tests/test_view_join_index.py",
+      "bytes": 5912,
+      "sha256": "0a3b65fb694916bbfc21512936de2e5ecaa0f65f03aa33a99e3a07b61dcbe3e5"
+    },
+    {
       "path": "tests/test_view_scale.py",
       "bytes": 3726,
       "sha256": "49fe533da97494ce84e2ecf768d7beac1ef00deaba2de23ae6ce0834e36b0d86"
@@ -2470,8 +2475,8 @@
     },
     {
       "path": "work_review.py",
-      "bytes": 31239,
-      "sha256": "68632e7cb0df39fb2036e02b369c346bd205d7035fd8a571a0582373f1e2552e"
+      "bytes": 31553,
+      "sha256": "972d8a8b88daf4f60fffc24c5386bb51754d3678a1bdebde34b3bd6cefbc190d"
     },
     {
       "path": "work_transition_bundle.py",
