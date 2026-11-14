@@ -649,3 +649,5 @@ not value validation, typo correction or a research gate.
 
 [Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
 collection-choice/review path. Shape checks do not replace exact workflow validation.
+
+Publication maintainers: [manifest regeneration](MANIFEST_BUILD.md), for non-engine changes without automatic replacement.

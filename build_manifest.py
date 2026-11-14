@@ -1,0 +1,139 @@
+"""Reproduce an inventory from explicit declarations; never replace a published file."""
+import argparse
+from datetime import date
+import hashlib
+import json
+from pathlib import Path
+import re
+import stat
+import tempfile
+
+from audit_publication import audit
+from json_io import configure_utf8_stdio, parse_json
+from verify_manifest import IGNORED_PARTS, MANIFEST, link_like, verify
+
+MAX_BYTES = 100 * 1024 * 1024
+MAX_FILES = 10000
+DECLARATIONS = ('project', 'release', 'date', 'private_history_imported',
+                'actual_corpora_included', 'synthetic_examples_only', 'license_status')
+
+
+def safe_path(path):
+    if any(link_like(p) for p in (path, *path.parents)):
+        raise ValueError('links and reparse points are not supported')
+
+
+def generate(root, release, released_on):
+    """Return bytes only after an isolated copy passes the unchanged verifier."""
+    root = Path(root).absolute()
+    safe_path(root)
+    if not root.is_dir():
+        raise ValueError('root must be a directory')
+    if not re.fullmatch(r'[0-9]+\.[0-9]+\.[0-9]+(?:-[a-z0-9]+(?:-[a-z0-9]+)*)?', release):
+        raise ValueError('invalid release label')
+    if not re.fullmatch(r'[0-9]{4}-[0-9]{2}-[0-9]{2}', released_on):
+        raise ValueError('invalid release date')
+    date.fromisoformat(released_on)
+    source = root / MANIFEST
+    safe_path(source)
+    if not source.is_file():
+        raise ValueError('existing declaration manifest required')
+    with source.open('rb') as stream:
+        raw = stream.read(MAX_BYTES + 1)
+    if len(raw) > MAX_BYTES:
+        raise ValueError('manifest exceeds byte limit')
+    original = parse_json(raw.decode('utf-8'))
+    if not isinstance(original, dict) or set(original) != set(DECLARATIONS) | {'files', 'file_count'}:
+        raise ValueError('unsupported manifest header; preserve it manually')
+    if any(type(original[k]) is not bool for k in DECLARATIONS[3:6]):
+        raise ValueError('invalid declaration types')
+    if any(not isinstance(original[k], str) or not original[k] for k in ('project', 'license_status')):
+        raise ValueError('invalid declaration types')
+    result = {key: original[key] for key in DECLARATIONS}
+    result.update(release=release, date=released_on)
+    entries, total = [], 0
+    # Stage exactly the bytes hashed. Verification is not a check of a moving source.
+    with tempfile.TemporaryDirectory() as directory:
+        staged = Path(directory)
+        pending = [root]
+        directories = 0
+        while pending:
+            folder = pending.pop()
+            directories += 1
+            if directories > MAX_FILES:
+                raise ValueError('inventory directory limit exceeded')
+            safe_path(folder)
+            for path in sorted(folder.iterdir()):
+                relative = path.relative_to(root)
+                if set(relative.parts) & IGNORED_PARTS:
+                    continue
+                safe_path(path)
+                mode = path.lstat().st_mode
+                if stat.S_ISDIR(mode):
+                    pending.append(path)
+                    continue
+                if not stat.S_ISREG(mode):
+                    raise ValueError('nonregular inventory entry')
+                if relative.as_posix() == MANIFEST:
+                    continue
+                if len(entries) >= MAX_FILES:
+                    raise ValueError('inventory file limit exceeded')
+                with path.open('rb') as stream:
+                    data = stream.read(MAX_BYTES - total + 1)
+                total += len(data)
+                if total > MAX_BYTES:
+                    raise ValueError('inventory byte limit exceeded')
+                if b'\r' in data:
+                    raise ValueError('carriage return bytes require explicit publication review')
+                target = staged / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(data)
+                entries.append(dict(path=relative.as_posix(), bytes=len(data),
+                                    sha256=hashlib.sha256(data).hexdigest()))
+        entries.sort(key=lambda entry: entry['path'])
+        result.update(file_count=len(entries), files=entries)
+        encoded = (json.dumps(result, indent=2) + '\n').encode('utf-8')
+        (staged / MANIFEST).write_bytes(encoded)
+        if verify(staged) or not audit(staged)['pass']:
+            raise ValueError('generated inventory failed existing verifier')
+    return encoded
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', default=str(Path(__file__).resolve().parent))
+    parser.add_argument('--release', required=True)
+    parser.add_argument('--date', required=True)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('--output', help='new file outside the inventoried root')
+    group.add_argument('--check', action='store_true', help='compare exact regenerated bytes without writing')
+    args = parser.parse_args(argv)
+    try:
+        root = Path(args.root).absolute()
+        output = Path(args.output).absolute() if args.output else None
+        if output:
+            safe_path(output)
+            # resolve lexical ..; root symlinks are rejected by generate.
+            output = output.resolve()
+            if output == root.resolve() or root.resolve() in output.parents:
+                raise ValueError('output must be outside publication root')
+            if output.exists():
+                raise ValueError('output already exists')
+        encoded = generate(root, args.release, args.date)
+        if args.check:
+            matches = (root / MANIFEST).read_bytes() == encoded
+            print(json.dumps(dict(matches=matches, writes=False)))
+            return 0 if matches else 1
+        with output.open('xb') as stream:
+            stream.write(encoded)
+        print(json.dumps(dict(created=True, bytes=len(encoded), sha256=hashlib.sha256(encoded).hexdigest(),
+                              boundary='Inventory only; declarations are copied, not established. No source tree replacement.')))
+        return 0
+    except (OSError, ValueError, TypeError, RecursionError):
+        print('Manifest generation failed: check declarations, paths, limits and publication bytes.', file=__import__('sys').stderr)
+        return 2
+
+
+if __name__ == '__main__':
+    configure_utf8_stdio()
+    raise SystemExit(main())
