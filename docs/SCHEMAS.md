@@ -1,4 +1,4 @@
-# Author starting, collection and decision documents
+# Author starting, collection, decision and result documents
 
 These descriptive JSON Schema documents support the authoring path from a new base
 through bibliographic choices and import review to supplied screening/report decisions.
@@ -11,6 +11,8 @@ supply choices, copy a new target hash, authenticate a reviewer or authorize an 
 | Completed row choices, review still null | `schemas/bibliographic-choices.schema.json` | `bibliographic_review.py target` with original protocol and intake |
 | Completed title/abstract screening decision | `schemas/screening-decision.schema.json` | `screening_decision.py assemble` with original protocol and exact target |
 | Completed full-text report decision | `schemas/report-decision.schema.json` | `report_decision.py assemble` with original protocol and exact target |
+| Completed manual result candidates | `schemas/result-candidates.schema.json` | `result_intake.py target` with actual original protocol |
+| Separately supplied result import review | `schemas/result-review.schema.json` | `result_intake.py assemble` with the exact target and original inputs |
 | Choices plus separately supplied review | `schemas/bibliographic-reviewed.schema.json` | `bibliographic_review.py assemble` with the exact same context |
 
 Use your editor's filename mapping or explicitly open the schema. **Do not add a
@@ -21,6 +23,8 @@ this tool never downloads it. Repository rights remain governed by [RIGHTS.md](.
 ## Rehearse with existing fictional inputs
 
 ```sh
+python schema_check.py check schemas/result-candidates.schema.json examples/batch-to-evidence/results.json
+python schema_check.py check schemas/result-review.schema.json examples/batch-to-evidence/results-review.json
 python schema_check.py explain schemas/screening-decision.schema.json
 python schema_check.py check schemas/screening-decision.schema.json examples/screening-decision-document.json
 python schema_check.py explain schemas/report-decision.schema.json
@@ -61,13 +65,28 @@ validators still reject stale hashes and mismatching IDs even after a shape matc
 The report schema uses uniqueItems; the checker's1,000-item comparison bound is a
 processing limit, not a new limit on authoritative report study declarations.
 
+## Result input is supplied, not extracted or approved by the checker
+
+The two result schemas cover completed candidate rows and a separate completed review.
+Every evidence field, mechanism label, source reference, extractor and review choice is
+supplied, never inferred. The blank `result_extraction.py` worksheet intentionally fails
+the completed candidate shape. Source IDs and locators remain inert declarations, not
+verified documents or proof of reading. Repeated evidence IDs and repeated source IDs
+within a candidate, even when their other fields differ, are Python-only checks; array
+`uniqueItems` would not express those rules. There is no new source-reference count limit.
+Nonblank strings, real dates, exact integer versions, actual report/study/record/source
+relationships and equality to the reviewed target remain authoritative Python checks.
+No schema check replaces target preparation, supplied review, assembly or replay.
+The existing NBIB-to-evidence rehearsal checks both completed documents and rejects
+a stale review and unknown source despite a passing shape. No fixture hashes are renewed.
+
 ## Deliberately not a second authority
 
 The Python workflow validators remain authoritative. The base schema describes the
 stricter **recommended starting shape**, not every protocol accepted by `run()`.
 Full protocols, other intake candidates, output records and schemas/explain for the
 rest of the system are not included. The explicit test inventory classifies every
-checked-in example, including106 outside these five document shapes; no conformance
+checked-in example, including104 outside these seven document shapes; no conformance
 claim is made for excluded files. Existing snapshots/schema2 contracts do not change.
 
 Engine-only checks include:

@@ -33,7 +33,7 @@ class SchemaTests(unittest.TestCase):
             self.assertTrue(item['scope'])
             if item['schema']:
                 count+=1;self.assertEqual(checker.check(schema(item['schema']),fixture(path)),[],path)
-        self.assertEqual(count,7)
+        self.assertEqual(count,9)
 
     def test_base_keys_and_plan_fields_track_recommended_scaffold(self):
         s=schema('base-protocol.schema.json')

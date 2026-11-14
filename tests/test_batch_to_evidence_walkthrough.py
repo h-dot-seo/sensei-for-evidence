@@ -80,6 +80,27 @@ class BatchToEvidenceWalkthroughTests(unittest.TestCase):
         self.assertEqual(supplied['review']['target_sha256'],load(self.output/'collection-target.json')['review']['target_sha256'])
         self.assertGreater(len(self.final['searches']),0)
 
+    def test_completed_result_shapes_do_not_replace_exact_target_or_source_context(self):
+        import schema_check
+        import result_extraction
+        candidates=load(FIXTURES/'results.json');review=load(FIXTURES/'results-review.json')
+        cs=load(ROOT/'schemas/result-candidates.schema.json');rs=load(ROOT/'schemas/result-review.schema.json')
+        protocol=load(self.output/'included.json');before=copy.deepcopy(protocol)
+        self.assertEqual(schema_check.check(cs,candidates),[])
+        self.assertEqual(schema_check.check(rs,review),[])
+        result_intake.assemble(protocol,candidates,review)
+        draft=result_extraction.worksheet(protocol,'report-A','study-A','record-A')['candidate_document']
+        self.assertTrue(schema_check.check(cs,draft))
+        with self.assertRaises(ValueError):result_intake.validate_candidate_document(draft)
+        self.assertTrue(schema_check.check(rs,load(self.output/'result-target.json')['review_document']))
+        stale=copy.deepcopy(review);stale['target_sha256']='0'*64
+        self.assertEqual(schema_check.check(rs,stale),[])
+        with self.assertRaises(ValueError):result_intake.assemble(protocol,candidates,stale)
+        unknown=copy.deepcopy(candidates);unknown['candidates'][0]['source_references'][0]['source_id']='unknown-source'
+        self.assertEqual(schema_check.check(cs,unknown),[])
+        with self.assertRaises(ValueError):result_intake.prepare(protocol,unknown)
+        self.assertEqual(protocol,before)
+
     def test_all_documented_commands_run_with_outside_space_named_directory(self):
         self.assertEqual(len(self.commands), 30)
         self.assertTrue(all(isinstance(value, dict) for value in self.stdout))

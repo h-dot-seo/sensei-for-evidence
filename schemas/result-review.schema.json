@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Completed manual result review",
+  "description": "Descriptive completed input shape only. Existing result_intake Python validation remains authoritative for nonblank text, calendar dates, duplicate evidence/source IDs, actual protocol/source bindings and exact target hashes. Does not generate results or review, read sources, authenticate people or establish scientific correctness. A shape match is not approval.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "decision": {
+      "type": "string",
+      "const": "import_results"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "target_sha256",
+    "decision",
+    "reviewer",
+    "reviewed_at",
+    "rationale"
+  ],
+  "additionalProperties": false
+}

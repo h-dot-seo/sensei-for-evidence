@@ -56,12 +56,12 @@
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/batch-to-evidence/results-review.json": {
-    "schema": null,
-    "scope": "Outside these authored-document shapes; no conformance claim"
+    "schema": "result-review.schema.json",
+    "scope": "Completed manually supplied result input; structure only, exact target and source context remain authoritative Python checks."
   },
   "examples/batch-to-evidence/results.json": {
-    "schema": null,
-    "scope": "Outside these authored-document shapes; no conformance claim"
+    "schema": "result-candidates.schema.json",
+    "scope": "Completed manually supplied result input; structure only, exact target and source context remain authoritative Python checks."
   },
   "examples/batch-to-evidence/retrieval-review.json": {
     "schema": null,

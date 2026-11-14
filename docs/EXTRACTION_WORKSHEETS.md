@@ -162,3 +162,8 @@ with verbatim quotes beside the candidate fields. This separate local check neit
 fills result values nor establishes that a quote supports them. Its observation is
 not embedded or automatically verified by intake; retain both records and use the
 ordinary independent human review before importing a result.
+
+Completed candidates and the separately supplied import review can receive a
+[descriptive structure check](SCHEMAS.md) before target/assembly. Blank worksheets
+and blank target reviews are intentionally incomplete. This does not validate source
+content, supply any scientific value or review, or replace exact-input replay.
