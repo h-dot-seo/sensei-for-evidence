@@ -653,3 +653,7 @@ collection-choice/review path. Shape checks do not replace exact workflow valida
 Publication maintainers: [manifest regeneration](MANIFEST_BUILD.md), for non-engine changes without automatic replacement.
 
 Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.
+
+For status, handoff and comparison CLI input limits and classified, non-echoing
+errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
+report contracts are unchanged; this is not a repository-wide error policy.

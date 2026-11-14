@@ -757,6 +757,39 @@ def render_text(result):
     return '\n'.join(lines) + '\n'
 
 
+# CLI-only input limits; in-memory engine functions and result schemas are unchanged.
+MAX_CLI_INPUT_BYTES = 50_000_000
+MAX_CLI_NESTING = 128
+
+
+def _read_cli_input(path, label, parser):
+    try:
+        with path.open('rb') as stream:
+            raw = stream.read(MAX_CLI_INPUT_BYTES + 1)
+    except OSError:
+        parser.exit(1, 'comparison error: input-unreadable: ' + label + ': "Unable to read supplied input."\n')
+    if len(raw) > MAX_CLI_INPUT_BYTES:
+        parser.exit(1, 'comparison error: input-too-large: ' + label + ': "Input exceeds 50000000 bytes."\n')
+    try:
+        value = parse_json(raw.decode('utf-8'))
+    except RecursionError:
+        parser.exit(1, 'comparison error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
+    except (ValueError, TypeError):
+        parser.exit(1, 'comparison error: input-not-json: ' + label + ': "Expected strict UTF-8 JSON."\n')
+    if not isinstance(value, dict):
+        parser.exit(1, 'comparison error: input-invalid: ' + label + ': "Expected a JSON object."\n')
+    pending = [(value, 0)]
+    while pending:
+        item, depth = pending.pop()
+        if depth > MAX_CLI_NESTING:
+            parser.exit(1, 'comparison error: input-too-complex: ' + label + ': "JSON nesting exceeds 128 levels."\n')
+        if isinstance(item, dict):
+            pending.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            pending.extend((child, depth + 1) for child in item)
+    return value
+
+
 def main():
     configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
@@ -766,11 +799,11 @@ def main():
     parser.add_argument('--text', action='store_true', help='read-only comparison summary; default remains full JSON')
     args = parser.parse_args()
     try:
-        result = compare_protocols(parse_json(args.before.read_text(encoding='utf-8')),
-                                   parse_json(args.after.read_text(encoding='utf-8')),
-                                   parse_json(args.amendment.read_bytes()) if args.amendment else _NO_AMENDMENT)
-    except (ValueError, OSError, KeyError, TypeError) as error:
-        parser.exit(1, str(error) + '\n')
+        result = compare_protocols(_read_cli_input(args.before, 'before protocol', parser),
+                                   _read_cli_input(args.after, 'after protocol', parser),
+                                   _read_cli_input(args.amendment, 'amendment', parser) if args.amendment else _NO_AMENDMENT)
+    except (ValueError, OSError, KeyError, TypeError, RecursionError):
+        parser.exit(1, 'comparison error: input-invalid: comparison inputs: "Supplied inputs failed validation; check protocols and optional amendment fields."\n')
     if args.text:
         print(render_text(result), end='')
     else:

@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.116.0-record-shape-registry` (2026-11-14). This file is the
+Current release: `0.117.0-view-input-boundaries` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,14 +55,13 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.116.0-record-shape-registry` (2026-11-14).
+Release: `0.117.0-view-input-boundaries` (2026-11-14).
 
-Explicit record-shape navigation indexes76 tagged constructors, six explained
-exclusions and the untagged research bundle manifest. Guide links, object-local
-versions and direct constructor binding keys are checked against parsed source.
-No runtime command, schema migration, engine or canonical decision changed.
-This is not a whole-protocol schema or a complete dynamic shape census.
-Full2153 tests170.379s passed (skip1), independent final5 passed.
-Audit485/manifest484 and Python3.10 grammar247 passed. Initial full run was
-stopped before adding explicit17 constructor expansion expressions and a regression;
-the final full run includes them. No unresolved review blockers. Earlier HTML visual QA and external compatibility unverified.
+Status/handoff/comparison CLI inputs now have inclusive50MB reads and128-edge
+JSON depth bounds, with classified argument labels and fixed non-echoing errors.
+Engine functions and output shape are unchanged; amendment mismatch remains a
+stdout report with exit1. View-module fingerprints change, ENGINE_FILES do not.
+Usage errors remain argparse; other CLI contracts are not migrated. Full2159 tests171.984s passed (skip1). Independent new6 and comparison31
+tests passed, plus216 malformed-input probes without an uncaught exception.
+Audit487/manifest486 and Python3.10 grammar248 passed. Existing non-CLI function
+ASTs are unchanged. Prior HTML visual QA/external compatibility remain unverified.

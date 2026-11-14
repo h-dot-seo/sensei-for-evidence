@@ -276,3 +276,7 @@ records, transmitting identifiers and reviewing acquired metadata remain explici
 The [source passage route](RESULT_PASSAGE_CHECK.md) exposes template/catalog/check
 help only. A person explicitly maps local sources and chooses passages. Handoff
 never opens those files, and exact quotation matches never approve scientific fields.
+
+For status, handoff and comparison CLI input limits and classified, non-echoing
+errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
+report contracts are unchanged; this is not a repository-wide error policy.
