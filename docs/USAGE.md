@@ -623,3 +623,15 @@ provide a local UTF-8 line catalog and exact quote comparisons. All source choic
 field associations and byte ranges remain explicit human input. Native Windows
 source access is unsupported and fails closed; no PDF/OCR or semantic inference is
 performed. Preserve the original sources and separate intake review.
+
+## Tested search-reference scale shape
+
+The default regression uses one search with N unique records, N independent
+results and N work packets each citing one result, no reports, statements,
+contexts, units or appraisal cross-links. At N=200 and400, synthesis and work
+JSON output must grow by less than3x when N doubles. Time is not asserted. This
+is a shape-specific size regression, not a general linear complexity guarantee
+or scientific validation. Broad statements and `other_*_evidence_ids` can still
+produce quadratic output. The bundle50 MB limit is unchanged. Read-only existing
+synthesis/work CLI inputs are not bounded; the HTML view separately limits input
+and output. Start with research_status for large projects.

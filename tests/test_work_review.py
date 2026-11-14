@@ -33,7 +33,7 @@ class WorkReviewTests(unittest.TestCase):
         self.assertEqual(packet['appraisals'][0]['work_evidence_ids'], ['e1'])
         self.assertEqual(packet['results'][0]['screening']['record_id'], 'r1')
         self.assertEqual(packet['results'][0]['report']['report_id'], 'report-1')
-        self.assertEqual(packet['sources'][0]['search']['query'], self.p['searches'][0]['query'])
+        self.assertEqual(result['search_ledger'][packet['sources'][0]['search_ref']['search_index']]['query'], self.p['searches'][0]['query'])
         text = render_text(result)
         for term in ('population/model limitations', 'NO_AUTOMATED_DECISION', 'NOT_READY',
                      'NOT_ESTABLISHED', 'regulatory_status', 'evidence_certainty', 'source_locator', 'limitations'):
@@ -96,10 +96,11 @@ class WorkReviewTests(unittest.TestCase):
     def test_search_occurrences_join_by_position_not_optional_id(self):
         self.p.pop('search_plan')
         self.p['searches'].append(copy.deepcopy(self.p['searches'][0]))
-        packet = review_packets(self.p, 'WP-TRANSLATION')['packets'][0]
+        result = review_packets(self.p, 'WP-TRANSLATION')
+        packet = result['packets'][0]
         self.assertEqual([row['search_index'] for row in packet['sources']], [0, 1])
         self.assertEqual([row['search_index'] for row in packet['results'][0]['search_occurrences']], [0, 1])
-        self.assertEqual(packet['sources'][0]['search']['search_id'], packet['sources'][1]['search']['search_id'])
+        self.assertEqual(result['search_ledger'][packet['sources'][0]['search_ref']['search_index']]['search_id'], result['search_ledger'][packet['sources'][1]['search_ref']['search_index']]['search_id'])
 
     def test_full_protocol_validation_precedes_selection(self):
         with self.assertRaisesRegex(ValueError, 'unknown work package'):

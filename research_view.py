@@ -108,9 +108,9 @@ def snapshot(protocol,work_package_id=None):
             if name in hashes and hashes[name]!=digest:raise ValueError('view implementation bindings differ')
             hashes[name]=digest
     hashes['research_view.py']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
-    return dict(schema_version=1,question=handoff['question'],protocol_version=handoff['protocol_version'],
+    return dict(schema_version=2,question=handoff['question'],protocol_version=handoff['protocol_version'],
         protocol_sha256=handoff['protocol_sha256'],engine_sha256=hashes,handoff=handoff,readiness=gates,accounting=audit,
-        synthesis={key:synthesis[key] for key in ('synthesis_stage','statements','challenge_stage','challenge_ledger','challenge_boundary','synthesis_boundary','boundary')},
+        synthesis={key:synthesis[key] for key in ('schema_version','search_ledger','search_coverage','hash_scope','synthesis_stage','statements','challenge_stage','challenge_ledger','challenge_boundary','synthesis_boundary','boundary')},
         census_claim='NOT_ESTABLISHED',conclusion_readiness='NOT_READY',external_calls=0,boundary=BOUNDARY)
 
 

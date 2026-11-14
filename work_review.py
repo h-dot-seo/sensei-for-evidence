@@ -25,6 +25,8 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     if include_prerequisites and work_package_id is None:
         raise ValueError("prerequisite review requires a selected work package")
     research = run(protocol)
+    search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
+                   for index, row in enumerate(research['search_ledger'])]
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     work = {row['work_package_id']: row for row in research['work_packages']}
     if work_package_id is not None and work_package_id not in work:
@@ -118,7 +120,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                               work_evidence_ids=sorted(evidence_ids.intersection(appraisals[aid]['evidence_ids'])),
                               other_appraisal_evidence_ids=sorted(set(appraisals[aid]['evidence_ids']) - evidence_ids))
                           for aid in appraisal_ids]
-        source_rows = [dict(search_index=index, search=copy.deepcopy(research['search_ledger'][index]),
+        source_rows = [dict(search_index=index, search_ref=copy.deepcopy(search_refs[index]),
                             accounting=copy.deepcopy(research['coverage'][index])) for index in sorted(source_indices)]
         packets.append(dict(work_package=copy.deepcopy(item),
             work_type=item.get('work_type','evidence_review'),source_review_inputs=source_inputs,
@@ -176,7 +178,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 scope='full_explicitly_linked_reports_not_inferred_work_requirements',
                 boundary=coverage['boundary'])
     implementation = dict(engine_hashes(), **{'work_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    return dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
+    return dict(schema_version=2, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
                 engine_sha256=implementation, selection=work_package_id, dependency_review=dependency_scope,
@@ -189,6 +191,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 global_search_plan_audit=copy.deepcopy(research['search_plan_audit']),
                 deduplication_scope=research['deduplication_scope'],
                 record_identity_verification=research['record_identity_verification'],
+                search_ledger=copy.deepcopy(research['search_ledger']), search_coverage=copy.deepcopy(research['coverage']),
                 packets=packets, extraction_completeness=research['extraction_completeness'],
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary=BOUNDARY)
@@ -291,6 +294,8 @@ def render_text(result):
              'Global search plan: ' + show(result['global_search_plan_audit']['plan_status']),
              'Missing planned searches: ' + (show(result['global_search_plan_audit']['missing_search_ids']) if plan_supplied else 'not supplied'),
              'Incomplete planned searches: ' + (show(result['global_search_plan_audit']['incomplete_search_ids']) if plan_supplied else 'not supplied')]
+    lines.append('Supplied search ledger: ' + show(result['search_ledger']))
+    lines.append('Supplied search coverage: ' + show(result['search_coverage']))
     if not result['packets']:
         lines.append('No work packages supplied.')
     for packet in result['packets']:
@@ -324,7 +329,7 @@ def render_text(result):
             if row['adapter_candidate_support'] is not None:
                 lines.append('Unverified mock candidate support: ' + show(row['adapter_candidate_support']))
         for source in packet['sources']:
-            lines.append('Search source/accounting: ' + show(source))
+            lines.append('Search reference/accounting: ' + show(source))
         lines.append('Work type: ' + packet['work_type'])
         lines.append('Source review inputs (not extracted evidence): ' + show(packet['source_review_inputs']))
         lines.append('Source input counts, separate from result scope: ' + show(packet['source_input_counts']))

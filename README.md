@@ -354,3 +354,9 @@ reuse existing helpers rather than adding another review or filesystem framework
 ## Passive local review
 
 [HTML review navigator](docs/REVIEW_VIEWS.md) combines existing supplied views in a local, non-approving page. `python research_view.py examples/claim-comparison.json` writes HTML to stdout; `--output NEW.html` saves an exclusive private file with a JSON receipt.
+
+### Search reference compatibility
+Synthesis/work JSON snapshots now use schema2 search index/hash references with
+a single top-level search ledger. The HTML composed snapshot is also schema2.
+Consumers of schema1 nested `search` copies must adapt explicitly; no canonical
+research data or engine verification changes. See docs/WORK_REVIEW.md.

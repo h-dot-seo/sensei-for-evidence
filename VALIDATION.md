@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.107.0-passive-review-view` (2026-11-14). This file is the
+Current release: `0.108.0-search-references` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -100,3 +100,16 @@ responsive/print visual verification were completed. DOM and CSS contract tests
 are not visual QA. Real user data, source verification and scientific validity
 were not tested. Partial output after OS write failure and hostile path races
 are not transactionally prevented; these limits are stated in REVIEW_VIEWS.md.
+
+## 2026-11-14: referenced search receipts (0.108.0)
+
+Synthesis/work snapshots schema2 replace repeated full search rows with index/hash
+references and retain top-level ledger/coverage. HTML composed snapshot also bumps
+to2 and identifies nested synthesis schema2; receipt schema1 remains unchanged.
+Full final suite2086 tests155.321s OK(skip1), focused41 before final nested test,
+independent56 plus direct11 nested reference resolutions. Final nested-statement
+regression and wrapper schema markers were added following review.
+N200/400 one-search, independent-result/work shape: synthesis213439/417039 bytes,
+work748028/1491828 bytes. No statements or wide cross-links in that scale generator;
+not general linearity or timing guarantees. Canonical/ENGINE_FILES unchanged.
+Prior HTML visual QA remains unverified because browser startup is restricted.

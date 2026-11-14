@@ -149,3 +149,18 @@ explicit scope for sibling outcomes. No causal validity is inferred.
 domain judgements through a separate exact-target review. It preserves conflicting
 positions and existing assertions while exposing changed source-status cues; no
 quality score, method choice or scientific acceptance is generated.
+
+## Schema 2 search references
+
+Search receipt rows are stored once in top-level `search_ledger`, with
+`search_coverage`. Citation `search_sources` and packet `sources` use
+`search_ref: {search_index, search_sha256}` instead of the schema1 `search` copy.
+Resolve the zero-based index against the same snapshot ledger, not an optional
+search ID. The digest is the canonical JSON SHA-256 of that exact ledger row;
+object key order is ignored, list order retained. It is byte identity, not source
+authentication. Accounting and occurrences remain attached to each reference.
+Consumers expecting schema1 repeated receipts must adapt explicitly.
+
+This removes one source of quadratic copy growth, not all such growth. Wide
+statement/context/unit cross-links and other linked evidence IDs remain intact.
+See USAGE.md for the deliberately limited synthetic scale shape.

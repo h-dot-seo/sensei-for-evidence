@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.107.0-passive-review-view",
+  "release": "0.108.0-search-references",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 455,
+  "file_count": 456,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21653,
-      "sha256": "1756aa64bf534f68f177cea6db8580abe09e40a4892edc2bf8d7b2b953d599b4"
+      "bytes": 21998,
+      "sha256": "ba361452878b5e84c7addb965d73d859fb016a38853e92fa92553a5341bbc0d2"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 5894,
-      "sha256": "7a3ee92c9b22508edb9efa37c1791fa58314ee308de4a4033d690aaf1cabec01"
+      "bytes": 6746,
+      "sha256": "36cfa906734bf3145bee9d743840fade6c4bbcf94eb2dcd8771453cf8b7f0580"
     },
     {
       "path": "accounting_flow.py",
@@ -485,8 +485,8 @@
     },
     {
       "path": "docs/REVIEW_VIEWS.md",
-      "bytes": 2368,
-      "sha256": "ea2ddcf3ee0e90e7bb8a1c105e734214eb404eb8fe9f04a751b1a090c5bc4a4f"
+      "bytes": 2823,
+      "sha256": "18305677e40c7b0a7e474255168789a920f47325da704112166144d507459a5a"
     },
     {
       "path": "docs/RIS_CONTINUATION_INTAKE.md",
@@ -565,8 +565,8 @@
     },
     {
       "path": "docs/SYNTHESIS_REVIEW.md",
-      "bytes": 8584,
-      "sha256": "27c26048e1a6979c87444a6d8c01a4e25918b6b3780141ff0afd46bdc98fc90f"
+      "bytes": 9447,
+      "sha256": "209fcbab268a0075b406545a37b2d491f51f3e8fb5a63ef90c38d6c93727cbc6"
     },
     {
       "path": "docs/TEST_RUNTIME.md",
@@ -575,13 +575,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 35751,
-      "sha256": "bca4c6ac2f3a9bfbd564ce148ec16bb5f164b5018ac010fc920a5e38f051cbba"
+      "bytes": 36481,
+      "sha256": "ccc3e56235ae7faf2e1fe27cb0cd5f1912f02f27fa7d27f038873dcc5c54927a"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 241792,
-      "sha256": "4723694bf539ce78e0622e73326797ed73689aa8f1b31f0a6c105cd05ed26bec"
+      "bytes": 242646,
+      "sha256": "9839d3bfd583466598c69eab2dd2ab4ad9aefe14f1c0b6dd30b75c969b05696c"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -610,8 +610,8 @@
     },
     {
       "path": "docs/WORK_REVIEW.md",
-      "bytes": 7884,
-      "sha256": "cf07ecda78630551b998c12a087c6c33e22b82cdb25912c77f583ce6fc9948db"
+      "bytes": 8747,
+      "sha256": "2da45c8f4c66d9a916527969abdc1fdd6f042e6221ed389aa2ab21541a9f8c42"
     },
     {
       "path": "docs/WORK_TRANSITION_BUNDLES.md",
@@ -1450,8 +1450,8 @@
     },
     {
       "path": "research_view.py",
-      "bytes": 11714,
-      "sha256": "c7209a01cd6f261f862be9bf688ea68549616e18f61da560c1426d83362c4d59"
+      "bytes": 11778,
+      "sha256": "8f2e3f0d03c1b1596a3ac0eb77af7d245ca80c1298fb84e34d2caa1953285064"
     },
     {
       "path": "result_correction.py",
@@ -1580,8 +1580,8 @@
     },
     {
       "path": "synthesis_review.py",
-      "bytes": 15436,
-      "sha256": "4781f7dc88b33dc0ba7373b7a3a4eaf745fbbbbf1282521700c303b874a62b4b"
+      "bytes": 15614,
+      "sha256": "64559ed7cea4041a6c55d8b591b4f5fa6db2d05a1dfabcecd220a7222dd72eb4"
     },
     {
       "path": "tests/__init__.py",
@@ -2194,6 +2194,11 @@
       "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
     },
     {
+      "path": "tests/test_view_scale.py",
+      "bytes": 3726,
+      "sha256": "49fe533da97494ce84e2ecf768d7beac1ef00deaba2de23ae6ce0834e36b0d86"
+    },
+    {
       "path": "tests/test_views_export.py",
       "bytes": 18691,
       "sha256": "ae6a64e34698511e0584e1dc6c645612f0e6aece1eaa717e77393d69a9ae9470"
@@ -2230,8 +2235,8 @@
     },
     {
       "path": "tests/test_work_review.py",
-      "bytes": 10510,
-      "sha256": "6e67d20666d5ba34f280bfb35800286c2d9f57b441c52be0d5de5fc38dd2722f"
+      "bytes": 10669,
+      "sha256": "700556d2d2b9f8d8ad777e17175e900ab369be906f71b08a701f99f0dddd864c"
     },
     {
       "path": "tests/test_work_transition_bundle.py",
@@ -2275,8 +2280,8 @@
     },
     {
       "path": "work_review.py",
-      "bytes": 30775,
-      "sha256": "b0e5e1ca22572aa5a21d1dbdbd9af4a3270ae4993b9226807fc9b1ad32c8cfa5"
+      "bytes": 31239,
+      "sha256": "68632e7cb0df39fb2036e02b369c346bd205d7035fd8a571a0582373f1e2552e"
     },
     {
       "path": "work_transition_bundle.py",
