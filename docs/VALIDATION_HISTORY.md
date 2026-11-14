@@ -3572,3 +3572,14 @@ ENGINE_FILES/canonical decisions/schema2 unchanged. Full2159 tests171.984s passe
 tests passed, plus216 malformed-input probes without an uncaught exception.
 Audit487/manifest486 and Python3.10 grammar248 passed. Existing non-CLI function
 ASTs are unchanged. Prior HTML visual QA/external compatibility remain unverified.
+
+## 2026-11-14: 0.118.0-recorded-bundle-context
+
+Added received research-archive context reading without replay or extraction.
+Recorded flow/gates remain explicitly unverified; absent values remain null.
+Computed protocol and ZIP hashes have separate scopes from copied manifest hashes.
+Exact schema2/seven-entry, STORED regular files and byte bounds apply, not other
+bundle families or historical schema1. Existing root modules/ENGINE_FILES unchanged.
+Full2166 tests176.930s passed (skip1), independent7 passed with direct
+link/path/duplicate ZIP and output-limit probes. Audit490/manifest489 and
+Python3.10 grammar250 passed. No unresolved review blockers. Prior HTML visual QA and external compatibility remain unverified.

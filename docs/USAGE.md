@@ -657,3 +657,5 @@ Retained artifact navigation: [record kinds, object versions and verification gu
 For status, handoff and comparison CLI input limits and classified, non-echoing
 errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
 report contracts are unchanged; this is not a repository-wide error policy.
+
+Read a received research ZIP without replay: [recorded bundle context](RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
