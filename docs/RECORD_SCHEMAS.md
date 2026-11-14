@@ -155,3 +155,5 @@ registry review rather than silent automatic catalogue expansion.
 
 No network access, cross-repository compatibility, scientific assessment or automatic
 acceptance is established. Canonical decisions and census/readiness claims are unchanged.
+
+Read a received research ZIP without replay: [recorded bundle context](RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.

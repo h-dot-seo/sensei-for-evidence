@@ -436,3 +436,5 @@ collection choices are indexed in [Authoring schemas](SCHEMAS.md).
 For status, handoff and comparison CLI input limits and classified, non-echoing
 errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
 report contracts are unchanged; this is not a repository-wide error policy.
+
+| `python research_bundle_describe.py [-h] [--text] bundle` | Read recorded research archive context without replay or verification | [Guide](RESEARCH_BUNDLE_DESCRIBE.md) |

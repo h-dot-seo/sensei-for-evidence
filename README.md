@@ -379,3 +379,5 @@ collection-choice/review path. Shape checks do not replace exact workflow valida
 Publication maintainers: [manifest regeneration](docs/MANIFEST_BUILD.md), for non-engine changes without automatic replacement.
 
 Retained artifact navigation: [record kinds, object versions and verification guides](docs/RECORD_SCHEMAS.md). This index is not validation or migration.
+
+Read a received research ZIP without replay: [recorded bundle context](docs/RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
