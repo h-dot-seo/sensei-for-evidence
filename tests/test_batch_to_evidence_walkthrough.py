@@ -66,6 +66,20 @@ class BatchToEvidenceWalkthroughTests(unittest.TestCase):
         cls.export_commands, cls.export_stdout = execute('COLLECTION_EXPORT.md')
 
 
+    def test_authored_schemas_cover_actual_collection_path_not_approval(self):
+        import schema_check
+        for name, path in [('base-protocol.schema.json',ROOT/'examples/bibliographic-base.json'),
+                           ('bibliographic-choices.schema.json',FIXTURES/'collection-choices.json'),
+                           ('bibliographic-reviewed.schema.json',FIXTURES/'collection-review.json')]:
+            self.assertEqual(schema_check.check(load(ROOT/'schemas'/name),load(path)),[])
+        schema=load(ROOT/'schemas/bibliographic-reviewed.schema.json')
+        self.assertTrue(schema_check.check(schema,load(self.output/'collection-target.json')))
+        self.assertTrue(schema_check.check(load(ROOT/'schemas/bibliographic-choices.schema.json'),
+                                           load(self.output/'blank-choices.json')))
+        supplied=load(FIXTURES/'collection-review.json')
+        self.assertEqual(supplied['review']['target_sha256'],load(self.output/'collection-target.json')['review']['target_sha256'])
+        self.assertGreater(len(self.final['searches']),0)
+
     def test_all_documented_commands_run_with_outside_space_named_directory(self):
         self.assertEqual(len(self.commands), 30)
         self.assertTrue(all(isinstance(value, dict) for value in self.stdout))

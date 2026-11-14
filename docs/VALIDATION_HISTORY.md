@@ -3519,3 +3519,24 @@ and regression were added, final9 passed. Initial full run stopped before that t
 correction; final full2128 tests166.281s OK(skip1), independent final9 passed.
 Audit471/manifest470 and Python3.10 grammar241 passed. External compatibility/HTML visual QA remain
 unverified; no source, judgement, rights, approval or readiness claims are introduced.
+
+## 2026-11-14: authored starting/collection schemas (0.114.0)
+
+Connected the starting-base to collection-choice and separate reviewed-choice authoring
+path through three descriptive JSON schemas, bounded offline check/explain and a
+five-command guide. Existing batch-to-evidence walkthrough tests now check the same
+forms and reject unfinished blank choices/target reviews as completed documents.
+The explicit111-example inventory maps5 forms and labels106 outside this slice; broad
+protocols, other intake candidates and output schemas remain excluded. No claim that
+all schemas/explain work is complete. Existing root Python/ENGINE_FILES/schema2 unchanged.
+
+New10 and focused34 tests passed. Independent initial32 confirmed the actual workflow;
+review exposed equality recursion/comparison outside the first resource budget. Whole
+JSON-tree preflight and shared tree/schema/check/equality budgets now cover depth64,
+100k visits and5M string-comparison characters, alongside10MB/50MB,100 diagnostics and
+1000 uniqueItems limits. Final10 passed after that correction. Python differences in
+nonblank text, actual dates, integer1.0 and target binding remain explicit. Pattern '$'
+may match before final LF; a matched hash shape still fails unequal actual target binding.
+No input acceptance, review permission, external compatibility or scientific approval is
+implied. Full2139 tests175.254s OK(skip1), final independent10 passed with direct resource
+limit probes and no blockers. Audit478/manifest477 and Python3.10 grammar243 passed. Prior HTML visual QA unverified.

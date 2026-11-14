@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supplied bibliographic row choices before target",
+  "description": "Review must remain null. Exact candidate coverage/uniqueness, current/new ID identity and nonblank text require the workflow. No choice is supplied or inferred. Python workflow validators remain authoritative; shape match is not approval, acceptance or scientific validity.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "enum": [
+              "new_record",
+              "same_record",
+              "do_not_promote"
+            ]
+          },
+          "record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "candidate_id",
+          "disposition",
+          "record_id",
+          "rationale"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "disposition": {
+                "const": "do_not_promote"
+              },
+              "record_id": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "disposition": {
+                "enum": [
+                  "new_record",
+                  "same_record"
+                ]
+              },
+              "record_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "review": {
+      "type": "null"
+    }
+  },
+  "required": [
+    "schema_version",
+    "resolutions",
+    "review"
+  ],
+  "additionalProperties": false
+}
