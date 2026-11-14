@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.127.0-result-document-shapes",
+  "release": "0.128.0-state-cli-failure-boundary",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 507,
+  "file_count": 508,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4273,
-      "sha256": "24efb941f12123ff1a314a11c7aef238bf52109336d999fdf106db6b826bb599"
+      "bytes": 4318,
+      "sha256": "41e8eb4928f714f6027dadcd743299ca32f861252142f60269c68d8f8fa964dd"
     },
     {
       "path": "accounting_flow.py",
@@ -250,8 +250,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 54566,
-      "sha256": "b5439d4112c3b1035b1230e54f1c4462989ffa4a16982ff6355cd94bc5fcf574"
+      "bytes": 54813,
+      "sha256": "5eb3d128a0b5a0230ca46609d48161799d5fef7aabeddf7b55450015ee646b02"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -640,13 +640,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 39194,
-      "sha256": "6d40053fae7f0ec60c3d660ac44772fdd512d7138546836643acbe4f80f11376"
+      "bytes": 40352,
+      "sha256": "01bb72106f054258aea6dca5c69bbbb84493e51c4d2e0c691c2e2b8aedc67c44"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 266174,
-      "sha256": "351c9824df2b7133f1eb51190326ac01a53c687519fd13b9cdf288070b8d9047"
+      "bytes": 267656,
+      "sha256": "9cbbeda3aa2705411a8d867013ed8d29d1aa3ae51c710ffb558c00464912081d"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -691,7 +691,7 @@
     {
       "path": "docs/command_contract.json",
       "bytes": 113276,
-      "sha256": "1121683776228713cffc113a6ea995a5b6e5384c55ef56f323d9cbbb2f6e42d5"
+      "sha256": "ebf1d936bc183cf7aeb4c3fdafe48d8a1753e719d3069dd856c84d2c6a9ace92"
     },
     {
       "path": "docs/record_registry.json",
@@ -2414,6 +2414,11 @@
       "sha256": "6f234e9dd1fef582934610c6ae3911c16da2d6575a85e6e6197b4988825c7813"
     },
     {
+      "path": "tests/test_state_cli_boundaries.py",
+      "bytes": 6761,
+      "sha256": "787b9ba40dd40e9e391dac5d26dbf1524cd1099d1cfa40038528e06afee35d3e"
+    },
+    {
       "path": "tests/test_statistics_links.py",
       "bytes": 11880,
       "sha256": "dcac06ca31d12f8630e4536774a2c850fcc044c0980b58857f1f70808233f53a"
@@ -2505,8 +2510,8 @@
     },
     {
       "path": "validate_run.py",
-      "bytes": 8179,
-      "sha256": "e1c50ff38e55911d8240c673bb9aaf6003c198e6eb04cd8726513685a9c8b40b"
+      "bytes": 9745,
+      "sha256": "082dd0107054b3d1a1adafb1289a5a4ca7875078d4e6dc4785aee9ed9b5db837"
     },
     {
       "path": "verify_manifest.py",
