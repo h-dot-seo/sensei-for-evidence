@@ -155,3 +155,7 @@ Review access before sharing any generated artifact. No PDF parsing, publisher
 validation, automatic citation identity, source replacement, digest computation,
 review supersession, scientific/clinical inference or completeness proof is
 provided. Census remains `NOT_ESTABLISHED`, conclusions `NOT_READY`.
+
+For an explicit original/converted-text association without conversion verification,
+see [derived text context](DERIVED_TEXT_CONTEXT.md). Native Windows source access
+still fails closed; legacy passage manifest version1 is unchanged.

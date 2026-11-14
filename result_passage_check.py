@@ -178,9 +178,34 @@ def _relative(value):
     return parts
 
 
+def _derived_context(entry, protocol):
+    reference = entry.get('derived_from')
+    if reference is None:
+        return None
+    if not isinstance(reference, dict) or set(reference) != {'source_id', 'source_descriptor_sha256'}:
+        raise ValueError('derived source reference has unknown or missing fields')
+    sid = reference['source_id']
+    if not isinstance(sid, str) or sid == entry['source_id']:
+        raise ValueError('derived source must reference a different declared source')
+    origin = next((source for source in protocol.get('report_sources', [])
+                   if source['source_id'] == sid), None)
+    if origin is None or origin['report_id'] != entry['report_id']:
+        raise ValueError('derived source must be declared for the same report')
+    if (not isinstance(reference['source_descriptor_sha256'], str)
+            or reference['source_descriptor_sha256'] != digest(origin)):
+        raise ValueError('derived source descriptor hash is stale or invalid')
+    if origin['document_sha256'] is None:
+        raise ValueError('derived source requires a supplied original document digest')
+    return dict(declared_origin=copy.deepcopy(origin),
+                source_descriptor_sha256=digest(origin),
+                original_bytes_check='NOT_PERFORMED', conversion_verification='NOT_PERFORMED',
+                boundary='Supplied conversion association only; original bytes are not opened by this reference. '
+                         'No conversion, chronology, fidelity, transitive provenance or semantic support is established.')
+
+
 def _validate_manifest(manifest, protocol, candidates, sources, require_passages):
     if (not isinstance(manifest, dict) or set(manifest) != MANIFEST_FIELDS
-            or type(manifest['schema_version']) is not int or manifest['schema_version'] != 1):
+            or type(manifest['schema_version']) is not int or manifest['schema_version'] not in (1, 2)):
         raise ValueError('passage manifest has unknown or missing fields or schema version')
     for key, value in (('protocol_sha256', protocol), ('candidate_document_sha256', candidates)):
         if not isinstance(manifest[key], str) or manifest[key] != digest(value):
@@ -192,7 +217,8 @@ def _validate_manifest(manifest, protocol, candidates, sources, require_passages
         raise ValueError('check requires a nonempty bounded passage list; catalog permits empty passages')
     mappings, paths, total = {}, set(), 0
     for entry in manifest['sources']:
-        if not isinstance(entry, dict) or set(entry) != SOURCE_FIELDS:
+        expected_fields = SOURCE_FIELDS | ({'derived_from'} if manifest['schema_version'] == 2 else set())
+        if not isinstance(entry, dict) or set(entry) != expected_fields:
             raise ValueError('source mapping has unknown or missing fields')
         sid = entry['source_id']
         if not isinstance(sid, str) or sid not in sources or sid in mappings:
@@ -205,6 +231,8 @@ def _validate_manifest(manifest, protocol, candidates, sources, require_passages
             raise ValueError('source descriptor hash must match its entire supplied declaration')
         if source['document_sha256'] is None:
             raise ValueError('source requires a non-null declared document_sha256; no digest is supplied by this tool')
+        if manifest['schema_version'] == 2:
+            _derived_context(entry, protocol)
         parts = _relative(entry['path'])
         if entry['path'].casefold() in paths:
             raise ValueError('source paths must be unique, including casefolded aliases')
@@ -395,7 +423,7 @@ def _inspect(protocol, candidates, manifest, root, *, catalog_mode):
     rows = _validate_manifest(manifest, protocol, candidates, sources, not catalog_mode)
     # Serialize all declared context and ALL passages before opening root/source.
     result = _base(protocol, candidates, prepared)
-    result.update(manifest_sha256=digest(manifest),
+    result.update(schema_version=manifest['schema_version'], manifest_sha256=digest(manifest),
                   stage='LOCAL_SOURCE_CATALOG' if catalog_mode else 'LOCAL_PASSAGE_OBSERVATION',
                   selection=dict(source_ids=[entry['source_id'] for entry, _ in rows],
                                  validation_scope='ENTIRE_PROTOCOL_CANDIDATES_AND_MANIFEST'),
@@ -420,6 +448,8 @@ def _inspect(protocol, candidates, manifest, root, *, catalog_mode):
             source_descriptor_sha256=digest(sources[sid]), supplied_source=copy.deepcopy(sources[sid]),
             manifest_mapping=copy.deepcopy(entry), status='BYTES_MATCH', text_status='UTF8_TEXT',
             observed_bytes=entry['bytes'], observed_sha256=sources[sid]['document_sha256'])
+        if manifest['schema_version'] == 2:
+            source_preview[sid]['conversion_context'] = _derived_context(entry, protocol)
     preview = dict(result, sources=list(source_preview.values()),
         passages=[_passage_observation(p, candidates, dict(source_preview[p['source_id']],
                     status='PREFLIGHT_ONLY'), None) for p in manifest['passages']])
@@ -443,6 +473,8 @@ def _inspect(protocol, candidates, manifest, root, *, catalog_mode):
             context = dict(source_id=sid, report_id=source['report_id'],
                            source_descriptor_sha256=digest(source), supplied_source=copy.deepcopy(source),
                            manifest_mapping=copy.deepcopy(entry), **observed)
+            if manifest['schema_version'] == 2:
+                context['conversion_context'] = copy.deepcopy(source_preview[sid]['conversion_context'])
             context['text_status'] = 'NOT_INSPECTED'
             if body is not None:
                 context['text_status'], _ = _decode(body)

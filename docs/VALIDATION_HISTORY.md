@@ -3583,3 +3583,15 @@ bundle families or historical schema1. Existing root modules/ENGINE_FILES unchan
 Full2166 tests176.930s passed (skip1), independent7 passed with direct
 link/path/duplicate ZIP and output-limit probes. Audit490/manifest489 and
 Python3.10 grammar250 passed. No unresolved review blockers. Prior HTML visual QA and external compatibility remain unverified.
+
+## 2026-11-14: 0.119.0-derived-text-context
+
+Added explicit original/converted-text supplied context in opt-in passage manifest2.
+Same-report/distinct-ID/non-null original digest/exact descriptor binding checks run
+before any source access. Reference lookup opens no original; no PDF/OCR/fidelity or
+scientific claim is made. Manifest1 remains strict, template still emits1; manifest2
+observations explicitly emit2. Existing checker fingerprint changes, ENGINE_FILES do
+not. Native Windows no-follow access stays fail-closed. Full2171 tests173.733s passed (skip1), independent46 passed with a direct
+large-origin-metadata pre-read output-budget probe. Audit494/manifest493 and
+Python3.10 grammar251 passed. No unresolved review blockers. Native Windows
+passage access and prior HTML visual QA remain unsupported/unverified respectively.
