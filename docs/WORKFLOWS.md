@@ -638,3 +638,6 @@ Supplied question labels and separately reviewed transitions: [question ledger](
 
 
 Supplied research-output labels and exact disclosure context: [output disclosure](OUTPUT_DISCLOSURE.md). No actual publication, permission or scientific closure is established; mechanical release readiness remains NOT_RELEASED.
+
+
+[Completed challenge/readiness documents](ASSERTION_SCHEMAS.md): four descriptive candidate/review shapes and two separate exact-input journeys. A shape match does not authenticate HUMAN_AUTHORED, approve a review, make READY mechanical readiness, or replace Python context/hash validation.

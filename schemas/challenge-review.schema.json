@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Completed supplied challenge import review",
+  "description": "Descriptive completed-input structure only, not approval, actual human authorship, independence, scientific sufficiency or readiness. Existing Python validators remain authoritative for nonblank text, real calendar dates, duplicate row IDs, provenance length/control characters, source/context references and exact basis/gate/target bindings. Incomplete templates are not valid completed documents. Schema success is not authorization or exact replay. No research or review is generated.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "decision": {
+      "type": "string",
+      "const": "import_challenges"
+    },
+    "reviewer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "target_sha256",
+    "decision",
+    "reviewer",
+    "reviewed_at",
+    "rationale"
+  ],
+  "additionalProperties": false
+}

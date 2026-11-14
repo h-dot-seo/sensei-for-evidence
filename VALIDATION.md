@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.138.0-bounded-cli-inputs` (2026-11-14). This file is the
+Current release: `0.139.0-authored-assertion-shapes` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,19 +55,21 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.138.0-bounded-cli-inputs` (2026-11-14).
+Release: `0.139.0-authored-assertion-shapes` (2026-11-14).
 
-Roadmap #54: fifteen remaining CLI readers, nineteen supplied JSON input sites,
-now enforce 50,000,000 bytes inclusive before parsing. Four old text readers retain
-universal-newline/error-position semantics. Existing helper/ZIP and excluded CLI
-bytes are unchanged. No gate, scientific decision, original record or permission
-changes. See [CLI input boundaries](docs/CLI_INPUT_BOUNDS.md).
+Roadmap #36/#59: four descriptive completed challenge/readiness candidate and
+separate review shapes, integrated with two existing exact-input CLI journeys.
+All root product modules, checker, ENGINE, existing schemas and examples are byte
+unchanged. Human authorship/readiness labels remain supplied, not authenticated
+or scientifically assessed. Python remains authoritative for documented structural
+looseness, real context and exact bindings. No license or external contract change.
 
-Core focused 36 / 9.647 s and final focused 44 / 9.107 s (one native-Windows
-skip) passed. Independent core 57 tests, actual 60 old/new malformed-input byte
-comparisons, seven guides / 61 commands and all fixed15 synthetic target checks
-passed. Initial full 2321 / 208.583 s found one examples-only metadata inventory
-error; that file was restored to previous bytes. Corrected full run: 2321 tests / 206.779 s PASS (one native-Windows skip).
-Metadata correction focus: 21 / 0.454 s PASS (one skip); independent correction
-review and repeated 61 guide commands / 15 target checks passed.
-Publication audit 574 files and Python 3.10 grammar 289 files passed.
+Initial guide execution caught a missing schema_check `check` subcommand in the
+new documentation. Corrected guide and test argument positions only; no product
+changes. Six initial focused tests / 0.780 s passed. Final focused 44 tests / 3.713 s PASS (one native-Windows skip).
+Full suite 2328 tests / 212.055 s PASS (one native-Windows skip).
+Independent 54 tests / 4.941 s, actual 12-command journeys, and 792 mutations
+compared with an independent Draft202012 validator passed. This is limited tested
+agreement, not full JSON Schema compliance. All prior root/example/seven-schema
+bytes and frozen tree were independently checked unchanged. Publication audit 581,
+manifest 580, and Python 3.10 grammar 290 passed. No target resealing occurred.

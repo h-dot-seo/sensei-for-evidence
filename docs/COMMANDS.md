@@ -510,3 +510,13 @@ compatibility. Origin fields are supplied declarations, never authentication.
 
 
 [Bounded CLI inputs](CLI_INPUT_BOUNDS.md): fifteen remaining entrypoints now enforce an inclusive 50,000,000 raw-byte limit per supplied JSON input; existing decisions and under-limit error/output contracts are preserved. This is not a total resource bound.
+
+
+[Completed challenge/readiness documents](ASSERTION_SCHEMAS.md): four descriptive candidate/review shapes and two separate exact-input journeys. A shape match does not authenticate HUMAN_AUTHORED, approve a review, make READY mechanical readiness, or replace Python context/hash validation.
+
+| Document shape | Schema |
+| --- | --- |
+| Supplied challenge candidates | `schemas/challenge-candidates.schema.json` |
+| Challenge import review | `schemas/challenge-review.schema.json` |
+| Supplied readiness candidates | `schemas/readiness-candidates.schema.json` |
+| Readiness import review | `schemas/readiness-review.schema.json` |
