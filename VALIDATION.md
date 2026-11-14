@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.105.0-json-rejection-harness` (2026-11-14). This file is the
+Current release: `0.106.0-dispatcher-selection` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,25 +55,31 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Bounded JSON rejection test harness (0.105.0-json-rejection-harness)
+## 2026-11-14 One-file dispatcher selection (0.106.0-dispatcher-selection)
 
-Only the 24-case JSON rejection loop uses the existing trusted serial harness.
-Original duplicate/nonfinite/nonobject/surrogate cases and all rejection assertions
-are preserved, with source-byte preservation added. Four real subprocess error
-smokes compare exact output/exit to the harness. Existing ASCII environment/Unicode,
-normal CLI roundtrips, bundle errors and documented walkthroughs stay subprocess.
-All production Python, ENGINE_FILES, shared harness and CI workflow bytes unchanged.
+A separate real-user-path improvement, not a test harness conversion: sensei.py run
+now validates the existing basename grammar and exact directory-entry spelling,
+then reads/parses only the selected eligible file. It excludes itself, helpers and
+nonfiles using the same entrypoint predicate. No cache. Existing list/check whole
+checkout behavior remains. An unrelated syntax error no longer blocks a valid
+selection, while full discovery and the selected file still expose their errors.
+Existing symlink/trusted-checkout limits are documented, not silently strengthened
+or presented as an isolation guarantee. ENGINE_FILES and other root Python unchanged.
 
-Before: JSON loop0.840s, sampled batch bundle invalid-input0.493s. Reproducible
-24-case byte/exit/source/output/state equivalence passed three alternating runs:
-subprocess0.762/0.734/0.741s versus in-process0.063/0.056/0.056s. Retained four-process
-smoke costs0.176s locally. These small local savings are not a claim of proportional
-suite/CI acceleration; larger batch/dispatcher bottlenecks remain out of scope.
-See [runtime guide](docs/TEST_RUNTIME.md) for commands and process-isolation limits.
+Four-case before/after exact-result measurement: 388 source reads/AST parses become
+2 (valid script plus helper). Three alternating runs: old0.660/0.674/0.678s versus
+new0.00237/0.00230/0.00237s on Python3.12.14/Linux. Counts exclude directory metadata
+calls. [Selection guide](docs/DISPATCHER_SELECTION.md) records reproduction and scope.
+All existing subprocess dispatcher tests remain unchanged; new regression tests pin
+exact case, zero/one source access, discovery differences, selected errors and no cache.
 
-Full local suite: 2061 tests in 149.247s, OK (one platform skip). Focused and
-independent JSON/harness tests: 14 pass. Independent 24-case benchmark also passes
-all equivalence and preservation checks (subprocess0.7594s vs in-process0.0639s).
-No blockers. Audit450 files, manifest, compileall, Python3.10 grammar and unchanged
-production/helper/workflow/old executable blocks pass. Final checkout, JSON/harness
-and navigation checks rerun after documentation/manifest finalization.
+Full local suite: 2069 tests in 146.498s, OK (one platform skip). Focused and
+independent dispatcher tests: 20 pass. Independent four-case benchmark: exact paths
+and errors match, reads/AST388 to2, 0.644s to0.00246s locally. Unchanged real-process
+rejected-name test measured4.880s before and0.466s after. No timing assertion.
+Audit453 files, manifest, compileall, Python3.10 grammar, ENGINE/other root Python,
+shared helper/CI/existing dispatcher tests and old executable blocks pass. Symlink
+regression skips where the OS cannot create one. Final checkout/dispatcher checks
+rerun after docs/manifest finalization. Independent review found no code blockers;
+test-runtime documentation now explicitly scopes earlier production-byte-preservation
+claims to the earlier test-only releases.

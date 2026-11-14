@@ -1,7 +1,9 @@
 # Synthetic-test runtime budget
 
-This is a test-only performance increment, not a faster or more permissive research
-engine. Production Python files and ENGINE_FILES remain byte-identical. The first
+The initial two increments documented here (0.104.0 and 0.105.0) are test-only,
+not a faster or more permissive research engine. Those increments leave production
+Python and ENGINE_FILES byte-identical. The later, separately scoped production
+dispatcher change is linked at the end of this guide. The first
 converted loop was `test_catalog_schema_files_and_parser_help_entrypoints_are_real`:
 it still runs every one of the 129 actual CLI help parsers from an empty working
 directory and asserts success, usage output and no output files.
@@ -106,5 +108,11 @@ entire opt-in benchmark. All previous harness limitations still apply.
 All 24 cases matched in all three runs. The four retained subprocess smoke calls cost
 about 0.176s locally, so the net saving is smaller than the raw table difference.
 Measurements use Python 3.12.14/Linux and are not a prediction for other runners.
-Production code, shared harness, workflow matrix, timeouts and supported semantics
-are unchanged.
+In that JSON-test increment, production code, shared harness, workflow matrix,
+timeouts and supported semantics are unchanged.
+
+## Separate user-path optimization
+
+[Dispatcher selection](DISPATCHER_SELECTION.md) is a separate production-code
+increment, not another test conversion. It removes full AST discovery from explicit
+script selection while retaining full list/check behavior and actual subprocess tests.
