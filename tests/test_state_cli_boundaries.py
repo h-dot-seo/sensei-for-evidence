@@ -4,6 +4,7 @@ import copy
 import hashlib
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -19,8 +20,11 @@ ROOT=Path(__file__).resolve().parents[1]
 class StateCliBoundaryTests(unittest.TestCase):
     def invoke(self,path,real=False):
         if real:
-            return subprocess.run([sys.executable,str(ROOT/'validate_run.py'),str(path)],cwd=ROOT,capture_output=True,text=True,encoding='utf-8',timeout=30)
-        result=run_cli('validate_run.py',path,cwd=ROOT)
+            result=subprocess.run([sys.executable,str(ROOT/'validate_run.py'),str(path)],cwd=ROOT,capture_output=True,timeout=30)
+        else:
+            result=run_cli('validate_run.py',path,cwd=ROOT)
+        # Decode only: never apply subprocess universal-newline conversion.
+        # Both paths must preserve the platform's original output bytes.
         result.stdout=result.stdout.decode('utf-8');result.stderr=result.stderr.decode('utf-8')
         return result
 
@@ -50,7 +54,7 @@ class StateCliBoundaryTests(unittest.TestCase):
         bad=copy.deepcopy(state);bad['release']={'status':'COMPLETE','required_artifacts':['synthetic-kind']}
         for doc in (state,{},bad,dict(state,references=[None]),dict(state,screening=0)):
             errors=validate_run.validate(doc)
-            expected=json.dumps({'valid':not errors,'errors':errors},ensure_ascii=False)+'\n'
+            expected=json.dumps({'valid':not errors,'errors':errors},ensure_ascii=False)+os.linesep
             with tempfile.TemporaryDirectory() as td:
                 p=Path(td)/'state.json';p.write_bytes(json.dumps(doc).encode('utf-8'))
                 for real in (False,True):

@@ -76,3 +76,8 @@ old/new real-CLI shape variants passed with identical findings bytes/codes.
 Audit509/manifest508 and Python3.10 grammar260 passed; final focused checks cover
 this record update. No unresolved blockers. External reference-manager compatibility,
 prior HTML visual QA and Korean-locale Windows remain unverified.
+
+The first PR CI exposed a Windows-only test comparison mismatch: subprocess text
+mode normalized CRLF while the harness retained it. The tests now capture bytes on
+both paths, decode without newline conversion and expect the native line separator.
+Runtime code is unchanged by this correction; the corrected matrix is rechecked.
