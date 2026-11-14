@@ -1,0 +1,168 @@
+{
+  "evidence_workflow.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "a.protocol.read_text(encoding='utf-8')",
+      "read_bounded(a.protocol, MAX_CLI_INPUT_BYTES).decode(\"utf-8\").replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")"
+    ]
+  ],
+  "prisma_reports.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "a.protocol.read_text(encoding='utf-8')",
+      "read_bounded(a.protocol, MAX_CLI_INPUT_BYTES).decode(\"utf-8\").replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")"
+    ]
+  ],
+  "prisma_audit.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_text(encoding='utf-8')",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode(\"utf-8\").replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")"
+    ]
+  ],
+  "search_manifest.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_text(encoding='utf-8')",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode(\"utf-8\").replace(\"\\r\\n\", \"\\n\").replace(\"\\r\", \"\\n\")"
+    ]
+  ],
+  "readiness_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "receipt_intake.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ],
+    [
+      "args.fixture.read_bytes()",
+      "read_bounded(args.fixture, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "report_decision.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ],
+    [
+      "args.application_record.read_bytes()",
+      "read_bounded(args.application_record, MAX_CLI_INPUT_BYTES)"
+    ],
+    [
+      "args.decision_document.read_bytes()",
+      "read_bounded(args.decision_document, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "report_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "report_study_inventory.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "report_study_inventory_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "report_study_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "screening_decision.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ],
+    [
+      "args.decision_document.read_bytes()",
+      "read_bounded(args.decision_document, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "screening_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "synthesis_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ],
+  "work_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom archive_safety import read_bounded\n\nMAX_CLI_INPUT_BYTES = 50_000_000\n"
+    ],
+    [
+      "args.protocol.read_bytes()",
+      "read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)"
+    ]
+  ]
+}

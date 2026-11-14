@@ -35,6 +35,13 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round51: only CLI-source hashes newly changed outside prior revision exceptions.
+            cli_prior=load('tests/cli_input_prior_sources.json')['changed']
+            already_named={'evidence_workflow.py','synthesis_review.py','readiness_review.py'}
+            for name,old in cli_prior.items():
+                if name in result['engine_sha256'] and name not in already_named:
+                    self.assertEqual(result['engine_sha256'][name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
+                    result['engine_sha256'][name]=old
             # Round50 optional disclosure ENGINE leaf; no absent-context fields change.
             self.assertEqual(result['engine_sha256'].pop('output_disclosure_links.py'),hashlib.sha256((ROOT/'output_disclosure_links.py').read_bytes()).hexdigest())
             # Round49 adds only this optional question ENGINE leaf; existing hashes follow named revisions below.

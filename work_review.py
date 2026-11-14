@@ -4,6 +4,9 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 
 from evidence_workflow import run
 from work_document_links import BOUNDARY as DOCUMENT_SOURCE_BOUNDARY
@@ -385,7 +388,7 @@ def main():
     formatting.add_argument('--brief', action='store_true', help='render compact work-state, deliverable and review-cue navigation')
     args = parser.parse_args()
     try:
-        result = review_packets(parse_json(args.protocol.read_bytes()), args.work_package, args.include_prerequisites)
+        result = review_packets(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)), args.work_package, args.include_prerequisites)
     except (OSError, ValueError, TypeError, KeyError) as error:
         parser.exit(1, str(error) + '\n')
     print(render_brief(result) if args.brief else render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text or args.brief else '\n')

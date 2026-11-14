@@ -4,6 +4,9 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 
 from evidence_workflow import run
 from prisma_reports import report_flow
@@ -224,7 +227,7 @@ def main():
     parser.add_argument('--text', action='store_true')
     args = parser.parse_args()
     try:
-        result = snapshot(parse_json(args.protocol.read_bytes()))
+        result = snapshot(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)))
     except (OSError, ValueError, TypeError, KeyError) as error:
         parser.exit(1, str(error) + '\n')
     print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')

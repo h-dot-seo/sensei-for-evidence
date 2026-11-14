@@ -4,6 +4,9 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 from adapter_integrity import digest
 from search_audit import audit_search_plan
 from offline_adapter import assemble
@@ -115,8 +118,8 @@ def main():
     c.add_argument('--text',action='store_true');c.add_argument('--protocol-output',type=Path,help='save an unreviewed candidate exclusively; never overwrite')
     args=parser.parse_args()
     try:
-        protocol=parse_json(args.protocol.read_bytes())
-        result=template(protocol) if args.command=='template' else check(protocol,parse_json(args.fixture.read_bytes()))
+        protocol=parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
+        result=template(protocol) if args.command=='template' else check(protocol,parse_json(read_bounded(args.fixture, MAX_CLI_INPUT_BYTES)))
         if args.command=='check' and result['valid_input'] and args.protocol_output is not None:
             serialized=json.dumps(result['protocol_candidate'],ensure_ascii=False,indent=2)+'\n'
             with args.protocol_output.open('x',encoding='utf-8',newline='\n') as output:output.write(serialized)

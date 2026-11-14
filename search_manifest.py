@@ -5,6 +5,9 @@ import hashlib
 import json
 from collections import defaultdict
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 from evidence_workflow import run
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
@@ -131,7 +134,7 @@ def render_text(result):
 def main():
     configure_utf8_stdio();parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('protocol',type=Path);parser.add_argument('--text',action='store_true');args=parser.parse_args()
-    try:result=manifest(parse_json(args.protocol.read_text(encoding='utf-8')))
+    try:result=manifest(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")))
     except (ValueError,OSError,KeyError,TypeError) as error:parser.exit(1,str(error)+'\n')
     print(render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.text else '\n')
 

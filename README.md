@@ -415,3 +415,6 @@ Supplied question labels and separately reviewed transitions: [question ledger](
 
 
 Supplied research-output labels and exact disclosure context: [output disclosure](docs/OUTPUT_DISCLOSURE.md). No actual publication, permission or scientific closure is established; mechanical release readiness remains NOT_RELEASED.
+
+
+[Bounded CLI inputs](docs/CLI_INPUT_BOUNDS.md): fifteen remaining entrypoints now enforce an inclusive 50,000,000 raw-byte limit per supplied JSON input; existing decisions and under-limit error/output contracts are preserved. This is not a total resource bound.
