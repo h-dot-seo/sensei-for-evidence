@@ -76,8 +76,9 @@ remain separate pairs and do not establish identity or independence.
 2. Generate a review template for that already described pair. Only report ID,
    study ID and current target hash are filled. All human fields, including both
    selection lists, are null. No earlier assertion is renewed or copied.
-3. After actual human inspection, complete the fields honestly and copy only the
-   completed assertion into a separate working protocol's review list.
+3. After actual human inspection, complete the fields honestly, then use the separate
+   [reviewed append/replay intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) instead of
+   manually copying assertions into a working protocol.
 4. Keep report inclusion and membership declarations explicit and separate.
 
 Templates require a currently described pair, a retrieved report and at least one

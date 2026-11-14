@@ -349,3 +349,11 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | `python report_study_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact pair/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
 | `python report_study_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
 | `python report_study_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+
+## Described-candidate position intake
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python report_study_inventory_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact candidate/description/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
+| `python report_study_inventory_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
+| `python report_study_inventory_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
