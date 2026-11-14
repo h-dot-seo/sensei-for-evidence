@@ -363,3 +363,6 @@ research data or engine verification changes. See docs/WORK_REVIEW.md.
 
 ## Native occurrence export
 [Collection export](docs/COLLECTION_EXPORT.md) regenerates RIS/NBIB occurrences selected by supplied screening decisions with exact replay verification; not deduplicated bibliography or eligibility approval.
+
+Explicitly mapped long-form CSV reviewer positions: [offline intake](docs/SCREENING_POSITION_INTAKE.md).
+Separate source-template binding and import review; no canonical screening decision.

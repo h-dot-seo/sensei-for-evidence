@@ -3445,3 +3445,28 @@ is counted below. Final full suite2099 tests165.462s OK(skip1); final independen
 passed with no blockers. Audit461, manifest460 and Python3.10 grammar235 passed.
 These checks concern parser help and documentation only, not live
 research actions, external tool compatibility or the previously unverified HTML UI.
+
+## 2026-11-14: explicit long-form CSV positions (0.111.0)
+
+Added screening_position_intake.py preview/target/assemble/verify for operator-prepared
+long-form UTF-8 CSV positions with explicit columns/labels and a supplied pre-review
+basis template. This fills the multiple-reviewer/mapped-column gap beyond the existing
+own-sheet intake. The template's exact source hashes are retained, never refreshed;
+target rejects stale sources. Raw CSV, compact basis, mappings and byte-span provenance
+are replayed from the detached application after separate supplied import review.
+Only screening_reviews is appended; canonical screening and all prior assertions stay
+unchanged. No external product compatibility, reviewer chronology/identity, authenticity,
+scientific correctness or rights is established. First scope is CSV-only (not manual
+candidate JSON or ID-remapping files),1..100 rows,10MB/50MB bounds,exclusive single output.
+OS write failure can leave a partial new file; hostile path races are not guarded.
+
+New10 tests and combined focused38 passed, including the independent two-block6-command
+synthetic guide, opposing reviewers, stale basis, literal mapping, collision and replay
+checks. Initial tamper test mistakenly replaced an already empty list with another empty
+list; that no-op test was corrected before the final runs. Catalog now133 routes and
+command reference166 rows. ENGINE_FILES and schema2 contracts unchanged; review_handoff
+is the only pre-existing root module modified. External manager compatibility and the
+previous HTML visual QA remain unverified. Independent56 tests and direct stale CLI/action checks passed with no blockers.
+Added actual100-success/101-rejection, manual-ID collision and empty-ledger regression
+after review. Final full2110 tests168.825s OK(skip1); final independent11 passed.
+Audit465/manifest464 and Python3.10 grammar237 passed.

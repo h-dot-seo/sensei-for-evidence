@@ -263,3 +263,6 @@ native 아카이브는 바꾸지 않고, 새 래퍼는 별도로 보관합니다
 [읽기 전용 HTML 안내](REVIEW_VIEWS.md)는 게이트·큐·공급된 집계·진술을 보여 줍니다. 승인이나 연구보고서가 아니며 실제 출력은 공개 저장소 밖에 보관합니다.
 
 [네이티브 레코드 재내보내기](COLLECTION_EXPORT.md)는 공급된 선별결정에 맞는 RIS/NBIB occurrence를 재생성하고 검증합니다. 중복 제거·전문 적격성 판정이 아니며 실제 파일은 공개 저장소 밖에 보관합니다.
+
+Explicitly mapped long-form CSV reviewer positions: [offline intake](SCREENING_POSITION_INTAKE.md).
+Separate source-template binding and import review; no canonical screening decision.

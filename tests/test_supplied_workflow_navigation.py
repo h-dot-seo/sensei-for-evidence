@@ -62,7 +62,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertEqual(entry['arguments'][-1],'--help')
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
-        self.assertEqual(len(entries),129)
+        self.assertEqual(len(entries),133)
         # The command-reference suite executes every documented parser help in a real
         # subprocess. Here require every navigation route to be part of that coverage.
         from tests.test_command_reference import command_rows
