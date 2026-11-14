@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.133.0-supplied-evidence-basis` (2026-11-14). This file is the
+Current release: `0.134.0-bibliographic-assertion-continuation` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,33 +55,31 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.133.0-supplied-evidence-basis` (2026-11-14).
+Release: `0.134.0-bibliographic-assertion-continuation` (2026-11-14).
 
-Roadmap #41: optional supplied evidence-basis labels and same-report document
-selections, with status-shaped uncertainty and a separately reviewed append-only
-intake. Canonical result rows, actual human assertions, gate policy and scientific
-assessment boundaries are unchanged. Related label/source changes are bound to
-existing statement/work bases and can make old reviews stale without renewal.
-Labels are not inferred from source-file observations. Figure/statistics coexistence
-is only a cue. Template human fields are null; empty ledger presence is an explicit
-stage transition, and legacy absence retains old behavior.
+Fixed roadmap #42 reader obstacle (4): existing challenges/readiness_assertions
+were omitted from bibliographic enrichment, so even empty ledgers after a valid
+CSV/NBIB/RIS import failed immutable-context validation. The only product change
+adds exactly those two names to ENRICHMENT_FIELDS in bibliographic_integrity.py.
+No validator, source-basis function, gate/closure policy, engine inventory or
+canonical-data code changes. Existing immutable fields and unknown root additions
+remain rejected; original bibliographic history and separate review requirements
+are preserved. Old artifacts require their recorded trusted implementation.
 
-Six existing ENGINE modules change and evidence_basis_links.py is added. The
-bibliographic enrichment allowance adds exactly evidence_bases. Old applications
-need their recorded trusted implementation. Only 15 fixed fictional example target
-hashes were maintained; all other bytes/reviewer/date/decision values remain intact.
-No public or automatic refresh tool was added.
+Synthetic tests prepare all three real parser/import paths, then execute twelve
+existing CLI commands per format (36 commands): challenge template/target/separate
+review/assemble/verify, readiness template/target/separate review/assemble/verify,
+status/readiness views and research bundle create/verify. Additional tests cover
+empty/invalid ledgers, immutable/unknown context, declared origin/label coexistence,
+stale targets and tampered records. The separate plain comparison control explicitly
+binds its fictional challenge to its own changed source after provenance removal;
+no actual imported protocol or retained review is renewed. All prior core validator
+bytes are pinned by regression.
 
-Actual previous45 execution reproduces all 44 valid legacy example input/run hashes
-exactly without labels. Original43 default-view baseline bytes are retained, with
-only explicit named implementation changes and one static route accounted for.
-Core independent verification checked 72 label combinations. Final independent
-verification passed 43 tests, the new 11-command guide, and 61 existing guide commands
-that independently regenerate all 15 synthetic targets.
-
-First full run: 2,274 tests / 190.690 s, six metadata/inventory failures (one platform
-skip), corrected without changing the engine or intake. A subsequent 38-test metadata
-check exposed the matching protocol-key inventory count (26 to 27), also corrected.
-Corrected full suite: 2,274 tests passed in 187.613 s (one platform skip). Existing external interoperability,
-HTML visual QA and Korean-locale Windows limits remain unverified. No license, tag,
-new acceptance rule or actual human review is selected.
+Exactly 15 existing fictional target-hash fields are maintained from actual guides,
+with all other bytes/reviewer/date/decision values preserved. No actual human review,
+user data, network access or automatic refresh tool is involved. Full 2,281 tests passed in 197.782 s (one platform skip). Independent 118 tests
+and the 36-command three-format journey passed; seven existing guides/61 commands
+independently regenerated all 15 synthetic targets exactly. Audit 541/manifest
+540 passed; final source-bound focused checks cover this record update. Existing
+external interoperability/visual QA limits remain unverified; no license or tag.

@@ -3912,3 +3912,14 @@ First full run: 2,274 tests in 190.690 s, six inventory/metadata failures, one p
 The corrected metadata focus (38 tests) additionally found the explicit top-level-key count needed 26→27 alongside the new declared key. Corrected before the second full run.
 
 Corrected full run: 2,274 tests passed in 187.613 s (one platform skip). Final independent review passed 43 focused tests and independently regenerated all 15 targets through 61 old guide commands, plus the new 11-command guide. Metadata completion added only the names-only protocol-key entry, two record tags, two fixture classifications and matching counts; reviewed effects remain 32 of 189 (157 NOT_REVIEWED).
+
+
+## 2026-11-14: 0.134.0-bibliographic-assertion-continuation
+
+Roadmap #42 reader obstacle (4) reproduced on an actual synthetic CSV import: adding either empty challenges or readiness_assertions failed immutable bibliographic context validation. Fixed exactly the two omitted enrichment names in bibliographic_integrity.py; all other old root modules remain byte-identical, with explicit protected validator/engine regressions. No gate, closure rule, source basis or human assertion is modified.
+
+New synthetic tests use actual CSV/NBIB/RIS imports, separate challenge/readiness reviews and exact replay; a twelve-command guide is executed for each format (36 CLI commands). Empty/invalid stages, immutable original and arbitrary new fields, stale targets, tampered records, declared origin and optional basis labels are covered. The plain control has separate fictional source bindings because removing bibliography provenance changes statement bases; no actual research input/record is resealed. Early test development corrected fixture reopening requirements and a mistaken detached-collection verification call before validation. Core product diff remained only two names.
+
+Fixed 15 synthetic walkthrough target digests only, preserving all other bytes. Source hashes change, so old artifacts need their recorded trusted implementation; no public automatic refresh command is added. Full/independent final validation pending.
+
+Full 2,281 tests passed in 197.782 s (one platform skip). Independent core/document review: 118 tests / 10.896 s, including 36 actual new-guide CLI commands across all three formats. Independent final: seven existing guides/61 CLI commands regenerated all 15 target hashes exactly; all other example bytes unchanged; audit541/manifest540 and registry/manifest16 tests passed. Final focused checks repeat the source-bound metadata and release checks after recording these results.

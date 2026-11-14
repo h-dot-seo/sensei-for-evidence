@@ -405,3 +405,5 @@ any author or changing readiness gates. Existing schema 1 rows are not rewritten
 old bundles/applications still require their recorded implementation.
 
 Supplied result basis labels: [EVIDENCE_BASIS](docs/EVIDENCE_BASIS.md), an append-only declaration/review flow, not source or scientific verification.
+
+Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.

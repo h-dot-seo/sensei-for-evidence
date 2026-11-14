@@ -1,0 +1,16 @@
+{
+  "prior_release": "0.133.0-supplied-evidence-basis",
+  "prior_main": "b4fe61e0b9cea2666459b8fbff8bd96591c78f01",
+  "prior_bibliographic_integrity_sha256": "80f20d39225c1588c00e372a0c89ae3efe28c750e89742a80133a06046635736",
+  "protected_source_sha256": {
+    "challenge_links.py": "6408b7ff0f96bb8512905074448ef350ce2c790a114998bfbc8aa244fd4d19b4",
+    "readiness_links.py": "141222dc02740f77da9e62903d53442c87b2bbdbb268107b9c681a62a8da2295",
+    "challenge_intake.py": "d08ed4b969c23e15cd4b8ee20d25c4d7ce7a7adbcb5f7cef8516a7aacd351d08",
+    "readiness_intake.py": "cde5fef1fd6868c1a7da5a4e6a8864cfed2b92c46912ba2cf6f7eb27680a1e5b",
+    "evidence_workflow.py": "c8b4e457605888ac1a6f9894920d598c643d781ffb89362635f451eaad972e82",
+    "synthesis_links.py": "4fe4b0de5acc33a219c4cf5e4d96d6ac74b7bd2e44451ac175631b0054c62b60",
+    "planning_links.py": "b1e3c5de430802da65d773a54806de1de3e6bbf8536fbf3d56f69b268e901e37",
+    "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "research_bundle.py": "8047d3eb7bc6aa843a7fae87eb39502cda474cc5890688a484d2721677468eee"
+  }
+}

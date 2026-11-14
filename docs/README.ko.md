@@ -305,3 +305,5 @@ For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAK
 ## Supplied result basis declarations
 
 See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.
+
+Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.

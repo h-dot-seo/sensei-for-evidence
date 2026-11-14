@@ -124,3 +124,5 @@ intake](BIBLIOGRAPHIC_REVIEW.md) is a separate step. Verified search-completion
 evidence, many-study report representation, and source-review links to
 guideline/development context before extraction remain separate work. Raw imported
 labels never stand in for those decisions.
+
+Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.
