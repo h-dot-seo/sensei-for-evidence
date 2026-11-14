@@ -1,4 +1,4 @@
-# Author starting, collection, decision and result documents
+# Author starting, collection, decision, result and assertion documents
 
 These descriptive JSON Schema documents support the authoring path from a new base
 through bibliographic choices and import review to supplied screening/report decisions.
@@ -126,3 +126,6 @@ chosen full validator, still followed by the authoritative research workflow.
 [Starting protocol](PROTOCOL_SCAFFOLD.md) · [Bibliographic reconciliation](BIBLIOGRAPHIC_REVIEW.md)
 
 Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.
+
+
+[Completed challenge/readiness documents](ASSERTION_SCHEMAS.md): four descriptive candidate/review shapes and two separate exact-input journeys. A shape match does not authenticate HUMAN_AUTHORED, approve a review, make READY mechanical readiness, or replace Python context/hash validation.

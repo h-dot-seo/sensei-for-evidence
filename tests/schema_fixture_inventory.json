@@ -160,16 +160,16 @@
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/interpretive-challenge-candidates.json": {
-    "schema": null,
-    "scope": "Outside these authored-document shapes; no conformance claim"
+    "schema": "challenge-candidates.schema.json",
+    "scope": "Completed supplied candidate shape only; Python context, date, identity and hash checks remain authoritative"
   },
   "examples/manual-appraisal-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/manual-challenge-candidates.json": {
-    "schema": null,
-    "scope": "Outside these authored-document shapes; no conformance claim"
+    "schema": "challenge-candidates.schema.json",
+    "scope": "Completed supplied candidate shape only; Python context, date, identity and hash checks remain authoritative"
   },
   "examples/manual-condition-candidates.json": {
     "schema": null,
@@ -200,8 +200,8 @@
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/manual-readiness-candidates.json": {
-    "schema": null,
-    "scope": "Outside these authored-document shapes; no conformance claim"
+    "schema": "readiness-candidates.schema.json",
+    "scope": "Completed supplied candidate shape only; Python context, date, identity and hash checks remain authoritative"
   },
   "examples/manual-receipt-fixture.json": {
     "schema": null,
