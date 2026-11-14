@@ -2038,7 +2038,7 @@
         "docs/USAGE.md"
       ],
       "has_parser": true,
-      "purpose": "Check hashes, implementation bytes and regenerated outputs without extracting paths",
+      "purpose": "Check bounded input, hashes, regenerated outputs and exact canonical ZIP bytes without extraction",
       "script": "research_bundle.py",
       "subcommand": "verify",
       "usage": "python research_bundle.py verify [-h] bundle"
@@ -3009,6 +3009,7 @@
     "appraisal_links.py": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2",
     "appraisal_source_review.py": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf",
     "appraisal_transition_bundle.py": "7dfab0ca0732cdb79e72c8b33b9652a987aeca0253e41e1f3ea58c0b9ef4765c",
+    "archive_safety.py": "40e37a118ce7d25d7c47fbec1b8731c528311b5174eceb91a22f82807b375295",
     "artifact_review.py": "c7e9d60a350d14b8f8ff8831da5e40f9dfaa5aa1cdbd98b2dba1aaf8fb97d54d",
     "audit_publication.py": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08",
     "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
@@ -3076,7 +3077,7 @@
     "report_study_review_intake.py": "8b273ee20adeb69ef670aa6edf001087e5a3c87801c5223f1c53cd4ec976c30d",
     "report_study_review_links.py": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b",
     "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
-    "research_bundle.py": "8047d3eb7bc6aa843a7fae87eb39502cda474cc5890688a484d2721677468eee",
+    "research_bundle.py": "4b019ac02705fda3400c66e1c38bcedec2c34e17a55e2dc8619b56fd40d45258",
     "research_bundle_describe.py": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5",
     "research_map.py": "997a962a895c9bccb08213060fe69c71b7a2581061e5652c73797be386240827",
     "research_map_views.py": "aacd685f2054e5498c9f9fc11083b518856a33502620e09b574ceb3782410f2f",

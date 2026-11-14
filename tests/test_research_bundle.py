@@ -1,3 +1,4 @@
+from tests._canonical_zip import pack as canonical_zip
 import hashlib
 import io
 import json
@@ -70,8 +71,7 @@ class BundleTests(unittest.TestCase):
         data['manifest.json']=json.dumps(manifest).encode()
         with tempfile.TemporaryDirectory() as tmp:
             output=Path(tmp)/'tampered.zip'
-            with zipfile.ZipFile(output,'w') as archive:
-                for name,value in data.items(): archive.writestr(name,value)
+            output.write_bytes(canonical_zip(data))
             with self.assertRaisesRegex(ValueError,'derived artifacts'): verify(output)
 
     def test_invalid_protocol_leaves_no_output(self):
@@ -92,9 +92,7 @@ class IntegratedBundleTests(unittest.TestCase):
     def verify_entries(self, entries):
         with tempfile.TemporaryDirectory() as folder:
             output = Path(folder) / 'bundle.zip'
-            with zipfile.ZipFile(output, 'w') as archive:
-                for name, value in entries.items():
-                    archive.writestr(name, value)
+            output.write_bytes(canonical_zip(entries))
             return verify(output)
 
     def test_exact_input_preserved_and_bounded_readiness(self):

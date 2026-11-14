@@ -241,3 +241,5 @@ outcome/readiness gates; an origin queue does not authorize or resolve anything.
 See [EVIDENCE_BASIS](docs/EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.
 
 Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.
+
+[Canonical research ZIP verification](docs/RESEARCH_ZIP_SAFETY.md): unchanged schema2 builder, bounded path/BytesIO input, exact canonical envelope required. Noncanonical recompression/trailing metadata is now rejected; old archives need their recorded implementation.

@@ -1,0 +1,62 @@
+{
+  "previous_release": "0.134.0-bibliographic-assertion-continuation",
+  "previous_module_sha256": "8047d3eb7bc6aa843a7fae87eb39502cda474cc5890688a484d2721677468eee",
+  "build_function_sha256": "f1f95832e2f92c3af8476958f171dbc1ecefce54e462de627f7ffd7977adb1d6",
+  "engine_sha256": {
+    "evidence_workflow.py": "c8b4e457605888ac1a6f9894920d598c643d781ffb89362635f451eaad972e82",
+    "prisma_reports.py": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562",
+    "context_links.py": "bf7cbe8aa68f8769a4bbc403eedbb1dab5ea4156426bf32384d195edc50c59cb",
+    "search_audit.py": "fa48f3b17e625218985433b2d8182d4f2cd0900e1069aa3cbb7a7486a11f991c",
+    "csv_safety.py": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e",
+    "appraisal_links.py": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2",
+    "json_io.py": "2cf22521af031246fdb66510442ce801080b54129f54873633b0c53a0e6e2abc",
+    "adapter_integrity.py": "9f1b62ba73ea6a570a00113fe2afb0e11591465e4422b5f25df5c2f390203428",
+    "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "planning_links.py": "b1e3c5de430802da65d773a54806de1de3e6bbf8536fbf3d56f69b268e901e37",
+    "synthesis_links.py": "4fe4b0de5acc33a219c4cf5e4d96d6ac74b7bd2e44451ac175631b0054c62b60",
+    "experiment_links.py": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74",
+    "research_bundle.py": "8047d3eb7bc6aa843a7fae87eb39502cda474cc5890688a484d2721677468eee",
+    "bibliographic_integrity.py": "f8e13015e41ba6d825b8693774e2d68b4d2a55cd6b1b20ead0ccc22caa686b65",
+    "csv_export_parser.py": "64d14e9118af92c40ce1b8d9c960dda71bd4861eb4d496f6fc7e83bb81a32c91",
+    "bibliographic_intake.py": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585",
+    "bibliographic_review.py": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570",
+    "report_links.py": "4f16dcb183e2a08b91479796ca7db1103701eb8fd624a7b9dd41c264cc874a92",
+    "screening_links.py": "25ceb39cf2a0ab2d999205660c7e30754b05ac4fe944076189f763b5f247ac68",
+    "screening_decision_links.py": "6999fdcf56404b764461647337b4977a218d5efb0685bd783a11142843d4db39",
+    "screening_decision.py": "8e67b499b4f3efe6c134dc1db525e6337021ebff937784fa2afeefa4a2a5aa58",
+    "report_review_links.py": "53196b12e09eb6193e1de9482a741080159c89c8307a76966d60667e5434da1a",
+    "report_study_review_links.py": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b",
+    "report_study_inventory_links.py": "fa1cbdb304acc5d940c43c6f19dc6ad9ee2277743c0df23b3e4d01752c97a980",
+    "work_document_links.py": "6f0c66a1666ce37d98cd68d67bc463bb9a893f90920adaef7b69611913d3fba2",
+    "report_study_inventory_review_links.py": "bdb77523f1f349df898b605ae385ac9320231d02e7de359e4f4b8701e4a8b9b2",
+    "challenge_links.py": "6408b7ff0f96bb8512905074448ef350ce2c790a114998bfbc8aa244fd4d19b4",
+    "readiness_links.py": "141222dc02740f77da9e62903d53442c87b2bbdbb268107b9c681a62a8da2295",
+    "evidence_basis_links.py": "e550e5b83e959405ed577bd969b85402991956d54a454ec806e6f9797bcb3210"
+  },
+  "cases": [
+    {
+      "path": "examples/report-protocol.json",
+      "input_sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78",
+      "archive_sha256": "74062cf2f3fb16e5b03ac3bb09e8394f4b399c6644bf8ff7543e18fce26185ff",
+      "archive_bytes": 36065
+    },
+    {
+      "path": "examples/synthesis-review.json",
+      "input_sha256": "25edc6c594cdcc760b04038c41b058f05a7b955fd84fe73bf287e6cbfca1c92a",
+      "archive_sha256": "e51949757924856a9acbe2ad4a9778ade26cdcf4ee951e7c5aa8176acb77cf30",
+      "archive_bytes": 100042
+    },
+    {
+      "path": "examples/first-run-enriched.json",
+      "input_sha256": "4a2fb9b29660772de6d76360a0d2987114e838b69a8c695c75b0eebdaa5bb0bf",
+      "archive_sha256": "e162fb47c3b1b8088a34ff31ff6182efcf58077542c0a2f9755c3430e4103a7d",
+      "archive_bytes": 148810
+    },
+    {
+      "path": "examples/extraction-worksheet-protocol.json",
+      "input_sha256": "d89f72f2545b645642922466e77ea408358397112191cf177e83e3d762279616",
+      "archive_sha256": "caa1ce08b33b86151e2848217e07282668275c91681e8f31e0192c5c02f9988a",
+      "archive_bytes": 298535
+    }
+  ]
+}

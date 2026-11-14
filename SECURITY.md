@@ -54,3 +54,14 @@ source directory; they are not protection against a privileged concurrent attack
 All manifest metadata is validated before source reads. Native Windows source
 access fails closed. Output contains unredacted supplied text and should stay
 outside public repositories. Interpret source content as untrusted data only.
+
+## Archive handling
+
+Research ZIP verification never extracts entries. It requires the fixed seven
+STORED regular files, no encryption/duplicate paths, a 50,000,000-byte inclusive
+uncompressed sum and bounded raw input with derived fixed header overhead. Payload
+and derivation checks are followed by whole canonical-byte comparison. Noncanonical
+recompression/comments/trailing bytes formerly accepted by the standalone verifier
+are now rejected. Hashes are not signatures; recorded implementation bytes remain
+required. This is fail-closed consistency, not a known-vulnerability claim or an
+absolute ZIP-parser CPU/memory bound. See [details](docs/RESEARCH_ZIP_SAFETY.md).

@@ -3923,3 +3923,17 @@ New synthetic tests use actual CSV/NBIB/RIS imports, separate challenge/readines
 Fixed 15 synthetic walkthrough target digests only, preserving all other bytes. Source hashes change, so old artifacts need their recorded trusted implementation; no public automatic refresh command is added. Full/independent final validation pending.
 
 Full 2,281 tests passed in 197.782 s (one platform skip). Independent core/document review: 118 tests / 10.896 s, including 36 actual new-guide CLI commands across all three formats. Independent final: seven existing guides/61 CLI commands regenerated all 15 target hashes exactly; all other example bytes unchanged; audit541/manifest540 and registry/manifest16 tests passed. Final focused checks repeat the source-bound metadata and release checks after recording these results.
+
+
+## 2026-11-14: 0.135.0-canonical-research-zip
+
+Roadmap #54 remaining standalone research ZIP gap: actual prior verifier accepted appended trailing bytes and DEFLATE/comment repacks. New verification rejects noncanonical envelopes after bounded path/stream reads and STORED/regular/fixed-name/size preflight. Existing semantic checks are retained before full raw-byte canonical comparison. This is fail-closed consistency, not a demonstrated exploit or total parser resource bound. Seven other wrappers and broader CLI sweep are not modified.
+
+Existing build_bundle function source is unchanged. Actual previous47 build outputs for four protocols match current output bytes exactly under the same recorded implementation dictionary. Real ENGINE fingerprints change as usual; old archives require their trusted recorded implementation. Raw bound retains existing inclusive 50 MB uncompressed sum plus exactly derived 732-byte canonical headers; create input is bounded; partial streams are read from zero and restored without ownership transfer. Schema2 and payload set remain unchanged.
+
+New attack/boundary tests and canonical semantic repacks preserve existing payload assertions. Previous view baseline files remain byte-identical with the new helper's explicitly named fingerprint exception. Prior47 research_bundle protected-byte assertion is replaced only by its historical fingerprint plus unchanged build-function check; all other protected sources remain byte-identical. Core independent 45 tests passed; independent previous-module rebuild and five local-only flag/compression/time/size header mutations passed. Fixed15 synthetic target hashes only, no actual review/source/archive rewrite. Full and final independent results pending.
+
+
+Full 2,290 tests passed in 198.677 s (one platform skip). Final independent review verified the documented rejection compatibility change, unchanged builder source under the same-engine control, explicit fingerprint exceptions, and all seven other archive modules unchanged. Seven existing guides / 61 CLI commands regenerated all fixed 15 target hashes exactly, with every other example byte retained. Independent audit 546 and manifest validation passed; registry/manifest 16 tests passed (one platform skip). Final focused checks follow this documentation-only result update.
+
+The first final-focus invocation named two nonexistent test modules (test_command_registry and test_publication_manifest), producing two import errors after 38 real tests passed. This was a command-selection mistake, not a product failure; the corrected invocation names the existing record-registry and verify-manifest modules.
