@@ -1,0 +1,446 @@
+{
+  "examples/adapter-fixture.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/adapter-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/adapter-reviews.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/appraisal-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/appraised-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/artifact-review-manifest.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/artifact-review-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/collection-choices.json": {
+    "schema": "bibliographic-choices.schema.json",
+    "scope": "Covered starting/collection authoring document"
+  },
+  "examples/batch-to-evidence/collection-review.json": {
+    "schema": "bibliographic-reviewed.schema.json",
+    "scope": "Covered starting/collection authoring document"
+  },
+  "examples/batch-to-evidence/conditions-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/conditions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/full-text.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/reports-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/reports.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/results-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/results.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/retrieval-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/retrieval.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/screen-record-A.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/screen-record-B.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/batch-to-evidence/screen-record-C.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/bibliographic-base.json": {
+    "schema": "base-protocol.schema.json",
+    "scope": "Covered starting/collection authoring document"
+  },
+  "examples/bibliographic-resolutions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/challenge-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/claim-comparison.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/completion-amendment.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/completion-binding.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/context-amendment.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/context-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/context-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/evidence-work-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/evidence-work-completion.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/evidence-work-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/experiment-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/extraction-worksheet-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/first-run-enriched.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/first-run-note-complete.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-appraisal-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-challenge-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-condition-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-context-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-inventory-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-readiness-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-receipt-fixture.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-report-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-result-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-result-corrections.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-retrieval-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-source-declarations.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/manual-work-context-assignments.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/multi-result-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/multi-study-report.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/paged-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/planned-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/planning-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/prerequisite-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/prisma-audit.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/pubmed-discovery-base.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/pubmed-discovery-execution.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/pubmed-discovery-spec.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/pubmed-metadata-execution.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/pubmed-metadata-selection.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/rationale-links.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-decision-document.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-intake-base.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-intake-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-review-intake/import-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-review-intake/positions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-reviews.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-source-check-manifest.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-source-check-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-inventory-review-intake/import-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-inventory-review-intake/positions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-inventory-reviews.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-inventory.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-review-intake/import-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-review-intake/positions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/report-study-reviews.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/result-passage-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/result-passage-manifest.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/result-passage-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/result-source-current.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/retrieval-update-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/review-demo.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/ris-resolutions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/sampling-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/screening-decision-batch/import-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/screening-decision-document.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/screening-decisions.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/screening-reviews.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/screening-sheet-intake/import-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/search-manifest.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/second-search/choices.json": {
+    "schema": "bibliographic-choices.schema.json",
+    "scope": "Covered starting/collection authoring document"
+  },
+  "examples/second-search/review.json": {
+    "schema": "bibliographic-reviewed.schema.json",
+    "scope": "Covered starting/collection authoring document"
+  },
+  "examples/source-context-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/source-work-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/source-work-completion.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/source-work-protocol.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/source-work-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/state.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/statistics-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/synthesis-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/translation-review.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-context-references.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-document-sources.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-note-amendment.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-segment-completion.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-segment-evidence-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  },
+  "examples/work-segment-source-candidates.json": {
+    "schema": null,
+    "scope": "Outside this three-document authoring path; no conformance claim"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.113.0-protocol-key-inventory",
+  "release": "0.114.0-authored-document-schemas",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 470,
+  "file_count": 477,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22750,
-      "sha256": "79dfa1b06f644d5ffff7bcb9ea6b1c365bc26e885242b34aef17e31889d765d3"
+      "bytes": 22922,
+      "sha256": "bf91cea1d4457fbaae084c8363afc7d5f2e1c88d25e83120e50d3248ff1343d3"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 14990,
-      "sha256": "d2fa42fa0862888d2eae6acbaa758d4c646cb6355f39a719980ee7eb1841ae7f"
+      "bytes": 16561,
+      "sha256": "dae01637c42d8762e152884cbde54129072016b873047dd12dd96b00966f8196"
     },
     {
       "path": "accounting_flow.py",
@@ -210,8 +210,8 @@
     },
     {
       "path": "docs/BIBLIOGRAPHIC_REVIEW.md",
-      "bytes": 9206,
-      "sha256": "b14c52869d26c26e8f780d81588ccb9e75464d8b1dd374602b12c16aa589795c"
+      "bytes": 9373,
+      "sha256": "baef0273f49995ff2f91ffc8218579986869591b8e6a10d9adfd4343da1b2fb4"
     },
     {
       "path": "docs/CHECKOUT_CHECK.md",
@@ -235,8 +235,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 53175,
-      "sha256": "55f7ac2fa2a3032f183e7244af5a177f0b96a100bf2da2b6a38695601dbd22de"
+      "bytes": 53713,
+      "sha256": "4e7c5f18550599f5d126464991fe3ec5c7581e847d998c6ca496ee8c66715c7a"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -400,8 +400,8 @@
     },
     {
       "path": "docs/PROTOCOL_SCAFFOLD.md",
-      "bytes": 4414,
-      "sha256": "139e6e211a74786093961963ab8e05407e267098c016726a24ebfff3523e6649"
+      "bytes": 4681,
+      "sha256": "3f8d247a2b56491c2b02aba5ac09cc921060b23bf7fdb230c835113bd7cb53de"
     },
     {
       "path": "docs/PUBMED_DISCOVERY.md",
@@ -425,8 +425,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 23106,
-      "sha256": "4552b874f28485f7403fab9c71d0eda8dd07c4441084a80d66c578d314fdfe92"
+      "bytes": 23273,
+      "sha256": "329d3ed0513726cc2ed811ed19c6dffd8d791fc1b8a3ee9206926f3336004aa7"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -519,6 +519,11 @@
       "sha256": "916cda9462bfe0fea327a10ff6007e599329cee5ba47816afba2913ef55ee084"
     },
     {
+      "path": "docs/SCHEMAS.md",
+      "bytes": 5798,
+      "sha256": "1055e7f9984d073b24493f5fa06437fc9dbb9fe132e5b500e3d3ddc1eb770814"
+    },
+    {
       "path": "docs/SCREENING_DECISIONS.md",
       "bytes": 9949,
       "sha256": "15a0dcf79a9e7e2e8ae963ad268d7448c1f1dff5305c2266f15a96b54f5b8dd5"
@@ -600,18 +605,18 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 37018,
-      "sha256": "62e433be2a5ab53ec324973315aae7fadde832629e8caf7e0f4bc2c6a994dbde"
+      "bytes": 37185,
+      "sha256": "089197472b0fce4459a16fb4b6c27d75c9f526de7f8cce0f9fd6ef7b56003074"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 250885,
-      "sha256": "9b3f8075f99b4ab4f6a42be03c4a5ed2479a6e4dfa270c5671db571ec1b2ce23"
+      "bytes": 252453,
+      "sha256": "ee761b8a6d4ee70068bc44c0d4e77e8428836fd15c2abcaf3ee38c0f49b02d90"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 36497,
-      "sha256": "0ec0b57235a6d4a3dbf9c35bf3bd8fb37da54abc8ddaba8e9a2c00eacd182dc8"
+      "bytes": 36664,
+      "sha256": "14b75c5581188609aebe5bc94af0d82bfddce2febb65536b8a14535d90a4e998"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1549,6 +1554,26 @@
       "sha256": "adb80316623cd1fadd4340e71c36e28c8a963e4fbb32e70aad2c420ca3f3cb20"
     },
     {
+      "path": "schema_check.py",
+      "bytes": 9715,
+      "sha256": "93defbc0255795eb803783bb172e4b719320d51565c148034af747e056c08a52"
+    },
+    {
+      "path": "schemas/base-protocol.schema.json",
+      "bytes": 2051,
+      "sha256": "21149cf2e79a48b77dc5ddfe5cd7a507ad1f4f8f507e4f3a93d571e22b25f684"
+    },
+    {
+      "path": "schemas/bibliographic-choices.schema.json",
+      "bytes": 2062,
+      "sha256": "3a164ac89193e9c41c52190139dbe9e9fc04c6c00ce9eac87a15de8b0e47d40a"
+    },
+    {
+      "path": "schemas/bibliographic-reviewed.schema.json",
+      "bytes": 2799,
+      "sha256": "ae317597b4b2c2218fe17719170ca919164bf4ac4af54490d268067eebf2be55"
+    },
+    {
       "path": "screening_decision.py",
       "bytes": 7718,
       "sha256": "8e67b499b4f3efe6c134dc1db525e6337021ebff937784fa2afeefa4a2a5aa58"
@@ -1659,6 +1684,11 @@
       "sha256": "20f61cedba420d4437bbd4bfbac868c9533345b79b40d2a50a3fa2f91d64de1e"
     },
     {
+      "path": "tests/schema_fixture_inventory.json",
+      "bytes": 16773,
+      "sha256": "e2287398f6dc91f2e17ece2e668f08f76b28bedf2043f4b17b70669d7b181fed"
+    },
+    {
       "path": "tests/test_accounting_flow.py",
       "bytes": 10246,
       "sha256": "148e051c96516b043c7ffef2d202990071a04cb6336808ea0e2a3d2b90aa93d9"
@@ -1710,8 +1740,8 @@
     },
     {
       "path": "tests/test_batch_to_evidence_walkthrough.py",
-      "bytes": 24054,
-      "sha256": "c0aa5e100e413cbb5b7f1f9eec4194dc8a8f7ea382b07be2a515be0a5cef606e"
+      "bytes": 25149,
+      "sha256": "0ad3fd22cc1b7f38f18e7503f43e01ae82b977eedf41d7e50f0233e42b37f38d"
     },
     {
       "path": "tests/test_bibliographic_intake.py",
@@ -2167,6 +2197,11 @@
       "path": "tests/test_sampling_links.py",
       "bytes": 7136,
       "sha256": "4d106cead996c1503bb6afc5b0875ec5c06cb3c12ceac9e51dcdf445b31203c3"
+    },
+    {
+      "path": "tests/test_schema_check.py",
+      "bytes": 10424,
+      "sha256": "4a695c87bdf314f70430a86d953c822392db5490651bf58dbb00648888adb8c7"
     },
     {
       "path": "tests/test_screening_decision_batch.py",

@@ -420,3 +420,13 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 |---|---|---|
 | `python protocol_keys.py list [-h] [--text]` | Names-only declared-field inventory, never validation or typo correction | [Protocol keys](PROTOCOL_KEYS.md) |
 | `python protocol_keys.py inspect [-h] [--text] protocol` | Names-only declared-field inventory, never validation or typo correction | [Protocol keys](PROTOCOL_KEYS.md) |
+
+## Descriptive authoring schemas
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python schema_check.py check [-h] schema document` | Bounded descriptive schema view/check, never workflow approval | [Authoring schemas](SCHEMAS.md) |
+| `python schema_check.py explain [-h] schema` | Bounded descriptive schema view/check, never workflow approval | [Authoring schemas](SCHEMAS.md) |
+
+Document shapes: recommended base, unreviewed collection choices, and separately reviewed
+collection choices are indexed in [Authoring schemas](SCHEMAS.md).

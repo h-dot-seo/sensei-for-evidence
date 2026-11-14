@@ -372,3 +372,6 @@ Separate source-template binding and import review; no canonical screening decis
 
 [Inspect protocol root field names](docs/PROTOCOL_KEYS.md): read-only known/unknown names,
 not value validation, typo correction or a research gate.
+
+[Authored document schemas and explain](docs/SCHEMAS.md) cover the starting-base and
+collection-choice/review path. Shape checks do not replace exact workflow validation.

@@ -58,8 +58,9 @@ reported digest uses sorted compact JSON, not the pretty-printed output bytes.
 
 - This recommended starting shape is intentionally stricter than the general Python
   validators. It is not a complete protocol schema or a JSON Schema checker.
-- No `explain`, schema collection or automatic PubMed-plan derivation ships in this
-  increment. PubMed paths require their documented exact four-key plan with source
+- The [descriptive base schema and explain](SCHEMAS.md) can assist authoring, but
+  this command remains the authoritative starting-shape check. Automatic PubMed-plan
+  derivation is not provided. PubMed paths require their documented exact four-key plan with source
   `pubmed` and a query/window consistent with the supplied discovery specification;
   see [PubMed discovery](PUBMED_DISCOVERY.md). The scaffold does not check that
   provider-specific relationship or make a live request.
@@ -74,3 +75,6 @@ reported digest uses sorted compact JSON, not the pretty-printed output bytes.
   scientific correctness or rights to redistribute any supplied material.
 
 [Command reference](COMMANDS.md) · [First-run rehearsal](FIRST_RUN.md)
+
+[Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
+collection-choice/review path. Shape checks do not replace exact workflow validation.

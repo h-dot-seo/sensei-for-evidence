@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Separately reviewed bibliographic row choices",
+  "description": "Reviewer/date/decision are operator-supplied. Real calendar dates, nonblank text, exact target hash equality, candidate coverage and current ID context require the workflow. Matching the hash syntax is not binding or approval. Python workflow validators remain authoritative; shape match is not approval, acceptance or scientific validity.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "enum": [
+              "new_record",
+              "same_record",
+              "do_not_promote"
+            ]
+          },
+          "record_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "candidate_id",
+          "disposition",
+          "record_id",
+          "rationale"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "disposition": {
+                "const": "do_not_promote"
+              },
+              "record_id": {
+                "type": "null"
+              }
+            }
+          },
+          {
+            "properties": {
+              "disposition": {
+                "enum": [
+                  "new_record",
+                  "same_record"
+                ]
+              },
+              "record_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        ]
+      }
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "target_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "const": "import_for_screening"
+        }
+      },
+      "required": [
+        "target_sha256",
+        "reviewer",
+        "reviewed_at",
+        "rationale",
+        "decision"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "resolutions",
+    "review"
+  ],
+  "additionalProperties": false
+}

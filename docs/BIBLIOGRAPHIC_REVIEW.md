@@ -142,3 +142,6 @@ can retain separate title/abstract assessments against the exact criteria and
 mapped source-row context. Adding those assertions is allowed enrichment, not a
 new import or automatic screening decision. Original CSV history remains intact;
 conflicting or stale reviewer positions do not alter canonical PRISMA counts.
+
+[Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
+collection-choice/review path. Shape checks do not replace exact workflow validation.
