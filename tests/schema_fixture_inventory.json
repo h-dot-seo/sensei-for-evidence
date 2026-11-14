@@ -327,6 +327,10 @@
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
+  "examples/research-map-sidecar.json": {
+    "schema": null,
+    "scope": "Standalone map document checked by research_map.py, not an authored JSON Schema conformance claim"
+  },
   "examples/result-passage-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"

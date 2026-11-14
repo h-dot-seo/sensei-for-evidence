@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.128.0-state-cli-failure-boundary",
+  "release": "0.129.0-standalone-research-map",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 508,
+  "file_count": 512,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 23693,
-      "sha256": "29d7ce5f7ecd1a3b8354ab09ac3a0c48e509f46c212766a28b250ea72383f2fe"
+      "bytes": 23926,
+      "sha256": "7692a90f055ca0cef56a26f46587718c9b7e903a8fddd03a59154deb005f7f14"
     },
     {
       "path": "RIGHTS.md",
@@ -45,13 +45,13 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 13738,
-      "sha256": "42c400280a1eb299a308696da147736fc6e6b27d577c87b8a80831cdc7cf0c48"
+      "bytes": 13971,
+      "sha256": "2f4c73903683bc903e1aa6fec36e91ae7ce78d468f4ff6d69f79977de099df3f"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4648,
-      "sha256": "6ac39bdb5d0a0315f00565a99b1246488e9145965d9360ce6a852105af6301fd"
+      "bytes": 4759,
+      "sha256": "5d4673203d1d119cdc1a5b2411ffa291122cbd0dc2f0e12cb56523141c692fa2"
     },
     {
       "path": "accounting_flow.py",
@@ -186,7 +186,7 @@
     {
       "path": "docs/AGENT_CONTRACT.md",
       "bytes": 6085,
-      "sha256": "52ee04e312b93d986edfb8dae0afcb0dffac2cb8801f6ded38575a8e33be9498"
+      "sha256": "dd2ffe930a644a7dbea8a25e81ab5db3382d188f6f5e9e027f9353457b3928e9"
     },
     {
       "path": "docs/AMENDMENT_NOTES.md",
@@ -250,8 +250,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 54813,
-      "sha256": "5eb3d128a0b5a0230ca46609d48161799d5fef7aabeddf7b55450015ee646b02"
+      "bytes": 55365,
+      "sha256": "769780d1370f8b82d2fc728dff8dbd71e9d9954612bc669ef2b68f5e687af674"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -450,8 +450,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 23904,
-      "sha256": "47742aeecd6103f70df5a741a12995a96af533abddadc09a5f7bc4ab24e626a9"
+      "bytes": 24132,
+      "sha256": "eb2080b3391561a00edf58fcda8013b6fce64fe0af9a37c0f1b5b118ebf33c13"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -465,8 +465,8 @@
     },
     {
       "path": "docs/RECORD_SCHEMAS.md",
-      "bytes": 16137,
-      "sha256": "ab3a3ccc030f8021927d1abcf02a85a22a1982e906229b88ec9761a56656000f"
+      "bytes": 16567,
+      "sha256": "154cd03fa739976d3aaa589065fac7270599a79f53cd3a6aa68db9b47eb5dcc7"
     },
     {
       "path": "docs/REPORT_DECISIONS.md",
@@ -524,6 +524,11 @@
       "sha256": "be284d84e84788094320fa994fa97c3842f451967ae75dda78cde19d1f9d2841"
     },
     {
+      "path": "docs/RESEARCH_MAP.md",
+      "bytes": 6328,
+      "sha256": "8bda25498a729fd6729360027c5bb6dfa564a657de6cf404d700aaaa98b8af13"
+    },
+    {
       "path": "docs/RESULT_CORRECTIONS.md",
       "bytes": 9898,
       "sha256": "d90bd6718faf3c49ad1a672943d971bbbaaa1a34e85f199cf1da8f42ae66b599"
@@ -556,7 +561,7 @@
     {
       "path": "docs/SCHEMAS.md",
       "bytes": 9230,
-      "sha256": "6b4b228bfd89d117ee800e74642f8ff77051c51451c5059c8004c84089e21015"
+      "sha256": "25b09d29961dd76f68b45a04bffc08b527b9564819be1251a4058093c9c12d1a"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
@@ -640,13 +645,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 40352,
-      "sha256": "01bb72106f054258aea6dca5c69bbbb84493e51c4d2e0c691c2e2b8aedc67c44"
+      "bytes": 40580,
+      "sha256": "54f74654eca6769d94583f5ead9f7ffa673c66563dc65ff26b513b06e9d56620"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 267986,
-      "sha256": "fd2294f4fec4b1cc3f86b2d81e64731d392879f9818875459451ae32bcad4556"
+      "bytes": 269912,
+      "sha256": "1db72cf1441c81a9a80c7cb3fd8ecaf31cb00e12ce5c844339aa09bce6cc0e75"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -655,8 +660,8 @@
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 36899,
-      "sha256": "6521b807e9af47ee124ffb1366c791d0fb0c0cf3a6fcb72bb41f6f32625ad1fc"
+      "bytes": 37127,
+      "sha256": "bc6c6c8698c14d406ed69983bd46580fa709d2acd0df3d45e3ca6c74a7c7cb34"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -690,13 +695,13 @@
     },
     {
       "path": "docs/command_contract.json",
-      "bytes": 113276,
-      "sha256": "ebf1d936bc183cf7aeb4c3fdafe48d8a1753e719d3069dd856c84d2c6a9ace92"
+      "bytes": 114427,
+      "sha256": "4a89f87f02fcf34dccf6dc2bc60d288d700c392954b90f1e43d746a940ca3c86"
     },
     {
       "path": "docs/record_registry.json",
-      "bytes": 32473,
-      "sha256": "cc0e74f61170e1de9ead843dd2c80044dd1f61a43e1c408a86f1245d4e1cc5e4"
+      "bytes": 33849,
+      "sha256": "b203cc1004cf0d2fce1e3638afe7f3762d281f1f14306205c8503c1cc5c5661b"
     },
     {
       "path": "evidence_work_intake.py",
@@ -1154,6 +1159,11 @@
       "sha256": "261c6447fc92bf81039d451119ff760e0e42c27439704f8083601b1c3797697b"
     },
     {
+      "path": "examples/research-map-sidecar.json",
+      "bytes": 1493,
+      "sha256": "3a5a8f59c45f86d67e005c349ffba54e3efef8be8bf014ba1de0e4363f570890"
+    },
+    {
       "path": "examples/result-passage-candidates.json",
       "bytes": 1015,
       "sha256": "483c7eb649274039210306f01035c97d7053df459d5e457eaf9a2ff715115844"
@@ -1554,6 +1564,11 @@
       "sha256": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5"
     },
     {
+      "path": "research_map.py",
+      "bytes": 11672,
+      "sha256": "997a962a895c9bccb08213060fe69c71b7a2581061e5652c73797be386240827"
+    },
+    {
       "path": "research_status.py",
       "bytes": 19488,
       "sha256": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d"
@@ -1770,8 +1785,8 @@
     },
     {
       "path": "tests/schema_fixture_inventory.json",
-      "bytes": 17034,
-      "sha256": "3bbf765f8b22454576482222bc789101435696afa055731fbbf670eba4ce9b32"
+      "bytes": 17214,
+      "sha256": "df2c3d9a3cbd8fc10564b5f658a37d588a004f7218e1b23a627b6a0edd093090"
     },
     {
       "path": "tests/test_accounting_flow.py",
@@ -2269,6 +2284,11 @@
       "sha256": "140ff574d4fd5fbb063d6154c9f7e584f90683bfd1f769244ddc6645028a485f"
     },
     {
+      "path": "tests/test_research_map.py",
+      "bytes": 10450,
+      "sha256": "13905ddcec6503c23d225ff8b2fd7a0262c4f652bb81a4010863f4c5d0ab9668"
+    },
+    {
       "path": "tests/test_research_status.py",
       "bytes": 6072,
       "sha256": "d5686cdc7393de2d2a1150fcf127dfb45d8a5fd82a2b7c4faa13d27e2fb4b35b"
@@ -2396,7 +2416,7 @@
     {
       "path": "tests/test_source_check_contract.py",
       "bytes": 8184,
-      "sha256": "830e702f8f6ee3239e2ae80d0e8b9b6186d9179196a02b0e1c25867b89afafad"
+      "sha256": "877a7cd2bcaa1d95a2731ad9d13ca37c1abc0dd0b9e2db5b6c67e5b90c1f67f4"
     },
     {
       "path": "tests/test_source_contexts.py",
@@ -2416,7 +2436,7 @@
     {
       "path": "tests/test_state_cli_boundaries.py",
       "bytes": 6917,
-      "sha256": "fd87ac8328c0be36345f93a78016e1cdfe969ac849408ef9d3f3f6d2da9089a7"
+      "sha256": "0c4b29159006959cb33968d82e4075c1923d2efca8538c3523e2881d9003f9d2"
     },
     {
       "path": "tests/test_statistics_links.py",

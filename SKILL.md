@@ -218,3 +218,5 @@ For a passive local snapshot use `research_view.py PROTOCOL [--output NEW.html]`
 ## Command effects to inspect
 
 See [the source-bound partial contract](docs/AGENT_CONTRACT.md) before command automation. `sensei.py contract` executes no listed command. NOT_REVIEWED effects are unknown, not permission or read-only guarantees. Preserve exact-target human review and existing challenge/readiness authorship boundaries.
+
+[Standalone authored research-map records](docs/RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.

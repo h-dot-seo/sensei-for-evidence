@@ -86,7 +86,7 @@ The Python workflow validators remain authoritative. The base schema describes t
 stricter **recommended starting shape**, not every protocol accepted by `run()`.
 Full protocols, other intake candidates, output records and schemas/explain for the
 rest of the system are not included. The explicit test inventory classifies every
-checked-in example, including104 outside these seven document shapes; no conformance
+checked-in example, including105 outside these seven document shapes; no conformance
 claim is made for excluded files. Existing snapshots/schema2 contracts do not change.
 
 Engine-only checks include:
