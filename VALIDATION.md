@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.127.0-result-document-shapes` (2026-11-14). This file is the
+Current release: `0.128.0-state-cli-failure-boundary` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,23 +55,29 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.127.0-result-document-shapes` (2026-11-14).
+Release: `0.128.0-state-cli-failure-boundary` (2026-11-14).
 
-Added descriptive completed manual result candidates and separate import-review
-schemas. Exact nested fields, candidate bounds, mechanism labels and required source
-reference structure track the existing Python validator. The original extraction
-worksheet and blank target review intentionally fail these completed-input shapes.
-No values, review, source authenticity or scientific judgement are generated.
+Separated legacy state CLI operational failures from normal mechanical findings.
+Read/strict JSON/non-object/limit failures now produce one fixed category-and-state
+stderr line, empty stdout and exit1; argparse remains exit2. This changes the older
+error-JSON stdout path, so automation must not assume every exit1 carries findings.
+Normal successful and negative findings retain their JSON output and exit0/1.
+The validate() function is unchanged, and the legacy schema gains no scientific
+or protocol-readiness authority. Normal reports are not anonymized.
 
-Python remains authoritative for nonblank text, duplicate evidence/source identities,
-real dates, exact integer versions, report/study/record/source context and exact target
-binding. Tests retain accepted and rejected structural variants and explicitly looser
-shape examples rather than claiming equivalence. The existing complete NBIB-to-evidence
-rehearsal still assembles and replays the unchanged supplied inputs, and rejects stale
-review hashes and unknown sources despite passing shape checks. The explicit example
-inventory now maps9 of113 files;104 remain outside these seven authored shapes.
-All107 root Python files and ENGINE_FILES are unchanged. Full2212 tests in181.299s
-passed (skip1). Independent33 focused tests plus32 leaf mutations passed; no blockers.
-Audit508/manifest507 and Python3.10 grammar259 passed. Final focused validation covers
-this record update. External reference-manager compatibility, prior HTML visual QA
-and Korean-locale Windows remain unverified.
+The CLI reads at most50,000,001 bytes, accepts at most50,000,000, and checks nesting
+at128 levels. Error paths omit input/path/exception content. Strict JSON, UTF-8,
+byte/depth boundaries, actual/harness equivalence and original findings are covered.
+Only validate_run.py changes among107 root Python files; ENGINE_FILES are unchanged.
+The partial command registry source binding is refreshed without extending the32
+reviewed commands;143 including validate_run remain NOT_REVIEWED.
+Full2219 tests in182.974s passed (skip1). Independent34 focused tests plus28
+old/new real-CLI shape variants passed with identical findings bytes/codes.
+Audit509/manifest508 and Python3.10 grammar260 passed; final focused checks cover
+this record update. No unresolved blockers. External reference-manager compatibility,
+prior HTML visual QA and Korean-locale Windows remain unverified.
+
+The first PR CI exposed a Windows-only test comparison mismatch: subprocess text
+mode normalized CRLF while the harness retained it. The tests now capture bytes on
+both paths, decode without newline conversion and expect the native line separator.
+Runtime code is unchanged by this correction; the corrected matrix is rechecked.

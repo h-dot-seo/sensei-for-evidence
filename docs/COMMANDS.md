@@ -440,3 +440,7 @@ errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
 report contracts are unchanged; this is not a repository-wide error policy.
 
 | `python research_bundle_describe.py [-h] [--text] bundle` | Read recorded research archive context without replay or verification | [Guide](RESEARCH_BUNDLE_DESCRIBE.md) |
+
+`validate_run.py` preserves normal JSON findings (exit1), but caught input failures
+now use fixed stderr diagnostics and empty stdout, not a JSON findings object.
+See [legacy state input and compatibility](USAGE.md#legacy-agent-state-validator).

@@ -650,6 +650,22 @@ Full verification (several minutes): `python3 -m unittest discover -v`,
 `python3 audit_publication.py`, and `python3 verify_manifest.py`. The
 [checkout smoke check](CHECKOUT_CHECK.md) is not the full suite, CI or research validation.
 
+CLI input is strict UTF-8 JSON, bounded to50,000,000 bytes and128 nesting levels.
+Exit0 with JSON stdout means no mechanical findings; exit1 with JSON stdout retains
+normal findings (`valid:false`). Reading, decoding, parsing, non-object top-level input,
+processing limits or caught validation exceptions instead return exit1 with empty
+stdout and one fixed `state validation error: <category>: state:` stderr line.
+Exit2 remains argparse usage. Categories distinguish input-unreadable, input-too-large,
+input-not-json, input-too-complex and input-invalid. Paths, input values and exception
+text are omitted on these error paths. This is not a general output anonymizer: normal
+findings still contain their original supplied reference/artifact labels.
+
+Compatibility note: older versions emitted JSON stdout even for read/parse exceptions.
+Callers must inspect exit status **and** whether stdout contains a report; never treat
+an unreadable state as completed checks with findings. The Python `validate(state)`
+function and normal valid/findings output are unchanged. This legacy state schema is
+not a protocol readiness or scientific validation mechanism.
+
 The pending synthetic state passes consistency checks while its conclusion remains
 `NOT_READY`. A valid file is not a completed study. `COMPLETE` additionally requires
 explicit sufficiency, readiness, QA, storage and traceable citation/artifact fields;

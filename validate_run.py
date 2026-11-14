@@ -149,20 +149,52 @@ def validate(state):
     return errors
 
 
+# CLI-only input limits; in-memory engine functions and result schemas are unchanged.
+MAX_CLI_INPUT_BYTES = 50_000_000
+MAX_CLI_NESTING = 128
+
+
+def _read_cli_input(path, label, parser):
+    try:
+        with path.open('rb') as stream:
+            raw = stream.read(MAX_CLI_INPUT_BYTES + 1)
+    except OSError:
+        parser.exit(1, 'state validation error: input-unreadable: ' + label + ': "Unable to read supplied input."\n')
+    if len(raw) > MAX_CLI_INPUT_BYTES:
+        parser.exit(1, 'state validation error: input-too-large: ' + label + ': "Input exceeds 50000000 bytes."\n')
+    try:
+        value = parse_json(raw.decode('utf-8'))
+    except RecursionError:
+        parser.exit(1, 'state validation error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
+    except (ValueError, TypeError):
+        parser.exit(1, 'state validation error: input-not-json: ' + label + ': "Expected strict UTF-8 JSON."\n')
+    if not isinstance(value, dict):
+        parser.exit(1, 'state validation error: input-invalid: ' + label + ': "Expected a JSON object."\n')
+    pending = [(value, 0)]
+    while pending:
+        item, depth = pending.pop()
+        if depth > MAX_CLI_NESTING:
+            parser.exit(1, 'state validation error: input-too-complex: ' + label + ': "JSON nesting exceeds 128 levels."\n')
+        if isinstance(item, dict):
+            pending.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            pending.extend((child, depth + 1) for child in item)
+    return value
+
+
 def main():
     configure_utf8_stdio()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('state', type=Path)
     args = parser.parse_args()
+    state = _read_cli_input(args.state, 'state', parser)
     try:
-        state = parse_json(args.state.read_text(encoding='utf-8'))
-        if not isinstance(state, dict):
-            raise ValueError('state must be an object')
         errors = validate(state)
-    except (OSError, ValueError, TypeError, KeyError) as exc:
-        print(json.dumps({'valid': False, 'errors': [str(exc)]}, ensure_ascii=False))
-        return 1
-    print(json.dumps({'valid': not errors, 'errors': errors}, ensure_ascii=False))
+        encoded = json.dumps({'valid': not errors, 'errors': errors}, ensure_ascii=False)
+        encoded.encode('utf-8')
+    except (OSError, ValueError, TypeError, KeyError, RecursionError, OverflowError):
+        parser.exit(1, 'state validation error: input-invalid: state: "Supplied state could not be checked; inspect field shapes."\n')
+    print(encoded)
     return int(bool(errors))
 
 
