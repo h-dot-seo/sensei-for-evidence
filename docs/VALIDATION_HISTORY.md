@@ -3607,3 +3607,19 @@ scientific decision or stored review target chain. Existing runtime unchanged.
 Full 2173 tests in 171.384s passed (skip1), independent 2 passed with all
 14 guide commands replayed. Audit 495 / manifest 494 and Python3.10 grammar 252
 passed. No unresolved review blockers; real external-export compatibility and HTML visual QA unverified.
+
+## 2026-11-14: 0.121.0-indexed-review-joins
+
+Review views now build internal evidence-to-ledger-position indexes instead of
+rescanning every statement/unit for each packet and every work row for each citation.
+Rows retain ledger order, linked-ID details and independent copies. Schema2, canonical
+outputs and ENGINE_FILES are unchanged; view implementation hashes change. Sparse
+selection visits are tested deterministically; dense output can still be quadratic.
+Six new tests cover scan-oracle equivalence across valid examples, selected/prerequisite
+packets, order, duplicates, missing links, source preservation and actual view joins.
+Full2179 tests in171.435s passed (skip1). Independent11 tests,1000 randomized
+index cases,60 randomized full protocols and10 experimental-ledger examples passed.
+Prior-release comparison across43 valid examples also matched except changed view
+implementation hashes. Audit496/manifest495 and Python3.10 grammar253 passed.
+No unresolved review blockers; external-export compatibility and HTML visual QA
+remain unverified.

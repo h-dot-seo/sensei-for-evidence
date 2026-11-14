@@ -19,6 +19,24 @@ BOUNDARY = ('A review packet joins supplied assertions and mechanical gaps only.
             'recommendation or go/no-go decision is generated.')
 
 
+def _evidence_row_index(rows):
+    """Index ledger positions, retaining original order and distinct equal rows."""
+    by_evidence = {}
+    for position, row in enumerate(rows):
+        for eid in set(row['evidence_ids']):
+            by_evidence.setdefault(eid, set()).add(position)
+    return rows, by_evidence
+
+
+def _linked_rows(index, evidence_ids):
+    """Return each matching original row once, in original ledger order."""
+    rows, by_evidence = index
+    positions = set()
+    for eid in evidence_ids:
+        positions.update(by_evidence.get(eid, ()))
+    return [rows[position] for position in sorted(positions)]
+
+
 def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     if type(include_prerequisites) is not bool:
         raise ValueError("include_prerequisites must be a boolean")
@@ -72,10 +90,14 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                   'Shared evidence, context or ranks do not add dependencies. No work is executed, approved or reprioritized. '
                   'A dependency-unblocked task may retain source, experimental, clinical and appraisal gaps. '
                   'Direct prerequisite completion-source labels are not recursive acceptance certificates and do not change blocking.'))
+    statements_index = _evidence_row_index(research['synthesis']['statement_ledger'])
+    units_index = _evidence_row_index(research['experiments']['experimental_unit_ledger'])
     packets = []
     for wid in selected:
         item = work[wid]
         evidence_ids = set(item['evidence_ids'])
+        linked_statements = _linked_rows(statements_index, evidence_ids)
+        linked_units = _linked_rows(units_index, evidence_ids)
         result_rows, source_indices = [], set()
         source_inputs = []
         for ref in item.get('source_refs', []):
@@ -138,13 +160,13 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                                   work_positions=[copy.deepcopy(position) for position in statement.get('evidence_positions', []) if position['evidence_id'] in evidence_ids],
                                   position_stage='SUPPLIED' if 'evidence_positions' in statement else 'NOT_SUPPLIED',
                                   scope='full_statement_review_with_only_work_linked_positions_selected')
-                             for statement in research['synthesis']['statement_ledger'] if evidence_ids.intersection(statement['evidence_ids'])],
+                             for statement in linked_statements],
             experimental_stage=research['experiments']['stage'],
             experimental_gap_scope='full_intersecting_condition_records_including_other_outcomes',
             experimental_units=[dict(experimental_unit=copy.deepcopy(unit),
                                      work_evidence_ids=sorted(evidence_ids.intersection(unit['evidence_ids'])),
                                      other_experiment_evidence_ids=sorted(set(unit['evidence_ids'])-evidence_ids))
-                                for unit in research['experiments']['experimental_unit_ledger'] if evidence_ids.intersection(unit['evidence_ids'])],
+                                for unit in linked_units],
             scope_counts=dict(result_rows=len(result_rows),
                 source_records=len({row['evidence']['record_id'] for row in result_rows}),
                 supplied_study_ids=len({row['evidence']['study_id'] for row in result_rows}),
@@ -154,12 +176,12 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
             report_stage='SUPPLIED' if reports is not None else 'NOT_SUPPLIED',
             recorded_review_gaps=dict(
                 source_review_missing_searches=sorted(row['reference']['search_id'] for row in source_inputs if row['reference']['kind']=='planned_search' and not row['observed_search_indices']),
-                units_without_outcome_statistics=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_statistics' not in unit and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
-                units_with_statistics_review_cues=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if (unit.get('statistics_review', {}).get('missing_fields') or unit.get('statistics_review', {}).get('literal_label_differences')) and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
-                units_without_outcome_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if 'outcome_sampling' not in unit and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
-                units_with_unresolved_sampling=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit.get('sampling_review', {}).get('unresolved_fields') and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_without_outcome_statistics=sorted(unit['experiment_id'] for unit in linked_units if 'outcome_statistics' not in unit) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_with_statistics_review_cues=sorted(unit['experiment_id'] for unit in linked_units if (unit.get('statistics_review', {}).get('missing_fields') or unit.get('statistics_review', {}).get('literal_label_differences'))) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_without_outcome_sampling=sorted(unit['experiment_id'] for unit in linked_units if 'outcome_sampling' not in unit) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_with_unresolved_sampling=sorted(unit['experiment_id'] for unit in linked_units if unit.get('sampling_review', {}).get('unresolved_fields')) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 evidence_without_experimental_unit=sorted(eid for eid in evidence_ids if experiment_links[eid] is None) if research['experiments']['stage'] == 'SUPPLIED' else None,
-                units_with_unresolved_conditions=sorted(unit['experiment_id'] for unit in research['experiments']['experimental_unit_ledger'] if unit['unresolved_fields'] and evidence_ids.intersection(unit['evidence_ids'])) if research['experiments']['stage'] == 'SUPPLIED' else None,
+                units_with_unresolved_conditions=sorted(unit['experiment_id'] for unit in linked_units if unit['unresolved_fields']) if research['experiments']['stage'] == 'SUPPLIED' else None,
                 pending_context_ids=sorted(row['context']['context_id'] for row in context_rows if row['context']['review_status'] == 'pending'),
                 evidence_without_recorded_appraisal=sorted(eid for eid in evidence_ids if not appraisal_links[eid]),
                 source_indices_with_unresolved_accounting=[row['search_index'] for row in source_rows if not row['accounting']['complete']]),

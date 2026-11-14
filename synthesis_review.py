@@ -34,6 +34,10 @@ def snapshot(protocol):
     candidate_receipts = {row['sha256']: row for row in protocol.get('adapter_receipts', {}).get('receipts', [])
                           if row['target_type'] == 'extraction'}
     experiment_links = {row['evidence_id']: row['experiment_id'] for row in research['experiments']['evidence_links']}
+    work_ids_by_evidence = {}
+    for work in research['work_packages']:
+        for eid in set(work['evidence_ids']):
+            work_ids_by_evidence.setdefault(eid, []).append(work['work_package_id'])
     citations = {}
     for evidence in research['evidence']:
         eid, rid = evidence['evidence_id'], evidence['record_id']
@@ -46,7 +50,7 @@ def snapshot(protocol):
                                  search_ref=copy.deepcopy(search_refs[row['search_index']]),
                                  accounting=copy.deepcopy(research['coverage'][row['search_index']])) for row in occurrences[rid]],
             appraisal_ids=copy.deepcopy(appraisal_links[eid]),
-            work_package_ids=sorted(work['work_package_id'] for work in research['work_packages'] if eid in work['evidence_ids']))
+            work_package_ids=sorted(work_ids_by_evidence.get(eid, [])))
     statements = []
     for statement in synthesis['statement_ledger']:
         refs = set(statement['evidence_ids'])
