@@ -22,7 +22,7 @@ MAX_TARGET_BYTES = 50_000_000
 BOUNDARY = (
     'READ_ONLY_TARGET_PREVIEW: supplied human decision rows are simulated in sheet order, not applied '
     'or approved. Canonical screening, protocol and stored receipt history remain unchanged. No candidate '
-    'protocol or application file is exported; batch assemble/verify is NOT_IMPLEMENTED. Preview step '
+    'protocol or application file is exported; assemble/verify is not implemented by this preview CLI; a separate reviewed application tool is required. Preview step '
     'hashes and projected rows describe a hypothetical ordinary receipt chain, not executed decisions. '
     'A future separate import review must bind this exact target, sheet, original protocol and implementation; '
     'the blank review document is not approval. No decision, reason, winner, vote or adjudication is inferred. '
@@ -36,7 +36,7 @@ BOUNDARY = (
 )
 NEGATIVE_CLAIMS = dict(protocol_changed=False, canonical_screening_changed=False,
     stored_history_changed=False, application_exported=False, approval_granted=False,
-    batch_assemble_verify='NOT_IMPLEMENTED', adjudication='NOT_PERFORMED',
+    preview_cli_assemble_verify='NOT_IMPLEMENTED', adjudication='NOT_PERFORMED',
     reviewer_identity='NOT_ESTABLISHED', reading='NOT_ESTABLISHED', external_calls=0,
     conclusion_readiness='NOT_READY')
 
@@ -49,7 +49,7 @@ def _hashes():
     root = Path(__file__).resolve().parent
     names = ('screening_decision_batch.py', 'screening_decision_sheet.py', 'screening_sheet.py',
              'screening_review.py', 'screening_decision.py', 'csv_export_parser.py', 'csv_safety.py',
-             'challenge_intake.py', 'nbib_intake.py')
+             'challenge_intake.py', 'nbib_intake.py', 'screening_decision_batch_apply.py')
     return dict(engine_hashes(), **{name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
 
 
@@ -105,8 +105,8 @@ def _parse(protocol, raw):
     return parsed, rows, skipped, provenance
 
 
-def prepare(protocol, raw):
-    """Return only a detached preview and blank review, never a protocol candidate."""
+def _simulate(protocol, raw):
+    """Shared exact simulation; candidate is internal, never exported by the preview CLI."""
     protocol = _normalized(protocol, MAX_PROTOCOL_BYTES, 'original protocol')
     parsed, rows, skipped, provenance = _parse(protocol, raw)
     candidate = copy.deepcopy(protocol)
@@ -144,6 +144,13 @@ def prepare(protocol, raw):
         projected_after_report_flow=None if after_reports is None else copy.deepcopy(after_reports['report_flow']),
         engine_sha256=_hashes(), **NEGATIVE_CLAIMS, boundary=BOUNDARY)
     target['target_sha256'] = digest(target)
+    target = _normalized(target, MAX_TARGET_BYTES, 'target')
+    return target, candidate
+
+
+def prepare(protocol, raw):
+    """Return only a detached preview and blank review, never a protocol candidate."""
+    target, _ = _simulate(protocol, raw)
     review = {key: None for key in sorted(REVIEW_FIELDS)}
     review.update(schema_version=1, target_sha256=target['target_sha256'], decision='apply_screening_decisions')
     return _normalized(dict(schema_version=1, status='READ_ONLY_TARGET_PREVIEW', target=target,

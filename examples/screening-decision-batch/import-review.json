@@ -1,0 +1,9 @@
+{
+  "decision": "apply_screening_decisions",
+  "rationale": "Record exact supplied synthetic choices only.",
+  "receipt_id": "synthetic-batch-import",
+  "reviewed_at": "2026-11-14",
+  "reviewer": "Synthetic importer",
+  "schema_version": 1,
+  "target_sha256": "0510ef26b2fe4e06fe9dea151958f344fd575d67c0129ace696897e651936b66"
+}

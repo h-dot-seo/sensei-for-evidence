@@ -200,3 +200,9 @@ in this increment; canonical engine and adapter bytes remain unchanged.
 reuses complete single-record prepare/assemble validation for an in-memory chain.
 Only a hypothetical target/blank review is output; protocol/application writes and
 batch assemble/verify are absent. ENGINE_FILES and adapter remain byte-identical.
+
+`screening_decision_batch_apply.py` reuses the preview module's shared internal
+simulation. Exact separate import review binds the implementation, original and
+CSV bytes; full replay gates new protocol export. One destination per command is
+published from a same-directory complete temporary file by exclusive hard link.
+ENGINE_FILES and ordinary receipt schemas remain unchanged.

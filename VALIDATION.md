@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.99.0-decision-batch-preview` (2026-11-14). This file is the
+Current release: `0.100.0-reviewed-decision-batch` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,36 +54,34 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Read-only decision-batch target preview (0.99.0-decision-batch-preview)
+## 2026-11-14 Reviewed decision-batch application and replay (0.100.0-reviewed-decision-batch)
 
-A separate #33 target-only increment parses exact edited decision-sheet bytes,
-rejects changed read-only/export context and simulates completed supplied rows in
-sheet order using the existing full single-record prepare/assemble guards. It
-outputs hypothetical steps and a blank import review, not a candidate protocol,
-applied receipt, approval or application. Batch assemble/verify remains absent.
-Canonical screening, existing positions and stored history are untouched. The
-100-row cap, lifetime receipt cap and cumulative/final target byte budgets bound
-this convenience without claiming high-volume performance or scientific validity.
+The #33 batch path now has a separate exact-human-review assemble/verify tool.
+Preview and application share one internal simulation, preserving full existing
+single-record operational guards and ordinary receipt schemas. The preview remains
+read-only. A completed separate import review binds original protocol, raw sheet,
+target and implementation before assembly creates a detached candidate. Full replay
+must match the entire application before any new protocol export. No original file,
+existing position or unrelated assertion is modified. Application code bytes are
+part of the target, so older previews require fresh review rather than rebasing.
 
-Final local Python 3.12 suite on fixed inputs: `Ran 2004 tests in 151.029s`,
-`OK (skipped=1)`. Focused preview/export/intake/navigation: 57 tests pass; new preview
-module: 11 tests pass after final byte-budget hardening. Independent review ran
-60 preview/export/single-decision tests, reran two later-step guard/CLI regressions
-and reviewed the final cumulative-byte guard; no remaining blockers. Actual 100
-completed decisions were simulated successfully (local standalone 8.208s).
+Local Python 3.12 full suite: `Ran 2013 tests in 153.165s`, `OK (skipped=1)`.
+Focused application/preview/export/navigation: 56 pass. Independent review ran new
+application9 + existing preview/single-decision48 tests (57 total), found no blockers
+and confirmed unchanged ENGINE_FILES. Audit: 428 files, pass; manifest, compileall,
+Python 3.10 grammar, adapter/engine bytes and existing executable sh blocks pass.
+Catalog: 26 routes, 117 help entrypoints. No test failures occurred in this increment.
 
-Audit: 424 files, pass. Manifest, compileall, Python 3.10 grammar, unchanged engine/
-adapter bytes and preserved existing executable sh blocks pass. Catalog: 26 routes,
-115 help entrypoints. The new synthetic guide executes verbatim. Tests cover exact
-chain/order reproducibility, original/context drift, partial/blank/duplicate rows,
-formula ambiguity, source spans, limits and second-step workflow failures that
-preserve original input and produce no CLI output.
+The application CLI has at most one new destination per command. Complete flushed
+same-directory temporary files are published by exclusive hard links, never by
+replacement. Tests cover write/link failures with no final output and cleanup,
+existing/symlink destinations, unsupported hard links, absent parents, full replay
+tampering, stale implementation/review/context, duplicate/partial rows, shared
+limits/budgets, second-step guard failure, old history prefixes and the verbatim
+synthetic guide. Post-publication cleanup/stdout failures can leave complete output;
+that uncertainty and the absence of ancestor-race guarantees are documented.
 
-Validation correction: an interim final rerun had 10 checkout smoke failures
-because the guide was edited while that run was active, leaving its manifest
-outdated. No source-function failure occurred. The guide was frozen, the manifest
-regenerated and the full 2004-test suite rerun successfully as recorded above.
-This bookkeeping error occurred before publication; no failing revision was pushed.
-All fixtures remain synthetic. Hashes and previews do not establish reviewer
-identity, source reading, adjudication, chronological authenticity or readiness.
+All examples are synthetic. Import review authorizes recording supplied choices,
+not adjudication correctness, reviewer identity, reading, chronology or scientific
+validity. The detached application must be retained for batch provenance.
 
