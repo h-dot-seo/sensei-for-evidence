@@ -450,3 +450,16 @@ See [legacy state input and compatibility](USAGE.md#legacy-agent-state-validator
 | `python research_map.py verify [-h] protocol document recorded_review` | Compare a stored map review against exact current-input replay | [Standalone research map](RESEARCH_MAP.md) |
 
 | `research_map_views.py` | Optional standalone map context/comparison projection; no protocol, gate or queue changes |
+
+## Supplied patent ledger (not legal analysis)
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python patent_intake.py [-h] {template,target,assemble,verify} ...` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+| `python patent_intake.py template [-h] [--question QUESTION] [--output OUTPUT] protocol` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+| `python patent_intake.py target [-h] [--output OUTPUT] protocol candidates` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+| `python patent_intake.py assemble [-h] [--output OUTPUT] protocol candidates review` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+| `python patent_intake.py verify [-h] protocol application` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+| `python patent_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
+
+| `patent_links.py` | Strict supplied patent ledger validation and descriptive queues; no legal judgement |

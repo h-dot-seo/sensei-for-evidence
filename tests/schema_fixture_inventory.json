@@ -219,6 +219,14 @@
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
+  "examples/patent-candidates.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
+  "examples/patent-protocol.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
   "examples/planned-protocol.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"

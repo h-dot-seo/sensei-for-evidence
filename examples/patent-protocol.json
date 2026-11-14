@@ -1,0 +1,55 @@
+{
+  "question": "How are fictional ZZ patent records accounted for without legal conclusions?",
+  "version": "synthetic-patent-ledger-v1",
+  "inclusion_criteria": [
+    "Fictional in-scope records for software testing only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope records for software testing only"
+  ],
+  "search_plan": [
+    {
+      "search_id": "window-1",
+      "source": "synthetic-ZZ-index-1",
+      "query": "fictional mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "window-2",
+      "source": "synthetic-ZZ-index-2",
+      "query": "fictional mechanism",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [
+    {
+      "search_id": "window-1",
+      "source": "synthetic-ZZ-index-1",
+      "query": "fictional mechanism",
+      "window": "2020-2026",
+      "searched_at": "2026-01-01",
+      "record_ids": [
+        "ZZ-SYN-0001-A",
+        "ZZ-SYN-0002-A"
+      ],
+      "total_count": 2,
+      "complete": true
+    },
+    {
+      "search_id": "window-2",
+      "source": "synthetic-ZZ-index-2",
+      "query": "fictional mechanism",
+      "window": "2020-2026",
+      "searched_at": "2026-01-01",
+      "record_ids": [
+        "ZZ-SYN-0002-A",
+        "ZZ-SYN-UNKNOWN-A"
+      ],
+      "total_count": 2,
+      "complete": true
+    }
+  ],
+  "screening": [],
+  "evidence": [],
+  "gaps": []
+}

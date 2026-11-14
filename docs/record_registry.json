@@ -1137,6 +1137,82 @@
       "role": "current-implementation exact replay result",
       "schema_version": 1,
       "value": "research_map_replay_check"
+    },
+    {
+      "constructor_bindings": [
+        "basis_sha256",
+        "implementation_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE"
+      ],
+      "discriminator": "kind",
+      "function": "review",
+      "guide": "PATENT_INFORMATION.md",
+      "module": "patent_links.py",
+      "role": "supplied patent ledger record or exact replay result; not legal validation",
+      "schema_version": 1,
+      "value": "patent_ledger_review"
+    },
+    {
+      "constructor_bindings": [
+        "current_basis_sha256"
+      ],
+      "constructor_expansions": [
+        "links.NEGATIVE"
+      ],
+      "discriminator": "kind",
+      "function": "template",
+      "guide": "PATENT_INFORMATION.md",
+      "module": "patent_intake.py",
+      "role": "supplied patent ledger record or exact replay result; not legal validation",
+      "schema_version": 1,
+      "value": "patent_intake_template"
+    },
+    {
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": [
+        "links.NEGATIVE"
+      ],
+      "discriminator": "kind",
+      "function": "target",
+      "guide": "PATENT_INFORMATION.md",
+      "module": "patent_intake.py",
+      "role": "supplied patent ledger record or exact replay result; not legal validation",
+      "schema_version": 1,
+      "value": "patent_intake_target"
+    },
+    {
+      "constructor_bindings": [],
+      "constructor_expansions": [
+        "links.NEGATIVE"
+      ],
+      "discriminator": "kind",
+      "function": "assemble",
+      "guide": "PATENT_INFORMATION.md",
+      "module": "patent_intake.py",
+      "role": "supplied patent ledger record or exact replay result; not legal validation",
+      "schema_version": 1,
+      "value": "detached_patent_intake"
+    },
+    {
+      "constructor_bindings": [
+        "expected_application_sha256",
+        "recorded_application_sha256"
+      ],
+      "constructor_expansions": [
+        "links.NEGATIVE"
+      ],
+      "discriminator": "kind",
+      "function": "verify",
+      "guide": "PATENT_INFORMATION.md",
+      "module": "patent_intake.py",
+      "role": "supplied patent ledger record or exact replay result; not legal validation",
+      "schema_version": 1,
+      "value": "patent_intake_replay_check"
     }
   ],
   "untagged_research_manifest": {

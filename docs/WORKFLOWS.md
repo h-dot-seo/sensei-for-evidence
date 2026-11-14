@@ -610,3 +610,10 @@ still fails closed; legacy passage manifest version1 is unchanged.
 [Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
 
 [Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
+
+## Supplied patent ledger (ordinary protocols only)
+
+Follow [the tested patent-information path](PATENT_INFORMATION.md): explicit question
+and rows → exact target → separately supplied recording review → append candidate →
+original-input replay → supplied observations. No legal or scientific acceptance is
+inferred. Import histories, new gates and external patent services are outside scope.

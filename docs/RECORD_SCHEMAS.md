@@ -128,6 +128,11 @@ their own manifests; segment entries are not independent archives.
 | `kind=research_map_template` | 1 | blank authored-map forms; not a completed record | `research_map.py:template` | [Guide](RESEARCH_MAP.md) |
 | `kind=research_map_review` | 1 | standalone supplied-map review; not engine integration | `research_map.py:review` | [Guide](RESEARCH_MAP.md) |
 | `kind=research_map_replay_check` | 1 | current-implementation exact replay result | `research_map.py:verify` | [Guide](RESEARCH_MAP.md) |
+| `kind=patent_ledger_review` | 1 | supplied patent ledger record or exact replay result; not legal validation | `patent_links.py:review` | [Guide](PATENT_INFORMATION.md) |
+| `kind=patent_intake_template` | 1 | supplied patent ledger record or exact replay result; not legal validation | `patent_intake.py:template` | [Guide](PATENT_INFORMATION.md) |
+| `kind=patent_intake_target` | 1 | supplied patent ledger record or exact replay result; not legal validation | `patent_intake.py:target` | [Guide](PATENT_INFORMATION.md) |
+| `kind=detached_patent_intake` | 1 | supplied patent ledger record or exact replay result; not legal validation | `patent_intake.py:assemble` | [Guide](PATENT_INFORMATION.md) |
+| `kind=patent_intake_replay_check` | 1 | supplied patent ledger record or exact replay result; not legal validation | `patent_intake.py:verify` | [Guide](PATENT_INFORMATION.md) |
 
 ## Machine-readable index and coverage
 
