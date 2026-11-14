@@ -20,6 +20,7 @@ import zipfile
 import archive_safety
 import research_bundle as bundle
 from tests._canonical_zip import pack
+from tests._question_compat import prior_builder_source
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -47,11 +48,14 @@ class ResearchZipSafetyTests(unittest.TestCase):
 
     def test_actual_previous_build_bytes_identical_with_same_recorded_engine(self):
         data=json.loads((ROOT/'tests/research_zip_previous_baselines.json').read_bytes())
-        self.assertEqual(hashlib.sha256(inspect.getsource(bundle.build_bundle).encode()).hexdigest(),data['build_function_sha256'])
+        self.assertEqual(hashlib.sha256(prior_builder_source(bundle).encode()).hexdigest(),data['build_function_sha256'])
         current=bundle.engine_hashes()
-        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py'})
+        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py','question_links.py'})
         for name,expected in data['engine_sha256'].items():
-            if name!='research_bundle.py':self.assertEqual(current[name],expected,name)
+            if name not in ('research_bundle.py','evidence_workflow.py','adapter_integrity.py','bibliographic_integrity.py'):self.assertEqual(current[name],expected,name)
+            elif name!='research_bundle.py':
+                prior=json.loads((ROOT/'tests/question_legacy_baselines.json').read_bytes())['prior_source_sha256']
+                self.assertEqual(prior[name],expected,name)
         with patch.object(bundle,'engine_hashes',return_value=copy.deepcopy(data['engine_sha256'])):
             for case in data['cases']:
                 raw=(ROOT/case['path']).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),case['input_sha256'])

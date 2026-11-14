@@ -242,3 +242,6 @@ execution. Package/consultation hashes bind declarations only, not verified prov
 See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.
 
 Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.
+
+
+Supplied question labels and separately reviewed transitions: [question ledger](QUESTION_LEDGER.md). Optional one-way context only; no answer generation, new readiness gate, terminal-record reopening or scientific closure assessment.

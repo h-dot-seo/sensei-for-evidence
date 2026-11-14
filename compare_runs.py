@@ -525,6 +525,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
         'search_plan': entity_changes(left['search_plan_audit']['search_plan_ledger'],
                                       right['search_plan_audit']['search_plan_ledger'], 'search_id'),
     }
+    if 'question_records' in before or 'question_records' in after:
+        entities['question_records'] = entity_changes(before.get('question_records', []), after.get('question_records', []), 'question_id')
     if 'evidence_bases' in before or 'evidence_bases' in after:
         entities['evidence_bases'] = entity_changes(before.get('evidence_bases', []), after.get('evidence_bases', []), 'evidence_id')
     implementation = dict(engine_hashes(), **{'compare_runs.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
@@ -549,6 +551,11 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
             before={key: old[eid][key] for key in ('text_access', 'value_origin', 'finding_kind')},
             after={key: new[eid][key] for key in ('text_access', 'value_origin', 'finding_kind')})
             for eid in sorted(set(old) & set(new)) if any(old[eid][key] != new[eid][key] for key in ('text_access', 'value_origin', 'finding_kind'))]
+    if 'question_records' in before or 'question_records' in after:
+        fields = ('status', 'source_match_status', 'protocol_question_status')
+        old_questions = {r['question_id']: {f:r[f] for f in fields} for r in left.get('question_ledger', {}).get('question_ledger', [])}
+        new_questions = {r['question_id']: {f:r[f] for f in fields} for r in right.get('question_ledger', {}).get('question_ledger', [])}
+        result['question_transitions'] = [dict(question_id=qid, before=old_questions.get(qid), after=new_questions.get(qid)) for qid in sorted(set(old_questions) | set(new_questions)) if old_questions.get(qid) != new_questions.get(qid)]
     if has_plural_studies(before) or has_plural_studies(after):
         result['report_study_comparison'] = report_study_comparison(
             before, after, left, right, left_reports, right_reports)

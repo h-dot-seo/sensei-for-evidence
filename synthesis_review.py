@@ -123,6 +123,8 @@ def snapshot(protocol):
         from evidence_basis_links import statement_cues
         result['evidence_bases'] = copy.deepcopy(research['evidence_bases'])
         result['statement_basis_cues'] = statement_cues(research)
+    if 'question_ledger' in research:
+        result['question_ledger'] = copy.deepcopy(research['question_ledger'])
     return result
 
 
@@ -151,6 +153,10 @@ def render_text(result):
     lines.append('Report retrieval/full-text ledger: ' + show(result['report_ledger']))
     lines.append('Record-level extraction queue scope: ' + result['record_extraction_scope'])
     lines.append('Review queues (null means stage not supplied): ' + show(result['review_queues']))
+    if 'question_ledger' in result:
+        from question_review import context_lines
+        lines.extend(context_lines(result['question_ledger']))
+        lines.append('Statement question links: ' + show(result['question_ledger']['statement_question_links']))
     if 'evidence_bases' in result:
         lines.append('Supplied result basis declarations: ' + show(result['evidence_bases']))
         lines.append('Statement citation label cues: ' + show(result['statement_basis_cues']))

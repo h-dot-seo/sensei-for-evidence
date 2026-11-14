@@ -508,6 +508,9 @@ def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
         result['engine_sha256']['screening_decision.py'] = hashlib.sha256(Path(__file__).with_name('screening_decision.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='screening_decision.py', arguments=['inspect','PROTOCOL.json','--text'],
                                             purpose='Retained supplied decisions and source/reviewer snapshots; retrospective differences are not pending tasks'))
+    if 'question_ledger' in state:
+        result['question_ledger'] = copy.deepcopy(state['question_ledger'])
+        result['detailed_views'].append(dict(script='question_review.py', arguments=['PROTOCOL.json','--text'], purpose='Supplied question labels and current/stale bindings, not assessed answers; author changes only through separate question_intake target/assemble/verify review.'))
     if research_map is not _NO_RESEARCH_MAP:
         from research_map_views import attach, context
         return attach(result,context(protocol,research_map))
@@ -515,6 +518,10 @@ def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
 
 
 def render_text(result):
+    if 'question_ledger' in result:
+        from question_review import context_lines
+        base = dict(result); ledger = base.pop('question_ledger')
+        return render_text(base) + '\n'.join(context_lines(ledger)) + '\n'
     if 'research_map_context' in result:
         from research_map_views import text as map_text
         base=dict(result);map_context=base.pop('research_map_context')

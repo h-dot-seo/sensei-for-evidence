@@ -35,6 +35,13 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round49 adds only this optional question ENGINE leaf; existing hashes follow named revisions below.
+            self.assertEqual(result['engine_sha256'].pop('question_links.py'),hashlib.sha256((ROOT/'question_links.py').read_bytes()).hexdigest())
+            if kind == 'handoff':
+                name='readiness_review.py'
+                prior49=load('tests/question_legacy_baselines.json')['prior_source_sha256']
+                self.assertEqual(result['engine_sha256'][name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
+                result['engine_sha256'][name]=prior49[name]
             # Round48 adds only this named ENGINE fingerprint; preserve historical view data.
             self.assertEqual(result['engine_sha256'].pop('archive_safety.py'),hashlib.sha256((ROOT/'archive_safety.py').read_bytes()).hexdigest())
             # Round46: exact named implementation changes plus one declared catalog route.

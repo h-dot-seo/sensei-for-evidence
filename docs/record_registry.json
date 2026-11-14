@@ -1240,6 +1240,17 @@
       "role": "detached_application",
       "schema_version": 1,
       "value": "detached_evidence_basis_intake"
+    },
+    {
+      "constructor_bindings": [],
+      "constructor_expansions": [],
+      "discriminator": "kind",
+      "function": "assemble",
+      "guide": "QUESTION_LEDGER.md",
+      "module": "question_intake.py",
+      "role": "detached_application",
+      "schema_version": 1,
+      "value": "detached_question_intake"
     }
   ],
   "untagged_research_manifest": {
