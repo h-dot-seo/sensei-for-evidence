@@ -225,3 +225,5 @@ using `report_study_inventory_review_intake.py`. Both inventory and source subse
 are human-supplied, exact-pair bound and append-only; descriptions, membership and
 canonical decisions remain unchanged. Shared safety and complete exclusive outputs
 reuse existing helpers rather than adding another review or filesystem framework.
+
+The artifact layer includes research_view.py, a passive HTML composition of existing views. It is separate from fixed bundles and never changes ENGINE_FILES or canonical judgments.

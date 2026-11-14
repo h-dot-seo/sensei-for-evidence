@@ -586,3 +586,7 @@ using `report_study_inventory_review_intake.py`. Both inventory and source subse
 are human-supplied, exact-pair bound and append-only; descriptions, membership and
 canonical decisions remain unchanged. Shared safety and complete exclusive outputs
 reuse existing helpers rather than adding another review or filesystem framework.
+
+## Passive local review
+
+Use [the HTML review navigator](REVIEW_VIEWS.md) for supplied gates, queues, accounting and statements. No canonical decisions change; real output is private and not anonymized.

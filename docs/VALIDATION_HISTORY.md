@@ -3377,3 +3377,20 @@ regression skips where the OS cannot create one. Final checkout/dispatcher check
 rerun after docs/manifest finalization. Independent review found no code blockers;
 test-runtime documentation now explicitly scopes earlier production-byte-preservation
 claims to the earlier test-only releases.
+
+## 2026-11-14: passive local HTML review (0.107.0)
+
+Added research_view.py and a literal synthetic guide. Full suite: 2081 tests in
+160.104s, OK (one existing conditional skip). New12 tests, independent focused38
+and direct supplied READY/challenge checks passed. Existing root modules,
+ENGINE_FILES and all prior guide sh blocks are byte-identical. Python3.10 grammar
+checked for231 files; audit456 and manifest455 passed before this record update.
+CSP/allowlisted tags/escaping/fixed anchors, deterministic bytes, immutability,
+work scope, output and input limits, exclusive paths, receipts and CLI errors tested.
+
+Visual QA limitation: Chromium launch was attempted both normally and with execution
+approval but failed at socket() with Operation not permitted. No screenshots or
+responsive/print visual verification were completed. DOM and CSS contract tests
+are not visual QA. Real user data, source verification and scientific validity
+were not tested. Partial output after OS write failure and hostile path races
+are not transactionally prevented; these limits are stated in REVIEW_VIEWS.md.

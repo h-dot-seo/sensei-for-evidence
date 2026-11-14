@@ -212,3 +212,5 @@ using `report_study_inventory_review_intake.py`. Both inventory and source subse
 are human-supplied, exact-pair bound and append-only; descriptions, membership and
 canonical decisions remain unchanged. Shared safety and complete exclusive outputs
 reuse existing helpers rather than adding another review or filesystem framework.
+
+For a passive local snapshot use `research_view.py PROTOCOL [--output NEW.html]`; see docs/REVIEW_VIEWS.md. It is not approval or anonymization; real output stays outside public repositories.
