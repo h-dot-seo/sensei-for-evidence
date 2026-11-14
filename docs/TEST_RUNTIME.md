@@ -1,8 +1,8 @@
 # Synthetic-test runtime budget
 
 This is a test-only performance increment, not a faster or more permissive research
-engine. Production Python files and ENGINE_FILES remain byte-identical. The single
-converted loop is `test_catalog_schema_files_and_parser_help_entrypoints_are_real`:
+engine. Production Python files and ENGINE_FILES remain byte-identical. The first
+converted loop was `test_catalog_schema_files_and_parser_help_entrypoints_are_real`:
 it still runs every one of the 129 actual CLI help parsers from an empty working
 directory and asserts success, usage output and no output files.
 
@@ -22,15 +22,16 @@ are simulated. Integer exit values are not encoded as platform wait statuses.
 Traceback frames differ from a fresh interpreter. Do not use this helper for unknown
 scripts, threaded tests, side-effectful imported modules, startup behavior or tests
 that specifically require a subprocess. Closing/replacing harness streams inside a
-script is not part of this narrow contract. Only reviewed help paths are converted.
+script is not part of this narrow contract. Only reviewed help and clean JSON-rejection paths are converted.
 `encoding='ascii'` tests stream reconfiguration, not locale or PYTHONUTF8 startup.
 
 ## Preserved process coverage
 
-All other pre-existing tests remain unchanged, including:
+Apart from the explicitly described JSON rejection loop below, existing process
+tests remain unchanged, including:
 
 - Every guide `sh` walkthrough and journey, including setup-class work.
-- Actual CLI roundtrips, every json_io ambiguous/non-object rejection, and explicit
+- Actual CLI roundtrips, per-CLI real JSON-rejection smoke, and explicit
   environment/PYTHONIOENCODING tests.
 - Dispatcher subprocess behavior and `-c` checks requiring fresh interpreters.
 - Existing real-process smoke/roundtrip tests for every script in the help catalog.
@@ -71,3 +72,39 @@ Duration output omits class fixture costs such as setUpClass, so also measure to
 module/job time. Do not remove checks, inflate timeouts or convert document/process
 semantics merely to make numbers smaller. Larger bundle computation may dominate
 runtime and needs a separate measured proposal, not this harness.
+
+## Follow-up: bounded JSON rejection loop
+
+The second increment converts only the six-input/four-command loop in
+`test_all_clis_reject_ambiguous_or_nonobject_input`. These are pure parsing/rejection
+paths, not interpreter startup, signal or environment tests. All 24 assertions still
+run through their real main functions. Input bytes are now also checked unchanged.
+A new real-subprocess rejection smoke covers each of evidence_workflow, prisma_reports,
+validate_run and research_bundle create, comparing exact bytes/exit with the harness.
+The existing ASCII-environment Unicode roundtrip and bundle fingerprint tests are
+untouched. Every bundle invalid-input test also stays subprocess-based in this slice.
+
+The original loop took 0.840s locally, compared with 0.493s for the measured batch
+bundle invalid-input loop. Neither dominates the full suite; screening batch lifetime
+checks and dispatcher work are larger, separately scoped bottlenecks. This increment
+claims a modest local saving, not a major full-suite speedup.
+
+Run `python -m tests.benchmark_cli_json_rejections --repeats 3` to reproduce the exact
+24-case comparison. The shared synthetic matrix retains duplicate keys, NaN, null,
+array and malformed-surrogate cases verbatim. Every case checks exact bytes/exit,
+no output creation, unchanged source bytes and restoration of interpreter surfaces.
+Alternate order and full platform metadata are recorded; no timing assertion exists.
+The ordinary suite keeps four actual-process error checks rather than rerunning the
+entire opt-in benchmark. All previous harness limitations still apply.
+
+| Repeat | Subprocess seconds | In-process seconds |
+|---|---:|---:|
+| 1 | 0.762 | 0.063 |
+| 2 | 0.734 | 0.056 |
+| 3 | 0.741 | 0.056 |
+
+All 24 cases matched in all three runs. The four retained subprocess smoke calls cost
+about 0.176s locally, so the net saving is smaller than the raw table difference.
+Measurements use Python 3.12.14/Linux and are not a prediction for other runners.
+Production code, shared harness, workflow matrix, timeouts and supported semantics
+are unchanged.

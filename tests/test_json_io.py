@@ -10,6 +10,8 @@ import unittest
 from unittest.mock import patch
 import zipfile
 from json_io import parse_json, configure_utf8_stdio
+from tests._cli import run_cli
+from tests._json_cli_cases import COMMANDS, REJECTIONS, arguments
 from research_bundle import build_bundle, verify
 
 
@@ -46,18 +48,29 @@ class JsonInputTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             source = Path(folder)/'input.json'
             target = Path(folder)/'bundle.zip'
-            commands = [('evidence_workflow.py',), ('prisma_reports.py',), ('validate_run.py',), ('research_bundle.py', 'create')]
-            for raw in ('{"question":"first","question":"second"}', '{"extra":NaN}', 'null', '[]', '{"\\ud800":1,"\\ud800":2}', '{"question":"\\ud800"}'):
+            for raw in REJECTIONS:
                 source.write_text(raw, encoding='utf-8')
-                for command in commands:
-                    args = [sys.executable, *command, str(source)]
-                    if command[0] == 'research_bundle.py':
-                        args.append(str(target))
+                for command in COMMANDS:
+                    args = arguments(command, source, target)
                     with self.subTest(raw=raw, command=command):
-                        result = subprocess.run(args, capture_output=True, text=True, timeout=20)
+                        result = run_cli(command[0], *args)
                         self.assertNotEqual(result.returncode, 0)
-                        self.assertNotIn('Traceback', result.stderr + result.stdout)
+                        self.assertNotIn(b'Traceback', result.stderr + result.stdout)
                         self.assertFalse(target.exists())
+                        self.assertEqual(source.read_bytes(), raw.encode('utf-8'))
+
+    def test_each_rejection_cli_keeps_real_process_error_smoke(self):
+        with tempfile.TemporaryDirectory() as folder:
+            source=Path(folder)/'input.json';target=Path(folder)/'bundle.zip'
+            source.write_text(REJECTIONS[0],encoding='utf-8');original=source.read_bytes()
+            for command in COMMANDS:
+                args=arguments(command,source,target)
+                actual=subprocess.run([sys.executable,str(Path(__file__).resolve().parents[1]/command[0]),*args],
+                    capture_output=True,timeout=20)
+                replay=run_cli(command[0],*args)
+                self.assertEqual((actual.returncode,actual.stdout,actual.stderr),(replay.returncode,replay.stdout,replay.stderr))
+                self.assertNotEqual(actual.returncode,0);self.assertNotIn(b'Traceback',actual.stdout+actual.stderr)
+                self.assertFalse(target.exists());self.assertEqual(source.read_bytes(),original)
 
     def test_utf8_protocol_cli_and_bundle_fingerprint(self):
         protocol = json.loads(Path('examples/report-protocol.json').read_text())

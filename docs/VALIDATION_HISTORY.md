@@ -3325,3 +3325,26 @@ benchmark also matched bytes/exit for all129 entries (5.099s vs0.440s). No block
 Audit448 files, manifest, compileall and Python3.10 grammar pass; every production
 root Python file and existing executable sh block is byte-preserved. Final checkout
 and focused regression checks rerun after validation-document/manifest update.
+
+## 2026-11-14 Bounded JSON rejection test harness (0.105.0-json-rejection-harness)
+
+Only the 24-case JSON rejection loop uses the existing trusted serial harness.
+Original duplicate/nonfinite/nonobject/surrogate cases and all rejection assertions
+are preserved, with source-byte preservation added. Four real subprocess error
+smokes compare exact output/exit to the harness. Existing ASCII environment/Unicode,
+normal CLI roundtrips, bundle errors and documented walkthroughs stay subprocess.
+All production Python, ENGINE_FILES, shared harness and CI workflow bytes unchanged.
+
+Before: JSON loop0.840s, sampled batch bundle invalid-input0.493s. Reproducible
+24-case byte/exit/source/output/state equivalence passed three alternating runs:
+subprocess0.762/0.734/0.741s versus in-process0.063/0.056/0.056s. Retained four-process
+smoke costs0.176s locally. These small local savings are not a claim of proportional
+suite/CI acceleration; larger batch/dispatcher bottlenecks remain out of scope.
+See [runtime guide](docs/TEST_RUNTIME.md) for commands and process-isolation limits.
+
+Full local suite: 2061 tests in 149.247s, OK (one platform skip). Focused and
+independent JSON/harness tests: 14 pass. Independent 24-case benchmark also passes
+all equivalence and preservation checks (subprocess0.7594s vs in-process0.0639s).
+No blockers. Audit450 files, manifest, compileall, Python3.10 grammar and unchanged
+production/helper/workflow/old executable blocks pass. Final checkout, JSON/harness
+and navigation checks rerun after documentation/manifest finalization.
