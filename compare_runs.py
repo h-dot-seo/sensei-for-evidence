@@ -13,6 +13,8 @@ from research_bundle import engine_hashes
 
 _NO_AMENDMENT = object()
 
+_NO_RESEARCH_MAP = object()
+
 BOUNDARY = ('Mechanical comparison of supplied inputs; both ledgers are recomputed with the current implementation, not replayed historical engines. '
             'Version labels do not authenticate amendment history or justify changes. '
             'No search, scientific reassessment or conclusion promotion is performed.')
@@ -490,7 +492,9 @@ def amendment_review(assertion, before, after, left, right):
                           'No planning/synthesis assertion is renewed and no work, scientific, clinical or regulatory decision is made.'))
 
 
-def compare_protocols(before, after, amendment=_NO_AMENDMENT):
+def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_RESEARCH_MAP, after_map=_NO_RESEARCH_MAP):
+    if (before_map is _NO_RESEARCH_MAP) != (after_map is _NO_RESEARCH_MAP):
+        raise ValueError("both research maps must be explicitly supplied")
     left, right = run(before), run(after)
     left_reports = report_flow(before, include_csv=False) if 'reports' in before else None
     right_reports = report_flow(after, include_csv=False) if 'reports' in after else None
@@ -551,11 +555,20 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT):
         result['report_study_inventory_review_changes'] = report_study_inventory_review_changes(left, right)
     if 'screening_decision_history' in left or 'screening_decision_history' in right:
         result['screening_decision_changes'] = screening_decision_changes(left, right)
+    if before_map is not _NO_RESEARCH_MAP:
+        from research_map_views import attach, comparison
+        return attach(result,comparison(before,after,before_map,after_map))
     return result
 
 
 def render_text(result):
     """Project the comparison without hiding unchanged stale completion assertions."""
+    if 'research_map_context' in result:
+        from research_map_views import text as map_text
+        base=dict(result);map_context=base.pop('research_map_context')
+        rendered=render_text(base)+map_text(map_context)
+        if len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional view output limit')
+        return rendered
     show = quoted_display
     lines = ['Supplied protocol comparison (not scientific reassessment)',
              'Before version: ' + show(result['before_version']),
@@ -797,17 +810,23 @@ def main():
     parser.add_argument('after', type=Path)
     parser.add_argument('--amendment',type=Path,help='optional supplied change-note JSON; checked, never approved')
     parser.add_argument('--text', action='store_true', help='read-only comparison summary; default remains full JSON')
+    parser.add_argument('--before-map',type=Path,help='standalone sidecar for before; requires after-map')
+    parser.add_argument('--after-map',type=Path,help='standalone sidecar for after; requires before-map')
     args = parser.parse_args()
+    if bool(args.before_map)!=bool(args.after_map):parser.error('before-map and after-map must be supplied together')
     try:
+        from research_map_views import read_document
         result = compare_protocols(_read_cli_input(args.before, 'before protocol', parser),
                                    _read_cli_input(args.after, 'after protocol', parser),
-                                   _read_cli_input(args.amendment, 'amendment', parser) if args.amendment else _NO_AMENDMENT)
+                                   _read_cli_input(args.amendment, 'amendment', parser) if args.amendment else _NO_AMENDMENT,
+                                   before_map=read_document(args.before_map) if args.before_map else _NO_RESEARCH_MAP,
+                                   after_map=read_document(args.after_map) if args.after_map else _NO_RESEARCH_MAP)
+        rendered=render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
+        if args.before_map and len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional output limit')
     except (ValueError, OSError, KeyError, TypeError, RecursionError):
+        if args.before_map:parser.exit(1,'comparison error: input-invalid: protocol or research map: \"Supplied view inputs could not be checked.\"\n')
         parser.exit(1, 'comparison error: input-invalid: comparison inputs: "Supplied inputs failed validation; check protocols and optional amendment fields."\n')
-    if args.text:
-        print(render_text(result), end='')
-    else:
-        print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+    print(rendered,end='')
     if args.amendment and result['amendment_review']['binding_status']=='MISMATCH':parser.exit(1)
 
 

@@ -72,11 +72,12 @@ This standalone input additionally requires a nonempty search_plan with unique
 nonblank search IDs to resolve supplied rule references. Core fields preserve their
 existing values and are not rewritten into a stronger protocol schema.
 
-Existing run(), adapter receipts, research bundles, status, handoff and comparison
-views do not consume or validate this sidecar. A passing research bundle therefore
+Existing run(), adapter receipts and research bundles do not consume or validate this
+sidecar. Status, handoff and comparison can show [explicit opt-in context](RESEARCH_MAP_VIEWS.md),
+separately from their original protocol/gate/queue output. A passing research bundle therefore
 says nothing about the map. Retain the sidecar and its report separately with their
 original inputs. The standalone choice follows the roadmap's ENGINE-external option;
-full integration, protocol-resident records, automatic navigation, method comparison
+full engine integration, protocol-resident records, automatic discovery, method comparison
 and any new gate are outside this increment. Do not insert these fields into an old
 adapter protocol: its immutable base-context check can reject such changes.
 

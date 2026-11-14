@@ -60,6 +60,8 @@ OPTIONAL_QUEUE_DOMAINS = {'inventory_candidates_with_review_cues': 'inventory_ca
                         'report_study_memberships_without_results': 'report_study',
                         'records_with_screening_review_cues': 'record'}
 
+_NO_RESEARCH_MAP = object()
+
 BOUNDARY = ('Read-only navigation and supplied-data handoff, not a generated scientific report. '
             'Queues are protocol-wide even when a work package is selected. Optional missing stages '
             'need a scope decision, not invented data. Empty queues are not proof of completeness. '
@@ -394,7 +396,7 @@ def input_locations(protocol, queue, sections, items):
     return matches
 
 
-def handoff(protocol, work_package_id=None):
+def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
     state = status(protocol)
     works = review_packets(protocol, work_package_id)
     synthesis = snapshot(protocol)
@@ -492,10 +494,19 @@ def handoff(protocol, work_package_id=None):
         result['engine_sha256']['screening_decision.py'] = hashlib.sha256(Path(__file__).with_name('screening_decision.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='screening_decision.py', arguments=['inspect','PROTOCOL.json','--text'],
                                             purpose='Retained supplied decisions and source/reviewer snapshots; retrospective differences are not pending tasks'))
+    if research_map is not _NO_RESEARCH_MAP:
+        from research_map_views import attach, context
+        return attach(result,context(protocol,research_map))
     return result
 
 
 def render_text(result):
+    if 'research_map_context' in result:
+        from research_map_views import text as map_text
+        base=dict(result);map_context=base.pop('research_map_context')
+        rendered=render_text(base)+map_text(map_context)
+        if len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional view output limit')
+        return rendered
     show = quoted_display
     lines = ['Operator review handoff (supplied data only)', 'Question: ' + show(result['question']),
              'Protocol version: ' + show(result['protocol_version']), 'Protocol SHA-256: ' + result['protocol_sha256'],
@@ -586,11 +597,17 @@ def main():
     parser.add_argument('protocol',type=Path)
     parser.add_argument('--work-package')
     parser.add_argument('--text',action='store_true')
+    parser.add_argument('--research-map',type=Path,help='optional standalone authored sidecar; not a gate')
     args=parser.parse_args()
     try:
-        result=handoff(_read_cli_input(args.protocol, 'protocol', parser),args.work_package)
+        from research_map_views import read_document
+        result=handoff(_read_cli_input(args.protocol, 'protocol', parser),args.work_package,
+                       research_map=read_document(args.research_map) if args.research_map else _NO_RESEARCH_MAP)
+        rendered=render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
+        if args.research_map and len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional output limit')
     except (ValueError,OSError,KeyError,TypeError,RecursionError):
+        if args.research_map:parser.exit(1,'review handoff error: input-invalid: protocol or research map: \"Supplied view inputs could not be checked.\"\n')
         parser.exit(1,'review handoff error: input-invalid: protocol or work selection: "Supplied input failed validation; check required fields, relationships and selected work ID."\n')
-    print(render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.text else '\n')
+    print(rendered,end='')
 
 if __name__=='__main__':main()

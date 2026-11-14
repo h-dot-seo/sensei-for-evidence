@@ -9,12 +9,14 @@ from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
 
+_NO_RESEARCH_MAP = object()
+
 BOUNDARY = ('Queues describe supplied data and operator assertions only. Dependency-unblocked '
             'work is not scientifically or clinically approved work. Missing appraisal is '
             'not a poor-quality judgement; no readiness, priority or source authenticity is inferred.')
 
 
-def status(protocol):
+def status(protocol, *, research_map=_NO_RESEARCH_MAP):
     research = run(protocol)
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     records = {rid for row in protocol['searches'] for rid in row['record_ids']}
@@ -125,10 +127,19 @@ def status(protocol):
             record_history=copy.deepcopy(history['record_history']),
             records_with_history_cues=copy.deepcopy(history['records_with_history_cues']),
             scope='retrospective_comparisons_not_pending_tasks', boundary=history['boundary'])
+    if research_map is not _NO_RESEARCH_MAP:
+        from research_map_views import attach, context
+        return attach(result,context(protocol,research_map))
     return result
 
 
 def render_text(result):
+    if 'research_map_context' in result:
+        from research_map_views import text as map_text
+        base=dict(result);map_context=base.pop('research_map_context')
+        rendered=render_text(base)+map_text(map_context)
+        if len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional view output limit')
+        return rendered
     def count(key):
         value = result['counts'][key]
         return 'not supplied' if value is None else str(value)
@@ -252,12 +263,18 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('protocol', type=Path)
     parser.add_argument('--text', action='store_true', help='print a concise human-readable summary')
+    parser.add_argument('--research-map',type=Path,help='optional standalone authored sidecar; not a gate')
     args = parser.parse_args()
     try:
-        result = status(_read_cli_input(args.protocol, 'protocol', parser))
+        from research_map_views import read_document
+        result = status(_read_cli_input(args.protocol, 'protocol', parser),
+                        research_map=read_document(args.research_map) if args.research_map else _NO_RESEARCH_MAP)
+        rendered=render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
+        if args.research_map and len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional output limit')
     except (ValueError, OSError, KeyError, TypeError, RecursionError):
+        if args.research_map:parser.exit(1,'research status error: input-invalid: protocol or research map: \"Supplied view inputs could not be checked.\"\n')
         parser.exit(1, 'research status error: input-invalid: protocol: "Supplied protocol failed validation; check required fields and relationships."\n')
-    print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')
+    print(rendered,end='')
 
 
 if __name__ == '__main__':

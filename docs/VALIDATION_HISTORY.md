@@ -3794,3 +3794,29 @@ expression change, focused19 and the full suite passed. Audit513/manifest512 and
 Python3.10 grammar262 passed; final focused checks cover the record update.
 External reference-manager compatibility, prior HTML visual QA and Korean-locale
 Windows remain unverified. No unresolved review blockers.
+
+## 2026-11-14: 0.130.0-map-context-views
+
+Added explicit optional research-map sidecar context to status/handoff and paired
+before/after map comparison. A separate section displays existing supplied record/event
+statuses and literal changes, never changes readiness, queues, canonical decisions,
+protocol has_changes or amendment exit decisions. Missing options leave no new fields.
+This completes the explicit optional-view route of the standalone increment, not full
+research-map or engine/bundle integration. Existing research_map.py and ENGINE_FILES
+are unchanged; their standalone replay is not modified.
+
+Twelve recorded default views over four synthetic fixtures retain complete JSON/text
+apart from exact named top-level implementation digest entries: status self, handoff
+status+self, compare self. Compare text displays that same digest, and only that value
+is substituted for baseline comparison. No other field/text is excluded or normalized.
+Optional views have explicit10MB sidecar and50MB joined output bounds. Tests cover
+paired arguments, strict failures, stale records/events, supplied field changes,
+added/removed/reordered IDs, actual three-CLI text/JSON journeys and normal amendment
+mismatch JSON exit1. Contract coverage remains32 reviewed of178;146 remain unknown.
+Full2237 tests in186.563s passed (skip1). Independent24 focused tests passed; the
+12 default baselines were independently regenerated from the preceding release and
+matched. A selected-work handoff also retains its entire original result outside the
+explicit protocol-wide map context. Audit517/manifest516 and Python3.10 grammar264
+passed. Final focused checks cover this record update. No unresolved review blockers.
+External reference-manager compatibility, prior HTML visual QA and Korean-locale
+Windows remain unverified.

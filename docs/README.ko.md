@@ -285,3 +285,5 @@ For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAK
 자동화용 [명령 효과 계약](AGENT_CONTRACT.md)은 일부 명령만 검토되어 있으며 실행 허가가 아닙니다.
 
 [Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
+
+[Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
