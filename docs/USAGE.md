@@ -643,3 +643,6 @@ The pending synthetic state passes consistency checks while its conclusion remai
 explicit sufficiency, readiness, QA, storage and traceable citation/artifact fields;
 these remain recorded assertions until independently checked against real evidence.
 
+
+[Inspect protocol root field names](PROTOCOL_KEYS.md): read-only known/unknown names,
+not value validation, typo correction or a research gate.

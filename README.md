@@ -369,3 +369,6 @@ research data or engine verification changes. See docs/WORK_REVIEW.md.
 
 Explicitly mapped long-form CSV reviewer positions: [offline intake](docs/SCREENING_POSITION_INTAKE.md).
 Separate source-template binding and import review; no canonical screening decision.
+
+[Inspect protocol root field names](docs/PROTOCOL_KEYS.md): read-only known/unknown names,
+not value validation, typo correction or a research gate.

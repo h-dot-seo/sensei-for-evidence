@@ -413,3 +413,10 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 |---|---|---|
 | `python protocol_scaffold.py template [-h] [--draft-output DRAFT_OUTPUT]` | Blank or checked supplied starting protocol, never plan approval | [Starting protocol](PROTOCOL_SCAFFOLD.md) |
 | `python protocol_scaffold.py check [-h] [--protocol-output PROTOCOL_OUTPUT] draft` | Blank or checked supplied starting protocol, never plan approval | [Starting protocol](PROTOCOL_SCAFFOLD.md) |
+
+## Protocol root field inventory
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python protocol_keys.py list [-h] [--text]` | Names-only declared-field inventory, never validation or typo correction | [Protocol keys](PROTOCOL_KEYS.md) |
+| `python protocol_keys.py inspect [-h] [--text] protocol` | Names-only declared-field inventory, never validation or typo correction | [Protocol keys](PROTOCOL_KEYS.md) |

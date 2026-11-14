@@ -269,3 +269,6 @@ Separate source-template binding and import review; no canonical screening decis
 
 [나의 시작 프로토콜 만들기](PROTOCOL_SCAFFOLD.md): 질문·기준·계획을 직접 공급하고
 빈 원장 기반 파일을 검사합니다. 연구 계획의 적절성을 판단하지 않습니다.
+
+[Inspect protocol root field names](PROTOCOL_KEYS.md): read-only known/unknown names,
+not value validation, typo correction or a research gate.
