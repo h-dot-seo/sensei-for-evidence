@@ -266,3 +266,6 @@ native 아카이브는 바꾸지 않고, 새 래퍼는 별도로 보관합니다
 
 Explicitly mapped long-form CSV reviewer positions: [offline intake](SCREENING_POSITION_INTAKE.md).
 Separate source-template binding and import review; no canonical screening decision.
+
+[나의 시작 프로토콜 만들기](PROTOCOL_SCAFFOLD.md): 질문·기준·계획을 직접 공급하고
+빈 원장 기반 파일을 검사합니다. 연구 계획의 적절성을 판단하지 않습니다.

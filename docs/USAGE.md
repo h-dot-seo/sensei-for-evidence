@@ -32,21 +32,10 @@ scientific adequacy or deliver a legal freedom-to-operate opinion.
 
 ## Quick start
 
-Python 3.10+, standard library only:
-
-```sh
-python3 sensei.py check
-python3 validate_run.py examples/state.json
-```
-
-Full verification (several minutes): `python3 -m unittest discover -v`,
-`python3 audit_publication.py`, and `python3 verify_manifest.py`. The
-[checkout smoke check](CHECKOUT_CHECK.md) is not the full suite, CI or research validation.
-
-The pending synthetic state passes consistency checks while its conclusion remains
-`NOT_READY`. A valid file is not a completed study. `COMPLETE` additionally requires
-explicit sufficiency, readiness, QA, storage and traceable citation/artifact fields;
-these remain recorded assertions until independently checked against real evidence.
+For your own supplied question, start with the [blank protocol template and check](PROTOCOL_SCAFFOLD.md).
+For a complete fictional rehearsal, use [First run](FIRST_RUN.md). The separate
+[checkout check](CHECKOUT_CHECK.md) inspects installation bytes, not research validity.
+The legacy agent-state example below uses a different state schema, not this base.
 
 ## Research intents
 
@@ -635,3 +624,22 @@ or scientific validation. Broad statements and `other_*_evidence_ids` can still
 produce quadratic output. The bundle50 MB limit is unchanged. Read-only existing
 synthesis/work CLI inputs are not bounded; the HTML view separately limits input
 and output. Start with research_status for large projects.
+
+## Legacy agent-state validator
+
+Python 3.10+, standard library only:
+
+```sh
+python3 sensei.py check
+python3 validate_run.py examples/state.json
+```
+
+Full verification (several minutes): `python3 -m unittest discover -v`,
+`python3 audit_publication.py`, and `python3 verify_manifest.py`. The
+[checkout smoke check](CHECKOUT_CHECK.md) is not the full suite, CI or research validation.
+
+The pending synthetic state passes consistency checks while its conclusion remains
+`NOT_READY`. A valid file is not a completed study. `COMPLETE` additionally requires
+explicit sufficiency, readiness, QA, storage and traceable citation/artifact fields;
+these remain recorded assertions until independently checked against real evidence.
+

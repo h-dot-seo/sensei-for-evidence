@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.111.0-screening-position-csv` (2026-11-14). This file is the
+Current release: `0.112.0-protocol-scaffold` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -176,3 +176,26 @@ previous HTML visual QA remain unverified. Independent56 tests and direct stale 
 Added actual100-success/101-rejection, manual-ID collision and empty-ledger regression
 after review. Final full2110 tests168.825s OK(skip1); final independent11 passed.
 Audit465/manifest464 and Python3.10 grammar237 passed.
+
+## 2026-11-14: supplied starting-protocol scaffold (0.112.0)
+
+Added protocol_scaffold.py template/check, the independent first slice of roadmap36.
+A new null/empty draft never fills questions, criteria, plan IDs/source/query/window or
+search facts. The strict recommended starting shape rejects missing/unknown fields,
+nontext/blank values, empty criteria, malformed/duplicate plan rows and nonempty ledgers.
+Only a fresh_base+run validated supplied draft can be exported to an exclusive new
+protocol. Invalid checks report JSON-pointer hints and exit2 without a new file.
+No JSON Schema/explain collection, provider-specific PubMed matching or automatic
+plan creation is shipped. Schema2 and all existing root Python/ENGINE_FILES unchanged.
+
+A two-block3-command synthetic guide supplies fictional draft values between blocks,
+then checks the new base and obtains blank mock receipts on stdout. First rehearsal
+caught an unsupported receipt template --output option, corrected to the actual stdout
+contract before final tests. New9 and focused15 tests passed. Existing USAGE quick-start
+shell block is preserved intact under a separate legacy agent-state heading; own-protocol
+onboarding now leads to the new guide. Final full2119 tests172.826s OK(skip1); independent23 tests and direct dangling-link
+CLI refusal passed with no blockers. Audit468/manifest467 and grammar239 passed.
+10MB memory-bound inputs/outputs; exclusive writes may leave partial files on OS failure
+and do not guard hostile ancestor/path races. A valid shape is not plan/query adequacy,
+source authenticity, approval, search execution or scientific readiness. Previously
+unverified external-tool compatibility and HTML visual QA remain unverified.
