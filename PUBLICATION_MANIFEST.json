@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.111.0-screening-position-csv",
+  "release": "0.112.0-protocol-scaffold",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 464,
+  "file_count": 467,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 22426,
-      "sha256": "a74be505731935f05dbcba55cd4db3bd96054158cef71e56ae2fa4bd5d25cd58"
+      "bytes": 22600,
+      "sha256": "6509863bf4783d7671617d9833d825b8be71897f6eb3bb3fc041bb52c65641f4"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 11279,
-      "sha256": "f2fe516a3a5e4fdf390cce80083289de0a598dd32e1a974b07649db0d35935c3"
+      "bytes": 12996,
+      "sha256": "cf366fc256848380ab03c2fe45ad10b81d9fffbee3cc151a6277605410dced0c"
     },
     {
       "path": "accounting_flow.py",
@@ -235,8 +235,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 52281,
-      "sha256": "b5564b251f3956faa49f10c33a6de8f50aa15bb852e2723f5ed43a87dca8e416"
+      "bytes": 52766,
+      "sha256": "c0509e12fe74bfe37f6ffaa7aa1b96dab80ccb42e7a4ec6c2d526523d8efc755"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -394,6 +394,11 @@
       "sha256": "33bcb198c4c75996d6b3e21fd8751ce2af82b21f901363381d742a81393e4ab0"
     },
     {
+      "path": "docs/PROTOCOL_SCAFFOLD.md",
+      "bytes": 4414,
+      "sha256": "139e6e211a74786093961963ab8e05407e267098c016726a24ebfff3523e6649"
+    },
+    {
       "path": "docs/PUBMED_DISCOVERY.md",
       "bytes": 10865,
       "sha256": "0f35698fdeb5182f31a38c0f939d75341c060a687681d78b143abf97dc3c8a0e"
@@ -415,8 +420,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 22750,
-      "sha256": "c15e62d67795f482aa35fa916937062f3b9fd4bb10d6904105a9e48a607d7a3d"
+      "bytes": 22961,
+      "sha256": "b9add894dab153dd025203c062056c11a091e3aca2db65b34ff8588f44f4ce4b"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -590,18 +595,18 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 36481,
-      "sha256": "ccc3e56235ae7faf2e1fe27cb0cd5f1912f02f27fa7d27f038873dcc5c54927a"
+      "bytes": 36873,
+      "sha256": "acc69f9b0e868340416c6394a1cd6bd4c1f9592718eeee719fa4dc6eea48a8e6"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 247174,
-      "sha256": "1240b7477c9cb704a5f245bd3ce5fe88d7a5085bdedf16d4e558a1784d1f7989"
+      "bytes": 248896,
+      "sha256": "c432628f1a66f80f910f53057c0953798eda9290fd5f306b601253d35f76ed81"
     },
     {
       "path": "docs/WORKFLOWS.md",
-      "bytes": 36141,
-      "sha256": "20016a3dc3b90465fb7dca73e5a666a4ca5483899b0ea511f1bf6292e6a21708"
+      "bytes": 36352,
+      "sha256": "62ac2ae68f1120a7597a8a9f5a64a6dbae4b123370dcc76bc6852b13adfd4519"
     },
     {
       "path": "docs/WORK_COMPLETION_INTAKE.md",
@@ -1334,6 +1339,11 @@
       "sha256": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562"
     },
     {
+      "path": "protocol_scaffold.py",
+      "bytes": 7218,
+      "sha256": "d7eb4c570f756e3b40812176ee86985ea849160602979adaf3761c743e61b377"
+    },
+    {
       "path": "pubmed_discovery.py",
       "bytes": 24349,
       "sha256": "4abdafd36619e90eb49c69b8b5acc164078d5084d3da3175ee6c5ac9363aedb8"
@@ -1937,6 +1947,11 @@
       "path": "tests/test_prisma_work_links.py",
       "bytes": 5912,
       "sha256": "6f982659965e11e9c44a0c39f04ee8ce885dc3a826f241119780a9f1eb3ab0a3"
+    },
+    {
+      "path": "tests/test_protocol_scaffold.py",
+      "bytes": 8726,
+      "sha256": "e5960b0643b167dc2b9981e5d5f2d8c2b02fb96009fcd5ec9c156ee1f843182f"
     },
     {
       "path": "tests/test_pubmed_discovery.py",

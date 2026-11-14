@@ -70,7 +70,7 @@ and no step fills a decision, judgement or label on your behalf.
 | `python views_export.py flow [-h] [--format {mermaid}] --output NEW_MMD [--text] protocol` | Write a new supplied-accounting flow text file from existing audit partitions; no official diagram or renderer | [Accounting flow](ACCOUNTING_FLOW.md) |
 | `python evidence_workflow.py [-h] protocol` | Reconcile search, screening, results, context, appraisal and work | [Search-to-work-package workflow](USAGE.md#search-to-work-package-workflow) |
 | `python prisma_reports.py [-h] protocol` | Add report/full-text/study and extraction-queue accounting | [Report retrieval and full-text screening](USAGE.md#report-retrieval-and-full-text-screening) |
-| `python validate_run.py [-h] state` | Validate selected state/release consistency rules | [Quick start](USAGE.md#quick-start), [validator boundary](ARCHITECTURE.md#validator-boundary) |
+| `python validate_run.py [-h] state` | Validate selected state/release consistency rules | [Legacy agent-state](USAGE.md#legacy-agent-state-validator), [validator boundary](ARCHITECTURE.md#validator-boundary) |
 | `python search_manifest.py [-h] [--text] protocol` | Freeze exact query specs and source-wise receipt, interruption and overlap accounting without executing searches | [Search manifest](SEARCH_MANIFEST.md) |
 | `python prisma_audit.py [-h] [--text] protocol` | Export unit-specific members, exclusion reasons, identity links and supplied-count partitions | [PRISMA audit](PRISMA_AUDIT.md) |
 | `python prisma_flow_template.py [-h] [--search-arm INDEX=ARM] [--include-exact-id-accounting] --output OUTPUT [--text] protocol` | Write a new native count-crosswalk CSV with explicit search-arm assignments and a full mapping/pending-state receipt; not an external diagram template | [Native count crosswalk](PRISMA_FLOW_TEMPLATE.md) |
@@ -406,3 +406,10 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | `python screening_position_intake.py target [-h] [--output OUTPUT] protocol input` | Literal supplied-position CSV target, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
 | `python screening_position_intake.py assemble [-h] [--output OUTPUT] protocol input review` | Literal supplied-position CSV assemble, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
 | `python screening_position_intake.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol input` | Literal supplied-position CSV verify, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
+
+## Supplied starting protocol
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python protocol_scaffold.py template [-h] [--draft-output DRAFT_OUTPUT]` | Blank or checked supplied starting protocol, never plan approval | [Starting protocol](PROTOCOL_SCAFFOLD.md) |
+| `python protocol_scaffold.py check [-h] [--protocol-output PROTOCOL_OUTPUT] draft` | Blank or checked supplied starting protocol, never plan approval | [Starting protocol](PROTOCOL_SCAFFOLD.md) |

@@ -79,6 +79,9 @@ but URL/DOI cells are empty. This uses the existing importer, not a new dialect.
 
 ## Start here
 
+- [Create your own starting protocol](docs/PROTOCOL_SCAFFOLD.md): blank draft, supplied
+  question/criteria/plan, then a checked new ledger-free base. No plan is generated.
+
 - [First offline run](docs/FIRST_RUN.md): 11 tested commands from a declared question and
   mock receipt to supplied reviews, PRISMA accounting, context work and a verified bundle.
 - [NBIB-to-evidence rehearsal](docs/BATCH_TO_EVIDENCE.md), then the
