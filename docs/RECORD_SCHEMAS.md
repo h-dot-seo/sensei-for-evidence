@@ -125,6 +125,9 @@ their own manifests; segment entries are not independent archives.
 | `kind=detached_work_context_intake` | 1 | detached_application | `work_context_intake.py:assemble` | [Guide](WORK_CONTEXT_INTAKE.md) |
 | `mode=explicit_work_transition_segment` | 1 | bundle_segment | `work_transition_bundle.py:build_bundle` | [Guide](WORK_TRANSITION_BUNDLES.md) |
 | `mode=explicit_work_transition_bundle` | 1 | bundle_manifest | `work_transition_bundle.py:build_bundle` | [Guide](WORK_TRANSITION_BUNDLES.md) |
+| `kind=research_map_template` | 1 | blank authored-map forms; not a completed record | `research_map.py:template` | [Guide](RESEARCH_MAP.md) |
+| `kind=research_map_review` | 1 | standalone supplied-map review; not engine integration | `research_map.py:review` | [Guide](RESEARCH_MAP.md) |
+| `kind=research_map_replay_check` | 1 | current-implementation exact replay result | `research_map.py:verify` | [Guide](RESEARCH_MAP.md) |
 
 ## Machine-readable index and coverage
 

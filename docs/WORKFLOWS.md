@@ -606,3 +606,5 @@ collection-choice/review path. Shape checks do not replace exact workflow valida
 For an explicit original/converted-text association without conversion verification,
 see [derived text context](DERIVED_TEXT_CONTEXT.md). Native Windows source access
 still fails closed; legacy passage manifest version1 is unchanged.
+
+[Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.

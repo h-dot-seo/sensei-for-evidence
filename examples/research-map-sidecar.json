@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "research_map": {
+    "decision_scope": "Fictional software rehearsal only",
+    "boundaries": "No real research or scientific finding",
+    "evidence_classes": [
+      {
+        "label": "fictional",
+        "description": "Supplied testing label"
+      }
+    ],
+    "planned_sources": [],
+    "extraction_dimensions": [
+      "Supplied observation"
+    ],
+    "appraisal_plan": [
+      {
+        "evidence_class": "fictional",
+        "method": "Supplied method",
+        "method_locator": "synthetic://method"
+      }
+    ],
+    "challenge_plan": "Supplied independent review plan; not performed",
+    "expected_outputs": [
+      "Fictional ledger"
+    ],
+    "stop_rules": [
+      {
+        "stop_rule_id": "stop-A",
+        "applies_to": "local-primary",
+        "rule": "Supplied stopping statement, not completeness"
+      }
+    ]
+  },
+  "records": [
+    {
+      "record_id": "map-record-A",
+      "recorder": "Fictional recorder",
+      "recorded_at": "2026-11-14",
+      "statement": "Prewritten synthetic statement, not actual approval",
+      "basis_sha256": "0db99ad17d37766895d3d888621de56bc6b782f777c8cbfcda0509c2fc7ca849"
+    }
+  ],
+  "stop_events": [
+    {
+      "event_id": "stop-event-A",
+      "record_id": "map-record-A",
+      "search_id": "local-primary",
+      "stop_rule_id": "stop-A",
+      "recorded_by": "Fictional recorder",
+      "recorded_at": "2026-11-14",
+      "note": "Prewritten supplied event, not observed execution"
+    }
+  ]
+}

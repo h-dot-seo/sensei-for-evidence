@@ -283,3 +283,5 @@ Read a received research ZIP without replay: [recorded bundle context](RESEARCH_
 For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.
 
 자동화용 [명령 효과 계약](AGENT_CONTRACT.md)은 일부 명령만 검토되어 있으며 실행 허가가 아닙니다.
+
+[Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.

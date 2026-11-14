@@ -444,3 +444,7 @@ report contracts are unchanged; this is not a repository-wide error policy.
 `validate_run.py` preserves normal JSON findings (exit1), but caught input failures
 now use fixed stderr diagnostics and empty stdout, not a JSON findings object.
 See [legacy state input and compatibility](USAGE.md#legacy-agent-state-validator).
+
+| `python research_map.py template [-h] [--output OUTPUT] protocol` | Draft null map fields and separate record/event forms | [Standalone research map](RESEARCH_MAP.md) |
+| `python research_map.py review [-h] [--output OUTPUT] protocol document` | Inspect supplied map basis and record changes without protocol updates | [Standalone research map](RESEARCH_MAP.md) |
+| `python research_map.py verify [-h] protocol document recorded_review` | Compare a stored map review against exact current-input replay | [Standalone research map](RESEARCH_MAP.md) |

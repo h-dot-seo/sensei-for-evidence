@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.128.0-state-cli-failure-boundary` (2026-11-14). This file is the
+Current release: `0.129.0-standalone-research-map` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,29 +55,29 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.128.0-state-cli-failure-boundary` (2026-11-14).
+Release: `0.129.0-standalone-research-map` (2026-11-14).
 
-Separated legacy state CLI operational failures from normal mechanical findings.
-Read/strict JSON/non-object/limit failures now produce one fixed category-and-state
-stderr line, empty stdout and exit1; argparse remains exit2. This changes the older
-error-JSON stdout path, so automation must not assume every exit1 carries findings.
-Normal successful and negative findings retain their JSON output and exit0/1.
-The validate() function is unchanged, and the legacy schema gains no scientific
-or protocol-readiness authority. Normal reports are not anonymized.
+Added a standalone authored research-map sidecar workflow, not full research-map
+integration. Template leaves every human field and record/event basis blank. Review
+compares supplied recording bases to exact question/criteria/search-plan plus map
+content and preserves every CURRENT_SOURCE/STALE_SOURCE record. Stop events link to
+supplied records and inherit stale status, never completion or sufficiency. Current
+input counts are not historical recording-time observations. Verify compares the full
+stored review against exact current-input/current-implementation replay.
 
-The CLI reads at most50,000,001 bytes, accepts at most50,000,000, and checks nesting
-at128 levels. Error paths omit input/path/exception content. Strict JSON, UTF-8,
-byte/depth boundaries, actual/harness equivalence and original findings are covered.
-Only validate_run.py changes among107 root Python files; ENGINE_FILES are unchanged.
-The partial command registry source binding is refreshed without extending the32
-reviewed commands;143 including validate_run remain NOT_REVIEWED.
-Full2219 tests in182.974s passed (skip1). Independent34 focused tests plus28
-old/new real-CLI shape variants passed with identical findings bytes/codes.
-Audit509/manifest508 and Python3.10 grammar260 passed; final focused checks cover
-this record update. No unresolved blockers. External reference-manager compatibility,
-prior HTML visual QA and Korean-locale Windows remain unverified.
-
-The first PR CI exposed a Windows-only test comparison mismatch: subprocess text
-mode normalized CRLF while the harness retained it. The tests now capture bytes on
-both paths, decode without newline conversion and expect the native line separator.
-Runtime code is unchanged by this correction; the corrected matrix is rechecked.
+The original107 root Python files and ENGINE_FILES remain byte-identical. Protocol,
+gates, adapter receipts, research bundles, status/handoff/compare and human decisions
+are unchanged. They do not consume or validate this sidecar. This is the ENGINE-external
+first increment of the roadmap standalone alternative, not its full implementation.
+Sidecar values and dates are supplied, unauthenticated and not scientific judgement.
+Structural references, all-empty recording stage, changed map/core, mismatched replay,
+unchanged engine/bundle output, strict JSON/limits, exclusive output and the fictional
+three-command real CLI journey are covered. Contract coverage remains32 reviewed of178;
+146 including the three new commands are explicitly NOT_REVIEWED.
+Full2229 tests in192.852s passed (skip1). Independent33 focused tests and nine
+map-field mutations passed, including record/event stale status and replay mismatch.
+The protocol-key inventory required explicit literal core keys; after that equivalent
+expression change, focused19 and the full suite passed. Audit513/manifest512 and
+Python3.10 grammar262 passed; final focused checks cover the record update.
+External reference-manager compatibility, prior HTML visual QA and Korean-locale
+Windows remain unverified. No unresolved review blockers.

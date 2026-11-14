@@ -693,3 +693,5 @@ older run in its workflow/ref group. Main push and manual runs each use their un
 run ID as the group suffix; they cannot replace one another's pending run within a
 shared group. Their cancel-in-progress condition is also false. Branch pushes outside main are covered through their
 pull requests, not a duplicate branch-push trigger. The old named branch is not deleted.
+
+[Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.

@@ -1933,6 +1933,39 @@
       "usage": "python research_bundle_describe.py [-h] [--text] bundle"
     },
     {
+      "effects": null,
+      "guides": [
+        "docs/RESEARCH_MAP.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect supplied map basis and record changes without protocol updates",
+      "script": "research_map.py",
+      "subcommand": "review",
+      "usage": "python research_map.py review [-h] [--output OUTPUT] protocol document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESEARCH_MAP.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft null map fields and separate record/event forms",
+      "script": "research_map.py",
+      "subcommand": "template",
+      "usage": "python research_map.py template [-h] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESEARCH_MAP.md"
+      ],
+      "has_parser": true,
+      "purpose": "Compare a stored map review against exact current-input replay",
+      "script": "research_map.py",
+      "subcommand": "verify",
+      "usage": "python research_map.py verify [-h] protocol document recorded_review"
+    },
+    {
       "effects": {
         "caught_error": {
           "exit_code": 1,
@@ -2914,6 +2947,7 @@
     "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
     "research_bundle.py": "4d6b37489fa094bb918b07cb6caeac3a3fac1d676ed088de3bd04c2e3f747769",
     "research_bundle_describe.py": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5",
+    "research_map.py": "997a962a895c9bccb08213060fe69c71b7a2581061e5652c73797be386240827",
     "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
     "research_view.py": "8f2e3f0d03c1b1596a3ac0eb77af7d245ca80c1298fb84e34d2caa1953285064",
     "result_correction.py": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52",
