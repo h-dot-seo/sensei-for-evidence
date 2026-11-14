@@ -2,8 +2,8 @@
 
 `screening_decision_sheet.py export` creates a bounded CSV scaffold for explicitly
 human-authored future decisions. It does not screen, select a winner, infer a vote,
-create a receipt or modify canonical screening. This is **export only**; edited
-batch decision target/assemble/verify intake is not implemented yet. The existing
+create a receipt or modify canonical screening. This script is **export only**. A separate [read-only batch target preview](SCREENING_DECISION_BATCH_PREVIEW.md)
+now checks edited sheets; batch assemble/verify application is not implemented yet. The existing
 [single-record decisions](SCREENING_DECISIONS.md) remain available and unchanged.
 
 This sheet is distinct from [reviewer-position sheets](SCREENING_SHEETS.md) and

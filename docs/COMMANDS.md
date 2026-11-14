@@ -320,3 +320,9 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | Usage | Purpose | Guide |
 |---|---|---|
 | `python screening_decision_sheet.py export PROTOCOL [--record-id ID] [--display-column NAME] --output NEW.csv [--text]` | Bounded blank human-decision scaffold; read-only context, no batch application | [Decision sheets](SCREENING_DECISION_SHEETS.md) |
+
+## Read-only decision-batch preview
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_decision_batch.py target PROTOCOL SHEET [--output NEW.json]` | Exact-context hypothetical chain and blank import review only; no candidate/application or batch assemble/verify | [Batch preview](SCREENING_DECISION_BATCH_PREVIEW.md) |

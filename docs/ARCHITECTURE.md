@@ -195,3 +195,8 @@ a detached replayable application; ENGINE_FILES and canonical decisions stay unc
 human-decision sheet. Read-only prior screening and supplied review context remain
 separate from empty human fields. No sequential target or batch application exists
 in this increment; canonical engine and adapter bytes remain unchanged.
+
+`screening_decision_batch.py target` checks the exact decision-sheet contract and
+reuses complete single-record prepare/assemble validation for an in-memory chain.
+Only a hypothetical target/blank review is output; protocol/application writes and
+batch assemble/verify are absent. ENGINE_FILES and adapter remain byte-identical.
