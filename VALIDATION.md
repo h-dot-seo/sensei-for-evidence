@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.125.0-bundle-cli-test-budget` (2026-11-14). This file is the
+Current release: `0.126.0-source-observation-contract` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,23 +55,24 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.125.0-bundle-cli-test-budget` (2026-11-14).
+Release: `0.126.0-source-observation-contract` (2026-11-14).
 
-Moved only repeated create-side invalid-input cases in seven bundle test methods
-to the existing serial trusted-test harness. All original assertions and test method
-inventories remain; this is not a product change or a process-isolation guarantee.
-The49 in-process calls replace repeated startup while17 real subprocess calls remain
-in those tests (previously56). Ten representative create errors compare exact return
-code/stdout/stderr between both paths, and seven malformed-ZIP verifies remain real.
+Extended the partial command-effects registry with exactly six local artifact/source/
+passage observation operations. Reviewed coverage is32 of175;143 remain NOT_REVIEWED.
+Negative reports may coexist with exit1 and an optional newly created JSON output;
+text stdout does not change that stored JSON. Caught input/access errors remain a
+separate stderr path. Unsupported secure source access, including native Windows,
+still fails closed before opening the source root. No fallback, remote lookup,
+permission inference, human approval or canonical state update is added.
 
-Every other test method, the harness, root modules and ENGINE_FILES are byte-identical.
-In particular, real roundtrip, non-ASCII stdio, PYTHONIOENCODING=ascii/PYTHONUTF8=0,
-exclusive output and documented journey tests retain their actual subprocess behavior.
-The harness's ascii stream option does not simulate Python startup or UTF-8 mode.
-No wall-clock speedup is promised; fixture and in-process bundle costs remain.
-Full2201 tests in176.463s passed (skip1), retaining the prior total. Independent212
-bundle/harness tests passed in48.732s; separate seven-method replay confirmed49
-harness calls and interpreter-surface restoration. Independent AST checks retained
-205 methods and846 original assertions across the seven files. Audit504/manifest503
-and Python3.10 grammar257 passed. No unresolved review blockers; Korean-locale
+Actual checkers and ENGINE_FILES are unchanged. The declaration reader accepts the
+existing json_or_text negative channel and all root source bindings are refreshed.
+Source drift still rejects the contract. Synthetic CLI tests cover successful/negative
+source observations, output files, templates, malformed inputs and unavailable secure
+access; scientific fidelity and human acceptance remain outside the observations.
+Full2207 tests in184.505s passed (skip1). Independent17 tests plus seven negative
+stdout-only JSON/text paths passed, with input/source files unchanged. Template-only
+output wording was clarified afterward; final focused checks cover that metadata edit.
+Audit505/manifest504 and Python3.10 grammar258 passed. All actual checker and28
+ENGINE_FILES bytes are unchanged. No unresolved review blockers; Korean-locale
 Windows, external-export compatibility and prior HTML visual QA remain unverified.

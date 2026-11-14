@@ -78,7 +78,36 @@
       "usage": "python appraisal_transition_bundle.py verify [-h] [--text] bundle"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "manifest",
+          "--root"
+        ],
+        "negative_report": {
+          "condition": "all_requested_bytes_match is false",
+          "exit_code": 1,
+          "stderr": "empty",
+          "stdout": "json"
+        },
+        "network": "none",
+        "notes": "Reads only explicitly mapped local files beneath a supplied dedicated trusted quiescent --root using secure descriptor-relative no-follow access. Unsupported platforms, including native Windows without that access, fail closed before source inspection. Locators are inert, no remote retrieval. A negative report is not a caught input error; this command writes no logical output file. Observed bytes/passages do not establish scientific fidelity, entailment, source authenticity or human approval.",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/LOCAL_ARTIFACT_REVIEW.md"
       ],
@@ -1571,7 +1600,42 @@
       "usage": "python report_review_intake.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol input"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "manifest",
+          "--root"
+        ],
+        "negative_report": {
+          "condition": "all_requested_bytes_match is false",
+          "exit_code": 1,
+          "stderr": "empty",
+          "stdout": "json_or_text"
+        },
+        "network": "none",
+        "notes": "Reads only explicitly mapped local files beneath a supplied dedicated trusted quiescent --root using secure descriptor-relative no-follow access. Unsupported platforms, including native Windows without that access, fail closed before source inspection. Locators are inert, no remote retrieval. A negative report is not a caught input error; an optional report file can exist with exit1. Observed bytes/passages do not establish scientific fidelity, entailment, source authenticity or human approval.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "when supplied after a serializable completed report, including negative report exit1; caught errors create no intended report, OS writes may leave partial new files",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/REPORT_SOURCE_CHECK.md"
       ],
@@ -1582,7 +1646,35 @@
       "usage": "python report_source_check.py check [-h] --root ROOT [--output OUTPUT] [--text] protocol manifest"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local protocol/candidate metadata only; template does not read source files or require --root. Blank source mapping is not verification.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "when supplied after a serializable successful template report; OS writes may leave partial new files",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/REPORT_SOURCE_CHECK.md"
       ],
@@ -1962,7 +2054,43 @@
       "usage": "python result_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "candidates",
+          "manifest",
+          "--root"
+        ],
+        "negative_report": {
+          "condition": "check: all_requested_passages_match is false; catalog: bytes do not all match or text is not all decodable",
+          "exit_code": 1,
+          "stderr": "empty",
+          "stdout": "json_or_text"
+        },
+        "network": "none",
+        "notes": "Reads only explicitly mapped local files beneath a supplied dedicated trusted quiescent --root using secure descriptor-relative no-follow access. Unsupported platforms, including native Windows without that access, fail closed before source inspection. Locators are inert, no remote retrieval. A negative report is not a caught input error; an optional report file can exist with exit1. Observed bytes/passages do not establish scientific fidelity, entailment, source authenticity or human approval.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "when supplied after a serializable completed report, including negative report exit1; caught errors create no intended report, OS writes may leave partial new files",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/RESULT_PASSAGE_CHECK.md"
       ],
@@ -1973,7 +2101,43 @@
       "usage": "python result_passage_check.py catalog [-h] --root ROOT [--output OUTPUT] [--text] protocol candidates manifest"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "candidates",
+          "manifest",
+          "--root"
+        ],
+        "negative_report": {
+          "condition": "check: all_requested_passages_match is false; catalog: bytes do not all match or text is not all decodable",
+          "exit_code": 1,
+          "stderr": "empty",
+          "stdout": "json_or_text"
+        },
+        "network": "none",
+        "notes": "Reads only explicitly mapped local files beneath a supplied dedicated trusted quiescent --root using secure descriptor-relative no-follow access. Unsupported platforms, including native Windows without that access, fail closed before source inspection. Locators are inert, no remote retrieval. A negative report is not a caught input error; an optional report file can exist with exit1. Observed bytes/passages do not establish scientific fidelity, entailment, source authenticity or human approval.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "when supplied after a serializable completed report, including negative report exit1; caught errors create no intended report, OS writes may leave partial new files",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/RESULT_PASSAGE_CHECK.md"
       ],
@@ -1984,7 +2148,36 @@
       "usage": "python result_passage_check.py check [-h] --root ROOT [--output OUTPUT] [--text] protocol candidates manifest"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "candidates"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local protocol/candidate metadata only; template does not read source files or require --root. Blank source mapping is not verification.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "when supplied after a serializable successful template report; OS writes may leave partial new files",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/RESULT_PASSAGE_CHECK.md"
       ],
@@ -2669,7 +2862,7 @@
     "challenge_links.py": "26297c74c71580e82add66719bb0995ca2f73ea4c5029bfa05378f143f42f866",
     "collection_bundle.py": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06",
     "collection_export.py": "f1f906ff4dbffe4225779d2a00e4ac212bb0a371016db26ddbf36c807061eac7",
-    "command_contract.py": "ca7b54d92be6619f463f39ce2a61a0e7d48153e9e0676c59c25ce0e31b73b739",
+    "command_contract.py": "885d11dde06888cddbbc501611cc31161c0f137fa8dc4a913ebf929620e41cb5",
     "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6",
     "condition_intake.py": "dd5afab1482c0fd88dd6c2a223f8c2fa58a3ad65977be0b8dbed41e667033725",
     "context_intake.py": "8a6e2bbc5589805fb05119c76143e45ef5ed2d7c4772e0ec0678134e4d1230b0",
