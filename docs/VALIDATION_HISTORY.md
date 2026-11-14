@@ -3550,3 +3550,14 @@ No tags, permissions, licensing or ENGINE_FILES changes. Full2148 tests168.147s 
 regression was adapted for case-insensitive filesystems before the full run. A final
 focused rerun isolates dangling-output rejection from a prior metadata-audit failure.
 Audit482/manifest481 and Python3.10 grammar246 passed.
+
+## 2026-11-14: 0.116.0-record-shape-registry
+
+Added explicit retained-record shape/guide navigation with source drift tests.
+The index distinguishes76 tagged constructors, six excluded diagnostic/hint/receipt
+markers and the untagged research manifest; no N-1 compatibility or migration is
+introduced. Unknown dynamic shapes and untagged authoring forms are not inferred.
+All previous root modules and ENGINE_FILES remain byte-identical. Full2153 tests170.379s passed (skip1), independent final5 passed.
+Audit485/manifest484 and Python3.10 grammar247 passed. Initial full run was
+stopped before adding explicit17 constructor expansion expressions and a regression;
+the final full run includes them. No unresolved review blockers.

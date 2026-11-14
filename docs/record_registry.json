@@ -1,0 +1,1103 @@
+{
+  "registry_version": 1,
+  "scope": "Explicit literal dict-constructor index, not JSON Schema, artifact detection or validation.",
+  "tagged_shapes": [
+    {
+      "module": "adapter_integrity.py",
+      "function": "prepare_exchange",
+      "discriminator": "target_type",
+      "value": "search",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "ADAPTER_CONTRACT.md",
+      "constructor_bindings": [
+        "base_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "adapter_integrity.py",
+      "function": "prepare_exchange",
+      "discriminator": "target_type",
+      "value": "extraction",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "ADAPTER_CONTRACT.md",
+      "constructor_bindings": [
+        "base_protocol_sha256",
+        "search_receipt_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "appraisal_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_appraisal_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_APPRAISAL_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "appraisal_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_appraisal_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_APPRAISAL_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "appraisal_source_review.py",
+      "function": "review",
+      "discriminator": "kind",
+      "value": "detached_appraisal_source_review",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "APPRAISAL_SOURCE_REVIEW.md",
+      "constructor_bindings": [
+        "application_record_sha256",
+        "current_protocol_sha256",
+        "engine_sha256",
+        "original_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "appraisal_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_appraisal_transition_segment",
+      "role": "bundle_segment",
+      "schema_version": 1,
+      "guide": "APPRAISAL_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "appraisal_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_appraisal_transition_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "APPRAISAL_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256"
+      ],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "batch_collection_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_nbib_batch_collection_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "BATCH_COLLECTION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "input_sha256"
+      ],
+      "constructor_expansions": [
+        "_negative_claims()"
+      ]
+    },
+    {
+      "module": "bibliographic_intake.py",
+      "function": "prepare",
+      "discriminator": "mode",
+      "value": "local_export",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "BIBLIOGRAPHIC_INTAKE.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "bibliographic_intake.py",
+      "function": "prepare",
+      "discriminator": "target_type",
+      "value": "bibliographic_export",
+      "role": "review_target",
+      "schema_version": null,
+      "guide": "BIBLIOGRAPHIC_INTAKE.md",
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "bibliographic_integrity.py",
+      "function": "reconciliation_target",
+      "discriminator": "target_type",
+      "value": "bibliographic_reconciliation",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "BIBLIOGRAPHIC_REVIEW.md",
+      "constructor_bindings": [
+        "current_protocol_sha256",
+        "intake_review_target_sha256",
+        "intake_sha256",
+        "resolutions_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "challenge_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_challenge_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "INDEPENDENT_CHALLENGE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "challenge_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_challenge_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "INDEPENDENT_CHALLENGE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "collection_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_native_collection_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "COLLECTION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "input_sha256"
+      ],
+      "constructor_expansions": [
+        "_negative_claims()"
+      ]
+    },
+    {
+      "module": "condition_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_condition_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_CONDITION_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "condition_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_condition_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_CONDITION_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "context_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_context_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_CONTEXT_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "context_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_context_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_CONTEXT_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "evidence_work_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_evidence_work_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "EVIDENCE_WORK_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "evidence_work_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_evidence_work_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "EVIDENCE_WORK_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "extraction_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_extraction_transition_segment",
+      "role": "bundle_segment",
+      "schema_version": 1,
+      "guide": "EXTRACTION_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "extraction_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_extraction_transition_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "EXTRACTION_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256"
+      ],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "inventory_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "descriptive_inventory_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_INVENTORY_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "inventory_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_inventory_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_INVENTORY_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "native_collection_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_typed_native_collection_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "NATIVE_COLLECTION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "input_sha256"
+      ],
+      "constructor_expansions": [
+        "_negative_claims()"
+      ]
+    },
+    {
+      "module": "nbib_batch_intake.py",
+      "function": "prepare",
+      "discriminator": "mode",
+      "value": "local_nbib_batch_preparation",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_NBIB_BATCH.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "nbib_batch_intake.py",
+      "function": "prepare",
+      "discriminator": "target_type",
+      "value": "nbib_batch_preparation",
+      "role": "review_target",
+      "schema_version": null,
+      "guide": "PUBMED_NBIB_BATCH.md",
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "nbib_intake.py",
+      "function": "prepare",
+      "discriminator": "mode",
+      "value": "local_nbib_preparation",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_NBIB_INTAKE.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "nbib_intake.py",
+      "function": "prepare",
+      "discriminator": "target_type",
+      "value": "nbib_preparation",
+      "role": "review_target",
+      "schema_version": null,
+      "guide": "PUBMED_NBIB_INTAKE.md",
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "pubmed_discovery.py",
+      "function": "preview",
+      "discriminator": "mode",
+      "value": "pubmed_discovery_preview",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_DISCOVERY.md",
+      "constructor_bindings": [
+        "implementation_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "pubmed_discovery.py",
+      "function": "from_responses",
+      "discriminator": "mode",
+      "value": "pubmed_discovery",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_DISCOVERY.md",
+      "constructor_bindings": [
+        "implementation_sha256",
+        "preview_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "pubmed_metadata.py",
+      "function": "preview",
+      "discriminator": "mode",
+      "value": "pubmed_metadata_preview",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_METADATA.md",
+      "constructor_bindings": [
+        "discovery_sha256",
+        "implementation_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "pubmed_metadata.py",
+      "function": "from_responses",
+      "discriminator": "mode",
+      "value": "pubmed_metadata",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "PUBMED_METADATA.md",
+      "constructor_bindings": [
+        "discovery_sha256",
+        "implementation_sha256",
+        "preview_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "readiness_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_readiness_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "CONCLUSION_READINESS.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": [
+        "_gate_snapshot(gates)"
+      ]
+    },
+    {
+      "module": "readiness_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_readiness_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "CONCLUSION_READINESS.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "receipt_intake.py",
+      "function": "template",
+      "discriminator": "mode",
+      "value": "mock",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "RECEIPT_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_decision.py",
+      "function": "_target",
+      "discriminator": "target_type",
+      "value": "report_decision",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "REPORT_DECISIONS.md",
+      "constructor_bindings": [
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_decision.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_decision",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "REPORT_DECISIONS.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_report_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_REPORT_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_REPORT_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_retrieval.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_report_retrieval_update",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "REPORT_RETRIEVAL_UPDATES.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_retrieval.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_retrieval_update",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "REPORT_RETRIEVAL_UPDATES.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_review_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "report_review_positions_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "REPORT_REVIEW_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE_CLAIMS"
+      ]
+    },
+    {
+      "module": "report_review_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_review_positions_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "REPORT_REVIEW_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_source_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "report_source_declaration_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_SOURCE_DECLARATIONS.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_source_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_source_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_SOURCE_DECLARATIONS.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_study_inventory_review_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "report_study_inventory_review_positions_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE_CLAIMS"
+      ]
+    },
+    {
+      "module": "report_study_inventory_review_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_study_inventory_review_positions_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_study_review_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "report_study_review_positions_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "REPORT_STUDY_REVIEW_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE_CLAIMS"
+      ]
+    },
+    {
+      "module": "report_study_review_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_report_study_review_positions_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "REPORT_STUDY_REVIEW_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "report_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_report_transition_segment",
+      "role": "bundle_segment",
+      "schema_version": 1,
+      "guide": "REPORT_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "report_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_report_transition_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "REPORT_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256"
+      ],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "result_correction.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_result_correction",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "RESULT_CORRECTIONS.md",
+      "constructor_bindings": [
+        "correction_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "result_correction.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_result_correction",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "RESULT_CORRECTIONS.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "result_extraction.py",
+      "function": "worksheet",
+      "discriminator": "kind",
+      "value": "manual_result_extraction_worksheet",
+      "role": "worksheet",
+      "schema_version": 1,
+      "guide": "EXTRACTION_WORKSHEETS.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "result_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_result_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "MANUAL_RESULT_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "result_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_result_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "MANUAL_RESULT_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "result_source_review.py",
+      "function": "review",
+      "discriminator": "kind",
+      "value": "detached_result_source_review",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "RESULT_SOURCE_REVIEW.md",
+      "constructor_bindings": [
+        "application_record_sha256",
+        "current_protocol_sha256",
+        "engine_sha256",
+        "original_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "ris_continuation_intake.py",
+      "function": "prepare",
+      "discriminator": "target_type",
+      "value": "ris_continuation_preparation",
+      "role": "review_target",
+      "schema_version": null,
+      "guide": "RIS_CONTINUATION_INTAKE.md",
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "ris_intake.py",
+      "function": "prepare",
+      "discriminator": "mode",
+      "value": "local_ris_preparation",
+      "role": "prepared_or_retained_record",
+      "schema_version": 1,
+      "guide": "RIS_INTAKE.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "ris_intake.py",
+      "function": "prepare",
+      "discriminator": "target_type",
+      "value": "ris_preparation",
+      "role": "review_target",
+      "schema_version": null,
+      "guide": "RIS_INTAKE.md",
+      "constructor_bindings": [
+        "target_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_decision_batch.py",
+      "function": "_simulate",
+      "discriminator": "target_type",
+      "value": "screening_decision_batch_preview",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "SCREENING_DECISION_BATCH_PREVIEW.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "input_protocol_sha256",
+        "projected_protocol_sha256",
+        "sheet_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE_CLAIMS"
+      ]
+    },
+    {
+      "module": "screening_decision_batch_apply.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_reviewed_screening_decision_batch",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "SCREENING_DECISION_BATCH_APPLICATION.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_decision_links.py",
+      "function": "prepare_target",
+      "discriminator": "target_type",
+      "value": "screening_decision",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "SCREENING_DECISIONS.md",
+      "constructor_bindings": [
+        "input_protocol_sha256",
+        "previous_receipt_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_position_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "screening_position_csv_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "SCREENING_POSITION_INTAKE.md",
+      "constructor_bindings": [
+        "basis_template_protocol_sha256",
+        "candidate_document_sha256",
+        "engine_sha256",
+        "export_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_position_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_screening_position_csv",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "SCREENING_POSITION_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_sheet_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "screening_sheet_positions_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "SCREENING_SHEET_INTAKE.md",
+      "constructor_bindings": [
+        "engine_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256",
+        "sheet_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "screening_sheet_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_screening_sheet_positions",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "SCREENING_SHEET_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "source_work_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_source_work_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "SOURCE_WORK_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "source_work_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_source_work_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "SOURCE_WORK_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "work_completion_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_work_completion_intake",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "WORK_COMPLETION_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "work_completion_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_work_completion_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "WORK_COMPLETION_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "work_context_intake.py",
+      "function": "_prepare",
+      "discriminator": "target_type",
+      "value": "manual_work_context_assignment",
+      "role": "review_target",
+      "schema_version": 1,
+      "guide": "WORK_CONTEXT_INTAKE.md",
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256"
+      ],
+      "constructor_expansions": []
+    },
+    {
+      "module": "work_context_intake.py",
+      "function": "assemble",
+      "discriminator": "kind",
+      "value": "detached_work_context_intake",
+      "role": "detached_application",
+      "schema_version": 1,
+      "guide": "WORK_CONTEXT_INTAKE.md",
+      "constructor_bindings": [],
+      "constructor_expansions": []
+    },
+    {
+      "module": "work_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_work_transition_segment",
+      "role": "bundle_segment",
+      "schema_version": 1,
+      "guide": "WORK_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    },
+    {
+      "module": "work_transition_bundle.py",
+      "function": "build_bundle",
+      "discriminator": "mode",
+      "value": "explicit_work_transition_bundle",
+      "role": "bundle_manifest",
+      "schema_version": 1,
+      "guide": "WORK_TRANSITION_BUNDLES.md",
+      "constructor_bindings": [
+        "engine_sha256"
+      ],
+      "constructor_expansions": [
+        "_claims()"
+      ]
+    }
+  ],
+  "untagged_research_manifest": {
+    "module": "research_bundle.py",
+    "function": "build_bundle",
+    "role": "bundle_manifest",
+    "schema_version": 2,
+    "guide": "USAGE.md#portable-offline-research-bundle",
+    "constructor_bindings": [
+      "engine_sha256",
+      "input_sha256"
+    ]
+  },
+  "excluded_literals": [
+    {
+      "module": "implementation_check.py",
+      "function": "inspect_artifact",
+      "discriminator": "mode",
+      "value": "implementation_check",
+      "reason": "Read-only diagnostic report, not a replayable research record."
+    },
+    {
+      "module": "receipt_intake.py",
+      "function": "text_fields",
+      "discriminator": "kind",
+      "value": "required_text_unfilled",
+      "reason": "Authoring hint, not a stored research record."
+    },
+    {
+      "module": "receipt_intake.py",
+      "function": "missing_hints",
+      "discriminator": "kind",
+      "value": "required_page_number_unfilled",
+      "reason": "Authoring hint, not a stored research record."
+    },
+    {
+      "module": "receipt_intake.py",
+      "function": "missing_hints",
+      "discriminator": "kind",
+      "value": "required_record_list_unfilled_not_an_empty_result",
+      "reason": "Authoring hint, not a stored research record."
+    },
+    {
+      "module": "screening_decision_sheet.py",
+      "function": "export_sheet",
+      "discriminator": "mode",
+      "value": "blank_screening_decision_sheet_export",
+      "reason": "Export receipt, not the authored decision CSV or a reviewed application."
+    },
+    {
+      "module": "screening_sheet.py",
+      "function": "export_sheet",
+      "discriminator": "mode",
+      "value": "blank_screening_position_sheet_export",
+      "reason": "Export receipt, not the authored position CSV or a reviewed application."
+    }
+  ]
+}
