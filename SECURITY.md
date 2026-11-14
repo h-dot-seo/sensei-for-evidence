@@ -65,3 +65,6 @@ recompression/comments/trailing bytes formerly accepted by the standalone verifi
 are now rejected. Hashes are not signatures; recorded implementation bytes remain
 required. This is fail-closed consistency, not a known-vulnerability claim or an
 absolute ZIP-parser CPU/memory bound. See [details](docs/RESEARCH_ZIP_SAFETY.md).
+
+
+[Bounded CLI inputs](docs/CLI_INPUT_BOUNDS.md): fifteen remaining entrypoints now enforce an inclusive 50,000,000 raw-byte limit per supplied JSON input; existing decisions and under-limit error/output contracts are preserved. This is not a total resource bound.

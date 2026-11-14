@@ -1,0 +1,142 @@
+[
+  {
+    "script": "evidence_workflow.py",
+    "input_hex": "7b0d0a202261223a0d0a20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "evidence_workflow.py",
+    "input_hex": "7b0d202261223a0d20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "evidence_workflow.py",
+    "input_hex": "7b2261223a226261640d0a76616c7565227d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "496e76616c696420636f6e74726f6c206368617261637465722061743a206c696e65203120636f6c756d6e2031302028636861722039290a"
+  },
+  {
+    "script": "evidence_workflow.py",
+    "input_hex": "7b2261223a312c2261223a327d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "6475706c6963617465204a534f4e206b65793a202761270a"
+  },
+  {
+    "script": "evidence_workflow.py",
+    "input_hex": "ff",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "277574662d382720636f6465632063616e2774206465636f64652062797465203078666620696e20706f736974696f6e20303a20696e76616c696420737461727420627974650a"
+  },
+  {
+    "script": "prisma_reports.py",
+    "input_hex": "7b0d0a202261223a0d0a20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "prisma_reports.py",
+    "input_hex": "7b0d202261223a0d20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "prisma_reports.py",
+    "input_hex": "7b2261223a226261640d0a76616c7565227d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "496e76616c696420636f6e74726f6c206368617261637465722061743a206c696e65203120636f6c756d6e2031302028636861722039290a"
+  },
+  {
+    "script": "prisma_reports.py",
+    "input_hex": "7b2261223a312c2261223a327d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "6475706c6963617465204a534f4e206b65793a202761270a"
+  },
+  {
+    "script": "prisma_reports.py",
+    "input_hex": "ff",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "277574662d382720636f6465632063616e2774206465636f64652062797465203078666620696e20706f736974696f6e20303a20696e76616c696420737461727420627974650a"
+  },
+  {
+    "script": "prisma_audit.py",
+    "input_hex": "7b0d0a202261223a0d0a20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "prisma_audit.py",
+    "input_hex": "7b0d202261223a0d20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "prisma_audit.py",
+    "input_hex": "7b2261223a226261640d0a76616c7565227d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "496e76616c696420636f6e74726f6c206368617261637465722061743a206c696e65203120636f6c756d6e2031302028636861722039290a"
+  },
+  {
+    "script": "prisma_audit.py",
+    "input_hex": "7b2261223a312c2261223a327d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "6475706c6963617465204a534f4e206b65793a202761270a"
+  },
+  {
+    "script": "prisma_audit.py",
+    "input_hex": "ff",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "277574662d382720636f6465632063616e2774206465636f64652062797465203078666620696e20706f736974696f6e20303a20696e76616c696420737461727420627974650a"
+  },
+  {
+    "script": "search_manifest.py",
+    "input_hex": "7b0d0a202261223a0d0a20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "search_manifest.py",
+    "input_hex": "7b0d202261223a0d20217d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "457870656374696e672076616c75653a206c696e65203320636f6c756d6e20322028636861722039290a"
+  },
+  {
+    "script": "search_manifest.py",
+    "input_hex": "7b2261223a226261640d0a76616c7565227d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "496e76616c696420636f6e74726f6c206368617261637465722061743a206c696e65203120636f6c756d6e2031302028636861722039290a"
+  },
+  {
+    "script": "search_manifest.py",
+    "input_hex": "7b2261223a312c2261223a327d",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "6475706c6963617465204a534f4e206b65793a202761270a"
+  },
+  {
+    "script": "search_manifest.py",
+    "input_hex": "ff",
+    "returncode": 1,
+    "stdout_hex": "",
+    "stderr_hex": "277574662d382720636f6465632063616e2774206465636f64652062797465203078666620696e20706f736974696f6e20303a20696e76616c696420737461727420627974650a"
+  }
+]

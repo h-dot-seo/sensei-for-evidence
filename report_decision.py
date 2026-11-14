@@ -5,6 +5,9 @@ import datetime
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 import re
 
 from evidence_workflow import run
@@ -210,17 +213,17 @@ def main():
     replay.add_argument('--protocol-output', type=Path, help='new protocol only after exact replay succeeds')
     args = parser.parse_args()
     try:
-        protocol = parse_json(args.protocol.read_bytes())
+        protocol = parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
         destination = None
         artifact = None
         if args.command == 'target':
             result = prepare(protocol, args.report_id)
             destination, artifact = args.output, result
         elif args.command == 'assemble':
-            result = assemble(protocol, parse_json(args.decision_document.read_bytes()))
+            result = assemble(protocol, parse_json(read_bounded(args.decision_document, MAX_CLI_INPUT_BYTES)))
             destination, artifact = args.output, result
         else:
-            record = parse_json(args.application_record.read_bytes())
+            record = parse_json(read_bounded(args.application_record, MAX_CLI_INPUT_BYTES))
             result = verify(protocol, record)
             destination, artifact = args.protocol_output, record['protocol_candidate']
         encoded = _encode(artifact) if destination is not None else None

@@ -3961,3 +3961,14 @@ Historical baseline JSON bytes are retained. Exact optional engine hook, allowli
 
 
 Full 2,313 tests passed in 198.435 s (one platform skip). Final independent review passed 36 tests / 5.566 s, including the eleven-command saved-observation/pre-disclosure-ZIP guide. Seven previous guides / 61 CLI commands regenerated all 15 fixed fictional target fields exactly; every other old example byte is unchanged. Historical baseline additions are explicitly named and tested. Inventory: 29 protocol keys, 200 commands with 32 reviewed/168 NOT_REVIEWED, audit567/manifest valid, Python3.10 grammar287. Final focused checks follow this result-only documentation update.
+
+
+## 2026-11-14: 0.138.0-bounded-cli-inputs
+
+Roadmap #54: remaining fifteen CLI readers/nineteen input sites bounded at 50,000,000 bytes inclusive. Existing text-mode newline/error-position and byte-mode contracts remain explicit; archive_safety and all ZIP modules unchanged. Exact ENGINE changes: evidence_workflow, prisma_reports, screening_decision CLI reads only. Fixed15 fictional target maintenance only; no real-data or gate changes.
+
+Initial focused 35 tests found one historical ZIP selfhash assertion still expecting unchanged prisma_reports/screening_decision. Added exact prior-source reconstruction for those two CLI-only edits rather than replacing historical baselines or weakening ZIP comparisons. Full and independent final verification pending.
+
+First full run: 2321 tests / 208.583 s, one metadata failure and one Windows-native skip. The examples-only schema_fixture_inventory incorrectly included four new internal test baseline JSON files. Restored that inventory byte-for-byte from the previous release; no product code, schema, test assertions or example data changed. Independent core 57 tests and actual 60 prior/current malformed-input byte comparisons passed; final seven guides/61 commands and fixed15 actual target recreation passed. The reviewer initially calculated all tree modes as 100644; using the published executable modes for audit_publication/validate_run reproduced the initial frozen tree exactly. Corrected full verification pending.
+
+Corrected full suite: 2321 tests / 206.779 s PASS (one native-Windows skip). Corrected metadata focus: 21 / 0.454 s PASS (one skip); final earlier 44 / 9.107 s PASS (one skip). Independent correction review reconfirmed the restored examples-only inventory, schema tests, audit/manifest and all 61 guide commands / 15 targets. Frozen corrected tree 65df6e11b533a534cf813e42a254450210b005a7 matched independently. After full verification only these validation records and their manifest entries are updated; product/test/metadata bytes stay frozen.

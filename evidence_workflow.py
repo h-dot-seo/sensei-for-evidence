@@ -2,6 +2,9 @@
 import argparse
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 from json_io import parse_json, configure_utf8_stdio
 from context_links import link_context, id_list, nonempty_text, validate_source_refs
 from search_audit import audit_search_plan, completion_issues, page_audit
@@ -230,7 +233,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__); p.add_argument('protocol', type=Path)
     a = p.parse_args()
     try:
-        result = run(parse_json(a.protocol.read_text(encoding='utf-8')))
+        result = run(parse_json(read_bounded(a.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")))
     except (ValueError, OSError, KeyError, TypeError) as e:
         p.exit(1, str(e) + '\n')
     print(json.dumps(result, ensure_ascii=False, indent=2))

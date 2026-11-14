@@ -4,7 +4,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 def prior_bytes(name):
-    source=(ROOT/name).read_bytes()
+    from tests._cli_input_compat import prior_bytes as pre_cli_bytes
+    source=pre_cli_bytes(name)
     additions=json.loads((ROOT/'tests/output_disclosure_source_additions.json').read_bytes())
     if name=='evidence_workflow.py':old=additions['engine_hook'].encode();new=b''
     elif name in ('adapter_integrity.py','bibliographic_integrity.py'):

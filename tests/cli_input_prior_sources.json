@@ -1,0 +1,35 @@
+{
+  "changed": {
+    "evidence_workflow.py": "11e54b585773db248fd7ee78114817704f84a629acfe0b6d9aa150f4e28bd0dd",
+    "prisma_reports.py": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562",
+    "prisma_audit.py": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee",
+    "search_manifest.py": "9b17b9874848b2c7b93e28195109cd099de0736b88c4a50921d17d3d06409130",
+    "readiness_review.py": "ca340e3d946c9f63367629490a7d9d3be6aed83ec735483fe957f0fad291c5e1",
+    "receipt_intake.py": "f456e9f618d173da7495c0e412d93ec565a5fb9c824bae90a55b6b704df34b39",
+    "report_decision.py": "42cef4479bf9509eb296bcd5cf6098b35f0a75d82b1b528ec74d63417c69566c",
+    "report_review.py": "7f2d47540b4d336993ad3d5dd7844b9db963327cf8acd6f9183a3838e18b87d4",
+    "report_study_inventory.py": "d0423ad792437682f21647c644c7adcbf427ce27bce72c6c1815cdacdb0fae7d",
+    "report_study_inventory_review.py": "bd00763f4cac8799078ed9e4b3d9f5fe9836a5fdbcfa7f19a049c0b8eb5c2e8d",
+    "report_study_review.py": "d2b14faec3dfdd344393547f8bc977f5323b8bfd499cc79e05680e82c17ab9db",
+    "screening_decision.py": "8e67b499b4f3efe6c134dc1db525e6337021ebff937784fa2afeefa4a2a5aa58",
+    "screening_review.py": "82eb7022b224b98a464ccc33201d8bf78891408a6f1d255321018b6d26c8cf9e",
+    "synthesis_review.py": "dd041b59c7f7d7e77090a55bdd2f8a18e0f96ba2ad815884d5d1975365b2efb7",
+    "work_review.py": "972d8a8b88daf4f60fffc24c5386bb51754d3678a1bdebde34b3bd6cefbc190d"
+  },
+  "unchanged": {
+    "archive_safety.py": "40e37a118ce7d25d7c47fbec1b8731c528311b5174eceb91a22f82807b375295",
+    "research_status.py": "a4b98ee40d4eb2b8d38f9376e6f50faaa966f2bcb5f746a5e89451c09401e6d4",
+    "compare_runs.py": "fc58a09ec9a82f5559e0002fec12bcfb86c9524cd002ab2c15b03133114e88d6",
+    "review_handoff.py": "5b88c5e682f6fddc7ee9d2b7a58bf4be95ad02b9cb8032eeeedd345fbaac9901",
+    "validate_run.py": "082dd0107054b3d1a1adafb1289a5a4ca7875078d4e6dc4785aee9ed9b5db837",
+    "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "research_bundle.py": "92d943c5850e779e2a848f737a6d5ae88626ed799d9045434fa18025ccda581c",
+    "collection_bundle.py": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06",
+    "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
+    "native_collection_bundle.py": "5487359956a56b3fd89fd60a89ba92e7e283efc51cdcb0642cfd52d13cc9f046",
+    "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
+    "extraction_transition_bundle.py": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66",
+    "appraisal_transition_bundle.py": "7dfab0ca0732cdb79e72c8b33b9652a987aeca0253e41e1f3ea58c0b9ef4765c",
+    "work_transition_bundle.py": "50eb1c8cc2556ddb46e20cac821b1e7d8ff71d58fd093d969d9c79a9aa8ddb51"
+  }
+}

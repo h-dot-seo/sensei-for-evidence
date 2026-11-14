@@ -4,6 +4,9 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 from evidence_workflow import run
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
@@ -116,14 +119,14 @@ def main():
     inspection.add_argument('--record-id')
     args = parser.parse_args()
     try:
-        protocol = parse_json(args.protocol.read_bytes())
+        protocol = parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
         destination = None
         output = None
         if args.command == 'target':
             result = prepare(protocol, args.record_id)
             destination, output = args.output, result
         elif args.command == 'assemble':
-            result = assemble(protocol, parse_json(args.decision_document.read_bytes()))
+            result = assemble(protocol, parse_json(read_bounded(args.decision_document, MAX_CLI_INPUT_BYTES)))
             destination, output = args.protocol_output, result['protocol_candidate']
         else:
             result = inspect(protocol, args.record_id)

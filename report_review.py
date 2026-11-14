@@ -4,6 +4,9 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from archive_safety import read_bounded
+
+MAX_CLI_INPUT_BYTES = 50_000_000
 
 from evidence_workflow import run
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
@@ -104,7 +107,7 @@ def main():
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
     try:
-        protocol = parse_json(args.protocol.read_bytes())
+        protocol = parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
         result = (template if args.template else review)(protocol, args.report_id)
         encoded = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
         rendered = render_text(result) if args.text else encoded

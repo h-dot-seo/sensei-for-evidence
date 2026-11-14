@@ -507,3 +507,6 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | `python output_disclosure_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
 
 | `output_disclosure_links.py` | Exact supplied disclosure and gate-item context, not actual publishing or scientific closure |
+
+
+[Bounded CLI inputs](CLI_INPUT_BOUNDS.md): fifteen remaining entrypoints now enforce an inclusive 50,000,000 raw-byte limit per supplied JSON input; existing decisions and under-limit error/output contracts are preserved. This is not a total resource bound.
