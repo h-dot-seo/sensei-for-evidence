@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "protocol_sha256": "2ef00a922c9e0710447c85dd8d45f196ebb4ff5458480052a07c516e07e5a1aa",
+  "candidate_document_sha256": "a6e76bd2b68bfd8a4e619c448e5a37c1940a3f1c008955ddbc4e8e9da648250b",
+  "sources": [
+    {
+      "source_id": "source-main",
+      "report_id": "report-one",
+      "source_descriptor_sha256": "1ada970e678aa3e1ed1aaace073595455a7b9dc6fea2447b3b1b22ed0b74a0ae",
+      "path": "result-passage-source.txt",
+      "bytes": 417,
+      "derived_from": {
+        "source_id": "fictional-original",
+        "source_descriptor_sha256": "96e11ae6b6f896574203b2fbed033da96df3b0108f43f1ab7aeac9671dcce75e"
+      }
+    }
+  ],
+  "passages": [
+    {
+      "passage_id": "passage-result",
+      "candidate_index": 0,
+      "evidence_field": "result",
+      "source_id": "source-main",
+      "byte_start": 199,
+      "byte_end": 256,
+      "quote": "No difference was reported in this fictional observation."
+    },
+    {
+      "passage_id": "passage-limitations",
+      "candidate_index": 0,
+      "evidence_field": "limitations",
+      "source_id": "source-main",
+      "byte_start": 257,
+      "byte_end": 334,
+      "quote": "Limitations: synthetic labels only; no scientific interpretation is supplied."
+    }
+  ]
+}

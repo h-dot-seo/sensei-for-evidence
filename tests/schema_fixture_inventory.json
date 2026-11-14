@@ -119,6 +119,14 @@
     "schema": null,
     "scope": "Outside this three-document authoring path; no conformance claim"
   },
+  "examples/derived-passage-manifest.json": {
+    "schema": null,
+    "scope": "Derived local passage context outside the three authored-document schemas; no schema conformance claim"
+  },
+  "examples/derived-passage-protocol.json": {
+    "schema": null,
+    "scope": "Derived local passage context outside the three authored-document schemas; no schema conformance claim"
+  },
   "examples/evidence-work-candidates.json": {
     "schema": null,
     "scope": "Outside this three-document authoring path; no conformance claim"

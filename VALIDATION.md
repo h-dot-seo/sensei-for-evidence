@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.118.0-recorded-bundle-context` (2026-11-14). This file is the
+Current release: `0.119.0-derived-text-context` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,11 +55,13 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.118.0-recorded-bundle-context` (2026-11-14).
+Release: `0.119.0-derived-text-context` (2026-11-14).
 
-A bounded pure reader exposes recorded question/version/flow/readiness from the
-ordinary seven-entry schema2 research archive, even when engine bytes differ.
-No payload-hash comparison, derivation replay, extraction or scientific approval.
-All prior root modules and ENGINE_FILES are unchanged. Full2166 tests176.930s passed (skip1), independent7 passed with direct
-link/path/duplicate ZIP and output-limit probes. Audit490/manifest489 and
-Python3.10 grammar250 passed. No unresolved review blockers.
+Explicit passage manifest2 links a mapped text to a separate same-report original
+source declaration by exact descriptor hash. Conversion/original-byte verification
+remains NOT_PERFORMED; the referenced original is not opened. Strict manifest1,
+Windows fail-closed, canonical fields, ENGINE_FILES and other schema2 tools unchanged.
+Full2171 tests173.733s passed (skip1), independent46 passed with a direct
+large-origin-metadata pre-read output-budget probe. Audit494/manifest493 and
+Python3.10 grammar251 passed. No unresolved review blockers. Native Windows
+passage access and prior HTML visual QA remain unsupported/unverified respectively.

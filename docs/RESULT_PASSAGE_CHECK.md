@@ -131,3 +131,7 @@ to reproduce the comparison. The detached observation is unsigned and can be
 reauthored; hashes do not authenticate execution, reviewers, source authorship or
 scientific correctness. Ordinary research bundles do not automatically retain these
 files or validate their passage associations.
+
+For an explicit original/converted-text association without conversion verification,
+see [derived text context](DERIVED_TEXT_CONTEXT.md). Native Windows source access
+still fails closed; legacy passage manifest version1 is unchanged.

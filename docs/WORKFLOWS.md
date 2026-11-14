@@ -602,3 +602,7 @@ not value validation, typo correction or a research gate.
 
 [Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
 collection-choice/review path. Shape checks do not replace exact workflow validation.
+
+For an explicit original/converted-text association without conversion verification,
+see [derived text context](DERIVED_TEXT_CONTEXT.md). Native Windows source access
+still fails closed; legacy passage manifest version1 is unchanged.

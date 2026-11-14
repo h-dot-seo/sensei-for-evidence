@@ -144,3 +144,7 @@ The separate command's result must not be relabeled as human review completion.
 new descriptor to an already retrieved report. It does not compute an expected
 digest or replace an older null-digest row. Existing descriptors remain separate;
 a matching byte check for one new source does not verify the whole catalog.
+
+For an explicit original/converted-text association without conversion verification,
+see [derived text context](DERIVED_TEXT_CONTEXT.md). Native Windows source access
+still fails closed; legacy passage manifest version1 is unchanged.
