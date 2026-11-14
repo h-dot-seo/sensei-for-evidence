@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "operation": "append",
+  "question_records": [
+    {
+      "question_id": "question-one",
+      "text": "Fictional supplied question?",
+      "status": "OPEN",
+      "parent_question_id": null,
+      "origin": {
+        "kind": "PROTOCOL",
+        "ref_id": null,
+        "protocol_question_sha256": "98d0ce33014704e19b1fea57bf2819106cf64d9433333494c5a8c8412fc3af3c",
+        "external_record_sha256": null,
+        "label": "Fictional protocol declaration"
+      },
+      "statement_ids": [],
+      "basis_sha256": null,
+      "recorded_by": "Fictional recorder",
+      "recorded_at": "2026-11-14",
+      "rationale": "Fictional supplied rationale",
+      "limitations": "Synthetic only",
+      "reopening": null
+    }
+  ]
+}

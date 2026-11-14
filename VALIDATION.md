@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.135.0-canonical-research-zip` (2026-11-14). This file is the
+Current release: `0.136.0-supplied-question-ledger` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,36 +55,24 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.135.0-canonical-research-zip` (2026-11-14).
+Release: `0.136.0-supplied-question-ledger` (2026-11-14).
 
-Roadmap #54 standalone research ZIP core: bounded path/seekable-stream input,
-fixed-name STORED regular-entry preflight, then existing manifest/engine/hash/
-derivation validation and exact canonical archive-byte comparison. Noncanonical
-recompression, metadata, comments and trailing bytes formerly accepted are now
-rejected. This is consistency hardening, not a known-vulnerability claim. The
-other seven archive modules and broad CLI sweep remain unchanged.
+Roadmap #42 reader adjustment (a): optional supplied question records and separate
+exact-target append/transition review. OPEN and NARROWED have an explicit transition
+table; terminal labels and same-state renewal are rejected. Question labels are not
+assessed answers. Root question, existing work/statements, readiness gates and all
+prior judgments are unchanged. Optional views and bundle context expose labels and
+STALE bindings without updating old records. External references are opaque labels/hashes.
 
-The existing inclusive uncompressed 50,000,000-byte total is preserved, with exact
-derived 732-byte ZIP-header allowance for raw input. Create protocol input is bounded
-to the same payload budget. Caller-owned streams support partial reads and retain
-position/ownership. The builder function is byte-identical at source level; actual
-previous47 generation for four protocols with the same recorded engine dictionary
-produces identical ZIP bytes. Real release fingerprints still change, requiring
-old archives' recorded implementation. No existing archive/review is rewritten.
+Twelve actual previous48 CLI raw outputs are preserved without question records;
+all 44 pre-label run baselines remain unchanged. Native Windows CRLF expectations
+are explicitly recorded separately, with no runtime newline normalization. Historical
+baseline files stay byte-identical; exact named new engine hashes/source additions
+and optional bundle-summary block are isolated in regression tests.
 
-Only research_bundle.py changes among old root modules; archive_safety.py is a new
-ENGINE leaf. The original view baseline bytes are retained with one explicitly named
-new helper fingerprint excluded alongside prior named changes. The prior47 protected
-builder check is refined only for this intentional verifier change. Five existing
-semantic-tamper helper sites use canonical ZIP metadata so original assertions still
-reach payload/engine/derivation checks. New tests exercise preflight-before-read,
-CRC, EOCD, exact repack, metadata/trailing rejection, bounded partial streams and
-create/verify boundary symmetry. No extraction or authenticity/readiness promotion.
-
-Core independent review passed 45 tests plus actual previous-module reconstruction
-and five local-only header mutations. Fixed 15 synthetic target-hash maintenance
-preserves all other bytes. Full 2,290 tests passed in 198.677 s (one platform
-skip). Final independent review regenerated all 15 targets through seven existing
-guides / 61 CLI commands and verified all other example bytes unchanged; audit
-546 and manifest validation passed. No license/tag, network call or automatic
-refresh tool is added.
+Core independent review passed 33 tests plus actual previous48 CLI comparison and
+empty-stage/review/input-preservation probes. The new twelve-command guide executes
+for CSV/NBIB/RIS imports (36 commands). Full 2,302 tests passed in 202.213 s (one platform skip). Final independent
+checks passed 35 and 26 focused tests, regenerated all fixed 15 target hashes
+through seven existing guides / 61 CLI commands, and confirmed all other old
+example bytes preserved. Audit 556 and manifest validation passed.

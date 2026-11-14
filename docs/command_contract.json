@@ -1482,6 +1482,72 @@
     {
       "effects": null,
       "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_intake.py",
+      "subcommand": "assemble",
+      "usage": "python question_intake.py assemble [-h] [--output OUTPUT] protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_intake.py",
+      "subcommand": "target",
+      "usage": "python question_intake.py target [-h] [--output OUTPUT] protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_intake.py",
+      "subcommand": "template",
+      "usage": "python question_intake.py template [-h] [--output OUTPUT] [--statement-id STATEMENT_ID] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_intake.py",
+      "subcommand": "transition-template",
+      "usage": "python question_intake.py transition-template [-h] [--output OUTPUT] [--statement-id STATEMENT_ID] protocol question_id"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_intake.py",
+      "subcommand": "verify",
+      "usage": "python question_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/QUESTION_LEDGER.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or separately record supplied question labels; no answer assessment",
+      "script": "question_review.py",
+      "subcommand": null,
+      "usage": "python question_review.py [-h] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
         "docs/CONCLUSION_READINESS.md"
       ],
       "has_parser": true,
@@ -3004,7 +3070,7 @@
   ],
   "implementation_sha256": {
     "accounting_flow.py": "d1eeeeb5fd32bb68e85cca46e8cb32764aa17f3c62a0f29499c8189217e59f68",
-    "adapter_integrity.py": "9f1b62ba73ea6a570a00113fe2afb0e11591465e4422b5f25df5c2f390203428",
+    "adapter_integrity.py": "85322f730fc476e426caf8ec00be869f851662c75dfd5393798b9fc17b5ed3dc",
     "appraisal_intake.py": "10ddbb9b2daf465d69aa5635b9483f80e9cd9d410911823e3f090f064d08ca97",
     "appraisal_links.py": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2",
     "appraisal_source_review.py": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf",
@@ -3014,7 +3080,7 @@
     "audit_publication.py": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08",
     "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
     "bibliographic_intake.py": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585",
-    "bibliographic_integrity.py": "f8e13015e41ba6d825b8693774e2d68b4d2a55cd6b1b20ead0ccc22caa686b65",
+    "bibliographic_integrity.py": "3a4596bea6f132e4ee67ab13979cb68fdd4e8a817490f69e92d3c7b989060ddd",
     "bibliographic_review.py": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570",
     "build_manifest.py": "8ff087e69de21f32446071d54d0bf8a6e7ead432caff64d62d4a96f9414ccbe0",
     "challenge_intake.py": "d08ed4b969c23e15cd4b8ee20d25c4d7ce7a7adbcb5f7cef8516a7aacd351d08",
@@ -3022,7 +3088,7 @@
     "collection_bundle.py": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06",
     "collection_export.py": "f1f906ff4dbffe4225779d2a00e4ac212bb0a371016db26ddbf36c807061eac7",
     "command_contract.py": "885d11dde06888cddbbc501611cc31161c0f137fa8dc4a913ebf929620e41cb5",
-    "compare_runs.py": "dda29b129fa3f2e389f76c42e9cad3f56c914978d2bd79b7cb17f6b41d27c296",
+    "compare_runs.py": "51df7aa579412f54d102fde2aa9b807fc62da924f244842ce29efe7a97a1a4ff",
     "condition_intake.py": "dd5afab1482c0fd88dd6c2a223f8c2fa58a3ad65977be0b8dbed41e667033725",
     "context_intake.py": "8a6e2bbc5589805fb05119c76143e45ef5ed2d7c4772e0ec0678134e4d1230b0",
     "context_links.py": "bf7cbe8aa68f8769a4bbc403eedbb1dab5ea4156426bf32384d195edc50c59cb",
@@ -3032,7 +3098,7 @@
     "evidence_basis_links.py": "e550e5b83e959405ed577bd969b85402991956d54a454ec806e6f9797bcb3210",
     "evidence_basis_review.py": "12d897a3373b405c98c537aed53284a9add9af53a17bb42d873289f7bfff5e60",
     "evidence_work_intake.py": "3acbfaed060e19235f9fd2d16de15a3352e4c2893d83906622288af153a52fa4",
-    "evidence_workflow.py": "c8b4e457605888ac1a6f9894920d598c643d781ffb89362635f451eaad972e82",
+    "evidence_workflow.py": "41418fbc772ad6db47b268981c9d31c69309a6be9a89292458a364b931de25cc",
     "experiment_links.py": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74",
     "extraction_transition_bundle.py": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66",
     "implementation_check.py": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f",
@@ -3050,13 +3116,16 @@
     "prisma_audit.py": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee",
     "prisma_flow_template.py": "5a31b7c86bae21b80b55956bba210c518369d0cdd42c92140fdde9ab95ce7be0",
     "prisma_reports.py": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562",
-    "protocol_keys.py": "74bd7626dc70bc0d193a23dec351ef835fac22ecf324d360a96c1787d77e58e2",
+    "protocol_keys.py": "8e715f1e5bd37e281e4adb1ca182f16abd29069fb05da67ba75c1cf9a03834e7",
     "protocol_scaffold.py": "d7eb4c570f756e3b40812176ee86985ea849160602979adaf3761c743e61b377",
     "pubmed_discovery.py": "4abdafd36619e90eb49c69b8b5acc164078d5084d3da3175ee6c5ac9363aedb8",
     "pubmed_metadata.py": "95d1ed99ee1e9c1ba1ecd4ffc72b21f047c1531aaaaa48164900244ba2941c59",
+    "question_intake.py": "46eba808250d9c653ff3d755210268e51c2e74719c0179aed4d8500bda652f76",
+    "question_links.py": "adb73469b9cb4d7251d3bf655d3caf4f975b0f8a305abe6e664746f94d4c33bb",
+    "question_review.py": "ca302e75010581c46c467fba3e817cadb50c725b1ad5dceb2532212e8d85e429",
     "readiness_intake.py": "cde5fef1fd6868c1a7da5a4e6a8864cfed2b92c46912ba2cf6f7eb27680a1e5b",
     "readiness_links.py": "141222dc02740f77da9e62903d53442c87b2bbdbb268107b9c681a62a8da2295",
-    "readiness_review.py": "d96d70f73c861fd08023f026cf1650809c10ecfe5a6d1d2b7ec7fa187d02f577",
+    "readiness_review.py": "ca340e3d946c9f63367629490a7d9d3be6aed83ec735483fe957f0fad291c5e1",
     "receipt_intake.py": "f456e9f618d173da7495c0e412d93ec565a5fb9c824bae90a55b6b704df34b39",
     "records_csv.py": "19c5e08cf7a97149332637353396c4b171b5d9398a728f1fc2114c26e8530e52",
     "report_decision.py": "42cef4479bf9509eb296bcd5cf6098b35f0a75d82b1b528ec74d63417c69566c",
@@ -3077,18 +3146,18 @@
     "report_study_review_intake.py": "8b273ee20adeb69ef670aa6edf001087e5a3c87801c5223f1c53cd4ec976c30d",
     "report_study_review_links.py": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b",
     "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
-    "research_bundle.py": "4b019ac02705fda3400c66e1c38bcedec2c34e17a55e2dc8619b56fd40d45258",
+    "research_bundle.py": "77dcaf862502148f3eeab4aa67c33c7b683edd9566827d261adc7931e068b0b1",
     "research_bundle_describe.py": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5",
     "research_map.py": "997a962a895c9bccb08213060fe69c71b7a2581061e5652c73797be386240827",
     "research_map_views.py": "aacd685f2054e5498c9f9fc11083b518856a33502620e09b574ceb3782410f2f",
-    "research_status.py": "7f6feedfc432a640918245b560ad1f5774236255d419e33eb7a4747d42065ee1",
+    "research_status.py": "e1f29da64e93b96956f352858c10d2c96798e3e916c7c8fc3678eec81c45cdfb",
     "research_view.py": "8f2e3f0d03c1b1596a3ac0eb77af7d245ca80c1298fb84e34d2caa1953285064",
     "result_correction.py": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52",
     "result_extraction.py": "6ed413ce7cd0157d5479a413b1bc8a14629194fb800efd34260e0a546a578732",
     "result_intake.py": "bba5e1437fa9713291ad10f65acd2b2b3a695bae981686be9068fff4c568715b",
     "result_passage_check.py": "c25056a73c3a9392d5ba07f3b2f9ad6d9467503d57b4f31e1c4144e09b7930c1",
     "result_source_review.py": "5fd34ef114e522a9d9251fe62ed940eb30b0630794952496453ab2356b394d7e",
-    "review_handoff.py": "1710389d40be0b3e60c55777e3eccbcca6b76a96488c33dc142b8083cf851300",
+    "review_handoff.py": "870853b33034c6bda676caf7af33d5f95a11bd609a923288059c600175cb3acf",
     "reviewed_intake_safety.py": "bc2dcac39107734bedf3949185604103555a6c4a740de80361fb00dd3442d2bc",
     "ris_continuation_intake.py": "4038698deb3cc1abe9a4ffa8b639eb1a8008931e4c11ce95f31f2bb6d1f0061f",
     "ris_continuation_parser.py": "ba9eb550c14f6826212dd13ed2794be276fd4222fb5c0a32a692d0f3b9326ac8",
@@ -3110,7 +3179,7 @@
     "sensei.py": "084da31ae16bf40836b6c586c290688863d2effceebb9d2b3caa02017607a469",
     "source_work_intake.py": "f0c73f0ccfb917dfcc15480ccdb86642bb7eb7a09facda434d8f3bf22e4c036c",
     "synthesis_links.py": "4fe4b0de5acc33a219c4cf5e4d96d6ac74b7bd2e44451ac175631b0054c62b60",
-    "synthesis_review.py": "ca5e4c446df5fe338a69614371c4588bf65833807bfbabc567d8d55c23cbff93",
+    "synthesis_review.py": "dd041b59c7f7d7e77090a55bdd2f8a18e0f96ba2ad815884d5d1975365b2efb7",
     "validate_run.py": "082dd0107054b3d1a1adafb1289a5a4ca7875078d4e6dc4785aee9ed9b5db837",
     "verify_manifest.py": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d",
     "views_export.py": "9e31abd56dbc0b7f2637ab9788e356b0f74aef941dbd9e3eb5f4f4ccb6ead440",

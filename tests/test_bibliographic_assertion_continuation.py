@@ -21,6 +21,7 @@ from evidence_workflow import run
 from challenge_links import challenge_basis
 from tests.test_evidence_basis import label
 from json_io import canonical_json_bytes
+from tests._question_compat import prior_builder_source, prior_workflow_bytes
 
 ROOT=Path(__file__).resolve().parents[1]
 FORMATS=('CSV','NBIB','RIS')
@@ -100,6 +101,8 @@ class BibliographicAssertionContinuationTests(unittest.TestCase):
     def test_exact_two_name_change_and_existing_validator_bytes(self):
         proof=json.loads((ROOT/'tests/bibliographic_assertion_compatibility.json').read_bytes())
         current=(ROOT/'bibliographic_integrity.py').read_bytes()
+        self.assertEqual(current.count(b"'evidence_bases', 'question_records'"),1)
+        current=current.replace(b"'evidence_bases', 'question_records'",b"'evidence_bases'",1)
         old=b"'report_study_inventory_reviews', 'evidence_bases',"
         new=old+b" 'challenges', 'readiness_assertions',"
         self.assertEqual(current.count(new),1)
@@ -110,8 +113,10 @@ class BibliographicAssertionContinuationTests(unittest.TestCase):
                 import research_bundle
                 baseline=json.loads((ROOT/'tests/research_zip_previous_baselines.json').read_bytes())
                 self.assertEqual(expected,baseline['previous_module_sha256'])
-                self.assertEqual(hashlib.sha256(inspect.getsource(research_bundle.build_bundle).encode()).hexdigest(),baseline['build_function_sha256'])
+                self.assertEqual(hashlib.sha256(prior_builder_source(research_bundle).encode()).hexdigest(),baseline['build_function_sha256'])
                 self.assertNotEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected)
+            elif name == 'evidence_workflow.py':
+                self.assertEqual(hashlib.sha256(prior_workflow_bytes()).hexdigest(),expected,name)
             else:
                 self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected,name)
 

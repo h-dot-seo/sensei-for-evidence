@@ -187,6 +187,14 @@
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
+  "examples/manual-question-candidates.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
+  "examples/manual-question-transition.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
   "examples/manual-readiness-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"

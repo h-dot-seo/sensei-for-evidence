@@ -11,7 +11,7 @@ python protocol_keys.py inspect examples/review-demo.json
 python protocol_keys.py inspect examples/review-demo.json --text
 ```
 
-`list` emits the 27 declared protocol-root field names in this release. `inspect`
+`list` emits the 28 declared protocol-root field names in this release. `inspect`
 emits sorted `recognized_top_level_keys` and `unrecognized_top_level_keys` only, plus
 fixed scope/boundary and checker implementation hashes. There is no input digest,
 value preview, nested-key walk, field suggestion or research validation. JSON is

@@ -699,3 +699,6 @@ pull requests, not a duplicate branch-push trigger. The old named branch is not 
 [Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
 
 [Canonical research ZIP verification](RESEARCH_ZIP_SAFETY.md): unchanged schema2 builder, bounded path/BytesIO input, exact canonical envelope required. Noncanonical recompression/trailing metadata is now rejected; old archives need their recorded implementation.
+
+
+Supplied question labels and separately reviewed transitions: [question ledger](QUESTION_LEDGER.md). Optional one-way context only; no answer generation, new readiness gate, terminal-record reopening or scientific closure assessment.

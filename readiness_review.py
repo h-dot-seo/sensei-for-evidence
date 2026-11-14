@@ -24,7 +24,7 @@ def review(protocol):
         report_flow(protocol, include_csv=False)
     readiness = research['readiness']
     implementation = dict(engine_hashes(), **{'readiness_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
-    return dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
+    result = dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
                 engine_sha256=implementation,
@@ -42,6 +42,11 @@ def review(protocol):
                 assertion_scope='supplied human assertions bound to a gate snapshot; not mechanical conclusions',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 readiness_boundary=readiness['boundary'], boundary=BOUNDARY)
+
+    if 'question_ledger' in research:
+        q = research['question_ledger']
+        result['question_context'] = dict(open_count=len(q['open_question_ids']), unresolved_count=len(q['unresolved_question_ids']), scope='supplied labels outside gate ledger; not answer assessment')
+    return result
 
 
 def render_text(result):
@@ -61,6 +66,8 @@ def render_text(result):
                   'Assertions bound to stale gates: ' + show(result['stale_assertion_ids']),
                   'Mechanical conclusion readiness: NOT_READY', 'Census: NOT_ESTABLISHED', 'Conclusion: NOT_READY',
                   result['gate_scope'], result['readiness_boundary'], result['boundary']])
+    if 'question_context' in result:
+        lines.append('Supplied question context: ' + show(result['question_context']))
     return '\n'.join(lines) + '\n'
 
 

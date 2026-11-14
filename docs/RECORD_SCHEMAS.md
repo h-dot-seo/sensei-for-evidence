@@ -172,3 +172,12 @@ Read a received research ZIP without replay: [recorded bundle context](RESEARCH_
 | --- | --- | --- | --- | --- |
 | `target_type=manual_evidence_basis_intake` | 1 | review_target | `evidence_basis_intake.py:_prepare` | [Guide](EVIDENCE_BASIS.md) |
 | `kind=detached_evidence_basis_intake` | 1 | detached_application | `evidence_basis_intake.py:assemble` | [Guide](EVIDENCE_BASIS.md) |
+
+
+## Supplied question record tag
+
+| Discriminator | Version | Role | Constructor | Guide |
+| --- | --- | --- | --- | --- |
+| `kind=detached_question_intake` | 1 | detached_application | `question_intake.py:assemble` | [Guide](QUESTION_LEDGER.md) |
+
+Question target_type is operation-derived (supplied_question_append or supplied_question_transition); it is not a literal-constructor entry. It remains covered by exact replay, not a new general schema.

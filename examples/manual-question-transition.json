@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "operation": "transition",
+  "question_id": "question-one",
+  "changes": {
+    "basis_sha256": null,
+    "limitations": "Synthetic only",
+    "rationale": "Fictional supplied rationale",
+    "recorded_at": "2026-11-14",
+    "recorded_by": "Fictional recorder",
+    "statement_ids": [],
+    "status": "UNRESOLVED"
+  }
+}

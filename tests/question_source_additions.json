@@ -1,0 +1,4 @@
+{
+  "engine_hook": "    if 'question_records' in protocol:\n        from question_links import link_questions\n        result['question_ledger'] = link_questions(protocol, synthesis, challenge, readiness, work)\n",
+  "bundle_summary": "    if 'question_ledger' in research:\n        q = research['question_ledger']\n        summary += ('Supplied questions: open ' + str(len(q['open_question_ids'])) + ', unresolved ' + str(len(q['unresolved_question_ids'])) + '\\n'\n                    'Stale question bindings: ' + str(len(q['stale_question_bindings'])) + '\\n'\n                    'Question labels are supplied assertions, not assessed answers or additional readiness gates.\\n')\n"
+}

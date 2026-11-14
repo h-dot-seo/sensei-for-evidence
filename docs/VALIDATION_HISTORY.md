@@ -3937,3 +3937,15 @@ New attack/boundary tests and canonical semantic repacks preserve existing paylo
 Full 2,290 tests passed in 198.677 s (one platform skip). Final independent review verified the documented rejection compatibility change, unchanged builder source under the same-engine control, explicit fingerprint exceptions, and all seven other archive modules unchanged. Seven existing guides / 61 CLI commands regenerated all fixed 15 target hashes exactly, with every other example byte retained. Independent audit 546 and manifest validation passed; registry/manifest 16 tests passed (one platform skip). Final focused checks follow this documentation-only result update.
 
 The first final-focus invocation named two nonexistent test modules (test_command_registry and test_publication_manifest), producing two import errors after 38 real tests passed. This was a command-selection mistake, not a product failure; the corrected invocation names the existing record-registry and verify-manifest modules.
+
+
+## 2026-11-14: 0.136.0-supplied-question-ledger
+
+Roadmap #42 reader adjustment (a), not a new gate/termination policy. Optional question records with supplied labels, exact separate append and narrow state-transition review, parent cycle/existence checks, one-way statement bases and controlled consultation reopening. Absence preserves old run and CLI text. Terminal/same-state updates are rejected; changed bindings remain stale. Existing gates, human assertions and external-access limits stay unchanged.
+
+Initial development caught an engine-hook insertion at an earlier similarly named branch, a comparison helper's local scope, and two invalid test assumptions (nonexistent criteria key, changing immutable bibliographic root). Corrected before core validation. Core ten tests / 2.262 s passed, then new guide eleven tests / 4.098 s passed. Independent core 33 tests / 2.220 s and actual twelve old/new raw CLI outputs passed; reviewer corrected its own nested-field probe. Explicit current-basis template selection leaves status/person fields blank and does not update a stored record.
+
+The first compatibility focus (46 tests) found a missing named readiness_review implementation-hash exception in legacy handoff comparison. Added exactly that prior hash restoration; no baseline data or semantic field was replaced. Other previous baseline sources are preserved with explicit optional engine hook and bundle summary exclusions only. Fixed 15 synthetic target maintenance, full and final independent validation pending.
+
+
+Full 2,302 tests passed in 202.213 s (one platform skip). Final independent checks passed 35 tests / 5.426 s and 26 tests / 3.237 s, including the three-format new guide; seven old guides / 61 CLI commands independently regenerated all 15 fixed fictional targets exactly. Other old example bytes and historical baseline files are retained. Registry: 195 commands, 32 reviewed and 163 NOT_REVIEWED; 28 names-only protocol keys. Audit 556 and manifest validation passed. Final focused verification follows this result-only documentation update.

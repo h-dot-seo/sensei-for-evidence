@@ -480,3 +480,17 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | `python evidence_basis_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document` | Append separately reviewed supplied declarations | [Evidence basis](EVIDENCE_BASIS.md) |
 | `python evidence_basis_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record` | Replay the complete detached label import | [Evidence basis](EVIDENCE_BASIS.md) |
 | `python evidence_basis_review.py [-h] [--text] protocol` | Inspect supplied labels and literal citation cues | [Evidence basis](EVIDENCE_BASIS.md) |
+
+
+## Supplied question records
+
+| Usage | Purpose | Guide |
+| --- | --- | --- |
+| `python question_intake.py template [-h] [--output OUTPUT] [--statement-id STATEMENT_ID] protocol` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+| `python question_intake.py transition-template [-h] [--output OUTPUT] [--statement-id STATEMENT_ID] protocol question_id` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+| `python question_intake.py target [-h] [--output OUTPUT] protocol candidate_document` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+| `python question_intake.py assemble [-h] [--output OUTPUT] protocol candidate_document review_document` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+| `python question_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] protocol application_record` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+| `python question_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
+
+| `question_links.py` | Supplied question validation, ancestry and current/stale statement bindings; no answer assessment |
