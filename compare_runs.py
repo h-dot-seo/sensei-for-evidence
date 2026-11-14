@@ -525,6 +525,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
         'search_plan': entity_changes(left['search_plan_audit']['search_plan_ledger'],
                                       right['search_plan_audit']['search_plan_ledger'], 'search_id'),
     }
+    if 'evidence_bases' in before or 'evidence_bases' in after:
+        entities['evidence_bases'] = entity_changes(before.get('evidence_bases', []), after.get('evidence_bases', []), 'evidence_id')
     implementation = dict(engine_hashes(), **{'compare_runs.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
     result = dict(engine_sha256=implementation, before_protocol_sha256=hashlib.sha256(left_bytes).hexdigest(),
                 after_protocol_sha256=hashlib.sha256(right_bytes).hexdigest(),
@@ -540,6 +542,13 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
                 before_report_counts=left_reports['report_flow'] if left_reports else None,
                 after_report_counts=right_reports['report_flow'] if right_reports else None,
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if 'evidence_bases' in before or 'evidence_bases' in after:
+        old = {row['evidence_id']: row for row in before.get('evidence_bases', [])}
+        new = {row['evidence_id']: row for row in after.get('evidence_bases', [])}
+        result['evidence_basis_label_transitions'] = [dict(evidence_id=eid,
+            before={key: old[eid][key] for key in ('text_access', 'value_origin', 'finding_kind')},
+            after={key: new[eid][key] for key in ('text_access', 'value_origin', 'finding_kind')})
+            for eid in sorted(set(old) & set(new)) if any(old[eid][key] != new[eid][key] for key in ('text_access', 'value_origin', 'finding_kind'))]
     if has_plural_studies(before) or has_plural_studies(after):
         result['report_study_comparison'] = report_study_comparison(
             before, after, left, right, left_reports, right_reports)
@@ -600,6 +609,8 @@ def render_text(result):
                       note['boundary']])
     lines.extend(['', 'Changed entity rows (field names only; not change significance):'])
     changed_entities = False
+    if 'evidence_basis_label_transitions' in result:
+        lines.append('Supplied basis label transitions, not adjudicated: ' + show(result['evidence_basis_label_transitions']))
     for name, changes in sorted(result['entity_changes'].items()):
         if changes['added_ids'] or changes['removed_ids'] or changes['changed']:
             changed_entities = True

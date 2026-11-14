@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.132.0-interpretive-challenge-origin` (2026-11-14). This file is the
+Current release: `0.133.0-supplied-evidence-basis` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,44 +55,33 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.132.0-interpretive-challenge-origin` (2026-11-14).
+Release: `0.133.0-supplied-evidence-basis` (2026-11-14).
 
-Implemented roadmap #100's optional schema 1 origin declaration, not a gate rule.
-HUMAN_AUTHORED is self-declared, INTERPRETIVE_SIMULATION is not a scholar's view or
-empirical evidence, and missing origin derives UNDECLARED without rewriting raw rows.
-Exact optional shape, nullable declared hashes and the five-field bounded Persona
-provenance contract are validated without opening sources or invoking a producer.
-Human-origin declarations cannot carry package/consultation/model metadata.
+Roadmap #41: optional supplied evidence-basis labels and same-report document
+selections, with status-shaped uncertainty and a separately reviewed append-only
+intake. Canonical result rows, actual human assertions, gate policy and scientific
+assessment boundaries are unchanged. Related label/source changes are bound to
+existing statement/work bases and can make old reviews stale without renewal.
+Labels are not inferred from source-file observations. Figure/statistics coexistence
+is only a cue. Template human fields are null; empty ledger presence is an explicit
+stage transition, and legacy absence retains old behavior.
 
-Only challenge_links.py and research_bundle.py change inside ENGINE_FILES. Outside
-the engine, challenge_intake.py/status/handoff expose supplied origin and optional
-statement queues; synthesis/compare already preserve full rows. readiness_links.py,
-its basis sentences, offline_adapter.py, allowlists, canonical decisions and closure
-policy are unchanged. Old archives and applications require their recorded trusted
-implementation; their hashes must not be rewritten to claim current verification.
+Six existing ENGINE modules change and evidence_basis_links.py is added. The
+bibliographic enrichment allowance adds exactly evidence_bases. Old applications
+need their recorded trusted implementation. Only 15 fixed fictional example target
+hashes were maintained; all other bytes/reviewer/date/decision values remain intact.
+No public or automatic refresh tool was added.
 
-The original43rd-increment twelve-view baseline file is byte-preserved. Its original
-self-hash exclusions remain; exactly two top-level engine digest paths are substituted
-with recorded prior values for whole JSON/text comparison. Four actual44th-increment
-run/input/gate baselines recover the entire old result after removing only the newly
-derived UNDECLARED per-row origin_kind. Explicit-origin comparisons preserve all
-non-challenge engine fields and readiness rows/digests and old queue/count decisions.
-Independent actual old-code recomputation confirmed the four baselines and prior
-engine digests; nine mixed origin combinations preserved all non-challenge results.
+Actual previous45 execution reproduces all 44 valid legacy example input/run hashes
+exactly without labels. Original43 default-view baseline bytes are retained, with
+only explicit named implementation changes and one static route accounted for.
+Core independent verification checked 72 label combinations. Final independent
+verification passed 43 tests, the new 11-command guide, and 61 existing guide commands
+that independently regenerate all 15 synthetic targets.
 
-Fifteen fixed public fictional walkthrough target_sha256 fields were updated from actual
-target outputs after replay in a temporary copy. All other bytes/JSON values, including
-reviewer, date, rationale and supplied decisions, remain identical. No real/user data
-or review was changed and no public/automatic refresh tool was added. Existing challenge
-guide's two blocks/ten commands and its test remain byte-identical. New origin guide
-has its own ten-command actual CLI rehearsal. Initial full2263 tests in194.923s found five stale-target failures in later synthetic
-import-review walkthroughs absent from the original ten-field inventory. Work paused
-until the maintenance scope explicitly expanded to fifteen. Only the five additional
-target_sha256 fields changed, preserving all other bytes and supplied assertions.
-Corrected full2263 tests in196.398s passed (skip1). Independent final origin11
-tests and five-journey-related61 tests passed; the full15-file raw-byte and remaining
-JSON preservation checks passed. Earlier independent48+19 focused tests and actual
-old-code/nine-origin-combination comparisons also passed. Audit529/manifest528 and
-Python3.10 grammar269 passed. Final focused checks cover this record update.
-No unresolved review blockers; existing external compatibility, HTML visual QA and Korean-locale Windows
-limitations remain unverified. No new license, tag, gate or human judgment is selected.
+First full run: 2,274 tests / 190.690 s, six metadata/inventory failures (one platform
+skip), corrected without changing the engine or intake. A subsequent 38-test metadata
+check exposed the matching protocol-key inventory count (26 to 27), also corrected.
+Corrected full suite: 2,274 tests passed in 187.613 s (one platform skip). Existing external interoperability,
+HTML visual QA and Korean-locale Windows limits remain unverified. No license, tag,
+new acceptance rule or actual human review is selected.

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "evidence_bases": [
+    {
+      "evidence_id": "e1",
+      "text_access": "ABSTRACT_ONLY",
+      "value_origin": "REPORTED_TEXT",
+      "finding_kind": "UNCLEAR",
+      "uncertainty": {
+        "status": "unknown",
+        "reason": "Synthetic unknown",
+        "source_locator": "Synthetic page"
+      },
+      "document_source_ids": [],
+      "declared_by": "Synthetic declarer",
+      "declared_at": "2026-11-14",
+      "limitations": "Synthetic only"
+    }
+  ]
+}

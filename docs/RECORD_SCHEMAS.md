@@ -165,3 +165,10 @@ No network access, cross-repository compatibility, scientific assessment or auto
 acceptance is established. Canonical decisions and census/readiness claims are unchanged.
 
 Read a received research ZIP without replay: [recorded bundle context](RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
+
+## Supplied evidence-basis record tags
+
+| Discriminator | Version | Role | Constructor | Guide |
+| --- | --- | --- | --- | --- |
+| `target_type=manual_evidence_basis_intake` | 1 | review_target | `evidence_basis_intake.py:_prepare` | [Guide](EVIDENCE_BASIS.md) |
+| `kind=detached_evidence_basis_intake` | 1 | detached_application | `evidence_basis_intake.py:assemble` | [Guide](EVIDENCE_BASIS.md) |

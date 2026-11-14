@@ -78,6 +78,10 @@ def status(protocol, *, research_map=_NO_RESEARCH_MAP):
             research['report_study_inventory_review']['current_candidates_with_review_cues'])
     if 'statements_with_only_interpretive_challenges' in research['challenge']:
         queues['statements_with_only_interpretive_challenges'] = copy.deepcopy(research['challenge']['statements_with_only_interpretive_challenges'])
+    if 'evidence_bases' in research:
+        from evidence_basis_links import statement_cues
+        queues['evidence_without_basis'] = copy.deepcopy(research['evidence_bases']['evidence_without_basis'])
+        queues['statements_with_abstract_only_citations'] = [row['statement_id'] for row in statement_cues(research) if row['abstract_only_citations']]
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     readiness = research['readiness']
     readiness_summary = dict(
@@ -182,6 +186,9 @@ def render_text(result):
     ]
     lines = ['Supplied research status', 'Search plan: ' + result['search_plan_status']]
     lines.extend(label + ': ' + count(key) for label, key in labels)
+    if 'evidence_without_basis' in result['queues']:
+        lines.append('Results without supplied evidence basis: ' + count('evidence_without_basis'))
+        lines.append('Statements citing abstract-only results: ' + count('statements_with_abstract_only_citations'))
     if 'statements_with_only_interpretive_challenges' in result['queues']:
         lines.append('Statements with only declared interpretive challenges: ' + count('statements_with_only_interpretive_challenges'))
         lines.append('Origins are supplied, unauthenticated labels; readiness gates and human judgments are unchanged.')

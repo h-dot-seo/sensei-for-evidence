@@ -403,3 +403,5 @@ history support, engine/bundle integration, live backend, legal advice or FTO op
 HUMAN_AUTHORED, INTERPRETIVE_SIMULATION and undeclared labels without authenticating
 any author or changing readiness gates. Existing schema 1 rows are not rewritten;
 old bundles/applications still require their recorded implementation.
+
+Supplied result basis labels: [EVIDENCE_BASIS](docs/EVIDENCE_BASIS.md), an append-only declaration/review flow, not source or scientific verification.

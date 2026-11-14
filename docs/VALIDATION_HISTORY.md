@@ -3895,3 +3895,20 @@ old-code/nine-origin-combination comparisons also passed. Audit529/manifest528 a
 Python3.10 grammar269 passed. Final focused checks cover this record update.
 No unresolved review blockers; existing external compatibility, HTML visual QA and Korean-locale Windows
 limitations remain unverified. No new license, tag, gate or human judgment is selected.
+
+
+## 2026-11-14: 0.133.0-supplied-evidence-basis
+
+Implemented roadmap #41 using reader adjustments: optional exact result labels, status-shaped uncertainty, same-report explicit document selections, figure/statistics coexistence cues, conditional statement/work basis binding, and separately reviewed append-only intake. Old evidence rows and gate policy are unchanged. Absence preserves legacy; explicit empty ledger is a stage transition. No source-file observation or receipt reference is promoted into a label. No person, document authenticity, scientific finding or acceptance is inferred.
+
+Changed ENGINE modules: evidence_workflow.py, synthesis_links.py, planning_links.py, adapter_integrity.py, bibliographic_integrity.py, research_bundle.py; added evidence_basis_links.py. Existing application replay requires its recorded trusted implementation. Added only evidence_bases to bibliographic ENRICHMENT_FIELDS and adapter allowance. Fixed 15 fictional review target fields are maintained only; no actual review assertions/data or public automatic refresh tool.
+
+Actual prior45 subprocess baseline comparison: all 44 valid legacy example protocols have exactly equal input/run digests without labels. Original round43 default-view baseline remains byte-preserved; the regression explicitly identifies six old ENGINE hashes, synthesis_review hash only where present, one new ENGINE entry and one exact static handoff route, then retains prior45 two-hash substitutions. All other JSON/text fields remain compared exactly.
+
+Initial focused 57 tests found one documentation inventory omission (new non-CLI module row), corrected. First new 11-command guide rehearsal exposed an invalid --output argument for the existing bundle create positional output; corrected to the existing parser contract. These were test/documentation failures, not hidden as successful runs. Core independent review passed: 44 baseline recomputations and 72 label combinations preserved already-supplied-stage evidence/flow/work/readiness. Final validation pending.
+
+First full run: 2,274 tests in 190.690 s, six inventory/metadata failures, one platform skip. Corrected the declared top-level key inventory, two new record tags and their table, exact release heading, two explicitly outside-schema fixture classifications, and two NOT_REVIEWED remainder counts (152 to 157). No effects review scope was promoted. Corrected full run pending.
+
+The corrected metadata focus (38 tests) additionally found the explicit top-level-key count needed 26→27 alongside the new declared key. Corrected before the second full run.
+
+Corrected full run: 2,274 tests passed in 187.613 s (one platform skip). Final independent review passed 43 focused tests and independently regenerated all 15 targets through 61 old guide commands, plus the new 11-command guide. Metadata completion added only the names-only protocol-key entry, two record tags, two fixture classifications and matching counts; reviewed effects remain 32 of 189 (157 NOT_REVIEWED).

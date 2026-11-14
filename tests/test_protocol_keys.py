@@ -96,7 +96,7 @@ class ProtocolKeysTests(unittest.TestCase):
             with self.subTest(path=path.name):actual.update(protocol_accesses(ast.parse(path.read_bytes()),section_tables=path.name=='review_handoff.py'))
         self.assertEqual(set(keys.KNOWN_TOP_LEVEL_KEYS),actual)
         self.assertEqual(list(keys.KNOWN_TOP_LEVEL_KEYS),sorted(set(keys.KNOWN_TOP_LEVEL_KEYS)))
-        self.assertEqual(len(actual),26)
+        self.assertEqual(len(actual),27)
 
     def test_inventory_scanner_fails_unknown_dynamic_access_and_covers_loop_keys(self):
         source="""for key, prefix in [('one','a'),('two','b')]:

@@ -274,6 +274,7 @@ in every bundle, so verification fails closed on implementation drift.
 | `adapter_integrity.py` | Check internal mock receipt/review consistency; never authenticate external sources |
 | `appraisal_links.py` | Preserve supplied appraisal methods and domain judgements without scoring evidence |
 | `bibliographic_integrity.py` | Validate flat, supplied-review bibliographic import history without trusting identity |
+| `evidence_basis_links.py` | Validate supplied result basis labels and literal citation cues ([guide](EVIDENCE_BASIS.md)) |
 | `challenge_links.py` | Record supplied independent challenges to synthesis statements without adjudicating them ([guide](INDEPENDENT_CHALLENGE.md)) |
 | `context_links.py` | Validate supplied guideline/development context links without judging their validity |
 | `csv_export_parser.py` | Parse local bibliographic CSV bytes without resolving or merging records |
@@ -468,3 +469,13 @@ The existing challenge commands accept optional schema 1 origin declarations; no
 command or version is required. See [interpretive challenge origin](INTERPRETIVE_CHALLENGE_ORIGIN.md)
 for the separate fictional rehearsal, unchanged gate policy and implementation-bound
 compatibility. Origin fields are supplied declarations, never authentication.
+
+## Supplied evidence basis labels
+
+| Command | Purpose | Guide |
+| --- | --- | --- |
+| `python evidence_basis_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document` | Create blank supplied basis declarations | [Evidence basis](EVIDENCE_BASIS.md) |
+| `python evidence_basis_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document` | Prepare separate exact-input label import review | [Evidence basis](EVIDENCE_BASIS.md) |
+| `python evidence_basis_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document` | Append separately reviewed supplied declarations | [Evidence basis](EVIDENCE_BASIS.md) |
+| `python evidence_basis_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record` | Replay the complete detached label import | [Evidence basis](EVIDENCE_BASIS.md) |
+| `python evidence_basis_review.py [-h] [--text] protocol` | Inspect supplied labels and literal citation cues | [Evidence basis](EVIDENCE_BASIS.md) |

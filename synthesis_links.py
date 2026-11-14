@@ -1,5 +1,6 @@
 """Trace supplied synthesis statements without judging entailment or writing conclusions."""
 import copy
+from evidence_basis_links import selected_basis
 from context_links import id_list, iso_date, nonempty_text
 from planning_links import digest
 
@@ -42,7 +43,7 @@ def position_groups(rows, refs, statement_text):
                  positions=sorted(groups[key], key=lambda r:r['evidence_id']),
                  assessment='NOT_PERFORMED') for key in sorted(groups)]
 
-def link_synthesis(protocol, evidence, context, appraisal, experiments=None):
+def link_synthesis(protocol, evidence, context, appraisal, experiments=None, evidence_bases=None):
     if 'experimental_units' in protocol and (not isinstance(experiments, dict) or experiments.get('stage') != 'SUPPLIED'):
         raise ValueError('supplied experimental units require validated experiment binding')
     supplied = protocol.get('synthesis_statements', [])
@@ -104,6 +105,8 @@ def link_synthesis(protocol, evidence, context, appraisal, experiments=None):
                      appraisals=[copy.deepcopy(item) for item in appraisal['appraisal_ledger'] if set(refs).intersection(item['evidence_ids'])])
         if experiments is not None and experiments['stage'] == 'SUPPLIED':
             basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if set(refs).intersection(item['evidence_ids'])])
+        if 'evidence_bases' in protocol:
+            basis['evidence_bases'] = selected_basis(protocol, refs, evidence_bases)
         groups = None
         if 'evidence_positions' in row:
             groups = position_groups(row['evidence_positions'], refs, row['text'])
