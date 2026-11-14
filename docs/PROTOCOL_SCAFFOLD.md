@@ -78,3 +78,5 @@ reported digest uses sorted compact JSON, not the pretty-printed output bytes.
 
 [Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
 collection-choice/review path. Shape checks do not replace exact workflow validation.
+
+For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.

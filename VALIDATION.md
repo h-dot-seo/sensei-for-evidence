@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.119.0-derived-text-context` (2026-11-14). This file is the
+Current release: `0.120.0-own-nbib-walkthrough` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,13 +55,12 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.119.0-derived-text-context` (2026-11-14).
+Release: `0.120.0-own-nbib-walkthrough` (2026-11-14).
 
-Explicit passage manifest2 links a mapped text to a separate same-report original
-source declaration by exact descriptor hash. Conversion/original-byte verification
-remains NOT_PERFORMED; the referenced original is not opened. Strict manifest1,
-Windows fail-closed, canonical fields, ENGINE_FILES and other schema2 tools unchanged.
-Full2171 tests173.733s passed (skip1), independent46 passed with a direct
-large-origin-metadata pre-read output-budget probe. Audit494/manifest493 and
-Python3.10 grammar251 passed. No unresolved review blockers. Native Windows
-passage access and prior HTML visual QA remain unsupported/unverified respectively.
+The existing local-NBIB guide now completes explicit collection review, separate
+screening and archive checks using14 replayed commands. Fictional choices are supplied
+between blocks, not inferred. Blank/stale human-input refusal, native-byte retention,
+source preservation and output exclusivity are tested. No runtime or ENGINE_FILES
+change and no new hash-bound review fixture chain. Full 2173 tests in 171.384s passed (skip1), independent 2 passed with all
+14 guide commands replayed. Audit 495 / manifest 494 and Python3.10 grammar 252
+passed. No unresolved review blockers.

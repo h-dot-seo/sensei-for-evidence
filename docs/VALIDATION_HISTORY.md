@@ -3595,3 +3595,15 @@ not. Native Windows no-follow access stays fail-closed. Full2171 tests173.733s p
 large-origin-metadata pre-read output-budget probe. Audit494/manifest493 and
 Python3.10 grammar251 passed. No unresolved review blockers. Native Windows
 passage access and prior HTML visual QA remain unsupported/unverified respectively.
+
+## 2026-11-14: 0.120.0-own-nbib-walkthrough
+
+Completed the existing own-NBIB guide as a tested14-command workflow, including
+separate A-include/B-exclude fictional screening assertions after explicit collection
+identity choices. Untouched common base/native bytes, retained3 occurrences vs2 IDs,
+blank/stale review refusal, output exclusivity, wrapper verification and ordinary
+bundle verification are checked separately. No new product operation, provider call,
+scientific decision or stored review target chain. Existing runtime unchanged.
+Full 2173 tests in 171.384s passed (skip1), independent 2 passed with all
+14 guide commands replayed. Audit 495 / manifest 494 and Python3.10 grammar 252
+passed. No unresolved review blockers; real external-export compatibility and HTML visual QA unverified.

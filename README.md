@@ -381,3 +381,5 @@ Publication maintainers: [manifest regeneration](docs/MANIFEST_BUILD.md), for no
 Retained artifact navigation: [record kinds, object versions and verification guides](docs/RECORD_SCHEMAS.md). This index is not validation or migration.
 
 Read a received research ZIP without replay: [recorded bundle context](docs/RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
+
+For a single local NBIB file, the [tested first-file workflow](docs/PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.
