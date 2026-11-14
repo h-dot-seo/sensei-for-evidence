@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.134.0-bibliographic-assertion-continuation` (2026-11-14). This file is the
+Current release: `0.135.0-canonical-research-zip` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,31 +55,36 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.134.0-bibliographic-assertion-continuation` (2026-11-14).
+Release: `0.135.0-canonical-research-zip` (2026-11-14).
 
-Fixed roadmap #42 reader obstacle (4): existing challenges/readiness_assertions
-were omitted from bibliographic enrichment, so even empty ledgers after a valid
-CSV/NBIB/RIS import failed immutable-context validation. The only product change
-adds exactly those two names to ENRICHMENT_FIELDS in bibliographic_integrity.py.
-No validator, source-basis function, gate/closure policy, engine inventory or
-canonical-data code changes. Existing immutable fields and unknown root additions
-remain rejected; original bibliographic history and separate review requirements
-are preserved. Old artifacts require their recorded trusted implementation.
+Roadmap #54 standalone research ZIP core: bounded path/seekable-stream input,
+fixed-name STORED regular-entry preflight, then existing manifest/engine/hash/
+derivation validation and exact canonical archive-byte comparison. Noncanonical
+recompression, metadata, comments and trailing bytes formerly accepted are now
+rejected. This is consistency hardening, not a known-vulnerability claim. The
+other seven archive modules and broad CLI sweep remain unchanged.
 
-Synthetic tests prepare all three real parser/import paths, then execute twelve
-existing CLI commands per format (36 commands): challenge template/target/separate
-review/assemble/verify, readiness template/target/separate review/assemble/verify,
-status/readiness views and research bundle create/verify. Additional tests cover
-empty/invalid ledgers, immutable/unknown context, declared origin/label coexistence,
-stale targets and tampered records. The separate plain comparison control explicitly
-binds its fictional challenge to its own changed source after provenance removal;
-no actual imported protocol or retained review is renewed. All prior core validator
-bytes are pinned by regression.
+The existing inclusive uncompressed 50,000,000-byte total is preserved, with exact
+derived 732-byte ZIP-header allowance for raw input. Create protocol input is bounded
+to the same payload budget. Caller-owned streams support partial reads and retain
+position/ownership. The builder function is byte-identical at source level; actual
+previous47 generation for four protocols with the same recorded engine dictionary
+produces identical ZIP bytes. Real release fingerprints still change, requiring
+old archives' recorded implementation. No existing archive/review is rewritten.
 
-Exactly 15 existing fictional target-hash fields are maintained from actual guides,
-with all other bytes/reviewer/date/decision values preserved. No actual human review,
-user data, network access or automatic refresh tool is involved. Full 2,281 tests passed in 197.782 s (one platform skip). Independent 118 tests
-and the 36-command three-format journey passed; seven existing guides/61 commands
-independently regenerated all 15 synthetic targets exactly. Audit 541/manifest
-540 passed; final source-bound focused checks cover this record update. Existing
-external interoperability/visual QA limits remain unverified; no license or tag.
+Only research_bundle.py changes among old root modules; archive_safety.py is a new
+ENGINE leaf. The original view baseline bytes are retained with one explicitly named
+new helper fingerprint excluded alongside prior named changes. The prior47 protected
+builder check is refined only for this intentional verifier change. Five existing
+semantic-tamper helper sites use canonical ZIP metadata so original assertions still
+reach payload/engine/derivation checks. New tests exercise preflight-before-read,
+CRC, EOCD, exact repack, metadata/trailing rejection, bounded partial streams and
+create/verify boundary symmetry. No extraction or authenticity/readiness promotion.
+
+Core independent review passed 45 tests plus actual previous-module reconstruction
+and five local-only header mutations. Fixed 15 synthetic target-hash maintenance
+preserves all other bytes. Full 2,290 tests passed in 198.677 s (one platform
+skip). Final independent review regenerated all 15 targets through seven existing
+guides / 61 CLI commands and verified all other example bytes unchanged; audit
+546 and manifest validation passed. No license/tag, network call or automatic
+refresh tool is added.

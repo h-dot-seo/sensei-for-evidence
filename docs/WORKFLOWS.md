@@ -630,3 +630,5 @@ rows remain unmodified; declared hashes and HUMAN_AUTHORED are not authenticated
 See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.
 
 Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [continuation guide](BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md). This repairs two enrichment-field omissions without changing gate policy or human-review requirements.
+
+[Canonical research ZIP verification](RESEARCH_ZIP_SAFETY.md): unchanged schema2 builder, bounded path/BytesIO input, exact canonical envelope required. Noncanonical recompression/trailing metadata is now rejected; old archives need their recorded implementation.

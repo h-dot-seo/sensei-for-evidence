@@ -1,3 +1,4 @@
+from tests._canonical_zip import pack as canonical_zip
 """Provider-neutral mock adapter regressions using entirely synthetic inputs."""
 import copy
 import io
@@ -101,9 +102,7 @@ class OfflineAdapterTests(unittest.TestCase):
         entries['manifest.json'] = json.dumps(manifest).encode()
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'tampered.zip'
-            with zipfile.ZipFile(path, 'w') as archive:
-                for name, content in entries.items():
-                    archive.writestr(name, content)
+            path.write_bytes(canonical_zip(entries))
             with self.assertRaisesRegex(ValueError, 'differs from reviewed receipts'):
                 verify(path)
 

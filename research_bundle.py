@@ -6,12 +6,13 @@ import io
 import json
 import zipfile
 from pathlib import Path
+from archive_safety import read_bounded, check_stored_entries
 from evidence_workflow import run
 from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py', 'readiness_links.py', 'evidence_basis_links.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py', 'readiness_links.py', 'evidence_basis_links.py', 'archive_safety.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -20,6 +21,9 @@ def engine_hashes():
 MAX_BUNDLE_BYTES = 50_000_000  # Sum of uncompressed entry bytes, including manifest.
 
 PAYLOADS={'protocol.json','research.json','reports.json','reports.csv','work-packages.csv','summary.md'}
+# Fixed STORED, non-ZIP64 entries: local headers + central headers + names + EOCD.
+ZIP_HEADER_OVERHEAD = 22 + sum(30 + 46 + 2 * len(name.encode('utf-8'))
+                               for name in PAYLOADS | {'manifest.json'})
 
 
 def json_bytes(value):
@@ -163,7 +167,7 @@ def build_bundle(raw):
 
 
 def create(protocol_path, destination):
-    data=build_bundle(Path(protocol_path).read_bytes())
+    data=build_bundle(read_bounded(protocol_path, MAX_BUNDLE_BYTES))
     # Exclusive creation: never replace a previous research receipt.
     with Path(destination).open('xb') as stream:
         stream.write(data)
@@ -171,12 +175,16 @@ def create(protocol_path, destination):
 
 
 def verify(path):
-    with zipfile.ZipFile(path) as archive:
-        entries=archive.infolist(); names=[e.filename for e in entries]
-        if len(names)!=len(set(names)) or set(names)!=PAYLOADS|{'manifest.json'}:
-            raise ValueError('unexpected, missing or duplicate archive entries')
-        if sum(e.file_size for e in entries)>MAX_BUNDLE_BYTES:
-            raise ValueError('bundle exceeds verification size limit')
+    return verify_bytes(read_bounded(path, MAX_BUNDLE_BYTES + ZIP_HEADER_OVERHEAD))
+
+
+def verify_bytes(raw_bytes):
+    if type(raw_bytes) is not bytes:
+        raise ValueError('bundle input must be bytes')
+    if len(raw_bytes) > MAX_BUNDLE_BYTES + ZIP_HEADER_OVERHEAD:
+        raise ValueError('input exceeds size limit')
+    with zipfile.ZipFile(io.BytesIO(raw_bytes)) as archive:
+        names = check_stored_entries(archive, PAYLOADS | {'manifest.json'}, MAX_BUNDLE_BYTES)
         manifest=parse_json(archive.read('manifest.json'))
         if not isinstance(manifest, dict):
             raise ValueError('bundle manifest must be an object')
@@ -206,6 +214,8 @@ def verify(path):
         with zipfile.ZipFile(io.BytesIO(expected)) as rebuilt:
             if any(archive.read(name)!=rebuilt.read(name) for name in PAYLOADS):
                 raise ValueError('derived artifacts disagree with protocol')
+        if raw_bytes != expected:
+            raise ValueError('bundle bytes differ from canonical reconstruction')
     return dict(valid=True,files=len(names),census_claim='NOT_ESTABLISHED',conclusion_readiness='NOT_READY',scope='internal hashes and deterministic derivation; no source authenticity attestation')
 
 
@@ -216,7 +226,8 @@ def main():
     v=sub.add_parser('verify'); v.add_argument('bundle',type=Path)
     a=p.parse_args()
     try: result=create(a.protocol,a.output) if a.command=='create' else verify(a.bundle)
-    except (ValueError,OSError,KeyError,TypeError,UnicodeError,zipfile.BadZipFile) as e: p.exit(1,str(e)+'\n')
+    except (ValueError,OSError,KeyError,TypeError,UnicodeError,zipfile.BadZipFile,
+            RuntimeError,NotImplementedError,EOFError,zipfile.LargeZipFile,RecursionError,OverflowError,AttributeError) as e: p.exit(1,str(e)+'\n')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

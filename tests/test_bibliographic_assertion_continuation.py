@@ -1,6 +1,7 @@
 """Existing challenge/readiness validators govern enrichment after actual native imports."""
 import copy
 import hashlib
+import inspect
 import json
 import re
 import shlex
@@ -104,7 +105,15 @@ class BibliographicAssertionContinuationTests(unittest.TestCase):
         self.assertEqual(current.count(new),1)
         self.assertEqual(hashlib.sha256(current.replace(new,old)).hexdigest(),proof['prior_bibliographic_integrity_sha256'])
         for name,expected in proof['protected_source_sha256'].items():
-            self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected,name)
+            if name == 'research_bundle.py':
+                # Round48 intentionally tightens verification, not the builder or gate engine.
+                import research_bundle
+                baseline=json.loads((ROOT/'tests/research_zip_previous_baselines.json').read_bytes())
+                self.assertEqual(expected,baseline['previous_module_sha256'])
+                self.assertEqual(hashlib.sha256(inspect.getsource(research_bundle.build_bundle).encode()).hexdigest(),baseline['build_function_sha256'])
+                self.assertNotEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected)
+            else:
+                self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected,name)
 
     def test_three_actual_formats_empty_ledgers_are_existing_stages_not_gate_policy(self):
         for format in FORMATS:

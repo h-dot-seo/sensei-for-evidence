@@ -1,3 +1,4 @@
+from tests._canonical_zip import pack as canonical_zip
 """Portable completion-source labels remain distinct from acceptance checks."""
 import copy
 import csv
@@ -112,9 +113,7 @@ class CompletionExportTests(unittest.TestCase):
         entries['manifest.json'] = json.dumps(manifest).encode('utf-8')
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'tampered.zip'
-            with zipfile.ZipFile(path, 'w') as archive:
-                for name, raw in entries.items():
-                    archive.writestr(name, raw)
+            path.write_bytes(canonical_zip(entries))
             with self.assertRaisesRegex(ValueError, 'derived artifacts'):
                 verify(path)
 

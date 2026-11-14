@@ -697,3 +697,5 @@ pull requests, not a duplicate branch-push trigger. The old named branch is not 
 [Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
 
 [Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
+
+[Canonical research ZIP verification](RESEARCH_ZIP_SAFETY.md): unchanged schema2 builder, bounded path/BytesIO input, exact canonical envelope required. Noncanonical recompression/trailing metadata is now rejected; old archives need their recorded implementation.

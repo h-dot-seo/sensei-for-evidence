@@ -35,6 +35,8 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round48 adds only this named ENGINE fingerprint; preserve historical view data.
+            self.assertEqual(result['engine_sha256'].pop('archive_safety.py'),hashlib.sha256((ROOT/'archive_safety.py').read_bytes()).hexdigest())
             # Round46: exact named implementation changes plus one declared catalog route.
             delta=load('tests/evidence_basis_view_changes.json')
             self.assertEqual(set(delta['prior_45_sha256']),{'evidence_workflow.py','synthesis_links.py','planning_links.py','adapter_integrity.py','bibliographic_integrity.py','research_bundle.py','synthesis_review.py'})

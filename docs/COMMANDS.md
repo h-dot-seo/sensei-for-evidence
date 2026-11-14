@@ -231,7 +231,7 @@ and no step fills a decision, judgement or label on your behalf.
 | Usage | Purpose | Guide |
 |---|---|---|
 | `python research_bundle.py create [-h] protocol output` | Create a new portable supplied-data bundle (protocol, validated JSON, CSV, bounded summary, SHA-256 manifest) | [Portable offline research bundle](USAGE.md#portable-offline-research-bundle) |
-| `python research_bundle.py verify [-h] bundle` | Check hashes, implementation bytes and regenerated outputs without extracting paths | [Portable offline research bundle](USAGE.md#portable-offline-research-bundle) |
+| `python research_bundle.py verify [-h] bundle` | Check bounded input, hashes, regenerated outputs and exact canonical ZIP bytes without extraction | [Portable offline research bundle](USAGE.md#portable-offline-research-bundle) |
 | `python collection_bundle.py create [-h] --nbib INDEX=PATH [--text] protocol output` | Carry selected single-file native NBIB wrappers with the research bundle, bound to their exact import associations | [Collection bundles](COLLECTION_BUNDLES.md) |
 | `python collection_bundle.py verify [-h] [--text] bundle` | Replay the wrapper bindings and compare the entire canonical ZIP | [Collection bundles](COLLECTION_BUNDLES.md) |
 | `python batch_collection_bundle.py create [-h] --batch INDEX=PATH [--text] protocol output` | Package selected batch wrappers and every exact native source file with historical import bindings | [Batch collection bundles](BATCH_COLLECTION_BUNDLES.md) |
@@ -274,6 +274,7 @@ in every bundle, so verification fails closed on implementation drift.
 | `adapter_integrity.py` | Check internal mock receipt/review consistency; never authenticate external sources |
 | `appraisal_links.py` | Preserve supplied appraisal methods and domain judgements without scoring evidence |
 | `bibliographic_integrity.py` | Validate flat, supplied-review bibliographic import history without trusting identity |
+| `archive_safety.py` | Bound binary path/stream input and preflight fixed STORED archive entries without extraction ([guide](RESEARCH_ZIP_SAFETY.md)) |
 | `evidence_basis_links.py` | Validate supplied result basis labels and literal citation cues ([guide](EVIDENCE_BASIS.md)) |
 | `challenge_links.py` | Record supplied independent challenges to synthesis statements without adjudicating them ([guide](INDEPENDENT_CHALLENGE.md)) |
 | `context_links.py` | Validate supplied guideline/development context links without judging their validity |

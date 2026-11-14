@@ -1,3 +1,4 @@
+from tests._canonical_zip import pack as canonical_zip
 import copy
 import io
 import json
@@ -96,9 +97,8 @@ class JsonInputTests(unittest.TestCase):
         for manifest in malformed:
             with self.subTest(manifest=manifest), tempfile.TemporaryDirectory() as folder:
                 path = Path(folder)/'invalid.zip'
-                with zipfile.ZipFile(path, 'w') as archive:
-                    for name, data in entries.items():
-                        archive.writestr(name, json.dumps(manifest).encode() if name == 'manifest.json' else data)
+                changed=dict(entries, **{'manifest.json':json.dumps(manifest).encode()})
+                path.write_bytes(canonical_zip(changed))
                 with self.assertRaises(ValueError):
                     verify(path)
                 result = subprocess.run([sys.executable,'research_bundle.py','verify',str(path)],capture_output=True,text=True,timeout=20)
