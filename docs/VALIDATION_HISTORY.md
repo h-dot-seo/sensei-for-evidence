@@ -3407,3 +3407,18 @@ N200/400 one-search, independent-result/work shape: synthesis213439/417039 bytes
 work748028/1491828 bytes. No statements or wide cross-links in that scale generator;
 not general linearity or timing guarantees. Canonical/ENGINE_FILES unchanged.
 Prior HTML visual QA remains unverified because browser startup is restricted.
+
+## 2026-11-14: supplied native occurrence export (0.109.0)
+
+Added collection_export.py create/verify and a guide chained to the existing
+batch/continuation walkthrough (no duplicate43-command replay). Full final suite
+2095 tests154.578s OK(skip1). New9 edge tests, combined guide26 tests, independent
+initial52 plus guide17 and final26 review passed. Exact historical wrapper binding,
+explicit occurrence joins, include/exclude/pending/withheld, repeated IDs, BOM and
+CRLF/no-final-newline handling, missing wrappers and non-bibliographic occurrences
+including a shared native record were checked. Original module/ENGINE_FILES
+bytes unchanged; new parser self-check keeps its10MB cap under50MB aggregate cap.
+A new regression fixture initially violated base-search and review-date contracts;
+these test setup errors were corrected before final full run. No released failure.
+No reference-manager interoperability or scientific validity was tested.
+OS write failure can leave a partial new output; hostile path races are not guarded.

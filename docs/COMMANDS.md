@@ -363,3 +363,10 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | Usage | Purpose | Guide |
 |---|---|---|
 | `python research_view.py PROTOCOL [--work-package WP] [--output NEW.html]` | Local passive supplied review snapshot, never approval | [HTML view](REVIEW_VIEWS.md) |
+
+## Native occurrence export
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python collection_export.py create PROTOCOL --nbib-batch INDEX=WRAPPER --decision include --output NEW.nbib` | Typed exact historical native occurrence export; --ris/--nbib also supported | [Guide](COLLECTION_EXPORT.md) |
+| `python collection_export.py verify PROTOCOL --nbib-batch INDEX=WRAPPER --decision include --output EXISTING.nbib` | Exact regeneration and output byte comparison | [Guide](COLLECTION_EXPORT.md) |
