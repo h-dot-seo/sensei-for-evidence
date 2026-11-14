@@ -463,3 +463,8 @@ See [legacy state input and compatibility](USAGE.md#legacy-agent-state-validator
 | `python patent_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or record exact supplied patent information; not legal advice | [Patent ledger](PATENT_INFORMATION.md) |
 
 | `patent_links.py` | Strict supplied patent ledger validation and descriptive queues; no legal judgement |
+
+The existing challenge commands accept optional schema 1 origin declarations; no new
+command or version is required. See [interpretive challenge origin](INTERPRETIVE_CHALLENGE_ORIGIN.md)
+for the separate fictional rehearsal, unchanged gate policy and implementation-bound
+compatibility. Origin fields are supplied declarations, never authentication.

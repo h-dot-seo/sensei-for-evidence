@@ -155,6 +155,10 @@
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
+  "examples/interpretive-challenge-candidates.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
   "examples/manual-appraisal-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"

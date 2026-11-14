@@ -227,3 +227,12 @@ canonical decisions remain unchanged. Shared safety and complete exclusive outpu
 reuse existing helpers rather than adding another review or filesystem framework.
 
 The artifact layer includes research_view.py, a passive HTML composition of existing views. It is separate from fixed bundles and never changes ENGINE_FILES or canonical judgments.
+
+### Executable interpretive-origin declaration boundary
+
+The [optional challenge origin](INTERPRETIVE_CHALLENGE_ORIGIN.md) implements the labeled
+interpretive layer without converting consultation into empirical evidence. Missing
+origin derives UNDECLARED, not human authorship; HUMAN_AUTHORED is also self-declared.
+Interpretive-only queues expose supplied labels beside unchanged readiness gates.
+There is no origin-based gate rule, source authentication, source access or producer
+execution. Package/consultation hashes bind declarations only, not verified provenance.

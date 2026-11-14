@@ -16,7 +16,7 @@ TEXT_FIELDS = ('challenge_id', 'challenger', 'challenged_at', 'alternative_expla
                'limitations', 'independence_declaration')
 ALLOWED_FIELDS = set(TEXT_FIELDS) | {'statement_ids', 'missing_discriminating_evidence',
                                      'citation_integrity_findings', 'conclusion_width', 'outcome',
-                                     'reopening', 'basis_sha256'}
+                                     'reopening', 'basis_sha256', 'origin'}
 MAX_ROWS = 100  # Per supplied list; a size bound, not a CPU or memory ceiling.
 
 
@@ -48,6 +48,40 @@ def reviewer_labels(synthesis, statement_ids):
 
 def _hex(value):
     return isinstance(value, str) and len(value) == 64 and all(c in '0123456789abcdef' for c in value)
+
+
+ORIGIN_FIELDS = {'kind', 'package_sha256', 'consultation_record_sha256', 'declared_provenance'}
+PROVENANCE_FIELDS = {'provider_id', 'model_id', 'run_id', 'operator_id', 'execution_location'}
+ORIGIN_BOUNDARY = ('Origin is a supplied declaration, not authenticated human authorship, producer identity '
+                   'or independent review. Declared package and consultation hashes do not verify their '
+                   "sources or bytes. A simulation is neither the simulated scholar's view nor empirical "
+                   'evidence. Origin queues do not change readiness gates or resolve challenges.')
+
+
+def validate_origin(value):
+    """Validate declaration shape only; no lookup, source reading or gate policy."""
+    if not isinstance(value, dict) or set(value) != ORIGIN_FIELDS:
+        raise ValueError('origin requires exact declaration fields')
+    if value['kind'] not in ('HUMAN_AUTHORED', 'INTERPRETIVE_SIMULATION'):
+        raise ValueError('unknown declared origin kind')
+    for field in ('package_sha256', 'consultation_record_sha256'):
+        if value[field] is not None and not _hex(value[field]):
+            raise ValueError('declared origin hash must be null or lowercase SHA-256')
+    provenance = value['declared_provenance']
+    if provenance is not None:
+        if not isinstance(provenance, dict) or set(provenance) != PROVENANCE_FIELDS:
+            raise ValueError('declared provenance requires exact fields')
+        for field in PROVENANCE_FIELDS:
+            item = provenance[field]
+            if not isinstance(item, str) or not item.strip() or len(item) > 128:
+                raise ValueError('declared provenance text must be nonblank and at most 128 characters')
+            if any(ord(character) < 32 or ord(character) == 127 for character in item):
+                raise ValueError('declared provenance control character')
+        if provenance['execution_location'] not in ('local', 'remote', 'unknown'):
+            raise ValueError('unknown declared execution location')
+    if value['kind'] == 'HUMAN_AUTHORED' and any(value[field] is not None for field in ORIGIN_FIELDS - {'kind'}):
+        raise ValueError('human-authored declaration cannot carry model/package/consultation metadata')
+    return value['kind']
 
 
 def _text_list(value, field):
@@ -89,6 +123,7 @@ def link_challenges(protocol, synthesis, work):
         unknown = set(row) - ALLOWED_FIELDS
         if unknown:
             raise ValueError('challenge has unknown fields: ' + ascii(sorted(unknown)))
+        origin_kind = validate_origin(row['origin']) if 'origin' in row else 'UNDECLARED'
         for field in TEXT_FIELDS:
             if not nonempty_text(row.get(field)):
                 raise ValueError('challenge requires ' + field)
@@ -143,7 +178,7 @@ def link_challenges(protocol, synthesis, work):
                            source_match_status=match, current_basis_sha256=current,
                            reopening_status=reopening_status,
                            independence_verification='LABEL_DISTINCT_ONLY',
-                           assessment='NOT_PERFORMED')
+                           assessment='NOT_PERFORMED', origin_kind=origin_kind)
         for sid in sids:
             by_statement[sid].append(cid)
     supplied_stage = 'challenges' in protocol
@@ -152,7 +187,7 @@ def link_challenges(protocol, synthesis, work):
     def selected(predicate):
         return sorted(cid for cid, row in ledger.items() if predicate(row)) if supplied_stage else None
 
-    return dict(schema_version=1, stage='SUPPLIED' if supplied_stage else 'NOT_SUPPLIED',
+    result = dict(schema_version=1, stage='SUPPLIED' if supplied_stage else 'NOT_SUPPLIED',
                 challenge_ledger=[ledger[cid] for cid in sorted(ledger)],
                 statement_challenge_links=[dict(statement_id=sid, challenge_ids=sorted(by_statement[sid]))
                                            for sid in sorted(by_statement)],
@@ -165,3 +200,15 @@ def link_challenges(protocol, synthesis, work):
                 stale_challenge_ids=selected(lambda row: row['source_match_status'] == 'STALE_SOURCE'),
                 unbound_challenge_ids=selected(lambda row: row['source_match_status'] == 'UNBOUND_CHALLENGE'),
                 boundary=BOUNDARY)
+
+    if any('origin' in row for row in supplied):
+        for item in result['statement_challenge_links']:
+            cids = item['challenge_ids']
+            item['human_challenge_ids'] = [cid for cid in cids if ledger[cid]['origin_kind'] == 'HUMAN_AUTHORED']
+            item['interpretive_challenge_ids'] = [cid for cid in cids if ledger[cid]['origin_kind'] == 'INTERPRETIVE_SIMULATION']
+            item['undeclared_challenge_ids'] = [cid for cid in cids if ledger[cid]['origin_kind'] == 'UNDECLARED']
+        result['statements_with_only_interpretive_challenges'] = [item['statement_id'] for item in result['statement_challenge_links']
+            if item['challenge_ids'] and item['challenge_ids'] == item['interpretive_challenge_ids']]
+        result['origin_verification'] = 'DECLARED_NOT_VERIFIED'
+        result['boundary'] = result['boundary'].replace('outcomes are human assertions', 'outcomes are supplied assertions') + ' ' + ORIGIN_BOUNDARY
+    return result

@@ -617,3 +617,10 @@ Follow [the tested patent-information path](PATENT_INFORMATION.md): explicit que
 and rows → exact target → separately supplied recording review → append candidate →
 original-input replay → supplied observations. No legal or scientific acceptance is
 inferred. Import histories, new gates and external patent services are outside scope.
+
+## Optional declared challenge origin
+
+Use [the separate origin rehearsal](INTERPRETIVE_CHALLENGE_ORIGIN.md) to record
+operator-supplied interpretive origins through the existing challenge import review.
+No persona/model execution, automatic challenge or gate policy is added. Raw legacy
+rows remain unmodified; declared hashes and HUMAN_AUTHORED are not authenticated.

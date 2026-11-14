@@ -1,0 +1,45 @@
+{
+  "source_release": "0.131.0-supplied-patent-ledger",
+  "source_commit": "ace9aa73dea0d6954a19b13bb2c4b2bd205264c1",
+  "prior_engine_sha256": {
+    "challenge_links.py": "26297c74c71580e82add66719bb0995ca2f73ea4c5029bfa05378f143f42f866",
+    "research_bundle.py": "4d6b37489fa094bb918b07cb6caeac3a3fac1d676ed088de3bd04c2e3f747769"
+  },
+  "cases": [
+    {
+      "fixture": "synthesis-review.json",
+      "attach_challenges": false,
+      "input_sha256": "9b493d0ae4606faaf610031dac11f419e9ca7a1b46ddce53ad17b5f96a38cfcc",
+      "run_sha256": "845264043d4029f11983a3694780824e92b8b9dd130765ede3f959976685dc90",
+      "gates_sha256": "c6751c2959881e25218a00ecb4558a4eb8c3e25d84432800365d777de44abb1f"
+    },
+    {
+      "fixture": "synthesis-review.json",
+      "attach_challenges": true,
+      "input_sha256": "dfcc6325fe96cfff9067a2d1f4bea2c6bc321032abdb1dd0262ae04ad43a8aa8",
+      "run_sha256": "ee859dde4b9429a2389413df1bbda5ceb96ad92f1671d4d3011e0c2f14c4769b",
+      "gates_sha256": "ad163f86c795eb3ac0b818740ad7d6b4fbe12c1fd908eae04d7e28e01cbb4243"
+    },
+    {
+      "fixture": "review-demo.json",
+      "attach_challenges": false,
+      "input_sha256": "b3f65e017cc4caca7d3145a3d965efa893e02a3cd459a7fa1c84a78dfda1ad32",
+      "run_sha256": "e96c6c84215ba502994a63d7764701c8aa257edb6af7dfc88f34a62f6da1f17e",
+      "gates_sha256": "71605983b232d18b48384ec7e913d7effe6e7fb9cf9e865812c0a5a8ea33fdf9"
+    },
+    {
+      "fixture": "bibliographic-base.json",
+      "attach_challenges": false,
+      "input_sha256": "950eec5d4ea49866d402064bc92a502f3618c5ad205637e5747dd44bcef22b81",
+      "run_sha256": "a7768ea89a43c7d8145e1482d409096201f254a194e91b3be5f289efcfced329",
+      "gates_sha256": "9813e22091120cb8aed1b7683e434e6adcf3da7480c953eb77e856028d1a2645"
+    }
+  ],
+  "map_view_baseline_file_sha256": "b94cd1c07a9baf00158c135e9485508ad250e618672617b6cc4beff027d9b3ed",
+  "unchanged_existing_guides_and_tests": {
+    "docs/INDEPENDENT_CHALLENGE.md": "1803a85870cd0d98e971e39143a85b46fcf1a6547923bfbe6d2c02a206efc9e9",
+    "tests/test_challenge_intake.py": "c562c6b12e5401a3053a827bd5530a5348600bcdbdebde74f10cfa53ee5f07c5",
+    "readiness_links.py": "141222dc02740f77da9e62903d53442c87b2bbdbb268107b9c681a62a8da2295",
+    "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f"
+  }
+}

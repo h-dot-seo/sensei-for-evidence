@@ -3853,3 +3853,45 @@ passed. Final focused checks cover this record update. No unresolved review bloc
 Prior external compatibility, HTML visual QA and Korean-locale Windows limitations
 remain; this fictional patent rehearsal does not verify live-provider interoperability
 or legal utility. No license, gate/closure policy or tag decision was made.
+
+## 2026-11-14: 0.132.0-interpretive-challenge-origin
+
+Implemented roadmap #100's optional schema 1 origin declaration, not a gate rule.
+HUMAN_AUTHORED is self-declared, INTERPRETIVE_SIMULATION is not a scholar's view or
+empirical evidence, and missing origin derives UNDECLARED without rewriting raw rows.
+Exact optional shape, nullable declared hashes and the five-field bounded Persona
+provenance contract are validated without opening sources or invoking a producer.
+Human-origin declarations cannot carry package/consultation/model metadata.
+
+Only challenge_links.py and research_bundle.py change inside ENGINE_FILES. Outside
+the engine, challenge_intake.py/status/handoff expose supplied origin and optional
+statement queues; synthesis/compare already preserve full rows. readiness_links.py,
+its basis sentences, offline_adapter.py, allowlists, canonical decisions and closure
+policy are unchanged. Old archives and applications require their recorded trusted
+implementation; their hashes must not be rewritten to claim current verification.
+
+The original43rd-increment twelve-view baseline file is byte-preserved. Its original
+self-hash exclusions remain; exactly two top-level engine digest paths are substituted
+with recorded prior values for whole JSON/text comparison. Four actual44th-increment
+run/input/gate baselines recover the entire old result after removing only the newly
+derived UNDECLARED per-row origin_kind. Explicit-origin comparisons preserve all
+non-challenge engine fields and readiness rows/digests and old queue/count decisions.
+Independent actual old-code recomputation confirmed the four baselines and prior
+engine digests; nine mixed origin combinations preserved all non-challenge results.
+
+Fifteen fixed public fictional walkthrough target_sha256 fields were updated from actual
+target outputs after replay in a temporary copy. All other bytes/JSON values, including
+reviewer, date, rationale and supplied decisions, remain identical. No real/user data
+or review was changed and no public/automatic refresh tool was added. Existing challenge
+guide's two blocks/ten commands and its test remain byte-identical. New origin guide
+has its own ten-command actual CLI rehearsal. Initial full2263 tests in194.923s found five stale-target failures in later synthetic
+import-review walkthroughs absent from the original ten-field inventory. Work paused
+until the maintenance scope explicitly expanded to fifteen. Only the five additional
+target_sha256 fields changed, preserving all other bytes and supplied assertions.
+Corrected full2263 tests in196.398s passed (skip1). Independent final origin11
+tests and five-journey-related61 tests passed; the full15-file raw-byte and remaining
+JSON preservation checks passed. Earlier independent48+19 focused tests and actual
+old-code/nine-origin-combination comparisons also passed. Audit529/manifest528 and
+Python3.10 grammar269 passed. Final focused checks cover this record update.
+No unresolved review blockers; existing external compatibility, HTML visual QA and Korean-locale Windows
+limitations remain unverified. No new license, tag, gate or human judgment is selected.

@@ -294,3 +294,10 @@ For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAK
 구분해 별도 공급 검토 후 기록하고 재생합니다. 일반 공급 프로토콜만 지원하며
 어댑터/서지 가져오기 이력은 거부합니다. 법률 조언·FTO 의견·권리 확정·최신 상태
 검증이 아니며 기존 엔진·번들·문헌 준비도 게이트는 특허 원장을 검증하지 않습니다.
+
+### 반론의 해석적 출처 선언
+
+[선택적 반론 origin](INTERPRETIVE_CHALLENGE_ORIGIN.md)은 공급된 사람 작성·해석적
+시뮬레이션·미선언 라벨을 구분합니다. HUMAN_AUTHORED 역시 자기선언이지 사람의
+작성·검토 인증이 아닙니다. 모델·페르소나를 호출하지 않고, 기존 schema 1 원본행과
+준비도 게이트 판정은 보존합니다. 구버전 번들·기록은 기록된 구현으로 재생해야 합니다.

@@ -396,3 +396,10 @@ Command effects for automation: [source-bound partial contract](docs/AGENT_CONTR
 publications, applications, family membership and legal-status observations through
 separate import review and replay. Ordinary supplied protocols only; no adapter/import
 history support, engine/bundle integration, live backend, legal advice or FTO opinion.
+
+### Declared interpretive challenge origin
+
+[Optional challenge origin](docs/INTERPRETIVE_CHALLENGE_ORIGIN.md) separates supplied
+HUMAN_AUTHORED, INTERPRETIVE_SIMULATION and undeclared labels without authenticating
+any author or changing readiness gates. Existing schema 1 rows are not rewritten;
+old bundles/applications still require their recorded implementation.

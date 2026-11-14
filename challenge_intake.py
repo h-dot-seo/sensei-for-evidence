@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import re
 
-from challenge_links import CONCLUSION_WIDTHS, OUTCOMES, challenge_basis, reviewer_labels
+from challenge_links import CONCLUSION_WIDTHS, OUTCOMES, challenge_basis, reviewer_labels, validate_origin, ORIGIN_BOUNDARY
 from evidence_workflow import run
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 from nbib_intake import _strict_json
@@ -44,7 +44,9 @@ BOUNDARY = (
     'reauthored assertions can replay. Challenge rows persist in the candidate; import review and selected '
     'snapshots remain detached. No completeness, scientific acceptance or conclusion readiness is established.'
 )
-NEGATIVE_CLAIMS = dict(challenge_execution='NOT_PERFORMED', alternative_explanation_assessment='NOT_PERFORMED',
+BOUNDARY += ' ' + ORIGIN_BOUNDARY
+
+NEGATIVE_CLAIMS = dict(origin_verification='DECLARED_NOT_VERIFIED', challenge_execution='NOT_PERFORMED', alternative_explanation_assessment='NOT_PERFORMED',
     statement_adjudication='NOT_PERFORMED', citation_integrity_verification='NOT_PERFORMED',
     independence_verification='LABEL_DISTINCT_ONLY', reviewer_identity_verification='NOT_ESTABLISHED',
     source_authenticity='NOT_VERIFIED', reading='NOT_ESTABLISHED', existing_review_renewal='NOT_PERFORMED',
@@ -148,7 +150,11 @@ def validate_candidate_document(document):
         raise ValueError('challenges must be a nonempty list of at most 100 rows')
     seen = set()
     for row in rows:
-        _schema(row, CHALLENGE_FIELDS, 'challenge')
+        if isinstance(row, dict) and 'origin' in row:
+            _schema(row, CHALLENGE_FIELDS | {'origin'}, 'challenge')
+            validate_origin(row['origin'])
+        else:
+            _schema(row, CHALLENGE_FIELDS, 'challenge')
         if any(not _text(row[key]) for key in TEXT_FIELDS):
             raise ValueError('challenge text fields must be supplied nonblank literal strings')
         _date(row['challenged_at'], 'challenged_at')
