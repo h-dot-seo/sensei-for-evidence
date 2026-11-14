@@ -6,6 +6,8 @@ scripts and guides. `run SCRIPT [ARGUMENTS ...]` executes one root script exactl
 `python SCRIPT [ARGUMENTS ...]` does, without a shell. The documented `python <script>`
 form stays the primary one. `check` performs a read-only checkout/inventory smoke check
 and runs one synthetic status fixture; it is not research validation or the test suite.
+`contract` prints source-bound command declarations, with explicit partial effects coverage.
+It executes no listed command and grants no permission.
 Repository modules are imported lazily by the subcommands that need them.
 """
 import argparse
@@ -198,7 +200,7 @@ def build_parser():
     parser = argparse.ArgumentParser(prog=SELF, description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter,
                                      epilog=BOUNDARY)
-    subparsers = parser.add_subparsers(dest='command', metavar='{list,run,check}', required=True)
+    subparsers = parser.add_subparsers(dest='command', metavar='{list,run,check,contract}', required=True)
     subparsers.add_parser('list', help='print the root scripts with a command line and the catalog routes',
                           description='Print every root script that has a main entry point, with the first '
                                       'sentence of its docstring, then the supplied-input routes of the '
@@ -206,6 +208,8 @@ def build_parser():
                           epilog=BOUNDARY)
     subparsers.add_parser('check', help='read-only checkout/inventory and synthetic status smoke check',
                           description=CHECK_BOUNDARY, epilog='Writes no bytecode; does not run the full suite.')
+    contracts = subparsers.add_parser('contract', help='print source-bound command declarations, not execution permission')
+    contracts.add_argument('--text', action='store_true')
     runner = subparsers.add_parser('run', help='run one root script exactly as `python SCRIPT ...` would',
                                    description='Execute the named root script with the remaining arguments, '
                                                'without a shell. Only file names printed by `list` are accepted; '
@@ -222,6 +226,20 @@ def main():
             stream.reconfigure(encoding='utf-8', errors=getattr(stream, 'errors', None) or 'strict')
     parser = build_parser()
     args = parser.parse_args()
+    if args.command == 'contract':
+        previous = sys.dont_write_bytecode
+        sys.dont_write_bytecode = True
+        try:
+            if str(ROOT) not in sys.path:
+                sys.path.insert(0, str(ROOT))
+            from command_contract import contract, render_text
+            result = contract()
+            sys.stdout.write(render_text(result) if args.text else json.dumps(result, ensure_ascii=True, sort_keys=True, indent=2) + '\n')
+        except (ValueError, OSError, TypeError, KeyError, RecursionError, ImportError) as error:
+            parser.exit(1, 'command contract: invalid registry or changed checkout; review declarations before use\n')
+        finally:
+            sys.dont_write_bytecode = previous
+        return
     if args.command == 'check':
         parser.exit(check_checkout())
     if args.command == 'list':

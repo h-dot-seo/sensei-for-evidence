@@ -214,3 +214,7 @@ canonical decisions remain unchanged. Shared safety and complete exclusive outpu
 reuse existing helpers rather than adding another review or filesystem framework.
 
 For a passive local snapshot use `research_view.py PROTOCOL [--output NEW.html]`; see docs/REVIEW_VIEWS.md. It is not approval or anonymization; real output stays outside public repositories.
+
+## Command effects to inspect
+
+See [the source-bound partial contract](docs/AGENT_CONTRACT.md) before command automation. `sensei.py contract` executes no listed command. NOT_REVIEWED effects are unknown, not permission or read-only guarantees. Preserve exact-target human review and existing challenge/readiness authorship boundaries.

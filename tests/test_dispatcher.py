@@ -153,7 +153,7 @@ class DispatcherRunTests(unittest.TestCase):
             self.assertEqual(list(Path(folder).iterdir()), [])
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(result.stdout.startswith(b'usage: sensei.py'))
-        for phrase in (b'list', b'run', b'check', b'{list,run,check}', b'NOT_READY', b'no network request'):
+        for phrase in (b'list', b'run', b'check', b'{list,run,check,contract}', b'NOT_READY', b'no network request'):
             self.assertIn(phrase, result.stdout)
 
     def test_startup_and_run_import_no_catalog_module(self):

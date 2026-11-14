@@ -1,0 +1,2764 @@
+{
+  "commands": [
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_APPRAISAL_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "appraisal_intake.py",
+      "subcommand": "assemble",
+      "usage": "python appraisal_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_APPRAISAL_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the authored appraisals to the current protocol for exact-target review",
+      "script": "appraisal_intake.py",
+      "subcommand": "target",
+      "usage": "python appraisal_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_APPRAISAL_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank method/domain appraisals for exact existing result IDs",
+      "script": "appraisal_intake.py",
+      "subcommand": "template",
+      "usage": "python appraisal_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_APPRAISAL_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append; disagreement is preserved and no score, consensus or review renewal is produced",
+      "script": "appraisal_intake.py",
+      "subcommand": "verify",
+      "usage": "python appraisal_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/APPRAISAL_SOURCE_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay imported appraisals, then compare their original result/source snapshots with later literal context",
+      "script": "appraisal_source_review.py",
+      "subcommand": null,
+      "usage": "python appraisal_source_review.py [-h] [--output OUTPUT] [--text] original_protocol application_record current_protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/APPRAISAL_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Retain exact original/import/endpoint bytes for an explicitly selected contiguous appraisal segment",
+      "script": "appraisal_transition_bundle.py",
+      "subcommand": "create",
+      "usage": "python appraisal_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/APPRAISAL_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the retained appraisal segment without renewing reviews or assessing validity",
+      "script": "appraisal_transition_bundle.py",
+      "subcommand": "verify",
+      "usage": "python appraisal_transition_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/LOCAL_ARTIFACT_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Check explicitly listed local files against supplied size/SHA-256 expectations under a dedicated root; matching bytes are never acceptance",
+      "script": "artifact_review.py",
+      "subcommand": null,
+      "usage": "python artifact_review.py [-h] --root ROOT protocol manifest"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md",
+        "SECURITY.md"
+      ],
+      "has_parser": false,
+      "purpose": "Limited public-file/type/secret-pattern scan of the checkout; a pass is not proof of anonymity or clearance",
+      "script": "audit_publication.py",
+      "subcommand": null,
+      "usage": null
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/BATCH_COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Package selected batch wrappers and every exact native source file with historical import bindings",
+      "script": "batch_collection_bundle.py",
+      "subcommand": "create",
+      "usage": "python batch_collection_bundle.py create [-h] --batch INDEX=PATH [--text] protocol output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/BATCH_COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the batch bindings and compare the entire canonical ZIP",
+      "script": "batch_collection_bundle.py",
+      "subcommand": "verify",
+      "usage": "python batch_collection_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/BIBLIOGRAPHIC_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Retain exact local CSV bytes with an explicit search-plan association as a detached, unreviewed artifact",
+      "script": "bibliographic_intake.py",
+      "subcommand": "preview",
+      "usage": "python bibliographic_intake.py preview [-h] --search-id SEARCH_ID --searched-at SEARCHED_AT [--id-column ID_COLUMN] [--locator-column LOCATOR_COLUMN] [--output OUTPUT] [--text] protocol export"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/BIBLIOGRAPHIC_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Re-check the artifact's byte consistency and inspect its detached unreviewed candidates",
+      "script": "bibliographic_intake.py",
+      "subcommand": "verify",
+      "usage": "python bibliographic_intake.py verify [-h] [--text] artifact"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "artifact",
+          "review_document"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Identity choices and exact-target review are supplied inputs, not generated approval",
+        "outputs": [
+          {
+            "argument": "--protocol-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/BIBLIOGRAPHIC_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Apply the supplied review to the append-only incomplete search and export the resulting protocol; no eligibility decision is made",
+      "script": "bibliographic_review.py",
+      "subcommand": "assemble",
+      "usage": "python bibliographic_review.py assemble [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol artifact review_document"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "artifact",
+          "review_document"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Identity choices and exact-target review are supplied inputs, not generated approval",
+        "outputs": [
+          {
+            "argument": "--review-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/BIBLIOGRAPHIC_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the completed row choices to the exact protocol and artifact and write the review target",
+      "script": "bibliographic_review.py",
+      "subcommand": "target",
+      "usage": "python bibliographic_review.py target [-h] [--text] [--review-output REVIEW_OUTPUT] protocol artifact review_document"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "artifact"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Identity choices and exact-target review are supplied inputs, not generated approval",
+        "outputs": [
+          {
+            "argument": "--review-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/BIBLIOGRAPHIC_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank per-row identity/withholding choices for a prepared intake artifact",
+      "script": "bibliographic_review.py",
+      "subcommand": "template",
+      "usage": "python bibliographic_review.py template [-h] [--review-output REVIEW_OUTPUT] [--text] artifact"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANIFEST_BUILD.md"
+      ],
+      "has_parser": true,
+      "purpose": "Reproduce publication inventory",
+      "script": "build_manifest.py",
+      "subcommand": null,
+      "usage": "python build_manifest.py [-h] [--root ROOT] --release RELEASE --date DATE (--output OUTPUT | --check)"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/INDEPENDENT_CHALLENGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "challenge_intake.py",
+      "subcommand": "assemble",
+      "usage": "python challenge_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/INDEPENDENT_CHALLENGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the supplied challenges to the current statement bases; a stale basis or a colliding challenger label is rejected",
+      "script": "challenge_intake.py",
+      "subcommand": "target",
+      "usage": "python challenge_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/INDEPENDENT_CHALLENGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a blank challenge for explicit statement IDs, listing the recorded reviewer/appraiser labels and the current statement bases",
+      "script": "challenge_intake.py",
+      "subcommand": "template",
+      "usage": "python challenge_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/INDEPENDENT_CHALLENGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append and expose open material gaps without upholding or refuting any statement",
+      "script": "challenge_intake.py",
+      "subcommand": "verify",
+      "usage": "python challenge_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Carry selected single-file native NBIB wrappers with the research bundle, bound to their exact import associations",
+      "script": "collection_bundle.py",
+      "subcommand": "create",
+      "usage": "python collection_bundle.py create [-h] --nbib INDEX=PATH [--text] protocol output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the wrapper bindings and compare the entire canonical ZIP",
+      "script": "collection_bundle.py",
+      "subcommand": "verify",
+      "usage": "python collection_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--ris",
+          "--nbib",
+          "--nbib-batch"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Wrapper options contain INDEX=PATH. verify --output reads an existing file, not a destination. External-manager compatibility is not established.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only if selected native bytes are nonempty; NO_OUTPUT creates nothing",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/COLLECTION_EXPORT.md"
+      ],
+      "has_parser": true,
+      "purpose": "Typed exact historical native occurrence export; --ris/--nbib also supported",
+      "script": "collection_export.py",
+      "subcommand": "create",
+      "usage": "python collection_export.py create [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--ris",
+          "--nbib",
+          "--nbib-batch",
+          "--output"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Wrapper options contain INDEX=PATH. verify --output reads an existing file, not a destination. External-manager compatibility is not established.",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/COLLECTION_EXPORT.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact regeneration and output byte comparison",
+      "script": "collection_export.py",
+      "subcommand": "verify",
+      "usage": "python collection_export.py verify [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md",
+        "docs/AMENDMENT_NOTES.md",
+        "docs/CONTEXT_AMENDMENTS.md",
+        "docs/COMPLETION_COMPARISON.md"
+      ],
+      "has_parser": true,
+      "purpose": "Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings; `--amendment` binds a supplied amendment note",
+      "script": "compare_runs.py",
+      "subcommand": null,
+      "usage": "python compare_runs.py [-h] [--amendment AMENDMENT] [--text] before after"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONDITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied condition review as a detached application",
+      "script": "condition_intake.py",
+      "subcommand": "assemble",
+      "usage": "python condition_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONDITION_INTAKE.md",
+        "docs/EXPERIMENT_CONDITIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind completed nonclinical condition descriptions to existing result rows and chosen document declarations",
+      "script": "condition_intake.py",
+      "subcommand": "target",
+      "usage": "python condition_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONDITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the condition append, preserving all existing results",
+      "script": "condition_intake.py",
+      "subcommand": "verify",
+      "usage": "python condition_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "context_intake.py",
+      "subcommand": "assemble",
+      "usage": "python context_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the completed contexts to the current protocol for exact-input review",
+      "script": "context_intake.py",
+      "subcommand": "target",
+      "usage": "python context_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONTEXT_INTAKE.md",
+        "docs/SOURCE_CONTEXTS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank guideline/development contexts for explicit source or result references",
+      "script": "context_intake.py",
+      "subcommand": "template",
+      "usage": "python context_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append; new contexts stay unassigned and existing links, bases and review states are unchanged",
+      "script": "context_intake.py",
+      "subcommand": "verify",
+      "usage": "python context_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied proposal review as a detached application",
+      "script": "evidence_work_intake.py",
+      "subcommand": "assemble",
+      "usage": "python evidence_work_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the human deliverables and prerequisites to the current protocol for exact-input review",
+      "script": "evidence_work_intake.py",
+      "subcommand": "target",
+      "usage": "python evidence_work_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank result-linked review work for exact existing result IDs",
+      "script": "evidence_work_intake.py",
+      "subcommand": "template",
+      "usage": "python evidence_work_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append of PLANNED evidence-review work; no scientific task is generated",
+      "script": "evidence_work_intake.py",
+      "subcommand": "verify",
+      "usage": "python evidence_work_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Reconcile search, screening, results, context, appraisal and work",
+      "script": "evidence_workflow.py",
+      "subcommand": null,
+      "usage": "python evidence_workflow.py [-h] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EXTRACTION_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Retain a contiguous reviewed result/correction/condition segment with its historical source context",
+      "script": "extraction_transition_bundle.py",
+      "subcommand": "create",
+      "usage": "python extraction_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EXTRACTION_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the retained extraction segment without renewing any review",
+      "script": "extraction_transition_bundle.py",
+      "subcommand": "verify",
+      "usage": "python extraction_transition_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/IMPLEMENTATION_REVISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Compare recorded hashes without executing artifact code; manifest is repeatable",
+      "script": "implementation_check.py",
+      "subcommand": "inspect",
+      "usage": "python implementation_check.py inspect [-h] [--engine-root ENGINE_ROOT] [--manifest MANIFEST] [--text] artifact"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_INVENTORY_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "inventory_intake.py",
+      "subcommand": "assemble",
+      "usage": "python inventory_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_INVENTORY_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the completed description to the current inventory source basis for exact-input review",
+      "script": "inventory_intake.py",
+      "subcommand": "target",
+      "usage": "python inventory_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_INVENTORY_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a blank descriptive candidate for one explicit report and human study label",
+      "script": "inventory_intake.py",
+      "subcommand": "template",
+      "usage": "python inventory_intake.py template [-h] [--text] --report-id REPORT_ID --study-id STUDY_ID --candidate-output CANDIDATE_OUTPUT protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_INVENTORY_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the description append, preserving eligibility and result counts",
+      "script": "inventory_intake.py",
+      "subcommand": "verify",
+      "usage": "python inventory_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/NATIVE_COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required",
+      "script": "native_collection_bundle.py",
+      "subcommand": "create",
+      "usage": "python native_collection_bundle.py create [-h] [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/NATIVE_COLLECTION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the typed bindings and compare the entire canonical ZIP",
+      "script": "native_collection_bundle.py",
+      "subcommand": "verify",
+      "usage": "python native_collection_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PUBMED_NBIB_BATCH.md"
+      ],
+      "has_parser": true,
+      "purpose": "Preserve each explicitly grouped native file (`--export ID=PATH`, repeatable) for one incomplete search",
+      "script": "nbib_batch_intake.py",
+      "subcommand": "preview",
+      "usage": "python nbib_batch_intake.py preview [-h] --export EXPORT --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PUBMED_NBIB_BATCH.md"
+      ],
+      "has_parser": true,
+      "purpose": "Verify the batch wrapper and prepare one unreviewed CSV intake for the grouped files",
+      "script": "nbib_batch_intake.py",
+      "subcommand": "verify",
+      "usage": "python nbib_batch_intake.py verify [-h] [--intake-output INTAKE_OUTPUT | --csv-output CSV_OUTPUT] [--text] artifact"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "export"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "verify output options are mutually exclusive; verify is not necessarily read-only",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_NBIB_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Preserve native PubMed-format field occurrences and exact bytes in a strict-subset NBIB wrapper",
+      "script": "nbib_intake.py",
+      "subcommand": "preview",
+      "usage": "python nbib_intake.py preview [-h] --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol export"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "artifact"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "verify output options are mutually exclusive; verify is not necessarily read-only",
+        "outputs": [
+          {
+            "argument": "--intake-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          },
+          {
+            "argument": "--csv-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_NBIB_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Verify the wrapper and write either the CSV derivative or the unreviewed intake artifact for explicit reconciliation",
+      "script": "nbib_intake.py",
+      "subcommand": "verify",
+      "usage": "python nbib_intake.py verify [-h] [--intake-output INTAKE_OUTPUT | --csv-output CSV_OUTPUT] [--text] artifact"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/ADAPTER_CONTRACT.md"
+      ],
+      "has_parser": true,
+      "purpose": "Run the synthetic adapter contract and hash-bound review gates offline",
+      "script": "offline_adapter.py",
+      "subcommand": null,
+      "usage": "python offline_adapter.py [-h] [--reviews REVIEWS] [--protocol-output PROTOCOL_OUTPUT] protocol fixture"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PRISMA_AUDIT.md"
+      ],
+      "has_parser": true,
+      "purpose": "Export unit-specific members, exclusion reasons, identity links and supplied-count partitions",
+      "script": "prisma_audit.py",
+      "subcommand": null,
+      "usage": "python prisma_audit.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PRISMA_FLOW_TEMPLATE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Write a new native count-crosswalk CSV with explicit search-arm assignments and a full mapping/pending-state receipt; not an external diagram template",
+      "script": "prisma_flow_template.py",
+      "subcommand": null,
+      "usage": "python prisma_flow_template.py [-h] [--search-arm INDEX=ARM] [--include-exact-id-accounting] --output OUTPUT [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Add report/full-text/study and extraction-queue accounting",
+      "script": "prisma_reports.py",
+      "subcommand": null,
+      "usage": "python prisma_reports.py [-h] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PROTOCOL_KEYS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Names-only declared-field inventory, never validation or typo correction",
+      "script": "protocol_keys.py",
+      "subcommand": "inspect",
+      "usage": "python protocol_keys.py inspect [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PROTOCOL_KEYS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Names-only declared-field inventory, never validation or typo correction",
+      "script": "protocol_keys.py",
+      "subcommand": "list",
+      "usage": "python protocol_keys.py list [-h] [--text]"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 2,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "draft"
+        ],
+        "negative_report": {
+          "condition": "well-formed but invalid draft",
+          "exit_code": 2,
+          "stderr": "empty",
+          "stdout": "json"
+        },
+        "network": "none",
+        "notes": "Invalid draft emits a report and creates no protocol output",
+        "outputs": [
+          {
+            "argument": "--protocol-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PROTOCOL_SCAFFOLD.md"
+      ],
+      "has_parser": true,
+      "purpose": "Blank or checked supplied starting protocol, never plan approval",
+      "script": "protocol_scaffold.py",
+      "subcommand": "check",
+      "usage": "python protocol_scaffold.py check [-h] [--protocol-output PROTOCOL_OUTPUT] draft"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 2,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [],
+        "negative_report": null,
+        "network": "none",
+        "notes": "",
+        "outputs": [
+          {
+            "argument": "--draft-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PROTOCOL_SCAFFOLD.md"
+      ],
+      "has_parser": true,
+      "purpose": "Blank or checked supplied starting protocol, never plan approval",
+      "script": "protocol_scaffold.py",
+      "subcommand": "template",
+      "usage": "python protocol_scaffold.py template [-h] [--draft-output DRAFT_OUTPUT]"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input"
+        ],
+        "negative_report": null,
+        "network": "explicit_NCBI_fetch",
+        "notes": "Only fetch sends the supplied query/selected identifiers to NCBI. Preview hash matching is not permission. Failure does not prove no transmission. No live requests are made by contract inspection.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination; network may already have occurred before output failure",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_DISCOVERY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Transmit the previewed query to NCBI ESearch (the only networked discovery step) and retain native observations with caps and failures",
+      "script": "pubmed_discovery.py",
+      "subcommand": "fetch",
+      "usage": "python pubmed_discovery.py fetch [-h] --preview-sha256 PREVIEW_SHA256 --output OUTPUT input"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "execution"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination after local validation; OS failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_DISCOVERY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay retained response bodies offline into the same discovery record shape",
+      "script": "pubmed_discovery.py",
+      "subcommand": "from-responses",
+      "usage": "python pubmed_discovery.py from-responses [-h] --output OUTPUT input execution"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_DISCOVERY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Freeze the exact ESearch request offline and compute the preview hash",
+      "script": "pubmed_discovery.py",
+      "subcommand": "preview",
+      "usage": "python pubmed_discovery.py preview [-h] [--output OUTPUT] input"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination after local validation; OS failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_DISCOVERY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Convert discovered identifiers into an unreviewed CSV intake for a declared search",
+      "script": "pubmed_discovery.py",
+      "subcommand": "to-intake",
+      "usage": "python pubmed_discovery.py to-intake [-h] --search-id SEARCH_ID --output OUTPUT input protocol"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_DISCOVERY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Re-check a discovery record's internal consistency",
+      "script": "pubmed_discovery.py",
+      "subcommand": "verify",
+      "usage": "python pubmed_discovery.py verify [-h] input"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "selection"
+        ],
+        "negative_report": null,
+        "network": "explicit_NCBI_fetch",
+        "notes": "Only fetch sends the supplied query/selected identifiers to NCBI. Preview hash matching is not permission. Failure does not prove no transmission. No live requests are made by contract inspection.",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination; network may already have occurred before output failure",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_METADATA.md"
+      ],
+      "has_parser": true,
+      "purpose": "Send the previewed PMID batches to NCBI EFetch (the only networked metadata step) and retain MEDLINE text",
+      "script": "pubmed_metadata.py",
+      "subcommand": "fetch",
+      "usage": "python pubmed_metadata.py fetch [-h] --preview-sha256 PREVIEW_SHA256 --output OUTPUT input selection"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "selection",
+          "execution"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination after local validation; OS failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_METADATA.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay retained EFetch responses offline into the same metadata record shape",
+      "script": "pubmed_metadata.py",
+      "subcommand": "from-responses",
+      "usage": "python pubmed_metadata.py from-responses [-h] --output OUTPUT input selection execution"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "selection"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_METADATA.md"
+      ],
+      "has_parser": true,
+      "purpose": "Freeze an explicit PMID selection from a verified discovery and compute the preview hash",
+      "script": "pubmed_metadata.py",
+      "subcommand": "preview",
+      "usage": "python pubmed_metadata.py preview [-h] [--output OUTPUT] input selection"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input",
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "required destination after local validation; OS failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_METADATA.md"
+      ],
+      "has_parser": true,
+      "purpose": "Convert title/abstract candidates into an unreviewed CSV intake for a declared search",
+      "script": "pubmed_metadata.py",
+      "subcommand": "to-intake",
+      "usage": "python pubmed_metadata.py to-intake [-h] --search-id SEARCH_ID --output OUTPUT input protocol"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "input"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Local supplied data only; no fetch performed by this subcommand",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/PUBMED_METADATA.md"
+      ],
+      "has_parser": true,
+      "purpose": "Re-check a metadata record's internal consistency and literal PMID reconciliation",
+      "script": "pubmed_metadata.py",
+      "subcommand": "verify",
+      "usage": "python pubmed_metadata.py verify [-h] input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CONCLUSION_READINESS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "readiness_intake.py",
+      "subcommand": "assemble",
+      "usage": "python readiness_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CONCLUSION_READINESS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the supplied sufficiency/readiness assertions to the current gate ledger; a stale gate hash is rejected",
+      "script": "readiness_intake.py",
+      "subcommand": "target",
+      "usage": "python readiness_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CONCLUSION_READINESS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a blank protocol-wide readiness assertion bound to the current `gates_sha256` with the full gate ledger",
+      "script": "readiness_intake.py",
+      "subcommand": "template",
+      "usage": "python readiness_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CONCLUSION_READINESS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append; a READY assertion while gates are open stays visible with those gates, and nothing is promoted",
+      "script": "readiness_intake.py",
+      "subcommand": "verify",
+      "usage": "python readiness_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CONCLUSION_READINESS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Show the mechanical conclusion-readiness gate ledger, its open items and hash, and supplied readiness assertions bound to it; closed gates are bookkeeping, not sufficiency",
+      "script": "readiness_review.py",
+      "subcommand": null,
+      "usage": "python readiness_review.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RECEIPT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect a filled mock receipt fixture as unreviewed candidates through the existing adapter, without accepting reviews",
+      "script": "receipt_intake.py",
+      "subcommand": "check",
+      "usage": "python receipt_intake.py check [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol fixture"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RECEIPT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Guide synthetic manual receipt entry with deliberately unfilled request/page fields",
+      "script": "receipt_intake.py",
+      "subcommand": "template",
+      "usage": "python receipt_intake.py template [-h] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Apply the supplied include/exclude choice and study declaration to a detached candidate",
+      "script": "report_decision.py",
+      "subcommand": "assemble",
+      "usage": "python report_decision.py assemble [-h] [--text] [--output OUTPUT] protocol decision_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Prepare the exact-context target for one retrieved report's supplied full-text choice",
+      "script": "report_decision.py",
+      "subcommand": "target",
+      "usage": "python report_decision.py target [-h] [--text] --report-id REPORT_ID [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the decision against the original input before exporting the protocol; conflicting result links are rejected, not deleted",
+      "script": "report_decision.py",
+      "subcommand": "verify",
+      "usage": "python report_decision.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_REPORT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied registration review as a detached application",
+      "script": "report_intake.py",
+      "subcommand": "assemble",
+      "usage": "python report_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_REPORT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind completed report registrations to the current protocol for separate review",
+      "script": "report_intake.py",
+      "subcommand": "target",
+      "usage": "python report_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_REPORT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank report rows for explicitly selected included, unmapped records",
+      "script": "report_intake.py",
+      "subcommand": "template",
+      "usage": "python report_intake.py template [-h] [--text] [--output OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_REPORT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the registration; new reports keep pending full-text decisions",
+      "script": "report_intake.py",
+      "subcommand": "verify",
+      "usage": "python report_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_RETRIEVAL_UPDATES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied retrieval review as a detached application",
+      "script": "report_retrieval.py",
+      "subcommand": "assemble",
+      "usage": "python report_retrieval.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_RETRIEVAL_UPDATES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the supplied transitions to the current protocol for exact-target review",
+      "script": "report_retrieval.py",
+      "subcommand": "target",
+      "usage": "python report_retrieval.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_RETRIEVAL_UPDATES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a retrieval-state transition for explicitly selected unassessed reports",
+      "script": "report_retrieval.py",
+      "subcommand": "template",
+      "usage": "python report_retrieval.py template [-h] [--text] [--output OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_RETRIEVAL_UPDATES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the retrieval update without remapping records, replacing sources or renewing reviews",
+      "script": "report_retrieval.py",
+      "subcommand": "verify",
+      "usage": "python report_retrieval.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_REVIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect supplied full-text versions and reviewer positions without verifying documents or changing decisions",
+      "script": "report_review.py",
+      "subcommand": null,
+      "usage": "python report_review.py [-h] [--report-id REPORT_ID] [--template] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separately reviewed detached append-only application",
+      "script": "report_review_intake.py",
+      "subcommand": "assemble",
+      "usage": "python report_review_intake.py assemble [-h] --output OUTPUT protocol input review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact-source proposed position append and blank import review",
+      "script": "report_review_intake.py",
+      "subcommand": "target",
+      "usage": "python report_review_intake.py target [-h] --output OUTPUT protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Whole-application replay and at most one complete exclusive new output",
+      "script": "report_review_intake.py",
+      "subcommand": "verify",
+      "usage": "python report_review_intake.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_SOURCE_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Compare an explicitly mapped local document with its supplied digest through a bounded no-follow checker; native Windows fails closed",
+      "script": "report_source_check.py",
+      "subcommand": "check",
+      "usage": "python report_source_check.py check [-h] --root ROOT [--output OUTPUT] [--text] protocol manifest"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_SOURCE_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft the explicit source-to-local-file manifest for a supplied digest",
+      "script": "report_source_check.py",
+      "subcommand": "template",
+      "usage": "python report_source_check.py template [-h] [--source-id SOURCE_ID] [--output OUTPUT] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_SOURCE_DECLARATIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "report_source_intake.py",
+      "subcommand": "assemble",
+      "usage": "python report_source_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_SOURCE_DECLARATIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the new declarations to the current protocol for exact-input review",
+      "script": "report_source_intake.py",
+      "subcommand": "target",
+      "usage": "python report_source_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_SOURCE_DECLARATIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a blank source declaration for one retrieved report",
+      "script": "report_source_intake.py",
+      "subcommand": "template",
+      "usage": "python report_source_intake.py template [-h] [--text] --report-id REPORT_ID --candidate-output CANDIDATE_OUTPUT protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_SOURCE_DECLARATIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the declaration append, preserving prior catalogs and exposing stale reviews without byte verification",
+      "script": "report_source_intake.py",
+      "subcommand": "verify",
+      "usage": "python report_source_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_INVENTORY.md"
+      ],
+      "has_parser": true,
+      "purpose": "Describe explicit candidate studies before full-text inclusion without creating memberships or eligibility",
+      "script": "report_study_inventory.py",
+      "subcommand": null,
+      "usage": "python report_study_inventory.py [-h] [--report-id REPORT_ID] [--study-id STUDY_ID] [--template] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/INVENTORY_CANDIDATE_REVIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record separate human positions on described candidates before report inclusion, without declaring memberships",
+      "script": "report_study_inventory_review.py",
+      "subcommand": null,
+      "usage": "python report_study_inventory_review.py [-h] [--report-id REPORT_ID] [--study-id STUDY_ID] [--template] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separately reviewed detached append, no canonical study selection",
+      "script": "report_study_inventory_review_intake.py",
+      "subcommand": "assemble",
+      "usage": "python report_study_inventory_review_intake.py assemble [-h] --output OUTPUT protocol input review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact candidate/description/source-bound proposed append and blank separate import review",
+      "script": "report_study_inventory_review_intake.py",
+      "subcommand": "target",
+      "usage": "python report_study_inventory_review_intake.py target [-h] --output OUTPUT protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Whole replay and one complete exclusive output",
+      "script": "report_study_inventory_review_intake.py",
+      "subcommand": "verify",
+      "usage": "python report_study_inventory_review_intake.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_REVIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Keep exact report-study human positions and explicit reviewed-source selections separate from report eligibility",
+      "script": "report_study_review.py",
+      "subcommand": null,
+      "usage": "python report_study_review.py [-h] [--report-id REPORT_ID] [--study-id STUDY_ID] [--template] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separately reviewed detached append, no canonical study selection",
+      "script": "report_study_review_intake.py",
+      "subcommand": "assemble",
+      "usage": "python report_study_review_intake.py assemble [-h] --output OUTPUT protocol input review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact pair/source-bound proposed append and blank separate import review",
+      "script": "report_study_review_intake.py",
+      "subcommand": "target",
+      "usage": "python report_study_review_intake.py target [-h] --output OUTPUT protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_STUDY_REVIEW_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Whole replay and one complete exclusive output",
+      "script": "report_study_review_intake.py",
+      "subcommand": "verify",
+      "usage": "python report_study_review_intake.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Retain an explicitly selected contiguous registration/retrieval/full-text segment with exact original bytes",
+      "script": "report_transition_bundle.py",
+      "subcommand": "create",
+      "usage": "python report_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REPORT_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the retained report segment; earlier and later history stay unassessed",
+      "script": "report_transition_bundle.py",
+      "subcommand": "verify",
+      "usage": "python report_transition_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "",
+        "outputs": [
+          {
+            "argument": "output",
+            "condition": "required destination, after validation; OS failure may leave a partial new archive",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/USAGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Create a new portable supplied-data bundle (protocol, validated JSON, CSV, bounded summary, SHA-256 manifest)",
+      "script": "research_bundle.py",
+      "subcommand": "create",
+      "usage": "python research_bundle.py create [-h] protocol output"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "bundle"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "No archive code execution; verifies current implementation, not historical compatibility",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/USAGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Check hashes, implementation bytes and regenerated outputs without extracting paths",
+      "script": "research_bundle.py",
+      "subcommand": "verify",
+      "usage": "python research_bundle.py verify [-h] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESEARCH_BUNDLE_DESCRIBE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Read recorded research archive context without replay or verification",
+      "script": "research_bundle_describe.py",
+      "subcommand": null,
+      "usage": "python research_bundle_describe.py [-h] [--text] bundle"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/USAGE.md"
+      ],
+      "has_parser": true,
+      "purpose": "View mechanical review queues and unknown stages",
+      "script": "research_status.py",
+      "subcommand": null,
+      "usage": "python research_status.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/REVIEW_VIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Local passive supplied review snapshot, never approval",
+      "script": "research_view.py",
+      "subcommand": null,
+      "usage": "python research_view.py [-h] [--work-package WORK_PACKAGE] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_CORRECTIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied correction review as a detached application",
+      "script": "result_correction.py",
+      "subcommand": "assemble",
+      "usage": "python result_correction.py assemble [-h] [--text] --output OUTPUT protocol correction_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_CORRECTIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind supplied result/limitations text corrections to existing result IDs for exact-target review",
+      "script": "result_correction.py",
+      "subcommand": "target",
+      "usage": "python result_correction.py target [-h] [--text] --output OUTPUT protocol correction_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_CORRECTIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the wording change without changing extraction IDs, row order or counts",
+      "script": "result_correction.py",
+      "subcommand": "verify",
+      "usage": "python result_correction.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EXTRACTION_WORKSHEETS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Join exact report-study context and existing results with a deliberately blank manual intake candidate",
+      "script": "result_extraction.py",
+      "subcommand": null,
+      "usage": "python result_extraction.py [-h] --report-id REPORT_ID --study-id STUDY_ID --record-id RECORD_ID [--text] [--output OUTPUT | --candidate-output CANDIDATE_OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_RESULT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied import review as a detached application",
+      "script": "result_intake.py",
+      "subcommand": "assemble",
+      "usage": "python result_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_RESULT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind supplied manual result rows and detached document associations to the current protocol for review",
+      "script": "result_intake.py",
+      "subcommand": "target",
+      "usage": "python result_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/MANUAL_RESULT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the exact-input import and append the result rows without changing prior evidence",
+      "script": "result_intake.py",
+      "subcommand": "verify",
+      "usage": "python result_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_PASSAGE_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "List the lines of explicitly mapped local UTF-8 sources for human selection of byte ranges",
+      "script": "result_passage_check.py",
+      "subcommand": "catalog",
+      "usage": "python result_passage_check.py catalog [-h] --root ROOT [--output OUTPUT] [--text] protocol candidates manifest"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_PASSAGE_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Compare declared hashes and exact UTF-8 quotes beside unchanged manual fields; matching text is not scientific acceptance",
+      "script": "result_passage_check.py",
+      "subcommand": "check",
+      "usage": "python result_passage_check.py check [-h] --root ROOT [--output OUTPUT] [--text] protocol candidates manifest"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_PASSAGE_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft the explicit source-file mapping manifest for completed result candidates",
+      "script": "result_passage_check.py",
+      "subcommand": "template",
+      "usage": "python result_passage_check.py template [-h] [--output OUTPUT] [--text] protocol candidates"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RESULT_SOURCE_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay a manual intake record, then separately compare current result rows, report links and supplied document context",
+      "script": "result_source_review.py",
+      "subcommand": null,
+      "usage": "python result_source_review.py [-h] [--output OUTPUT] [--text] original_protocol application_record current_protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/OPERATOR_HANDOFF.md"
+      ],
+      "has_parser": true,
+      "purpose": "Read-only operator sheet: manual queues, input locations, work deliverables, detailed-view navigation and the static supplied-input workflow catalog",
+      "script": "review_handoff.py",
+      "subcommand": null,
+      "usage": "python review_handoff.py [-h] [--work-package WORK_PACKAGE] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RIS_CONTINUATION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Parse an explicitly selected continuation dialect without changing strict RIS",
+      "script": "ris_continuation_intake.py",
+      "subcommand": "preview",
+      "usage": "python ris_continuation_intake.py preview [-h] --dialect {ris-untagged-continuation-empty-paragraphs-v1} --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol export"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RIS_CONTINUATION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the detached continuation wrapper",
+      "script": "ris_continuation_intake.py",
+      "subcommand": "verify",
+      "usage": "python ris_continuation_intake.py verify [-h] [--intake-output INTAKE_OUTPUT | --csv-output CSV_OUTPUT] [--text] artifact"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RIS_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Preserve strict-subset native RIS bytes and field occurrences without DOI/ID resolution",
+      "script": "ris_intake.py",
+      "subcommand": "preview",
+      "usage": "python ris_intake.py preview [-h] --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol export"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RIS_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Verify the RIS wrapper and prepare CSV candidates for the same human reconciliation path",
+      "script": "ris_intake.py",
+      "subcommand": "verify",
+      "usage": "python ris_intake.py verify [-h] [--intake-output INTAKE_OUTPUT | --csv-output CSV_OUTPUT] [--text] artifact"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCHEMAS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bounded descriptive schema view/check, never workflow approval",
+      "script": "schema_check.py",
+      "subcommand": "check",
+      "usage": "python schema_check.py check [-h] schema document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCHEMAS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bounded descriptive schema view/check, never workflow approval",
+      "script": "schema_check.py",
+      "subcommand": "explain",
+      "usage": "python schema_check.py explain [-h] schema"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "decision_document"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Supplied screening assertion, not a scientific eligibility judgment",
+        "outputs": [
+          {
+            "argument": "--protocol-output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/SCREENING_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Apply only the explicit supplied choice to a new protocol candidate, retaining source/reviewer receipts",
+      "script": "screening_decision.py",
+      "subcommand": "assemble",
+      "usage": "python screening_decision.py assemble [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol decision_document"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Supplied screening assertion, not a scientific eligibility judgment",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/SCREENING_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect retained decision receipts without selecting an authoritative one",
+      "script": "screening_decision.py",
+      "subcommand": "inspect",
+      "usage": "python screening_decision.py inspect [-h] [--text] [--record-id RECORD_ID] protocol"
+    },
+    {
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Supplied screening assertion, not a scientific eligibility judgment",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only when option is supplied and validation succeeds; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
+      "guides": [
+        "docs/SCREENING_DECISIONS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Prepare the exact-context target for one explicit record's supplied screening choice",
+      "script": "screening_decision.py",
+      "subcommand": "target",
+      "usage": "python screening_decision.py target [-h] [--text] --record-id RECORD_ID [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_DECISION_BATCH_PREVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact-context hypothetical chain and blank import review only; no candidate/application or batch assemble/verify",
+      "script": "screening_decision_batch.py",
+      "subcommand": "target",
+      "usage": "python screening_decision_batch.py target [-h] [--output OUTPUT] protocol sheet"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_DECISION_BATCH_APPLICATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Exact separate import review and detached candidate application",
+      "script": "screening_decision_batch_apply.py",
+      "subcommand": "assemble",
+      "usage": "python screening_decision_batch_apply.py assemble [-h] --output OUTPUT protocol sheet review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_DECISION_BATCH_APPLICATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Full replay; at most one exclusive complete output",
+      "script": "screening_decision_batch_apply.py",
+      "subcommand": "verify",
+      "usage": "python screening_decision_batch_apply.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol application"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_DECISION_SHEETS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bounded blank human-decision scaffold; read-only context, no batch application",
+      "script": "screening_decision_sheet.py",
+      "subcommand": "export",
+      "usage": "python screening_decision_sheet.py export [-h] [--record-id RECORD_ID] [--display-column DISPLAY_COLUMN] --output OUTPUT [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_POSITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Literal supplied-position CSV assemble, never canonical decisions",
+      "script": "screening_position_intake.py",
+      "subcommand": "assemble",
+      "usage": "python screening_position_intake.py assemble [-h] [--output OUTPUT] protocol input review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_POSITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Literal supplied-position CSV preview, never canonical decisions",
+      "script": "screening_position_intake.py",
+      "subcommand": "preview",
+      "usage": "python screening_position_intake.py preview [-h] --basis-template BASIS_TEMPLATE --decision-column DECISION_COLUMN --rationale-column RATIONALE_COLUMN --record-id-column RECORD_ID_COLUMN --reviewed-at-column REVIEWED_AT_COLUMN --reviewer-column REVIEWER_COLUMN --source-locator-column SOURCE_LOCATOR_COLUMN [--review-id-column REVIEW_ID_COLUMN] --label DECISION=LITERAL [--output OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_POSITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Literal supplied-position CSV target, never canonical decisions",
+      "script": "screening_position_intake.py",
+      "subcommand": "target",
+      "usage": "python screening_position_intake.py target [-h] [--output OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_POSITION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Literal supplied-position CSV verify, never canonical decisions",
+      "script": "screening_position_intake.py",
+      "subcommand": "verify",
+      "usage": "python screening_position_intake.py verify [-h] [--output OUTPUT | --protocol-output PROTOCOL_OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_REVIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect source-bound supplied reviewer positions or prepare blank assertions without deciding eligibility",
+      "script": "screening_review.py",
+      "subcommand": null,
+      "usage": "python screening_review.py [-h] [--record-id RECORD_ID] [--template] [--text] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_SHEETS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Blank human-position sheet with exact-source context",
+      "script": "screening_sheet.py",
+      "subcommand": "export",
+      "usage": "python screening_sheet.py export [-h] [--display-column DISPLAY_COLUMN] --output OUTPUT [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_SHEET_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separate exact-input import review; append only supplied screening positions, never canonical decisions",
+      "script": "screening_sheet_intake.py",
+      "subcommand": "assemble",
+      "usage": "python screening_sheet_intake.py assemble [-h] [--output OUTPUT] protocol input review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_SHEET_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separate exact-input import review; append only supplied screening positions, never canonical decisions",
+      "script": "screening_sheet_intake.py",
+      "subcommand": "target",
+      "usage": "python screening_sheet_intake.py target [-h] [--output OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SCREENING_SHEET_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Separate exact-input import review; append only supplied screening positions, never canonical decisions",
+      "script": "screening_sheet_intake.py",
+      "subcommand": "verify",
+      "usage": "python screening_sheet_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] protocol input"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SEARCH_MANIFEST.md"
+      ],
+      "has_parser": true,
+      "purpose": "Freeze exact query specs and source-wise receipt, interruption and overlap accounting without executing searches",
+      "script": "search_manifest.py",
+      "subcommand": null,
+      "usage": "python search_manifest.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "README.md"
+      ],
+      "has_parser": true,
+      "purpose": "Discover and run the root scripts from one entry point; the documented `python <script>` form stays the primary one",
+      "script": "sensei.py",
+      "subcommand": null,
+      "usage": "python sensei.py [-h] {list,run,check,contract} ..."
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/CHECKOUT_CHECK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Read-only listed-byte inventory, in-memory syntax compilation and one synthetic status; no bytecode writes, not full tests, CI or research validation",
+      "script": "sensei.py",
+      "subcommand": "check",
+      "usage": "python sensei.py check [-h]"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/AGENT_CONTRACT.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect source-bound partial command effects without running listed commands",
+      "script": "sensei.py",
+      "subcommand": "contract",
+      "usage": "python sensei.py contract [-h] [--text]"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/OPERATOR_HANDOFF.md"
+      ],
+      "has_parser": true,
+      "purpose": "Print every root script that has a main entry point with the first sentence of its docstring, then the supplied-input routes of the operator handoff catalog with their scripts and guides; nothing is executed and only this repository's own files are read",
+      "script": "sensei.py",
+      "subcommand": "list",
+      "usage": "python sensei.py list [-h]"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/COMMANDS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Execute one listed root script with the remaining arguments exactly as `python <script> ...` would, without a shell; any other name is rejected before anything runs, and the script keeps its own output, exit status and boundaries",
+      "script": "sensei.py",
+      "subcommand": "run",
+      "usage": "python sensei.py run [-h] script ..."
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SOURCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied proposal review as a detached application",
+      "script": "source_work_intake.py",
+      "subcommand": "assemble",
+      "usage": "python source_work_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SOURCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the human-authored tasks to the current protocol for proposal review",
+      "script": "source_work_intake.py",
+      "subcommand": "target",
+      "usage": "python source_work_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SOURCE_WORK_INTAKE.md",
+        "docs/SOURCE_REVIEW_WORK.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft blank source-review work for explicit typed planned-search or record references",
+      "script": "source_work_intake.py",
+      "subcommand": "template",
+      "usage": "python source_work_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SOURCE_WORK_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the append of PLANNED source-review work without changing existing research decisions",
+      "script": "source_work_intake.py",
+      "subcommand": "verify",
+      "usage": "python source_work_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SYNTHESIS_REVIEW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Review stage counts, supplied statement citations and unresolved limits",
+      "script": "synthesis_review.py",
+      "subcommand": null,
+      "usage": "python synthesis_review.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md",
+        "docs/ARCHITECTURE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Validate selected state/release consistency rules",
+      "script": "validate_run.py",
+      "subcommand": null,
+      "usage": "python validate_run.py [-h] state"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/USAGE.md",
+        "PUBLICATION.md"
+      ],
+      "has_parser": false,
+      "purpose": "Verify the complete published inventory against exact checkout bytes; unlisted files and link-like paths fail",
+      "script": "verify_manifest.py",
+      "subcommand": null,
+      "usage": null
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SHAREABLE_VIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Discover detached status Markdown, supplied-accounting Mermaid text and records CSV; no renderer or scientific judgement",
+      "script": "views_export.py",
+      "subcommand": null,
+      "usage": "python views_export.py [-h] {status,flow,records} ..."
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/ACCOUNTING_FLOW.md"
+      ],
+      "has_parser": true,
+      "purpose": "Write a new supplied-accounting flow text file from existing audit partitions; no official diagram or renderer",
+      "script": "views_export.py",
+      "subcommand": "flow",
+      "usage": "python views_export.py flow [-h] [--format {mermaid}] --output NEW_MMD [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/RECORDS_CSV.md"
+      ],
+      "has_parser": true,
+      "purpose": "Save existing record joins as detached CSV with a separate receipt",
+      "script": "views_export.py",
+      "subcommand": "records",
+      "usage": "python views_export.py records [-h] --output NEW_CSV [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/SHAREABLE_VIEWS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Write a new read-only status Markdown file preserving every status field/queue; stdout is only a JSON or quoted receipt",
+      "script": "views_export.py",
+      "subcommand": "status",
+      "usage": "python views_export.py status [-h] --output NEW_MD [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_COMPLETION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied completion review as a detached application",
+      "script": "work_completion_intake.py",
+      "subcommand": "assemble",
+      "usage": "python work_completion_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_COMPLETION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the supplied artifact/acceptance assertion to the reviewed work/source basis for exact-target review",
+      "script": "work_completion_intake.py",
+      "subcommand": "target",
+      "usage": "python work_completion_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_COMPLETION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft a blank completion assertion for one explicit unfinished work package",
+      "script": "work_completion_intake.py",
+      "subcommand": "template",
+      "usage": "python work_completion_intake.py template [-h] [--text] --work-package WORK_PACKAGE [--candidate-output CANDIDATE_OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_COMPLETION_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the single completion with source binding and dependency-change cues, without artifact checks or acceptance assessment",
+      "script": "work_completion_intake.py",
+      "subcommand": "verify",
+      "usage": "python work_completion_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Record the supplied assignment review as a detached application",
+      "script": "work_context_intake.py",
+      "subcommand": "assemble",
+      "usage": "python work_context_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Bind the selected assignments to the current protocol, exposing selected and direct-dependent source bases",
+      "script": "work_context_intake.py",
+      "subcommand": "target",
+      "usage": "python work_context_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Draft explicit context-to-work assignments for named existing work",
+      "script": "work_context_intake.py",
+      "subcommand": "template",
+      "usage": "python work_context_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_CONTEXT_INTAKE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the assignment; only selected context-ID lists change, ranks, completion assertions and hashes do not",
+      "script": "work_context_intake.py",
+      "subcommand": "verify",
+      "usage": "python work_context_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_REVIEW.md",
+        "docs/PREREQUISITE_REVIEW.md",
+        "docs/WORK_NAVIGATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Join evidence/context/uncertainty around a work deliverable; `--include-prerequisites` opens the transitive prerequisites, `--brief` compacts the packet view",
+      "script": "work_review.py",
+      "subcommand": null,
+      "usage": "python work_review.py [-h] [--work-package WORK_PACKAGE] [--include-prerequisites] [--text | --brief] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Retain an explicit contiguous source-work/evidence-work/completion segment with exact original bytes",
+      "script": "work_transition_bundle.py",
+      "subcommand": "create",
+      "usage": "python work_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/WORK_TRANSITION_BUNDLES.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the retained work segment without renewing completion or assessing artifacts",
+      "script": "work_transition_bundle.py",
+      "subcommand": "verify",
+      "usage": "python work_transition_bundle.py verify [-h] [--text] bundle"
+    }
+  ],
+  "implementation_sha256": {
+    "accounting_flow.py": "d1eeeeb5fd32bb68e85cca46e8cb32764aa17f3c62a0f29499c8189217e59f68",
+    "adapter_integrity.py": "287323d551de4fa5ee8e2df74c8deb8756a83b9a3a64ed79ce22d88a56086759",
+    "appraisal_intake.py": "10ddbb9b2daf465d69aa5635b9483f80e9cd9d410911823e3f090f064d08ca97",
+    "appraisal_links.py": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2",
+    "appraisal_source_review.py": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf",
+    "appraisal_transition_bundle.py": "7dfab0ca0732cdb79e72c8b33b9652a987aeca0253e41e1f3ea58c0b9ef4765c",
+    "artifact_review.py": "c7e9d60a350d14b8f8ff8831da5e40f9dfaa5aa1cdbd98b2dba1aaf8fb97d54d",
+    "audit_publication.py": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08",
+    "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
+    "bibliographic_intake.py": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585",
+    "bibliographic_integrity.py": "d28b1ac9c538294227b4473d8e6ff4764d28460c17a8d2b914a97749a2d05925",
+    "bibliographic_review.py": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570",
+    "build_manifest.py": "8ff087e69de21f32446071d54d0bf8a6e7ead432caff64d62d4a96f9414ccbe0",
+    "challenge_intake.py": "f19329f76d70ddb4c44dcb647e9609e8355d6387f5223e654eef79b3be8e8ea1",
+    "challenge_links.py": "26297c74c71580e82add66719bb0995ca2f73ea4c5029bfa05378f143f42f866",
+    "collection_bundle.py": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06",
+    "collection_export.py": "f1f906ff4dbffe4225779d2a00e4ac212bb0a371016db26ddbf36c807061eac7",
+    "command_contract.py": "ca7b54d92be6619f463f39ce2a61a0e7d48153e9e0676c59c25ce0e31b73b739",
+    "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6",
+    "condition_intake.py": "dd5afab1482c0fd88dd6c2a223f8c2fa58a3ad65977be0b8dbed41e667033725",
+    "context_intake.py": "8a6e2bbc5589805fb05119c76143e45ef5ed2d7c4772e0ec0678134e4d1230b0",
+    "context_links.py": "bf7cbe8aa68f8769a4bbc403eedbb1dab5ea4156426bf32384d195edc50c59cb",
+    "csv_export_parser.py": "64d14e9118af92c40ce1b8d9c960dda71bd4861eb4d496f6fc7e83bb81a32c91",
+    "csv_safety.py": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e",
+    "evidence_work_intake.py": "3acbfaed060e19235f9fd2d16de15a3352e4c2893d83906622288af153a52fa4",
+    "evidence_workflow.py": "427a8832b2dfe0b77b05244506ee424734c93e1406afc41f2edead3f443b8c5d",
+    "experiment_links.py": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74",
+    "extraction_transition_bundle.py": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66",
+    "implementation_check.py": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f",
+    "inventory_intake.py": "6944a2bbeab09b9afc61a9c8374f4e06805ba439354c5297dfdfe4e119850057",
+    "json_io.py": "2cf22521af031246fdb66510442ce801080b54129f54873633b0c53a0e6e2abc",
+    "native_collection_bundle.py": "5487359956a56b3fd89fd60a89ba92e7e283efc51cdcb0642cfd52d13cc9f046",
+    "nbib_batch_intake.py": "580ee96bff4ab39bd227d52dd6a46d70f7dae8b73d0928e1de1a75a91e7b86c3",
+    "nbib_export_parser.py": "5ac9b759b873f39408fcffb88a8680558327c8df2dda0a672496469f22761f64",
+    "nbib_intake.py": "ff46600c293f4b1def8a82b6b1771e2c30d8ecaacef33bc0d2d88de68c3ae249",
+    "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "planning_links.py": "d19f4593c18274539dce8ee048093b335b32187c97838abc516712b531102e27",
+    "prisma_audit.py": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee",
+    "prisma_flow_template.py": "5a31b7c86bae21b80b55956bba210c518369d0cdd42c92140fdde9ab95ce7be0",
+    "prisma_reports.py": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562",
+    "protocol_keys.py": "48cb63d4a302ecd5beef6fda6caf38d04d468302d1b75748e5cbff411fbbbcb7",
+    "protocol_scaffold.py": "d7eb4c570f756e3b40812176ee86985ea849160602979adaf3761c743e61b377",
+    "pubmed_discovery.py": "4abdafd36619e90eb49c69b8b5acc164078d5084d3da3175ee6c5ac9363aedb8",
+    "pubmed_metadata.py": "95d1ed99ee1e9c1ba1ecd4ffc72b21f047c1531aaaaa48164900244ba2941c59",
+    "readiness_intake.py": "cde5fef1fd6868c1a7da5a4e6a8864cfed2b92c46912ba2cf6f7eb27680a1e5b",
+    "readiness_links.py": "141222dc02740f77da9e62903d53442c87b2bbdbb268107b9c681a62a8da2295",
+    "readiness_review.py": "d96d70f73c861fd08023f026cf1650809c10ecfe5a6d1d2b7ec7fa187d02f577",
+    "receipt_intake.py": "f456e9f618d173da7495c0e412d93ec565a5fb9c824bae90a55b6b704df34b39",
+    "records_csv.py": "19c5e08cf7a97149332637353396c4b171b5d9398a728f1fc2114c26e8530e52",
+    "report_decision.py": "42cef4479bf9509eb296bcd5cf6098b35f0a75d82b1b528ec74d63417c69566c",
+    "report_intake.py": "89f7a6c3084c047d87e22aa9f12a09b5b95cf8c304dbcfdfbd7a9437b6cb1b09",
+    "report_links.py": "4f16dcb183e2a08b91479796ca7db1103701eb8fd624a7b9dd41c264cc874a92",
+    "report_retrieval.py": "756fc893d075797e7ebe4a6bdaca9948bfe472eb618c605b23192eeaffcdc464",
+    "report_review.py": "7f2d47540b4d336993ad3d5dd7844b9db963327cf8acd6f9183a3838e18b87d4",
+    "report_review_intake.py": "76f9f981f9e0fedc0026147bc8647c8c9bd6019c0a9daabed39134e6b9592c65",
+    "report_review_links.py": "53196b12e09eb6193e1de9482a741080159c89c8307a76966d60667e5434da1a",
+    "report_source_check.py": "9a4a391fdb16c4462cee78cf5aef8bb9ac89e95988b7fdb607b79855cd00484e",
+    "report_source_intake.py": "b17449bbe2eb1c04309b398d9e3a431dfa1eee7a25486f6c1cb8cf59a671218b",
+    "report_study_inventory.py": "d0423ad792437682f21647c644c7adcbf427ce27bce72c6c1815cdacdb0fae7d",
+    "report_study_inventory_links.py": "fa1cbdb304acc5d940c43c6f19dc6ad9ee2277743c0df23b3e4d01752c97a980",
+    "report_study_inventory_review.py": "bd00763f4cac8799078ed9e4b3d9f5fe9836a5fdbcfa7f19a049c0b8eb5c2e8d",
+    "report_study_inventory_review_intake.py": "29666e9281499ebd9e967fc487ebaec0cfa11f619730b3ff034ab2a5cb248466",
+    "report_study_inventory_review_links.py": "bdb77523f1f349df898b605ae385ac9320231d02e7de359e4f4b8701e4a8b9b2",
+    "report_study_review.py": "d2b14faec3dfdd344393547f8bc977f5323b8bfd499cc79e05680e82c17ab9db",
+    "report_study_review_intake.py": "8b273ee20adeb69ef670aa6edf001087e5a3c87801c5223f1c53cd4ec976c30d",
+    "report_study_review_links.py": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b",
+    "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
+    "research_bundle.py": "4d6b37489fa094bb918b07cb6caeac3a3fac1d676ed088de3bd04c2e3f747769",
+    "research_bundle_describe.py": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5",
+    "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
+    "research_view.py": "8f2e3f0d03c1b1596a3ac0eb77af7d245ca80c1298fb84e34d2caa1953285064",
+    "result_correction.py": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52",
+    "result_extraction.py": "6ed413ce7cd0157d5479a413b1bc8a14629194fb800efd34260e0a546a578732",
+    "result_intake.py": "bba5e1437fa9713291ad10f65acd2b2b3a695bae981686be9068fff4c568715b",
+    "result_passage_check.py": "c25056a73c3a9392d5ba07f3b2f9ad6d9467503d57b4f31e1c4144e09b7930c1",
+    "result_source_review.py": "5fd34ef114e522a9d9251fe62ed940eb30b0630794952496453ab2356b394d7e",
+    "review_handoff.py": "826dd40ccf378481f1a6dfa7886847be98010b8889125254ffdd1aa78af1aa11",
+    "reviewed_intake_safety.py": "bc2dcac39107734bedf3949185604103555a6c4a740de80361fb00dd3442d2bc",
+    "ris_continuation_intake.py": "4038698deb3cc1abe9a4ffa8b639eb1a8008931e4c11ce95f31f2bb6d1f0061f",
+    "ris_continuation_parser.py": "ba9eb550c14f6826212dd13ed2794be276fd4222fb5c0a32a692d0f3b9326ac8",
+    "ris_export_parser.py": "53e16edc7fd8e2ec5fbdf30ac228bd18b4b01340c3294f66bb04246b0200e39c",
+    "ris_intake.py": "adb80316623cd1fadd4340e71c36e28c8a963e4fbb32e70aad2c420ca3f3cb20",
+    "schema_check.py": "93defbc0255795eb803783bb172e4b719320d51565c148034af747e056c08a52",
+    "screening_decision.py": "8e67b499b4f3efe6c134dc1db525e6337021ebff937784fa2afeefa4a2a5aa58",
+    "screening_decision_batch.py": "a960ee799ec14a97f9b3494a212357f844c06ad2b749370ea1aa17d57333cc48",
+    "screening_decision_batch_apply.py": "a80d196f2dc58dda4d203a5e4d672c97a46495dc4586a58594c245f75ab78c28",
+    "screening_decision_links.py": "6999fdcf56404b764461647337b4977a218d5efb0685bd783a11142843d4db39",
+    "screening_decision_sheet.py": "54703024495d5cb6d8bcf358c50a99a3548c6690a692cf8ddee7f72547fa2277",
+    "screening_links.py": "25ceb39cf2a0ab2d999205660c7e30754b05ac4fe944076189f763b5f247ac68",
+    "screening_position_intake.py": "a19d0af0a391415d8ba991e3796810af6c691a5d33e5272cf5b23f0f66491df5",
+    "screening_review.py": "82eb7022b224b98a464ccc33201d8bf78891408a6f1d255321018b6d26c8cf9e",
+    "screening_sheet.py": "149b2c84659ddfb7521ec6635dad7868506d822c22f6f8d6c4e625cd26fc225a",
+    "screening_sheet_intake.py": "98bd2dce311b87cf4684a83fd27b780fe0a9335396676f355605bfecb3d79812",
+    "search_audit.py": "fa48f3b17e625218985433b2d8182d4f2cd0900e1069aa3cbb7a7486a11f991c",
+    "search_manifest.py": "9b17b9874848b2c7b93e28195109cd099de0736b88c4a50921d17d3d06409130",
+    "sensei.py": "084da31ae16bf40836b6c586c290688863d2effceebb9d2b3caa02017607a469",
+    "source_work_intake.py": "f0c73f0ccfb917dfcc15480ccdb86642bb7eb7a09facda434d8f3bf22e4c036c",
+    "synthesis_links.py": "ae31c276158a316d9e6db6e401849785df09149a32caab842da2de4188465302",
+    "synthesis_review.py": "c9071c7719e47896b57999448515a17e8a3c11f2cd8e32b1558228e0949da1bf",
+    "validate_run.py": "e1c50ff38e55911d8240c673bb9aaf6003c198e6eb04cd8726513685a9c8b40b",
+    "verify_manifest.py": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d",
+    "views_export.py": "9e31abd56dbc0b7f2637ab9788e356b0f74aef941dbd9e3eb5f4f4ccb6ead440",
+    "work_completion_intake.py": "b8c8318b5914f2aabd5bb134d2a79db13bc19f22b22229d17cc23a5ab7952494",
+    "work_context_intake.py": "f4035ebf488fb55cd1d3d1f2ae204fba2f17d69b6e07892eb53c87e74a249ef7",
+    "work_document_links.py": "6f0c66a1666ce37d98cd68d67bc463bb9a893f90920adaef7b69611913d3fba2",
+    "work_review.py": "972d8a8b88daf4f60fffc24c5386bb51754d3678a1bdebde34b3bd6cefbc190d",
+    "work_transition_bundle.py": "50eb1c8cc2556ddb46e20cac821b1e7d8ff71d58fd093d969d9c79a9aa8ddb51"
+  },
+  "schema_version": 1
+}

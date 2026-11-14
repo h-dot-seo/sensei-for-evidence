@@ -53,7 +53,8 @@ and no step fills a decision, judgement or label on your behalf.
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python sensei.py [-h] {list,run,check} ...` | Discover and run the root scripts from one entry point; the documented `python <script>` form stays the primary one | [Commands at a glance](../README.md#commands-at-a-glance) |
+| `python sensei.py [-h] {list,run,check,contract} ...` | Discover and run the root scripts from one entry point; the documented `python <script>` form stays the primary one | [Commands at a glance](../README.md#commands-at-a-glance) |
+| `python sensei.py contract [-h] [--text]` | Inspect source-bound partial command effects without running listed commands | [Agent contract](AGENT_CONTRACT.md) |
 | `python sensei.py check [-h]` | Read-only listed-byte inventory, in-memory syntax compilation and one synthetic status; no bytecode writes, not full tests, CI or research validation | [Checkout check](CHECKOUT_CHECK.md) |
 | `python sensei.py list [-h]` | Print every root script that has a main entry point with the first sentence of its docstring, then the supplied-input routes of the operator handoff catalog with their scripts and guides; nothing is executed and only this repository's own files are read | [Operator handoff](OPERATOR_HANDOFF.md) |
 | `python sensei.py run [-h] script ...` | Execute one listed root script with the remaining arguments exactly as `python <script> ...` would, without a shell; any other name is rejected before anything runs, and the script keeps its own output, exit status and boundaries | this reference |
@@ -269,6 +270,7 @@ in every bundle, so verification fails closed on implementation drift.
 
 | Module | Purpose |
 |---|---|
+| `command_contract.py` | Read source-bound partial command effects, not execution permission |
 | `adapter_integrity.py` | Check internal mock receipt/review consistency; never authenticate external sources |
 | `appraisal_links.py` | Preserve supplied appraisal methods and domain judgements without scoring evidence |
 | `bibliographic_integrity.py` | Validate flat, supplied-review bibliographic import history without trusting identity |
