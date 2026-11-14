@@ -113,7 +113,7 @@ checks failed inputs and reproducible output. The suite is the `tests/` package:
 `python -m unittest discover -v` from the repository root recurses into it, and one
 module runs as `python -m unittest tests.test_cli_e2e -v`. GitHub Actions runs standard-library
 tests, publication scanning and manifest byte verification on Linux and Windows
-with Python 3.10 and 3.12. Actions are commit-pinned; token permissions are read-only,
+with Python 3.10, 3.12, 3.14 and 3.15 (eight OS/version jobs). Actions are commit-pinned; token permissions are read-only,
 checkout does not persist credentials, no secrets or deployment steps are used.
 The manifest describes LF-normalized published files, enforced by .gitattributes.
 External model/search behavior and scientific meaning are not evaluated by CI.
@@ -671,3 +671,9 @@ errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
 report contracts are unchanged; this is not a repository-wide error policy.
 
 Read a received research ZIP without replay: [recorded bundle context](RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
+
+CI also supports manual dispatch. Only a newer run of the same PR can cancel an
+older run in its workflow/ref group. Main push and manual runs each use their unique
+run ID as the group suffix; they cannot replace one another's pending run within a
+shared group. Their cancel-in-progress condition is also false. Branch pushes outside main are covered through their
+pull requests, not a duplicate branch-push trigger. The old named branch is not deleted.

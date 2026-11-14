@@ -1,17 +1,17 @@
 # Validation record
 
-Current release: `0.123.0-decision-document-shapes` (2026-11-14). This file is the
+Current release: `0.124.0-forward-python-ci` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
 ## What CI runs
 
 GitHub Actions (`.github/workflows/tests.yml`) runs on every push to `main` and on
-every pull request, on a matrix of `ubuntu-latest` and `windows-latest` with Python
-3.10 and 3.12:
+every pull request, and on manual dispatch, on a matrix of `ubuntu-latest` and `windows-latest` with Python
+3.10, 3.12, 3.14 and 3.15 (eight jobs):
 
 1. `python -m unittest discover -v` on Python 3.10 and the same command with
-   `--durations 25` on Python 3.12 — the synthetic test suite in the `tests/` package,
+   `--durations 25` on Python 3.12/3.14/3.15 — the synthetic test suite in the `tests/` package,
    including the tests that execute the documented walkthrough command blocks exactly
    as written.
 2. `python audit_publication.py` — the limited public-file/type/secret-pattern scan.
@@ -55,19 +55,23 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.123.0-decision-document-shapes` (2026-11-14).
+Release: `0.124.0-forward-python-ci` (2026-11-14).
 
-Added descriptive completed screening/report decision schemas. Report include
-requires exactly scalar study_id or nonempty unique study_ids; exclude requires null.
-Existing authoritative validators retain real-date, nonblank, exact-version, target
-and protocol checks. No values, approvals or scientific judgments are generated.
-Existing screening/report journeys now perform shape inspection before assembly;
-all19 commands are replayed. Explicit fixture mapping covers7 documents, with106
-outside these five shapes. Root modules, contract source bindings and ENGINE_FILES
-remain byte-identical. Numeric1.0, whitespace, calendar and regex differences are
-explicitly tested rather than hidden. Full protocol and output schemas remain absent.
-Full2197 tests in185.657s passed (skip1). Independent17 tests plus90 decision/study
-combinations passed; only the explicitly documented whitespace shape differences
-remained. Audit503/manifest502 and Python3.10 grammar256 passed. All107 root modules
-remain byte-identical. No unresolved review blockers; external-export compatibility
-and prior HTML visual QA remain unverified.
+Expanded the unchanged pinned/read-only CI workflow to Python3.10/3.12/3.14/3.15
+on both Ubuntu and Windows (eight jobs), retaining both baseline versions. Manual
+dispatch is available; only main has a push trigger. PR-only cancellation is grouped
+by workflow/ref. Non-PR groups use unique run IDs so main/manual pending runs are not
+replaced by another run in the same group. No branch is deleted. Existing duration reporting remains on versions other than3.10.
+
+The native Windows junction test now captures cmd.exe output as bytes and uses a
+safe tuple representation for diagnostics. Synthetic non-UTF8/None output regression
+is not evidence of a live Korean-locale Windows run. Python3.15 enables UTF-8 mode by
+default ([PEP686](https://peps.python.org/pep-0686/)); cmd.exe output need not be UTF-8.
+Root modules and command-contract bindings remain unchanged. Actual new-version
+setup, full tests, audit and manifest are gated by the published CI result, not assumed.
+Local full2201 tests passed on Python3.12 in189.054s and Python3.13.5 in187.540s
+(skip1 each). Independent14 tests passed (native Windows skip1); the pending-run
+cancellation issue was corrected by unique non-PR groups. Audit504/manifest503 and
+Python3.10 grammar257 passed. All107 root modules are byte-identical. No unresolved
+local review blockers. New3.14/3.15 coverage requires actual remote8-job results;
+Korean-locale Windows, external-export compatibility and HTML visual QA remain unverified.

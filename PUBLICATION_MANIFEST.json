@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.123.0-decision-document-shapes",
+  "release": "0.124.0-forward-python-ci",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 502,
+  "file_count": 503,
   "files": [
     {
       "path": ".gitattributes",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".github/workflows/tests.yml",
-      "bytes": 858,
-      "sha256": "60d486a5e2309a89e3d6f32a0aa714f737c771e782c9c8f182032e5d2f3fba53"
+      "bytes": 1046,
+      "sha256": "e319eb63977085cf15c2adcb7641c730c7b09b4030dc11fa457b49c29c9f0ebe"
     },
     {
       "path": ".gitignore",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3945,
-      "sha256": "6df06e34f7b02b5a1535cb13dc7b94816f7015c23e17ebfc4ec339d05db2095d"
+      "bytes": 4346,
+      "sha256": "92996fda5cd702c187a5597570ce0f687fd71ae51c9494cb15c5940873118ab7"
     },
     {
       "path": "accounting_flow.py",
@@ -640,13 +640,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 38703,
-      "sha256": "43455056e1114550618b2d03cbfdf3e81891d4e3ae27a6ba2c66c5654ac2c976"
+      "bytes": 39194,
+      "sha256": "6d40053fae7f0ec60c3d660ac44772fdd512d7138546836643acbe4f80f11376"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 260205,
-      "sha256": "f03298cc08fc79307a3ad5032592c5f4000567e0afafb6548074c32228c54774"
+      "bytes": 261724,
+      "sha256": "569beb2608e0b504d286fb360ced39171c2bb9d5586c1654a8a1132f1a653dd7"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -1849,6 +1849,11 @@
       "sha256": "559634f3bd3f6e8dba9cae8f3212a59e3680830759dca5a2425b2c3d00263bff"
     },
     {
+      "path": "tests/test_ci_contract.py",
+      "bytes": 3758,
+      "sha256": "501d37f5db3ef1b57c066498e7feaa73ab23fd38e6906f99abf8dee004d37c11"
+    },
+    {
       "path": "tests/test_claim_positions.py",
       "bytes": 9416,
       "sha256": "368f5713489e680779c60ac4b9a81c07803396a6471b216908872dc7e96491a2"
@@ -2410,8 +2415,8 @@
     },
     {
       "path": "tests/test_verify_manifest.py",
-      "bytes": 7056,
-      "sha256": "b4ed62ce2308cfeac8218855b207f0e3332c881e0effda2b8e4cd1eea7f458f4"
+      "bytes": 8048,
+      "sha256": "ef149193df9a9257cd66f2952a6a53a61ecd0ee91a0a725a2e5db134424b5e67"
     },
     {
       "path": "tests/test_view_cli_inputs.py",

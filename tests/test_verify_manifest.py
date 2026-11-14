@@ -11,6 +11,13 @@ import stat
 from verify_manifest import verify, link_like
 
 
+def _make_junction(junction, outside):
+    # cmd.exe writes its own locale/OEM bytes, not necessarily Python's UTF-8.
+    result = subprocess.run(['cmd', '/c', 'mklink', '/J', str(junction), str(outside)],
+                            capture_output=True, timeout=15)
+    return result.returncode, repr((result.stdout, result.stderr))
+
+
 class PublicationManifestTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -92,15 +99,23 @@ class PublicationManifestTests(unittest.TestCase):
         os.mkfifo(manifest_path)
         self.assertEqual(verify(self.root), ['manifest must be a regular file'])
 
+    def test_junction_capture_keeps_non_utf8_bytes_and_safe_diagnostics(self):
+        for stdout, stderr in ((b'\xbf\xc0\xb7\xf9', b''), (None, b'\xff'), (b'', None)):
+            with patch('tests.test_verify_manifest.subprocess.run', return_value=SimpleNamespace(returncode=0, stdout=stdout, stderr=stderr)) as execute:
+                returncode, diagnostic = _make_junction('synthetic junction', 'synthetic outside')
+                self.assertEqual(returncode, 0)
+                self.assertEqual(diagnostic, repr((stdout, stderr)))
+                self.assertEqual(execute.call_args.args[0], ['cmd', '/c', 'mklink', '/J', 'synthetic junction', 'synthetic outside'])
+                self.assertEqual(execute.call_args.kwargs, {'capture_output': True, 'timeout': 15})
+
     @unittest.skipUnless(os.name == 'nt', 'native Windows junction test')
     def test_native_windows_junction_rejected(self):
         outside = Path(self.tmp.name)/'junction-target'
         outside.mkdir()
         (outside/'data.txt').write_text('synthetic only')
         junction = self.root/'junction'
-        result = subprocess.run(['cmd','/c','mklink','/J',str(junction),str(outside)],
-                                capture_output=True,text=True,timeout=15)
-        self.assertEqual(result.returncode,0,result.stdout + result.stderr)
+        returncode, diagnostic = _make_junction(junction, outside)
+        self.assertEqual(returncode, 0, diagnostic)
         self.assertTrue(link_like(junction))
         raw = (outside/'data.txt').read_bytes()
         self.manifest['files'] = [dict(path='junction/data.txt',bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())]
