@@ -9,6 +9,7 @@ import socket
 import stat
 import struct
 import subprocess
+from tests._cli import run_cli
 import sys
 import tempfile
 import unittest
@@ -413,7 +414,11 @@ class AppraisalTransitionBundleTests(unittest.TestCase):
             root = Path(folder); initial, endpoint, apps = self.files(root); out = root / 'bundle.zip'
             for raw in [b'\xff', b'{}', b'null', b'{"x":1,"x":1}']:
                 apps[0].write_bytes(raw)
-                result = self.invoke('create', initial, endpoint, out, '--application', apps[0])
+                result = run_cli('appraisal_transition_bundle.py', 'create', initial, endpoint, out, '--application', apps[0], cwd=ROOT, encoding='ascii')
+                if raw == b'\xff':
+                    actual = self.invoke('create', initial, endpoint, out, '--application', apps[0])
+                    self.assertEqual((result.returncode, result.stdout, result.stderr),
+                                     (actual.returncode, actual.stdout, actual.stderr))
                 self.assertNotEqual(result.returncode, 0); self.assertFalse(out.exists()); self.assertNotIn(b'Traceback', result.stderr)
             out.write_bytes(b'not ZIP'); result = self.invoke('verify', out)
             self.assertNotEqual(result.returncode, 0); self.assertNotIn(b'Traceback', result.stderr)
