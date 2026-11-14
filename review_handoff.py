@@ -48,13 +48,14 @@ SPECS = {
     'completed_work_assertions': ('gaps', 'Inspect the supplied artifact locator and acceptance assertion. This tool does not open artifacts or certify acceptance.'),
 }
 OPTIONAL_SPECS = {
+    'statements_with_only_interpretive_challenges': ('challenges synthesis_statements', 'Inspect the supplied origin declarations and challenged statements. A simulation is not the scholar or empirical evidence; HUMAN_AUTHORED is also self-declared. Hashes do not authenticate sources. Do not infer human review, automatically add a challenge, close a gate or resolve an outcome.'),
     'inventory_candidates_with_review_cues': ('reports report_sources report_study_inventory report_study_inventory_reviews', 'Inspect the exact described candidate, all supplied descriptions and separate human positions. Selected inventory/source IDs do not prove reading, identity or eligibility. Do not include a report merely to review its candidates, infer consensus, renew stale hashes or turn positions into canonical selection. Retained orphan assertions are retrospective context, not pending tasks.'),
     'study_memberships_with_review_cues': ('reports report_sources report_study_reviews evidence', 'Inspect the exact report-study pair, human-selected source IDs and separate positions. Report inclusion is not per-study eligibility; differing source-ID sets do not prove different reading or equivalent coverage. No canonical selection, evidence filtering, identity inference or automatic consensus occurs.'),
     'reports_with_review_cues': ('reports report_sources report_reviews', 'Inspect the supplied document versions, page/section coverage and separate human full-text positions. A matching supplied digest does not verify bytes, reading, authenticity or eligibility. Retrieve only through authorized access; never infer consensus, per-study eligibility or renew stale hashes automatically.'),
     'report_study_memberships_without_results': ('reports evidence', 'Read the exact included report-study membership and record traceable results if in scope. A result for this study in another report does not fill this membership; presence is not exhaustive extraction or study independence.'),
     'records_with_screening_review_cues': ('screening_reviews screening searches', 'Inspect each supplied reviewer position, source binding and any differing or unclear labels. Resolve eligibility outside this tool if appropriate; never choose a majority, authenticate reviewers or renew hashes automatically. Canonical screening remains a separate supplied decision.'),
 }
-OPTIONAL_QUEUE_DOMAINS = {'inventory_candidates_with_review_cues': 'inventory_candidate_review',
+OPTIONAL_QUEUE_DOMAINS = {'statements_with_only_interpretive_challenges': 'statement','inventory_candidates_with_review_cues': 'inventory_candidate_review',
                         'study_memberships_with_review_cues': 'report_study_review',
                         'reports_with_review_cues': 'report',
                         'report_study_memberships_without_results': 'report_study',

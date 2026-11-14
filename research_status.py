@@ -76,6 +76,8 @@ def status(protocol, *, research_map=_NO_RESEARCH_MAP):
     if 'report_study_inventory_review' in research:
         queues['inventory_candidates_with_review_cues'] = copy.deepcopy(
             research['report_study_inventory_review']['current_candidates_with_review_cues'])
+    if 'statements_with_only_interpretive_challenges' in research['challenge']:
+        queues['statements_with_only_interpretive_challenges'] = copy.deepcopy(research['challenge']['statements_with_only_interpretive_challenges'])
     counts = {key: None if rows is None else len(rows) for key, rows in queues.items()}
     readiness = research['readiness']
     readiness_summary = dict(
@@ -180,6 +182,9 @@ def render_text(result):
     ]
     lines = ['Supplied research status', 'Search plan: ' + result['search_plan_status']]
     lines.extend(label + ': ' + count(key) for label, key in labels)
+    if 'statements_with_only_interpretive_challenges' in result['queues']:
+        lines.append('Statements with only declared interpretive challenges: ' + count('statements_with_only_interpretive_challenges'))
+        lines.append('Origins are supplied, unauthenticated labels; readiness gates and human judgments are unchanged.')
     if 'report_study_memberships_without_results' in result['queues']:
         lines.append('Included report-study memberships without result rows: '
                      + count('report_study_memberships_without_results'))

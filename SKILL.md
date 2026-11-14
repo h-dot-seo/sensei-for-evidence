@@ -228,3 +228,10 @@ applications, supplied families and legal-status observations distinct. The new 
 is not run/bundle verification, legal advice, FTO or legal-status currency; do not
 infer family membership, legal outcomes, a census or readiness. Adapter/bibliographic
 import history protocols are not supported; do not strip their provenance to proceed.
+
+When supplying an interpretive or model-drafted challenge, explicitly declare its
+[optional origin](docs/INTERPRETIVE_CHALLENGE_ORIGIN.md) rather than treating it as
+human testimony. Do not invent an author's identity, package hash or provenance.
+A simulation is not the scholar's view or empirical evidence; HUMAN_AUTHORED is
+self-declared, not authentication. Keep the separate recording review and existing
+outcome/readiness gates; an origin queue does not authorize or resolve anything.

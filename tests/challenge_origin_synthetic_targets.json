@@ -1,0 +1,77 @@
+[
+  {
+    "path": "examples/batch-to-evidence/collection-review.json",
+    "pointer": "/review/target_sha256",
+    "remaining_value_sha256": "eb9d452d881d8ee59a8f7c1d6654fe73150e37782797c2e55f6ddbd2bf8d744f"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-A.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "3b26d4e66731aa7436331c003e03e953cd822b268e89ef44fba204f3d1ff6861"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-B.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "6213f79fa57736fa8465ddd47930f08eeadb9fa778079a2b47f4285b48404346"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-C.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "1a13ed7c966276bbdc5ec9c8534023d1c1fefac29c77f7922455a6f165d8a32f"
+  },
+  {
+    "path": "examples/batch-to-evidence/reports-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "f491068835b2575558095e25524739ab2c4255fbcd7afe7582b132f9199b4acd"
+  },
+  {
+    "path": "examples/batch-to-evidence/retrieval-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "58ce844b515b1f480dea13e40b4ab61b128be3fda228fd09899cafaa31333aac"
+  },
+  {
+    "path": "examples/batch-to-evidence/full-text.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "ddc697276890bc30abbc754159af1435f4ee0b484f4b2e2b04aee23b8380fcd9"
+  },
+  {
+    "path": "examples/batch-to-evidence/results-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "bd14ed46f94ec801507b9ebf376be5a86024f88465dd2dc734ab86b6732587f6"
+  },
+  {
+    "path": "examples/batch-to-evidence/conditions-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "9f7dd859b719321edf8d86173c6f48741167ca7dcf806fbb51f60226d240392d"
+  },
+  {
+    "path": "examples/second-search/review.json",
+    "pointer": "/review/target_sha256",
+    "remaining_value_sha256": "dfd0ea102b01595f7a3f7ef043f41fc68ecc0570e9fc48ea766f5f2e9cacb9e2"
+  },
+  {
+    "path": "examples/report-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "f893f0d47cfa5364c4fec2140a58bba76e30c3d0b81463a91dc1b91f1faf8516"
+  },
+  {
+    "path": "examples/report-study-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "1b4569db71568d8fca4379e27a956a65015e7c1e25efe926b66c8180e993386a"
+  },
+  {
+    "path": "examples/report-study-inventory-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "75f8025a6892641cadf6d22d44b21b9ce53ea76b420387a3d9df6ba2d414f109"
+  },
+  {
+    "path": "examples/screening-decision-batch/import-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "c93c19e3b08148adc353d5fb4d1ce08a80c78e151424da122d12170b58b85e43"
+  },
+  {
+    "path": "examples/screening-sheet-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "remaining_value_sha256": "4139479ac59e13f85b54ef417884efab5c66f53eefd62155587df6c064905b28"
+  }
+]

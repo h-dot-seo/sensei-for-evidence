@@ -26,7 +26,7 @@ class MapViewTests(unittest.TestCase):
     def setUp(self):
         self.p=load('examples/bibliographic-base.json');self.d=load('examples/research-map-sidecar.json')
 
-    def test_twelve_default_views_exact_baselines_only_named_hashes_excluded(self):
+    def test_twelve_default_views_exact_baselines_with_named_engine_revision_paths(self):
         data=load('tests/map_view_default_baselines.json');self.assertEqual(len(data['cases']),12)
         expected={'status':{'research_status.py'},'handoff':{'research_status.py','review_handoff.py'},'compare':{'compare_runs.py'}}
         for case in data['cases']:
@@ -35,6 +35,14 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round45 changes exactly two engine files. Preserve the round43
+            # baseline and substitute only these named top-level digest values.
+            prior=load('tests/challenge_origin_legacy_baselines.json')['prior_engine_sha256']
+            self.assertEqual(set(prior),{'challenge_links.py','research_bundle.py'})
+            for name,recorded in prior.items():
+                self.assertEqual(result['engine_sha256'][name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
+                self.assertNotEqual(result['engine_sha256'][name],recorded)
+                result['engine_sha256'][name]=recorded
             text_result=copy.deepcopy(result)
             # Compare text prints the same named digest entry; substitute only that
             # recorded value, never remove a line or normalize any other text.

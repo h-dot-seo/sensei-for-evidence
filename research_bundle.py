@@ -138,6 +138,10 @@ def build_bundle(raw):
              f"Supplied readiness assertions: {'current ' + str(len(research['readiness']['current_assertion_ids'])) + ', stale ' + str(len(research['readiness']['stale_assertion_ids'])) if research['readiness']['stage'] == 'SUPPLIED' else 'not supplied'}\n"
              'Closed gates are mechanical bookkeeping, not evidence sufficiency; supplied readiness assertions are human assertions bound to a gate snapshot.\n'
              'Census: NOT_ESTABLISHED\nConclusion: NOT_READY\n')
+    if 'statements_with_only_interpretive_challenges' in research['challenge']:
+        summary += ('Statements with only declared interpretive challenges: '
+                    + str(len(research['challenge']['statements_with_only_interpretive_challenges'])) + '\n'
+                    + 'Origins and hashes are supplied declarations, not authenticated authorship, human review or evidence; no gate policy changes.\n')
     payloads={'protocol.json':raw,'research.json':json_bytes(research),'reports.json':json_bytes(reports),
               'reports.csv':csv_text.encode(),'work-packages.csv':out.getvalue().encode(),'summary.md':summary.encode()}
     manifest=dict(schema_version=2,engine_sha256=engine_hashes(),input_sha256=hashlib.sha256(raw).hexdigest(),
