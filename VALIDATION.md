@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.104.0-test-cli-harness` (2026-11-14). This file is the
+Current release: `0.105.0-json-rejection-harness` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,29 +55,25 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Test-only CLI help harness (0.104.0-test-cli-harness)
+## 2026-11-14 Bounded JSON rejection test harness (0.105.0-json-rejection-harness)
 
-One 129-entry help-catalog loop now uses a serial trusted-test runpy harness. All
-production Python/ENGINE_FILES remain unchanged. All existing actual-process CLI,
-JSON rejection, environment, dispatcher, guide and journey checks remain intact.
-The harness restores argv/path/streams/cwd/environment; it does not simulate process
-isolation, module cache isolation, startup, signals or timeouts. New contract tests
-compare bytes/exit behavior against subprocess and verify exceptional restoration.
+Only the 24-case JSON rejection loop uses the existing trusted serial harness.
+Original duplicate/nonfinite/nonobject/surrogate cases and all rejection assertions
+are preserved, with source-byte preservation added. Four real subprocess error
+smokes compare exact output/exit to the harness. Existing ASCII environment/Unicode,
+normal CLI roundtrips, bundle errors and documented walkthroughs stay subprocess.
+All production Python, ENGINE_FILES, shared harness and CI workflow bytes unchanged.
 
-Opt-in full-catalog benchmark: all 129 entries match returncode/stdout/stderr across
-three alternating-order runs. Subprocess 5.945/5.183/5.167 seconds, in-process
-0.465/0.444/0.426 seconds on local Python 3.12.14/Linux. No timing assertions or
-claims of proportional full-suite/Windows improvement. [Runtime guide](docs/TEST_RUNTIME.md)
-records the reproducible command and retained coverage. Prior PR21 Windows3.10 job
-452 seconds/test385; Windows3.12 job368/test354. Inspect slow tests when Windows
-jobs exceed six minutes; class-fixture costs are absent from unittest durations.
-CI adds --durations25 only on Python3.12; ten-minute timeout stays unchanged.
+Before: JSON loop0.840s, sampled batch bundle invalid-input0.493s. Reproducible
+24-case byte/exit/source/output/state equivalence passed three alternating runs:
+subprocess0.762/0.734/0.741s versus in-process0.063/0.056/0.056s. Retained four-process
+smoke costs0.176s locally. These small local savings are not a claim of proportional
+suite/CI acceleration; larger batch/dispatcher bottlenecks remain out of scope.
+See [runtime guide](docs/TEST_RUNTIME.md) for commands and process-isolation limits.
 
-Full local Python3.12 suite: 2060 tests in 149.919 seconds, OK (one platform skip).
-Prior local full run: 2053 tests in 155.178 seconds; new contract coverage adds seven
-tests. These sequential observations are not a controlled whole-suite speed claim.
-Focused and independent harness/navigation: 31 pass. Independent complete-catalog
-benchmark also matched bytes/exit for all129 entries (5.099s vs0.440s). No blockers.
-Audit448 files, manifest, compileall and Python3.10 grammar pass; every production
-root Python file and existing executable sh block is byte-preserved. Final checkout
-and focused regression checks rerun after validation-document/manifest update.
+Full local suite: 2061 tests in 149.247s, OK (one platform skip). Focused and
+independent JSON/harness tests: 14 pass. Independent 24-case benchmark also passes
+all equivalence and preservation checks (subprocess0.7594s vs in-process0.0639s).
+No blockers. Audit450 files, manifest, compileall, Python3.10 grammar and unchanged
+production/helper/workflow/old executable blocks pass. Final checkout, JSON/harness
+and navigation checks rerun after documentation/manifest finalization.

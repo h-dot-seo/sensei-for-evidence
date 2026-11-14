@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.104.0-test-cli-harness",
+  "release": "0.105.0-json-rejection-harness",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 447,
+  "file_count": 449,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4653,
-      "sha256": "27ac427877874d3a46a3c11787b3c04374eff17854809fbfabddc63027d210da"
+      "bytes": 4325,
+      "sha256": "811cd97d7cd5ef51083958369c30793ec011c62a5c5e929e5f3ca9d58c24a7ab"
     },
     {
       "path": "accounting_flow.py",
@@ -560,8 +560,8 @@
     },
     {
       "path": "docs/TEST_RUNTIME.md",
-      "bytes": 4247,
-      "sha256": "2b72c4be96b2ae6e48c89f1773a9d0718828c64d7e2812462fed900454851058"
+      "bytes": 6407,
+      "sha256": "701e63b5836389e06a04feee21d738293245662de04469fecdc7beadc35e1369"
     },
     {
       "path": "docs/USAGE.md",
@@ -570,8 +570,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 237095,
-      "sha256": "3dc8b365580209e4fc97aa3ebf8e38099477eed50cba6dc6a16e14e15a8727ad"
+      "bytes": 238657,
+      "sha256": "7ed3142551ef99c9405624cf94196e1a11f480f1b897553c129e1caf726a9209"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1579,9 +1579,19 @@
       "sha256": "3363d8da5d29f89a3c32d7664675a4585afedfc6cd2475506320e5532eca285a"
     },
     {
+      "path": "tests/_json_cli_cases.py",
+      "bytes": 520,
+      "sha256": "7dd06df72b9f2c4acd7f8e96f6199c068e3601229929aa1aa11ddde94ff3e077"
+    },
+    {
       "path": "tests/benchmark_cli_help.py",
       "bytes": 2725,
       "sha256": "13e6f09c45b73c3fd0406d5b9f644c51d0a16c038a892a7232f6abb703f9f9d9"
+    },
+    {
+      "path": "tests/benchmark_cli_json_rejections.py",
+      "bytes": 3331,
+      "sha256": "54123ea85b40b88fa9db5cd2c1f370afd7ba6c0befaa2e93ccef5d628a9ecad6"
     },
     {
       "path": "tests/test_accounting_flow.py",
@@ -1805,8 +1815,8 @@
     },
     {
       "path": "tests/test_json_io.py",
-      "bytes": 5349,
-      "sha256": "793465be43668076dfd06f0613d814ee08811cf3dad47999d868385f5782b14b"
+      "bytes": 6071,
+      "sha256": "98d24041eed63896ada02f2b1bd65e6498f5660a75389988738f565e705dd96d"
     },
     {
       "path": "tests/test_multi_result.py",
