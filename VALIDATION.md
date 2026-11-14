@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.100.0-reviewed-decision-batch` (2026-11-14). This file is the
+Current release: `0.101.0-report-review-intake` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,34 +54,35 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Reviewed decision-batch application and replay (0.100.0-reviewed-decision-batch)
+## 2026-11-14 Append-only full-text reviewer-position intake (0.101.0-report-review-intake)
 
-The #33 batch path now has a separate exact-human-review assemble/verify tool.
-Preview and application share one internal simulation, preserving full existing
-single-record operational guards and ordinary receipt schemas. The preview remains
-read-only. A completed separate import review binds original protocol, raw sheet,
-target and implementation before assembly creates a detached candidate. Full replay
-must match the entire application before any new protocol export. No original file,
-existing position or unrelated assertion is modified. Application code bytes are
-part of the target, so older previews require fresh review rather than rebasing.
+The #33 report_reviews follow-up closes the documented manual protocol-copy gap.
+Existing report_review templates remain the first stage; a separate JSON intake
+provides exact target, human import-review assembly and full replay. New positions
+require a retrieved report, supplied source descriptors and the current source basis.
+Null document digests remain explicitly unbound and non-null digests unverified.
+Existing stale positions, report/source/canonical fields, memberships and old review
+prefixes stay unchanged. Duplicate IDs/pairs are rejected without supersession.
+CSV intake and report-study/inventory position ledgers are separate future work.
 
-Local Python 3.12 full suite: `Ran 2013 tests in 153.165s`, `OK (skipped=1)`.
-Focused application/preview/export/navigation: 56 pass. Independent review ran new
-application9 + existing preview/single-decision48 tests (57 total), found no blockers
-and confirmed unchanged ENGINE_FILES. Audit: 428 files, pass; manifest, compileall,
-Python 3.10 grammar, adapter/engine bytes and existing executable sh blocks pass.
-Catalog: 26 routes, 117 help entrypoints. No test failures occurred in this increment.
+Local Python 3.12 full suite: `Ran 2026 tests in 151.610s`, `OK (skipped=1)`.
+Initial focused intake/report-review/navigation suite: 79 pass. Final new intake
+module: 13 pass, including a subsequently added absent/empty-ledger first-append
+regression. Independent review ran 64 intake/report-review/shared-writer tests and
+also independently exercised first-ledger append/replay; no remaining blockers.
+Audit: 433 files, pass; manifest, compileall, Python 3.10 grammar, unchanged engine/
+adapter bytes and existing executable sh blocks pass. Catalog: 26 routes, 121 help
+entrypoints. No failures occurred in this increment.
 
-The application CLI has at most one new destination per command. Complete flushed
-same-directory temporary files are published by exclusive hard links, never by
-replacement. Tests cover write/link failures with no final output and cleanup,
-existing/symlink destinations, unsupported hard links, absent parents, full replay
-tampering, stale implementation/review/context, duplicate/partial rows, shared
-limits/budgets, second-step guard failure, old history prefixes and the verbatim
-synthetic guide. Post-publication cleanup/stdout failures can leave complete output;
-that uncertainty and the absence of ancestor-race guarantees are documented.
+Synthetic cases cover exact append/replay and unchanged record/report counts,
+missing/pending/unavailable source contexts, explicitly unbound document digests,
+source drift, preserved stale positions, no supersession, schema/partial/date/choice
+validation, 100-row and byte budgets, unrelated-input/implementation review drift,
+full-validator failure, replay tampering, exclusive single-output CLI and the
+verbatim guide. Complete-file exclusive publication reuses the reviewed batch
+writer without changing it. Selected source copies are budgeted before retention.
 
-All examples are synthetic. Import review authorizes recording supplied choices,
-not adjudication correctness, reviewer identity, reading, chronology or scientific
-validity. The detached application must be retained for batch provenance.
+These checks do not establish actual full-text reading, reviewer identity, source
+authenticity, comparable coverage, adjudication, scientific validity or readiness.
+The detached application carries import-review provenance and must be retained.
 

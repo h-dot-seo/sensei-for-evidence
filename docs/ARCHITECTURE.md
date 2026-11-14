@@ -206,3 +206,8 @@ simulation. Exact separate import review binds the implementation, original and
 CSV bytes; full replay gates new protocol export. One destination per command is
 published from a same-directory complete temporary file by exclusive hard link.
 ENGINE_FILES and ordinary receipt schemas remain unchanged.
+
+`report_review_intake.py` wraps existing full-text review validators and source
+targets for a bounded append-only position ledger. Existing template output remains
+the starting point; exact separate import review and full replay replace protocol
+hand-editing. Canonical reports/sources and ENGINE_FILES are unchanged.

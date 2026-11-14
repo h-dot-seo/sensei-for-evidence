@@ -333,3 +333,11 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 |---|---|---|
 | `python screening_decision_batch_apply.py assemble PROTOCOL SHEET REVIEW --output APPLICATION` | Exact separate import review and detached candidate application | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
 | `python screening_decision_batch_apply.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Full replay; at most one exclusive complete output | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
+
+## Append-only report review intake
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python report_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact-source proposed position append and blank import review | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+| `python report_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append-only application | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+| `python report_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole-application replay and at most one complete exclusive new output | [Report review intake](REPORT_REVIEW_INTAKE.md) |
