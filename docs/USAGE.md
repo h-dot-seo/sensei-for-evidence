@@ -695,3 +695,5 @@ shared group. Their cancel-in-progress condition is also false. Branch pushes ou
 pull requests, not a duplicate branch-push trigger. The old named branch is not deleted.
 
 [Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
+
+[Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.

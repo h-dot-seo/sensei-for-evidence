@@ -1,0 +1,117 @@
+{
+  "source_release": "0.129.0-standalone-research-map",
+  "cases": [
+    {
+      "fixture": "examples/bibliographic-base.json",
+      "view": "status",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d"
+      },
+      "json_without_named_fingerprints_sha256": "4ac8fc384c164a4a8cace920f8c05c0bb48afcce0c84e6d683d3b1eeac4ee163",
+      "text_sha256": "49d8f0c702ac72a6062ee600350a7c7ce37b31309fe8c5db7d41a3b8f6febfd6"
+    },
+    {
+      "fixture": "examples/bibliographic-base.json",
+      "view": "handoff",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
+        "review_handoff.py": "826dd40ccf378481f1a6dfa7886847be98010b8889125254ffdd1aa78af1aa11"
+      },
+      "json_without_named_fingerprints_sha256": "783dec1763eb1c1fa0a95202869201562707e939ab882a1a0386508c3f262e7b",
+      "text_sha256": "1fba67e5ea0c121519f9fe036ff9cd401f76603a4ceea02628a9c9efc01aa7cc"
+    },
+    {
+      "fixture": "examples/bibliographic-base.json",
+      "view": "compare",
+      "omitted_fingerprints": {
+        "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6"
+      },
+      "json_without_named_fingerprints_sha256": "2b64cd2bd750a08031fc3798e41a459f42991f12b19becc0f1fff750a8a95693",
+      "text_sha256": "0e6b7697b5f5984421da77636d1fd35314a18c19f4c2f62e77c8df2b97cb896c"
+    },
+    {
+      "fixture": "examples/review-demo.json",
+      "view": "status",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d"
+      },
+      "json_without_named_fingerprints_sha256": "3a3b6eaea2c1a4e75d5a775aaaf88a53db70cba2c2e46e4a8867845c551e91e6",
+      "text_sha256": "64a167307c1a19dc4f19ed602e26f9b9ab0d9d597b0f0c9f7d1f0ddff386066c"
+    },
+    {
+      "fixture": "examples/review-demo.json",
+      "view": "handoff",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
+        "review_handoff.py": "826dd40ccf378481f1a6dfa7886847be98010b8889125254ffdd1aa78af1aa11"
+      },
+      "json_without_named_fingerprints_sha256": "8706495749d0ae62b16f3e1e7c598f85a2130f6c69f230a8ef88b6920bbbf61e",
+      "text_sha256": "9bdb1959c1e7da7715f05fcd39c1fd5718d99ff45879fe6b7be424df5b6ae3ee"
+    },
+    {
+      "fixture": "examples/review-demo.json",
+      "view": "compare",
+      "omitted_fingerprints": {
+        "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6"
+      },
+      "json_without_named_fingerprints_sha256": "111438504bd651d658a222bd7f48c23de1970841d6697b0f55d10ebe54c434b8",
+      "text_sha256": "e1be498600777f42e6f42c1b2038205cebd631dad624e5cc9ebcff0ca06539cd"
+    },
+    {
+      "fixture": "examples/screening-reviews.json",
+      "view": "status",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d"
+      },
+      "json_without_named_fingerprints_sha256": "3ca9b0ac2b5ead4eb1b00d73a498ad207628d307c174d0283782dab0b7f803f0",
+      "text_sha256": "3ad6935aa0b6aadffaa81c6b7f371b8f6436edabe7d24c5e700e71be652262e4"
+    },
+    {
+      "fixture": "examples/screening-reviews.json",
+      "view": "handoff",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
+        "review_handoff.py": "826dd40ccf378481f1a6dfa7886847be98010b8889125254ffdd1aa78af1aa11"
+      },
+      "json_without_named_fingerprints_sha256": "1a6da6c1bd29de84d8bee82a52985ec4591292a1aea7de6232fdcb8aea149a69",
+      "text_sha256": "282752d96e13b0c8d2208c6619892cbe6fee27c592031398b08283c079a6079d"
+    },
+    {
+      "fixture": "examples/screening-reviews.json",
+      "view": "compare",
+      "omitted_fingerprints": {
+        "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6"
+      },
+      "json_without_named_fingerprints_sha256": "1260f90def6db93382fb4bb8fb748c991ecc09dd655fcd77379eac2d288d6757",
+      "text_sha256": "dfe7e7684bd4c32b69436110cd22779c14372e1f96c4759733e3ab1cdda94141"
+    },
+    {
+      "fixture": "examples/report-study-inventory-reviews.json",
+      "view": "status",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d"
+      },
+      "json_without_named_fingerprints_sha256": "869c532c3c2550de813a486154b05de94a3260d1b2efb717c2f4339f2450dc94",
+      "text_sha256": "c1279a78d44686b9053f3d0ce4a399e8ee6e7a2163b480e4e45da645e311f738"
+    },
+    {
+      "fixture": "examples/report-study-inventory-reviews.json",
+      "view": "handoff",
+      "omitted_fingerprints": {
+        "research_status.py": "2ca3bb63e557bfe390c4051d6c3fd408127a94e3b1a9992c819bbecd8d08706d",
+        "review_handoff.py": "826dd40ccf378481f1a6dfa7886847be98010b8889125254ffdd1aa78af1aa11"
+      },
+      "json_without_named_fingerprints_sha256": "16e79b14e3600d127bd0d417cefcd76b4740b7e630ef209d5cf1f5a81c422926",
+      "text_sha256": "9b7c9d102bc6a45201f9b57410601d69ef8d372c9f535e82f0a39658e06acac9"
+    },
+    {
+      "fixture": "examples/report-study-inventory-reviews.json",
+      "view": "compare",
+      "omitted_fingerprints": {
+        "compare_runs.py": "6e738a454f69c8fcf18514a2b4c795c4314ce23f519a45655d293e1470166da6"
+      },
+      "json_without_named_fingerprints_sha256": "5d4b70d29d97f6c84d97f2974fb27fcd04b5a97a3783eaeaa813c6bbe3d5b2f8",
+      "text_sha256": "a56763e95908b8039a0c552f6f2e2c07d34b6dc0addaece93babedd76aef344d"
+    }
+  ]
+}

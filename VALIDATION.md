@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.129.0-standalone-research-map` (2026-11-14). This file is the
+Current release: `0.130.0-map-context-views` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,29 +55,28 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.129.0-standalone-research-map` (2026-11-14).
+Release: `0.130.0-map-context-views` (2026-11-14).
 
-Added a standalone authored research-map sidecar workflow, not full research-map
-integration. Template leaves every human field and record/event basis blank. Review
-compares supplied recording bases to exact question/criteria/search-plan plus map
-content and preserves every CURRENT_SOURCE/STALE_SOURCE record. Stop events link to
-supplied records and inherit stale status, never completion or sufficiency. Current
-input counts are not historical recording-time observations. Verify compares the full
-stored review against exact current-input/current-implementation replay.
+Added explicit optional research-map sidecar context to status/handoff and paired
+before/after map comparison. A separate section displays existing supplied record/event
+statuses and literal changes, never changes readiness, queues, canonical decisions,
+protocol has_changes or amendment exit decisions. Missing options leave no new fields.
+This completes the explicit optional-view route of the standalone increment, not full
+research-map or engine/bundle integration. Existing research_map.py and ENGINE_FILES
+are unchanged; their standalone replay is not modified.
 
-The original107 root Python files and ENGINE_FILES remain byte-identical. Protocol,
-gates, adapter receipts, research bundles, status/handoff/compare and human decisions
-are unchanged. They do not consume or validate this sidecar. This is the ENGINE-external
-first increment of the roadmap standalone alternative, not its full implementation.
-Sidecar values and dates are supplied, unauthenticated and not scientific judgement.
-Structural references, all-empty recording stage, changed map/core, mismatched replay,
-unchanged engine/bundle output, strict JSON/limits, exclusive output and the fictional
-three-command real CLI journey are covered. Contract coverage remains32 reviewed of178;
-146 including the three new commands are explicitly NOT_REVIEWED.
-Full2229 tests in192.852s passed (skip1). Independent33 focused tests and nine
-map-field mutations passed, including record/event stale status and replay mismatch.
-The protocol-key inventory required explicit literal core keys; after that equivalent
-expression change, focused19 and the full suite passed. Audit513/manifest512 and
-Python3.10 grammar262 passed; final focused checks cover the record update.
+Twelve recorded default views over four synthetic fixtures retain complete JSON/text
+apart from exact named top-level implementation digest entries: status self, handoff
+status+self, compare self. Compare text displays that same digest, and only that value
+is substituted for baseline comparison. No other field/text is excluded or normalized.
+Optional views have explicit10MB sidecar and50MB joined output bounds. Tests cover
+paired arguments, strict failures, stale records/events, supplied field changes,
+added/removed/reordered IDs, actual three-CLI text/JSON journeys and normal amendment
+mismatch JSON exit1. Contract coverage remains32 reviewed of178;146 remain unknown.
+Full2237 tests in186.563s passed (skip1). Independent24 focused tests passed; the
+12 default baselines were independently regenerated from the preceding release and
+matched. A selected-work handoff also retains its entire original result outside the
+explicit protocol-wide map context. Audit517/manifest516 and Python3.10 grammar264
+passed. Final focused checks cover this record update. No unresolved review blockers.
 External reference-manager compatibility, prior HTML visual QA and Korean-locale
-Windows remain unverified. No unresolved review blockers.
+Windows remain unverified.

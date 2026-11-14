@@ -387,3 +387,5 @@ For a single local NBIB file, the [tested first-file workflow](docs/PUBMED_NBIB_
 Command effects for automation: [source-bound partial contract](docs/AGENT_CONTRACT.md). Unknown effects are not permission.
 
 [Standalone authored research-map records](docs/RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
+
+[Explicit research-map context in status, handoff and comparison](docs/RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.

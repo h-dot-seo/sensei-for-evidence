@@ -63,8 +63,8 @@ and no step fills a decision, judgement or label on your behalf.
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python review_handoff.py [-h] [--work-package WORK_PACKAGE] [--text] protocol` | Read-only operator sheet: manual queues, input locations, work deliverables, detailed-view navigation and the static supplied-input workflow catalog | [Operator handoff](OPERATOR_HANDOFF.md) |
-| `python research_status.py [-h] [--text] protocol` | View mechanical review queues and unknown stages | [Concise research status](USAGE.md#concise-research-status) |
+| `python review_handoff.py [-h] [--work-package WORK_PACKAGE] [--text] [--research-map RESEARCH_MAP] protocol` | Read-only operator sheet: manual queues, input locations, work deliverables, detailed-view navigation and the static supplied-input workflow catalog | [Operator handoff](OPERATOR_HANDOFF.md) |
+| `python research_status.py [-h] [--text] [--research-map RESEARCH_MAP] protocol` | View mechanical review queues and unknown stages | [Concise research status](USAGE.md#concise-research-status) |
 | `python views_export.py [-h] {status,flow,records} ...` | Discover detached status Markdown, supplied-accounting Mermaid text and records CSV; no renderer or scientific judgement | [Shareable status](SHAREABLE_VIEWS.md) |
 | `python views_export.py records [-h] --output NEW_CSV [--text] protocol` | Save existing record joins as detached CSV with a separate receipt | [Records CSV](RECORDS_CSV.md) |
 | `python views_export.py status [-h] --output NEW_MD [--text] protocol` | Write a new read-only status Markdown file preserving every status field/queue; stdout is only a JSON or quoted receipt | [Shareable status](SHAREABLE_VIEWS.md) |
@@ -77,7 +77,7 @@ and no step fills a decision, judgement or label on your behalf.
 | `python prisma_flow_template.py [-h] [--search-arm INDEX=ARM] [--include-exact-id-accounting] --output OUTPUT [--text] protocol` | Write a new native count-crosswalk CSV with explicit search-arm assignments and a full mapping/pending-state receipt; not an external diagram template | [Native count crosswalk](PRISMA_FLOW_TEMPLATE.md) |
 | `python synthesis_review.py [-h] [--text] protocol` | Review stage counts, supplied statement citations and unresolved limits | [Synthesis review](SYNTHESIS_REVIEW.md) |
 | `python work_review.py [-h] [--work-package WORK_PACKAGE] [--include-prerequisites] [--text \| --brief] protocol` | Join evidence/context/uncertainty around a work deliverable; `--include-prerequisites` opens the transitive prerequisites, `--brief` compacts the packet view | [Work review](WORK_REVIEW.md), [prerequisite review](PREREQUISITE_REVIEW.md), [work navigation](WORK_NAVIGATION.md) |
-| `python compare_runs.py [-h] [--amendment AMENDMENT] [--text] before after` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings; `--amendment` binds a supplied amendment note | [Run-to-run comparison](USAGE.md#offline-run-to-run-comparison), [amendment notes](AMENDMENT_NOTES.md), [context amendments](CONTEXT_AMENDMENTS.md), [completion comparison](COMPLETION_COMPARISON.md) |
+| `python compare_runs.py [-h] [--amendment AMENDMENT] [--text] [--before-map BEFORE_MAP] [--after-map AFTER_MAP] before after` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings; `--amendment` binds a supplied amendment note | [Run-to-run comparison](USAGE.md#offline-run-to-run-comparison), [amendment notes](AMENDMENT_NOTES.md), [context amendments](CONTEXT_AMENDMENTS.md), [completion comparison](COMPLETION_COMPARISON.md) |
 
 ## Search receipts and the mock adapter
 
@@ -448,3 +448,5 @@ See [legacy state input and compatibility](USAGE.md#legacy-agent-state-validator
 | `python research_map.py template [-h] [--output OUTPUT] protocol` | Draft null map fields and separate record/event forms | [Standalone research map](RESEARCH_MAP.md) |
 | `python research_map.py review [-h] [--output OUTPUT] protocol document` | Inspect supplied map basis and record changes without protocol updates | [Standalone research map](RESEARCH_MAP.md) |
 | `python research_map.py verify [-h] protocol document recorded_review` | Compare a stored map review against exact current-input replay | [Standalone research map](RESEARCH_MAP.md) |
+
+| `research_map_views.py` | Optional standalone map context/comparison projection; no protocol, gate or queue changes |
