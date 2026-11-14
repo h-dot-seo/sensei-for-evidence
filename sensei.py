@@ -172,12 +172,18 @@ def render_listing(scripts, routes):
 
 def resolve_script(name):
     """Return the path of a listed root script, or raise ValueError for anything else."""
-    listed = {script for script, _ in entry_point_scripts()}
     if not isinstance(name, str) or not re.fullmatch(r'[A-Za-z0-9_][A-Za-z0-9_.-]*\.py', name):
         raise ValueError('not a root script file name: ' + plain(ascii(name)))
-    if name not in listed:
+    path = ROOT / name
+    # Exact directory-entry spelling matters on case-insensitive filesystems too.
+    # Enumerate names only, never parse unrelated sources or cache stale eligibility.
+    if (name == SELF or name not in {entry.name for entry in ROOT.iterdir()}
+            or not path.is_file()):
         raise ValueError('not a listed root script: ' + plain(name) + ' (see `python sensei.py list`)')
-    return ROOT / name
+    tree = ast.parse(path.read_bytes(), filename=path.name)
+    if not has_entry_point(tree):
+        raise ValueError('not a listed root script: ' + plain(name) + ' (see `python sensei.py list`)')
+    return path
 
 
 def run_script(path, arguments):
