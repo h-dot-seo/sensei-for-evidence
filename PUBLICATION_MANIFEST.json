@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.103.0-inventory-review-intake",
+  "release": "0.104.0-test-cli-harness",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 443,
+  "file_count": 447,
   "files": [
     {
       "path": ".gitattributes",
@@ -15,8 +15,8 @@
     },
     {
       "path": ".github/workflows/tests.yml",
-      "bytes": 727,
-      "sha256": "5c005874d212d26d7259fd9c52a13aa13e4c75ad668396f8f1c34908896f5bfd"
+      "bytes": 858,
+      "sha256": "60d486a5e2309a89e3d6f32a0aa714f737c771e782c9c8f182032e5d2f3fba53"
     },
     {
       "path": ".gitignore",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4711,
-      "sha256": "81c0b3f7949f8c5a030b39304477c74e69b6d80a3e7e5124cb9d75194dc051c9"
+      "bytes": 4653,
+      "sha256": "27ac427877874d3a46a3c11787b3c04374eff17854809fbfabddc63027d210da"
     },
     {
       "path": "accounting_flow.py",
@@ -559,14 +559,19 @@
       "sha256": "27c26048e1a6979c87444a6d8c01a4e25918b6b3780141ff0afd46bdc98fc90f"
     },
     {
+      "path": "docs/TEST_RUNTIME.md",
+      "bytes": 4247,
+      "sha256": "2b72c4be96b2ae6e48c89f1773a9d0718828c64d7e2812462fed900454851058"
+    },
+    {
       "path": "docs/USAGE.md",
       "bytes": 35751,
       "sha256": "bca4c6ac2f3a9bfbd564ce148ec16bb5f164b5018ac010fc920a5e38f051cbba"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 235199,
-      "sha256": "e5245d58e9b3a5f7ac98c6dd2e309a17775265843e9aa73241e9c28add6bfa42"
+      "bytes": 237095,
+      "sha256": "3dc8b365580209e4fc97aa3ebf8e38099477eed50cba6dc6a16e14e15a8727ad"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1569,6 +1574,16 @@
       "sha256": "51df426029979484e08d487d57a825717190a9e2b4624adcff8b013dcf848170"
     },
     {
+      "path": "tests/_cli.py",
+      "bytes": 2419,
+      "sha256": "3363d8da5d29f89a3c32d7664675a4585afedfc6cd2475506320e5532eca285a"
+    },
+    {
+      "path": "tests/benchmark_cli_help.py",
+      "bytes": 2725,
+      "sha256": "13e6f09c45b73c3fd0406d5b9f644c51d0a16c038a892a7232f6abb703f9f9d9"
+    },
+    {
       "path": "tests/test_accounting_flow.py",
       "bytes": 10246,
       "sha256": "148e051c96516b043c7ffef2d202990071a04cb6336808ea0e2a3d2b90aa93d9"
@@ -1657,6 +1672,11 @@
       "path": "tests/test_cli_e2e.py",
       "bytes": 3325,
       "sha256": "9cb0a51ef43fa10ac996493db6044e15c463e6e23ec38140946ae089d40fe286"
+    },
+    {
+      "path": "tests/test_cli_harness.py",
+      "bytes": 5862,
+      "sha256": "99fe3e87b60230a65aeb4af3912e2fc86a333d8a820f9494689d109919a45758"
     },
     {
       "path": "tests/test_collection_bundle.py",
@@ -2115,8 +2135,8 @@
     },
     {
       "path": "tests/test_supplied_workflow_navigation.py",
-      "bytes": 24207,
-      "sha256": "37b2266ab83ec072acdd76ec0ab4756b196930a215b72666c658d5e3729ac9d3"
+      "bytes": 24152,
+      "sha256": "022c7fac1b50c1dcef0e21e0021f8a7753e7d5214f00126cb95c71526f955b72"
     },
     {
       "path": "tests/test_synthesis_review.py",

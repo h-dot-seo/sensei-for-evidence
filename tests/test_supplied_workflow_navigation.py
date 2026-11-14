@@ -14,6 +14,7 @@ from unittest.mock import patch
 import research_bundle
 from research_status import status
 import review_handoff
+from tests._cli import run_cli
 from work_review import review_packets
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,8 +65,7 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
         self.assertEqual(len(entries),129)
         with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
             for entry in entries:
-                checked=subprocess.run([sys.executable,str(ROOT/entry['script']),*entry['arguments']],
-                    cwd=td,capture_output=True,timeout=30)
+                checked=run_cli(entry['script'],*entry['arguments'],cwd=td)
                 self.assertEqual(checked.returncode,0,(entry,checked.stderr))
                 self.assertIn(b'usage:',checked.stdout)
                 self.assertEqual(list(Path(td).iterdir()),[])
