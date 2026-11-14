@@ -3638,3 +3638,20 @@ and8 additional malformed-registry probes passed after strict declaration-shape
 validation was added. Audit500/manifest499 and Python3.10 grammar255 passed.
 No unresolved review blockers. External-export compatibility and HTML visual QA
 remain unverified;149 command entries have no reviewed effects profile.
+
+## 2026-11-14: 0.123.0-decision-document-shapes
+
+Added descriptive completed screening/report decision schemas. Report include
+requires exactly scalar study_id or nonempty unique study_ids; exclude requires null.
+Existing authoritative validators retain real-date, nonblank, exact-version, target
+and protocol checks. No values, approvals or scientific judgments are generated.
+Existing screening/report journeys now perform shape inspection before assembly;
+all19 commands are replayed. Explicit fixture mapping covers7 documents, with106
+outside these five shapes. Root modules, contract source bindings and ENGINE_FILES
+remain byte-identical. Numeric1.0, whitespace, calendar and regex differences are
+explicitly tested rather than hidden. Full protocol and output schemas remain absent.
+Full2197 tests in185.657s passed (skip1). Independent17 tests plus90 decision/study
+combinations passed; only the explicitly documented whitespace shape differences
+remained. Audit503/manifest502 and Python3.10 grammar256 passed. All107 root modules
+remain byte-identical. No unresolved review blockers; external-export compatibility
+and prior HTML visual QA remain unverified.

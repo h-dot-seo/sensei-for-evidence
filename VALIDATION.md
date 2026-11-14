@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.122.0-partial-command-contract` (2026-11-14). This file is the
+Current release: `0.123.0-decision-document-shapes` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,17 +55,19 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.122.0-partial-command-contract` (2026-11-14).
+Release: `0.123.0-decision-document-shapes` (2026-11-14).
 
-Added source-bound command inspection through sensei contract (JSON or escaped text).
-All command rows are inventoried;26 reviewed effects distinguish input/output arguments,
-negative reports and explicit NCBI fetch. Other effects remain NOT_REVIEWED/null, not
-permission or read-only classification. Every root Python byte is bound; source drift
-refuses the contract. Existing catalog human-input boundaries are linked unchanged.
-No command execution, network request or ENGINE_FILES change by this feature. Full
-machine effects coverage remains incomplete; hashes are not authentication.
-Full2190 tests in178.147s passed (skip1). Independent contract/dispatcher23 tests
-and8 additional malformed-registry probes passed after strict declaration-shape
-validation was added. Audit500/manifest499 and Python3.10 grammar255 passed.
-No unresolved review blockers. External-export compatibility and HTML visual QA
-remain unverified;149 command entries have no reviewed effects profile.
+Added descriptive completed screening/report decision schemas. Report include
+requires exactly scalar study_id or nonempty unique study_ids; exclude requires null.
+Existing authoritative validators retain real-date, nonblank, exact-version, target
+and protocol checks. No values, approvals or scientific judgments are generated.
+Existing screening/report journeys now perform shape inspection before assembly;
+all19 commands are replayed. Explicit fixture mapping covers7 documents, with106
+outside these five shapes. Root modules, contract source bindings and ENGINE_FILES
+remain byte-identical. Numeric1.0, whitespace, calendar and regex differences are
+explicitly tested rather than hidden. Full protocol and output schemas remain absent.
+Full2197 tests in185.657s passed (skip1). Independent17 tests plus90 decision/study
+combinations passed; only the explicitly documented whitespace shape differences
+remained. Audit503/manifest502 and Python3.10 grammar256 passed. All107 root modules
+remain byte-identical. No unresolved review blockers; external-export compatibility
+and prior HTML visual QA remain unverified.

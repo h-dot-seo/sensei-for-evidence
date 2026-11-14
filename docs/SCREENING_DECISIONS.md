@@ -14,6 +14,7 @@ text and are never opened or executed.
 
 ```sh
 python screening_decision.py target examples/screening-reviews.json --record-id=record-alpha --output /outside/new-decision-target.json --text
+python schema_check.py check schemas/screening-decision.schema.json examples/screening-decision-document.json
 python screening_decision.py assemble examples/screening-reviews.json examples/screening-decision-document.json --protocol-output /outside/new-decided-protocol.json --text
 python screening_decision.py inspect /outside/new-decided-protocol.json --text
 python compare_runs.py examples/screening-reviews.json /outside/new-decided-protocol.json --text
@@ -167,3 +168,5 @@ normal downstream source-binding effects.
 
 Full-text review, per-study eligibility, reviewer-assertion supersession and
 independent factual adjudication remain separate, unimplemented tasks.
+
+Inspect the completed decision structure with [authored schemas](SCHEMAS.md) before assembly. This does not supply a human decision, refresh its target, check real calendar dates or replace authoritative protocol/target validation.

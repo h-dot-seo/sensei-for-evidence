@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report supplied decision document",
+  "description": "Completed, explicitly supplied human decision only. Structural inspection does not create a decision, identify a reviewer, authenticate a source, establish scientific eligibility or approve a target. Nonblank text, real dates, exact integer version, exact target equality and current protocol context require authoritative Python validation.",
+  "type": "object",
+  "properties": {
+    "adjudicator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decided_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "decision": {
+      "enum": [
+        "include",
+        "exclude"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "study_declaration": {},
+    "target_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "required": [
+    "adjudicator",
+    "decided_at",
+    "decision",
+    "rationale",
+    "reason",
+    "receipt_id",
+    "report_id",
+    "schema_version",
+    "source_locator",
+    "study_declaration",
+    "target_sha256"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "decision": {
+          "const": "exclude"
+        },
+        "study_declaration": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "properties": {
+        "decision": {
+          "const": "include"
+        },
+        "study_declaration": {
+          "type": "object",
+          "properties": {
+            "study_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "study_id"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "properties": {
+        "decision": {
+          "const": "include"
+        },
+        "study_declaration": {
+          "type": "object",
+          "properties": {
+            "study_ids": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "study_ids"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}
