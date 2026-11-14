@@ -235,3 +235,7 @@ human testimony. Do not invent an author's identity, package hash or provenance.
 A simulation is not the scholar's view or empirical evidence; HUMAN_AUTHORED is
 self-declared, not authentication. Keep the separate recording review and existing
 outcome/readiness gates; an origin queue does not authorize or resolve anything.
+
+## Supplied result basis declarations
+
+See [EVIDENCE_BASIS](docs/EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.

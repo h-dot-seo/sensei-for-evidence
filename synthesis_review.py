@@ -51,6 +51,10 @@ def snapshot(protocol):
                                  accounting=copy.deepcopy(research['coverage'][row['search_index']])) for row in occurrences[rid]],
             appraisal_ids=copy.deepcopy(appraisal_links[eid]),
             work_package_ids=sorted(work_ids_by_evidence.get(eid, [])))
+    if 'evidence_bases' in research:
+        labels = {row['evidence_id']: row for row in research['evidence_bases']['basis_ledger']}
+        for eid, citation in citations.items():
+            citation['supplied_evidence_basis'] = copy.deepcopy(labels.get(eid))
     statements = []
     for statement in synthesis['statement_ledger']:
         refs = set(statement['evidence_ids'])
@@ -115,6 +119,10 @@ def snapshot(protocol):
         result['report_study_inventory_review'] = copy.deepcopy(research['report_study_inventory_review'])
     if 'screening_decision_history' in research:
         result['screening_decision_history'] = copy.deepcopy(research['screening_decision_history'])
+    if 'evidence_bases' in research:
+        from evidence_basis_links import statement_cues
+        result['evidence_bases'] = copy.deepcopy(research['evidence_bases'])
+        result['statement_basis_cues'] = statement_cues(research)
     return result
 
 
@@ -143,6 +151,9 @@ def render_text(result):
     lines.append('Report retrieval/full-text ledger: ' + show(result['report_ledger']))
     lines.append('Record-level extraction queue scope: ' + result['record_extraction_scope'])
     lines.append('Review queues (null means stage not supplied): ' + show(result['review_queues']))
+    if 'evidence_bases' in result:
+        lines.append('Supplied result basis declarations: ' + show(result['evidence_bases']))
+        lines.append('Statement citation label cues: ' + show(result['statement_basis_cues']))
     lines.append('Supplied synthesis stage: ' + result['synthesis_stage'])
     lines.append('Supplied independent challenge stage: ' + result['challenge_stage'])
     lines.append('Mechanical readiness gates and supplied readiness assertions (bookkeeping and human assertions, not sufficiency): '

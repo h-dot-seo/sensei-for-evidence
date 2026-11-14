@@ -301,3 +301,7 @@ For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAK
 시뮬레이션·미선언 라벨을 구분합니다. HUMAN_AUTHORED 역시 자기선언이지 사람의
 작성·검토 인증이 아닙니다. 모델·페르소나를 호출하지 않고, 기존 schema 1 원본행과
 준비도 게이트 판정은 보존합니다. 구버전 번들·기록은 기록된 구현으로 재생해야 합니다.
+
+## Supplied result basis declarations
+
+See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.

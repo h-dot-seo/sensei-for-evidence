@@ -9,7 +9,7 @@ from json_io import configure_utf8_stdio, parse_json, quoted_display
 MAX_BYTES = 50_000_000
 KNOWN_TOP_LEVEL_KEYS = (
     'adapter_receipts', 'appraisals', 'bibliographic_imports', 'challenges', 'contexts',
-    'evidence', 'exclusion_criteria', 'experimental_units', 'gaps', 'inclusion_criteria',
+    'evidence', 'evidence_bases', 'exclusion_criteria', 'experimental_units', 'gaps', 'inclusion_criteria',
     'planning_decisions', 'question', 'readiness_assertions', 'report_reviews',
     'report_sources', 'report_study_inventory', 'report_study_inventory_reviews',
     'report_study_reviews', 'reports', 'screening', 'screening_decision_history',

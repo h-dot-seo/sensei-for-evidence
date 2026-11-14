@@ -1213,6 +1213,33 @@
       "role": "supplied patent ledger record or exact replay result; not legal validation",
       "schema_version": 1,
       "value": "patent_intake_replay_check"
+    },
+    {
+      "constructor_bindings": [
+        "candidate_document_sha256",
+        "engine_sha256",
+        "input_protocol_sha256",
+        "protocol_candidate_sha256"
+      ],
+      "constructor_expansions": [],
+      "discriminator": "target_type",
+      "function": "_prepare",
+      "guide": "EVIDENCE_BASIS.md",
+      "module": "evidence_basis_intake.py",
+      "role": "review_target",
+      "schema_version": 1,
+      "value": "manual_evidence_basis_intake"
+    },
+    {
+      "constructor_bindings": [],
+      "constructor_expansions": [],
+      "discriminator": "kind",
+      "function": "assemble",
+      "guide": "EVIDENCE_BASIS.md",
+      "module": "evidence_basis_intake.py",
+      "role": "detached_application",
+      "schema_version": 1,
+      "value": "detached_evidence_basis_intake"
     }
   ],
   "untagged_research_manifest": {

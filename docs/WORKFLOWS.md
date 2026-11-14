@@ -624,3 +624,7 @@ Use [the separate origin rehearsal](INTERPRETIVE_CHALLENGE_ORIGIN.md) to record
 operator-supplied interpretive origins through the existing challenge import review.
 No persona/model execution, automatic challenge or gate policy is added. Raw legacy
 rows remain unmodified; declared hashes and HUMAN_AUTHORED are not authenticated.
+
+## Supplied result basis declarations
+
+See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.

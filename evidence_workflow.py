@@ -12,6 +12,7 @@ from synthesis_links import link_synthesis
 from challenge_links import link_challenges
 from readiness_links import link_readiness
 from experiment_links import link_experiments
+from evidence_basis_links import link_evidence_bases
 from bibliographic_integrity import validate_protocol as validate_bibliographic_protocol
 from report_links import has_plural_studies, validate_reports, validate_evidence_membership, report_study_coverage
 from screening_links import link_screening_reviews
@@ -168,10 +169,11 @@ def run(protocol):
     context = link_context(protocol, evidence, work)
     appraisal = link_appraisals(protocol, evidence, work)
     experiments = link_experiments(protocol, evidence)
-    synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments)
+    evidence_bases = link_evidence_bases(protocol, evidence, experiments, bibliographic_collection)
+    synthesis = link_synthesis(protocol, evidence, context, appraisal, experiments, evidence_bases)
     challenge = link_challenges(protocol, synthesis, work)
     planning = link_planning(protocol, evidence, work, context, appraisal, experiments, synthesis,
-                             bibliographic_collection=bibliographic_collection)
+                             bibliographic_collection=bibliographic_collection, evidence_bases=evidence_bases)
     included_ids = {rid for rid, decision in decisions.items() if decision['decision'] == 'include'}
     extraction_pending = sorted(rid for rid in included_ids if rid not in extracted_records)
     readiness = link_readiness(protocol, search_plan_audit=search_plan_audit, coverage=coverage,
@@ -196,6 +198,8 @@ def run(protocol):
                 extraction_completeness='NOT_ESTABLISHED',
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY',
                 boundary='Record-level screening ledger; not a full PRISMA report or scientific appraisal')
+    if 'evidence_bases' in protocol:
+        result['evidence_bases'] = evidence_bases
     if bibliographic_collection is not None:
         result['bibliographic_collection'] = bibliographic_collection
     if plural_studies:

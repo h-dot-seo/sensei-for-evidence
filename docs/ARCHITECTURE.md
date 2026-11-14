@@ -236,3 +236,7 @@ origin derives UNDECLARED, not human authorship; HUMAN_AUTHORED is also self-dec
 Interpretive-only queues expose supplied labels beside unchanged readiness gates.
 There is no origin-based gate rule, source authentication, source access or producer
 execution. Package/consultation hashes bind declarations only, not verified provenance.
+
+## Supplied result basis declarations
+
+See [EVIDENCE_BASIS](EVIDENCE_BASIS.md) for optional result labels, explicit document selections, exact-target import review and conditional stale binding. No gate policy or acceptance inference is added.

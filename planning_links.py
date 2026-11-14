@@ -1,5 +1,6 @@
 """Track supplied planning ranks and source staleness without generating priorities."""
 import copy
+from evidence_basis_links import selected_basis
 import hashlib
 from context_links import nonempty_text, iso_date, id_list
 from json_io import canonical_json_bytes
@@ -17,7 +18,7 @@ def digest(value):
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
-def link_planning(protocol, evidence, work, context, appraisal, experiments=None, synthesis=None, bibliographic_collection=None):
+def link_planning(protocol, evidence, work, context, appraisal, experiments=None, synthesis=None, bibliographic_collection=None, evidence_bases=None):
     """Derive document bindings internally; an external binding map is not input.
 
     The optional collection uses the existing already-validated bibliographic
@@ -90,6 +91,8 @@ def link_planning(protocol, evidence, work, context, appraisal, experiments=None
             basis['direct_dependency_document_sources'] = direct_documents
         if experiments is not None and experiments['stage'] == 'SUPPLIED':
             basis['experimental_context'] = dict(stage='SUPPLIED', units=[copy.deepcopy(item) for item in experiments['experimental_unit_ledger'] if refs.intersection(item['evidence_ids'])])
+        if 'evidence_bases' in protocol:
+            basis['evidence_bases'] = selected_basis(protocol, refs, evidence_bases)
         if 'rationale_statement_ids' in decisions.get(wid,{}):
             basis['rationale_statements']=[copy.deepcopy(statement_by_id[sid]) for sid in sorted(decisions[wid]['rationale_statement_ids'])]
         targets[wid] = dict(work_package_id=wid, basis=basis, basis_sha256=digest(basis))

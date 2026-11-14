@@ -131,11 +131,15 @@ def template(protocol, reference_document):
     challenge.update(statement_ids=copy.deepcopy(refs['statement_ids']),
                      basis_sha256=challenge_basis(research['synthesis'], refs['statement_ids']),
                      missing_discriminating_evidence=[], citation_integrity_findings=[], reopening=None)
+    context = {}
+    if 'evidence_bases' in research:
+        from evidence_basis_links import statement_cues
+        context['supplied_evidence_basis_context'] = [row for row in statement_cues(research) if row['statement_id'] in refs['statement_ids']]
     return _normalized(dict(schema_version=1, status='AWAITING_SUPPLIED_CHALLENGES',
         candidate_document=dict(schema_version=1, challenges=[challenge]),
         recorded_labels_on_selected_statements=sorted(reviewer_labels(research['synthesis'], refs['statement_ids'])),
         protocol_sha256=digest(protocol), engine_sha256=_implementation_hashes(), protocol_changed=False,
-        **NEGATIVE_CLAIMS,
+        **NEGATIVE_CLAIMS, **context,
         template_warning='Only the statement selection and its current basis hash are mechanical. The challenger, '
                          'alternative explanation, missing discriminating evidence, citation-integrity findings, '
                          'conclusion width, outcome, reopening, limitations and independence declaration must be '

@@ -547,6 +547,61 @@
     {
       "effects": null,
       "guides": [
+        "docs/EVIDENCE_BASIS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Append separately reviewed supplied declarations",
+      "script": "evidence_basis_intake.py",
+      "subcommand": "assemble",
+      "usage": "python evidence_basis_intake.py assemble [-h] [--text] --output OUTPUT protocol candidate_document review_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_BASIS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Prepare separate exact-input label import review",
+      "script": "evidence_basis_intake.py",
+      "subcommand": "target",
+      "usage": "python evidence_basis_intake.py target [-h] [--text] --output OUTPUT protocol candidate_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_BASIS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Create blank supplied basis declarations",
+      "script": "evidence_basis_intake.py",
+      "subcommand": "template",
+      "usage": "python evidence_basis_intake.py template [-h] [--text] [--candidate-output CANDIDATE_OUTPUT] protocol reference_document"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_BASIS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Replay the complete detached label import",
+      "script": "evidence_basis_intake.py",
+      "subcommand": "verify",
+      "usage": "python evidence_basis_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/EVIDENCE_BASIS.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect supplied labels and literal citation cues",
+      "script": "evidence_basis_review.py",
+      "subcommand": null,
+      "usage": "python evidence_basis_review.py [-h] [--text] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
         "docs/EVIDENCE_WORK_INTAKE.md"
       ],
       "has_parser": true,
@@ -2949,7 +3004,7 @@
   ],
   "implementation_sha256": {
     "accounting_flow.py": "d1eeeeb5fd32bb68e85cca46e8cb32764aa17f3c62a0f29499c8189217e59f68",
-    "adapter_integrity.py": "287323d551de4fa5ee8e2df74c8deb8756a83b9a3a64ed79ce22d88a56086759",
+    "adapter_integrity.py": "9f1b62ba73ea6a570a00113fe2afb0e11591465e4422b5f25df5c2f390203428",
     "appraisal_intake.py": "10ddbb9b2daf465d69aa5635b9483f80e9cd9d410911823e3f090f064d08ca97",
     "appraisal_links.py": "a5f22c0adeb5eda672a2006696a0fcc44392687277f3466d5153571dcc2cadf2",
     "appraisal_source_review.py": "38bee1c30a1a337d9c97fdb4c88346837f7867b38a436ef04ce3dd19f06ca9bf",
@@ -2958,22 +3013,25 @@
     "audit_publication.py": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08",
     "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
     "bibliographic_intake.py": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585",
-    "bibliographic_integrity.py": "d28b1ac9c538294227b4473d8e6ff4764d28460c17a8d2b914a97749a2d05925",
+    "bibliographic_integrity.py": "80f20d39225c1588c00e372a0c89ae3efe28c750e89742a80133a06046635736",
     "bibliographic_review.py": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570",
     "build_manifest.py": "8ff087e69de21f32446071d54d0bf8a6e7ead432caff64d62d4a96f9414ccbe0",
-    "challenge_intake.py": "836f82c35cbb424b9b417dde19b28cab91cbe3ce8fa534376742cd1235821743",
+    "challenge_intake.py": "d08ed4b969c23e15cd4b8ee20d25c4d7ce7a7adbcb5f7cef8516a7aacd351d08",
     "challenge_links.py": "6408b7ff0f96bb8512905074448ef350ce2c790a114998bfbc8aa244fd4d19b4",
     "collection_bundle.py": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06",
     "collection_export.py": "f1f906ff4dbffe4225779d2a00e4ac212bb0a371016db26ddbf36c807061eac7",
     "command_contract.py": "885d11dde06888cddbbc501611cc31161c0f137fa8dc4a913ebf929620e41cb5",
-    "compare_runs.py": "314f6d2d5c94ad3dc5fa9c8c4935d4659635cdd0495994f87e0bfc3728376138",
+    "compare_runs.py": "dda29b129fa3f2e389f76c42e9cad3f56c914978d2bd79b7cb17f6b41d27c296",
     "condition_intake.py": "dd5afab1482c0fd88dd6c2a223f8c2fa58a3ad65977be0b8dbed41e667033725",
     "context_intake.py": "8a6e2bbc5589805fb05119c76143e45ef5ed2d7c4772e0ec0678134e4d1230b0",
     "context_links.py": "bf7cbe8aa68f8769a4bbc403eedbb1dab5ea4156426bf32384d195edc50c59cb",
     "csv_export_parser.py": "64d14e9118af92c40ce1b8d9c960dda71bd4861eb4d496f6fc7e83bb81a32c91",
     "csv_safety.py": "7a54f12bf7520cbfc7868d24ad050cfa432dffd85d63fd86d032546c858a388e",
+    "evidence_basis_intake.py": "3e40ee6389e55423e84b07c46f95c1e79004d42ca237804ca6eeb5d000e40299",
+    "evidence_basis_links.py": "e550e5b83e959405ed577bd969b85402991956d54a454ec806e6f9797bcb3210",
+    "evidence_basis_review.py": "12d897a3373b405c98c537aed53284a9add9af53a17bb42d873289f7bfff5e60",
     "evidence_work_intake.py": "3acbfaed060e19235f9fd2d16de15a3352e4c2893d83906622288af153a52fa4",
-    "evidence_workflow.py": "427a8832b2dfe0b77b05244506ee424734c93e1406afc41f2edead3f443b8c5d",
+    "evidence_workflow.py": "c8b4e457605888ac1a6f9894920d598c643d781ffb89362635f451eaad972e82",
     "experiment_links.py": "aa8ce86a741869e080c467b2251066b9e6fc7dede8211d5fdad9873ae5139b74",
     "extraction_transition_bundle.py": "4f9c744ee8f34b095d0b1c794421b1e2a39f16b3726bf7a9ec61c5f31f554f66",
     "implementation_check.py": "27955bc9af7e178592b3c2f1960e643834bb4a26cdbb4fc5b9ad05cc18e4038f",
@@ -2987,11 +3045,11 @@
     "patent_intake.py": "94773f128f4b27ae291965d1679eb1e6153680711aefb18060e2cea0d4199754",
     "patent_links.py": "2e124bd5b4ed41d67feae9894a2684f4999dc2b9218760b331198e58845e5f9a",
     "patent_review.py": "3927f380abcb4e1c309ec1495c9ea7d84ea5580357d196f8cd0ffd85f1858710",
-    "planning_links.py": "d19f4593c18274539dce8ee048093b335b32187c97838abc516712b531102e27",
+    "planning_links.py": "b1e3c5de430802da65d773a54806de1de3e6bbf8536fbf3d56f69b268e901e37",
     "prisma_audit.py": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee",
     "prisma_flow_template.py": "5a31b7c86bae21b80b55956bba210c518369d0cdd42c92140fdde9ab95ce7be0",
     "prisma_reports.py": "a74cae0f5cfed60850ed85a35757d8508369981486ecb6e2852174c18860f562",
-    "protocol_keys.py": "48cb63d4a302ecd5beef6fda6caf38d04d468302d1b75748e5cbff411fbbbcb7",
+    "protocol_keys.py": "74bd7626dc70bc0d193a23dec351ef835fac22ecf324d360a96c1787d77e58e2",
     "protocol_scaffold.py": "d7eb4c570f756e3b40812176ee86985ea849160602979adaf3761c743e61b377",
     "pubmed_discovery.py": "4abdafd36619e90eb49c69b8b5acc164078d5084d3da3175ee6c5ac9363aedb8",
     "pubmed_metadata.py": "95d1ed99ee1e9c1ba1ecd4ffc72b21f047c1531aaaaa48164900244ba2941c59",
@@ -3018,18 +3076,18 @@
     "report_study_review_intake.py": "8b273ee20adeb69ef670aa6edf001087e5a3c87801c5223f1c53cd4ec976c30d",
     "report_study_review_links.py": "77fb8da8ee3f48981c0fc41700ebd00def31f3382f392080527646b6bfc4f49b",
     "report_transition_bundle.py": "289cf3dd5e38508ae937301b41e47adb5a019bb7bdf288fb111c1d81f571184e",
-    "research_bundle.py": "35c9e551ccddeb490fbf38928644fd5b30ec5f2f2cf05db836637b0167cd21a1",
+    "research_bundle.py": "8047d3eb7bc6aa843a7fae87eb39502cda474cc5890688a484d2721677468eee",
     "research_bundle_describe.py": "a279eea00ca6dfef536d5290d51fad96a8760786c8bc05a00e3e97f26654e6a5",
     "research_map.py": "997a962a895c9bccb08213060fe69c71b7a2581061e5652c73797be386240827",
     "research_map_views.py": "aacd685f2054e5498c9f9fc11083b518856a33502620e09b574ceb3782410f2f",
-    "research_status.py": "9622253787a6ba496845368e4e95e3521e665ed2e2afe3c4776867cfc3d14b90",
+    "research_status.py": "7f6feedfc432a640918245b560ad1f5774236255d419e33eb7a4747d42065ee1",
     "research_view.py": "8f2e3f0d03c1b1596a3ac0eb77af7d245ca80c1298fb84e34d2caa1953285064",
     "result_correction.py": "da31548cfd7f39e4da1f796e3a098450ab404626f83e2de850593cf29471df52",
     "result_extraction.py": "6ed413ce7cd0157d5479a413b1bc8a14629194fb800efd34260e0a546a578732",
     "result_intake.py": "bba5e1437fa9713291ad10f65acd2b2b3a695bae981686be9068fff4c568715b",
     "result_passage_check.py": "c25056a73c3a9392d5ba07f3b2f9ad6d9467503d57b4f31e1c4144e09b7930c1",
     "result_source_review.py": "5fd34ef114e522a9d9251fe62ed940eb30b0630794952496453ab2356b394d7e",
-    "review_handoff.py": "7587b445aaa4fc57705d360d221543903e5bd258125ef8ed0df75ade48a4bfdc",
+    "review_handoff.py": "1710389d40be0b3e60c55777e3eccbcca6b76a96488c33dc142b8083cf851300",
     "reviewed_intake_safety.py": "bc2dcac39107734bedf3949185604103555a6c4a740de80361fb00dd3442d2bc",
     "ris_continuation_intake.py": "4038698deb3cc1abe9a4ffa8b639eb1a8008931e4c11ce95f31f2bb6d1f0061f",
     "ris_continuation_parser.py": "ba9eb550c14f6826212dd13ed2794be276fd4222fb5c0a32a692d0f3b9326ac8",
@@ -3050,8 +3108,8 @@
     "search_manifest.py": "9b17b9874848b2c7b93e28195109cd099de0736b88c4a50921d17d3d06409130",
     "sensei.py": "084da31ae16bf40836b6c586c290688863d2effceebb9d2b3caa02017607a469",
     "source_work_intake.py": "f0c73f0ccfb917dfcc15480ccdb86642bb7eb7a09facda434d8f3bf22e4c036c",
-    "synthesis_links.py": "ae31c276158a316d9e6db6e401849785df09149a32caab842da2de4188465302",
-    "synthesis_review.py": "c9071c7719e47896b57999448515a17e8a3c11f2cd8e32b1558228e0949da1bf",
+    "synthesis_links.py": "4fe4b0de5acc33a219c4cf5e4d96d6ac74b7bd2e44451ac175631b0054c62b60",
+    "synthesis_review.py": "ca5e4c446df5fe338a69614371c4588bf65833807bfbabc567d8d55c23cbff93",
     "validate_run.py": "082dd0107054b3d1a1adafb1289a5a4ca7875078d4e6dc4785aee9ed9b5db837",
     "verify_manifest.py": "3e0fc481d1401524b7a0c7a37b417845c2613ef2c03b1aba200d6bd79b481e8d",
     "views_export.py": "9e31abd56dbc0b7f2637ab9788e356b0f74aef941dbd9e3eb5f4f4ccb6ead440",

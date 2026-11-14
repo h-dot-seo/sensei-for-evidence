@@ -127,6 +127,10 @@
     "schema": null,
     "scope": "Derived local passage context outside the three authored-document schemas; no schema conformance claim"
   },
+  "examples/evidence-basis-references.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
   "examples/evidence-work-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
@@ -172,6 +176,10 @@
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/manual-context-candidates.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
+  "examples/manual-evidence-basis-candidates.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
