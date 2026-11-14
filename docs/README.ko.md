@@ -275,3 +275,5 @@ not value validation, typo correction or a research gate.
 
 [Authored document schemas and explain](SCHEMAS.md) cover the starting-base and
 collection-choice/review path. Shape checks do not replace exact workflow validation.
+
+Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.

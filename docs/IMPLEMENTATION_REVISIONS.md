@@ -56,3 +56,5 @@ or a signature. Unhashed imports and the Python runtime are not covered. No mode
 network or scientific assessment is performed. Census remains NOT_ESTABLISHED and
 conclusion readiness remains NOT_READY. Preserve the recorded source revision;
 never edit an old artifact's hashes to make it match a newer implementation.
+
+Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.

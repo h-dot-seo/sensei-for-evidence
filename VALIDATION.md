@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.115.0-public-manifest-build` (2026-11-14). This file is the
+Current release: `0.116.0-record-shape-registry` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,13 +55,14 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.115.0-public-manifest-build` (2026-11-14).
+Release: `0.116.0-record-shape-registry` (2026-11-14).
 
-Public manifest regeneration now completes the non-engine maintenance workflow.
-Explicit declarations are preserved, output is exclusive and external, exact byte
-check is read-only, and staged bytes pass the unchanged verifier before output.
-Release record consistency is tested. Tags, rights, engine resealing and remote
-settings remain outside scope. Existing root Python and ENGINE_FILES are unchanged.
-Full2148 tests168.147s passed (skip1); independent9 passed. Final focused checks
-include the independently suggested dangling-output regression isolation.
-Audit482/manifest481 and Python3.10 grammar246 passed. Earlier HTML visual QA remains unverified.
+Explicit record-shape navigation indexes76 tagged constructors, six explained
+exclusions and the untagged research bundle manifest. Guide links, object-local
+versions and direct constructor binding keys are checked against parsed source.
+No runtime command, schema migration, engine or canonical decision changed.
+This is not a whole-protocol schema or a complete dynamic shape census.
+Full2153 tests170.379s passed (skip1), independent final5 passed.
+Audit485/manifest484 and Python3.10 grammar247 passed. Initial full run was
+stopped before adding explicit17 constructor expansion expressions and a regression;
+the final full run includes them. No unresolved review blockers. Earlier HTML visual QA and external compatibility unverified.

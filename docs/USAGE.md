@@ -651,3 +651,5 @@ not value validation, typo correction or a research gate.
 collection-choice/review path. Shape checks do not replace exact workflow validation.
 
 Publication maintainers: [manifest regeneration](MANIFEST_BUILD.md), for non-engine changes without automatic replacement.
+
+Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.

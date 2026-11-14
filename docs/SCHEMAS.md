@@ -84,3 +84,5 @@ not a claim that the document is invalid. General schemas should use a separatel
 chosen full validator, still followed by the authoritative research workflow.
 
 [Starting protocol](PROTOCOL_SCAFFOLD.md) · [Bibliographic reconciliation](BIBLIOGRAPHIC_REVIEW.md)
+
+Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.
