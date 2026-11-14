@@ -20,6 +20,8 @@ BOUNDARY = ('PRISMA-oriented supplied-data snapshot, not a final systematic revi
 
 def snapshot(protocol):
     research = run(protocol)
+    search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
+                   for index, row in enumerate(research['search_ledger'])]
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
     queues = status(protocol)
     synthesis = research['synthesis']
@@ -41,7 +43,7 @@ def snapshot(protocol):
         citations[eid] = dict(evidence=copy.deepcopy(evidence), experiment_id=experiment_links[eid], adapter_candidate_support=support, screening=copy.deepcopy(screening[rid]),
             report=copy.deepcopy(report_by_record.get(rid)),
             search_sources=[dict(occurrence=copy.deepcopy(row),
-                                 search=copy.deepcopy(research['search_ledger'][row['search_index']]),
+                                 search_ref=copy.deepcopy(search_refs[row['search_index']]),
                                  accounting=copy.deepcopy(research['coverage'][row['search_index']])) for row in occurrences[rid]],
             appraisal_ids=copy.deepcopy(appraisal_links[eid]),
             work_package_ids=sorted(work['work_package_id'] for work in research['work_packages'] if eid in work['evidence_ids']))
@@ -67,7 +69,7 @@ def snapshot(protocol):
     implementation = dict(engine_hashes())
     for name in ('synthesis_review.py', 'research_status.py'):
         implementation[name] = hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
-    result = dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
+    result = dict(schema_version=2, question=research['question'], protocol_version=research['protocol_version'],
         protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
         hash_scope='sorted compact UTF-8 JSON; object key order ignored and list order retained; not authentication',
         engine_sha256=implementation,

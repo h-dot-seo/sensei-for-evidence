@@ -35,3 +35,11 @@ disclosures when reviewing details. The JSON snapshot preserves their complete d
 
 Markdown, bundle inclusion, interactive decisions and source authentication are
 not implemented by this view. Existing modules and ENGINE_FILES are unchanged.
+
+Schema2 synthesis references are accompanied by the full search ledger and
+coverage within the composed snapshot, so the local HTML is self-contained.
+The previously recorded responsive/print visual QA limitation remains unresolved.
+
+The composed snapshot now declares schema_version2 and carries synthesis
+schema_version2 explicitly because nested citation shapes changed. The short
+file receipt remains schema1: its fields and semantics are unchanged.
