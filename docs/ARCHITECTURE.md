@@ -190,3 +190,8 @@ hashes and keep real sheets outside the public repository.
 `screening_sheet_intake.py` is a separate append-only wrapper over the existing
 screening export/review validators. It binds exact CSV bytes and import review in
 a detached replayable application; ENGINE_FILES and canonical decisions stay unchanged.
+
+`screening_decision_sheet.py` reuses source export/review views for a max-100 blank
+human-decision sheet. Read-only prior screening and supplied review context remain
+separate from empty human fields. No sequential target or batch application exists
+in this increment; canonical engine and adapter bytes remain unchanged.

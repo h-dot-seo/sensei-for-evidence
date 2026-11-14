@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.97.0-screening-sheet-intake` (2026-11-14). This file is the
+Current release: `0.98.0-blank-decision-sheet` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,29 +54,29 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Reviewed screening-sheet positions intake (0.97.0-screening-sheet-intake)
+## 2026-11-14 Blank human-decision sheets (0.98.0-blank-decision-sheet)
 
-Second bounded #33 increment: a separate wrapper appends human-supplied CSV
-positions after exact-target import review. Export-time protocol/source hashes
-and every read-only cell are checked against the existing export. Blank human
-rows are explicitly skipped; partial rows, formula/escape ambiguity, duplicate
-review IDs and record/reviewer pairs fail closed. Original CSV bytes, spans,
-review cues and implementation hashes remain in a detached replayable application.
-Canonical screening and old positions are never overwritten or renewed.
+A small export-only #33 increment reuses the existing source-sheet and screening
+review views. At most 100 explicitly ordered or all enumerated records are shown;
+all seven human decision fields remain empty. Exact prior canonical rows and
+supplied review ledgers/cues are read-only JSON with export-time protocol, source
+and review-context hashes. No vote, recommended choice, sequential decision target,
+receipt, canonical mutation or batch edited-sheet intake is introduced. The guide
+keeps the positions/decisions distinction and pending batch application explicit.
 
-Local Python 3.12 full suite: `Ran 1981 tests in 140.201s`, `OK (skipped=1)`.
-Focused intake/export/navigation: 44 tests pass, including 10 new intake tests.
-The synthetic guide commands execute verbatim with tokenization before host-path
-substitution. Publication audit: 417 files, pass; manifest, compileall, Python 3.10
-grammar and unchanged ENGINE_FILES/offline_adapter checks pass. Existing executable
-sh blocks remain byte-identical. Catalog: 26 routes, 113 help entrypoints.
+Local Python 3.12 full suite: `Ran 1993 tests in 140.367s`, `OK (skipped=1)`.
+Focused decision/source-sheet/intake/navigation: 56 tests pass (12 new decision
+sheet tests). Independent review ran 58 decision/source/review tests successfully,
+compared ENGINE_FILES against the prior release and found no blockers. Publication
+audit: 420 files, pass; manifest, compileall, Python 3.10 grammar, ENGINE_FILES and
+offline_adapter byte preservation pass. Existing executable sh blocks are unchanged;
+the new guide runs verbatim with tokenization before Windows path substitution.
+Catalog: 26 routes, 114 help entrypoints. No test failures occurred.
 
-Independent review identified a multi-output preflight gap: an already-existing
-report path could be discovered after a candidate was written. Both destinations,
-parent directories, alias equality and serialized sizes are now checked before
-writing; regression tests cover existing destinations, identical paths and absent
-parents with no candidate creation. Exclusive creation remains the final guard.
-I/O failures and races are not atomic transactions and may leave partial output;
-the guide states that boundary. No local test failures occurred. These are synthetic
-offline checks, not source reading, reviewer identity or eligibility validation.
+Cases cover conflict/stale context without a winner, all human fields blank,
+literal/escaped ID collisions, ordered selection and unknown/duplicate rejection,
+100-record bound, whole-protocol validation, drift hashes, incompatible positions
+intake headers, empty catalog, byte bounds, exclusive output and synthetic CLI
+walkthrough. These are offline bookkeeping checks, not source reading, identity,
+scientific assessment or real spreadsheet interoperability certification.
 
