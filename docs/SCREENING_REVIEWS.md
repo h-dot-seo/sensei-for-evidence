@@ -161,3 +161,6 @@ does not change canonical report decisions.
 For a spreadsheet-facing blank scaffold, see [screening sheets](SCREENING_SHEETS.md).
 This export does not import edited cells, refresh stale assertions or implement
 reviewer supersession; the JSON workflow above remains unchanged.
+
+Explicitly mapped long-form CSV reviewer positions: [offline intake](SCREENING_POSITION_INTAKE.md).
+Separate source-template binding and import review; no canonical screening decision.

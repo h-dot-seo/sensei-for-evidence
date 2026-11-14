@@ -1,0 +1,3 @@
+Record,Position,Reader,Date,Why,Locator
+record-alpha,Included,Fictional CSV reader E,2026-11-14,Fictional supplied scope position only,synthetic:alpha
+record-alpha,Excluded,Fictional CSV reader F,2026-11-14,Fictional opposing supplied position only,synthetic:alpha

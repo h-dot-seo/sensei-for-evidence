@@ -590,3 +590,6 @@ reuse existing helpers rather than adding another review or filesystem framework
 ## Passive local review
 
 Use [the HTML review navigator](REVIEW_VIEWS.md) for supplied gates, queues, accounting and statements. No canonical decisions change; real output is private and not anonymized.
+
+Explicitly mapped long-form CSV reviewer positions: [offline intake](SCREENING_POSITION_INTAKE.md).
+Separate source-template binding and import review; no canonical screening decision.

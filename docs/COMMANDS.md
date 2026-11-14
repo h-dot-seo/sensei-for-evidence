@@ -397,3 +397,12 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 |---|---|---|
 | `python collection_export.py create [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol` | Typed exact historical native occurrence export; --ris/--nbib also supported | [Guide](COLLECTION_EXPORT.md) |
 | `python collection_export.py verify [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol` | Exact regeneration and output byte comparison | [Guide](COLLECTION_EXPORT.md) |
+
+## Explicit long-form CSV screening positions
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_position_intake.py preview [-h] --basis-template BASIS_TEMPLATE --decision-column DECISION_COLUMN --rationale-column RATIONALE_COLUMN --record-id-column RECORD_ID_COLUMN --reviewed-at-column REVIEWED_AT_COLUMN --reviewer-column REVIEWER_COLUMN --source-locator-column SOURCE_LOCATOR_COLUMN [--review-id-column REVIEW_ID_COLUMN] --label DECISION=LITERAL [--output OUTPUT] protocol input` | Literal supplied-position CSV preview, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
+| `python screening_position_intake.py target [-h] [--output OUTPUT] protocol input` | Literal supplied-position CSV target, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
+| `python screening_position_intake.py assemble [-h] [--output OUTPUT] protocol input review` | Literal supplied-position CSV assemble, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
+| `python screening_position_intake.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol input` | Literal supplied-position CSV verify, never canonical decisions | [Position intake](SCREENING_POSITION_INTAKE.md) |
