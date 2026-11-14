@@ -568,3 +568,13 @@ using the existing `report_review.py --template` followed by
 binds exact supplied positions/source context; no canonical eligibility or document
 authenticity is inferred. Retrieved/source-declared reports only, at most 100 new
 positions, no reviewer supersession. Existing stale assertions remain unchanged.
+
+## Append-only exact report-study positions
+
+[Record supplied pair positions without hand-editing the protocol](REPORT_STUDY_REVIEW_INTAKE.md)
+through the existing `report_study_review.py --template` and new
+`report_study_review_intake.py target`, `assemble`, `verify` path. The human must
+select current same-report source IDs. Current declared membership/source binding
+is required; old orphan/stale assertions remain. No canonical study selection,
+result deletion or automatic source subset. Separate review and whole replay gate
+a new append-only protocol.

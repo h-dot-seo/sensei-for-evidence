@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.101.0-report-review-intake` (2026-11-14). This file is the
+Current release: `0.102.0-report-study-review-intake` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -54,35 +54,35 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Append-only full-text reviewer-position intake (0.101.0-report-review-intake)
+## 2026-11-14 Exact report-study reviewer-position intake (0.102.0-report-study-review-intake)
 
-The #33 report_reviews follow-up closes the documented manual protocol-copy gap.
-Existing report_review templates remain the first stage; a separate JSON intake
-provides exact target, human import-review assembly and full replay. New positions
-require a retrieved report, supplied source descriptors and the current source basis.
-Null document digests remain explicitly unbound and non-null digests unverified.
-Existing stale positions, report/source/canonical fields, memberships and old review
-prefixes stay unchanged. Duplicate IDs/pairs are rejected without supersession.
-CSV intake and report-study/inventory position ledgers are separate future work.
+The #33 pair-position follow-up closes another documented manual-copy gap using
+existing blank templates plus reviewed append/replay. New assertions require an
+exact currently declared membership on a retrieved/source-declared report, current
+pair basis and explicitly supplied same-report source IDs. No subset is selected
+for a human. Old orphan/stale assertions, canonical reports, memberships, results,
+counts and every prior position remain unchanged. Exclude positions only expose
+existing cues; no canonical study selection or result deletion is introduced.
 
-Local Python 3.12 full suite: `Ran 2026 tests in 151.610s`, `OK (skipped=1)`.
-Initial focused intake/report-review/navigation suite: 79 pass. Final new intake
-module: 13 pass, including a subsequently added absent/empty-ledger first-append
-regression. Independent review ran 64 intake/report-review/shared-writer tests and
-also independently exercised first-ledger append/replay; no remaining blockers.
-Audit: 433 files, pass; manifest, compileall, Python 3.10 grammar, unchanged engine/
-adapter bytes and existing executable sh blocks pass. Catalog: 26 routes, 121 help
-entrypoints. No failures occurred in this increment.
+A small reviewed_intake_safety helper now shares only import-review validation
+and complete application replay with report-review intake. Domain source/member
+rules remain specific and engine schemas unchanged. Both targets bind helper bytes;
+the prior report-intake fixture was regenerated and its regression suite rerun.
+Whole report source snapshots are retained once per selected report and byte-budgeted.
 
-Synthetic cases cover exact append/replay and unchanged record/report counts,
-missing/pending/unavailable source contexts, explicitly unbound document digests,
-source drift, preserved stale positions, no supersession, schema/partial/date/choice
-validation, 100-row and byte budgets, unrelated-input/implementation review drift,
-full-validator failure, replay tampering, exclusive single-output CLI and the
-verbatim guide. Complete-file exclusive publication reuses the reviewed batch
-writer without changing it. Selected source copies are budgeted before retention.
+Local Python 3.12 full suite: `Ran 2038 tests in 154.400s`, `OK (skipped=1)`.
+Focused new/old intake, pair review and navigation: 90 pass. Independent review ran
+66 new/old intake and pair-validator tests, confirmed unchanged ENGINE_FILES and
+found no blockers. A nonblocking CLI error-prefix naming suggestion was corrected
+before the final full run. Audit: 439 files, pass; manifest, compileall, Python 3.10
+grammar, engine/adapter preservation and old executable sh blocks pass. New route
+catalog: 27 groups, 125 help entrypoints. No test failures occurred.
 
-These checks do not establish actual full-text reading, reviewer identity, source
-authenticity, comparable coverage, adjudication, scientific validity or readiness.
-The detached application carries import-review provenance and must be retained.
+Synthetic tests cover explicit source subsets/order, wrong-report/unknown/empty
+source rejection, current/orphan pairs, null unbound digests, whole-catalog drift,
+no supersession, 100-row/byte limits, first absent/empty ledger, exact import review,
+whole replay tampering, candidate-validator failure without input changes, single
+exclusive outputs and the verbatim guide. Shared complete-file writer unchanged.
+No identity, independence, equivalent reading coverage, source authenticity,
+adjudication, chronology or scientific readiness is established.
 

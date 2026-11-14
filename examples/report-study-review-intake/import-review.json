@@ -1,0 +1,9 @@
+{
+  "decision": "import_report_study_reviews",
+  "rationale": "Record supplied exact pair positions only.",
+  "receipt_id": "synthetic-pair-import",
+  "reviewed_at": "2026-11-14",
+  "reviewer": "Synthetic importer",
+  "schema_version": 1,
+  "target_sha256": "789f92057ada45be3f6f6a683afd022e8d808a55cd0d3b3664c633247a09e85a"
+}

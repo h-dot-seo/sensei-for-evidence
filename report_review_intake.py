@@ -5,7 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
-from challenge_intake import _date, _normalized, _schema, REVIEW_FIELDS
+from challenge_intake import _normalized, _schema, REVIEW_FIELDS
+from reviewed_intake_safety import validate_import_review, replay_application
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 from research_bundle import engine_hashes
 from screening_decision_batch_apply import _read, _encode, _write_new
@@ -44,7 +45,7 @@ def digest(value):
 def _hashes():
     root = Path(__file__).resolve().parent
     names = ('report_review_intake.py','report_review.py','report_review_links.py',
-             'challenge_intake.py','nbib_intake.py','screening_decision_batch_apply.py')
+             'challenge_intake.py','nbib_intake.py','screening_decision_batch_apply.py','reviewed_intake_safety.py')
     return dict(engine_hashes(), **{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
 
 
@@ -109,13 +110,7 @@ def prepare(protocol, document):
 
 
 def assemble(protocol, document, review_document):
-    review = _normalized(review_document, MAX_CANDIDATE_BYTES, 'import review')
-    _schema(review, REVIEW_FIELDS, 'import review')
-    if any(not isinstance(review[key],str) or not review[key].strip() for key in REVIEW_FIELDS-{'schema_version'}):
-        raise ValueError('import-review fields must be nonblank supplied strings')
-    if review['decision'] != 'import_report_reviews':
-        raise ValueError('import review decision must be import_report_reviews')
-    _date(review['reviewed_at'],'import reviewed_at')
+    review = validate_import_review(review_document, 'import_report_reviews', MAX_CANDIDATE_BYTES)
     target, candidate = _prepare(protocol, document)
     if review['target_sha256'] != target['target_sha256']:
         raise ValueError('review does not match exact original, positions and implementation; no automatic rebase')
@@ -129,14 +124,7 @@ def assemble(protocol, document, review_document):
 
 
 def verify(protocol, application):
-    record = _normalized(application,MAX_APPLICATION_BYTES,'application')
-    _schema(record,{'schema_version','kind','receipt','protocol_candidate'},'application')
-    if (record['kind'] != 'detached_report_review_positions_intake' or not isinstance(record['receipt'],dict)
-            or not {'candidate_document','assertion'} <= set(record['receipt'])):
-        raise ValueError('invalid report-review application')
-    replay = assemble(protocol,record['receipt']['candidate_document'],record['receipt']['assertion'])
-    if canonical_json_bytes(replay) != canonical_json_bytes(record):
-        raise ValueError('application differs from exact original-input replay')
+    replay = replay_application(protocol, application, 'detached_report_review_positions_intake', assemble, MAX_APPLICATION_BYTES)
     return dict(schema_version=1,valid=True,status='EXACT_REPLAY_MATCH',
         receipt_id=replay['receipt']['receipt_id'],receipt_sha256=replay['receipt']['receipt_sha256'],
         input_protocol_sha256=replay['receipt']['input_protocol_sha256'],

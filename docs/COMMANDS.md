@@ -341,3 +341,11 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | `python report_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact-source proposed position append and blank import review | [Report review intake](REPORT_REVIEW_INTAKE.md) |
 | `python report_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append-only application | [Report review intake](REPORT_REVIEW_INTAKE.md) |
 | `python report_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole-application replay and at most one complete exclusive new output | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+
+## Exact report-study position intake
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python report_study_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact pair/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+| `python report_study_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+| `python report_study_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |

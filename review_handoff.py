@@ -170,6 +170,14 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit already retrieved report and actual full-text assessment.',
                                 'Human choice/reason and explicit study declaration for inclusion; existing downstream links must remain valid.'],
          boundary='Append-only reviewer-position intake requires a retrieved/source-bound report and separate import review; it never changes canonical eligibility. Retrieval is not inclusion. No report-study membership, majority decision, reading or eligibility correctness is inferred. Existing validators decide input compatibility.'),
+    dict(workflow_id='report_study_positions', title='Append separately reviewed exact report-study positions',
+         guide_paths=['docs/REPORT_STUDY_REVIEWS.md', 'docs/REPORT_STUDY_REVIEW_INTAKE.md'],
+         entrypoints=[dict(script='report_study_review.py', arguments=['--help'])] +
+                     [dict(script='report_study_review_intake.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
+         required_human_inputs=['Exact currently declared pair on a retrieved/source-declared report, current pair basis and explicit same-report reviewed source IDs.',
+                                'Complete human position and separate exact-target import review; no source subset is selected automatically.'],
+         boundary='Append only, no supersession. Existing orphan/stale assertions are preserved; new orphan or wrong-report source selections fail. No canonical study selection, result deletion, identity inference or adjudication.'),
     dict(workflow_id='result_intake', title='Append explicitly supplied traceable result rows',
          guide_paths=['docs/MANUAL_RESULT_INTAKE.md', 'docs/EXTRACTION_WORKSHEETS.md'],
          entrypoints=[dict(script='result_extraction.py', arguments=['--help'])] +
