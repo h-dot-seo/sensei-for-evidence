@@ -549,4 +549,13 @@ reviewer positions. Preserve source/protocol hashes; real sheets stay private.
 The preview checks all read-only context, simulates at most 100 supplied decisions
 through existing full workflow guards and drafts a blank import review. Hypothetical
 steps are not applied receipts or approval; no candidate protocol/application is
-exported, and batch assemble/verify remains unimplemented.
+exported by the preview CLI; reviewed application uses a separate tool.
+
+## Reviewed decision-batch application
+
+[Assemble and replay an exact human-reviewed batch](SCREENING_DECISION_BATCH_APPLICATION.md) through
+`screening_decision_batch_apply.py assemble` and `verify`. The separate import
+review must bind the exact original, CSV and implementation. Assembly creates a
+detached application only; successful full replay permits a new protocol export.
+Original inputs and existing positions are preserved. Each command publishes at
+most one complete new file, never replaces an existing destination.

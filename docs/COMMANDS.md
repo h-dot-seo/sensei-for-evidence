@@ -326,3 +326,10 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 | Usage | Purpose | Guide |
 |---|---|---|
 | `python screening_decision_batch.py target PROTOCOL SHEET [--output NEW.json]` | Exact-context hypothetical chain and blank import review only; no candidate/application or batch assemble/verify | [Batch preview](SCREENING_DECISION_BATCH_PREVIEW.md) |
+
+## Reviewed decision-batch application
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_decision_batch_apply.py assemble PROTOCOL SHEET REVIEW --output APPLICATION` | Exact separate import review and detached candidate application | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
+| `python screening_decision_batch_apply.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Full replay; at most one exclusive complete output | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |

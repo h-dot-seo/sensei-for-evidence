@@ -3,7 +3,8 @@
 This increment previews an edited [decision sheet](SCREENING_DECISION_SHEETS.md)
 and drafts an **unapproved** import-review document. It does not apply decisions,
 export a candidate protocol or create an application file. Batch `assemble` and
-`verify` are not implemented. Use the existing [single-record workflow](SCREENING_DECISIONS.md)
+`verify` are available only through the separate [reviewed application tool](SCREENING_DECISION_BATCH_APPLICATION.md),
+not this preview CLI. Use the existing [single-record workflow](SCREENING_DECISIONS.md)
 when an actual reviewed application is needed. Do not mistake this preview for one.
 
 Human decision fields must already be supplied. No vote, consensus, recommendation,
@@ -18,7 +19,7 @@ original protocol remains unchanged, even if a later simulated row fails.
 Run from the repository root. Replace `OUTPUT` with an existing empty directory
 outside the checkout. The fixture contains explicitly fictional supplied choices
 and blank rows, not generated decisions. Inspect the target, then **stop**: the
-blank review is not approval and this release cannot apply a batch.
+blank review is not approval; the separate application tool requires a completed exact review.
 
 ```sh
 python screening_decision_batch.py target examples/screening-reviews.json examples/screening-decision-batch/filled.csv --output OUTPUT/target.json

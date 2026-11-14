@@ -150,7 +150,7 @@ documented command.
 | `search_manifest.py`, `receipt_intake.py`, `offline_adapter.py` | Frozen query/receipt accounting; manual receipt rehearsal; offline mock adapter |
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
 | `pubmed_discovery.py`, `pubmed_metadata.py` | Optional preview-bound live ESearch/EFetch; the only networked commands |
-| `screening_review.py`, `screening_decision.py`, `screening_sheet.py`, `screening_sheet_intake.py`, `screening_decision_sheet.py`, `screening_decision_batch.py` | Supplied reviewer positions; explicit supplied screening decisions |
+| `screening_review.py`, `screening_decision.py`, `screening_sheet.py`, `screening_sheet_intake.py`, `screening_decision_sheet.py`, `screening_decision_batch.py`, `screening_decision_batch_apply.py` | Supplied reviewer positions; explicit supplied screening decisions |
 | the ten `report_*.py` command-line scripts, `inventory_intake.py` | Report registration, retrieval updates, source declarations and byte checks, full-text positions and decisions, report-study positions and inventory |
 | `result_*.py`, `condition_intake.py` | Worksheets, passage checks, manual result intake, drift comparison, text corrections, nonclinical conditions |
 | `context_intake.py`, `work_context_intake.py`, `appraisal_intake.py`, `appraisal_source_review.py` | Supplied context and work assignment; supplied appraisals and later comparison |
@@ -313,4 +313,13 @@ reviewer positions. Preserve source/protocol hashes; real sheets stay private.
 The preview checks all read-only context, simulates at most 100 supplied decisions
 through existing full workflow guards and drafts a blank import review. Hypothetical
 steps are not applied receipts or approval; no candidate protocol/application is
-exported, and batch assemble/verify remains unimplemented.
+exported by the preview CLI; reviewed application uses a separate tool.
+
+## Reviewed decision-batch application
+
+[Assemble and replay an exact human-reviewed batch](docs/SCREENING_DECISION_BATCH_APPLICATION.md) through
+`screening_decision_batch_apply.py assemble` and `verify`. The separate import
+review must bind the exact original, CSV and implementation. Assembly creates a
+detached application only; successful full replay permits a new protocol export.
+Original inputs and existing positions are preserved. Each command publishes at
+most one complete new file, never replaces an existing destination.

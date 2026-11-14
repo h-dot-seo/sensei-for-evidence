@@ -3171,3 +3171,35 @@ This bookkeeping error occurred before publication; no failing revision was push
 All fixtures remain synthetic. Hashes and previews do not establish reviewer
 identity, source reading, adjudication, chronological authenticity or readiness.
 
+
+## 2026-11-14 Reviewed decision-batch application and replay (0.100.0-reviewed-decision-batch)
+
+The #33 batch path now has a separate exact-human-review assemble/verify tool.
+Preview and application share one internal simulation, preserving full existing
+single-record operational guards and ordinary receipt schemas. The preview remains
+read-only. A completed separate import review binds original protocol, raw sheet,
+target and implementation before assembly creates a detached candidate. Full replay
+must match the entire application before any new protocol export. No original file,
+existing position or unrelated assertion is modified. Application code bytes are
+part of the target, so older previews require fresh review rather than rebasing.
+
+Local Python 3.12 full suite: `Ran 2013 tests in 153.165s`, `OK (skipped=1)`.
+Focused application/preview/export/navigation: 56 pass. Independent review ran new
+application9 + existing preview/single-decision48 tests (57 total), found no blockers
+and confirmed unchanged ENGINE_FILES. Audit: 428 files, pass; manifest, compileall,
+Python 3.10 grammar, adapter/engine bytes and existing executable sh blocks pass.
+Catalog: 26 routes, 117 help entrypoints. No test failures occurred in this increment.
+
+The application CLI has at most one new destination per command. Complete flushed
+same-directory temporary files are published by exclusive hard links, never by
+replacement. Tests cover write/link failures with no final output and cleanup,
+existing/symlink destinations, unsupported hard links, absent parents, full replay
+tampering, stale implementation/review/context, duplicate/partial rows, shared
+limits/budgets, second-step guard failure, old history prefixes and the verbatim
+synthetic guide. Post-publication cleanup/stdout failures can leave complete output;
+that uncertainty and the absence of ancestor-race guarantees are documented.
+
+All examples are synthetic. Import review authorizes recording supplied choices,
+not adjudication correctness, reviewer identity, reading, chronology or scientific
+validity. The detached application must be retained for batch provenance.
+
