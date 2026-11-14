@@ -389,3 +389,10 @@ Command effects for automation: [source-bound partial contract](docs/AGENT_CONTR
 [Standalone authored research-map records](docs/RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
 
 [Explicit research-map context in status, handoff and comparison](docs/RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
+
+### Supplied patent information, not legal analysis
+
+[Patent-information ledger](docs/PATENT_INFORMATION.md) records explicitly supplied
+publications, applications, family membership and legal-status observations through
+separate import review and replay. Ordinary supplied protocols only; no adapter/import
+history support, engine/bundle integration, live backend, legal advice or FTO opinion.

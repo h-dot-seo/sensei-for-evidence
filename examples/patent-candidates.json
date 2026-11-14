@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "patent_question": {
+    "jurisdictions": [
+      "ZZ"
+    ],
+    "as_of_date": "2026-01-01",
+    "intended_output": "SEARCH_INVENTORY",
+    "technical_question": "Fictional mechanism only",
+    "claim_feature_scope": "Locators only; no claim interpretation is supplied"
+  },
+  "patent_publications": [
+    {
+      "publication_id": "ZZ-SYN-0001-A",
+      "jurisdiction": "ZZ",
+      "kind_code": "SYN-A",
+      "publication_date": "2020-01-01",
+      "locator": "synthetic:ZZ-SYN-0001-A",
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    },
+    {
+      "publication_id": "ZZ-SYN-0002-A",
+      "jurisdiction": "ZZ",
+      "kind_code": "SYN-A",
+      "publication_date": "2020-01-01",
+      "locator": "synthetic:ZZ-SYN-0002-A",
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    },
+    {
+      "publication_id": "ZZ-SYN-0003-A",
+      "jurisdiction": "ZZ",
+      "kind_code": "SYN-A",
+      "publication_date": "2020-01-01",
+      "locator": "synthetic:ZZ-SYN-0003-A",
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    }
+  ],
+  "patent_applications": [
+    {
+      "application_id": "ZZ-SYN-APP-0001",
+      "jurisdiction": "ZZ",
+      "filing_date": "2019-01-01",
+      "publication_ids": [
+        "ZZ-SYN-0001-A",
+        "ZZ-SYN-0002-A"
+      ],
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    },
+    {
+      "application_id": "ZZ-SYN-APP-0002",
+      "jurisdiction": "ZZ",
+      "filing_date": "2019-01-02",
+      "publication_ids": [],
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    }
+  ],
+  "patent_families": [
+    {
+      "family_id": "ZZ-SYN-FAMILY-0001",
+      "family_definition_label": "fictional supplier grouping",
+      "member_ids": [
+        "ZZ-SYN-0001-A",
+        "ZZ-SYN-0002-A",
+        "ZZ-SYN-OUTSIDE-A"
+      ],
+      "grouping_basis": "SUPPLIED_FAMILY_IDENTIFIER",
+      "asserted_by": null,
+      "asserted_at": null,
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    }
+  ],
+  "patent_legal_status_observations": [
+    {
+      "observation_id": "ZZ-SYN-OBS-0001",
+      "application_id": "ZZ-SYN-APP-0001",
+      "jurisdiction": "ZZ",
+      "observed_at": "2026-01-02",
+      "source": "synthetic:unverified-observation",
+      "status_text": "Fictional supplied text, not a legal-status finding",
+      "basis_sha256": "066e324cc2bbedd809ecefc975625df7e3cff6702b2b159c212c2ce7f5d37f0e"
+    }
+  ]
+}

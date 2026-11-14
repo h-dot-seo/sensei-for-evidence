@@ -816,6 +816,72 @@
       "usage": "python offline_adapter.py [-h] [--reviews REVIEWS] [--protocol-output PROTOCOL_OUTPUT] protocol fixture"
     },
     {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_intake.py",
+      "subcommand": null,
+      "usage": "python patent_intake.py [-h] {template,target,assemble,verify} ..."
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_intake.py",
+      "subcommand": "assemble",
+      "usage": "python patent_intake.py assemble [-h] [--output OUTPUT] protocol candidates review"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_intake.py",
+      "subcommand": "target",
+      "usage": "python patent_intake.py target [-h] [--output OUTPUT] protocol candidates"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_intake.py",
+      "subcommand": "template",
+      "usage": "python patent_intake.py template [-h] [--question QUESTION] [--output OUTPUT] protocol"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_intake.py",
+      "subcommand": "verify",
+      "usage": "python patent_intake.py verify [-h] protocol application"
+    },
+    {
+      "effects": null,
+      "guides": [
+        "docs/PATENT_INFORMATION.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect or record exact supplied patent information; not legal advice",
+      "script": "patent_review.py",
+      "subcommand": null,
+      "usage": "python patent_review.py [-h] [--text] [--output OUTPUT] protocol"
+    },
+    {
       "effects": {
         "caught_error": {
           "exit_code": 1,
@@ -2918,6 +2984,9 @@
     "nbib_export_parser.py": "5ac9b759b873f39408fcffb88a8680558327c8df2dda0a672496469f22761f64",
     "nbib_intake.py": "ff46600c293f4b1def8a82b6b1771e2c30d8ecaacef33bc0d2d88de68c3ae249",
     "offline_adapter.py": "b709f074c36b65ad3c716b0ff6e175e0986a9b9d17ef50c2590300bd4412fd1f",
+    "patent_intake.py": "94773f128f4b27ae291965d1679eb1e6153680711aefb18060e2cea0d4199754",
+    "patent_links.py": "2e124bd5b4ed41d67feae9894a2684f4999dc2b9218760b331198e58845e5f9a",
+    "patent_review.py": "3927f380abcb4e1c309ec1495c9ea7d84ea5580357d196f8cd0ffd85f1858710",
     "planning_links.py": "d19f4593c18274539dce8ee048093b335b32187c97838abc516712b531102e27",
     "prisma_audit.py": "8bf071a408aa62945e677996f50162da4a56db58f762697dc72380f376ce8fee",
     "prisma_flow_template.py": "5a31b7c86bae21b80b55956bba210c518369d0cdd42c92140fdde9ab95ce7be0",

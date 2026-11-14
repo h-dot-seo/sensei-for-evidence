@@ -287,3 +287,10 @@ For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAK
 [Standalone authored research-map records](RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
 
 [Explicit research-map context in status, handoff and comparison](RESEARCH_MAP_VIEWS.md): optional sidecar visibility, not new gates or engine/bundle validation.
+
+### 공급된 특허 정보 원장
+
+[특허 정보 공급 원장](PATENT_INFORMATION.md)은 공보·출원·패밀리·법적 상태 관측을
+구분해 별도 공급 검토 후 기록하고 재생합니다. 일반 공급 프로토콜만 지원하며
+어댑터/서지 가져오기 이력은 거부합니다. 법률 조언·FTO 의견·권리 확정·최신 상태
+검증이 아니며 기존 엔진·번들·문헌 준비도 게이트는 특허 원장을 검증하지 않습니다.

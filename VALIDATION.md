@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.130.0-map-context-views` (2026-11-14). This file is the
+Current release: `0.131.0-supplied-patent-ledger` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,28 +55,35 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.130.0-map-context-views` (2026-11-14).
+Release: `0.131.0-supplied-patent-ledger` (2026-11-14).
 
-Added explicit optional research-map sidecar context to status/handoff and paired
-before/after map comparison. A separate section displays existing supplied record/event
-statuses and literal changes, never changes readiness, queues, canonical decisions,
-protocol has_changes or amendment exit decisions. Missing options leave no new fields.
-This completes the explicit optional-view route of the standalone increment, not full
-research-map or engine/bundle integration. Existing research_map.py and ENGINE_FILES
-are unchanged; their standalone replay is not modified.
+Implemented roadmap #45 reader-adjusted path B as one standalone end-to-end
+workflow: four supplied entity lists, explicit patent question/search basis, blank
+templates, exact target, separately supplied import review, append-only candidate,
+current-implementation replay and JSON/text observation view. No patent number
+normalization, family inference, legal validity/currency determination, priority
+claims, claim mapping or external service was added. Ordinary supplied protocols
+only; adapter/bibliographic histories are refused, not stripped.
 
-Twelve recorded default views over four synthetic fixtures retain complete JSON/text
-apart from exact named top-level implementation digest entries: status self, handoff
-status+self, compare self. Compare text displays that same digest, and only that value
-is substituted for baseline comparison. No other field/text is excluded or normalized.
-Optional views have explicit10MB sidecar and50MB joined output bounds. Tests cover
-paired arguments, strict failures, stale records/events, supplied field changes,
-added/removed/reordered IDs, actual three-CLI text/JSON journeys and normal amendment
-mismatch JSON exit1. Contract coverage remains32 reviewed of178;146 remain unknown.
-Full2237 tests in186.563s passed (skip1). Independent24 focused tests passed; the
-12 default baselines were independently regenerated from the preceding release and
-matched. A selected-work handoff also retains its entire original result outside the
-explicit protocol-wide map context. Audit517/manifest516 and Python3.10 grammar264
+Existing109 root Python files and ENGINE_FILES remain byte-identical. Existing
+run, allowlists, canonical decisions, bundle and readiness do not validate the new
+ledger. Missing references in explicit queues and date comparisons are supplied
+data observations, not legal findings or patent readiness. Candidate batch limit100
+does not cap the whole ledger. Sources/records/reviewer labels remain unauthenticated.
+New command effects stay NOT_REVIEWED:32 reviewed of184,152 unknown.
+
+Focused15 tests include all four entities, exact review/stale/reject/tamper paths,
+strict JSON/byte/depth limits, exclusive output, actual CLI error channels and the
+seven-command documented synthetic ZZ rehearsal. Reviewer noted explicit null
+question was treated as omission; a sentinel and API/real-CLI regressions now
+reject explicit null while keeping omitted-question blank template behavior.
+Initial full2252 run found three metadata regression failures: the current validation
+release label was not updated and two tests still expected146 unknown command rows.
+Those are corrected to the actual release and152; no implementation or effect review
+was broadened. Corrected full2252 tests in183.145s passed (skip1). Independent final15 tests,
+including the seven-command guide and explicit-null API/CLI probes, passed. Original
+109 root modules remain byte-identical. Audit524/manifest523 and Python3.10 grammar268
 passed. Final focused checks cover this record update. No unresolved review blockers.
-External reference-manager compatibility, prior HTML visual QA and Korean-locale
-Windows remain unverified.
+Prior external compatibility, HTML visual QA and Korean-locale Windows limitations
+remain; this fictional patent rehearsal does not verify live-provider interoperability
+or legal utility. No license, gate/closure policy or tag decision was made.

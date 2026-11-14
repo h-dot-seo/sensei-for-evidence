@@ -3820,3 +3820,36 @@ explicit protocol-wide map context. Audit517/manifest516 and Python3.10 grammar2
 passed. Final focused checks cover this record update. No unresolved review blockers.
 External reference-manager compatibility, prior HTML visual QA and Korean-locale
 Windows remain unverified.
+
+## 2026-11-14: 0.131.0-supplied-patent-ledger
+
+Implemented roadmap #45 reader-adjusted path B as one standalone end-to-end
+workflow: four supplied entity lists, explicit patent question/search basis, blank
+templates, exact target, separately supplied import review, append-only candidate,
+current-implementation replay and JSON/text observation view. No patent number
+normalization, family inference, legal validity/currency determination, priority
+claims, claim mapping or external service was added. Ordinary supplied protocols
+only; adapter/bibliographic histories are refused, not stripped.
+
+Existing109 root Python files and ENGINE_FILES remain byte-identical. Existing
+run, allowlists, canonical decisions, bundle and readiness do not validate the new
+ledger. Missing references in explicit queues and date comparisons are supplied
+data observations, not legal findings or patent readiness. Candidate batch limit100
+does not cap the whole ledger. Sources/records/reviewer labels remain unauthenticated.
+New command effects stay NOT_REVIEWED:32 reviewed of184,152 unknown.
+
+Focused15 tests include all four entities, exact review/stale/reject/tamper paths,
+strict JSON/byte/depth limits, exclusive output, actual CLI error channels and the
+seven-command documented synthetic ZZ rehearsal. Reviewer noted explicit null
+question was treated as omission; a sentinel and API/real-CLI regressions now
+reject explicit null while keeping omitted-question blank template behavior.
+Initial full2252 run found three metadata regression failures: the current validation
+release label was not updated and two tests still expected146 unknown command rows.
+Those are corrected to the actual release and152; no implementation or effect review
+was broadened. Corrected full2252 tests in183.145s passed (skip1). Independent final15 tests,
+including the seven-command guide and explicit-null API/CLI probes, passed. Original
+109 root modules remain byte-identical. Audit524/manifest523 and Python3.10 grammar268
+passed. Final focused checks cover this record update. No unresolved review blockers.
+Prior external compatibility, HTML visual QA and Korean-locale Windows limitations
+remain; this fictional patent rehearsal does not verify live-provider interoperability
+or legal utility. No license, gate/closure policy or tag decision was made.

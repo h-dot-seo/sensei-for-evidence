@@ -220,3 +220,11 @@ For a passive local snapshot use `research_view.py PROTOCOL [--output NEW.html]`
 See [the source-bound partial contract](docs/AGENT_CONTRACT.md) before command automation. `sensei.py contract` executes no listed command. NOT_REVIEWED effects are unknown, not permission or read-only guarantees. Preserve exact-target human review and existing challenge/readiness authorship boundaries.
 
 [Standalone authored research-map records](docs/RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
+
+For supplied patent-information rows, use [the patent ledger guide](docs/PATENT_INFORMATION.md)
+only with an ordinary supplied protocol. Require explicit jurisdiction/date/purpose,
+all row assertions and separate exact-target recording review. Keep publications,
+applications, supplied families and legal-status observations distinct. The new view
+is not run/bundle verification, legal advice, FTO or legal-status currency; do not
+infer family membership, legal outcomes, a census or readiness. Adapter/bibliographic
+import history protocols are not supported; do not strip their provenance to proceed.

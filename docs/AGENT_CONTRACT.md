@@ -29,7 +29,7 @@ safe to run, or permission granted. This is partial #57 coverage, not a complete
 machine contract for all repository operations. Read the guide and implementation
 before using commands without an effects profile.
 
-The remaining146 entries retain unknown effects. The negative-report stdout field
+The remaining 152 entries retain unknown effects. The negative-report stdout field
 now also permits json_or_text for these observers, following their existing CLI flag.
 This is additive partial coverage, not a complete contract or external-consumer
 compatibility promise. Existing checker implementations and their schemas are unchanged.
