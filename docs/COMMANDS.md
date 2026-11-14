@@ -432,3 +432,7 @@ Document shapes: recommended base, unreviewed collection choices, and separately
 collection choices are indexed in [Authoring schemas](SCHEMAS.md).
 
 | `python build_manifest.py [-h] [--root ROOT] --release RELEASE --date DATE (--output OUTPUT \| --check)` | Reproduce publication inventory | [Guide](MANIFEST_BUILD.md) |
+
+For status, handoff and comparison CLI input limits and classified, non-echoing
+errors, see [view input failures](VIEW_INPUT_ERRORS.md). Successful and negative
+report contracts are unchanged; this is not a repository-wide error policy.

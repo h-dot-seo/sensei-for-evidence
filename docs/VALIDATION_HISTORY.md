@@ -3561,3 +3561,14 @@ All previous root modules and ENGINE_FILES remain byte-identical. Full2153 tests
 Audit485/manifest484 and Python3.10 grammar247 passed. Initial full run was
 stopped before adding explicit17 constructor expansion expressions and a regression;
 the final full run includes them. No unresolved review blockers.
+
+## 2026-11-14: 0.117.0-view-input-boundaries
+
+Bounded and classified CLI input failures for status, handoff and comparison.
+No raw filesystem/JSON/semantic exception text is echoed in caught input failures.
+Inclusive50MB and128-edge nesting bounds do not claim total memory/runtime limits.
+Success and amendment-mismatch report semantics remain; only view fingerprints change.
+ENGINE_FILES/canonical decisions/schema2 unchanged. Full2159 tests171.984s passed (skip1). Independent new6 and comparison31
+tests passed, plus216 malformed-input probes without an uncaught exception.
+Audit487/manifest486 and Python3.10 grammar248 passed. Existing non-CLI function
+ASTs are unchanged. Prior HTML visual QA/external compatibility remain unverified.

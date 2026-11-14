@@ -547,6 +547,39 @@ def render_text(result):
     return '\n'.join(lines) + '\n'
 
 
+# CLI-only input limits; in-memory engine functions and result schemas are unchanged.
+MAX_CLI_INPUT_BYTES = 50_000_000
+MAX_CLI_NESTING = 128
+
+
+def _read_cli_input(path, label, parser):
+    try:
+        with path.open('rb') as stream:
+            raw = stream.read(MAX_CLI_INPUT_BYTES + 1)
+    except OSError:
+        parser.exit(1, 'review handoff error: input-unreadable: ' + label + ': "Unable to read supplied input."\n')
+    if len(raw) > MAX_CLI_INPUT_BYTES:
+        parser.exit(1, 'review handoff error: input-too-large: ' + label + ': "Input exceeds 50000000 bytes."\n')
+    try:
+        value = parse_json(raw.decode('utf-8'))
+    except RecursionError:
+        parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
+    except (ValueError, TypeError):
+        parser.exit(1, 'review handoff error: input-not-json: ' + label + ': "Expected strict UTF-8 JSON."\n')
+    if not isinstance(value, dict):
+        parser.exit(1, 'review handoff error: input-invalid: ' + label + ': "Expected a JSON object."\n')
+    pending = [(value, 0)]
+    while pending:
+        item, depth = pending.pop()
+        if depth > MAX_CLI_NESTING:
+            parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': "JSON nesting exceeds 128 levels."\n')
+        if isinstance(item, dict):
+            pending.extend((child, depth + 1) for child in item.values())
+        elif isinstance(item, list):
+            pending.extend((child, depth + 1) for child in item)
+    return value
+
+
 def main():
     configure_utf8_stdio()
     parser=argparse.ArgumentParser(description=__doc__)
@@ -555,9 +588,9 @@ def main():
     parser.add_argument('--text',action='store_true')
     args=parser.parse_args()
     try:
-        result=handoff(parse_json(args.protocol.read_text(encoding='utf-8')),args.work_package)
-    except (ValueError,OSError,KeyError,TypeError) as error:
-        parser.exit(1,str(error)+'\n')
+        result=handoff(_read_cli_input(args.protocol, 'protocol', parser),args.work_package)
+    except (ValueError,OSError,KeyError,TypeError,RecursionError):
+        parser.exit(1,'review handoff error: input-invalid: protocol or work selection: "Supplied input failed validation; check required fields, relationships and selected work ID."\n')
     print(render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.text else '\n')
 
 if __name__=='__main__':main()
