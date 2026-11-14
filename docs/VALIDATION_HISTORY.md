@@ -3623,3 +3623,18 @@ Prior-release comparison across43 valid examples also matched except changed vie
 implementation hashes. Audit496/manifest495 and Python3.10 grammar253 passed.
 No unresolved review blockers; external-export compatibility and HTML visual QA
 remain unverified.
+
+## 2026-11-14: 0.122.0-partial-command-contract
+
+Added source-bound command inspection through sensei contract (JSON or escaped text).
+All command rows are inventoried;26 reviewed effects distinguish input/output arguments,
+negative reports and explicit NCBI fetch. Other effects remain NOT_REVIEWED/null, not
+permission or read-only classification. Every root Python byte is bound; source drift
+refuses the contract. Existing catalog human-input boundaries are linked unchanged.
+No command execution, network request or ENGINE_FILES change by this feature. Full
+machine effects coverage remains incomplete; hashes are not authentication.
+Full2190 tests in178.147s passed (skip1). Independent contract/dispatcher23 tests
+and8 additional malformed-registry probes passed after strict declaration-shape
+validation was added. Audit500/manifest499 and Python3.10 grammar255 passed.
+No unresolved review blockers. External-export compatibility and HTML visual QA
+remain unverified;149 command entries have no reviewed effects profile.

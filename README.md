@@ -383,3 +383,5 @@ Retained artifact navigation: [record kinds, object versions and verification gu
 Read a received research ZIP without replay: [recorded bundle context](docs/RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
 
 For a single local NBIB file, the [tested first-file workflow](docs/PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.
+
+Command effects for automation: [source-bound partial contract](docs/AGENT_CONTRACT.md). Unknown effects are not permission.
