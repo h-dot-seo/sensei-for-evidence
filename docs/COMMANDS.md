@@ -430,3 +430,5 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 
 Document shapes: recommended base, unreviewed collection choices, and separately reviewed
 collection choices are indexed in [Authoring schemas](SCHEMAS.md).
+
+| `python build_manifest.py [-h] [--root ROOT] --release RELEASE --date DATE (--output OUTPUT \| --check)` | Reproduce publication inventory | [Guide](MANIFEST_BUILD.md) |

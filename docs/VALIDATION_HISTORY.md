@@ -3540,3 +3540,13 @@ may match before final LF; a matched hash shape still fails unequal actual targe
 No input acceptance, review permission, external compatibility or scientific approval is
 implied. Full2139 tests175.254s OK(skip1), final independent10 passed with direct resource
 limit probes and no blockers. Audit478/manifest477 and Python3.10 grammar243 passed. Prior HTML visual QA unverified.
+
+## 2026-11-14: 0.115.0-public-manifest-build
+
+Added the public manifest regeneration and release-record maintenance workflow.
+Existing declarations are preserved without inference; new output must be outside
+its source tree and is exclusive. Staged exact bytes pass the existing verifier.
+No tags, permissions, licensing or ENGINE_FILES changes. Full2148 tests168.147s passed (skip1); independent9 passed. Windows collision
+regression was adapted for case-insensitive filesystems before the full run. A final
+focused rerun isolates dangling-output rejection from a prior metadata-audit failure.
+Audit482/manifest481 and Python3.10 grammar246 passed.
