@@ -154,11 +154,15 @@ SUPPLIED_INPUT_WORKFLOWS = [
                                 'For a separate local byte check: a non-null supplied digest, explicit file mapping and trusted root; source inspection requires supported POSIX access.'],
          boundary='Declarations do not retrieve or authenticate documents, replace old descriptors, select a preferred version or change counts/membership. New same-report sources can stale retained reviews and document-bound work without renewal. Old null digests remain unbound. Local byte checking is separate and native Windows fails closed; no source locator is followed automatically.'),
     dict(workflow_id='descriptive_inventory', title='Append supplied candidate-study descriptions before inclusion',
-         guide_paths=['docs/MANUAL_INVENTORY_INTAKE.md', 'docs/REPORT_STUDY_INVENTORY.md', 'docs/INVENTORY_CANDIDATE_REVIEWS.md'],
+         guide_paths=['docs/MANUAL_INVENTORY_INTAKE.md', 'docs/REPORT_STUDY_INVENTORY.md', 'docs/INVENTORY_CANDIDATE_REVIEWS.md', 'docs/REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md'],
          entrypoints=[dict(script='inventory_intake.py', arguments=[command, '--help'])
-                      for command in ('template', 'target', 'assemble', 'verify')],
+                      for command in ('template', 'target', 'assemble', 'verify')] +
+                     [dict(script='report_study_inventory_review.py', arguments=['--help'])] +
+                     [dict(script='report_study_inventory_review_intake.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')],
          required_human_inputs=['Explicit retrieved report and human candidate-study label, completed description, recorder/date and selected same-report source IDs.',
-                                'Current supplied inventory source basis and separate exact-input import review.'],
+                                'Current supplied inventory source basis and separate exact-input import review.',
+                                'Candidate positions additionally require current candidate-review basis, explicit exact-pair inventory IDs and same-report source IDs; no subset is inferred.'],
          boundary='Descriptive inventory is not inclusion, eligibility, study independence or result extraction. New stale assertions and mock-adapter inputs are rejected. Existing descriptions and reviews remain; additional same-pair descriptions can stale earlier candidate positions without renewal.'),
     dict(workflow_id='full_text_decision', title='Record separate supplied full-text positions and eligibility choices',
          guide_paths=['docs/REPORT_DECISIONS.md', 'docs/REPORT_REVIEWS.md', 'docs/REPORT_REVIEW_INTAKE.md'],

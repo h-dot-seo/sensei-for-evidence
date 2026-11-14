@@ -578,3 +578,11 @@ select current same-report source IDs. Current declared membership/source bindin
 is required; old orphan/stale assertions remain. No canonical study selection,
 result deletion or automatic source subset. Separate review and whole replay gate
 a new append-only protocol.
+
+## Reviewed candidate-inventory positions
+
+[Append explicit candidate positions with separate review and replay](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md)
+using `report_study_inventory_review_intake.py`. Both inventory and source subsets
+are human-supplied, exact-pair bound and append-only; descriptions, membership and
+canonical decisions remain unchanged. Shared safety and complete exclusive outputs
+reuse existing helpers rather than adding another review or filesystem framework.

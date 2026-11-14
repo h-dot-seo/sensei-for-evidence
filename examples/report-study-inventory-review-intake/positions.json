@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "report_study_inventory_reviews": [
+    {
+      "review_id": "synthetic-pair-new",
+      "report_id": "report-three",
+      "study_id": "candidate-X",
+      "reviewer": "Synthetic pair reader",
+      "reviewed_at": "2026-11-14",
+      "decision": "exclude",
+      "rationale": "Synthetic supplied exclusion position only.",
+      "reviewed_locator": "synthetic:page-1",
+      "reviewed_inventory_ids": [
+        "inventory-pending-A"
+      ],
+      "reviewed_source_ids": [
+        "source-candidate"
+      ],
+      "source_basis_sha256": "e20503891b91865d798253545dece16b80b267250f4bd60c63fb8d061d7d947a"
+    }
+  ]
+}

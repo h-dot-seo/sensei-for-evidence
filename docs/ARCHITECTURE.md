@@ -217,3 +217,11 @@ semantics and requires explicit same-report source subsets. A small
 `reviewed_intake_safety.py` shares only import-review schema/date validation and
 whole-application replay with report-review intake. No ledger/domain abstraction
 or canonical schema redesign is introduced; both bind the helper bytes.
+
+## Reviewed candidate-inventory positions
+
+[Append explicit candidate positions with separate review and replay](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md)
+using `report_study_inventory_review_intake.py`. Both inventory and source subsets
+are human-supplied, exact-pair bound and append-only; descriptions, membership and
+canonical decisions remain unchanged. Shared safety and complete exclusive outputs
+reuse existing helpers rather than adding another review or filesystem framework.
