@@ -279,3 +279,5 @@ collection-choice/review path. Shape checks do not replace exact workflow valida
 Retained artifact navigation: [record kinds, object versions and verification guides](RECORD_SCHEMAS.md). This index is not validation or migration.
 
 Read a received research ZIP without replay: [recorded bundle context](RESEARCH_BUNDLE_DESCRIBE.md). Recorded values remain unverified.
+
+For a single local NBIB file, the [tested first-file workflow](PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.

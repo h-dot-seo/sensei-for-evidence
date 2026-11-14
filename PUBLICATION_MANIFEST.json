@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.119.0-derived-text-context",
+  "release": "0.120.0-own-nbib-walkthrough",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 493,
+  "file_count": 494,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 23348,
-      "sha256": "ac5f7f94378b2e6bba075de2f60dffe4b230c319b4e72a61d81ccfe5e2ac8eec"
+      "bytes": 23567,
+      "sha256": "f0e1c5a6304b773367da6de2225e2039d79aff6b3a89a90342b6e3bfbc86e36d"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 3460,
-      "sha256": "a3541ea4e2697dbfe7f4544b34e8d52b9c8d91d734e803918ae9cddec05d32ef"
+      "bytes": 3397,
+      "sha256": "892936b175a7e8e47512e6fc9cb5a02cfdc0cce6df18364f1848010240fb4506"
     },
     {
       "path": "accounting_flow.py",
@@ -415,8 +415,8 @@
     },
     {
       "path": "docs/PROTOCOL_SCAFFOLD.md",
-      "bytes": 4681,
-      "sha256": "3f8d247a2b56491c2b02aba5ac09cc921060b23bf7fdb230c835113bd7cb53de"
+      "bytes": 4895,
+      "sha256": "edf517c9c5c0c37cbfcf6189b240e91b793f353c2e59d14b30a6142e9b601cf6"
     },
     {
       "path": "docs/PUBMED_DISCOVERY.md",
@@ -435,13 +435,13 @@
     },
     {
       "path": "docs/PUBMED_NBIB_INTAKE.md",
-      "bytes": 9871,
-      "sha256": "91de37ee1882f496fee4c445e73b4bc503e16354dbbac395433db991c757a2dd"
+      "bytes": 13745,
+      "sha256": "c1b7a3f71a701d83b575308e097938ab9f331070c25f4bcb15bfa449efd6cc8c"
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 23560,
-      "sha256": "3387101d51971199326403c4d4965729d6f326461da1e4a9f506826b0100004e"
+      "bytes": 23774,
+      "sha256": "5f57f75d31137b133831ef677c6fab8dd922798ab3296049324eb0c5b9c31d5e"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -635,8 +635,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 256142,
-      "sha256": "6fe2891b7a548ab7358077c9868e1adf18dbfd2c4faaebdacd392f8d3d935b2c"
+      "bytes": 256944,
+      "sha256": "db6779c4cd7a90bddfc9265e5277c442f4a8792b8bd0931ee0b4920cea55318c"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -2012,6 +2012,11 @@
       "path": "tests/test_offline_adapter.py",
       "bytes": 17408,
       "sha256": "2a6453b9e3b96cebe80fc9f5e80d664007b25f4096528ccd731225e3bd34a9f9"
+    },
+    {
+      "path": "tests/test_own_nbib_walkthrough.py",
+      "bytes": 7620,
+      "sha256": "442d372edd9c8c3ce20c4b2ed4b4074ac395a95eb16b3259d98df35d73b76e65"
     },
     {
       "path": "tests/test_planning_links.py",

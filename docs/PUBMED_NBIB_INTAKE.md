@@ -23,12 +23,22 @@ infer pagination, choose duplicate resolutions or replace an imported search.
 `examples/pubmed-export.nbib` is entirely fictional, including its PMID strings,
 titles and authors. It has three occurrences with two exact identifier strings.
 It is not a retrieved citation set. Use new paths outside the public checkout;
-their parent directory must already exist.
+their parent directory must already exist. Replace OUTPUT with that directory,
+quote paths with spaces, and run these example commands from the repository root.
+The test suite replays all14 commands below and supplies only the explicitly stated
+fictional human choices between blocks. No stored hash-bound review chain is added.
+
+For your own file, first [author and check your base](PROTOCOL_SCAFFOLD.md), retain
+that ledger-free base unchanged, and substitute it for every bibliographic-base path.
+Use your explicitly declared search ID and actual supplied export timestamp instead
+of this example's labels. Substitute your local NBIB only at preview; retained wrapper
+verification uses its original bytes. Keep real/private material outside this checkout.
+The example's choices and dates are never suitable default research decisions.
 
 ```sh
-python nbib_intake.py preview examples/bibliographic-base.json examples/pubmed-export.nbib --search-id local-primary --searched-at 2026-11-04T00:00:00Z --output /outside/new-nbib.json --text
-python nbib_intake.py verify /outside/new-nbib.json --intake-output /outside/new-csv-intake.json --text
-python bibliographic_review.py template /outside/new-csv-intake.json --review-output /outside/new-choices.json --text
+python nbib_intake.py preview examples/bibliographic-base.json examples/pubmed-export.nbib --search-id local-primary --searched-at 2026-11-04T00:00:00Z --output OUTPUT/new-nbib.json --text
+python nbib_intake.py verify OUTPUT/new-nbib.json --intake-output OUTPUT/new-csv-intake.json --text
+python bibliographic_review.py template OUTPUT/new-csv-intake.json --review-output OUTPUT/new-choices.json --text
 ```
 
 The template deliberately leaves every identity/withholding choice and rationale
@@ -38,21 +48,63 @@ choose `same_record` automatically. Different identifiers with similar titles
 are not merged. A canonical ID is the human's explicit choice, not necessarily
 the generated `pubmed:` label.
 
-After filling the choices, keep `review: null` and prepare a separate review:
+For this fictional rehearsal only, fill the three rows in new-choices.json:
+
+| Candidate | Disposition | Record ID | Rationale |
+|---|---|---|---|
+| csv-row-000001 | new_record | record-A | Fictional operator supplies identity A; not verified. |
+| csv-row-000002 | same_record | record-A | Fictional operator explicitly associates this occurrence with A. |
+| csv-row-000003 | new_record | record-B | Fictional operator keeps this occurrence separate as B. |
+
+No title comparison or repeated PMID performs these choices. For real work, author
+every choice and rationale yourself. Keep `review: null` and prepare a separate review:
 
 ```sh
-python bibliographic_review.py target examples/bibliographic-base.json /outside/new-csv-intake.json /outside/new-choices.json --review-output /outside/new-review.json --text
+python bibliographic_review.py target examples/bibliographic-base.json OUTPUT/new-csv-intake.json OUTPUT/new-choices.json --review-output OUTPUT/new-review.json --text
 ```
 
-Fill the new review's reviewer, real calendar date, rationale and
-`import_for_screening` decision only after inspecting the exact target. Then:
+The new-review.json output retains resolutions and contains a separate `review`
+object. Its target hash is already bound; keep it unchanged. Fill reviewer, real
+calendar date, rationale and `import_for_screening` only after inspecting that target.
+For this rehearsal the test supplies reviewer `Fictional NBIB reviewer`, reviewed_at
+`2026-11-04`, rationale `Fictional collection review only; not source authentication.`,
+and decision `import_for_screening`. Blanks and wrong targets are refused. Then:
 
 ```sh
-python bibliographic_review.py assemble examples/bibliographic-base.json /outside/new-csv-intake.json /outside/new-review.json --protocol-output /outside/new-protocol.json --text
-python research_status.py /outside/new-protocol.json
-python prisma_audit.py /outside/new-protocol.json --text
-python research_bundle.py create /outside/new-protocol.json /outside/new-bundle.zip
-python research_bundle.py verify /outside/new-bundle.zip
+python bibliographic_review.py assemble examples/bibliographic-base.json OUTPUT/new-csv-intake.json OUTPUT/new-review.json --protocol-output OUTPUT/new-protocol.json --text
+```
+
+The imported file has two collected record IDs, three retained native occurrences,
+and no screening decisions. Collection identity association is not eligibility.
+Supply separate title/abstract decisions, each against its own current target:
+
+```sh
+python screening_decision.py target OUTPUT/new-protocol.json --record-id record-A --output OUTPUT/screen-A-target.json
+```
+
+Copy only `decision_document` into OUTPUT/screen-A-decision.json and fill every human
+field. For this rehearsal: decision `include`, reason `Fictional in-scope assertion.`,
+adjudicator `Fictional NBIB screener`, decided_at `2026-11-04`, rationale `Fictional
+screening bookkeeping only; no actual reading.`, source_locator `synthetic://screen/A`,
+and receipt_id `fictional-nbib-A`. Preserve schema_version, record_id and target_sha256.
+
+```sh
+python screening_decision.py assemble OUTPUT/new-protocol.json OUTPUT/screen-A-decision.json --protocol-output OUTPUT/screened-A.json
+python screening_decision.py target OUTPUT/screened-A.json --record-id record-B --output OUTPUT/screen-B-target.json
+```
+
+Copy that target's `decision_document` into OUTPUT/screen-B-decision.json. For this
+rehearsal use the same fictional adjudicator/date/rationale, decision `exclude`,
+reason `Fictional out-of-scope assertion.`, source_locator `synthetic://screen/B`,
+and receipt_id `fictional-nbib-B`. Do not reuse A's target hash. Real decisions require
+actual human assessment; these labels are deliberately invented software inputs.
+
+```sh
+python screening_decision.py assemble OUTPUT/screened-A.json OUTPUT/screen-B-decision.json --protocol-output OUTPUT/screened.json
+python research_status.py OUTPUT/screened.json
+python prisma_audit.py OUTPUT/screened.json --text
+python research_bundle.py create OUTPUT/screened.json OUTPUT/new-bundle.zip
+python research_bundle.py verify OUTPUT/new-bundle.zip
 ```
 
 Existing reconciliation requires an unimported common base and an unused planned
@@ -60,10 +112,18 @@ search. Later imports use that same base and the current protocol, as documented
 in the reconciliation guide. Previewing an already used planned search does not
 authorize replacing it. No mock-adapter ledger may be mixed into CSV promotion.
 
-The resulting search remains incomplete. No screening, report, study, evidence,
+The resulting search remains incomplete. Only the supplied screening choices are
+added in the later steps: A included and B excluded. No report, study, evidence,
 guideline applicability or development recommendation is created. Withholding a
 collection row is not a screening exclusion. File EOF and record counts do not
 prove a search total, complete coverage or PRISMA compliance.
+
+The ordinary research bundle does not independently verify the original NBIB wrapper.
+Keep new-nbib.json, new-csv-intake.json, the immutable common base, all completed human
+inputs, every intermediate protocol and the matching implementation alongside it.
+Use [native collection bundles](NATIVE_COLLECTION_BUNDLES.md) when you need the
+corresponding native-wrapper archive workflow; ordinary bundle verification is not
+that stronger claim. All exported filenames must be new, never silently overwritten.
 
 ## Supported grammar and lossless records
 
@@ -144,7 +204,7 @@ bundle and lists imports for which no native wrapper was supplied.
 For a separate inspection copy of the derivative:
 
 ```sh
-python nbib_intake.py verify /outside/new-nbib.json --csv-output /outside/new-derived.csv --text
+python nbib_intake.py verify OUTPUT/new-nbib.json --csv-output OUTPUT/new-derived.csv --text
 ```
 
 `--csv-output` and `--intake-output` are mutually exclusive. All output paths use
