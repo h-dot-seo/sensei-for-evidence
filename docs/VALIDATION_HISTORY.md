@@ -3719,3 +3719,24 @@ output wording was clarified afterward; final focused checks cover that metadata
 Audit505/manifest504 and Python3.10 grammar258 passed. All actual checker and28
 ENGINE_FILES bytes are unchanged. No unresolved review blockers; Korean-locale
 Windows, external-export compatibility and prior HTML visual QA remain unverified.
+
+## 2026-11-14: 0.127.0-result-document-shapes
+
+Added descriptive completed manual result candidates and separate import-review
+schemas. Exact nested fields, candidate bounds, mechanism labels and required source
+reference structure track the existing Python validator. The original extraction
+worksheet and blank target review intentionally fail these completed-input shapes.
+No values, review, source authenticity or scientific judgement are generated.
+
+Python remains authoritative for nonblank text, duplicate evidence/source identities,
+real dates, exact integer versions, report/study/record/source context and exact target
+binding. Tests retain accepted and rejected structural variants and explicitly looser
+shape examples rather than claiming equivalence. The existing complete NBIB-to-evidence
+rehearsal still assembles and replays the unchanged supplied inputs, and rejects stale
+review hashes and unknown sources despite passing shape checks. The explicit example
+inventory now maps9 of113 files;104 remain outside these seven authored shapes.
+All107 root Python files and ENGINE_FILES are unchanged. Full2212 tests in181.299s
+passed (skip1). Independent33 focused tests plus32 leaf mutations passed; no blockers.
+Audit508/manifest507 and Python3.10 grammar259 passed. Final focused validation covers
+this record update. External reference-manager compatibility, prior HTML visual QA
+and Korean-locale Windows remain unverified.

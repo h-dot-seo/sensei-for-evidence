@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.126.0-source-observation-contract",
+  "release": "0.127.0-result-document-shapes",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 504,
+  "file_count": 507,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4379,
-      "sha256": "855c6cfd455b6914f507b75b710bdc167102964afc7026d472ad74ec96dae388"
+      "bytes": 4273,
+      "sha256": "24efb941f12123ff1a314a11c7aef238bf52109336d999fdf106db6b826bb599"
     },
     {
       "path": "accounting_flow.py",
@@ -305,8 +305,8 @@
     },
     {
       "path": "docs/EXTRACTION_WORKSHEETS.md",
-      "bytes": 9862,
-      "sha256": "ca3926b06fedb6e42c50384dd796c18ef52840956a01cd9c96b33c0d34b654dd"
+      "bytes": 10187,
+      "sha256": "a1d7603cf8a0ced3ed92e2941a33fe585e38121d477fee4c16af73b10c10828a"
     },
     {
       "path": "docs/FIRST_RUN.md",
@@ -555,8 +555,8 @@
     },
     {
       "path": "docs/SCHEMAS.md",
-      "bytes": 7594,
-      "sha256": "7ab0ebd2d054d17a0572e3a56e218d504d557256b6d1b4498c2934755eac76ee"
+      "bytes": 9230,
+      "sha256": "6b4b228bfd89d117ee800e74642f8ff77051c51451c5059c8004c84089e21015"
     },
     {
       "path": "docs/SCREENING_DECISIONS.md",
@@ -645,8 +645,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 264733,
-      "sha256": "2743d6eb3a7d5e2da4b354a62a74a4e38b11537f0cd6dffde708d92714469c8f"
+      "bytes": 266174,
+      "sha256": "351c9824df2b7133f1eb51190326ac01a53c687519fd13b9cdf288070b8d9047"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -1644,6 +1644,16 @@
       "sha256": "ade5ec8167317902da10757cfe4753a8eda8333ec6522472cd2cc4705863ebd8"
     },
     {
+      "path": "schemas/result-candidates.schema.json",
+      "bytes": 4005,
+      "sha256": "3055bf31c400f4480a602a35ac8be9f2189ebdf7f5ca914028de2f211a9727c6"
+    },
+    {
+      "path": "schemas/result-review.schema.json",
+      "bytes": 1273,
+      "sha256": "12806fde5e352c769f69e3ce4ebbeb99d63eec8a93268b39804c76ca5f5a61f5"
+    },
+    {
       "path": "schemas/screening-decision.schema.json",
       "bytes": 1533,
       "sha256": "0b6b9a1a7d551b00c294d0ea67447922b813ddbc4252b331ed7d26efdf133307"
@@ -1760,8 +1770,8 @@
     },
     {
       "path": "tests/schema_fixture_inventory.json",
-      "bytes": 16854,
-      "sha256": "7b1337b129d2cb15be349055751fa4618091f28d33834eacf96ba8583a88c6fe"
+      "bytes": 17034,
+      "sha256": "3bbf765f8b22454576482222bc789101435696afa055731fbbf670eba4ce9b32"
     },
     {
       "path": "tests/test_accounting_flow.py",
@@ -1815,8 +1825,8 @@
     },
     {
       "path": "tests/test_batch_to_evidence_walkthrough.py",
-      "bytes": 25149,
-      "sha256": "0ad3fd22cc1b7f38f18e7503f43e01ae82b977eedf41d7e50f0233e42b37f38d"
+      "bytes": 26650,
+      "sha256": "238e66eb7aeedecffa57449fe688bcf987b19fb78b987ae5341ed2d03a340487"
     },
     {
       "path": "tests/test_bibliographic_intake.py",
@@ -2294,6 +2304,11 @@
       "sha256": "bdd609d5ac5ffb8ec670b28c61c881a9a29cafb6f37119a2bc7a9034709860ac"
     },
     {
+      "path": "tests/test_result_schemas.py",
+      "bytes": 6058,
+      "sha256": "b710e579a20ac1ce6213a27ea9c5500b7989cd642af35fd4172312143ac041cb"
+    },
+    {
       "path": "tests/test_result_source_review.py",
       "bytes": 21603,
       "sha256": "2524e70942595bee45fcb499926c40cc50c8876f56ed7e9bcf50ac0f0e992c21"
@@ -2321,7 +2336,7 @@
     {
       "path": "tests/test_schema_check.py",
       "bytes": 10424,
-      "sha256": "d86196024d64822222941df9c57b362a76c094bb9c48c13daca4306893427609"
+      "sha256": "27f7822405438758bc9684a73f9724600d31e6287f3250e616b833c2b76263f9"
     },
     {
       "path": "tests/test_screening_decision_batch.py",

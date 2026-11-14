@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.126.0-source-observation-contract` (2026-11-14). This file is the
+Current release: `0.127.0-result-document-shapes` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,24 +55,23 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.126.0-source-observation-contract` (2026-11-14).
+Release: `0.127.0-result-document-shapes` (2026-11-14).
 
-Extended the partial command-effects registry with exactly six local artifact/source/
-passage observation operations. Reviewed coverage is32 of175;143 remain NOT_REVIEWED.
-Negative reports may coexist with exit1 and an optional newly created JSON output;
-text stdout does not change that stored JSON. Caught input/access errors remain a
-separate stderr path. Unsupported secure source access, including native Windows,
-still fails closed before opening the source root. No fallback, remote lookup,
-permission inference, human approval or canonical state update is added.
+Added descriptive completed manual result candidates and separate import-review
+schemas. Exact nested fields, candidate bounds, mechanism labels and required source
+reference structure track the existing Python validator. The original extraction
+worksheet and blank target review intentionally fail these completed-input shapes.
+No values, review, source authenticity or scientific judgement are generated.
 
-Actual checkers and ENGINE_FILES are unchanged. The declaration reader accepts the
-existing json_or_text negative channel and all root source bindings are refreshed.
-Source drift still rejects the contract. Synthetic CLI tests cover successful/negative
-source observations, output files, templates, malformed inputs and unavailable secure
-access; scientific fidelity and human acceptance remain outside the observations.
-Full2207 tests in184.505s passed (skip1). Independent17 tests plus seven negative
-stdout-only JSON/text paths passed, with input/source files unchanged. Template-only
-output wording was clarified afterward; final focused checks cover that metadata edit.
-Audit505/manifest504 and Python3.10 grammar258 passed. All actual checker and28
-ENGINE_FILES bytes are unchanged. No unresolved review blockers; Korean-locale
-Windows, external-export compatibility and prior HTML visual QA remain unverified.
+Python remains authoritative for nonblank text, duplicate evidence/source identities,
+real dates, exact integer versions, report/study/record/source context and exact target
+binding. Tests retain accepted and rejected structural variants and explicitly looser
+shape examples rather than claiming equivalence. The existing complete NBIB-to-evidence
+rehearsal still assembles and replays the unchanged supplied inputs, and rejects stale
+review hashes and unknown sources despite passing shape checks. The explicit example
+inventory now maps9 of113 files;104 remain outside these seven authored shapes.
+All107 root Python files and ENGINE_FILES are unchanged. Full2212 tests in181.299s
+passed (skip1). Independent33 focused tests plus32 leaf mutations passed; no blockers.
+Audit508/manifest507 and Python3.10 grammar259 passed. Final focused validation covers
+this record update. External reference-manager compatibility, prior HTML visual QA
+and Korean-locale Windows remain unverified.
