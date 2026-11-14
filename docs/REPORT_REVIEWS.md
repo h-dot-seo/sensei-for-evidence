@@ -81,8 +81,9 @@ inert text; document access, copyright and authenticity require separate handlin
    A null document digest remains visibly `DOCUMENT_BYTES_UNBOUND`; the template
    does not invent or approve it. Pending/unavailable reports receive navigation
    context but no new full-text review scaffold.
-4. After actual human review, supply the missing fields and copy only the completed
-   assertion rows into the working protocol. Existing opinions, reviewer labels
+4. After actual human review, supply the missing fields. The separate
+   [append-only intake](REPORT_REVIEW_INTAKE.md) accepts completed assertion rows
+   through exact import review and replay, avoiding manual protocol editing. Existing opinions, reviewer labels
    and dates are not copied into new scaffolds or automatically renewed.
 5. A canonical full-text decision remains a separate supplied `reports` field.
    This command never applies a review, votes or changes study assignments.

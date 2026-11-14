@@ -3203,3 +3203,36 @@ All examples are synthetic. Import review authorizes recording supplied choices,
 not adjudication correctness, reviewer identity, reading, chronology or scientific
 validity. The detached application must be retained for batch provenance.
 
+
+## 2026-11-14 Append-only full-text reviewer-position intake (0.101.0-report-review-intake)
+
+The #33 report_reviews follow-up closes the documented manual protocol-copy gap.
+Existing report_review templates remain the first stage; a separate JSON intake
+provides exact target, human import-review assembly and full replay. New positions
+require a retrieved report, supplied source descriptors and the current source basis.
+Null document digests remain explicitly unbound and non-null digests unverified.
+Existing stale positions, report/source/canonical fields, memberships and old review
+prefixes stay unchanged. Duplicate IDs/pairs are rejected without supersession.
+CSV intake and report-study/inventory position ledgers are separate future work.
+
+Local Python 3.12 full suite: `Ran 2026 tests in 151.610s`, `OK (skipped=1)`.
+Initial focused intake/report-review/navigation suite: 79 pass. Final new intake
+module: 13 pass, including a subsequently added absent/empty-ledger first-append
+regression. Independent review ran 64 intake/report-review/shared-writer tests and
+also independently exercised first-ledger append/replay; no remaining blockers.
+Audit: 433 files, pass; manifest, compileall, Python 3.10 grammar, unchanged engine/
+adapter bytes and existing executable sh blocks pass. Catalog: 26 routes, 121 help
+entrypoints. No failures occurred in this increment.
+
+Synthetic cases cover exact append/replay and unchanged record/report counts,
+missing/pending/unavailable source contexts, explicitly unbound document digests,
+source drift, preserved stale positions, no supersession, schema/partial/date/choice
+validation, 100-row and byte budgets, unrelated-input/implementation review drift,
+full-validator failure, replay tampering, exclusive single-output CLI and the
+verbatim guide. Complete-file exclusive publication reuses the reviewed batch
+writer without changing it. Selected source copies are budgeted before retention.
+
+These checks do not establish actual full-text reading, reviewer identity, source
+authenticity, comparable coverage, adjudication, scientific validity or readiness.
+The detached application carries import-review provenance and must be retained.
+

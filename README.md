@@ -151,7 +151,7 @@ documented command.
 | `bibliographic_intake.py`, `nbib_intake.py`, `nbib_batch_intake.py`, `ris_intake.py`, `bibliographic_review.py` | Preserve CSV/NBIB/RIS exports byte-exactly, then reconcile identities explicitly into screening |
 | `pubmed_discovery.py`, `pubmed_metadata.py` | Optional preview-bound live ESearch/EFetch; the only networked commands |
 | `screening_review.py`, `screening_decision.py`, `screening_sheet.py`, `screening_sheet_intake.py`, `screening_decision_sheet.py`, `screening_decision_batch.py`, `screening_decision_batch_apply.py` | Supplied reviewer positions; explicit supplied screening decisions |
-| the ten `report_*.py` command-line scripts, `inventory_intake.py` | Report registration, retrieval updates, source declarations and byte checks, full-text positions and decisions, report-study positions and inventory |
+| `report_*.py` command-line scripts, `inventory_intake.py` | Report registration, retrieval updates, source declarations and byte checks, full-text positions and decisions, report-study positions and inventory |
 | `result_*.py`, `condition_intake.py` | Worksheets, passage checks, manual result intake, drift comparison, text corrections, nonclinical conditions |
 | `context_intake.py`, `work_context_intake.py`, `appraisal_intake.py`, `appraisal_source_review.py` | Supplied context and work assignment; supplied appraisals and later comparison |
 | `synthesis_review.py`, `challenge_intake.py`, `readiness_review.py`, `readiness_intake.py` | Synthesis snapshot; independent challenges; readiness gates and sufficiency/readiness assertions |
@@ -323,3 +323,12 @@ review must bind the exact original, CSV and implementation. Assembly creates a
 detached application only; successful full replay permits a new protocol export.
 Original inputs and existing positions are preserved. Each command publishes at
 most one complete new file, never replaces an existing destination.
+
+## Append-only full-text reviewer positions
+
+[Record supplied report positions without hand-editing the protocol](docs/REPORT_REVIEW_INTAKE.md)
+using the existing `report_review.py --template` followed by
+`report_review_intake.py target`, `assemble` and `verify`. A separate import review
+binds exact supplied positions/source context; no canonical eligibility or document
+authenticity is inferred. Retrieved/source-declared reports only, at most 100 new
+positions, no reviewer supersession. Existing stale assertions remain unchanged.

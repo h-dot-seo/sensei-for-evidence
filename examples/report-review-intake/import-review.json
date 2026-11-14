@@ -1,0 +1,9 @@
+{
+  "decision": "import_report_reviews",
+  "rationale": "Record exact supplied synthetic positions only.",
+  "receipt_id": "synthetic-import",
+  "reviewed_at": "2026-11-14",
+  "reviewer": "Synthetic importer",
+  "schema_version": 1,
+  "target_sha256": "9d12b1d53b8cb60e2fff7e957fce420b7158fc26fcc1a34696d2e4d5b23cf14e"
+}

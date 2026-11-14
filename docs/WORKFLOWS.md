@@ -559,3 +559,12 @@ review must bind the exact original, CSV and implementation. Assembly creates a
 detached application only; successful full replay permits a new protocol export.
 Original inputs and existing positions are preserved. Each command publishes at
 most one complete new file, never replaces an existing destination.
+
+## Append-only full-text reviewer positions
+
+[Record supplied report positions without hand-editing the protocol](REPORT_REVIEW_INTAKE.md)
+using the existing `report_review.py --template` followed by
+`report_review_intake.py target`, `assemble` and `verify`. A separate import review
+binds exact supplied positions/source context; no canonical eligibility or document
+authenticity is inferred. Retrieved/source-declared reports only, at most 100 new
+positions, no reviewer supersession. Existing stale assertions remain unchanged.

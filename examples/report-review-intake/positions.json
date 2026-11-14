@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "report_reviews": [
+    {
+      "review_id": "synthetic-new-position",
+      "report_id": "report-one",
+      "reviewer": "Synthetic new reader",
+      "reviewed_at": "2026-11-14",
+      "decision": "unclear",
+      "rationale": "Synthetic supplied position, not an eligibility decision.",
+      "reviewed_locator": "synthetic:page-1 supplied coverage",
+      "source_basis_sha256": "74d4e9a9a9e7c247ced1115f2a6b515cc6d36d13e32633194bb0ac4dabc80241"
+    }
+  ]
+}

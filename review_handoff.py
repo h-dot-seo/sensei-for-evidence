@@ -160,13 +160,16 @@ SUPPLIED_INPUT_WORKFLOWS = [
          required_human_inputs=['Explicit retrieved report and human candidate-study label, completed description, recorder/date and selected same-report source IDs.',
                                 'Current supplied inventory source basis and separate exact-input import review.'],
          boundary='Descriptive inventory is not inclusion, eligibility, study independence or result extraction. New stale assertions and mock-adapter inputs are rejected. Existing descriptions and reviews remain; additional same-pair descriptions can stale earlier candidate positions without renewal.'),
-    dict(workflow_id='full_text_decision', title='Apply a separate supplied full-text eligibility choice',
-         guide_paths=['docs/REPORT_DECISIONS.md', 'docs/REPORT_REVIEWS.md'],
+    dict(workflow_id='full_text_decision', title='Record separate supplied full-text positions and eligibility choices',
+         guide_paths=['docs/REPORT_DECISIONS.md', 'docs/REPORT_REVIEWS.md', 'docs/REPORT_REVIEW_INTAKE.md'],
          entrypoints=[dict(script='report_decision.py', arguments=[command, '--help'])
+                      for command in ('target', 'assemble', 'verify')] +
+                     [dict(script='report_review.py', arguments=['--help'])] +
+                     [dict(script='report_review_intake.py', arguments=[command, '--help'])
                       for command in ('target', 'assemble', 'verify')],
          required_human_inputs=['Explicit already retrieved report and actual full-text assessment.',
                                 'Human choice/reason and explicit study declaration for inclusion; existing downstream links must remain valid.'],
-         boundary='Retrieval is not inclusion. No report-study membership, majority decision, reading or eligibility correctness is inferred. Existing validators decide input compatibility.'),
+         boundary='Append-only reviewer-position intake requires a retrieved/source-bound report and separate import review; it never changes canonical eligibility. Retrieval is not inclusion. No report-study membership, majority decision, reading or eligibility correctness is inferred. Existing validators decide input compatibility.'),
     dict(workflow_id='result_intake', title='Append explicitly supplied traceable result rows',
          guide_paths=['docs/MANUAL_RESULT_INTAKE.md', 'docs/EXTRACTION_WORKSHEETS.md'],
          entrypoints=[dict(script='result_extraction.py', arguments=['--help'])] +
