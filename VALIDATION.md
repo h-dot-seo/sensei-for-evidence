@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.112.0-protocol-scaffold` (2026-11-14). This file is the
+Current release: `0.113.0-protocol-key-inventory` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -199,3 +199,29 @@ CLI refusal passed with no blockers. Audit468/manifest467 and grammar239 passed.
 and do not guard hostile ancestor/path races. A valid shape is not plan/query adequacy,
 source authenticity, approval, search execution or scientific readiness. Previously
 unverified external-tool compatibility and HTML visual QA remain unverified.
+
+## 2026-11-14: names-only protocol field inventory (0.113.0)
+
+Added protocol_keys.py list/inspect as the independent unknown-root-key slice of
+roadmap53. The explicit26-field inventory exposes names such as apraisals without
+renaming, fuzzy suggestions, rejecting unknown fields or inferring research gates.
+Reports omit values, nested keys and input hashes; errors omit paths/parser fragments.
+Known names are not a schema/acceptance/required-field claim. Generic hashes/diffs can
+still retain unknown fields. Caller selects protocol roots, not detached/state schemas.
+Existing status/handoff and schema2 contracts remain byte-identical; all prior root
+Python/ENGINE_FILES are unchanged. Broader record-shape registry and schemas/explain
+remain separate, not claimed complete. Input/report limit50MB, JSON parsing in memory;
+values are necessarily decoded but not semantically inspected, exposed or hashed.
+Names themselves can be private, so this is not anonymization.
+
+New9 and focused15 tests passed, including43 supplied protocol examples, private-value
+non-echo, visible control/format escapes, strict/bounded CLI failures and a literal
+three-command guide. Initial drift checking exposed constant and data-driven handoff
+accesses; static literal constants and audited section tables now join finite loops
+in the bidirectional check. Unresolved named dynamic access still fails, but alias/
+whole-program data-flow remains explicitly outside that test's guarantee. Independent13 and direct error-privacy checks passed. Review identified a future
+module-constant/loop-variable shadow case; loop-first resolution plus shadow rejection
+and regression were added, final9 passed. Initial full run stopped before that test
+correction; final full2128 tests166.281s OK(skip1), independent final9 passed.
+Audit471/manifest470 and Python3.10 grammar241 passed. External compatibility/HTML visual QA remain
+unverified; no source, judgement, rights, approval or readiness claims are introduced.
