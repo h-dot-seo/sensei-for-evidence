@@ -89,3 +89,8 @@ after publication may leave a complete output, so inspect before retrying. This 
 not an ancestor-race security boundary. The existing template retains its original
 exclusive-write semantics. Keep real sources, assertions and applications outside
 this public repository; no network/model call or scientific readiness is asserted.
+
+Import-review validation and exact replay now share the small
+`reviewed_intake_safety.py` helper with pair-position intake. Its bytes are bound
+in the target; old targets need their recorded implementation or fresh review.
+The source/report rules and engine validators are unchanged.

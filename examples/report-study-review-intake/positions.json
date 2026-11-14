@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "report_study_reviews": [
+    {
+      "review_id": "synthetic-pair-new",
+      "report_id": "report-one",
+      "study_id": "study-A",
+      "reviewer": "Synthetic pair reader",
+      "reviewed_at": "2026-11-14",
+      "decision": "exclude",
+      "rationale": "Synthetic supplied exclusion position only.",
+      "reviewed_locator": "synthetic:page-1",
+      "reviewed_source_ids": [
+        "source-main"
+      ],
+      "source_basis_sha256": "02c6b2d66c21decd992adf5f9ca185f63dff05e65a6d37e659fe44a1a8658fcf"
+    }
+  ]
+}

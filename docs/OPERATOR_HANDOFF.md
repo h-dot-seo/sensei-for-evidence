@@ -72,10 +72,10 @@ NOT_ESTABLISHED and conclusion readiness stays NOT_READY.
 
 ## Discover supplied-input workflows without executing them
 
-The JSON now also contains `supplied_input_workflows`, a static catalog of 26
+The JSON now also contains `supplied_input_workflows`, a static catalog of 27
 existing workflow groups, and `supplied_input_workflow_scope`. Plain text displays
 the same catalog. Each group names its guide files, required human inputs,
-operation limits and parser-help argument arrays. The 121 entry points all end in
+operation limits and parser-help argument arrays. The 125 entry points all end in
 `--help`: they explain command syntax, not execute research or write a draft.
 
 The routes cover:
@@ -87,6 +87,7 @@ The routes cover:
   do not accept RIS wrappers.
 - Separate screening reviewer positions and explicit canonical decisions.
 - Report registration, later retrieval assertions and full-text choices.
+- Separately reviewed exact report-study positions with explicit human source subsets.
 - Separately reviewed descriptive candidate inventory, without creating study
   membership or extraction results. New assertions require current source context;
   adding descriptions can stale earlier candidate positions without renewing them.

@@ -211,3 +211,9 @@ ENGINE_FILES and ordinary receipt schemas remain unchanged.
 targets for a bounded append-only position ledger. Existing template output remains
 the starting point; exact separate import review and full replay replace protocol
 hand-editing. Canonical reports/sources and ENGINE_FILES are unchanged.
+
+`report_study_review_intake.py` preserves the engine's exact membership/source
+semantics and requires explicit same-report source subsets. A small
+`reviewed_intake_safety.py` shares only import-review schema/date validation and
+whole-application replay with report-review intake. No ledger/domain abstraction
+or canonical schema redesign is introduced; both bind the helper bytes.

@@ -83,8 +83,9 @@ people or independent review. Preserve snapshots before replacing assertions.
 3. Generate a blank pair-specific template. Only report ID, study ID and source
    hash are filled; reviewer, date, position, rationale, location and
    `reviewed_source_ids` remain null. The tool never chooses all sources for a person.
-4. After human review, fill the fields and copy only the completed assertion rows
-   into a separate working protocol. Do not copy a fresh hash merely to erase a
+4. After human review, fill the fields. The separate
+   [append-only intake](REPORT_STUDY_REVIEW_INTAKE.md) records completed rows via
+   exact import review and replay, without manual protocol editing. Do not copy a fresh hash merely to erase a
    stale cue. Existing human fields and hashes remain visible but are not renewed.
 
 Templates are available only for current memberships on retrieved reports with
