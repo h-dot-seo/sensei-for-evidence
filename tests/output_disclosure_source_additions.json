@@ -1,0 +1,4 @@
+{
+  "engine_hook": "    if 'output_disclosures' in protocol:\n        from output_disclosure_links import link_disclosures\n        result['output_disclosures'] = link_disclosures(protocol, readiness, work)\n",
+  "bundle_summary": "    if 'output_disclosures' in research:\n        context = research['output_disclosures']\n        summary += ('Supplied output disclosure records: ' + str(len(context['disclosure_ledger'])) + '\\n'\n                    'Stale disclosure gate bindings: ' + str(len(context['stale_disclosure_ids'])) + '\\n'\n                    'Supplied labels do not establish actual publication, permission or scientific closure. Mechanical release readiness: NOT_RELEASED.\\n')\n"
+}

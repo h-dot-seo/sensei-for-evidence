@@ -10,7 +10,7 @@ MAX_BYTES = 50_000_000
 KNOWN_TOP_LEVEL_KEYS = (
     'adapter_receipts', 'appraisals', 'bibliographic_imports', 'challenges', 'contexts',
     'evidence', 'evidence_bases', 'exclusion_criteria', 'experimental_units', 'gaps', 'inclusion_criteria',
-    'planning_decisions', 'question', 'question_records', 'readiness_assertions', 'report_reviews',
+    'output_disclosures', 'planning_decisions', 'question', 'question_records', 'readiness_assertions', 'report_reviews',
     'report_sources', 'report_study_inventory', 'report_study_inventory_reviews',
     'report_study_reviews', 'reports', 'screening', 'screening_decision_history',
     'screening_reviews', 'search_plan', 'searches', 'synthesis_statements', 'version',

@@ -98,7 +98,8 @@ does not become an empirical evidence row.
 
 ## Validator boundary
 
-The script checks selected required fields, search paging/count assertions, screening
+`validate_run.py` checks the separate legacy agent-state schema, not evidence protocols
+or supplied output-disclosure records. It checks selected required fields, search paging/count assertions, screening
 arithmetic, duplicate reference IDs and release flags/citation/artifact linkage. It
 does not authenticate a search receipt, inspect a paper, assess bias, establish legal
 status, verify a storage location or certify scientific sufficiency. Its output must
@@ -245,3 +246,6 @@ Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [cont
 
 
 Supplied question labels and separately reviewed transitions: [question ledger](QUESTION_LEDGER.md). Optional one-way context only; no answer generation, new readiness gate, terminal-record reopening or scientific closure assessment.
+
+
+Research-output disclosure bookkeeping is separate from repository release engineering: [supplied output disclosures](OUTPUT_DISCLOSURE.md). The legacy validator is retained without a state bridge or changed COMPLETE rules. Supplied labels do not perform publication or establish scientific closure.

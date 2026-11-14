@@ -494,3 +494,16 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | `python question_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or separately record supplied question labels; no answer assessment | [Question ledger](QUESTION_LEDGER.md) |
 
 | `question_links.py` | Supplied question validation, ancestry and current/stale statement bindings; no answer assessment |
+
+
+## Supplied research-output disclosures
+
+| Usage | Purpose | Guide |
+| --- | --- | --- |
+| `python output_disclosure_intake.py template [-h] [--output OUTPUT] protocol assertion_id` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
+| `python output_disclosure_intake.py target [-h] [--output OUTPUT] [--artifact-observations ARTIFACT_OBSERVATIONS] [--bundle BUNDLE] protocol candidate_document` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
+| `python output_disclosure_intake.py assemble [-h] [--output OUTPUT] [--artifact-observations ARTIFACT_OBSERVATIONS] [--bundle BUNDLE] protocol candidate_document review_document` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
+| `python output_disclosure_intake.py verify [-h] [--output OUTPUT] [--artifact-observations ARTIFACT_OBSERVATIONS] [--bundle BUNDLE] [--protocol-output PROTOCOL_OUTPUT] protocol application_record` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
+| `python output_disclosure_review.py [-h] [--text] [--output OUTPUT] protocol` | Inspect or record supplied research-output disclosures; never publish or assess release readiness | [Output disclosure](OUTPUT_DISCLOSURE.md) |
+
+| `output_disclosure_links.py` | Exact supplied disclosure and gate-item context, not actual publishing or scientific closure |

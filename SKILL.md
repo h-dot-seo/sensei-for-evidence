@@ -246,3 +246,6 @@ Existing supplied challenge/readiness flows after CSV/NBIB/RIS collection: [cont
 
 
 Supplied question labels and separately reviewed transitions: [question ledger](docs/QUESTION_LEDGER.md). Optional one-way context only; no answer generation, new readiness gate, terminal-record reopening or scientific closure assessment.
+
+
+Supplied research-output labels and exact disclosure context: [output disclosure](docs/OUTPUT_DISCLOSURE.md). No actual publication, permission or scientific closure is established; mechanical release readiness remains NOT_RELEASED.

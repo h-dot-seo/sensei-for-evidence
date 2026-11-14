@@ -1,0 +1,158 @@
+{
+  "prior_release": "0.136.0-supplied-question-ledger",
+  "prior_main": "221b8a618f490f7de4ac701f3b87c43b48f4756f",
+  "prior_source_sha256": {
+    "evidence_workflow.py": "41418fbc772ad6db47b268981c9d31c69309a6be9a89292458a364b931de25cc",
+    "adapter_integrity.py": "85322f730fc476e426caf8ec00be869f851662c75dfd5393798b9fc17b5ed3dc",
+    "bibliographic_integrity.py": "3a4596bea6f132e4ee67ab13979cb68fdd4e8a817490f69e92d3c7b989060ddd",
+    "research_bundle.py": "77dcaf862502148f3eeab4aa67c33c7b683edd9566827d261adc7931e068b0b1",
+    "research_status.py": "e1f29da64e93b96956f352858c10d2c96798e3e916c7c8fc3678eec81c45cdfb",
+    "synthesis_review.py": "dd041b59c7f7d7e77090a55bdd2f8a18e0f96ba2ad815884d5d1975365b2efb7",
+    "compare_runs.py": "51df7aa579412f54d102fde2aa9b807fc62da924f244842ce29efe7a97a1a4ff",
+    "review_handoff.py": "870853b33034c6bda676caf7af33d5f95a11bd609a923288059c600175cb3acf",
+    "readiness_review.py": "ca340e3d946c9f63367629490a7d9d3be6aed83ec735483fe957f0fad291c5e1"
+  },
+  "cases": [
+    {
+      "args": [
+        "evidence_workflow.py",
+        "examples/bibliographic-base.json"
+      ],
+      "input_sha256": "ff434613922fe7dd9d861c452094ffa27cddc501fe86690062dbc1bed5894e3c",
+      "returncode": 0,
+      "stdout_lf_sha256": "adfe200c80ac4205237babe98403bb858e92c120ad7d09e77c6ee32e6390b301",
+      "stdout_crlf_sha256": "8af903a5a20392c4b05041411f9606fcb510e28e253f084620d9d2529b2d08b7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "research_status.py",
+        "examples/bibliographic-base.json",
+        "--text"
+      ],
+      "input_sha256": "ff434613922fe7dd9d861c452094ffa27cddc501fe86690062dbc1bed5894e3c",
+      "returncode": 0,
+      "stdout_lf_sha256": "49d8f0c702ac72a6062ee600350a7c7ce37b31309fe8c5db7d41a3b8f6febfd6",
+      "stdout_crlf_sha256": "b36e2e54052c18a8fe634a9fa7308bb34169edd02beceb27bf6171f8b089e4b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "synthesis_review.py",
+        "examples/bibliographic-base.json",
+        "--text"
+      ],
+      "input_sha256": "ff434613922fe7dd9d861c452094ffa27cddc501fe86690062dbc1bed5894e3c",
+      "returncode": 0,
+      "stdout_lf_sha256": "780d007e7642772b03d83995a471ca6aba77eafc36e595d684c3adf67958b2c3",
+      "stdout_crlf_sha256": "c89a3bea09d35be01326a8f07f46fa0dadf19274faf5c736b9fe0cca93e7ebc7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "readiness_review.py",
+        "examples/bibliographic-base.json",
+        "--text"
+      ],
+      "input_sha256": "ff434613922fe7dd9d861c452094ffa27cddc501fe86690062dbc1bed5894e3c",
+      "returncode": 0,
+      "stdout_lf_sha256": "67fa65992e9e331ec6ed42829d91c4bff7d8984ddb9e87b6500d55a290b6f1be",
+      "stdout_crlf_sha256": "61c84587f84ac3767efc9bcad9c27d23fa5ab270d04bc018010bc117de437173",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "evidence_workflow.py",
+        "examples/synthesis-review.json"
+      ],
+      "input_sha256": "25edc6c594cdcc760b04038c41b058f05a7b955fd84fe73bf287e6cbfca1c92a",
+      "returncode": 0,
+      "stdout_lf_sha256": "1fe3029d172c2c42c4e891707e3c29b152e5e0ec65b1a1f0b74df40432405dde",
+      "stdout_crlf_sha256": "ea0c21ae0594c3d018726e2d50bc6b0206d421899fa98a7688ee02f12bc4021d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "research_status.py",
+        "examples/synthesis-review.json",
+        "--text"
+      ],
+      "input_sha256": "25edc6c594cdcc760b04038c41b058f05a7b955fd84fe73bf287e6cbfca1c92a",
+      "returncode": 0,
+      "stdout_lf_sha256": "f53df2d950205ffce9a33989ab11f9df17c8119f96b55d0d7af9151bb59fd2ba",
+      "stdout_crlf_sha256": "417fee3ad2b9dbd8a15d3f5b6892f103c5874ae35240e43dc72a9943619156b6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "synthesis_review.py",
+        "examples/synthesis-review.json",
+        "--text"
+      ],
+      "input_sha256": "25edc6c594cdcc760b04038c41b058f05a7b955fd84fe73bf287e6cbfca1c92a",
+      "returncode": 0,
+      "stdout_lf_sha256": "66293100282da91e3b0e78084a06a3fc9d401da6c71cc973180c403449114ef5",
+      "stdout_crlf_sha256": "176e6a0a0a833ed69d04a13e1421eedec0f55b864cb425367956bc072eea12a4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "readiness_review.py",
+        "examples/synthesis-review.json",
+        "--text"
+      ],
+      "input_sha256": "25edc6c594cdcc760b04038c41b058f05a7b955fd84fe73bf287e6cbfca1c92a",
+      "returncode": 0,
+      "stdout_lf_sha256": "83a08fad8e789bbe59a44ab9ceb31e5ca74687ffa47c82bbd3151fa7fda7532c",
+      "stdout_crlf_sha256": "d625a68a3c04096d8495e8fe366b92039108e5ec45750334e97243046cb13d8f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "evidence_workflow.py",
+        "examples/report-protocol.json"
+      ],
+      "input_sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78",
+      "returncode": 0,
+      "stdout_lf_sha256": "847481a2657a16a6671b63a9caeb89cc0fb0bc627940613377b3b92548d68424",
+      "stdout_crlf_sha256": "a936fc48068626feb461a2d462c68a52b3b3556ae777e3ccca0e3460a9946531",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "research_status.py",
+        "examples/report-protocol.json",
+        "--text"
+      ],
+      "input_sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78",
+      "returncode": 0,
+      "stdout_lf_sha256": "9b253157aaab62f32abb653f1247ef331d77d249857814e0ea9a0c5fc4c6fc52",
+      "stdout_crlf_sha256": "641b71d535f3327c000770a51a1b9a2f8bca575ef726a5390af832b562cd5b1e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "synthesis_review.py",
+        "examples/report-protocol.json",
+        "--text"
+      ],
+      "input_sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78",
+      "returncode": 0,
+      "stdout_lf_sha256": "265ad7f6e9c754bb40b74b1d257bf0546180fff5518ce753e1e25153e6d50f52",
+      "stdout_crlf_sha256": "81b570d231c58885021417afe577fdea6d9ee7348e69a811d4136fde619c044c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "args": [
+        "readiness_review.py",
+        "examples/report-protocol.json",
+        "--text"
+      ],
+      "input_sha256": "5beb60f082e70e4b77978dd132f775046b2c53123b74ed865826644e23ccae78",
+      "returncode": 0,
+      "stdout_lf_sha256": "ca32d6c59cc9af3e28628379b874f65e4623d54adf1ac368c97abdc9fc9da082",
+      "stdout_crlf_sha256": "4ddd694c9da994e7ea9af04f1b1e6211c6f05ac475eb87be2b5fc1885cdbac16",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

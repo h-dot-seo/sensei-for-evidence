@@ -21,6 +21,7 @@ from evidence_workflow import run
 from challenge_links import challenge_basis
 from tests.test_evidence_basis import label
 from json_io import canonical_json_bytes
+from tests._disclosure_compat import prior_bytes
 from tests._question_compat import prior_builder_source, prior_workflow_bytes
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -100,7 +101,7 @@ def plain(p):
 class BibliographicAssertionContinuationTests(unittest.TestCase):
     def test_exact_two_name_change_and_existing_validator_bytes(self):
         proof=json.loads((ROOT/'tests/bibliographic_assertion_compatibility.json').read_bytes())
-        current=(ROOT/'bibliographic_integrity.py').read_bytes()
+        current=prior_bytes('bibliographic_integrity.py')
         self.assertEqual(current.count(b"'evidence_bases', 'question_records'"),1)
         current=current.replace(b"'evidence_bases', 'question_records'",b"'evidence_bases'",1)
         old=b"'report_study_inventory_reviews', 'evidence_bases',"

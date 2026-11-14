@@ -525,6 +525,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
         'search_plan': entity_changes(left['search_plan_audit']['search_plan_ledger'],
                                       right['search_plan_audit']['search_plan_ledger'], 'search_id'),
     }
+    if 'output_disclosures' in before or 'output_disclosures' in after:
+        entities['output_disclosures'] = entity_changes(before.get('output_disclosures', []), after.get('output_disclosures', []), 'release_id')
     if 'question_records' in before or 'question_records' in after:
         entities['question_records'] = entity_changes(before.get('question_records', []), after.get('question_records', []), 'question_id')
     if 'evidence_bases' in before or 'evidence_bases' in after:
@@ -556,6 +558,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
         old_questions = {r['question_id']: {f:r[f] for f in fields} for r in left.get('question_ledger', {}).get('question_ledger', [])}
         new_questions = {r['question_id']: {f:r[f] for f in fields} for r in right.get('question_ledger', {}).get('question_ledger', [])}
         result['question_transitions'] = [dict(question_id=qid, before=old_questions.get(qid), after=new_questions.get(qid)) for qid in sorted(set(old_questions) | set(new_questions)) if old_questions.get(qid) != new_questions.get(qid)]
+    if 'output_disclosures' in before or 'output_disclosures' in after:
+        result['output_disclosure_context'] = dict(before=left.get('output_disclosures'), after=right.get('output_disclosures'), actual_publication_performed=False, mechanical_release_readiness='NOT_RELEASED', scope='supplied labels and current gate context only; not scientific closure')
     if has_plural_studies(before) or has_plural_studies(after):
         result['report_study_comparison'] = report_study_comparison(
             before, after, left, right, left_reports, right_reports)
@@ -578,6 +582,9 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
 
 
 def render_text(result):
+    if 'output_disclosure_context' in result:
+        base = dict(result); base.pop('output_disclosure_context')
+        return render_text(base) + 'Research-output labels are supplied assertions, not actual publication, permission or scientific closure. Mechanical release readiness: NOT_RELEASED.\n'
     """Project the comparison without hiding unchanged stale completion assertions."""
     if 'research_map_context' in result:
         from research_map_views import text as map_text

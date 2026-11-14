@@ -35,6 +35,8 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round50 optional disclosure ENGINE leaf; no absent-context fields change.
+            self.assertEqual(result['engine_sha256'].pop('output_disclosure_links.py'),hashlib.sha256((ROOT/'output_disclosure_links.py').read_bytes()).hexdigest())
             # Round49 adds only this optional question ENGINE leaf; existing hashes follow named revisions below.
             self.assertEqual(result['engine_sha256'].pop('question_links.py'),hashlib.sha256((ROOT/'question_links.py').read_bytes()).hexdigest())
             if kind == 'handoff':

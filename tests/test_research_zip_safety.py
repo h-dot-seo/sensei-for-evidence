@@ -50,7 +50,7 @@ class ResearchZipSafetyTests(unittest.TestCase):
         data=json.loads((ROOT/'tests/research_zip_previous_baselines.json').read_bytes())
         self.assertEqual(hashlib.sha256(prior_builder_source(bundle).encode()).hexdigest(),data['build_function_sha256'])
         current=bundle.engine_hashes()
-        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py','question_links.py'})
+        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py','question_links.py','output_disclosure_links.py'})
         for name,expected in data['engine_sha256'].items():
             if name not in ('research_bundle.py','evidence_workflow.py','adapter_integrity.py','bibliographic_integrity.py'):self.assertEqual(current[name],expected,name)
             elif name!='research_bundle.py':

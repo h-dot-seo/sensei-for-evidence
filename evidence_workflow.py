@@ -202,6 +202,9 @@ def run(protocol):
         result['evidence_bases'] = evidence_bases
     if bibliographic_collection is not None:
         result['bibliographic_collection'] = bibliographic_collection
+    if 'output_disclosures' in protocol:
+        from output_disclosure_links import link_disclosures
+        result['output_disclosures'] = link_disclosures(protocol, readiness, work)
     if 'question_records' in protocol:
         from question_links import link_questions
         result['question_ledger'] = link_questions(protocol, synthesis, challenge, readiness, work)
