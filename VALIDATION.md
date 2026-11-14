@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.103.0-inventory-review-intake` (2026-11-14). This file is the
+Current release: `0.104.0-test-cli-harness` (2026-11-14). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -10,7 +10,8 @@ GitHub Actions (`.github/workflows/tests.yml`) runs on every push to `main` and 
 every pull request, on a matrix of `ubuntu-latest` and `windows-latest` with Python
 3.10 and 3.12:
 
-1. `python -m unittest discover -v` — the synthetic test suite in the `tests/` package,
+1. `python -m unittest discover -v` on Python 3.10 and the same command with
+   `--durations 25` on Python 3.12 — the synthetic test suite in the `tests/` package,
    including the tests that execute the documented walkthrough command blocks exactly
    as written.
 2. `python audit_publication.py` — the limited public-file/type/secret-pattern scan.
@@ -54,31 +55,29 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-## 2026-11-14 Described candidate-position intake (0.103.0-inventory-review-intake)
+## 2026-11-14 Test-only CLI help harness (0.104.0-test-cli-harness)
 
-The #33 follow-up closes the candidate-position manual-copy gap. A bounded wrapper
-reuses existing separate import-review, exact replay and complete exclusive writer
-helpers. New positions require a currently described exact pair, retrieved report,
-source descriptors and current candidate-review basis, plus explicit same-pair
-inventory and same-report source ID subsets. Neither subset is inferred. Current
-review of stale descriptions does not renew them. Existing orphan/stale positions,
-canonical reports, included memberships, inventory descriptions and evidence remain.
+One 129-entry help-catalog loop now uses a serial trusted-test runpy harness. All
+production Python/ENGINE_FILES remain unchanged. All existing actual-process CLI,
+JSON rejection, environment, dispatcher, guide and journey checks remain intact.
+The harness restores argv/path/streams/cwd/environment; it does not simulate process
+isolation, module cache isolation, startup, signals or timeouts. New contract tests
+compare bytes/exit behavior against subprocess and verify exceptional restoration.
 
-Tests cover full same-pair description binding, distinct membership/inventory hash
-domains, pending/excluded eligibility, unavailable retrieval, explicit subsets/order,
-unknown/other-pair IDs, no supersession, 100 rows and byte budgets, absent/empty first
-ledger, exact whole replay, input immutability and exclusive outputs. The verbatim
-synthetic guide uses separate fictional position and import-review fixtures.
-No ENGINE_FILES, canonical schema or shared safety implementation changes. The
-existing descriptive_inventory route now exposes these separate positions without
-adding another route group: 27 groups, 129 help entrypoints.
+Opt-in full-catalog benchmark: all 129 entries match returncode/stdout/stderr across
+three alternating-order runs. Subprocess 5.945/5.183/5.167 seconds, in-process
+0.465/0.444/0.426 seconds on local Python 3.12.14/Linux. No timing assertions or
+claims of proportional full-suite/Windows improvement. [Runtime guide](docs/TEST_RUNTIME.md)
+records the reproducible command and retained coverage. Prior PR21 Windows3.10 job
+452 seconds/test385; Windows3.12 job368/test354. Inspect slow tests when Windows
+jobs exceed six minutes; class-fixture costs are absent from unittest durations.
+CI adds --durations25 only on Python3.12; ten-minute timeout stays unchanged.
 
-Local Python 3.12 full suite: 2053 tests pass (one platform skip). Focused new/old
-intake and navigation: 63 pass, plus the added hash-domain regression passes with
-all 15 new tests. Independent review: 56 tests pass; no blocking findings. A cosmetic
-CLI/docstring domain label was clarified after the first full run (153.759 seconds),
-then the synthetic import-review fixture regenerated and the full suite rerun.
-Audit: 444 files; manifest, compileall, Python 3.10 grammar, protected engine/adapter
-and shared helper bytes, and old executable sh blocks pass. No test failures in the
-completed implementation. Synthetic software checks are not scientific correctness,
-authenticated review or source-reading validation.
+Full local Python3.12 suite: 2060 tests in 149.919 seconds, OK (one platform skip).
+Prior local full run: 2053 tests in 155.178 seconds; new contract coverage adds seven
+tests. These sequential observations are not a controlled whole-suite speed claim.
+Focused and independent harness/navigation: 31 pass. Independent complete-catalog
+benchmark also matched bytes/exit for all129 entries (5.099s vs0.440s). No blockers.
+Audit448 files, manifest, compileall and Python3.10 grammar pass; every production
+root Python file and existing executable sh block is byte-preserved. Final checkout
+and focused regression checks rerun after validation-document/manifest update.

@@ -3298,3 +3298,30 @@ Audit: 444 files; manifest, compileall, Python 3.10 grammar, protected engine/ad
 and shared helper bytes, and old executable sh blocks pass. No test failures in the
 completed implementation. Synthetic software checks are not scientific correctness,
 authenticated review or source-reading validation.
+
+## 2026-11-14 Test-only CLI help harness (0.104.0-test-cli-harness)
+
+One 129-entry help-catalog loop now uses a serial trusted-test runpy harness. All
+production Python/ENGINE_FILES remain unchanged. All existing actual-process CLI,
+JSON rejection, environment, dispatcher, guide and journey checks remain intact.
+The harness restores argv/path/streams/cwd/environment; it does not simulate process
+isolation, module cache isolation, startup, signals or timeouts. New contract tests
+compare bytes/exit behavior against subprocess and verify exceptional restoration.
+
+Opt-in full-catalog benchmark: all 129 entries match returncode/stdout/stderr across
+three alternating-order runs. Subprocess 5.945/5.183/5.167 seconds, in-process
+0.465/0.444/0.426 seconds on local Python 3.12.14/Linux. No timing assertions or
+claims of proportional full-suite/Windows improvement. [Runtime guide](docs/TEST_RUNTIME.md)
+records the reproducible command and retained coverage. Prior PR21 Windows3.10 job
+452 seconds/test385; Windows3.12 job368/test354. Inspect slow tests when Windows
+jobs exceed six minutes; class-fixture costs are absent from unittest durations.
+CI adds --durations25 only on Python3.12; ten-minute timeout stays unchanged.
+
+Full local Python3.12 suite: 2060 tests in 149.919 seconds, OK (one platform skip).
+Prior local full run: 2053 tests in 155.178 seconds; new contract coverage adds seven
+tests. These sequential observations are not a controlled whole-suite speed claim.
+Focused and independent harness/navigation: 31 pass. Independent complete-catalog
+benchmark also matched bytes/exit for all129 entries (5.099s vs0.440s). No blockers.
+Audit448 files, manifest, compileall and Python3.10 grammar pass; every production
+root Python file and existing executable sh block is byte-preserved. Final checkout
+and focused regression checks rerun after validation-document/manifest update.
