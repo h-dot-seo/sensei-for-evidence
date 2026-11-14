@@ -167,3 +167,12 @@ records; optional repeated `--record-id` keeps explicit selection order. Read-on
 prior screening and review snapshots never prefill human choices. This export does
 not implement batch target/assemble/verify, modify canonical decisions or import
 reviewer positions. Preserve source/protocol hashes; real sheets stay private.
+
+## Read-only decision-batch target preview
+
+[Preview an exact supplied decision sheet](docs/SCREENING_DECISION_BATCH_PREVIEW.md) with
+`screening_decision_batch.py target PROTOCOL SHEET --output NEW.json`.
+The preview checks all read-only context, simulates at most 100 supplied decisions
+through existing full workflow guards and drafts a blank import review. Hypothetical
+steps are not applied receipts or approval; no candidate protocol/application is
+exported, and batch assemble/verify remains unimplemented.
