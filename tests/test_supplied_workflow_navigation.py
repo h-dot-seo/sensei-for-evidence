@@ -63,12 +63,12 @@ class SuppliedWorkflowNavigationTests(unittest.TestCase):
                 self.assertTrue(all(type(x) is str for x in entry['arguments']))
                 entries.append(entry)
         self.assertEqual(len(entries),129)
-        with tempfile.TemporaryDirectory(prefix='sensei help discovery ') as td:
-            for entry in entries:
-                checked=run_cli(entry['script'],*entry['arguments'],cwd=td)
-                self.assertEqual(checked.returncode,0,(entry,checked.stderr))
-                self.assertIn(b'usage:',checked.stdout)
-                self.assertEqual(list(Path(td).iterdir()),[])
+        # The command-reference suite executes every documented parser help in a real
+        # subprocess. Here require every navigation route to be part of that coverage.
+        from tests.test_command_reference import command_rows
+        documented = command_rows((ROOT/'docs/COMMANDS.md').read_text(encoding='utf-8'))
+        for entry in entries:
+            self.assertIn((entry['script'], tuple(entry['arguments'][:-1])), documented)
 
     def test_legacy_mock_workflow_is_unchanged_and_not_the_only_route(self):
         result=review_handoff.handoff(self.protocol)

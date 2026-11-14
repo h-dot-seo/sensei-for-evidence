@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.109.0-native-collection-export",
+  "release": "0.110.0-command-reference",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 459,
+  "file_count": 460,
   "files": [
     {
       "path": ".gitattributes",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 7787,
-      "sha256": "5eb6d9867373678ecd2717a8f84c8eff0f7ce717c1ebb8af50ff2b696a7a5d5b"
+      "bytes": 9392,
+      "sha256": "82af0815fbb52e00bc251fe96e84a02b28f1d9d8db9a0bc6b9d8e3693752c518"
     },
     {
       "path": "accounting_flow.py",
@@ -235,8 +235,8 @@
     },
     {
       "path": "docs/COMMANDS.md",
-      "bytes": 48583,
-      "sha256": "7b6d06170ea3ca3fa55cce3b283cdf6a3e3bc7eb7bbb81a34ade6934716ab82c"
+      "bytes": 51008,
+      "sha256": "3a3916b85d7041f9ff129d0d0643c239dc6b9f5985127da83c7a46a8a782cb7f"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -590,8 +590,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 243680,
-      "sha256": "1b08a420e3d08c376ed7634f4f31a02046dabfcfc7c56d78380009da395bb9c4"
+      "bytes": 245292,
+      "sha256": "22f8491b6168c033920eb8f18b216f49786f28e38719864af8c352562d6437c0"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1729,6 +1729,11 @@
       "sha256": "e4912142ea76c3fc74b59d34172a7033d9c5285bc220eaaed29a1bb99628dc16"
     },
     {
+      "path": "tests/test_command_reference.py",
+      "bytes": 5659,
+      "sha256": "9be1dabde479928d3f9512fa9012f28a9fe265385351aa09a3a62b37335755f1"
+    },
+    {
       "path": "tests/test_compare_runs.py",
       "bytes": 6744,
       "sha256": "c4216ce5cd9f76f070edb902355d979c9a16f36ecd3a590b41a9aa32d2e41d54"
@@ -1805,8 +1810,8 @@
     },
     {
       "path": "tests/test_documented_demo.py",
-      "bytes": 2425,
-      "sha256": "d871b964f252c51279a6b6b3df43e99c2550a8a265854c2ade506cb22df8eba1"
+      "bytes": 2451,
+      "sha256": "f9ec0d673dfc4bf4f04d6953924f688a5c9e30a938c40cbfbc02ff5d5b659618"
     },
     {
       "path": "tests/test_evidence_work_intake.py",
@@ -2190,8 +2195,8 @@
     },
     {
       "path": "tests/test_supplied_workflow_navigation.py",
-      "bytes": 24152,
-      "sha256": "022c7fac1b50c1dcef0e21e0021f8a7753e7d5214f00126cb95c71526f955b72"
+      "bytes": 24208,
+      "sha256": "e3c382ce9082650811bf6f2b990e0ca8d9177de11e2a1e26496566edc8092be1"
     },
     {
       "path": "tests/test_synthesis_review.py",

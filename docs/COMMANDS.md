@@ -14,6 +14,15 @@ the synthetic test suite is the `tests/` package. `python sensei.py list` prints
 scripts and the operator-handoff routes, and `python sensei.py run <script> ...` runs one
 of them without changing its arguments, output or exit status.
 
+Table contract: `tests/test_command_reference.py` checks one complete backtick-quoted
+usage per command row, every script/subcommand, and the non-CLI module inventory.
+Whitespace wrapping and Markdown-escaped pipes are normalized; argument spelling,
+order and required/optional markers must match parser help. Help is collected with
+COLUMNS=4000 and color disabled on the supported CI Python 3.10/3.12 matrix.
+The two non-argparse publication checks are inspected statically, never run as help.
+Unittest invocation rows are illustrative suite commands, not parser-reference rows.
+Navigation routes must be covered by these same documented help entries.
+
 Shared conventions:
 
 - Inputs are supplied JSON protocols, candidate documents or explicitly authorized local
@@ -285,7 +294,17 @@ in every bundle, so verification fails closed on implementation drift.
 | `synthesis_links.py` | Trace supplied synthesis statements without judging entailment or writing conclusions |
 | `work_document_links.py` | Bind explicitly selected supplied document descriptors to source-review work |
 
+| `accounting_flow.py` | Detached text and Markdown accounting renderer |
+| `reviewed_intake_safety.py` | Bounded exact-source intake and exclusive output helpers |
+| `ris_continuation_parser.py` | Explicit continuation-dialect parser, no dialect guessing |
+
 ## Explicit continuation RIS intake
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python ris_continuation_intake.py preview [-h] --dialect {ris-untagged-continuation-empty-paragraphs-v1} --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol export` | Parse an explicitly selected continuation dialect without changing strict RIS | [Continuation intake](RIS_CONTINUATION_INTAKE.md) |
+| `python ris_continuation_intake.py verify [-h] [--intake-output INTAKE_OUTPUT \| --csv-output CSV_OUTPUT] [--text] artifact` | Replay the detached continuation wrapper | [Continuation intake](RIS_CONTINUATION_INTAKE.md) |
+
 
 The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
 through `ris_continuation_intake.py preview --dialect
@@ -296,7 +315,13 @@ archive formats remain unchanged; retain continuation wrappers separately.
 ## Blank screening-position spreadsheet
 
 [Export a blank transcription sheet](SCREENING_SHEETS.md) with
-`screening_sheet.py export PROTOCOL --output NEW.csv`. Optional repeated
+`screening_sheet.py export PROTOCOL --output NEW.csv`.
+
+| Usage | Purpose | Guide |
+|---|---|---|
+| `python screening_sheet.py export [-h] [--display-column DISPLAY_COLUMN] --output OUTPUT [--text] protocol` | Blank human-position sheet with exact-source context | [Screening sheets](SCREENING_SHEETS.md) |
+
+Optional repeated
 `--display-column NAME` selects literal retained values, never guessed titles.
 Human assertion columns remain empty; this is export only, not edited-sheet
 intake, screening performed or a canonical decision. Preserve export-time source
@@ -306,7 +331,9 @@ hashes and keep real sheets outside the public repository.
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python screening_sheet_intake.py target PROTOCOL SHEET --output TARGET` / `assemble PROTOCOL SHEET REVIEW --output APPLICATION` / `verify PROTOCOL APPLICATION --protocol-output NEW` | Separate exact-input import review; append only supplied screening positions, never canonical decisions | [Screening sheet intake](SCREENING_SHEET_INTAKE.md) |
+| `python screening_sheet_intake.py assemble [-h] [--output OUTPUT] protocol input review` | Separate exact-input import review; append only supplied screening positions, never canonical decisions | [Screening sheet intake](SCREENING_SHEET_INTAKE.md) |
+| `python screening_sheet_intake.py target [-h] [--output OUTPUT] protocol input` | Separate exact-input import review; append only supplied screening positions, never canonical decisions | [Screening sheet intake](SCREENING_SHEET_INTAKE.md) |
+| `python screening_sheet_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] protocol input` | Separate exact-input import review; append only supplied screening positions, never canonical decisions | [Screening sheet intake](SCREENING_SHEET_INTAKE.md) |
 
 [Append edited screening positions](SCREENING_SHEET_INTAKE.md) through the separate
 `screening_sheet_intake.py target`, `assemble`, and `verify` workflow.
@@ -319,54 +346,54 @@ reviewer supersession is inferred. Real sheets remain outside the public reposit
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python screening_decision_sheet.py export PROTOCOL [--record-id ID] [--display-column NAME] --output NEW.csv [--text]` | Bounded blank human-decision scaffold; read-only context, no batch application | [Decision sheets](SCREENING_DECISION_SHEETS.md) |
+| `python screening_decision_sheet.py export [-h] [--record-id RECORD_ID] [--display-column DISPLAY_COLUMN] --output OUTPUT [--text] protocol` | Bounded blank human-decision scaffold; read-only context, no batch application | [Decision sheets](SCREENING_DECISION_SHEETS.md) |
 
 ## Read-only decision-batch preview
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python screening_decision_batch.py target PROTOCOL SHEET [--output NEW.json]` | Exact-context hypothetical chain and blank import review only; no candidate/application or batch assemble/verify | [Batch preview](SCREENING_DECISION_BATCH_PREVIEW.md) |
+| `python screening_decision_batch.py target [-h] [--output OUTPUT] protocol sheet` | Exact-context hypothetical chain and blank import review only; no candidate/application or batch assemble/verify | [Batch preview](SCREENING_DECISION_BATCH_PREVIEW.md) |
 
 ## Reviewed decision-batch application
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python screening_decision_batch_apply.py assemble PROTOCOL SHEET REVIEW --output APPLICATION` | Exact separate import review and detached candidate application | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
-| `python screening_decision_batch_apply.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Full replay; at most one exclusive complete output | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
+| `python screening_decision_batch_apply.py assemble [-h] --output OUTPUT protocol sheet review` | Exact separate import review and detached candidate application | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
+| `python screening_decision_batch_apply.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol application` | Full replay; at most one exclusive complete output | [Batch application](SCREENING_DECISION_BATCH_APPLICATION.md) |
 
 ## Append-only report review intake
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python report_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact-source proposed position append and blank import review | [Report review intake](REPORT_REVIEW_INTAKE.md) |
-| `python report_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append-only application | [Report review intake](REPORT_REVIEW_INTAKE.md) |
-| `python report_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole-application replay and at most one complete exclusive new output | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+| `python report_review_intake.py target [-h] --output OUTPUT protocol input` | Exact-source proposed position append and blank import review | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+| `python report_review_intake.py assemble [-h] --output OUTPUT protocol input review` | Separately reviewed detached append-only application | [Report review intake](REPORT_REVIEW_INTAKE.md) |
+| `python report_review_intake.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol input` | Whole-application replay and at most one complete exclusive new output | [Report review intake](REPORT_REVIEW_INTAKE.md) |
 
 ## Exact report-study position intake
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python report_study_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact pair/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
-| `python report_study_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
-| `python report_study_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+| `python report_study_review_intake.py target [-h] --output OUTPUT protocol input` | Exact pair/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+| `python report_study_review_intake.py assemble [-h] --output OUTPUT protocol input review` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
+| `python report_study_review_intake.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol input` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_REVIEW_INTAKE.md) |
 
 ## Described-candidate position intake
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python report_study_inventory_review_intake.py target PROTOCOL POSITIONS --output TARGET` | Exact candidate/description/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
-| `python report_study_inventory_review_intake.py assemble PROTOCOL POSITIONS REVIEW --output APPLICATION` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
-| `python report_study_inventory_review_intake.py verify PROTOCOL APPLICATION [--output REPORT \| --protocol-output NEW]` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
+| `python report_study_inventory_review_intake.py target [-h] --output OUTPUT protocol input` | Exact candidate/description/source-bound proposed append and blank separate import review | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
+| `python report_study_inventory_review_intake.py assemble [-h] --output OUTPUT protocol input review` | Separately reviewed detached append, no canonical study selection | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
+| `python report_study_inventory_review_intake.py verify [-h] [--output OUTPUT \| --protocol-output PROTOCOL_OUTPUT] protocol input` | Whole replay and one complete exclusive output | [Pair intake](REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md) |
 
 ## Passive HTML review
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python research_view.py PROTOCOL [--work-package WP] [--output NEW.html]` | Local passive supplied review snapshot, never approval | [HTML view](REVIEW_VIEWS.md) |
+| `python research_view.py [-h] [--work-package WORK_PACKAGE] [--output OUTPUT] protocol` | Local passive supplied review snapshot, never approval | [HTML view](REVIEW_VIEWS.md) |
 
 ## Native occurrence export
 
 | Usage | Purpose | Guide |
 |---|---|---|
-| `python collection_export.py create PROTOCOL --nbib-batch INDEX=WRAPPER --decision include --output NEW.nbib` | Typed exact historical native occurrence export; --ris/--nbib also supported | [Guide](COLLECTION_EXPORT.md) |
-| `python collection_export.py verify PROTOCOL --nbib-batch INDEX=WRAPPER --decision include --output EXISTING.nbib` | Exact regeneration and output byte comparison | [Guide](COLLECTION_EXPORT.md) |
+| `python collection_export.py create [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol` | Typed exact historical native occurrence export; --ris/--nbib also supported | [Guide](COLLECTION_EXPORT.md) |
+| `python collection_export.py verify [-h] --output OUTPUT --decision {include,exclude,pending,withheld} [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol` | Exact regeneration and output byte comparison | [Guide](COLLECTION_EXPORT.md) |

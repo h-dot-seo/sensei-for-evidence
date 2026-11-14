@@ -3422,3 +3422,26 @@ A new regression fixture initially violated base-search and review-date contract
 these test setup errors were corrected before final full run. No released failure.
 No reference-manager interoperability or scientific validity was tested.
 OS write failure can leave a partial new output; hostile path races are not guarded.
+
+## 2026-11-14: checked command reference (0.110.0)
+
+The command reference now has one exact parser-usage row per documented entry.
+Added omitted continuation preview/verify and screening-sheet export, expanded the
+compressed screening intake row, corrected22 usage rows and listed3 missing helpers.
+162 command rows cover all root CLI scripts/subcommands; non-CLI modules are checked
+separately. Every argparse help runs in a real subprocess from an empty temporary
+working directory, with fixed width/color and no bytecode writes. Two publication
+scripts without argparse are checked statically and not executed as help. Unittest
+examples are excluded. The129 handoff routes must occur in the tested command set,
+replacing duplicate in-process help runs. Existing guide link checking includes
+COMMANDS.md. Parser tests reject duplicate/compressed/malformed rows and distinguish
+subparser lists from argument choice lists. No root Python or ENGINE_FILES changed;
+existing schema2 consumers, rights and human-decision boundaries are unchanged.
+
+Focused30 and independent30 tests passed. Independent review identified a future
+global-option/subparser help shape; suffix extraction and its regression now cover it.
+The initial full run was stopped to include that correction; only the final full run
+is counted below. Final full suite2099 tests165.462s OK(skip1); final independent4
+passed with no blockers. Audit461, manifest460 and Python3.10 grammar235 passed.
+These checks concern parser help and documentation only, not live
+research actions, external tool compatibility or the previously unverified HTML UI.

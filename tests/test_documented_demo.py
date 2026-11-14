@@ -39,7 +39,7 @@ class DocumentedDemoTests(unittest.TestCase):
                 self.assertIn(b'Missing planned searches: 1', archive.read('summary.md'))
 
     def test_readme_and_usage_local_links_resolve(self):
-        for source in (Path('README.md'), Path('docs/USAGE.md')):
+        for source in (Path('README.md'), Path('docs/USAGE.md'), Path('docs/COMMANDS.md')):
             for target in re.findall(r'\]\(([^)]+)\)', source.read_text(encoding='utf-8')):
                 if '://' in target or target.startswith('#'):
                     continue
