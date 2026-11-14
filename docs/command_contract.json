@@ -3013,7 +3013,7 @@
     "audit_publication.py": "349bfe9f189da2beaee4d655ba05b8f080f79b5fe7518097eafb6beea5459d08",
     "batch_collection_bundle.py": "43d2241b0d67f1263a7b81a95f155fdc8663e7693e514a401946677c41b0fa01",
     "bibliographic_intake.py": "2dbaee7d36692e0cd238ce0b4c9da293e1a6485ef1a52507a60b90ab7f646585",
-    "bibliographic_integrity.py": "80f20d39225c1588c00e372a0c89ae3efe28c750e89742a80133a06046635736",
+    "bibliographic_integrity.py": "f8e13015e41ba6d825b8693774e2d68b4d2a55cd6b1b20ead0ccc22caa686b65",
     "bibliographic_review.py": "86ff7e02c7ddf32276a380bd2ce78b63e3f045afc47fe6dbee7b1dc132fd5570",
     "build_manifest.py": "8ff087e69de21f32446071d54d0bf8a6e7ead432caff64d62d4a96f9414ccbe0",
     "challenge_intake.py": "d08ed4b969c23e15cd4b8ee20d25c4d7ce7a7adbcb5f7cef8516a7aacd351d08",
