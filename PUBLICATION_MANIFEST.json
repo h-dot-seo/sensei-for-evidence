@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.108.0-search-references",
+  "release": "0.109.0-native-collection-export",
   "date": "2026-11-14",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 456,
+  "file_count": 459,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 21998,
-      "sha256": "ba361452878b5e84c7addb965d73d859fb016a38853e92fa92553a5341bbc0d2"
+      "bytes": 22235,
+      "sha256": "0b3e6746579281fe4e6abc70076d1a38e8778f41be7278914f273bb9de1c45b8"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 6746,
-      "sha256": "36cfa906734bf3145bee9d743840fade6c4bbcf94eb2dcd8771453cf8b7f0580"
+      "bytes": 7787,
+      "sha256": "5eb6d9867373678ecd2717a8f84c8eff0f7ce717c1ebb8af50ff2b696a7a5d5b"
     },
     {
       "path": "accounting_flow.py",
@@ -127,6 +127,11 @@
       "path": "collection_bundle.py",
       "bytes": 15517,
       "sha256": "222bcac9a38f31f229c141c9cb4f06587a408b77c4aeb01b6be966236bc90a06"
+    },
+    {
+      "path": "collection_export.py",
+      "bytes": 10369,
+      "sha256": "f1f906ff4dbffe4225779d2a00e4ac212bb0a371016db26ddbf36c807061eac7"
     },
     {
       "path": "compare_runs.py",
@@ -224,9 +229,14 @@
       "sha256": "2e0adf638d5240a923310d727eb50fa5379ba371cbf78e71cd0c8b368929324c"
     },
     {
+      "path": "docs/COLLECTION_EXPORT.md",
+      "bytes": 3671,
+      "sha256": "c6ea039cfa400c4ee804718711a19b2be2b57da9610b735e70526ba98c76cdb9"
+    },
+    {
       "path": "docs/COMMANDS.md",
-      "bytes": 48087,
-      "sha256": "462c912c2409c218fd37e077e535929e9e28dee2338532284d4fcae474bd80cb"
+      "bytes": 48583,
+      "sha256": "7b6d06170ea3ca3fa55cce3b283cdf6a3e3bc7eb7bbb81a34ade6934716ab82c"
     },
     {
       "path": "docs/COMPLETION_BINDING.md",
@@ -405,8 +415,8 @@
     },
     {
       "path": "docs/README.ko.md",
-      "bytes": 22298,
-      "sha256": "fa4bda0d15645ef38a4c39175fe3b7793975cdce298570f6b95af218644668f5"
+      "bytes": 22564,
+      "sha256": "d7c6ea8104d8c92195ab7599a684bf01513fba34609c3eab8408d4f3cff1de3b"
     },
     {
       "path": "docs/RECEIPT_INTAKE.md",
@@ -580,8 +590,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 242646,
-      "sha256": "9839d3bfd583466598c69eab2dd2ab4ad9aefe14f1c0b6dd30b75c969b05696c"
+      "bytes": 243680,
+      "sha256": "1b08a420e3d08c376ed7634f4f31a02046dabfcfc7c56d78380009da395bb9c4"
     },
     {
       "path": "docs/WORKFLOWS.md",
@@ -1665,8 +1675,8 @@
     },
     {
       "path": "tests/test_batch_to_evidence_walkthrough.py",
-      "bytes": 23167,
-      "sha256": "114fea8cff2ead8c27ec6fc33f45b35d4ab991a55f35ed20d4bb7c71e3a23bed"
+      "bytes": 24054,
+      "sha256": "c0aa5e100e413cbb5b7f1f9eec4194dc8a8f7ea382b07be2a515be0a5cef606e"
     },
     {
       "path": "tests/test_bibliographic_intake.py",
@@ -1712,6 +1722,11 @@
       "path": "tests/test_collection_bundle.py",
       "bytes": 24176,
       "sha256": "86996ad5af3b875509f129990139cbc361f4cf4c84a84edcb4c31a38245e84ec"
+    },
+    {
+      "path": "tests/test_collection_export.py",
+      "bytes": 7294,
+      "sha256": "e4912142ea76c3fc74b59d34172a7033d9c5285bc220eaaed29a1bb99628dc16"
     },
     {
       "path": "tests/test_compare_runs.py",

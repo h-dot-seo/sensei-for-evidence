@@ -360,3 +360,6 @@ Synthesis/work JSON snapshots now use schema2 search index/hash references with
 a single top-level search ledger. The HTML composed snapshot is also schema2.
 Consumers of schema1 nested `search` copies must adapt explicitly; no canonical
 research data or engine verification changes. See docs/WORK_REVIEW.md.
+
+## Native occurrence export
+[Collection export](docs/COLLECTION_EXPORT.md) regenerates RIS/NBIB occurrences selected by supplied screening decisions with exact replay verification; not deduplicated bibliography or eligibility approval.

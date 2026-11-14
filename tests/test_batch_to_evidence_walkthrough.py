@@ -41,7 +41,7 @@ class BatchToEvidenceWalkthroughTests(unittest.TestCase):
         allowed = {'nbib_batch_intake.py', 'bibliographic_review.py', 'screening_decision.py',
                    'report_intake.py', 'report_retrieval.py', 'report_decision.py', 'result_intake.py',
                    'condition_intake.py', 'prisma_audit.py', 'research_status.py', 'batch_collection_bundle.py',
-                   'search_manifest.py', 'result_source_review.py', 'compare_runs.py'}
+                   'search_manifest.py', 'result_source_review.py', 'compare_runs.py', 'collection_export.py'}
         def execute(guide):
             doc = (ROOT/'docs'/guide).read_text(encoding='utf-8')
             commands = [line for block in re.findall(r'```sh\n(.*?)```', doc, re.S)
@@ -63,6 +63,7 @@ class BatchToEvidenceWalkthroughTests(unittest.TestCase):
         cls.original_output_bytes = {p.name:p.read_bytes() for p in cls.output.iterdir()}
         cls.continuation_commands, cls.continuation_stdout = execute('SECOND_SEARCH_CONTINUATION.md')
         cls.continued = load(cls.output/'continued.json')
+        cls.export_commands, cls.export_stdout = execute('COLLECTION_EXPORT.md')
 
 
     def test_all_documented_commands_run_with_outside_space_named_directory(self):
@@ -341,3 +342,15 @@ class BatchToEvidenceWalkthroughTests(unittest.TestCase):
 
 if __name__=='__main__':
     unittest.main()
+
+    def test_native_export_guide_selected_occurrences(self):
+        included,verified,pending,withheld=self.export_stdout
+        self.assertEqual(included['exported_occurrences'],5)
+        self.assertEqual([r['record_id'] for r in included['occurrences']].count('record-A'),3)
+        self.assertTrue(verified['valid']);self.assertEqual(pending['exported_occurrences'],1)
+        self.assertEqual(withheld['exported_occurrences'],1)
+        import collection_export
+        bindings=[dict(import_index=0,format='nbib_batch',artifact=load(self.output/'batch.json'))]
+        raw,result=collection_export.build(self.continued,bindings,'include')
+        self.assertEqual(result['not_exported_count'],1)
+        self.assertEqual(result['not_exported'][0]['status'],'NOT_EXPORTED')
