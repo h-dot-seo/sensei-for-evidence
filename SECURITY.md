@@ -71,3 +71,5 @@ absolute ZIP-parser CPU/memory bound. See [details](docs/RESEARCH_ZIP_SAFETY.md)
 
 
 [Scoped exclusive-output contract](docs/OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.
+
+Seven existing collection/transition ZIP metadata preflights now share the existing archive_safety leaf. This consolidates repeated checks, not a new security guarantee; see [the exact scope and equivalence tests](docs/SHARED_ARCHIVE_PREFLIGHT.md). Full canonical and semantic replay remain in each verifier.

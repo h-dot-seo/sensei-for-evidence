@@ -10,6 +10,7 @@ import io
 import re
 import stat
 import zipfile
+from archive_safety import check_dynamic_stored_entries
 from pathlib import Path
 
 import bibliographic_intake
@@ -199,19 +200,7 @@ def build_bundle(protocol_raw, bindings):
 
 
 def _check_entries(archive, allowed, max_entries):
-    entries = archive.infolist()
-    names = [entry.filename for entry in entries]
-    if len(entries) > max_entries or len(set(names)) != len(names):
-        raise ValueError('unexpected or duplicate archive entries')
-    _size(sum(entry.file_size for entry in entries))
-    for entry in entries:
-        if (not allowed(entry.filename) or entry.is_dir() or entry.flag_bits & 1
-                or entry.compress_type != zipfile.ZIP_STORED
-                or entry.compress_size != entry.file_size
-                or entry.create_system != 3
-                or not stat.S_ISREG(entry.external_attr >> 16)):
-            raise ValueError('unexpected archive path, type, encryption or compression')
-    return names
+    return check_dynamic_stored_entries(archive, allowed, max_entries, _size)
 
 
 def verify_bundle(raw):

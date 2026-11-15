@@ -3,7 +3,8 @@ import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def prior_bytes(name):
-    source=(ROOT/name).read_bytes()
+    from tests._archive_preflight_compat import prior_bytes as pre_archive_bytes
+    source=pre_archive_bytes(name)
     changes=json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes())
     for old,new in reversed(changes.get(name,[])):
         old,new=old.encode(),new.encode();assert source.count(new)==1,(name,new)
@@ -11,7 +12,8 @@ def prior_bytes(name):
     return source
 
 def prior_fixture_bytes(name):
-    source=(ROOT/name).read_bytes()
+    from tests._archive_preflight_compat import prior_fixture_bytes as pre_archive_fixture
+    source=pre_archive_fixture(name)
     changes=json.loads((ROOT/'tests/json_depth_fixture_changes.json').read_bytes())
     for row in changes:
         if row['path']!=name:continue

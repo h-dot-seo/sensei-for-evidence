@@ -426,3 +426,5 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 [Scoped exclusive-output contract](docs/OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.
 
 [Strict JSON depth](docs/STRICT_JSON.md): shared decoding allows at most 128 nested containers. Deeper inputs now reject explicitly; old bound artifacts still require their recorded implementation.
+
+[Shared archive preflight](docs/SHARED_ARCHIVE_PREFLIGHT.md): seven existing ZIP workflows share the same metadata mechanics without changing formats, size policy, replay rules or safety claims.

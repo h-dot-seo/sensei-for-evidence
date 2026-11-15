@@ -135,13 +135,14 @@ class JsonDepthTests(unittest.TestCase):
                 b=subprocess.run([sys.executable,'-B',str(ROOT/script),str(source)],cwd=ROOT,capture_output=True,timeout=30)
                 expected=a.stdout
                 if script in ('prisma_audit.py','search_manifest.py'):
-                    oldhash=hashlib.sha256(prior_bytes('json_io.py')).hexdigest()
-                    newhash=hashlib.sha256((ROOT/'json_io.py').read_bytes()).hexdigest()
-                    oldfield=('"json_io.py": "'+oldhash+'"').encode()
-                    newfield=('"json_io.py": "'+newhash+'"').encode()
-                    self.assertEqual(expected.count(oldfield),1)
-                    self.assertEqual(b.stdout.count(newfield),1)
-                    expected=expected.replace(oldfield,newfield,1)
+                    for name in ('json_io.py','archive_safety.py'):
+                        oldhash=hashlib.sha256(prior_bytes(name)).hexdigest()
+                        newhash=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+                        oldfield=('"'+name+'": "'+oldhash+'"').encode()
+                        newfield=('"'+name+'": "'+newhash+'"').encode()
+                        self.assertEqual(expected.count(oldfield),1)
+                        self.assertEqual(b.stdout.count(newfield),1)
+                        expected=expected.replace(oldfield,newfield,1)
                 self.assertEqual((a.returncode,expected,a.stderr),(b.returncode,b.stdout,b.stderr))
                 self.assertEqual(b.returncode,0,b.stderr)
 

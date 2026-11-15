@@ -93,8 +93,8 @@ class CliInputBoundsTests(unittest.TestCase):
                 self.assertIn(name,CHANGES);self.assertEqual(expected.count(row['prior_sha256']),row['occurrences'])
                 expected=expected.replace(row['prior_sha256'],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
             from tests._json_depth_compat import prior_bytes as pre_depth_bytes
-            # Exactly five declared source fields, never arbitrary hash-like strings.
-            for name in ('json_io.py','research_status.py','compare_runs.py','review_handoff.py','validate_run.py'):
+            # Exactly five depth-source fields plus the shared-preflight ENGINE field.
+            for name in ('json_io.py','research_status.py','compare_runs.py','review_handoff.py','validate_run.py','archive_safety.py'):
                 oldfield='"'+name+'": "'+hashlib.sha256(pre_depth_bytes(name)).hexdigest()+'"'
                 newfield='"'+name+'": "'+hashlib.sha256((ROOT/name).read_bytes()).hexdigest()+'"'
                 expected=expected.replace(oldfield,newfield)
