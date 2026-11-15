@@ -120,7 +120,7 @@ a different internally consistent archive.
 Python callers use `build_bundle(protocol_raw, bindings)` and `verify_bundle(raw)`.
 `protocol_raw` and the archive are exact bytes. Each binding is a plain dictionary
 with exactly `import_index` (nonnegative integer, not Boolean), `format` (one of
-`ris`, `nbib`, `nbib_batch`) and `artifact` (the plain wrapper object). A nonempty
+`ris`, `nbib`, `nbib_batch`, `ris_continuation`) and `artifact` (the plain wrapper object). A nonempty
 plain list contains the selections. `create(protocol_path, destination, bindings)`
 reads the explicit protocol path, builds and exclusively creates the output.
 No API changes any protocol object or research decision.
@@ -150,5 +150,5 @@ All source text and metadata are retained without redaction. Keep private or rea
 research and generated archives outside this public repository.
 
 The separate [explicit continuation dialect](RIS_CONTINUATION_INTAKE.md) is
-not admitted to existing native archives; keep its wrapper separately. Its parser
-does not relax or replace the strict RIS route documented here.
+accepted only through the explicit typed-native --ris-continuation binding. Its parser
+does not relax or replace the strict RIS route documented here. See [the retained continuation journey](NATIVE_CONTINUATION_ARCHIVE.md) for separate supplied review, replay and implementation-version limits.

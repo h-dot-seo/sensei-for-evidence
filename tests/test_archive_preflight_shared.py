@@ -1,6 +1,7 @@
 """Seven existing preflights share mechanics, not new acceptance or security claims."""
 import ast
 import copy
+from contextlib import ExitStack
 import hashlib
 import importlib
 import inspect
@@ -82,8 +83,10 @@ class ArchivePreflightSharedTests(unittest.TestCase):
             self.assertEqual(self.observe(current,list(reversed(valid)))[0],('success',list(reversed(fixed))))
 
     def test_seven_actual_builds_identical_and_replay_with_controlled_prior_hashes(self):
-        # Only eight exact implementation file reads are substituted. No inputs,
-        # findings, ZIP members, output bytes or other reads are normalized.
+        # Historical extraction experiment: eight exact implementation reads plus the
+        # declared pre-continuation native dispatch/ENGINE/boundary environment.
+        # Actual current native acceptance/replay is checked separately in test_native_continuation_archive.
+        # No input, finding, ZIP member or output byte is normalized.
         sources={(ROOT/name).resolve():prior_bytes(name) for name in CHANGED}
         prior_modules={name:old_module(name) for name in NAMES}
         original_read=Path.read_bytes
@@ -97,12 +100,18 @@ class ArchivePreflightSharedTests(unittest.TestCase):
                     cls.setUpClass();fixture=cls();fixture.setUp()
                     try:
                         new=suite.bundle;old=prior_modules[name]
-                        self.assertEqual(new.implementation_hashes(),old.implementation_hashes())
-                        current=fixture.build()
-                        with patch.object(suite,'bundle',old):prior=fixture.build()
-                        self.assertEqual(current,prior)
-                        self.assertTrue(new.verify_bundle(prior)['valid'])
-                        self.assertTrue(old.verify_bundle(current)['valid'])
+                        with ExitStack() as historical:
+                            if name=='native_collection_bundle':
+                                self.assertEqual(set(new.ENGINE_FILES)-set(old.ENGINE_FILES),{'ris_continuation_intake.py','ris_continuation_parser.py'})
+                                self.assertEqual(set(new.FORMATS)-set(old.FORMATS),{'ris_continuation'})
+                                for field in ('ENGINE_FILES','FORMATS','BOUNDARY'):
+                                    historical.enter_context(patch.object(new,field,getattr(old,field)))
+                            self.assertEqual(new.implementation_hashes(),old.implementation_hashes())
+                            current=fixture.build()
+                            with patch.object(suite,'bundle',old):prior=fixture.build()
+                            self.assertEqual(current,prior)
+                            self.assertTrue(new.verify_bundle(prior)['valid'])
+                            self.assertTrue(old.verify_bundle(current)['valid'])
                     finally:
                         fixture.tearDown();cls.tearDownClass()
 
@@ -124,9 +133,11 @@ class ArchivePreflightSharedTests(unittest.TestCase):
             for function in ('build_bundle','verify_bundle'):
                 node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==function)
                 self.assertEqual(inspect.getsource(getattr(module,function)).strip(),ast.get_source_segment(prior,node))
+            added={'ris_continuation_intake.py','ris_continuation_parser.py'} if name=='native_collection_bundle' else set()
             if hasattr(module,'ENGINE_FILES'):
-                self.assertEqual(module.ENGINE_FILES,old_module(name).ENGINE_FILES)
-            self.assertEqual(set(module.implementation_hashes()),set(old_module(name).implementation_hashes()))
+                expected_engine=tuple(sorted(set(old_module(name).ENGINE_FILES)|added)) if added else old_module(name).ENGINE_FILES
+                self.assertEqual(module.ENGINE_FILES,expected_engine)
+            self.assertEqual(set(module.implementation_hashes()),set(old_module(name).implementation_hashes())|added)
         self.assertEqual(total,102)
         self.assertIn('archive_safety.py',research_bundle.ENGINE_FILES)
 

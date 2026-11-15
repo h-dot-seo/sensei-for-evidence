@@ -279,8 +279,8 @@ unredacted-data sharing boundary.
 The separate [declared continuation dialect](docs/RIS_CONTINUATION_INTAKE.md) preserves native bytes
 through `ris_continuation_intake.py preview --dialect
 ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
-synthetic walkthrough stops at an unfilled review template. Strict RIS and native
-archive formats remain unchanged; retain continuation wrappers separately.
+synthetic walkthrough stops at an unfilled review template. Strict RIS implementation bytes and
+NBIB-only archive formats remain unchanged. Typed native archives now accept an explicit --ris-continuation binding; older wrappers/archives require their recorded implementation.
 
 ## Blank screening-position spreadsheet
 
@@ -440,3 +440,5 @@ Received collection/transition archives can be inspected without replay using th
 Explicit local synthetic size/timing observations (not performance guarantees): [scale envelope](docs/SCALE_ENVELOPE.md).
 
 Local guide links and explicit execution-coverage boundaries: [documentation conformance](docs/DOCUMENTATION_CONFORMANCE.md).
+
+Supplied continuation RIS through separate review and exact typed archive replay: [native continuation archive](docs/NATIVE_CONTINUATION_ARCHIVE.md).

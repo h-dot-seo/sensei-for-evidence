@@ -176,8 +176,8 @@ labels and separate report/result study lists remain explicit. See
 The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
 through `ris_continuation_intake.py preview --dialect
 ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
-synthetic walkthrough stops at an unfilled review template. Strict RIS and native
-archive formats remain unchanged; retain continuation wrappers separately.
+synthetic walkthrough stops at an unfilled review template. Strict RIS implementation bytes and
+NBIB-only archive formats remain unchanged. Typed native archives now accept an explicit --ris-continuation binding; older wrappers/archives require their recorded implementation.
 
 ## Blank screening-position spreadsheet
 

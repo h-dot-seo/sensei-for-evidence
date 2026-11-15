@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_handoff_display
 """The remaining roadmap CLI inputs are bounded before parsing, not a total resource cap."""
 import ast
 import hashlib
@@ -153,7 +154,7 @@ class CliInputBoundsTests(unittest.TestCase):
                     expected=json.dumps(document,ensure_ascii=False,indent=2)+'\n'
             expected=expected.replace('\n',os.linesep).encode()
             r=subprocess.run([sys.executable,*case['args']],cwd=ROOT,capture_output=True)
-            stdout=r.stdout
+            stdout=prior_handoff_display(r.stdout)
             if case['args'][0] in ('report_review.py','report_study_inventory.py','report_study_inventory_review.py','report_study_review.py','screening_review.py'):
                 helper_line=('    "output_io.py": "'+hashlib.sha256((ROOT/'output_io.py').read_bytes()).hexdigest()+'",'+os.linesep).encode()
                 self.assertEqual(stdout.count(helper_line),1)

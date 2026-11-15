@@ -18,6 +18,7 @@ import nbib_intake
 import nbib_batch_intake
 import research_bundle
 import ris_intake
+import ris_continuation_intake
 from evidence_workflow import run
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 from prisma_reports import report_flow
@@ -27,11 +28,12 @@ MAX_BINDINGS = 100
 MAX_NATIVE_SOURCES = 10_000
 ENGINE_FILES = tuple(sorted(set(research_bundle.ENGINE_FILES) |
     set(nbib_batch_intake.implementation_hashes()) | set(ris_intake.implementation_hashes()) |
+    set(ris_continuation_intake.implementation_hashes()) |
     {'native_collection_bundle.py'}))
 BOUNDARY = (
     'Internal byte consistency and exact explicit ledger association only. '
     'Coverage counts describe supplied explicitly typed wrappers and source occurrences, not literature or search completeness. '
-    'Only explicit ris, nbib and nbib_batch selections are supported; no format or source/import association is inferred. '
+    'Only explicit ris, nbib, nbib_batch and ris_continuation selections are supported; no format or source/import association is inferred. '
     'Uncovered imports may be CSV or native imports without a supplied wrapper; their format is not inferred. '
     'No source authenticity, human authenticity, publication identity, search completeness, '
     'PRISMA compliance or scientific/clinical validity is established. '
@@ -85,7 +87,8 @@ def _add(payloads, name, raw):
 
 
 # A closed local dispatch table, never a module/path supplied by an artifact.
-FORMATS = {'ris': ris_intake, 'nbib': nbib_intake, 'nbib_batch': nbib_batch_intake}
+FORMATS = {'ris': ris_intake, 'nbib': nbib_intake, 'nbib_batch': nbib_batch_intake,
+           'ris_continuation': ris_continuation_intake}
 
 
 def _selection(bindings):
@@ -99,7 +102,7 @@ def _selection(bindings):
         if type(index) is not int or index < 0 or index in selected:
             raise ValueError('import_index must be a unique nonnegative integer across all formats')
         if type(kind) is not str or kind not in FORMATS:
-            raise ValueError('format must explicitly be ris, nbib or nbib_batch')
+            raise ValueError('format must explicitly be ris, nbib, nbib_batch or ris_continuation')
         if type(binding['artifact']) is not dict:
             raise ValueError('artifact must be an object')
         selected[index] = (kind, binding['artifact'])
@@ -115,7 +118,7 @@ def _sources(kind, artifact):
 
 
 def _source_path(index, source_index, kind):
-    extension = 'ris' if kind == 'ris' else 'nbib'
+    extension = 'ris' if kind in ('ris', 'ris_continuation') else 'nbib'
     return 'native/import-%06d/source-%06d.%s' % (index, source_index, extension)
 
 
@@ -124,7 +127,8 @@ def _summary(bindings, raw=None, files=None):
         total_imports=len(bindings['imports']),
         bound_native_wrappers=len(bindings['covered_import_indices']),
         bound_wrapper_formats={kind: sum(row.get('format') == kind for row in bindings['imports'])
-                               for kind in FORMATS},
+                               for kind in FORMATS if kind != 'ris_continuation'
+                               or any(row.get('format') == kind for row in bindings['imports'])},
         bound_native_sources=sum(len(row.get('native_sources', [])) for row in bindings['imports']),
         covered_import_indices=list(bindings['covered_import_indices']),
         uncovered_import_indices=list(bindings['uncovered_import_indices']),

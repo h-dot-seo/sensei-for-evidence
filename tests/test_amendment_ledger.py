@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_bytes as pre_native_archive, prior_handoff_display
 """Two-snapshot supplied amendment records never close existing gates."""
 import copy
 import hashlib
@@ -185,14 +186,14 @@ class AmendmentLedgerTests(unittest.TestCase):
         self.assertEqual(set(changes),{'evidence_workflow.py','research_bundle.py','adapter_integrity.py','bibliographic_integrity.py','compare_runs.py','research_status.py','review_handoff.py','protocol_keys.py'})
         self.assertEqual({p.name for p in ROOT.glob('*.py')},set(proof)|{'amendment_links.py','amendment_intake.py'})
         for name,digest in proof.items():
-            data=changes[name]['old'].encode() if name in changes else (ROOT/name).read_bytes()
+            data=changes[name]['old'].encode() if name in changes else pre_native_archive(name)
             self.assertEqual(hashlib.sha256(data).hexdigest(),digest,name)
-        for name,change in changes.items():self.assertEqual((ROOT/name).read_bytes(),change['new'].encode())
+        for name,change in changes.items():self.assertEqual(pre_native_archive(name),change['new'].encode())
         # Run prior byte-exact sources and current sources, changing only explicit
         # implementation-map values when comparing otherwise exact JSON bytes.
         with tempfile.TemporaryDirectory() as td:
             td=Path(td);old=td/'prior';old.mkdir()
-            for name in proof:(old/name).write_bytes(changes[name]['old'].encode() if name in changes else (ROOT/name).read_bytes())
+            for name in proof:(old/name).write_bytes(changes[name]['old'].encode() if name in changes else pre_native_archive(name))
             for fixture in ('bibliographic-base.json','synthesis-review.json','first-run-enriched.json'):
                 source=ROOT/'examples'/fixture
                 for script in ('research_status.py','review_handoff.py','compare_runs.py'):
@@ -205,7 +206,7 @@ class AmendmentLedgerTests(unittest.TestCase):
                         self.assertEqual((before.returncode,before.stderr),(after.returncode,after.stderr))
                         self.assertEqual(before.returncode,0)
                         if flags:
-                            observed=after.stdout
+                            observed=prior_handoff_display(after.stdout)
                             if script=='compare_runs.py':
                                 prefix=b'Implementation SHA-256 fingerprints (not authentication): '
                                 left=[line for line in before.stdout.splitlines() if line.startswith(prefix)]
@@ -219,7 +220,7 @@ class AmendmentLedgerTests(unittest.TestCase):
                                 self.assertEqual(x,y)
                                 observed=observed.replace(right[0],left[0],1)
                             self.assertEqual(before.stdout,observed);continue
-                        a=json.loads(before.stdout);b=json.loads(after.stdout)
+                        a=json.loads(before.stdout);b=json.loads(prior_handoff_display(after.stdout))
                         def restore(x,y,path=()):
                             if isinstance(x,dict) and isinstance(y,dict):
                                 if path and path[-1]=='engine_sha256':

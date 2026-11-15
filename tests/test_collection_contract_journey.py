@@ -148,7 +148,8 @@ class CollectionContractJourneyTests(unittest.TestCase):
             self.assertEqual(observed.pop(name),hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
         self.assertEqual(observed.pop('retained_bundle_describe.py'),hashlib.sha256((ROOT/'retained_bundle_describe.py').read_bytes()).hexdigest())
         self.assertEqual(observed.pop('cli_errors.py'),hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest())
-        changed=set(json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes()))
+        changed=set(json.loads((ROOT/'tests/native_continuation_source_changes.json').read_bytes()))
+        changed.update(json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/shared_analysis_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/cli_error_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()))
@@ -162,6 +163,10 @@ class CollectionContractJourneyTests(unittest.TestCase):
             if key==('retained_bundle_describe.py',None) or key[0]=='amendment_intake.py':
                 self.assertIsNone(row['effects']);continue
             original=old[key]
+            if key==('native_collection_bundle.py','create'):
+                self.assertEqual(row['usage'],original['usage'].replace('[--nbib-batch INDEX=PATH]','[--nbib-batch INDEX=PATH] [--ris-continuation INDEX=PATH]'))
+                self.assertIn('--ris-continuation',row['effects']['inputs'])
+                row=dict(row,usage=original['usage'])
             if key==('compare_runs.py',None):
                 self.assertEqual(row['usage'], original['usage'].replace('[--amendment AMENDMENT]', '[--amendment AMENDMENT] [--amendment-id AMENDMENT_ID]'))
                 row=dict(row,usage=original['usage'])

@@ -29,7 +29,7 @@
     "classification": "covered-by",
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "test": "tests.test_amendment_ledger.AmendmentLedgerTests.test_documented_nine_commands_with_separate_supplied_review",
-    "test_source_sha256": "06ce6feeba85c3cb27dc64cc0a9922eef60dd8ddf8de187c0af7799719ffe736"
+    "test_source_sha256": "a2eae0a8d45087eab3d6e2cdd39198a5bbe76782d2712b4d911ea10510978540"
   },
   "docs/AMENDMENT_NOTES.md::0": {
     "sha256": "5e41d9917e6ec7d7c5ab3572981638de8c4cf08e9ab1be3d20945207fe54b0a2",
@@ -1659,5 +1659,26 @@
     "sha256": "ea0b034da3abc355b945d24e35cd3d6e7aaf468c1cb79c0f25e040533916683d",
     "classification": "exempt",
     "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/NATIVE_CONTINUATION_ARCHIVE.md::0": {
+    "sha256": "fb6ff55c4e6c2e8bf96b0db4216b079a0a62635e38cc3f4b62f0e3ce272d95a3",
+    "classification": "covered-by",
+    "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
+    "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
+    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
+  },
+  "docs/NATIVE_CONTINUATION_ARCHIVE.md::1": {
+    "sha256": "7f6ba843d8107bd6ac89e35d1e1306d4bb7751aa4dc23d932f3b327ddad8fb23",
+    "classification": "covered-by",
+    "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
+    "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
+    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
+  },
+  "docs/NATIVE_CONTINUATION_ARCHIVE.md::2": {
+    "sha256": "91d1eea880bdf9ce8c6b75085be93e4a2c7392a8d7c5a21a26ee555adabd224a",
+    "classification": "covered-by",
+    "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
+    "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
+    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
   }
 }

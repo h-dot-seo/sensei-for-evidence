@@ -30,3 +30,7 @@ Five pre-existing links in VALIDATION_HISTORY pointed through an erroneous extra
 No engine, gate, scientific judgment, supplied review, existing fixture, public command or workflow changes in this revision. Conformance tests do not establish source authenticity, human independence, license permission, external interoperability or complete guide execution.
 
 A separate read-only scan of the current Markdown found no unsupported reference definitions/links, HTML links/images/comments or nested-parenthesis destinations. The only setext-like delimiters were the initial SKILL.md YAML front matter. The initial 1112 count is supported-syntax link observations, including skipped external URLs, not a universal Markdown link census.
+
+## Continuation-archive extension
+
+The next revision preserves all original 197 block hashes and explicitly registers three additional blocks from NATIVE_CONTINUATION_ARCHIVE.md. Current inventory: 200 blocks, 16 generic run, one parse-only, 22 covered-by in eleven guides and 161 generic exclusions. The new bespoke test executes eight commands with two separate fictional human-supply steps. The original197 proof is checked as an exact subset; the only permitted added keys are the three named guide blocks. Product-source preservation checks reverse only the three exactly recorded native-continuation revision sources before comparing the older preservation baseline. Current source integrity and legacy behavior are independently checked by the new actual prior/current tests.

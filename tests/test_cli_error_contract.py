@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_handoff_display
 """Synthetic remaining first-stage CLI errors and exact prior-release comparisons."""
 import ast
 import copy
@@ -111,9 +112,9 @@ class CliErrorContractTests(unittest.TestCase):
                                 self.assertTrue(b[i].startswith(prefix))
                                 self.assertIn(b'cli_errors.py',b[i])
                                 b[i]=a[i];self.assertEqual(b,a)
-                            else:self.assertEqual(after.stdout,before.stdout)
+                            else:self.assertEqual(prior_handoff_display(after.stdout),before.stdout)
                         else:
-                            left=json.loads(before.stdout);right=json.loads(after.stdout)
+                            left=json.loads(before.stdout);right=json.loads(prior_handoff_display(after.stdout))
                             touched=[]
                             def restore(a,b,path=()):
                                 if isinstance(a,dict) and isinstance(b,dict):
