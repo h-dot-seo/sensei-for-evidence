@@ -81,7 +81,7 @@ and no step fills a decision, judgement or label on your behalf.
 | `python prisma_flow_template.py [-h] [--search-arm INDEX=ARM] [--include-exact-id-accounting] --output OUTPUT [--text] protocol` | Write a new native count-crosswalk CSV with explicit search-arm assignments and a full mapping/pending-state receipt; not an external diagram template | [Native count crosswalk](PRISMA_FLOW_TEMPLATE.md) |
 | `python synthesis_review.py [-h] [--text] protocol` | Review stage counts, supplied statement citations and unresolved limits | [Synthesis review](SYNTHESIS_REVIEW.md) |
 | `python work_review.py [-h] [--work-package WORK_PACKAGE] [--include-prerequisites] [--text \| --brief] protocol` | Join evidence/context/uncertainty around a work deliverable; `--include-prerequisites` opens the transitive prerequisites, `--brief` compacts the packet view | [Work review](WORK_REVIEW.md), [prerequisite review](PREREQUISITE_REVIEW.md), [work navigation](WORK_NAVIGATION.md) |
-| `python compare_runs.py [-h] [--amendment AMENDMENT] [--text] [--before-map BEFORE_MAP] [--after-map AFTER_MAP] before after` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings; `--amendment` binds a supplied amendment note | [Run-to-run comparison](USAGE.md#offline-run-to-run-comparison), [amendment notes](AMENDMENT_NOTES.md), [context amendments](CONTEXT_AMENDMENTS.md), [completion comparison](COMPLETION_COMPARISON.md) |
+| `python compare_runs.py [-h] [--amendment AMENDMENT] [--amendment-id AMENDMENT_ID] [--text] [--before-map BEFORE_MAP] [--after-map AFTER_MAP] before after` | Show mechanical input/ledger changes, explicit report-study migrations, completion-source differences and version warnings; `--amendment` binds a supplied amendment note | [Run-to-run comparison](USAGE.md#offline-run-to-run-comparison), [amendment notes](AMENDMENT_NOTES.md), [context amendments](CONTEXT_AMENDMENTS.md), [completion comparison](COMPLETION_COMPARISON.md) |
 
 ## Search receipts and the mock adapter
 
@@ -532,3 +532,10 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | `output_io.py` | Scoped existing-entry guard and exclusive byte output; partial files and path races remain possible ([contract](OUTPUT_CONTRACT.md)) |
 
 | `cli_errors.py` | Presentation-only categories and static labels for twelve ordinary views; no input reading or validation ([contract](CLI_ERROR_CONTRACT.md)) |
+
+| `python amendment_intake.py template [-h] [--output OUTPUT] before after` | Expose an incomplete supplied amendment worksheet | [Guide](AMENDMENT_LEDGER.md) |
+| `python amendment_intake.py target [-h] [--output OUTPUT] before after candidate_document` | Bind exact BEFORE and AFTER for separate supplied review | [Guide](AMENDMENT_LEDGER.md) |
+| `python amendment_intake.py assemble [-h] [--output OUTPUT] before after candidate_document review_document` | Record one supplied amendment after exact review | [Guide](AMENDMENT_LEDGER.md) |
+| `python amendment_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] before after application_record` | Replay the exact supplied two-snapshot amendment application | [Guide](AMENDMENT_LEDGER.md) |
+
+| `amendment_links.py` | Supplied amendment observations only; no gate closure or approval | [Guide](AMENDMENT_LEDGER.md) |

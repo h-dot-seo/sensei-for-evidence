@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "amendment": {
+    "amendment_id": "fictional-amendment",
+    "authored_at": "2026-11-15",
+    "authored_by": "Fictional author",
+    "before_protocol_sha256": "950eec5d4ea49866d402064bc92a502f3618c5ad205637e5747dd44bcef22b81",
+    "from_version": "synthetic-bibliographic-base-v1",
+    "reason": "Fictional scope revision for this rehearsal only",
+    "scope_fields": [
+      "question",
+      "version"
+    ],
+    "to_version": "fictional-amendment-v2",
+    "triggered_by": []
+  }
+}

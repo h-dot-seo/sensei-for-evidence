@@ -65,3 +65,7 @@ The standalone [completion comparison](COMPLETION_COMPARISON.md) is also produce
 without a note. It separates changed work/source scope, own artifact locators and
 direct prerequisite source labels. A matching note does not approve those changes
 or prove that a retained COMPLETE status was actually reassessed.
+
+## Optional embedded records
+
+The external-note path above is unchanged. A separate [amendment ledger](AMENDMENT_LEDGER.md) can append a supplied record after exact two-input review and display it with `--amendment-id`. That option is mutually exclusive with `--amendment`; its before-only embedded hash observation has a different label. Neither path closes a gate or authenticates approval.

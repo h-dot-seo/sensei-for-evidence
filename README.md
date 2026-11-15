@@ -434,3 +434,5 @@ For the scoped ordinary-view stderr categories and old-record replay limitations
 The operator handoff reuses validated analysis within one call, not across calls; see [shared view analysis](docs/SHARED_VIEW_ANALYSIS.md).
 
 Received collection/transition archives can be inspected without replay using the [unverified retained-bundle reader](docs/RETAINED_BUNDLE_DESCRIBE.md). This does not verify payloads or replace the original verifier.
+
+[Supplied amendment ledger](docs/AMENDMENT_LEDGER.md) preserves a separately reviewed two-snapshot record without closing any gate or authenticating a reviewer.

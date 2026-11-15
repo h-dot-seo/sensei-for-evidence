@@ -492,7 +492,9 @@ def amendment_review(assertion, before, after, left, right):
                           'No planning/synthesis assertion is renewed and no work, scientific, clinical or regulatory decision is made.'))
 
 
-def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_RESEARCH_MAP, after_map=_NO_RESEARCH_MAP):
+def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_RESEARCH_MAP, after_map=_NO_RESEARCH_MAP, amendment_id=_NO_AMENDMENT):
+    if amendment_id is not _NO_AMENDMENT and (amendment is not _NO_AMENDMENT or not nonempty_text(amendment_id)):
+        raise ValueError('supply either an external amendment note or a nonblank embedded amendment ID')
     if (before_map is _NO_RESEARCH_MAP) != (after_map is _NO_RESEARCH_MAP):
         raise ValueError("both research maps must be explicitly supplied")
     left, right = run(before), run(after)
@@ -525,6 +527,8 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
         'search_plan': entity_changes(left['search_plan_audit']['search_plan_ledger'],
                                       right['search_plan_audit']['search_plan_ledger'], 'search_id'),
     }
+    if 'amendments' in before or 'amendments' in after:
+        entities['amendments'] = entity_changes(before.get('amendments', []), after.get('amendments', []), 'amendment_id')
     if 'output_disclosures' in before or 'output_disclosures' in after:
         entities['output_disclosures'] = entity_changes(before.get('output_disclosures', []), after.get('output_disclosures', []), 'release_id')
     if 'question_records' in before or 'question_records' in after:
@@ -546,6 +550,11 @@ def compare_protocols(before, after, amendment=_NO_AMENDMENT, *, before_map=_NO_
                 before_report_counts=left_reports['report_flow'] if left_reports else None,
                 after_report_counts=right_reports['report_flow'] if right_reports else None,
                 census_claim='NOT_ESTABLISHED', conclusion_readiness='NOT_READY', boundary=BOUNDARY)
+    if amendment_id is not _NO_AMENDMENT:
+        from amendment_links import paired_observation
+        rows = [row for row in after.get('amendments', []) if row['amendment_id'] == amendment_id]
+        if len(rows) != 1:raise ValueError('unknown embedded amendment ID')
+        result['embedded_amendment_review'] = paired_observation(before, after, rows[0])
     if 'evidence_bases' in before or 'evidence_bases' in after:
         old = {row['evidence_id']: row for row in before.get('evidence_bases', [])}
         new = {row['evidence_id']: row for row in after.get('evidence_bases', [])}
@@ -609,6 +618,8 @@ def render_text(result):
              'After record/result counts: ' + show(result['after_counts']),
              'Before report counts (null means not supplied): ' + show(result['before_report_counts']),
              'After report counts (null means not supplied): ' + show(result['after_report_counts'])]
+    if 'embedded_amendment_review' in result:
+        lines.extend(['', 'Embedded amendment observation (not approval): ' + show(result['embedded_amendment_review'])])
     note = result['amendment_review']
     lines.extend(['', 'Supplied amendment note stage: ' + note['stage']])
     if note['stage'] == 'SUPPLIED':
@@ -838,10 +849,12 @@ def main():
     parser.add_argument('before', type=Path)
     parser.add_argument('after', type=Path)
     parser.add_argument('--amendment',type=Path,help='optional supplied change-note JSON; checked, never approved')
+    parser.add_argument('--amendment-id',help='optional supplied embedded record ID; not approval; excludes amendment note')
     parser.add_argument('--text', action='store_true', help='read-only comparison summary; default remains full JSON')
     parser.add_argument('--before-map',type=Path,help='standalone sidecar for before; requires after-map')
     parser.add_argument('--after-map',type=Path,help='standalone sidecar for after; requires before-map')
     args = parser.parse_args()
+    if args.amendment is not None and args.amendment_id is not None:parser.error('amendment and amendment-id are mutually exclusive')
     if bool(args.before_map)!=bool(args.after_map):parser.error('before-map and after-map must be supplied together')
     try:
         from research_map_views import read_document
@@ -849,7 +862,8 @@ def main():
                                    _read_cli_input(args.after, 'after protocol', parser),
                                    _read_cli_input(args.amendment, 'amendment', parser) if args.amendment else _NO_AMENDMENT,
                                    before_map=read_document(args.before_map) if args.before_map else _NO_RESEARCH_MAP,
-                                   after_map=read_document(args.after_map) if args.after_map else _NO_RESEARCH_MAP)
+                                   after_map=read_document(args.after_map) if args.after_map else _NO_RESEARCH_MAP,
+                                   amendment_id=args.amendment_id if args.amendment_id is not None else _NO_AMENDMENT)
         rendered=render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n'
         if args.before_map and len(rendered.encode('utf-8'))>50_000_000:raise ValueError('optional output limit')
     except (ValueError, OSError, KeyError, TypeError, RecursionError):
@@ -857,6 +871,7 @@ def main():
         parser.exit(1, 'comparison error: input-invalid: comparison inputs: "Supplied inputs failed validation; check protocols and optional amendment fields."\n')
     print(rendered,end='')
     if args.amendment and result['amendment_review']['binding_status']=='MISMATCH':parser.exit(1)
+    if args.amendment_id is not None and result['embedded_amendment_review']['binding_status']=='MISMATCH':parser.exit(1)
 
 
 if __name__ == '__main__':

@@ -72,6 +72,11 @@ class CliErrorContractTests(unittest.TestCase):
             for p in ROOT.glob('*.py'):
                 if p.name!='cli_errors.py':
                     data=CHANGES[p.name]['old'].encode() if p.name in CHANGES else pre_analysis_bytes(p.name)
+                    # This historical presentation comparison keeps the actual current
+                    # engine so its newly generated detached fixture is replayable.
+                    # Exact old sources are independently proved below and by round60.
+                    import research_bundle
+                    if p.name in research_bundle.ENGINE_FILES:data=p.read_bytes()
                     (old/p.name).write_bytes(data)
             paths=[]
             for i,value in enumerate([fixture.original,fixture.application,fixture.current]):

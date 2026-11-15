@@ -11,6 +11,14 @@
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
   },
+  "examples/amendment-after.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
+  "examples/amendment-before.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
+  },
   "examples/appraisal-references.json": {
     "schema": null,
     "scope": "Outside these authored-document shapes; no conformance claim"
@@ -162,6 +170,10 @@
   "examples/interpretive-challenge-candidates.json": {
     "schema": "challenge-candidates.schema.json",
     "scope": "Completed supplied candidate shape only; Python context, date, identity and hash checks remain authoritative"
+  },
+  "examples/manual-amendment.json": {
+    "schema": null,
+    "scope": "Outside these authored-document shapes; no conformance claim"
   },
   "examples/manual-appraisal-candidates.json": {
     "schema": null,

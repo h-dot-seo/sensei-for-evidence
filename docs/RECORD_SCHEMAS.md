@@ -190,3 +190,5 @@ Question target_type is operation-derived (supplied_question_append or supplied_
 | `target_type=supplied_output_disclosure` | 1 | review_target | `output_disclosure_intake.py:_prepare` | [Guide](OUTPUT_DISCLOSURE.md) |
 | `kind=detached_output_disclosure` | 1 | detached_application | `output_disclosure_intake.py:assemble` | [Guide](OUTPUT_DISCLOSURE.md) |
 | `kind=retained_bundle_manifest_descriptor` | 1 | unverified_descriptor | `retained_bundle_describe.py:describe` | [Guide](RETAINED_BUNDLE_DESCRIBE.md) |
+| `target_type=supplied_amendment` | 1 | review_target | `amendment_intake.py:_prepare` | [Guide](AMENDMENT_LEDGER.md) |
+| `kind=detached_amendment` | 1 | detached_application | `amendment_intake.py:assemble` | [Guide](AMENDMENT_LEDGER.md) |

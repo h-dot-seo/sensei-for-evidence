@@ -112,7 +112,7 @@ class JsonDepthTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/json_depth_prior_sources.json').read_bytes())
         changes=json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes())
         self.assertEqual(set(changes),CHANGED)
-        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py')})
+        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py')})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(prior_bytes(name)).hexdigest(),digest,name)
         from evidence_workflow import run
         cases=json.loads((ROOT/'tests/evidence_basis_legacy_baselines.json').read_bytes())['cases']
@@ -145,6 +145,17 @@ class JsonDepthTests(unittest.TestCase):
                         expected=expected.replace(oldfield,newfield,1)
                     document=json.loads(expected)
                     document['engine_sha256']['cli_errors.py']=hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest()
+                    # Exact round60 ENGINE revision exceptions; preserve every other
+                    # field and the actual declared implementation-map order.
+                    actual_document=json.loads(b.stdout)
+                    current_map=actual_document['engine_sha256']
+                    changes=json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes())
+                    for name in set(changes)&set(document['engine_sha256']):
+                        self.assertEqual(document['engine_sha256'][name],hashlib.sha256(prior_bytes(name)).hexdigest())
+                        document['engine_sha256'][name]=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+                    document['engine_sha256']['amendment_links.py']=hashlib.sha256((ROOT/'amendment_links.py').read_bytes()).hexdigest()
+                    self.assertEqual(document['engine_sha256'],current_map)
+                    document['engine_sha256']={name:document['engine_sha256'][name] for name in current_map}
                     expected=(json.dumps(document,ensure_ascii=False,indent=2)+'\n').replace('\n',os.linesep).encode()
                 self.assertEqual((a.returncode,expected,a.stderr),(b.returncode,b.stdout,b.stderr))
                 self.assertEqual(b.returncode,0,b.stderr)

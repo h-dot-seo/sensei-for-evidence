@@ -1,5 +1,6 @@
 """Seven-family manifest navigation is never payload verification or replay."""
 import copy
+from tests._amendment_compat import prior_bytes as pre_amendment, prior_fixture_bytes as pre_amendment_fixture
 import hashlib
 import importlib
 import io
@@ -214,9 +215,9 @@ class RetainedBundleDescribeTests(unittest.TestCase):
 
     def test_all_existing_root_and_examples_unchanged(self):
         proof=json.loads((ROOT/'tests/retained_descriptor_prior_bytes.json').read_bytes())
-        current={p.relative_to(ROOT).as_posix() for p in list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*')) if p.is_file()}
-        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py'})
-        for name,digest in proof.items():self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest,name)
+        current={p.relative_to(ROOT).as_posix() for p in list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*')) if p.is_file() and p.name not in ('amendment-before.json','amendment-after.json','manual-amendment.json')}
+        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py','amendment_links.py','amendment_intake.py'})
+        for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_amendment(name) if '/' not in name else pre_amendment_fixture(name)).hexdigest(),digest,name)
 
     def test_text_quotes_supplied_controls_and_descriptor_is_independent(self):
         raw=manifest_change(self.archives['collection_bundle'],lambda m:m.update(boundary='PRIVATE supplied\n\r\x1b\u202e text'))
