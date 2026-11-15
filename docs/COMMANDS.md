@@ -25,6 +25,10 @@ Navigation routes must be covered by these same documented help entries.
 
 Shared conventions:
 
+- The [scoped error contract](CLI_ERROR_CONTRACT.md) preserves success, negative-report,
+  caught-error and usage channels; twelve ordinary review views add static categories
+  and argument labels. Not every CLI is converted, and diagnostics are not guaranteed private.
+
 - Inputs are supplied JSON protocols, candidate documents or explicitly authorized local
   export files. Outputs are bookkeeping over supplied data, never a scientific judgement,
   an authentication of a source or reviewer, or a generated conclusion.
@@ -525,3 +529,5 @@ compatibility. Origin fields are supplied declarations, never authentication.
 [Scoped exclusive-output contract](OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.
 
 | `output_io.py` | Scoped existing-entry guard and exclusive byte output; partial files and path races remain possible ([contract](OUTPUT_CONTRACT.md)) |
+
+| `cli_errors.py` | Presentation-only categories and static labels for twelve ordinary views; no input reading or validation ([contract](CLI_ERROR_CONTRACT.md)) |

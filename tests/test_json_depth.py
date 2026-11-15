@@ -112,7 +112,7 @@ class JsonDepthTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/json_depth_prior_sources.json').read_bytes())
         changes=json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes())
         self.assertEqual(set(changes),CHANGED)
-        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py')})
+        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name != 'cli_errors.py'})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(prior_bytes(name)).hexdigest(),digest,name)
         from evidence_workflow import run
         cases=json.loads((ROOT/'tests/evidence_basis_legacy_baselines.json').read_bytes())['cases']
@@ -135,7 +135,7 @@ class JsonDepthTests(unittest.TestCase):
                 b=subprocess.run([sys.executable,'-B',str(ROOT/script),str(source)],cwd=ROOT,capture_output=True,timeout=30)
                 expected=a.stdout
                 if script in ('prisma_audit.py','search_manifest.py'):
-                    for name in ('json_io.py','archive_safety.py'):
+                    for name in ('json_io.py','archive_safety.py',script):
                         oldhash=hashlib.sha256(prior_bytes(name)).hexdigest()
                         newhash=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
                         oldfield=('"'+name+'": "'+oldhash+'"').encode()
@@ -143,6 +143,9 @@ class JsonDepthTests(unittest.TestCase):
                         self.assertEqual(expected.count(oldfield),1)
                         self.assertEqual(b.stdout.count(newfield),1)
                         expected=expected.replace(oldfield,newfield,1)
+                    document=json.loads(expected)
+                    document['engine_sha256']['cli_errors.py']=hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest()
+                    expected=(json.dumps(document,ensure_ascii=False,indent=2)+'\n').replace('\n',os.linesep).encode()
                 self.assertEqual((a.returncode,expected,a.stderr),(b.returncode,b.stdout,b.stderr))
                 self.assertEqual(b.returncode,0,b.stderr)
 

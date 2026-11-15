@@ -1,5 +1,6 @@
 """Compare replayed supplied appraisals with later literal result/source context."""
 import argparse
+from cli_errors import fail
 import hashlib
 import json
 from pathlib import Path
@@ -102,6 +103,7 @@ def review(original_protocol, application_record, current_protocol):
                         for state in states} for key in dimensions})
     hashes = dict(intake._implementation_hashes())
     hashes['appraisal_source_review.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    hashes['cli_errors.py'] = hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()
     result = dict(schema_version=1, kind='detached_appraisal_source_review', rows=rows, counts=counts,
         original_replay_result=replay, original_protocol_sha256=intake.digest(original),
         application_record_sha256=intake.digest(application), current_protocol_sha256=intake.digest(current),
@@ -129,18 +131,25 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--text', action='store_true')
     args = parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
-        result = review(*(intake._read(path, MAX_BYTES, label) for path, label in (
-            (args.original_protocol, 'original protocol'), (args.application_record, 'application record'),
-            (args.current_protocol, 'current protocol'))))
+        values = []
+        for path, label in ((args.original_protocol, 'original protocol'),
+                            (args.application_record, 'application record'),
+                            (args.current_protocol, 'current protocol')):
+            values.append(intake._read(path, MAX_BYTES, label))
+        stage, label = 'validation', 'original protocol / application record / current protocol'
+        result = review(*values)
+        stage, label = 'output', 'rendered report'
         encoded = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
         rendered = render_text(result) if args.text else encoded
         if any(len(value.encode('utf-8')) > MAX_BYTES for value in (encoded, rendered)):
             raise ValueError('output exceeds byte limit')
         if args.output is not None:
+            stage, label = 'output', 'output'
             intake._write_new(args.output, encoded.encode("utf-8"))
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as error:
-        parser.exit(1, 'appraisal source review error: ' + quoted_display(str(error)) + '\n')
+        fail(parser, 'appraisal source review', stage, label, error)
     print(rendered, end='')
 
 

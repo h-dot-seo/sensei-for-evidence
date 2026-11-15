@@ -1,5 +1,6 @@
 """Create a PRISMA-oriented supplied-data and synthesis-citation review snapshot."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -78,7 +79,7 @@ def snapshot(protocol):
             challenges=[copy.deepcopy(row) for row in research['challenge']['challenge_ledger']
                         if statement['statement_id'] in row['statement_ids']]))
     implementation = dict(engine_hashes())
-    for name in ('synthesis_review.py', 'research_status.py'):
+    for name in ('cli_errors.py', 'synthesis_review.py', 'research_status.py'):
         implementation[name] = hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
     result = dict(schema_version=2, question=research['question'], protocol_version=research['protocol_version'],
         protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
@@ -226,10 +227,14 @@ def main():
     parser.add_argument('protocol', type=Path)
     parser.add_argument('--text', action='store_true')
     args = parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
-        result = snapshot(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)))
+        raw = read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)
+        protocol = parse_json(raw)
+        stage = 'validation'
+        result = snapshot(protocol)
     except (OSError, ValueError, TypeError, KeyError) as error:
-        parser.exit(1, str(error) + '\n')
+        fail(parser, 'synthesis review', stage, label, error)
     print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')
 
 

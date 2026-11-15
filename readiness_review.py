@@ -1,5 +1,6 @@
 """Show the mechanical conclusion-readiness gate ledger and supplied readiness assertions without assessing sufficiency."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -26,7 +27,7 @@ def review(protocol):
     if 'reports' in protocol:
         report_flow(protocol, include_csv=False)
     readiness = research['readiness']
-    implementation = dict(engine_hashes(), **{'readiness_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
+    implementation = dict(engine_hashes(), **{'readiness_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'cli_errors.py': hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()})
     result = dict(schema_version=1, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
@@ -80,10 +81,14 @@ def main():
     parser.add_argument('protocol', type=Path)
     parser.add_argument('--text', action='store_true', help='print a human-readable gate and assertion summary')
     args = parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
-        result = review(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)))
+        raw = read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)
+        protocol = parse_json(raw)
+        stage = 'validation'
+        result = review(protocol)
     except (OSError, ValueError, TypeError, KeyError) as error:
-        parser.exit(1, str(error) + '\n')
+        fail(parser, 'readiness review', stage, label, error)
     print(render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text else '\n')
 
 

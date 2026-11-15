@@ -1,5 +1,6 @@
 """Join supplied evidence, context and appraisal into work-package review packets."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -202,7 +203,7 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
                 missing_report_study_memberships=[copy.deepcopy(row) for row in coverage['missing_report_study_memberships'] if row['report_id'] in report_ids],
                 scope='full_explicitly_linked_reports_not_inferred_work_requirements',
                 boundary=coverage['boundary'])
-    implementation = dict(engine_hashes(), **{'work_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
+    implementation = dict(engine_hashes(), **{'work_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'cli_errors.py': hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()})
     return dict(schema_version=2, question=research['question'], protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='sorted compact UTF-8 JSON; object key order ignored, list order retained; not authentication',
@@ -387,10 +388,14 @@ def main():
     formatting.add_argument('--text', action='store_true', help='render a detailed text review packet')
     formatting.add_argument('--brief', action='store_true', help='render compact work-state, deliverable and review-cue navigation')
     args = parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
-        result = review_packets(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)), args.work_package, args.include_prerequisites)
+        raw = read_bounded(args.protocol, MAX_CLI_INPUT_BYTES)
+        protocol = parse_json(raw)
+        stage = 'validation'
+        result = review_packets(protocol, args.work_package, args.include_prerequisites)
     except (OSError, ValueError, TypeError, KeyError) as error:
-        parser.exit(1, str(error) + '\n')
+        fail(parser, 'work review', stage, label, error)
     print(render_brief(result) if args.brief else render_text(result) if args.text else json.dumps(result, ensure_ascii=False, indent=2), end='' if args.text or args.brief else '\n')
 
 
