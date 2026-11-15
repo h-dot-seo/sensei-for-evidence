@@ -26,7 +26,9 @@ class ExclusiveOutputTests(unittest.TestCase):
             for n in ast.walk(tree):
                 if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='open':self.assertFalse(any(isinstance(a,ast.Constant) and a.value in ('x','xb') for a in n.args),name)
         self.assertEqual(sites,16)
-        for name,sha in baseline['excluded'].items():self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),sha,name)
+        for name,sha in baseline['excluded'].items():
+            from tests._json_depth_compat import prior_bytes as pre_depth_bytes
+            self.assertEqual(hashlib.sha256(pre_depth_bytes(name)).hexdigest(),sha,name)
 
     def test_success_exact_utf8_and_binary_bytes_and_parent_requirement(self):
         with tempfile.TemporaryDirectory() as td:

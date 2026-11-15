@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.141.0-collection-effects-contract` (2026-11-15). This file is the
+Current release: `0.142.0-bounded-json-depth` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,12 +55,12 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.141.0-collection-effects-contract` (2026-11-15).
+Release: `0.142.0-bounded-json-depth` (2026-11-15).
 
-Roadmap #57: twelve newly reviewed effect profiles complete a 17-profile supplied collection intake/review/native-archive journey with five unchanged existing profiles. Coverage is 44/200 reviewed, 156 unknown. Declarations are not execution permission, acceptance guarantees or human authentication. All root product/ENGINE and existing example bytes remain unchanged; no synthetic target refresh was needed. See [collection effects](docs/COLLECTION_EFFECTS.md).
+Roadmap #95: the shared strict decoder explicitly accepts at most128 containers (root depth0 through127; scalar leaves are not containers). JsonNestingError distinguishes explicit count from interpreter decoder capacity. Four bounded view/state CLIs retain input-too-complex classification; all other root sources, canonical encoding, numeric/duplicate/surrogate policies and scientific gates are unchanged. Deeper previously accepted inputs now reject intentionally. Existing artifacts need their old recorded implementation. See [strict JSON depth](docs/STRICT_JSON.md).
 
-New actual-process journey tests: three / 7.737 s PASS across CSV, RIS, single NBIB and ordered NBIB batch, separate fictional review, three archive families, JSON/text output-file equivalence and errors. Initial contract focus 18 / 20.748 s had six failures because the pre-existing generic missing-input test omitted newly covered preview/create required options, reaching usage exit2 instead of handled exit1. Added only those required test arguments; corrected 18 / 20.872 s PASS. Independent/final/full verification pending.
+Core seven tests / 1.444 s passed. Initial synthetic success comparison incorrectly used a protocol without reports for every reporting command; replaced the new test input with the existing report protocol. Actual prior/current audit and search-manifest outputs expose the changed json_io digest; allowed only that named field, not arbitrary output differences. Initial compatibility focus65 /19.794s found one historical synthesis-review output also exposes a changed CLI-reader hash. Extended the named exception list to the exact five source fields; historical baseline JSON data remain untouched. Corrected compatibility65 /19.686s PASS (one native-platform skip).
 
-Full 2340 tests / 210.887 s PASS (two native-platform skips). Final focus 42 / 23.843 s PASS (one skip); audit592/manifest591 and Python3.10 grammar294 passed. Independent review noted that the RIS-only preview profile repeated a batch-specific option sentence. After the full run, removed only that sentence from RIS notes (batch profile unchanged); focused contract and inventory checks are rerun on the corrected prose. No product, test or example bytes changed in this correction. Final independent validation pending.
+Independent core21 /2.870s PASS plus705 separate depth-oracle cases, a200,000 bracket-character string and100,000-level rejection. The independent probe initially assumed lowering Python recursionlimit controlled the C decoder identically; that assumption did not hold and was discarded, not treated as a product failure. Fixed15 fictional targets were actually recreated by seven guides/61commands and changed one target hash each; all other old example bytes unchanged. Full and final independent validation pending.
 
-Final independent correction review passed: 25 tests / 10.040 s (one platform skip), audit592 and manifest validation. Exact corrected tree c88ef1ccebc11f2a0095fe25741e3f727f0406c1 matched independently. Prior root and example bytes are unchanged. Corrected focused verification: 42 / 23.717 s PASS (one skip). Only these result records and corresponding manifest entries change after that verification.
+Full 2347 tests / 213.763 s PASS (two platform skips). Final focus47 /16.677 s PASS (one skip); audit598/manifest597 and Python3.10 grammar296 passed. Independent final55 /14.761 s, actual seven guides/61commands and15 regenerated targets passed: exactly one hash field per fixed fictional example, all other bytes retained. All prior baseline JSON files are preserved; independent tree045dd0297af5ad7fd8ac5ade48e69632bc21a525 matched exactly. Product/test/metadata frozen; only validation results and manifest entries are updated after the full run.

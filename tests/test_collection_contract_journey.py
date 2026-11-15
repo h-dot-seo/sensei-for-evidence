@@ -135,12 +135,19 @@ class CollectionContractJourneyTests(unittest.TestCase):
 
     def test_exact_new_inventory_and_source_unchanged_proof(self):
         proof=json.loads((ROOT/'tests/collection_contract_prior_bytes.json').read_bytes())
-        for rel,digest in proof.items():self.assertEqual(hashlib.sha256((ROOT/rel).read_bytes()).hexdigest(),digest,rel)
+        from tests._json_depth_compat import prior_bytes, prior_fixture_bytes
+        for rel,digest in proof.items():
+            source=prior_fixture_bytes(rel) if rel.startswith('examples/') else prior_bytes(rel)
+            self.assertEqual(hashlib.sha256(source).hexdigest(),digest,rel)
         self.assertEqual(set(proof),{p.relative_to(ROOT).as_posix() for p in ROOT.glob('*.py')}|{p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file()})
         prior=json.loads((ROOT/'tests/collection_contract_prior_registry.json').read_bytes())
         old={(r['script'],r['subcommand']):r for r in prior['commands']}
         current=command_contract.contract()
-        self.assertEqual(current['implementation_sha256'],prior['implementation_sha256'])
+        observed=dict(current['implementation_sha256'])
+        for name in json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()):
+            self.assertEqual(observed[name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
+            observed[name]=hashlib.sha256(prior_bytes(name)).hexdigest()
+        self.assertEqual(observed,prior['implementation_sha256'])
         changed=set()
         for key,row in self.rows.items():
             original=old[key]
