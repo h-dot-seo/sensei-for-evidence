@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.147.0-supplied-amendment-ledger",
+  "release": "0.148.0-opt-in-scale-observation",
   "date": "2026-11-15",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 630,
+  "file_count": 634,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 28088,
-      "sha256": "6bcd5b6f056305bddee7b501d1f56ac7826db547cfeef6ad23eab79c2c518a7a"
+      "bytes": 28211,
+      "sha256": "5174212871382faed26ee34b72f43326196c8f9213242aee4a9db7dfbd9113fc"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 8353,
-      "sha256": "3553c1e5d534383f234655768c423fdb47e7b34f900aedd537d990e9dbc9e86d"
+      "bytes": 4424,
+      "sha256": "956e84ab882bcbecba2bf5755c6b9db6e068e8a42bf9b3811ed4ba3f2e6b8ed8"
     },
     {
       "path": "accounting_flow.py",
@@ -654,6 +654,11 @@
       "sha256": "916cda9462bfe0fea327a10ff6007e599329cee5ba47816afba2913ef55ee084"
     },
     {
+      "path": "docs/SCALE_ENVELOPE.md",
+      "bytes": 5364,
+      "sha256": "7826597efe496ce38b53a0da65a66f2a8cef09ffec625ad52300610ec75fde79"
+    },
+    {
       "path": "docs/SCHEMAS.md",
       "bytes": 9535,
       "sha256": "5804d0e7ccde3cc8ffd1027b3b32db4bed7175f3a6edd04cc418b784508cc7a0"
@@ -755,13 +760,13 @@
     },
     {
       "path": "docs/USAGE.md",
-      "bytes": 42883,
-      "sha256": "bc3b59484484bf6d367b3276ea7b92c03f15875d301c6de4aab9bd5aec59fb4a"
+      "bytes": 43001,
+      "sha256": "629c0340780a9356a006d25a8d92d4d9c92cd61507628d2494d106894a9d44dd"
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 316159,
-      "sha256": "bb834952f2b1c235dd87cb270b08ea021a9c1c9053a2b1a5df3c361c045c9e29"
+      "bytes": 317808,
+      "sha256": "dbda6bdbd9008f91a76097b393674936d248c9fab895654bc84ff269f8df2d18"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -2274,6 +2279,16 @@
       "sha256": "799ec9883028f2a448509b0d858e7f220dda9eb625cf10ad07eaab1184504048"
     },
     {
+      "path": "tests/scale_probe.py",
+      "bytes": 10394,
+      "sha256": "0acb881504eeb6fba9d35c19f07e5c83abfb70fdb5bec72d6bc487decedf9a22"
+    },
+    {
+      "path": "tests/scale_probe_prior_bytes.json",
+      "bytes": 28928,
+      "sha256": "3b2617f24a14e506ab4ca8319164105b50cfec684d647eacfa9190c618701fb6"
+    },
+    {
       "path": "tests/schema_fixture_inventory.json",
       "bytes": 19346,
       "sha256": "f3447f89f39b245380b66fa20e7247f33a9a102b87eea2d5b179f9fe12ba7675"
@@ -2937,6 +2952,11 @@
       "path": "tests/test_sampling_links.py",
       "bytes": 7136,
       "sha256": "4d106cead996c1503bb6afc5b0875ec5c06cb3c12ceac9e51dcdf445b31203c3"
+    },
+    {
+      "path": "tests/test_scale_probe.py",
+      "bytes": 7660,
+      "sha256": "c66d95e037b0eadb89f92e22f4ff8735ecc73954023ba1c803a31412f0972e4b"
     },
     {
       "path": "tests/test_schema_check.py",

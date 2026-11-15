@@ -719,3 +719,5 @@ Composed-view repeated analysis is separately reduced within one call, without a
 Received collection/transition archives can be inspected without replay using the [unverified retained-bundle reader](RETAINED_BUNDLE_DESCRIBE.md). This does not verify payloads or replace the original verifier.
 
 [Supplied amendment ledger](AMENDMENT_LEDGER.md) preserves a separately reviewed two-snapshot record without closing any gate or authenticating a reviewer.
+
+Explicit local synthetic size/timing observations (not performance guarantees): [scale envelope](SCALE_ENVELOPE.md).
