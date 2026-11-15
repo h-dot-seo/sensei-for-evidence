@@ -5,9 +5,11 @@ import hashlib
 import json
 from pathlib import Path
 from json_io import configure_utf8_stdio, parse_json, quoted_display, JsonNestingError
-from research_status import status
-from work_review import review_packets
-from synthesis_review import snapshot
+from research_status import _status_from_analysis
+from evidence_workflow import run
+from prisma_reports import report_flow
+from work_review import _packets_from_analysis
+from synthesis_review import _snapshot_from_analysis
 from report_links import report_study_ids
 
 # Display order is a navigation aid, never a scientific priority or execution order.
@@ -411,9 +413,11 @@ def input_locations(protocol, queue, sections, items):
 
 
 def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
-    state = status(protocol)
-    works = review_packets(protocol, work_package_id)
-    synthesis = snapshot(protocol)
+    research = run(protocol)
+    reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
+    state = _status_from_analysis(protocol, research, reports)
+    works = _packets_from_analysis(protocol, research, reports, work_package_id)
+    synthesis = _snapshot_from_analysis(protocol, research, reports, state)
     active_specs = dict(SPECS)
     active_specs.update({key:value for key,value in OPTIONAL_SPECS.items() if key in state['queues']})
     if (set(state['queues']) != set(active_specs) or set(SPECS) != set(QUEUE_DOMAINS)

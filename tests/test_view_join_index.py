@@ -105,7 +105,14 @@ class JoinIndexTests(unittest.TestCase):
         research = run(protocol)
         work = CountedRows(research['work_packages'])
         research['work_packages'] = work
-        with patch.object(synthesis_review, 'run', return_value=research):
+        # Count only the synthesis membership index, as before same-call reuse.
+        # Status already traversed work four times on a separate run result; it now
+        # shares this object. Supply its actual projection separately so those
+        # pre-existing traversals do not change this index-specific counter.
+        from research_status import status
+        queues = status(protocol)
+        with patch.object(synthesis_review, 'run', return_value=research), \
+                patch.object(synthesis_review, '_status_from_analysis', return_value=queues):
             actual = synthesis_review.snapshot(protocol)
         self.assertEqual(work.visits, len(work))
         for citation in actual['evidence_citation_index']:

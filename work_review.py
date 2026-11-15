@@ -50,6 +50,14 @@ def review_packets(protocol, work_package_id=None, include_prerequisites=False):
     search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
                    for index, row in enumerate(research['search_ledger'])]
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
+    return _packets_from_analysis(protocol, research, reports, work_package_id, include_prerequisites, search_refs)
+
+
+def _packets_from_analysis(protocol, research, reports, work_package_id=None, include_prerequisites=False, search_refs=None):
+    """Private projection after public option validation; never a cache or input format."""
+    if search_refs is None:
+        search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
+                       for index, row in enumerate(research['search_ledger'])]
     work = {row['work_package_id']: row for row in research['work_packages']}
     if work_package_id is not None and work_package_id not in work:
         raise ValueError('unknown work package ID')

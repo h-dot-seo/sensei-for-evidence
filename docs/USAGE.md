@@ -713,3 +713,5 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 [Scoped exclusive-output contract](OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.
 
 See [strict JSON depth](STRICT_JSON.md) for the new shared 128-container limit, intentional deeper-input rejection, decoder-capacity distinction and old-artifact implementation requirements.
+
+Composed-view repeated analysis is separately reduced within one call, without a cache or schema change. See [shared view analysis](SHARED_VIEW_ANALYSIS.md) for measured engine-call counts and limits; this does not establish general linearity or wall-time guarantees.
