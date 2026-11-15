@@ -1,0 +1,56 @@
+{
+  "compare_runs.py": [
+    [
+      "from json_io import configure_utf8_stdio, parse_json, quoted_display, canonical_json_bytes as canonical",
+      "from json_io import configure_utf8_stdio, parse_json, quoted_display, canonical_json_bytes as canonical, JsonNestingError"
+    ],
+    [
+      "    except RecursionError:\n        parser.exit(1, 'comparison error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n",
+      "    except JsonNestingError as error:\n        if error.reason == 'decoder_capacity':\n            parser.exit(1, 'comparison error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n        parser.exit(1, 'comparison error: input-too-complex: ' + label + ': \"JSON nesting exceeds 128 levels.\"\\n')\n    except RecursionError:\n        parser.exit(1, 'comparison error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n"
+    ]
+  ],
+  "json_io.py": [
+    [
+      "\n\ndef parse_json(raw):",
+      "\n\nMAX_CONTAINER_DEPTH = 128\n\n\nclass JsonNestingError(ValueError):\n    \"\"\"Fixed-category input rejection; reason never contains supplied JSON data.\"\"\"\n    def __init__(self, reason):\n        self.reason = reason\n        super().__init__('JSON nesting exceeds parser capacity' if reason == 'decoder_capacity'\n                         else 'JSON nesting exceeds 128 container levels')\n\n\ndef parse_json(raw):"
+    ],
+    [
+      "    parsed = json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid,\n                        parse_float=finite_float)\n    pending = [parsed]\n    while pending:\n        value = pending.pop()",
+      "    try:\n        parsed = json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid,\n                            parse_float=finite_float)\n    except RecursionError:\n        raise JsonNestingError('decoder_capacity') from None\n    pending = [(parsed, 0)]\n    while pending:\n        value, depth = pending.pop()"
+    ],
+    [
+      "        elif isinstance(value, dict):\n            pending.extend(value.keys())\n            pending.extend(value.values())\n        elif isinstance(value, list):\n            pending.extend(value)",
+      "        elif isinstance(value, dict):\n            if depth >= MAX_CONTAINER_DEPTH:\n                raise JsonNestingError('container_limit')\n            pending.extend((key, depth + 1) for key in value.keys())\n            pending.extend((child, depth + 1) for child in value.values())\n        elif isinstance(value, list):\n            if depth >= MAX_CONTAINER_DEPTH:\n                raise JsonNestingError('container_limit')\n            pending.extend((child, depth + 1) for child in value)"
+    ]
+  ],
+  "research_status.py": [
+    [
+      "from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes",
+      "from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes, JsonNestingError"
+    ],
+    [
+      "    except RecursionError:\n        parser.exit(1, 'research status error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n",
+      "    except JsonNestingError as error:\n        if error.reason == 'decoder_capacity':\n            parser.exit(1, 'research status error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n        parser.exit(1, 'research status error: input-too-complex: ' + label + ': \"JSON nesting exceeds 128 levels.\"\\n')\n    except RecursionError:\n        parser.exit(1, 'research status error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n"
+    ]
+  ],
+  "review_handoff.py": [
+    [
+      "from json_io import configure_utf8_stdio, parse_json, quoted_display",
+      "from json_io import configure_utf8_stdio, parse_json, quoted_display, JsonNestingError"
+    ],
+    [
+      "    except RecursionError:\n        parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n",
+      "    except JsonNestingError as error:\n        if error.reason == 'decoder_capacity':\n            parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n        parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': \"JSON nesting exceeds 128 levels.\"\\n')\n    except RecursionError:\n        parser.exit(1, 'review handoff error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n"
+    ]
+  ],
+  "validate_run.py": [
+    [
+      "from json_io import parse_json, configure_utf8_stdio",
+      "from json_io import parse_json, configure_utf8_stdio, JsonNestingError"
+    ],
+    [
+      "    except RecursionError:\n        parser.exit(1, 'state validation error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n",
+      "    except JsonNestingError as error:\n        if error.reason == 'decoder_capacity':\n            parser.exit(1, 'state validation error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n        parser.exit(1, 'state validation error: input-too-complex: ' + label + ': \"JSON nesting exceeds 128 levels.\"\\n')\n    except RecursionError:\n        parser.exit(1, 'state validation error: input-too-complex: ' + label + ': \"JSON nesting exceeds parser capacity.\"\\n')\n"
+    ]
+  ]
+}

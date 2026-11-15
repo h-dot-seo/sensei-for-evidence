@@ -3,7 +3,7 @@
 import argparse
 import json
 from pathlib import Path
-from json_io import parse_json, configure_utf8_stdio
+from json_io import parse_json, configure_utf8_stdio, JsonNestingError
 from search_audit import completion_issues, page_audit
 
 
@@ -164,6 +164,10 @@ def _read_cli_input(path, label, parser):
         parser.exit(1, 'state validation error: input-too-large: ' + label + ': "Input exceeds 50000000 bytes."\n')
     try:
         value = parse_json(raw.decode('utf-8'))
+    except JsonNestingError as error:
+        if error.reason == 'decoder_capacity':
+            parser.exit(1, 'state validation error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
+        parser.exit(1, 'state validation error: input-too-complex: ' + label + ': "JSON nesting exceeds 128 levels."\n')
     except RecursionError:
         parser.exit(1, 'state validation error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
     except (ValueError, TypeError):

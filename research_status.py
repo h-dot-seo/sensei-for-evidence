@@ -5,7 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 from evidence_workflow import run
-from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes
+from json_io import configure_utf8_stdio, parse_json, canonical_json_bytes, JsonNestingError
 from prisma_reports import report_flow
 from research_bundle import engine_hashes
 
@@ -262,6 +262,10 @@ def _read_cli_input(path, label, parser):
         parser.exit(1, 'research status error: input-too-large: ' + label + ': "Input exceeds 50000000 bytes."\n')
     try:
         value = parse_json(raw.decode('utf-8'))
+    except JsonNestingError as error:
+        if error.reason == 'decoder_capacity':
+            parser.exit(1, 'research status error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
+        parser.exit(1, 'research status error: input-too-complex: ' + label + ': "JSON nesting exceeds 128 levels."\n')
     except RecursionError:
         parser.exit(1, 'research status error: input-too-complex: ' + label + ': "JSON nesting exceeds parser capacity."\n')
     except (ValueError, TypeError):

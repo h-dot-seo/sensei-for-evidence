@@ -5,6 +5,17 @@ import sys
 import unicodedata
 
 
+MAX_CONTAINER_DEPTH = 128
+
+
+class JsonNestingError(ValueError):
+    """Fixed-category input rejection; reason never contains supplied JSON data."""
+    def __init__(self, reason):
+        self.reason = reason
+        super().__init__('JSON nesting exceeds parser capacity' if reason == 'decoder_capacity'
+                         else 'JSON nesting exceeds 128 container levels')
+
+
 def parse_json(raw):
     if isinstance(raw, (bytes, bytearray)):
         raw = raw.decode('utf-8')
@@ -25,19 +36,26 @@ def parse_json(raw):
             raise ValueError('JSON number exceeds finite float range')
         return parsed
 
-    parsed = json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid,
-                        parse_float=finite_float)
-    pending = [parsed]
+    try:
+        parsed = json.loads(raw, object_pairs_hook=pairs, parse_constant=invalid,
+                            parse_float=finite_float)
+    except RecursionError:
+        raise JsonNestingError('decoder_capacity') from None
+    pending = [(parsed, 0)]
     while pending:
-        value = pending.pop()
+        value, depth = pending.pop()
         if isinstance(value, str):
             if any(0xD800 <= ord(character) <= 0xDFFF for character in value):
                 raise ValueError('JSON strings must not contain unpaired surrogate code points')
         elif isinstance(value, dict):
-            pending.extend(value.keys())
-            pending.extend(value.values())
+            if depth >= MAX_CONTAINER_DEPTH:
+                raise JsonNestingError('container_limit')
+            pending.extend((key, depth + 1) for key in value.keys())
+            pending.extend((child, depth + 1) for child in value.values())
         elif isinstance(value, list):
-            pending.extend(value)
+            if depth >= MAX_CONTAINER_DEPTH:
+                raise JsonNestingError('container_limit')
+            pending.extend((child, depth + 1) for child in value)
     return parsed
 
 

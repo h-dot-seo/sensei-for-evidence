@@ -35,6 +35,11 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
+            # Round55: restore only the new shared-loader ENGINE digest; four CLI-only
+            # source hashes are already the exact named per-view omissions below.
+            from tests._json_depth_compat import prior_bytes as pre_depth_bytes
+            self.assertEqual(result['engine_sha256']['json_io.py'],hashlib.sha256((ROOT/'json_io.py').read_bytes()).hexdigest())
+            result['engine_sha256']['json_io.py']=hashlib.sha256(pre_depth_bytes('json_io.py')).hexdigest()
             # Round51: only CLI-source hashes newly changed outside prior revision exceptions.
             cli_prior=load('tests/cli_input_prior_sources.json')['changed']
             already_named={'evidence_workflow.py','synthesis_review.py','readiness_review.py'}
