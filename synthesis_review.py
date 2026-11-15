@@ -11,7 +11,7 @@ MAX_CLI_INPUT_BYTES = 50_000_000
 
 from evidence_workflow import run
 from prisma_reports import report_flow
-from research_status import status
+from research_status import _status_from_analysis
 from research_bundle import engine_hashes
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
 
@@ -27,7 +27,15 @@ def snapshot(protocol):
     search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
                    for index, row in enumerate(research['search_ledger'])]
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
-    queues = status(protocol)
+    queues = _status_from_analysis(protocol, research, reports)
+    return _snapshot_from_analysis(protocol, research, reports, queues, search_refs)
+
+
+def _snapshot_from_analysis(protocol, research, reports, queues, search_refs=None):
+    """Private same-call projection; no persisted or externally supplied analysis."""
+    if search_refs is None:
+        search_refs = [dict(search_index=index, search_sha256=hashlib.sha256(canonical_json_bytes(row)).hexdigest())
+                       for index, row in enumerate(research['search_ledger'])]
     synthesis = research['synthesis']
     supplied = synthesis['stage'] == 'SUPPLIED'
     screening = {row['record_id']: row for row in research['screening_ledger']}

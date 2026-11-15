@@ -430,3 +430,5 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 [Shared archive preflight](docs/SHARED_ARCHIVE_PREFLIGHT.md): seven existing ZIP workflows share the same metadata mechanics without changing formats, size policy, replay rules or safety claims.
 
 For the scoped ordinary-view stderr categories and old-record replay limitations, see [CLI error contract](docs/CLI_ERROR_CONTRACT.md).
+
+The operator handoff reuses validated analysis within one call, not across calls; see [shared view analysis](docs/SHARED_VIEW_ANALYSIS.md).

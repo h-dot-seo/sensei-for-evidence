@@ -11,6 +11,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 from tests._cli import run_cli
+from tests._shared_analysis_compat import prior_bytes as pre_analysis_bytes
 import cli_errors
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,7 +71,7 @@ class CliErrorContractTests(unittest.TestCase):
             root=Path(td);old=root/'prior';old.mkdir()
             for p in ROOT.glob('*.py'):
                 if p.name!='cli_errors.py':
-                    data=CHANGES[p.name]['old'].encode() if p.name in CHANGES else p.read_bytes()
+                    data=CHANGES[p.name]['old'].encode() if p.name in CHANGES else pre_analysis_bytes(p.name)
                     (old/p.name).write_bytes(data)
             paths=[]
             for i,value in enumerate([fixture.original,fixture.application,fixture.current]):
@@ -114,10 +115,10 @@ class CliErrorContractTests(unittest.TestCase):
                                     if path and path[-1]=='engine_sha256':
                                         if 'cli_errors.py' in b:
                                             self.assertEqual(b.pop('cli_errors.py'),hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest());touched.append(path+('cli_errors.py',))
-                                        for key in CHANGES:
+                                        for key in set(CHANGES)|{'research_status.py','review_handoff.py'}:
                                             if key in b:
                                                 self.assertEqual(b[key],hashlib.sha256((ROOT/key).read_bytes()).hexdigest())
-                                                self.assertEqual(a[key],hashlib.sha256(CHANGES[key]['old'].encode()).hexdigest())
+                                                self.assertEqual(a[key],hashlib.sha256(CHANGES[key]['old'].encode() if key in CHANGES else pre_analysis_bytes(key)).hexdigest())
                                                 b[key]=a[key];touched.append(path+(key,))
                                     for key in a:
                                         if key in b:restore(a[key],b[key],path+(key,))
@@ -146,10 +147,10 @@ class CliErrorContractTests(unittest.TestCase):
         expected=json.loads((ROOT/'tests/cli_error_prior_sources.json').read_bytes())
         self.assertEqual(set(CHANGES),{n+'.py' for n in DIRECT+INDIRECT})
         for name,digest in expected.items():
-            data=CHANGES[name]['old'].encode() if name in CHANGES else (ROOT/name).read_bytes()
+            data=CHANGES[name]['old'].encode() if name in CHANGES else pre_analysis_bytes(name)
             self.assertEqual(hashlib.sha256(data).hexdigest(),digest,name)
         for name,change in CHANGES.items():
-            self.assertEqual((ROOT/name).read_text(),change['new'])
+            self.assertEqual(pre_analysis_bytes(name).decode(),change['new'])
             self.assertIn("'cli_errors.py'",change['new'])
             old=ast.parse(change['old']);new=ast.parse(change['new'])
             funcs=lambda t:{n.name:ast.get_source_segment(change['old'] if t is old else change['new'],n) for n in t.body if isinstance(n,(ast.FunctionDef,ast.AsyncFunctionDef))}

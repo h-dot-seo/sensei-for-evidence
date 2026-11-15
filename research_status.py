@@ -19,6 +19,11 @@ BOUNDARY = ('Queues describe supplied data and operator assertions only. Depende
 def status(protocol, *, research_map=_NO_RESEARCH_MAP):
     research = run(protocol)
     reports = report_flow(protocol, include_csv=False) if 'reports' in protocol else None
+    return _status_from_analysis(protocol, research, reports, research_map=research_map)
+
+
+def _status_from_analysis(protocol, research, reports, *, research_map=_NO_RESEARCH_MAP):
+    """Project only a same-call validated analysis; not a public validation shortcut."""
     records = {rid for row in protocol['searches'] for rid in row['record_ids']}
     screened = {row['record_id'] for row in protocol['screening']}
     plan = research['search_plan_audit']
