@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import stat
 import zipfile
+from archive_safety import check_dynamic_stored_entries
 
 import bibliographic_intake
 import nbib_intake
@@ -196,17 +197,9 @@ def build_bundle(initial_raw, application_raws, endpoint_raw):
 
 
 def _check_entries(archive):
-    entries = archive.infolist()
-    names = [entry.filename for entry in entries]
-    if len(entries) > MAX_STEPS + len(FIXED_MEMBERS) or len(names) != len(set(names)):
-        raise ValueError('unexpected or duplicate archive entries')
-    _size(sum(entry.file_size for entry in entries))
-    for entry in entries:
-        allowed = entry.filename in FIXED_MEMBERS or re.fullmatch(r'applications/step-[0-9]{6}\.json', entry.filename)
-        if (not allowed or entry.is_dir() or entry.flag_bits & 1 or entry.compress_type != zipfile.ZIP_STORED
-                or entry.compress_size != entry.file_size or entry.create_system != 3
-                or not stat.S_ISREG(entry.external_attr >> 16)):
-            raise ValueError('unexpected archive path, type, encryption or compression')
+    names = check_dynamic_stored_entries(archive,
+        lambda name: name in FIXED_MEMBERS or re.fullmatch(r'applications/step-[0-9]{6}\.json', name),
+        MAX_STEPS + len(FIXED_MEMBERS), _size)
     if not FIXED_MEMBERS.issubset(names):
         raise ValueError('missing extraction-transition archive entries')
     return names

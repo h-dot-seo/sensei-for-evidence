@@ -144,7 +144,9 @@ class CollectionContractJourneyTests(unittest.TestCase):
         old={(r['script'],r['subcommand']):r for r in prior['commands']}
         current=command_contract.contract()
         observed=dict(current['implementation_sha256'])
-        for name in json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()):
+        changed=set(json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()))
+        changed.update(json.loads((ROOT/'tests/archive_preflight_source_changes.json').read_bytes()))
+        for name in changed:
             self.assertEqual(observed[name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
             observed[name]=hashlib.sha256(prior_bytes(name)).hexdigest()
         self.assertEqual(observed,prior['implementation_sha256'])

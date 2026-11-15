@@ -33,7 +33,7 @@
     }
   ],
   "review": {
-    "target_sha256": "5dcf2a6be4fd291b01e9d1fa9f24230dbc613009066739081aa959705b1d69f9",
+    "target_sha256": "f5b73464a6be6cb76fc78276ac9ac0641d08446bcfc2082077705b768ea2f4c2",
     "reviewer": "Fictional walkthrough reviewer",
     "reviewed_at": "2026-11-04",
     "rationale": "Prewritten synthetic collection assertion for the exact five rows only.",

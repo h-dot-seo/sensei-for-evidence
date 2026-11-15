@@ -52,3 +52,24 @@ def check_stored_entries(archive, allowed_names, max_total):
                 or not stat.S_ISREG(entry.external_attr >> 16)):
             raise ValueError('unexpected archive path, type, encryption or compression')
     return names
+
+
+def check_dynamic_stored_entries(archive, allowed, max_entries, size_check):
+    """Inspect metadata only, preserving caller policies and diagnostic ordering.
+
+    allowed and size_check are trusted implementation callbacks, not supplied code.
+    Required members and full canonical/semantic replay remain the caller's job.
+    """
+    entries = archive.infolist()
+    names = [entry.filename for entry in entries]
+    if len(entries) > max_entries or len(set(names)) != len(names):
+        raise ValueError('unexpected or duplicate archive entries')
+    size_check(sum(entry.file_size for entry in entries))
+    for entry in entries:
+        if (not allowed(entry.filename) or entry.is_dir() or entry.flag_bits & 1
+                or entry.compress_type != zipfile.ZIP_STORED
+                or entry.compress_size != entry.file_size
+                or entry.create_system != 3
+                or not stat.S_ISREG(entry.external_attr >> 16)):
+            raise ValueError('unexpected archive path, type, encryption or compression')
+    return names

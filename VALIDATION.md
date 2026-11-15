@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.142.0-bounded-json-depth` (2026-11-15). This file is the
+Current release: `0.143.0-shared-archive-preflight` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,12 +55,12 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.142.0-bounded-json-depth` (2026-11-15).
+Release: `0.143.0-shared-archive-preflight` (2026-11-15).
 
-Roadmap #95: the shared strict decoder explicitly accepts at most128 containers (root depth0 through127; scalar leaves are not containers). JsonNestingError distinguishes explicit count from interpreter decoder capacity. Four bounded view/state CLIs retain input-too-complex classification; all other root sources, canonical encoding, numeric/duplicate/surrogate policies and scientific gates are unchanged. Deeper previously accepted inputs now reject intentionally. Existing artifacts need their old recorded implementation. See [strict JSON depth](docs/STRICT_JSON.md).
+Roadmap #54: consolidate seven existing ZIP metadata preflights in archive_safety without new acceptance, safety or format claims. Exact root8: existing ENGINE leaf plus seven collection/transition wrappers. Existing research check/read_bounded, build/verify function bodies and ENGINE filename sets remain unchanged. Wrapper body lines fall from102 to34 plus19 shared-helper lines (53 total, excluding seven imports). No runtime performance claim. See [shared preflight](docs/SHARED_ARCHIVE_PREFLIGHT.md).
 
-Core seven tests / 1.444 s passed. Initial synthetic success comparison incorrectly used a protocol without reports for every reporting command; replaced the new test input with the existing report protocol. Actual prior/current audit and search-manifest outputs expose the changed json_io digest; allowed only that named field, not arbitrary output differences. Initial compatibility focus65 /19.794s found one historical synthesis-review output also exposes a changed CLI-reader hash. Extended the named exception list to the exact five source fields; historical baseline JSON data remain untouched. Corrected compatibility65 /19.686s PASS (one native-platform skip).
+Initial three new tests had seven failures because a controlled old-source read was erroneously reversed twice, and one error assuming every transition module exposed an ENGINE_FILES constant. Fixed test setup only: load previous modules before controlling the eight implementation-byte reads, and compare actual implementation key sets where no constant exists. Corrected core3 /2.429s PASS. Old/new metadata comparison covers15 variants under two size-callback conditions across seven functions (210 pairs); an earlier progress estimate said14 variants and is corrected here.
 
-Independent core21 /2.870s PASS plus705 separate depth-oracle cases, a200,000 bracket-character string and100,000-level rejection. The independent probe initially assumed lowering Python recursionlimit controlled the C decoder identically; that assumption did not hold and was discarded, not treated as a product failure. Fixed15 fictional targets were actually recreated by seven guides/61commands and changed one target hash each; all other old example bytes unchanged. Full and final independent validation pending.
+Existing bundle and history focus266 /70.271s PASS (one platform skip). Independent core217 /52.545s PASS plus2100 randomized metadata comparisons against actual previous55 sources, including exception classes/messages, callback ordering and no payload reads. Seven actual old/current archives have identical bytes and cross-replay under controlled prior implementation reads; actual new-release hashes still change. All15 fixed fictional target hashes were actually regenerated with seven guides/61commands; other example bytes unchanged. Historical baselines are retained with exact named source/hash reversals. Full/final independent validation pending.
 
-Full 2347 tests / 213.763 s PASS (two platform skips). Final focus47 /16.677 s PASS (one skip); audit598/manifest597 and Python3.10 grammar296 passed. Independent final55 /14.761 s, actual seven guides/61commands and15 regenerated targets passed: exactly one hash field per fixed fictional example, all other bytes retained. All prior baseline JSON files are preserved; independent tree045dd0297af5ad7fd8ac5ade48e69632bc21a525 matched exactly. Product/test/metadata frozen; only validation results and manifest entries are updated after the full run.
+Full2350 /219.585s PASS (two platform skips). Final focused39 /25.847s PASS (one skip). Independent final29 /10.200s, actual seven guides/61commands and15 fixed target recreations passed; hash-only/other example bytes and historical baseline JSON preservation verified. Audit604/manifest603 and Python3.10 grammar298 passed. Independent frozen tree6e3a8fc09f7490cb7808283f13a47b38558db520 matched exactly. Only these validation results and corresponding manifest entries change after full verification.

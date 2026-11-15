@@ -80,7 +80,9 @@ The new tests use exact source-fragment reversals to retain historical baseline
 files instead of replacing them. Historical views substitute only declared named
 implementation-hash fields, not findings, queue contents, data or arbitrary text.
 The primary previous/current process comparison preserves all stdout/stderr/exit
-bytes except the single `json_io.py` digest field in the two outputs that expose it.
+bytes except the named `json_io.py` digest field in the two outputs that expose it.
+Later shared-preflight maintenance additionally names `archive_safety.py` in those
+same outputs; no other bytes or scientific results are normalized.
 
 ## Validation scope
 
