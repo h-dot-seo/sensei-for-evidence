@@ -240,7 +240,7 @@ and no step fills a decision, judgement or label on your behalf.
 | `python collection_bundle.py verify [-h] [--text] bundle` | Replay the wrapper bindings and compare the entire canonical ZIP | [Collection bundles](COLLECTION_BUNDLES.md) |
 | `python batch_collection_bundle.py create [-h] --batch INDEX=PATH [--text] protocol output` | Package selected batch wrappers and every exact native source file with historical import bindings | [Batch collection bundles](BATCH_COLLECTION_BUNDLES.md) |
 | `python batch_collection_bundle.py verify [-h] [--text] bundle` | Replay the batch bindings and compare the entire canonical ZIP | [Batch collection bundles](BATCH_COLLECTION_BUNDLES.md) |
-| `python native_collection_bundle.py create [-h] [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol output` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required | [Native collection bundles](NATIVE_COLLECTION_BUNDLES.md) |
+| `python native_collection_bundle.py create [-h] [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--ris-continuation INDEX=PATH] [--text] protocol output` | Bind explicitly typed RIS and NBIB wrappers plus exact originals to historical imports in one portable snapshot; at least one selection required | [Native collection bundles](NATIVE_COLLECTION_BUNDLES.md) |
 | `python native_collection_bundle.py verify [-h] [--text] bundle` | Replay the typed bindings and compare the entire canonical ZIP | [Native collection bundles](NATIVE_COLLECTION_BUNDLES.md) |
 | `python report_transition_bundle.py create [-h] --application APPLICATION.json [--text] initial endpoint output` | Retain an explicitly selected contiguous registration/retrieval/full-text segment with exact original bytes | [Report transition bundles](REPORT_TRANSITION_BUNDLES.md) |
 | `python report_transition_bundle.py verify [-h] [--text] bundle` | Replay the retained report segment; earlier and later history stay unassessed | [Report transition bundles](REPORT_TRANSITION_BUNDLES.md) |
@@ -317,8 +317,8 @@ in every bundle, so verification fails closed on implementation drift.
 The separate [declared continuation dialect](RIS_CONTINUATION_INTAKE.md) preserves native bytes
 through `ris_continuation_intake.py preview --dialect
 ris-untagged-continuation-empty-paragraphs-v1` and `verify`. The four-command
-synthetic walkthrough stops at an unfilled review template. Strict RIS and native
-archive formats remain unchanged; retain continuation wrappers separately.
+synthetic walkthrough stops at an unfilled review template. Strict RIS implementation bytes and
+NBIB-only archive formats remain unchanged. Typed native archives now accept an explicit --ris-continuation binding; older wrappers/archives require their recorded implementation.
 
 ## Blank screening-position spreadsheet
 

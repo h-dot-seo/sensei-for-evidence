@@ -5,7 +5,7 @@ This separate parser/wrapper accepts only the operator-declared
 reference-manager product or claim exporter compatibility. The fixture is entirely
 fictional. Use the existing [strict RIS route](RIS_INTAKE.md) for its original grammar.
 Neither verifier accepts the other wrapper. Existing strict RIS implementation
-bytes and native archive formats are unchanged.
+bytes and NBIB-only archive formats are unchanged. Typed native archives have a separate explicit continuation binding; old records still require their original implementation.
 
 ## Grammar and rejection boundaries
 
@@ -56,8 +56,7 @@ raw text, physical-line/byte spans and hashes, the deterministic CSV derivative,
 explicit dialect in `mode` and `source_export.format`, and implementation hashes.
 Verification reconstructs all fields. Hash consistency is not source authentication.
 The unchanged CSV core cannot independently verify native provenance. Retain this
-wrapper and the original export separately: neither existing NBIB nor typed
-[native archives](NATIVE_COLLECTION_BUNDLES.md) accept this dialect. Do not change
-an archive format label to force admission. Native archive support is deferred.
+wrapper and original export. NBIB-only archives do not accept this dialect. Explicit typed
+[native archives](NATIVE_CONTINUATION_ARCHIVE.md) can retain and verify it using --ris-continuation. Do not relabel a wrapper or edit an old hash; old implementations remain necessary for retained old records.
 Store real exports and outputs outside this public repository; no redaction is
 performed. This route makes no network calls and does not mutate the protocol.

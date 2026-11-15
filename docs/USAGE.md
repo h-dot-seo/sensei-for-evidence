@@ -723,3 +723,5 @@ Received collection/transition archives can be inspected without replay using th
 Explicit local synthetic size/timing observations (not performance guarantees): [scale envelope](SCALE_ENVELOPE.md).
 
 Local guide links and explicit execution-coverage boundaries: [documentation conformance](DOCUMENTATION_CONFORMANCE.md).
+
+Supplied continuation RIS through separate review and exact typed archive replay: [native continuation archive](NATIVE_CONTINUATION_ARCHIVE.md).

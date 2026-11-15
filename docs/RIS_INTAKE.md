@@ -175,5 +175,5 @@ exports outside this public repository. All supplied metadata, abstracts and
 attachment locator text are retained without redaction or rights clearance.
 
 The separate [explicit continuation dialect](RIS_CONTINUATION_INTAKE.md) is
-not admitted to existing native archives; keep its wrapper separately. Its parser
-does not relax or replace the strict RIS route documented here.
+accepted only through the explicit typed-native --ris-continuation binding. Its parser
+does not relax or replace the strict RIS route documented here. See [the retained continuation journey](NATIVE_CONTINUATION_ARCHIVE.md) for separate supplied review, replay and implementation-version limits.

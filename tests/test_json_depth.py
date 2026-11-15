@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_handoff_display
 """Explicit container count, fixed error provenance and old in-range behavior."""
 import argparse
 import hashlib
@@ -157,7 +158,7 @@ class JsonDepthTests(unittest.TestCase):
                     self.assertEqual(document['engine_sha256'],current_map)
                     document['engine_sha256']={name:document['engine_sha256'][name] for name in current_map}
                     expected=(json.dumps(document,ensure_ascii=False,indent=2)+'\n').replace('\n',os.linesep).encode()
-                self.assertEqual((a.returncode,expected,a.stderr),(b.returncode,b.stdout,b.stderr))
+                self.assertEqual((a.returncode,expected,a.stderr),(b.returncode,prior_handoff_display(b.stdout),b.stderr))
                 self.assertEqual(b.returncode,0,b.stderr)
 
 

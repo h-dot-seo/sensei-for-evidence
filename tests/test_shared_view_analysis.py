@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_handoff_display
 """Same-call projection reuse; no cache, validation shortcut or general scale claim."""
 import ast
 from tests._amendment_compat import prior_bytes as pre_amendment
@@ -166,7 +167,7 @@ with patch.object(Path,'read_bytes',controlled):runpy.run_path(str(root/script),
                 with self.subTest(name=name,args=args):
                     before=subprocess.run([sys.executable,str(old/name),*args],cwd=old,capture_output=True)
                     after=subprocess.run([sys.executable,str(runfile),str(ROOT),str(old),name,*args],cwd=ROOT,capture_output=True)
-                    self.assertEqual((before.returncode,before.stdout,before.stderr),(after.returncode,after.stdout,after.stderr))
+                    self.assertEqual((before.returncode,before.stdout,before.stderr),(after.returncode,prior_handoff_display(after.stdout),after.stderr))
                     self.assertNotIn(b'Traceback',after.stderr)
             # Actual, uncontrolled fingerprints must still point to current source bytes.
             for fn in FUNCTIONS:

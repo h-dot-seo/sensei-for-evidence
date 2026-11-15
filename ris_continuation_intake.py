@@ -31,7 +31,7 @@ BOUNDARY = (
     'All repeated tags and record occurrences remain ordered and separate; no DOI, title, accession, ID or URL is selected or merged. '
     'URL and attachment fields are inert text, never opened. The unchanged core sees a CSV derivative, not native RIS. '
     'Retain this wrapper for exact full-file, separator and BOM provenance; ordinary review/bundles do not independently verify it. '
-    'Existing NBIB and typed native collection archives do not accept this continuation wrapper; retain it separately. '
+    'NBIB-only archives do not accept this continuation wrapper. Explicit typed native collection --ris-continuation bindings can retain and verify it; ordinary research ZIPs still do not independently verify this wrapper. '
     'No protocol, search, screening decision, report, study or evidence is created or changed. '
     'Supplied text is retained without redaction; store real exports and outputs outside the public repository.'
 )

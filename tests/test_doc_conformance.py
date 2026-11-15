@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_bytes as pre_native_archive
 """Explicit local Markdown coverage, never inferred execution or authority."""
 import ast
 import copy
@@ -51,7 +52,7 @@ class DocumentationConformanceTests(unittest.TestCase):
     def test_every_shell_block_has_an_exact_explicit_classification(self):
         blocks=shell_blocks(ROOT);registry=json.loads((ROOT/'tests/doc_block_registry.json').read_bytes())
         self.assertEqual(set(blocks),set(registry))
-        self.assertEqual(len(blocks),197)
+        self.assertEqual(len(blocks),200)
         for key,entry in registry.items():
             with self.subTest(block=key):
                 self.assertEqual(entry['sha256'],blocks[key]['sha256'])
@@ -103,9 +104,10 @@ class DocumentationConformanceTests(unittest.TestCase):
     def test_original_sources_examples_workflows_and_block_bytes_preserved(self):
         proof=json.loads((ROOT/'tests/doc_conformance_prior_bytes.json').read_bytes())
         for name,digest in proof['files'].items():
-            self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),digest,name)
+            self.assertEqual(hashlib.sha256(pre_native_archive(name) if '/' not in name else (ROOT/name).read_bytes()).hexdigest(),digest,name)
         current=shell_blocks(ROOT)
-        self.assertEqual({key:row['sha256'] for key,row in current.items()},proof['blocks'])
+        self.assertEqual({key:current[key]['sha256'] for key in proof['blocks']},proof['blocks'])
+        self.assertEqual(set(current)-set(proof['blocks']),{'docs/NATIVE_CONTINUATION_ARCHIVE.md::'+str(i) for i in range(3)})
         history=(ROOT/'docs/VALIDATION_HISTORY.md').read_bytes()
         proof=proof['history_prefix'];prefix=history[:proof['new_bytes']]
         self.assertEqual(hashlib.sha256(prefix).hexdigest(),proof['new_sha256'])

@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_bytes as pre_native_archive
 """Small deterministic probe mechanics; no large run in ordinary CI."""
 import copy
 import hashlib
@@ -100,7 +101,7 @@ class ScaleProbeTests(unittest.TestCase):
         paths=list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*'))+list((ROOT/'schemas').rglob('*'))+list((ROOT/'.github').rglob('*'))
         current={p.relative_to(ROOT).as_posix():p for p in paths if p.is_file()}
         self.assertEqual(set(current),set(proof))
-        for name,digest in proof.items():self.assertEqual(hashlib.sha256(current[name].read_bytes()).hexdigest(),digest,name)
+        for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_native_archive(name) if '/' not in name else current[name].read_bytes()).hexdigest(),digest,name)
 
 
 if __name__=='__main__':unittest.main()

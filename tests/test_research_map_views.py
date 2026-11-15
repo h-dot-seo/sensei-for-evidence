@@ -1,3 +1,4 @@
+from tests._native_archive_compat import prior_handoff_display
 """Explicit map context is separate from default protocol views and gate decisions."""
 import copy
 import hashlib
@@ -88,12 +89,12 @@ class MapViewTests(unittest.TestCase):
             # Compare text prints the same named digest entry; substitute only that
             # recorded value, never remove a line or normalize any other text.
             for name,value in case['omitted_fingerprints'].items():text_result['engine_sha256'][name]=value
-            self.assertEqual(hashlib.sha256(module.render_text(text_result).encode()).hexdigest(),case['text_sha256'])
+            self.assertEqual(hashlib.sha256(prior_handoff_display(module.render_text(text_result).encode())).hexdigest(),case['text_sha256'])
             for name in expected[kind]:
                 self.assertEqual(result['engine_sha256'][name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
                 self.assertNotEqual(result['engine_sha256'].pop(name),case['omitted_fingerprints'][name])
             raw=(json.dumps(result,ensure_ascii=False,indent=2,allow_nan=False)+'\n').encode()
-            self.assertEqual(hashlib.sha256(raw).hexdigest(),case['json_without_named_fingerprints_sha256'],(kind,case['fixture']))
+            self.assertEqual(hashlib.sha256(prior_handoff_display(raw)).hexdigest(),case['json_without_named_fingerprints_sha256'],(kind,case['fixture']))
 
     def test_context_does_not_change_any_base_field_or_gate_queue(self):
         before=copy.deepcopy((self.p,self.d))

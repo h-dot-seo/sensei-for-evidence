@@ -792,7 +792,7 @@ class NativeCollectionBundleTests(unittest.TestCase):
 
     def test_fingerprints_cover_all_dispatch_engines_without_loading_archive_code(self):
         hashes=bundle.implementation_hashes()
-        expected=set(research_bundle.ENGINE_FILES)|set(ris_intake.implementation_hashes())|set(nbib_intake.implementation_hashes())|{'native_collection_bundle.py'}
+        expected=set(research_bundle.ENGINE_FILES)|set(ris_intake.implementation_hashes())|set(nbib_intake.implementation_hashes())|{'native_collection_bundle.py','ris_continuation_intake.py','ris_continuation_parser.py'}
         self.assertEqual(set(hashes),expected)
         for name in ['ris_intake.py','ris_export_parser.py','nbib_intake.py','nbib_batch_intake.py','nbib_export_parser.py']:
             self.assertEqual(hashes[name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
