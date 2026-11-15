@@ -37,7 +37,7 @@ class SourceContractTests(unittest.TestCase):
     def test_exact_six_profiles_and_unknown_remainder(self):
         result=command_contract.contract();rows=[r for r in result['commands'] if r['script'] in ('artifact_review.py','report_source_check.py','result_passage_check.py')]
         self.assertEqual(len(rows),6);self.assertEqual(result['coverage']['reviewed_effects'],44)
-        self.assertEqual(sum(r['effect_status']=='NOT_REVIEWED' for r in result['commands']),156)
+        self.assertEqual(sum(r['effect_status']=='NOT_REVIEWED' for r in result['commands']),157)
         for row in rows:
             e=row['effects'];self.assertEqual(e['network'],'none')
             self.assertEqual('--root' in e['inputs'],row['subcommand']!='template')

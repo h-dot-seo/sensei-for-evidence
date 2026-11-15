@@ -2747,6 +2747,17 @@
     {
       "effects": null,
       "guides": [
+        "docs/RETAINED_BUNDLE_DESCRIBE.md"
+      ],
+      "has_parser": true,
+      "purpose": "Inspect unverified manifests of seven retained collection/transition ZIP families",
+      "script": "retained_bundle_describe.py",
+      "subcommand": null,
+      "usage": "python retained_bundle_describe.py [-h] [--text] [--output OUTPUT] bundle"
+    },
+    {
+      "effects": null,
+      "guides": [
         "docs/OPERATOR_HANDOFF.md",
         "docs/RESEARCH_MAP_VIEWS.md"
       ],
@@ -3547,6 +3558,7 @@
     "result_intake.py": "23bb9a67756ce6ae0734e09b633efb72f586c0708bde79fdcb14404e354c5524",
     "result_passage_check.py": "c25056a73c3a9392d5ba07f3b2f9ad6d9467503d57b4f31e1c4144e09b7930c1",
     "result_source_review.py": "fce619f1a7786fc4fc87ae26565d1c861197c320abe45737bc62213a0d28686e",
+    "retained_bundle_describe.py": "9f3369ecbe2806681deb89c64e1bdc033ca6d9b8bedfdf12626194089f8d3c73",
     "review_handoff.py": "571468cdd51ca2e1e39ba5c71e6fb9fd8aba12c0602d5e33006eaf66ca91274f",
     "reviewed_intake_safety.py": "bc2dcac39107734bedf3949185604103555a6c4a740de80361fb00dd3442d2bc",
     "ris_continuation_intake.py": "4038698deb3cc1abe9a4ffa8b639eb1a8008931e4c11ce95f31f2bb6d1f0061f",

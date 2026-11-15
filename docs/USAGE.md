@@ -715,3 +715,5 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 See [strict JSON depth](STRICT_JSON.md) for the new shared 128-container limit, intentional deeper-input rejection, decoder-capacity distinction and old-artifact implementation requirements.
 
 Composed-view repeated analysis is separately reduced within one call, without a cache or schema change. See [shared view analysis](SHARED_VIEW_ANALYSIS.md) for measured engine-call counts and limits; this does not establish general linearity or wall-time guarantees.
+
+Received collection/transition archives can be inspected without replay using the [unverified retained-bundle reader](RETAINED_BUNDLE_DESCRIBE.md). This does not verify payloads or replace the original verifier.
