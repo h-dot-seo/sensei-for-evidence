@@ -12,6 +12,7 @@ import io
 import json
 import math
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 
 import bibliographic_intake
 from evidence_workflow import run
@@ -73,7 +74,7 @@ def digest(value):
 
 def implementation_hashes():
     root = Path(__file__).resolve().parent
-    return dict(bibliographic_intake.implementation_hashes(), **{
+    return dict(bibliographic_intake.implementation_hashes(), **output_hashes(), **{
         name: hashlib.sha256((root / name).read_bytes()).hexdigest()
         for name in ('nbib_export_parser.py', 'nbib_intake.py')})
 
@@ -237,8 +238,7 @@ def main():
         if len(stdout) > MAX_ARTIFACT_BYTES or (output_bytes is not None and len(output_bytes) > MAX_ARTIFACT_BYTES):
             raise ValueError('NBIB artifact or output exceeds size limit')
         if output_path is not None:
-            with output_path.open('xb') as output:
-                output.write(output_bytes)
+            write_new(output_path, output_bytes)
     except (ValueError, OSError, KeyError, TypeError, UnicodeError, RecursionError) as error:
         parser.exit(1, 'NBIB intake error: ' + quoted_display(str(error)) + '\n')
     print(stdout.decode('utf-8'), end='')

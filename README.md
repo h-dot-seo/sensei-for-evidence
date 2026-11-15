@@ -421,3 +421,6 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 
 
 [Completed challenge/readiness documents](docs/ASSERTION_SCHEMAS.md): four descriptive candidate/review shapes and two separate exact-input journeys. A shape match does not authenticate HUMAN_AUTHORED, approve a review, make READY mechanical readiness, or replace Python context/hash validation.
+
+
+[Scoped exclusive-output contract](docs/OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.

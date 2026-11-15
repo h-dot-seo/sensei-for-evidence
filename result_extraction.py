@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 
 from evidence_workflow import run
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
@@ -51,6 +52,7 @@ def _normalized(value, limit, label):
 
 def _implementation_hashes():
     result = dict(engine_hashes())
+    result.update(output_hashes())
     for filename in ('result_extraction.py', 'result_intake.py'):
         result[filename] = hashlib.sha256(Path(__file__).with_name(filename).read_bytes()).hexdigest()
     return result
@@ -182,8 +184,7 @@ def main():
             if len(value.encode('utf-8')) > MAX_OUTPUT_BYTES:
                 raise ValueError('output exceeds byte limit')
         if destination is not None:
-            with destination.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(artifact)
+            write_new(destination, artifact.encode("utf-8"))
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as error:
         parser.exit(1, 'extraction worksheet error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

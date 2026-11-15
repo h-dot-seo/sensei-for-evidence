@@ -5,6 +5,7 @@ import datetime
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 import re
 
 from evidence_workflow import run
@@ -76,7 +77,7 @@ def _schema(value, fields, label):
 
 
 def _implementation_hashes():
-    return dict(engine_hashes(), **{
+    return dict(engine_hashes(), **output_hashes(), **{
         'condition_intake.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
 
 
@@ -334,8 +335,7 @@ def main():
             if len(raw) > limit:
                 raise ValueError('output exceeds byte limit')
         if destination is not None:
-            with destination.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(encoded)
+            write_new(destination, encoded.encode("utf-8"))
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as error:
         parser.exit(1, 'condition intake error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

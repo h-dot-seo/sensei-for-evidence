@@ -5,6 +5,7 @@ import datetime
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 from archive_safety import read_bounded
 
 MAX_CLI_INPUT_BYTES = 50_000_000
@@ -55,7 +56,7 @@ def _validate(protocol):
 
 
 def _implementation_hashes():
-    return dict(engine_hashes(), **{
+    return dict(engine_hashes(), **output_hashes(), **{
         'report_decision.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
 
 
@@ -232,8 +233,7 @@ def main():
         if encoded is not None:
             encoded.encode('utf-8')
         if destination is not None:
-            with destination.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(encoded)
+            write_new(destination, encoded.encode("utf-8"))
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError) as error:
         parser.exit(1, 'report decision error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

@@ -36,7 +36,8 @@ class CliInputBoundsTests(unittest.TestCase):
             for n in ast.walk(tree):
                 if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr in ('read_bytes','read_text'):
                     self.assertFalse(isinstance(n.func.value,ast.Attribute) and isinstance(n.func.value.value,ast.Name) and n.func.value.value.id in ('args','a'))
-        for name,sha in baseline['unchanged'].items():self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),sha,name)
+        from tests._exclusive_output_compat import prior_bytes as pre_output_bytes
+        for name,sha in baseline['unchanged'].items():self.assertEqual(hashlib.sha256(pre_output_bytes(name)).hexdigest(),sha,name)
 
     def test_all_fifteen_protocols_reject_actual_overlimit_before_json(self):
         with tempfile.TemporaryDirectory() as td:
@@ -93,7 +94,12 @@ class CliInputBoundsTests(unittest.TestCase):
                 expected=expected.replace(row['prior_sha256'],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
             expected=expected.replace('\n',os.linesep).encode()
             r=subprocess.run([sys.executable,*case['args']],cwd=ROOT,capture_output=True)
-            self.assertEqual((r.returncode,r.stdout,r.stderr),(case['returncode'],expected,case['stderr'].replace('\n',os.linesep).encode()),case['args'])
+            stdout=r.stdout
+            if case['args'][0] in ('report_review.py','report_study_inventory.py','report_study_inventory_review.py','report_study_review.py','screening_review.py'):
+                helper_line=('    "output_io.py": "'+hashlib.sha256((ROOT/'output_io.py').read_bytes()).hexdigest()+'",'+os.linesep).encode()
+                self.assertEqual(stdout.count(helper_line),1)
+                stdout=stdout.replace(helper_line,b'',1)
+            self.assertEqual((r.returncode,stdout,r.stderr),(case['returncode'],expected,case['stderr'].replace('\n',os.linesep).encode()),case['args'])
 
     def test_inclusive_multibyte_json_reaches_parser_for_all_fifteen(self):
         with tempfile.TemporaryDirectory() as td:

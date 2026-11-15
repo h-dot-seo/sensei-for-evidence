@@ -273,7 +273,7 @@ class ResultExtractionTests(unittest.TestCase):
         s = self.sheet()
         self.assertEqual(s['protocol_sha256'], hashlib.sha256(canonical_json_bytes(self.p)).hexdigest())
         hashes = dict(engine_hashes())
-        for name in ('result_extraction.py', 'result_intake.py'):
+        for name in ('result_extraction.py', 'result_intake.py', 'output_io.py'):
             hashes[name] = hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
         self.assertEqual(s['engine_sha256'], hashes)
         p = copy.deepcopy(self.p); p['question'] += ' Fictional changed question.'

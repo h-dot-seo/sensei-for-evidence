@@ -275,7 +275,7 @@ class ReportSourceCheckTests(unittest.TestCase):
 
     def test_engine_fingerprint_inventory_has_all_shared_dependencies(self):
         from research_bundle import engine_hashes
-        self.assertEqual(set(sc.template(self.p)['engine_sha256']),set(engine_hashes())|{'artifact_review.py','report_source_check.py'})
+        self.assertEqual(set(sc.template(self.p)['engine_sha256']),set(engine_hashes())|{'artifact_review.py','report_source_check.py','output_io.py'})
 
     def test_criteria_context_change_does_not_silently_rebind_file_descriptor(self):
         original=self.check();p=copy.deepcopy(self.p);p['question']+=' (fictional changed question)'

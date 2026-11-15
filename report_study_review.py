@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 from archive_safety import read_bounded
 
 MAX_CLI_INPUT_BYTES = 50_000_000
@@ -57,6 +58,7 @@ def review(protocol, report_id=None, study_id=None):
         result['source_contexts'] = [row for row in result['source_contexts'] if row['search_index'] in searches]
         result['counts'] = _counts(result)
     implementation = dict(engine_hashes())
+    implementation.update(output_hashes())
     for filename in ('report_study_review.py', 'report_study_review_links.py'):
         implementation[filename] = hashlib.sha256(Path(__file__).with_name(filename).read_bytes()).hexdigest()
     result.update(schema_version=1, protocol_version=copy.deepcopy(protocol['version']),
@@ -132,8 +134,7 @@ def main():
         encoded.encode('utf-8')
         rendered.encode('utf-8')
         if args.output is not None:
-            with args.output.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(encoded)
+            write_new(args.output, encoded.encode("utf-8"))
     except (ValueError, OSError, KeyError, TypeError, UnicodeError) as error:
         parser.exit(1, 'report study review error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

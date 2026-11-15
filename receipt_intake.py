@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 from archive_safety import read_bounded
 
 MAX_CLI_INPUT_BYTES = 50_000_000
@@ -87,6 +88,7 @@ def check(protocol,fixture):
                     validation_error=str(error),external_calls=0,boundary=BOUNDARY)
     hashes=dict(search['engine_sha256'],**prisma['engine_sha256'])
     hashes['receipt_intake.py']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    hashes.update(output_hashes())
     return dict(schema_version=1,valid_input=True,status='UNREVIEWED_SUPPLIED_CANDIDATES',
                 base_protocol_sha256=digest(protocol),fixture_sha256=digest(fixture),engine_sha256=hashes,
                 missing_field_hints=hints,review_pending=copy.deepcopy(assembled['review_pending']),
@@ -122,7 +124,7 @@ def main():
         result=template(protocol) if args.command=='template' else check(protocol,parse_json(read_bounded(args.fixture, MAX_CLI_INPUT_BYTES)))
         if args.command=='check' and result['valid_input'] and args.protocol_output is not None:
             serialized=json.dumps(result['protocol_candidate'],ensure_ascii=False,indent=2)+'\n'
-            with args.protocol_output.open('x',encoding='utf-8',newline='\n') as output:output.write(serialized)
+            write_new(args.protocol_output, serialized.encode("utf-8"))
     except (OSError,ValueError,KeyError,TypeError) as error:parser.exit(1,str(error)+'\n')
     print(render_text(result) if args.command=='check' and args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.command=='check' and args.text else '\n')
     if args.command=='check' and not result['valid_input']:parser.exit(1)
