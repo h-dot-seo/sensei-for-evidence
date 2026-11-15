@@ -130,7 +130,36 @@
       "usage": null
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--batch"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Repeated wrapper options explicitly bind INDEX=PATH; only supplied selected paths are read, no locator fetched or archive extracted. Research decisions are not changed",
+        "outputs": [
+          {
+            "argument": "output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/BATCH_COLLECTION_BUNDLES.md"
       ],
@@ -141,7 +170,29 @@
       "usage": "python batch_collection_bundle.py create [-h] --batch INDEX=PATH [--text] protocol output"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "bundle"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "No logical output file is created: the retained archive is replayed against this implementation without extraction, external lookup, or approval inference. A mismatch is a handled error, not a negative stdout report",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/BATCH_COLLECTION_BUNDLES.md"
       ],
@@ -152,7 +203,36 @@
       "usage": "python batch_collection_bundle.py verify [-h] [--text] bundle"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "export"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Supplied CSV bytes produce an unreviewed artifact, not an accepted collection or provider-authenticated export",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/BIBLIOGRAPHIC_INTAKE.md"
       ],
@@ -163,7 +243,29 @@
       "usage": "python bibliographic_intake.py preview [-h] --search-id SEARCH_ID --searched-at SEARCHED_AT [--id-column ID_COLUMN] [--locator-column LOCATOR_COLUMN] [--output OUTPUT] [--text] protocol export"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "artifact"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Replay checks the supplied artifact; failure is a handled diagnostic, not a negative stdout report",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/BIBLIOGRAPHIC_INTAKE.md"
       ],
@@ -350,7 +452,36 @@
       "usage": "python challenge_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--nbib"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Repeated wrapper options explicitly bind INDEX=PATH; only supplied selected paths are read, no locator fetched or archive extracted. Research decisions are not changed",
+        "outputs": [
+          {
+            "argument": "output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/COLLECTION_BUNDLES.md"
       ],
@@ -361,7 +492,29 @@
       "usage": "python collection_bundle.py create [-h] --nbib INDEX=PATH [--text] protocol output"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "bundle"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "No logical output file is created: the retained archive is replayed against this implementation without extraction, external lookup, or approval inference. A mismatch is a handled error, not a negative stdout report",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/COLLECTION_BUNDLES.md"
       ],
@@ -732,7 +885,38 @@
       "usage": "python inventory_intake.py verify [-h] [--text] [--protocol-output PROTOCOL_OUTPUT] protocol application_record"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--ris",
+          "--nbib",
+          "--nbib-batch"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Repeated wrapper options explicitly bind INDEX=PATH; only supplied selected paths are read, no locator fetched or archive extracted. Research decisions are not changed",
+        "outputs": [
+          {
+            "argument": "output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/NATIVE_COLLECTION_BUNDLES.md"
       ],
@@ -743,7 +927,29 @@
       "usage": "python native_collection_bundle.py create [-h] [--ris INDEX=PATH] [--nbib INDEX=PATH] [--nbib-batch INDEX=PATH] [--text] protocol output"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "bundle"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "No logical output file is created: the retained archive is replayed against this implementation without extraction, external lookup, or approval inference. A mismatch is a handled error, not a negative stdout report",
+        "outputs": [],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/NATIVE_COLLECTION_BUNDLES.md"
       ],
@@ -754,7 +960,36 @@
       "usage": "python native_collection_bundle.py verify [-h] [--text] bundle"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "--export"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Explicit supplied native subset only; batch --export repeats SOURCE_ID=PATH in supplied order; labels and locators are inert, not fetched",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/PUBMED_NBIB_BATCH.md"
       ],
@@ -765,7 +1000,40 @@
       "usage": "python nbib_batch_intake.py preview [-h] --export EXPORT --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "artifact"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Optional outputs are mutually exclusive; verify may create a file, and does not establish source authenticity or accept a collection",
+        "outputs": [
+          {
+            "argument": "--intake-output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          },
+          {
+            "argument": "--csv-output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/PUBMED_NBIB_BATCH.md"
       ],
@@ -2511,7 +2779,36 @@
       "usage": "python ris_continuation_intake.py verify [-h] [--intake-output INTAKE_OUTPUT | --csv-output CSV_OUTPUT] [--text] artifact"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "protocol",
+          "export"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Explicit supplied native subset only; labels and locators are inert, not fetched",
+        "outputs": [
+          {
+            "argument": "--output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/RIS_INTAKE.md"
       ],
@@ -2522,7 +2819,40 @@
       "usage": "python ris_intake.py preview [-h] --search-id SEARCH_ID --searched-at SEARCHED_AT [--output OUTPUT] [--text] protocol export"
     },
     {
-      "effects": null,
+      "effects": {
+        "caught_error": {
+          "exit_code": 1,
+          "stderr": "diagnostic_not_guaranteed_private",
+          "stdout": "empty"
+        },
+        "inputs": [
+          "artifact"
+        ],
+        "negative_report": null,
+        "network": "none",
+        "notes": "Optional outputs are mutually exclusive; verify may create a file, and does not establish source authenticity or accept a collection",
+        "outputs": [
+          {
+            "argument": "--intake-output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          },
+          {
+            "argument": "--csv-output",
+            "condition": "only after accepted inputs and successful serialization; OS write failure may leave a partial new file and only when the option is supplied",
+            "mode": "exclusive_create"
+          }
+        ],
+        "success": {
+          "exit_code": 0,
+          "stdout": "json_or_text"
+        },
+        "usage_error": {
+          "exit_code": 2,
+          "stderr": "argparse_diagnostic",
+          "stdout": "empty"
+        }
+      },
       "guides": [
         "docs/RIS_INTAKE.md"
       ],

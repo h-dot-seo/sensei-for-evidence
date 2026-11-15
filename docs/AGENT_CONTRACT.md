@@ -20,16 +20,19 @@ not necessarily free of human-input requirements.
 
 ## Reviewed effects, not inferred effects
 
-There are32 reviewed command entries: the local NBIB intake, bibliographic identity
+There are 44 reviewed command entries: the local NBIB intake, bibliographic identity
 review, screening decision, status/PRISMA views, research bundle, base scaffold,
 PubMed discovery/metadata, collection native export and six local source-observation
-operations in artifact_review, report_source_check and result_passage_check. Every other entry is
+operations in artifact_review, report_source_check and result_passage_check, plus
+CSV/RIS/NBIB-batch intake and three selected-native archive families. The complete
+17-profile collection journey (12 new profiles and five unchanged rechecked profiles)
+is described in [Collection effects](COLLECTION_EFFECTS.md). Every other entry is
 explicitly `NOT_REVIEWED` with `effects=null`. Null means unknown, not read-only,
 safe to run, or permission granted. This is partial #57 coverage, not a complete
 machine contract for all repository operations. Read the guide and implementation
 before using commands without an effects profile.
 
-The remaining 168 entries retain unknown effects. The negative-report stdout field
+The remaining 156 entries retain unknown effects. The negative-report stdout field
 now also permits json_or_text for these observers, following their existing CLI flag.
 This is additive partial coverage, not a complete contract or external-consumer
 compatibility promise. Existing checker implementations and their schemas are unchanged.

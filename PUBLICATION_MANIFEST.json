@@ -1,12 +1,12 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.140.0-exclusive-output-guards",
+  "release": "0.141.0-collection-effects-contract",
   "date": "2026-11-15",
   "private_history_imported": false,
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 587,
+  "file_count": 591,
   "files": [
     {
       "path": ".gitattributes",
@@ -30,8 +30,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 26889,
-      "sha256": "83398a5b3c4db86ab2d7537a193caedb6b78cb42f3d17ec0d20659a96f90bb6f"
+      "bytes": 27035,
+      "sha256": "2e72b289d0508f1700680b8864443e7d8cbafe9d628c93d79be0deaa3dcd19a3"
     },
     {
       "path": "RIGHTS.md",
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 4510,
-      "sha256": "da0e25f83bfaecdf5d296eb560fd20bfa6ef1f9cbb75994c2b6942b92b141556"
+      "bytes": 4814,
+      "sha256": "9967cb8c89b6e7c135277c18cc4d5b1ba60ea5351b68ad9321b5b5014f313132"
     },
     {
       "path": "accounting_flow.py",
@@ -190,8 +190,8 @@
     },
     {
       "path": "docs/AGENT_CONTRACT.md",
-      "bytes": 6086,
-      "sha256": "feecf62c467cb710df820bb137bbedfa1bf4ff32ceec49bc7dc02196b610f9ee"
+      "bytes": 6322,
+      "sha256": "b9d36274d3bde34fd0d34dae7564499f46bcead6d4b6d74ed3cfe1cab581fd4f"
     },
     {
       "path": "docs/AMENDMENT_NOTES.md",
@@ -262,6 +262,11 @@
       "path": "docs/COLLECTION_BUNDLES.md",
       "bytes": 7688,
       "sha256": "2e0adf638d5240a923310d727eb50fa5379ba371cbf78e71cd0c8b368929324c"
+    },
+    {
+      "path": "docs/COLLECTION_EFFECTS.md",
+      "bytes": 6755,
+      "sha256": "472dead0e45e21677203117ff55d7a2f9ff26414e5355ccd293a06fa28d959f5"
     },
     {
       "path": "docs/COLLECTION_EXPORT.md",
@@ -710,8 +715,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 295372,
-      "sha256": "2e90a5e549afd70678cf63e17505a9d91f734341bc1853715fbe92f09aabef48"
+      "bytes": 297345,
+      "sha256": "157f84738e9c8bd6d16f37bcac2b5322602589ce20fbd74522ea3a0b7d017283"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
@@ -755,8 +760,8 @@
     },
     {
       "path": "docs/command_contract.json",
-      "bytes": 125222,
-      "sha256": "98a68da6530a1a7fb2b2c49dfa8fce14151cdc032b651c56543be00335530b75"
+      "bytes": 136276,
+      "sha256": "2c0244bdfe4cb7705363f47d9f39be9fc7ea0072562a9e9e8851b7cb1525b0ef"
     },
     {
       "path": "docs/record_registry.json",
@@ -2049,6 +2054,16 @@
       "sha256": "1eee42c8f80a1401f2a6b8bb32bd08998e239af7f7a26d85a911d9d31fc7ac09"
     },
     {
+      "path": "tests/collection_contract_prior_bytes.json",
+      "bytes": 26918,
+      "sha256": "1e8c75995395a38b6fd292aa5a3f01b460de24fd626f11dec3ce5684252f3f72"
+    },
+    {
+      "path": "tests/collection_contract_prior_registry.json",
+      "bytes": 125222,
+      "sha256": "98a68da6530a1a7fb2b2c49dfa8fce14151cdc032b651c56543be00335530b75"
+    },
+    {
       "path": "tests/evidence_basis_legacy_baselines.json",
       "bytes": 10725,
       "sha256": "bfd1236842781628557c3b39b31c14367c70fcc5c5f63512a68c79b19d329f1d"
@@ -2239,14 +2254,19 @@
       "sha256": "f8df87ac2e4be7a531cd3c4a5764a55f3aad89f0575c1295ef60387d87ea603e"
     },
     {
+      "path": "tests/test_collection_contract_journey.py",
+      "bytes": 10798,
+      "sha256": "a9f4f0078cd6e4cfaa250dc09604cf1afa210efbbe56edb4097270fd2f1f4da4"
+    },
+    {
       "path": "tests/test_collection_export.py",
       "bytes": 7294,
       "sha256": "e4912142ea76c3fc74b59d34172a7033d9c5285bc220eaaed29a1bb99628dc16"
     },
     {
       "path": "tests/test_command_contract.py",
-      "bytes": 13448,
-      "sha256": "15bdbc22a8c88cf846eb38314e72624c943f552ebecb8325d2fd5db9d37f44d7"
+      "bytes": 13980,
+      "sha256": "96518d4e84ddfbc7e2c32874574b7dd42e6cb15f2812b649491b3261f18a6a19"
     },
     {
       "path": "tests/test_command_reference.py",
@@ -2791,7 +2811,7 @@
     {
       "path": "tests/test_source_check_contract.py",
       "bytes": 8184,
-      "sha256": "7234d2551675ae18cdc327fbd440c0a5393b26eb255931fa6ebbcfe0ac5f4356"
+      "sha256": "d83e0c7070f7d09a51b204a2c6f28e46dda41fb8261b3b3ca8cf878c9a22a8cd"
     },
     {
       "path": "tests/test_source_contexts.py",
@@ -2811,7 +2831,7 @@
     {
       "path": "tests/test_state_cli_boundaries.py",
       "bytes": 6917,
-      "sha256": "e372228011812c6886c0640ae9d7aaa25fb31c256c403661ed0a9f22ebbdc912"
+      "sha256": "765f782c636b90ed0701ba5e64810a5cb2a87be61cf2f62118ceae3818728b93"
     },
     {
       "path": "tests/test_statistics_links.py",

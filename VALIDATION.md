@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.140.0-exclusive-output-guards` (2026-11-15). This file is the
+Current release: `0.141.0-collection-effects-contract` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,26 +55,12 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.140.0-exclusive-output-guards` (2026-11-15).
+Release: `0.141.0-collection-effects-contract` (2026-11-15).
 
-Roadmap #97: fifteen remaining unguarded non-engine consumers / sixteen output
-sites share explicit existing-entry refusal followed by exclusive binary creation.
-No atomic publication, race-proof paths, source-reader weakening or partial-file
-cleanup is claimed. Global ENGINE and five engine/adapter-bound writers remain
-byte unchanged; guarded writers, JSON/date parsing and scientific policy remain
-unchanged. Consumers fingerprint the new helper; older artifacts require their
-recorded implementation. See [output contract](docs/OUTPUT_CONTRACT.md).
+Roadmap #57: twelve newly reviewed effect profiles complete a 17-profile supplied collection intake/review/native-archive journey with five unchanged existing profiles. Coverage is 44/200 reviewed, 156 unknown. Declarations are not execution permission, acceptance guarantees or human authentication. All root product/ENGINE and existing example bytes remain unchanged; no synthetic target refresh was needed. See [collection effects](docs/COLLECTION_EFFECTS.md).
 
-Core consumer focus 431 / 17.850 s passed; historical compatibility focus 43 /
-10.130 s passed. Independent core 198 / 7.151 s (one Windows junction skip), actual
-five view byte comparisons, existing-file refusal and FIFO/race probes passed.
-Fixed15 fictional targets were actually recreated: nine changed one hash and six
-were already correct; no other example bytes changed. Independent final 36 / 8.270 s (one Windows-junction skip), output-contract
-seven-command journey and prior 61-command/fixed15 replay passed. Final focus 51 /
-10.964 s passed (two skips); audit 588 / manifest 587 / grammar 293 passed.
-First full 2337 / 207.170 s found one missing helper row in the non-CLI command
-inventory. Added that exact documentation row; product/tests unchanged.
-Corrected full: 2337 tests / 210.407 s PASS (two native-platform skips).
-Corrected metadata: 15 / 10.916 s PASS (one skip); independent correction 15 /
-12.002 s, repeated 61-command/fixed15 replay and corrected tree matched.
-Only validation records and their manifest entries changed after full verification.
+New actual-process journey tests: three / 7.737 s PASS across CSV, RIS, single NBIB and ordered NBIB batch, separate fictional review, three archive families, JSON/text output-file equivalence and errors. Initial contract focus 18 / 20.748 s had six failures because the pre-existing generic missing-input test omitted newly covered preview/create required options, reaching usage exit2 instead of handled exit1. Added only those required test arguments; corrected 18 / 20.872 s PASS. Independent/final/full verification pending.
+
+Full 2340 tests / 210.887 s PASS (two native-platform skips). Final focus 42 / 23.843 s PASS (one skip); audit592/manifest591 and Python3.10 grammar294 passed. Independent review noted that the RIS-only preview profile repeated a batch-specific option sentence. After the full run, removed only that sentence from RIS notes (batch profile unchanged); focused contract and inventory checks are rerun on the corrected prose. No product, test or example bytes changed in this correction. Final independent validation pending.
+
+Final independent correction review passed: 25 tests / 10.040 s (one platform skip), audit592 and manifest validation. Exact corrected tree c88ef1ccebc11f2a0095fe25741e3f727f0406c1 matched independently. Prior root and example bytes are unchanged. Corrected focused verification: 42 / 23.717 s PASS (one skip). Only these result records and corresponding manifest entries change after that verification.
