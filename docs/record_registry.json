@@ -1277,6 +1277,21 @@
       "role": "detached_application",
       "schema_version": 1,
       "value": "detached_output_disclosure"
+    },
+    {
+      "constructor_bindings": [
+        "bundle_sha256",
+        "current_implementation_sha256",
+        "describer_sha256"
+      ],
+      "constructor_expansions": [],
+      "discriminator": "kind",
+      "function": "describe",
+      "guide": "RETAINED_BUNDLE_DESCRIBE.md",
+      "module": "retained_bundle_describe.py",
+      "role": "unverified_descriptor",
+      "schema_version": 1,
+      "value": "retained_bundle_manifest_descriptor"
     }
   ],
   "untagged_research_manifest": {
