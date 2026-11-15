@@ -1,0 +1,1663 @@
+{
+  "README.md::0": {
+    "sha256": "d58efeb83876ea070e9c9339e7b139b8f0d3fedc7ceda68c83d4e9edfd07a82f",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "VALIDATION.md::0": {
+    "sha256": "2fdc465ef395950735d3f1e2f3b2697c51fb8fddd62d5531b41de5fb8e5003a6",
+    "classification": "exempt",
+    "reason": "Recursive suite invocation or test/tooling command; never execute from documentation discovery."
+  },
+  "docs/ACCOUNTING_FLOW.md::0": {
+    "sha256": "94fd97420b54d5a6fd35033cc1bad3d34ef04f531aec547d192caac5f26ac12b",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/ADAPTER_CONTRACT.md::0": {
+    "sha256": "8f1de44fbbae6a71d025cdae56e8e3a97a58b2f27d9ad6e51d9f81a5171c5794",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/AGENT_CONTRACT.md::0": {
+    "sha256": "27973157a1f07e12be5ad720900f2cafb535e986940bf2ba8f3cd2ac9611c997",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/AMENDMENT_LEDGER.md::0": {
+    "sha256": "54d69fcde403df53a4f506818b5ebf348c0b6701a46188d3e1f5101f8612e31f",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_amendment_ledger.AmendmentLedgerTests.test_documented_nine_commands_with_separate_supplied_review",
+    "test_source_sha256": "06ce6feeba85c3cb27dc64cc0a9922eef60dd8ddf8de187c0af7799719ffe736"
+  },
+  "docs/AMENDMENT_NOTES.md::0": {
+    "sha256": "5e41d9917e6ec7d7c5ab3572981638de8c4cf08e9ab1be3d20945207fe54b0a2",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "compare_runs.py",
+        "examples/first-run-enriched.json",
+        "examples/first-run-note-complete.json",
+        "--amendment",
+        "examples/work-note-amendment.json"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0
+    ]
+  },
+  "docs/APPRAISAL_SOURCE_REVIEW.md::0": {
+    "sha256": "af564d7466af063b56bafa6f9bd5795bb7ff50b20d4a1638764e184515f390f0",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/APPRAISAL_TRANSITION_BUNDLES.md::0": {
+    "sha256": "3ed64fd7338b420bdef6bde3f591cd8d728967230c6fb87b41c3f4c31882d579",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/ASSERTION_SCHEMAS.md::0": {
+    "sha256": "32108da1a5b02e7f123e418e581e04b9dcb19aa4411c7637f97e65038e675c03",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
+    "test_source_sha256": "54ce6f51d892c51e110a6a0aa65f10fbc9fe1d39e3a29c7d4c7097c56eb12b4f"
+  },
+  "docs/ASSERTION_SCHEMAS.md::1": {
+    "sha256": "dbe590df9d2cfafdaa9660e1490dd9ae20bf5e9c6951a45e89acb7ae9ef287bf",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
+    "test_source_sha256": "54ce6f51d892c51e110a6a0aa65f10fbc9fe1d39e3a29c7d4c7097c56eb12b4f"
+  },
+  "docs/ASSERTION_SCHEMAS.md::2": {
+    "sha256": "7498b9368d5de8a6a5bdaf7c6859d02ef56b217e02776be68bcb34de8843d580",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
+    "test_source_sha256": "54ce6f51d892c51e110a6a0aa65f10fbc9fe1d39e3a29c7d4c7097c56eb12b4f"
+  },
+  "docs/ASSERTION_SCHEMAS.md::3": {
+    "sha256": "9695d0a3099a1db11d1302ed1239bff169272345b62513c902e0409a2a07c166",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
+    "test_source_sha256": "54ce6f51d892c51e110a6a0aa65f10fbc9fe1d39e3a29c7d4c7097c56eb12b4f"
+  },
+  "docs/BATCH_COLLECTION_BUNDLES.md::0": {
+    "sha256": "39417d4d0d9e401eb59eb054c201eb662afbfa569c9de4d355acdae09d591791",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::0": {
+    "sha256": "53931c43ce0f4e49b2bf3c8b4a14083abbd6fa01d7405e597d37d8ee4d443b77",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::1": {
+    "sha256": "9550bbbabc4c109abcda0f3ec7e7e6e884573d33de9e152746492e70bd57d554",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::2": {
+    "sha256": "ec813d1ec49c1fedefc1d96743cea80e488900c293ff243e440c0f4e0c7c8e42",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::3": {
+    "sha256": "9fb57f2a077d7612806f7790ac6d31f08c19bfa6efc611fc9dc289e86f4e3361",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::4": {
+    "sha256": "d5688c06ea99d4808f7bef18fb26504d513ebc1c92dd0f3a963a9fb61e712655",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::5": {
+    "sha256": "a9a4c1efa566d55096636480540aac9bfb232da79a324e8ee89102a31d208ed3",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::6": {
+    "sha256": "c7ed368ede1b4695fd0b3738ec712088ed48fa2eadd8916f88e0dac326922446",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BATCH_TO_EVIDENCE.md::7": {
+    "sha256": "9b8e4b605878aa7447e6622ebe4c2deba5de0897eff3905d9b273f154ab20425",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md::0": {
+    "sha256": "007e3ad4de8e64549efd99271625ab64de1214507b58f9022113a3690e9df987",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_bibliographic_assertion_continuation.BibliographicAssertionContinuationTests.test_twelve_documented_cli_commands_after_each_actual_import_format",
+    "test_source_sha256": "bb830e507d8be8f2a5cf16f9a662bb2d5f256d39682f82eb68e051751c1267a4"
+  },
+  "docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md::1": {
+    "sha256": "787b762bf709f78e19a85cfc8919dd9041c5b80d25fb828412266e5940599f77",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_bibliographic_assertion_continuation.BibliographicAssertionContinuationTests.test_twelve_documented_cli_commands_after_each_actual_import_format",
+    "test_source_sha256": "bb830e507d8be8f2a5cf16f9a662bb2d5f256d39682f82eb68e051751c1267a4"
+  },
+  "docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md::2": {
+    "sha256": "b47e0682ac656c3a467e79888e6c2567a7e20cd6b65411813753aad32671da34",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_bibliographic_assertion_continuation.BibliographicAssertionContinuationTests.test_twelve_documented_cli_commands_after_each_actual_import_format",
+    "test_source_sha256": "bb830e507d8be8f2a5cf16f9a662bb2d5f256d39682f82eb68e051751c1267a4"
+  },
+  "docs/BIBLIOGRAPHIC_ASSERTION_CONTINUATION.md::3": {
+    "sha256": "f50bdc944f3d655e20c94c7f93ae343f6253c2d7acdc6064bceaecfc91698eda",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_bibliographic_assertion_continuation.BibliographicAssertionContinuationTests.test_twelve_documented_cli_commands_after_each_actual_import_format",
+    "test_source_sha256": "bb830e507d8be8f2a5cf16f9a662bb2d5f256d39682f82eb68e051751c1267a4"
+  },
+  "docs/BIBLIOGRAPHIC_INTAKE.md::0": {
+    "sha256": "aec24341f9dc21048238d7e0e38ca6cc42c714655149741a5c635a7b4ac8611b",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BIBLIOGRAPHIC_REVIEW.md::0": {
+    "sha256": "6cfaa1784bac10a7af95cd3e627db1b0fd6e8dc2ead15dace88fc65bd94a2bd9",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/BIBLIOGRAPHIC_REVIEW.md::1": {
+    "sha256": "2ce17ee2b6469f1d96c87eb11ca0796a7ff9704688c4fc9d71fc601f80b649a7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/CHECKOUT_CHECK.md::0": {
+    "sha256": "a2961f28da9adc8bf822d21393a571bd864a0fc84e1b7845280e9624d8e57438",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/CLI_INPUT_BOUNDS.md::0": {
+    "sha256": "fd3671f552fc4c5368fe88fbaeeac224b64ba3968877ddb38518f6c49d497850",
+    "classification": "exempt",
+    "reason": "Recursive suite invocation or test/tooling command; never execute from documentation discovery."
+  },
+  "docs/COLLECTION_BUNDLES.md::0": {
+    "sha256": "12c58bf2d47da0168c136e471b4ade93e50c612c1e251f5a2d9fe26ef0dcd9b5",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/COLLECTION_BUNDLES.md::1": {
+    "sha256": "cfee97c832b3b58280321836724faf514bb70ebce4e83d403c57b9f6b88baea4",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/COLLECTION_EXPORT.md::0": {
+    "sha256": "18ce5b550e3f956552dbbd346c1460716cf795e9aeea500ef2fb2c7f9e03c6dc",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/COMPLETION_BINDING.md::0": {
+    "sha256": "1cd07d6b294796152d4fc8b9babb73accbe0a31d02e45355153d470b1ed5e1c6",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/COMPLETION_COMPARISON.md::0": {
+    "sha256": "b7dabfe66985e546ffff0b7ae226617f794450ef97baab4654d179e40a1be094",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/COMPLETION_COMPARISON.md::1": {
+    "sha256": "4cdf260321d4cb7d82525cd6bfa8e9aae97f4328426c917e45686f6a6d76960d",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/CONCLUSION_READINESS.md::0": {
+    "sha256": "6b88d1c1cdae4f655fcc7192d12484b8df7f8ae89bdd509e20a1021d3fca292e",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/CONCLUSION_READINESS.md::1": {
+    "sha256": "75e60c5e926089f853b5eb7ace47402b2d9efc2622de89a2c49443337411e3c1",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/CONTEXT_AMENDMENTS.md::0": {
+    "sha256": "3d99847f761aeb1f052e7ee9cfbaedf863707984376edb4dd8d0e10a4000f426",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/CSV_KEY_MAPPING.md::0": {
+    "sha256": "212ad632358e060bbe30fd18b1a0a40832bb7e7a96d80c9e41761714752093c1",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/DERIVED_TEXT_CONTEXT.md::0": {
+    "sha256": "a827a44da85c45947a9d89c1df42e26c10273db835593c23a1e25020736f8fb9",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EVIDENCE_BASIS.md::0": {
+    "sha256": "a16cba533872557ca5938f45440b630fde909e9a2b074dd69f455d2314972113",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_evidence_basis.EvidenceBasisTests.test_documented_eleven_command_journey",
+    "test_source_sha256": "61977fca1dd8baee755b67383cb1139de03bcff0b773e33cee025c69a7637b56"
+  },
+  "docs/EVIDENCE_BASIS.md::1": {
+    "sha256": "72657fc41b4dfb1035aa540a51ad0f318b8b0ac036c3a8e184028c29e26a1ee9",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_evidence_basis.EvidenceBasisTests.test_documented_eleven_command_journey",
+    "test_source_sha256": "61977fca1dd8baee755b67383cb1139de03bcff0b773e33cee025c69a7637b56"
+  },
+  "docs/EVIDENCE_WORK_INTAKE.md::0": {
+    "sha256": "4d965decd25751f225064cb355a201fb9d080e0b045b85f9131023790541673a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EVIDENCE_WORK_INTAKE.md::1": {
+    "sha256": "68c7b113c87a162f5a840aee40f90045e439f0c600504d6407a0122cb2642294",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EVIDENCE_WORK_INTAKE.md::2": {
+    "sha256": "93a78bb7184340e7c0c18d36c746d8c03d8333e48362e7ac04de3fa4419a37e7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXPERIMENT_CONDITIONS.md::0": {
+    "sha256": "96dca87493bafb86b837b8a017dbc51985974222d005bb06f72009084086cf9b",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "evidence_workflow.py",
+        "examples/experiment-review.json"
+      ],
+      [
+        "work_review.py",
+        "examples/experiment-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ],
+      [
+        "synthesis_review.py",
+        "examples/experiment-review.json",
+        "--text"
+      ],
+      [
+        "research_status.py",
+        "examples/experiment-review.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/experiment-review.json",
+        "../synthetic-conditions.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "../synthetic-conditions.zip"
+      ]
+    ],
+    "scratch": {
+      "../synthetic-conditions.zip": "synthetic-conditions.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/EXTRACTION_TRANSITION_BUNDLES.md::0": {
+    "sha256": "4d965decd25751f225064cb355a201fb9d080e0b045b85f9131023790541673a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_TRANSITION_BUNDLES.md::1": {
+    "sha256": "9e0c0b3f9b5475b5de7e3cb9f1ff1c053c1043702bb00d5e233ac7af85f2bcc6",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_TRANSITION_BUNDLES.md::2": {
+    "sha256": "22bb0f0075e2a0624b03dfea46c2b6f388fd1cfc6dd03bcaa687562e661d30d4",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_TRANSITION_BUNDLES.md::3": {
+    "sha256": "cb922c8e47c75da217dc4d461f7e3b20f7c4723e6de806dbce7ee98df4247f5c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_TRANSITION_BUNDLES.md::4": {
+    "sha256": "0424015d1c38d11db98e22e7ac53b3824407d5c38c2fe30f7842c6d9533b79e5",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_WORKSHEETS.md::0": {
+    "sha256": "a8a5998057b8be22364fe35170bbd4f0e44af18b0a332bcf68f5e78cda9740c4",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/EXTRACTION_WORKSHEETS.md::1": {
+    "sha256": "7fab6b9027ad314742a0d18f2cd60490925d5aa5c62e5b19eb4198902e8a57b6",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/FIRST_RUN.md::0": {
+    "sha256": "3cb4191f796f58e34a6d5c6b7bbfe5793c87aaa3c6d8fb6214bbc2bb442b3209",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/FIRST_RUN.md::1": {
+    "sha256": "f65446ba407e9677bf4080eb3d5559385fee2f2fbe2337215cdd70a977add581",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/FIRST_RUN.md::2": {
+    "sha256": "c9f0e59851804538f24782cacdace16cadca0b6dac40e9b209e86ca4013408d1",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/FIRST_RUN.md::3": {
+    "sha256": "8e2ccd3d2d8b7d18e018a48f41039825a300dcb59aef98126f89754e23429e5c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/FIRST_RUN.md::4": {
+    "sha256": "2e518af5b795e4b03f3a9be82cd27f306f61d06c01edcfa86025dcc6cc6ae8b3",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/FIRST_RUN.md::5": {
+    "sha256": "31a063ea84cb1bb66688e6424bac2198297b4d941cb7979ee99d83acd93cda17",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/IMPLEMENTATION_REVISIONS.md::0": {
+    "sha256": "05eae8f1dd3184ccabf79e305077a45ad666106f898c0fd59a7c0e03dfa27d83",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/INDEPENDENT_CHALLENGE.md::0": {
+    "sha256": "90cd0592b40be6ff19912e67d51cf2c8a90fa58d1816bcab6014ece2bb9f9e4a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/INDEPENDENT_CHALLENGE.md::1": {
+    "sha256": "c7ce3c9b676400e3fad22b4811c8c20f418152942c24f141d010c83228d0c557",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/INTERPRETIVE_CHALLENGE_ORIGIN.md::0": {
+    "sha256": "1c002a35a690868263b2b3f38b50b475e6f1db454759c1105160e0a40e9ce468",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_challenge_origin.ChallengeOriginTests.test_documented_ten_command_origin_journey_and_old_guide_unchanged",
+    "test_source_sha256": "3bee5f55ed9529eed8cc546ade3f60db75c816849f6b26d4576cb1efc3bcd64b"
+  },
+  "docs/INTERPRETIVE_CHALLENGE_ORIGIN.md::1": {
+    "sha256": "008b01b08e68aa75bde2ae7d6ada69b8dd5d80ee34bcfdcfa8204a5f306a28be",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_challenge_origin.ChallengeOriginTests.test_documented_ten_command_origin_journey_and_old_guide_unchanged",
+    "test_source_sha256": "3bee5f55ed9529eed8cc546ade3f60db75c816849f6b26d4576cb1efc3bcd64b"
+  },
+  "docs/INVENTORY_CANDIDATE_REVIEWS.md::0": {
+    "sha256": "2b3bd6cd3f1c5c30fd2abc42fe4d0132d97aefac08fe7befb20e7a40f9ab7bcc",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/LOCAL_ARTIFACT_REVIEW.md::0": {
+    "sha256": "f3ea8f656e9c167784c66413c5c4e303d1fd3ba9e6e48515ad83958fd9cdf00d",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/MANIFEST_BUILD.md::0": {
+    "sha256": "e700b77efade608f1d053b64ff3d226210ee40279d8da7a59bf7cade686a4c02",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/MANUAL_APPRAISAL_INTAKE.md::0": {
+    "sha256": "e51b78dfc35bf229dd194e7bc4ddd5e791c61795b631c960496a6fe6faad9baf",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_APPRAISAL_INTAKE.md::1": {
+    "sha256": "ca773eea48b31737a5ad628475f20267b8447c352601003536ccaac734a3add1",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_CONDITION_INTAKE.md::0": {
+    "sha256": "8046c66ddf7bd044d47971a1d0f0dc4ff701d8593c7d774020071ef0344d43c2",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_CONDITION_INTAKE.md::1": {
+    "sha256": "50c787a5ac647b75e878069ee36b15de30020bc96ad6f2c516e392377e88afee",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_CONTEXT_INTAKE.md::0": {
+    "sha256": "8c9bfb260a6ead064f0ce10c53661e919af5decd3df7aa84d74cb2ef47d83e74",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_CONTEXT_INTAKE.md::1": {
+    "sha256": "c0fb2c85b5fadad17a15a6a79d86b13e01c07cf1777b69627e807d1e2a742d49",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_INVENTORY_INTAKE.md::0": {
+    "sha256": "250de143ba29666e45103c9be1b4bc842deae744538c73ffaf28d4071fbf12bc",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_INVENTORY_INTAKE.md::1": {
+    "sha256": "08e96453af773dcecf92894c7f92da55d59d10728065ead169851422d0bcb931",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_REPORT_INTAKE.md::0": {
+    "sha256": "455d440f8ab5e38b1990edd92c09d39116397aa24eda1d9a561f026741d69959",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_REPORT_INTAKE.md::1": {
+    "sha256": "22bac47b8cf4919152e331b71d91e06873f87edadb44bd3f68adc042c209511c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_REPORT_INTAKE.md::2": {
+    "sha256": "e18be50eb9aa9c0ecda84e3489ae57a489ee9e13c61dad36c25e74200133fd6d",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_RESULT_INTAKE.md::0": {
+    "sha256": "a47ec5e5a7513523418bc2be855e633ee094d8a73f5bfbfa3d348ce25fe4384e",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_RESULT_INTAKE.md::1": {
+    "sha256": "11b307f95ab17d1537e68d2c2b951f603911a3409206ebae8769e9c999e04b8a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_SOURCE_DECLARATIONS.md::0": {
+    "sha256": "0bad0a050aaa833e8154661d30eaf47413486700a38cd3202ef1b9db979dbff3",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MANUAL_SOURCE_DECLARATIONS.md::1": {
+    "sha256": "15f30d24c6cf7cd20073d37f28f3116ceba740e86b3427cb35530a247ab2b4ae",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/MULTI_STUDY_REPORTS.md::0": {
+    "sha256": "e41f5560f0c0e4a11ee7955ef3b28735a41872ba9cec14dea8ab323771e8f56d",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "evidence_workflow.py",
+        "examples/multi-study-report.json"
+      ],
+      [
+        "prisma_reports.py",
+        "examples/multi-study-report.json"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/multi-study-report.json",
+        "--text"
+      ],
+      [
+        "research_status.py",
+        "examples/multi-study-report.json",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/multi-study-report.json",
+        "--work-package",
+        "WP-RESULT-LINKS",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/multi-study-report.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/multi-study-report.json",
+        "/outside/new-multi-study.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "/outside/new-multi-study.zip"
+      ]
+    ],
+    "scratch": {
+      "/outside/new-multi-study.zip": "new-multi-study.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/MULTI_STUDY_REPORTS.md::1": {
+    "sha256": "0e3d898e81f54b9b05e5fde81d4931eb63844ec4637173731b8c6055b4ec1c93",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/NATIVE_COLLECTION_BUNDLES.md::0": {
+    "sha256": "b3f034dc65393f25fe02a269cd7004e1f6a499e053a22e5a0d48fcaa177cb305",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/NATIVE_COLLECTION_BUNDLES.md::1": {
+    "sha256": "1e611a0422bfa1224e71cd05727d03229e33c4e9f11337fb21ef568c255178a6",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/OPERATOR_HANDOFF.md::0": {
+    "sha256": "38d0bf15c8cf24f65e753ff40fcfabd1f6e91b8b7cccc5dda7b7441aca66bc10",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/OUTPUT_CONTRACT.md::0": {
+    "sha256": "dfd1b7728fe0a5eb41372f705c2588cbdaad456f04817c36824e0245f6895bba",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/OUTPUT_DISCLOSURE.md::0": {
+    "sha256": "909ea5fb02174df6a1575cf681fec521cdfbed9583f37ad72673b117ebb89068",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_output_disclosure.OutputDisclosureTests.test_eleven_documented_commands_with_explicit_saved_attachments",
+    "test_source_sha256": "96dae8221ba3ae104ab1e8ba53349393776a805aa9fad0efee0572b82d3a7fbf"
+  },
+  "docs/PATENT_INFORMATION.md::0": {
+    "sha256": "f163ea4e4b517d2ec2273cf0c0a5e65e825bc4ff6b704347462af499b1ae971e",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_patent_ledger.PatentLedgerTests.test_documented_real_cli_rehearsal_and_json_output_with_text",
+    "test_source_sha256": "748b229aced576493d51cfdc92cd8f60f01498a718cabed1a8e722599a11f081"
+  },
+  "docs/PATENT_INFORMATION.md::1": {
+    "sha256": "1a8562dfa159594b77cc9a4d42c87d866a85034cf4b9581698ac9f6c173f1cec",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_patent_ledger.PatentLedgerTests.test_documented_real_cli_rehearsal_and_json_output_with_text",
+    "test_source_sha256": "748b229aced576493d51cfdc92cd8f60f01498a718cabed1a8e722599a11f081"
+  },
+  "docs/PLANNING_ASSERTIONS.md::0": {
+    "sha256": "2477d89f32d9658210897f4abdae48bc81601af62a43aa71e8fe8ad765bd3d9d",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/planning-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ],
+      [
+        "research_status.py",
+        "examples/planning-review.json",
+        "--text"
+      ],
+      [
+        "evidence_workflow.py",
+        "examples/planning-review.json"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/PLANNING_RATIONALE_LINKS.md::0": {
+    "sha256": "b644e77d38d415a6f3a9011d24f363d1e940047f07d35480bb8e6a8374a8a643",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/PREREQUISITE_REVIEW.md::0": {
+    "sha256": "29523c96165d845b6fd89691402076d1bb895c52d7128088821b0e9027433825",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "review_handoff.py",
+        "examples/prerequisite-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/prerequisite-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--include-prerequisites",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/prerequisite-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--include-prerequisites"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/PREREQUISITE_REVIEW.md::1": {
+    "sha256": "cc3ea01a993c7b90e679df3ae5d1e73b2b520c1ed0a87688f3f6d7963ab9ff90",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/completion-binding.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--brief"
+      ],
+      [
+        "review_handoff.py",
+        "examples/completion-binding.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0
+    ]
+  },
+  "docs/PRISMA_AUDIT.md::0": {
+    "sha256": "f734f7d6c3ad8f34fff7d31ed41708c9dd6e8a18640e6f0399200d83392f88b3",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "prisma_audit.py",
+        "examples/prisma-audit.json"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/prisma-audit.json",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/prisma-audit.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/PRISMA_AUDIT.md::1": {
+    "sha256": "f312ad2c999ec282b2228487f499c1b95b2daeb902d94e50bf2f9dcfccdf587a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PRISMA_FLOW_TEMPLATE.md::0": {
+    "sha256": "21a4699303a7d7c6f42641f5b71f8148fbfbdfd8d634d11dc202d16918142abe",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PROTOCOL_KEYS.md::0": {
+    "sha256": "d0d0018212fed09c629de95410e689d8c128ebfc0bbf5f62c232fefc0edea6c6",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/PROTOCOL_SCAFFOLD.md::0": {
+    "sha256": "301004fbe6a8e2e6195cd0c6e47ae44a69e27f595bbea30a16a7e17ba6222c29",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PROTOCOL_SCAFFOLD.md::1": {
+    "sha256": "6e97789c0f1d0b044243bfe2d95abe655daa1ff6185e91eb00a306dfbd6900f5",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_DISCOVERY.md::0": {
+    "sha256": "6ac8557054d9e190e2e79af537166c74c39e46705cc3bba46a75cdec95a80278",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_DISCOVERY.md::1": {
+    "sha256": "3e595efb3a4835127e7831d7576329757993a7ca27309f7817ac259078d7fe03",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_METADATA.md::0": {
+    "sha256": "b6ab1db90ed7eeb0b8f09aa4dec26bda46800165c3197b1f8f955e69a856a6dd",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_BATCH.md::0": {
+    "sha256": "ec7c17891a27a40c309230fb77e01e8ba8c2ceab24c2632d3a974aee08d935f3",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_BATCH.md::1": {
+    "sha256": "30bf30b0f5125f4b861f17c3fa2332fd2dc463ec61d4904824678b90d942b682",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_BATCH.md::2": {
+    "sha256": "4a1ae88f2b7bf8ee6e77afd78155d585d6569fd7e6f1b8d1c6d68ea156ab1952",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_BATCH.md::3": {
+    "sha256": "1031ecf5197129638386e72d7717df5b5a261a035302f88bb85f847cac811a52",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::0": {
+    "sha256": "ffb2697f1692de56d314249ea927180d2ede4c7323434f7bfc5c9facbc6350e7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::1": {
+    "sha256": "67870d92843c87515c8c0df45c5b9ea7404e989b8d4606a83ecc0b17722891dd",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::2": {
+    "sha256": "0321432340609cc636445b217abc74ab6fd5e037f36541e6c623d15896766efa",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::3": {
+    "sha256": "bc1be433d3032c6a1fa05f481ae09b3c64722f3944e733cde3e3d7b0496fe32c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::4": {
+    "sha256": "86ea8631645a20adcde5c2670481cebb1fff9dc0194cd1a740ef1cbbf059a93c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::5": {
+    "sha256": "e46a4ba4e320f34bbb488eff673202ef7a711622665e5611617498a102e5dac3",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/PUBMED_NBIB_INTAKE.md::6": {
+    "sha256": "a77a2054a71e86d6aff811d7fcc7ebf4409bd72501ef900d0753ae116e2635ea",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/QUESTION_LEDGER.md::0": {
+    "sha256": "ea94b919a2b95025ed64d876ac01ce65cb33d9c5e0570e1069a57a57a2a1102f",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_question_ledger.QuestionLedgerTests.test_documented_twelve_command_journey_for_three_actual_import_formats",
+    "test_source_sha256": "61f7eb75e4ca76ca67b5dd574aec08f4f11ecd7adf865ae344ff8bea2b017062"
+  },
+  "docs/README.ko.md::0": {
+    "sha256": "d58efeb83876ea070e9c9339e7b139b8f0d3fedc7ceda68c83d4e9edfd07a82f",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RECEIPT_INTAKE.md::0": {
+    "sha256": "544c7b4409819f2eb98db1df05fa4538e4aabc2d6c02d240df6414731b5d2fe4",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RECORDS_CSV.md::0": {
+    "sha256": "424ede93561a284cd0a72edcf016236d1d0b61f8f2744c3ba09d06af4ce4925f",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_DECISIONS.md::0": {
+    "sha256": "e1b306c26af3c67f8f4598d8cd605f71553ca0463e9a191cb711515f201b11e7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_RETRIEVAL_UPDATES.md::0": {
+    "sha256": "6f377d8e2ab8eab8d2db5723e599b3610960e9e18423fe18111e982be749782c",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_RETRIEVAL_UPDATES.md::1": {
+    "sha256": "aa0c15b93c5eb5e2156f5a982fec4c38ddbeddfbb15630673033f4ab2af236f7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_RETRIEVAL_UPDATES.md::2": {
+    "sha256": "fc7e7f8ce284b433ddc4f2d74285e728ca0a7bbc49f6bf0dfe1d82f8c2b4fc32",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_REVIEWS.md::0": {
+    "sha256": "91fd12e3a4cafebab39e96fe6059415446bdc8bf88f111f0b2465b64d8e6755b",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "report_review.py",
+        "examples/report-reviews.json",
+        "--text"
+      ],
+      [
+        "report_review.py",
+        "examples/report-reviews.json",
+        "--report-id=report-one",
+        "--text"
+      ],
+      [
+        "report_review.py",
+        "examples/report-reviews.json",
+        "--report-id=report-three",
+        "--template",
+        "--output",
+        "/outside/new-source-scaffold.json"
+      ],
+      [
+        "report_review.py",
+        "examples/report-reviews.json",
+        "--report-id=report-one",
+        "--template",
+        "--output",
+        "/outside/new-review-scaffold.json"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/report-reviews.json",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/report-reviews.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/report-reviews.json",
+        "/outside/new-report-review-bundle.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "/outside/new-report-review-bundle.zip"
+      ]
+    ],
+    "scratch": {
+      "/outside/new-source-scaffold.json": "new-source-scaffold.json",
+      "/outside/new-review-scaffold.json": "new-review-scaffold.json",
+      "/outside/new-report-review-bundle.zip": "new-report-review-bundle.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/REPORT_REVIEW_INTAKE.md::0": {
+    "sha256": "eb524bb53c6e3a3256ef9d438e53a84b99a05a14419239c129219ce643f3e7a1",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_SOURCE_CHECK.md::0": {
+    "sha256": "b96a7616248ee2895da3887a33a35675334478a3854618ac6c528b32b52278b0",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_STUDY_INVENTORY.md::0": {
+    "sha256": "862b75d9129789d44d54cb8087a60582f4790d25006055b2fd49bf6664740d0b",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "report_study_inventory.py",
+        "examples/report-study-inventory.json",
+        "--text"
+      ],
+      [
+        "report_study_inventory.py",
+        "examples/report-study-inventory.json",
+        "--report-id=report-three",
+        "--study-id=candidate-X",
+        "--text"
+      ],
+      [
+        "report_study_inventory.py",
+        "examples/report-study-inventory.json",
+        "--report-id=report-three",
+        "--study-id=candidate-new",
+        "--template",
+        "--output",
+        "/outside/new-candidate-description.json"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/report-study-inventory.json",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/report-study-inventory.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/report-study-inventory.json",
+        "/outside/new-inventory-bundle.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "/outside/new-inventory-bundle.zip"
+      ]
+    ],
+    "scratch": {
+      "/outside/new-candidate-description.json": "new-candidate-description.json",
+      "/outside/new-inventory-bundle.zip": "new-inventory-bundle.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/REPORT_STUDY_INVENTORY_REVIEW_INTAKE.md::0": {
+    "sha256": "0749f358dd29669a7426d5dc59521b3ebe5da7e7881b8c5bfb40545426a155ca",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_STUDY_REVIEWS.md::0": {
+    "sha256": "2a8adc9c16d99a3acc8649d11a3c4cd0f22138f32a50bb125d6a4ff47e65b8e6",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "report_study_review.py",
+        "examples/report-study-reviews.json",
+        "--text"
+      ],
+      [
+        "report_study_review.py",
+        "examples/report-study-reviews.json",
+        "--report-id=report-one",
+        "--study-id=study-B",
+        "--text"
+      ],
+      [
+        "report_study_review.py",
+        "examples/report-study-reviews.json",
+        "--report-id=report-one",
+        "--study-id=study-B",
+        "--template",
+        "--output",
+        "/outside/new-study-review.json"
+      ],
+      [
+        "report_study_review.py",
+        "examples/report-study-reviews.json",
+        "--report-id=report-one",
+        "--study-id=study-C",
+        "--text"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/report-study-reviews.json",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/report-study-reviews.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/report-study-reviews.json",
+        "/outside/new-study-review-bundle.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "/outside/new-study-review-bundle.zip"
+      ]
+    ],
+    "scratch": {
+      "/outside/new-study-review.json": "new-study-review.json",
+      "/outside/new-study-review-bundle.zip": "new-study-review-bundle.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/REPORT_STUDY_REVIEW_INTAKE.md::0": {
+    "sha256": "fad68dae8ec043e394e89c50c3d4066db0d843b6e7bcb78e92eb61a8b81fe5d4",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/REPORT_TRANSITION_BUNDLES.md::0": {
+    "sha256": "0865729bd8a4dc3ccf2e40c97e4a3da1d49082f569b470e5145aa5c3e6350c83",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESEARCH_BUNDLE_DESCRIBE.md::0": {
+    "sha256": "a2ed9c6bc857081771854535d860aa4b8d00df17fd3862688fc192c633287aab",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESEARCH_MAP.md::0": {
+    "sha256": "0e48c41f2f8fea61cd2bf0aeba0a3d1fbc2c8863a5f6f9ef95b90c31767c1613",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_research_map.ResearchMapTests.test_documented_real_cli_journey_and_exclusive_output",
+    "test_source_sha256": "13905ddcec6503c23d225ff8b2fd7a0262c4f652bb81a4010863f4c5d0ab9668"
+  },
+  "docs/RESEARCH_MAP_VIEWS.md::0": {
+    "sha256": "cd139cc523831d966ba789f211fcb000b924ab25965312d3afcf2412066a34fa",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/RESEARCH_ZIP_SAFETY.md::0": {
+    "sha256": "2ab8856f418dbe1096b226f32c21215398f62fcdbc8ffd67717a6148abc5ad87",
+    "classification": "parse-only",
+    "reason": "Only argument syntax checked here; actual canonical archive semantics are tested separately, not claimed as execution of this block.",
+    "argv": [
+      [
+        "research_bundle.py",
+        "create",
+        "examples/report-protocol.json",
+        "canonical-research.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "canonical-research.zip"
+      ]
+    ]
+  },
+  "docs/RESULT_CORRECTIONS.md::0": {
+    "sha256": "e1750a0f491c99f6242b5d89507deb45431cfdc65733edd54585732b2bbc3f5a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESULT_CORRECTIONS.md::1": {
+    "sha256": "e5f9d9191ba8a55fa69b6bfbba91eb0075beee7d9c214bd4fd34dc6965d0efa5",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESULT_PASSAGE_CHECK.md::0": {
+    "sha256": "e2cedfdb69624e1390dad1a4a69e619db570376cea656ee0fd0b4aa2bc7a5777",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESULT_PASSAGE_CHECK.md::1": {
+    "sha256": "d754ece608cd9a4dc96e024073a4908dc3116fdf442dc0d7c69137f74fae883d",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RESULT_SOURCE_REVIEW.md::0": {
+    "sha256": "4a9ddf84a40ae8afe5a98389a05c6ed1aa389b462c0ad5150a3f28e16fe368ce",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RETAINED_BUNDLE_DESCRIBE.md::0": {
+    "sha256": "96a088486f7661f1977f265298247ab283ffe8c8de146e3140e6469d9c0bc394",
+    "classification": "covered-by",
+    "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
+    "test": "tests.test_retained_bundle_describe.RetainedBundleDescribeTests.test_documented_three_commands_for_all_seven_families",
+    "test_source_sha256": "5fd7a22b670fa46b5eff0e422b616513e9e1b4e9360d564f26db5d653b20a1c2"
+  },
+  "docs/REVIEW_VIEWS.md::0": {
+    "sha256": "0ed36ed63d37f8c696e7d6a40378c3c1d1cece6999e4ac09027ff46ced423da2",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RIS_CONTINUATION_INTAKE.md::0": {
+    "sha256": "2b05927dd1635d76494c3b9a2fddfa13479701ac5e5e6de3d56fd220176b3172",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RIS_INTAKE.md::0": {
+    "sha256": "4d1b9fe850b9bc85db22438eda8fc21d5bdcc8b067da6e63840ef04b88524e31",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RIS_INTAKE.md::1": {
+    "sha256": "bfced6555bbe5dfc9a84ecbf7e31cd9481f2c8b19b62485e8e17190c5e738cf2",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/RIS_INTAKE.md::2": {
+    "sha256": "237d464bc2d1b7b1b611f4cd15a80873e25afef51878857d2a421f3a0b38f4ce",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCALE_ENVELOPE.md::0": {
+    "sha256": "ce7fe125627a6956034a14b3e6cfaa3e91f1d1806e617bc9c893252090e674e9",
+    "classification": "exempt",
+    "reason": "Opt-in measurement must not run through documentation discovery, even smoke; dedicated probe tests cover separately."
+  },
+  "docs/SCHEMAS.md::0": {
+    "sha256": "4bab495dc5c58fac12011546f4fb7a74ef8e0f3b10e4c0a31fe76aaa042267b2",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/SCREENING_DECISIONS.md::0": {
+    "sha256": "f0efdc982ada65e32e708e950cd452a3fdefbae3d3b302580697416a3ad249bc",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_DECISIONS.md::1": {
+    "sha256": "405d527b16439e38da73b3771143299ba3137cfccbd74a1e3a25e65164993a81",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/SCREENING_DECISION_BATCH_APPLICATION.md::0": {
+    "sha256": "9f60c67e27c66ea32c01a7146bb6aa4e608850433a100085933b257a240aa554",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_DECISION_BATCH_PREVIEW.md::0": {
+    "sha256": "7885afe922c08cc8d93770b7f8e703d55fb7d0f96ec59ac6e157157780654749",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_DECISION_SHEETS.md::0": {
+    "sha256": "345674989ed2f5c614f0ba6df9e4e6477a6a12921cca95d7f999f02ca5a3cd53",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_POSITION_INTAKE.md::0": {
+    "sha256": "2bed161d8b3a37da8826f4204b54bd79265bc9ccfb9b1effb59b07ee9730af7f",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_POSITION_INTAKE.md::1": {
+    "sha256": "5fd6af4ada20b49e52036097afacdf8ef20dc9a2c879429c52396232e8412075",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_REVIEWS.md::0": {
+    "sha256": "5add1822aa44c8125649eac9a5a42ae7c10c2282d6001b9fe0aade1236d39732",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_SHEETS.md::0": {
+    "sha256": "e6a0016d4855d89c283c7cb3deb94858ed4ece9f95047983830ab6ba5aa0dfbb",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SCREENING_SHEET_INTAKE.md::0": {
+    "sha256": "57ed892f4a6aab435dd0d31e739e84faa275d2383f29c3ada72f9803c1a643dc",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SEARCH_MANIFEST.md::0": {
+    "sha256": "5e4608c2ec8ff5eb0ac2773f5872878f5342069012a3c50656352ebfaa2c9e53",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "search_manifest.py",
+        "examples/search-manifest.json"
+      ],
+      [
+        "search_manifest.py",
+        "examples/search-manifest.json",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/search-manifest.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/search-manifest.json",
+        "--text"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/SECOND_SEARCH_CONTINUATION.md::0": {
+    "sha256": "af0383f6ff131a2e84ce7e0d74c03718de9a866450d8b3cf9311a0c551a9b6d8",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SECOND_SEARCH_CONTINUATION.md::1": {
+    "sha256": "33ff8f96beb13e15d0468dafc91cf3ce2ad165177d81495d96e9a68227dba175",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SECOND_SEARCH_CONTINUATION.md::2": {
+    "sha256": "95bda137d3265cdd4f98629c2cc3b138cea891a249f3c96d5fc8bc9a39346400",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SECOND_SEARCH_CONTINUATION.md::3": {
+    "sha256": "bd7d979a9541634fe15861e5eacc98f458b8a59a2dbaef6cad8c534b350e11ad",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SHAREABLE_VIEWS.md::0": {
+    "sha256": "eda36971fab7d7bd36f222c07cc84b8a6261c837c08dd501bd37ca111a4969ff",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SOURCE_CONTEXTS.md::0": {
+    "sha256": "0cef32e53036e1c47774f894a5aa8156fa12a9922c1993caf81b4dfd4c98ebfe",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/source-context-protocol.json",
+        "--work-package",
+        "WP-GUIDELINE-SOURCES",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/source-context-protocol.json",
+        "--brief"
+      ],
+      [
+        "review_handoff.py",
+        "examples/source-context-protocol.json",
+        "--text"
+      ],
+      [
+        "prisma_audit.py",
+        "examples/source-context-protocol.json",
+        "--text"
+      ],
+      [
+        "compare_runs.py",
+        "examples/source-context-protocol.json",
+        "examples/source-context-protocol.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/source-context-protocol.json",
+        "/outside/new-source-context.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "/outside/new-source-context.zip"
+      ]
+    ],
+    "scratch": {
+      "/outside/new-source-context.zip": "new-source-context.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/SOURCE_REVIEW_WORK.md::0": {
+    "sha256": "4c148d17c4aa08549e09e4173396d5d038ae3eb4c275801f8e9b1b202af33716",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/source-work-protocol.json",
+        "--work-package",
+        "WP-RECEIPT-REVIEW",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/source-work-protocol.json",
+        "--work-package",
+        "WP-EXTRACTION-REVIEW",
+        "--text"
+      ],
+      [
+        "review_handoff.py",
+        "examples/source-work-protocol.json",
+        "--text"
+      ],
+      [
+        "research_status.py",
+        "examples/source-work-protocol.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/source-work-protocol.json",
+        "../fictional-source-work.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "../fictional-source-work.zip"
+      ]
+    ],
+    "scratch": {
+      "../fictional-source-work.zip": "fictional-source-work.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/SOURCE_WORK_INTAKE.md::0": {
+    "sha256": "876c588b35be1afc39708be8463c603eef95f9e6e98301c8b11ccd002bfd1b3a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SOURCE_WORK_INTAKE.md::1": {
+    "sha256": "f3e4035b7d9891972f4a0d6b5d338d53e48114cfb7124b2dfc2df37658dd796b",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SOURCE_WORK_INTAKE.md::2": {
+    "sha256": "d14421077287a15f290c4cdd231d9adb53604b359476fc83a6696666b9928ea7",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/SYNTHESIS_REVIEW.md::0": {
+    "sha256": "1ab4a80ae3f6913b30ddaf618aa81c3ed41d655a24381e11acdf850b948f45cf",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "synthesis_review.py",
+        "examples/synthesis-review.json",
+        "--text"
+      ],
+      [
+        "synthesis_review.py",
+        "examples/synthesis-review.json"
+      ],
+      [
+        "research_status.py",
+        "examples/synthesis-review.json",
+        "--text"
+      ],
+      [
+        "research_bundle.py",
+        "create",
+        "examples/synthesis-review.json",
+        "../synthetic-synthesis.zip"
+      ],
+      [
+        "research_bundle.py",
+        "verify",
+        "../synthetic-synthesis.zip"
+      ]
+    ],
+    "scratch": {
+      "../synthetic-synthesis.zip": "synthetic-synthesis.zip"
+    },
+    "returncodes": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/USAGE.md::0": {
+    "sha256": "abf944443b00b9d3d14bf1c55d28978f1c749855095705b5eba3c1d291768cd7",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::1": {
+    "sha256": "95ddb277c686b6a528cf97dc070c807271c764cd181116e47837c4821bdb4931",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::2": {
+    "sha256": "56210abb69fa1a95ed6ef9d8df715f09fca02a7e21bd279090c45e1f176c66c9",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/USAGE.md::3": {
+    "sha256": "57a74da238153eaaea0c126ee4a98b6cef580016c3f753195f701bd919e021fa",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/USAGE.md::4": {
+    "sha256": "38729e4402d357806c1b1116f0d418956da325d936d12bffe0e1229000ce9ca3",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::5": {
+    "sha256": "743247b16ddbd7a29e0181d1f24e4f196fe5c0332672ef6698d14107924fd1a0",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::6": {
+    "sha256": "fc4441844de5e47065db84b79c5add730602c21b1baa2e716a1cc1732d7b44fe",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::7": {
+    "sha256": "0e3d898e81f54b9b05e5fde81d4931eb63844ec4637173731b8c6055b4ec1c93",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/USAGE.md::8": {
+    "sha256": "4ecb6d44aa663b55a0e9d679a0561bba238a42cdd2283e0a75a1f641d65f7eec",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::9": {
+    "sha256": "acdbcd5c2ccd1345ec0aecda9ef3446f0bb5c258db0861016f6ad89b4116285b",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::10": {
+    "sha256": "6d73c4febdfc7f828c1607f3f0d55c252d259daee2978c7eea15f90ee1efff40",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/USAGE.md::11": {
+    "sha256": "d09c9d8e7e87c0a8e27407f2c1f1ef1ab53532caa223bb41d9979762ef1dc53e",
+    "classification": "exempt",
+    "reason": "Existing block not approved for generic execution; no execution or parser coverage is claimed by this registry."
+  },
+  "docs/WORK_COMPLETION_INTAKE.md::0": {
+    "sha256": "37a88ffb1897fa0619a62dfdbd4b360c144e39cd516e71d921beb086794f1b4b",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_COMPLETION_INTAKE.md::1": {
+    "sha256": "d922e2533eeae52d1e40017c06633b1999e4e7b2e543d25146024852f452d770",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_COMPLETION_INTAKE.md::2": {
+    "sha256": "352041ef96f43664b2005265a51bc38bbe0f296115d4307768628829b7065bee",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_COMPLETION_INTAKE.md::3": {
+    "sha256": "6471ac3fb95e2fbf91a2d35c451108c573533096fdf15fe507fadc336c9f63ee",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_CONTEXT_INTAKE.md::0": {
+    "sha256": "6b67d0315228bfc660b8abbde81be13346aab009551dbc522208d22dd8ca7700",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_CONTEXT_INTAKE.md::1": {
+    "sha256": "da908f7c141d9a3aeb64c2d69f042b894221abf80f2c5569618daadfa606d53a",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_DOCUMENT_SOURCES.md::0": {
+    "sha256": "6e3be06073d19ffe00802eca46e0d433b6aa24cc7a2b9e45f179e6b2a2568d40",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_NAVIGATION.md::0": {
+    "sha256": "8c31acebbaf6d348b87dd80daeefe9226e4cd89ff78f2c69e76e116fe602554e",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/prerequisite-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--include-prerequisites",
+        "--brief"
+      ],
+      [
+        "work_review.py",
+        "examples/prerequisite-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--include-prerequisites",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/rationale-links.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--brief"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/WORK_REVIEW.md::0": {
+    "sha256": "d72d4c1a6279af6635e27b15d567aa11026a0137dc6a2db01054ff56216342c3",
+    "classification": "run",
+    "reason": "Explicit shipped fictional inputs and scratch-only outputs; exact argv allowlist.",
+    "argv": [
+      [
+        "work_review.py",
+        "examples/translation-review.json",
+        "--work-package",
+        "WP-TRANSLATION",
+        "--text"
+      ],
+      [
+        "work_review.py",
+        "examples/translation-review.json",
+        "--work-package",
+        "WP-TRANSLATION"
+      ],
+      [
+        "research_status.py",
+        "examples/translation-review.json",
+        "--text"
+      ]
+    ],
+    "scratch": {},
+    "returncodes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "docs/WORK_TRANSITION_BUNDLES.md::0": {
+    "sha256": "8682c4b72ecd17a0f240975086e97184c6dfbe5324e9d573395c167805281c2e",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_TRANSITION_BUNDLES.md::1": {
+    "sha256": "0690100dd44c519b32711590a585e05154b2a136123173590ed28b8e7057fa50",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_TRANSITION_BUNDLES.md::2": {
+    "sha256": "44774576d9553a1e85dab0a05ce6d10cfdb94da33a7fef399406a90b22841399",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  },
+  "docs/WORK_TRANSITION_BUNDLES.md::3": {
+    "sha256": "ea0b034da3abc355b945d24e35cd3d6e7aaf468c1cb79c0f25e040533916683d",
+    "classification": "exempt",
+    "reason": "Supplied inputs, modeled human steps or cross-block prerequisites have not been approved for this generic runner; no coverage claimed here."
+  }
+}

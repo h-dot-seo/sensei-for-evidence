@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.148.0-opt-in-scale-observation` (2026-11-15). This file is the
+Current release: `0.149.0-documentation-conformance` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,10 +55,12 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.148.0-opt-in-scale-observation` (2026-11-15).
+Release: `0.149.0-documentation-conformance` (2026-11-15).
 
-Roadmap #52 adjustments (4), (5), (9): opt-in local synthetic scale probe under tests, fixed bounded shapes, eight actual product computations and separate generation/input/output timings. No new workflow or automatic large run. Existing root product sources, ENGINE, examples, schemas and CI bytes are unchanged. Complete outputs alone have full hashes; failed calls, skipped prerequisites and over-budget observations are explicit. Output budgets do not prevent product allocation or guarantee CPU/memory safety.
+Roadmap common #102, Sensei-only local link/heading checks and exact classification of197 existing sh blocks, all block bytes preserved. Sixteen approved synthetic blocks execute77 actual argv commands without shell; one block parses two commands without product execution;19 blocks bind ten existing bespoke guide tests;161 are explicit generic-run exclusions, not claims of no other tests. Existing usage/help conformance stays separate. No product/ENGINE/example/schema/workflow changes.
 
-Core7/0.655s PASS; independent core7/0.633s PASS plus protected279-file direct comparison and injected failures. Explicit moderate and large runs completed all eight paths; the narrow large shape produced 48,809,916-byte synthesis and 47,917,494-byte ZIP, near the existing limit. docs/SCALE_ENVELOPE.md records dated environment, separate timings and limitations. Full/final validation pending.
+Local new7/5.533s PASS, compact historical-proof7/5.376s PASS. The first exploratory runner expected amendment comparison exit1 but its supplied note correctly returns0; only the new expectation changed. Five historical relative-link targets lost one erroneous docs/ prefix with exact-offset and original/corrected-prefix proof; historical prose and all other bytes remain intact. Full/final independent validation pending.
 
-Full2393/240.540s PASS (two platform skips). Final independent7/0.616s PASS with direct protected279-file comparison, both retained moderate/large receipts matched to current probe/source hashes, and all16 measurement table rows verified; large runs were not repeated by the reviewer. Independent freeze93e7d6ef51054502b1976c9450e5a3ea77388a93 matched. Audit635/manifest634/Python3.10 grammar311 PASS. Existing products, ENGINE, schemas, examples, workflows and baseline JSON remain byte-identical; no fictional targets needed updating. After full validation only these two final result records and their manifest rows change.
+Independent initial core7/5.506s PASS with actual prior61 protected279-file and197-block byte comparison. The reviewer identified unsupported Markdown dialects; an independent current-document search found none except initial SKILL.md YAML delimiters. New unsupported reference/HTML-comment-link/nested-destination/setext guards now fail rather than imply coverage; corrected8/5.837s PASS. Final focus23/18.230s PASS (one platform skip), audit640/manifest639. Full and final independent review pending.
+
+Full2401/247.483s PASS (two platform skips). Final independent8/5.668s PASS, actual prior61 protected279 files/197 sh blocks and existing baseline JSON unchanged, exact five historical targets only, updated dialect counterexamples rejected. Current supported-syntax link observations1114 with zero failures; the earlier1112 count predates the two new documentation links. Independent tree84267596827b93575760d5980691e3e9063c4df9 matched; audit640/manifest639/Python3.10 grammar313 PASS. After this full run only these two final validation records and their manifest rows change. All other frozen bytes remain unchanged.
