@@ -3311,7 +3311,7 @@ compare bytes/exit behavior against subprocess and verify exceptional restoratio
 Opt-in full-catalog benchmark: all 129 entries match returncode/stdout/stderr across
 three alternating-order runs. Subprocess 5.945/5.183/5.167 seconds, in-process
 0.465/0.444/0.426 seconds on local Python 3.12.14/Linux. No timing assertions or
-claims of proportional full-suite/Windows improvement. [Runtime guide](docs/TEST_RUNTIME.md)
+claims of proportional full-suite/Windows improvement. [Runtime guide](TEST_RUNTIME.md)
 records the reproducible command and retained coverage. Prior PR21 Windows3.10 job
 452 seconds/test385; Windows3.12 job368/test354. Inspect slow tests when Windows
 jobs exceed six minutes; class-fixture costs are absent from unittest durations.
@@ -3340,7 +3340,7 @@ Before: JSON loop0.840s, sampled batch bundle invalid-input0.493s. Reproducible
 subprocess0.762/0.734/0.741s versus in-process0.063/0.056/0.056s. Retained four-process
 smoke costs0.176s locally. These small local savings are not a claim of proportional
 suite/CI acceleration; larger batch/dispatcher bottlenecks remain out of scope.
-See [runtime guide](docs/TEST_RUNTIME.md) for commands and process-isolation limits.
+See [runtime guide](TEST_RUNTIME.md) for commands and process-isolation limits.
 
 Full local suite: 2061 tests in 149.247s, OK (one platform skip). Focused and
 independent JSON/harness tests: 14 pass. Independent 24-case benchmark also passes
@@ -3363,7 +3363,7 @@ or presented as an isolation guarantee. ENGINE_FILES and other root Python uncha
 Four-case before/after exact-result measurement: 388 source reads/AST parses become
 2 (valid script plus helper). Three alternating runs: old0.660/0.674/0.678s versus
 new0.00237/0.00230/0.00237s on Python3.12.14/Linux. Counts exclude directory metadata
-calls. [Selection guide](docs/DISPATCHER_SELECTION.md) records reproduction and scope.
+calls. [Selection guide](DISPATCHER_SELECTION.md) records reproduction and scope.
 All existing subprocess dispatcher tests remain unchanged; new regression tests pin
 exact case, zero/one source access, discovery differences, selected errors and no cache.
 
@@ -4032,7 +4032,7 @@ Full2350 /219.585s PASS (two platform skips). Final focused39 /25.847s PASS (one
 
 Release: `0.144.0-scoped-cli-errors` (2026-11-15).
 
-Roadmap #51 completes the remaining twelve ordinary first-stage CLI error paths with a non-engine presentation leaf, explicit static labels/categories and nine downstream manual hash maps. Existing reads, bounds, strict parsing, validators, gates, usage exit2 and receipt-check negative stdout/exit1 are preserved. Existing stderr consumers must handle the changed presentation. Original implementations remain necessary for exact old bound records; no automatic resealer or real review update exists. See [contract](docs/CLI_ERROR_CONTRACT.md).
+Roadmap #51 completes the remaining twelve ordinary first-stage CLI error paths with a non-engine presentation leaf, explicit static labels/categories and nine downstream manual hash maps. Existing reads, bounds, strict parsing, validators, gates, usage exit2 and receipt-check negative stdout/exit1 are preserved. Existing stderr consumers must handle the changed presentation. Original implementations remain necessary for exact old bound records; no automatic resealer or real review update exists. See [contract](CLI_ERROR_CONTRACT.md).
 
 Exact root scope:21 existing modules plus cli_errors.py; global ENGINE files and accounting_flow/records_csv product bytes unchanged. An intermediate inspection mistakenly treated those two exporters' manual lists as missing propagation; full function inspection showed they already merge prisma_audit hashes. The unnecessary edits were reverted, and actual helper-map propagation is tested. This was an inspection mistake, not a product defect.
 
@@ -4048,7 +4048,7 @@ Corrected full2356/222.346s PASS (two platform skips). Final focus49/27.014s PAS
 
 Release: `0.145.0-same-call-view-analysis` (2026-11-15).
 
-Roadmap #52 adjustment8: four non-engine views separate private same-call projections to avoid repeated engine analysis in handoff and synthesis. Public signatures/validation and CLI options, ENGINE/prisma_reports, validators, schema2, gates, queues and source bindings retain their meaning. There is no cache, external prevalidated input or persisted analysis. Actual old/current engine-call counts: handoff4→1 without reports/8→2 with reports; synthesis2→1/4→2. Standalone status/work remain1/2. No wall-time or general complexity guarantee. See [shared view analysis](docs/SHARED_VIEW_ANALYSIS.md).
+Roadmap #52 adjustment8: four non-engine views separate private same-call projections to avoid repeated engine analysis in handoff and synthesis. Public signatures/validation and CLI options, ENGINE/prisma_reports, validators, schema2, gates, queues and source bindings retain their meaning. There is no cache, external prevalidated input or persisted analysis. Actual old/current engine-call counts: handoff4→1 without reports/8→2 with reports; synthesis2→1/4→2. Standalone status/work remain1/2. No wall-time or general complexity guarantee. See [shared view analysis](SHARED_VIEW_ANALYSIS.md).
 
 Initial related45/1.393s PASS. New six tests/7.439s PASS including40 actual prior/current CLI paths with only four exact implementation-byte reads controlled, current unmodified fingerprints checked separately; actual old/new run counts, public validation, optional selections/map/negative paths, input/intermediate and repeated-result-mutation isolation. Historical compat37/22.303s PASS before the sixth counter test was added. Historical baseline JSON is preserved via exact four-file source reversal. Full/final independent checks pending.
 
@@ -4095,3 +4095,19 @@ Roadmap #52 adjustments (4), (5), (9): opt-in local synthetic scale probe under 
 Core7/0.655s PASS; independent core7/0.633s PASS plus protected279-file direct comparison and injected failures. Explicit moderate and large runs completed all eight paths; the narrow large shape produced 48,809,916-byte synthesis and 47,917,494-byte ZIP, near the existing limit. docs/SCALE_ENVELOPE.md records dated environment, separate timings and limitations. Full/final validation pending.
 
 Full2393/240.540s PASS (two platform skips). Final independent7/0.616s PASS with direct protected279-file comparison, both retained moderate/large receipts matched to current probe/source hashes, and all16 measurement table rows verified; large runs were not repeated by the reviewer. Independent freeze93e7d6ef51054502b1976c9450e5a3ea77388a93 matched. Audit635/manifest634/Python3.10 grammar311 PASS. Existing products, ENGINE, schemas, examples, workflows and baseline JSON remain byte-identical; no fictional targets needed updating. After full validation only these two final result records and their manifest rows change.
+
+## 2026-11-15: 0.149.0-documentation-conformance
+
+Release: `0.149.0-documentation-conformance` (2026-11-15).
+
+Roadmap common #102, Sensei-only local link/heading checks and exact classification of197 existing sh blocks, all block bytes preserved. Sixteen approved synthetic blocks execute77 actual argv commands without shell; one block parses two commands without product execution;19 blocks bind ten existing bespoke guide tests;161 are explicit generic-run exclusions, not claims of no other tests. Existing usage/help conformance stays separate. No product/ENGINE/example/schema/workflow changes.
+
+Local new7/5.533s PASS, compact historical-proof7/5.376s PASS. The first exploratory runner expected amendment comparison exit1 but its supplied note correctly returns0; only the new expectation changed. Five historical relative-link targets lost one erroneous docs/ prefix with exact-offset and original/corrected-prefix proof; historical prose and all other bytes remain intact. Full/final independent validation pending.
+
+Independent initial core7/5.506s PASS with actual prior61 protected279-file and197-block byte comparison. The reviewer identified unsupported Markdown dialects; an independent current-document search found none except initial SKILL.md YAML delimiters. New unsupported reference/HTML-comment-link/nested-destination/setext guards now fail rather than imply coverage; corrected8/5.837s PASS. Final focus23/18.230s PASS (one platform skip), audit640/manifest639. Full and final independent review pending.
+
+Full2401/247.483s PASS (two platform skips). Final independent8/5.668s PASS, actual prior61 protected279 files/197 sh blocks and existing baseline JSON unchanged, exact five historical targets only, updated dialect counterexamples rejected. Current supported-syntax link observations1114 with zero failures; the earlier1112 count predates the two new documentation links. Independent tree84267596827b93575760d5980691e3e9063c4df9 matched; audit640/manifest639/Python3.10 grammar313 PASS. After this full run only these two final validation records and their manifest rows change. All other frozen bytes remain unchanged.
+
+Initial PR CI43683955301 passed Ubuntu but Windows exposed one new test expectation mismatch: local_target correctly resolves the filesystem path, while the temporary-directory expected Path retained the Windows RUNNER~1 short-name alias instead of runneradmin. The expected target now calls resolve(), matching the declared return contract; no helper/product/Markdown acceptance rule changes. Initial local/independent tests did not exercise that native Windows alias. Corrected full/independent/remote validation pending; no merge occurred on the failed head.
+
+Corrected full2401/241.434s PASS (two platform skips); corrected focus8/5.745s and independent8/5.588s PASS. Independent published-manifest comparison confirms exactly test_doc_conformance/VALIDATION/HISTORY plus manifest changed; reversing the single expected target.resolve() line reproduces published test Git blob18dbac8b6434a95b8af3689ae44fc11320132683 exactly. All new temporary-path comparisons were rechecked with no other resolved/raw-alias assumption found. Corrected freeze6fbc04c700587cc494605b9d13aaf363a601a9be matched. This local result is not a substitute for corrected native Windows CI; merge remains conditional on all eight remote jobs. After the corrected full run only these two result records and their manifest rows change.

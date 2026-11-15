@@ -721,3 +721,5 @@ Received collection/transition archives can be inspected without replay using th
 [Supplied amendment ledger](AMENDMENT_LEDGER.md) preserves a separately reviewed two-snapshot record without closing any gate or authenticating a reviewer.
 
 Explicit local synthetic size/timing observations (not performance guarantees): [scale envelope](SCALE_ENVELOPE.md).
+
+Local guide links and explicit execution-coverage boundaries: [documentation conformance](DOCUMENTATION_CONFORMANCE.md).
