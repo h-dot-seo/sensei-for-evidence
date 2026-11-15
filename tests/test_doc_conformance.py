@@ -29,7 +29,7 @@ class DocumentationConformanceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td);(root/'docs').mkdir();source=root/'docs/x.md';source.write_text('')
             target=root/'file name.md';target.write_text('# Same\n# Same\n')
-            self.assertEqual(local_target(root,source,'../file%20name.md#same-1'),(target,'same-1'))
+            self.assertEqual(local_target(root,source,'../file%20name.md#same-1'),(target.resolve(),'same-1'))
             for bad in ['../../outside','%2e%2e/%2e%2e/outside','/outside','bad%XX','bad%FF','a\\b','a%00b','a?query=1']:
                 with self.subTest(bad=bad),self.assertRaises(ValueError):local_target(root,source,bad)
             for remote in ['https://example.invalid/x','mailto:nobody','//example.invalid/x']:
