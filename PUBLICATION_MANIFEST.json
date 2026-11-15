@@ -1,6 +1,6 @@
 {
   "project": "sensei-for-evidence",
-  "release": "0.150.0-native-continuation-archive",
+  "release": "0.150.1-contract-coverage-reference",
   "date": "2026-11-15",
   "private_history_imported": false,
   "actual_corpora_included": false,
@@ -50,8 +50,8 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 7083,
-      "sha256": "9003d07c2fde386489396c650a8c11be48280158b5a911ece43d0f752b110a5e"
+      "bytes": 4879,
+      "sha256": "7f281754f12db8a4b660fc2506f2dd9f82f34f2905829b7b22708a533c434ecd"
     },
     {
       "path": "accounting_flow.py",
@@ -205,8 +205,8 @@
     },
     {
       "path": "docs/AGENT_CONTRACT.md",
-      "bytes": 6322,
-      "sha256": "b9d36274d3bde34fd0d34dae7564499f46bcead6d4b6d74ed3cfe1cab581fd4f"
+      "bytes": 6383,
+      "sha256": "9ccb8bebf09c69e8893793d8f38dbfb3cab1143a2306d1cd30826d5ec4fec988"
     },
     {
       "path": "docs/AMENDMENT_LEDGER.md",
@@ -775,8 +775,8 @@
     },
     {
       "path": "docs/VALIDATION_HISTORY.md",
-      "bytes": 325555,
-      "sha256": "5ba3d29a8a28a798b368341f212b070c5d93353b921608474563b2154244115b"
+      "bytes": 327659,
+      "sha256": "38405a8b4e28c714a9da3cef720320fc302d9d6571b8613e6b97b32528aed70a"
     },
     {
       "path": "docs/VIEW_INPUT_ERRORS.md",
