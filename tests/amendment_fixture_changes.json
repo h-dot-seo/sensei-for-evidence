@@ -1,0 +1,122 @@
+[
+  {
+    "path": "examples/batch-to-evidence/collection-review.json",
+    "pointer": "/review/target_sha256",
+    "old": "f5b73464a6be6cb76fc78276ac9ac0641d08446bcfc2082077705b768ea2f4c2",
+    "new": "edc84808661184ecf438e955921e3cb2e4d52afbd929f2a48285052274dae63c",
+    "generated_target": "collection-target.json",
+    "generated_pointer": "/review/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-A.json",
+    "pointer": "/target_sha256",
+    "old": "80196f49227cf5bba99e0e81be3e295910c7c6cda050aa1d290d8b381f16f9bb",
+    "new": "851b2ec1adf1063f194f98024208d476828797e36917cf011b4d857292583222",
+    "generated_target": "screen-A-target.json",
+    "generated_pointer": "/decision_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-B.json",
+    "pointer": "/target_sha256",
+    "old": "661370f56074586aa675c63b87b1d8b351598f6623ea9cc0685677ab34ef4105",
+    "new": "2482a342c80601ba8b9ca24d8d74b735694e9399ae57e0c442102c82e13361c1",
+    "generated_target": "screen-B-target.json",
+    "generated_pointer": "/decision_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/screen-record-C.json",
+    "pointer": "/target_sha256",
+    "old": "aaa19252ee735922edaac96be07fc3c9b6c1e168e9edc288ed8b74dead562965",
+    "new": "e8733347e6e2d6a517ae6bcfa27bef40df647debb09fa201178afc180aea45c7",
+    "generated_target": "screen-C-target.json",
+    "generated_pointer": "/decision_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/reports-review.json",
+    "pointer": "/target_sha256",
+    "old": "f4e4e4f42f1ddbbea25e9749beb28b1fcaf21abf122613f8cc84557ab7db0ee0",
+    "new": "a403500b605ce127a65a9bfc63848d19234b530d0ef7edd35aba1ac39a951baf",
+    "generated_target": "report-target.json",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/retrieval-review.json",
+    "pointer": "/target_sha256",
+    "old": "7d3eb976362b56a7d8cecf1df0062771cc2ff5374ad1cffc5358b7d3b7dc3ad3",
+    "new": "43bd6e17a3ff2c87e93920ea62dba1d7a1874ae4e3c6a07cc514907667528fe0",
+    "generated_target": "retrieval-target.json",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/full-text.json",
+    "pointer": "/target_sha256",
+    "old": "3ae3608f3655403ef15c6d62cefcfb95e17394193f25a19498a057c78f1bc00c",
+    "new": "a9cfeff4435721f7b4b127ccceb02cc280a8d90987a6e0012b32472db45dd0f1",
+    "generated_target": "full-text-target.json",
+    "generated_pointer": "/decision_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/results-review.json",
+    "pointer": "/target_sha256",
+    "old": "22c7a657abf1c89bfa8a8badb04abf34ae2c71049a99570efed8d362a877a421",
+    "new": "9c54561b0515a848be821be1bf1829754a1c47ad61723a8d9827aa9aec61ed67",
+    "generated_target": "result-target.json",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/batch-to-evidence/conditions-review.json",
+    "pointer": "/target_sha256",
+    "old": "66cbcd9c405dfbe1dd929147808c5af3423d92381b4dd889c8d299e229d44542",
+    "new": "09d11415fb2f9e9cca1660717bf00c31288f0df50d930b285279f55d7382a30a",
+    "generated_target": "condition-target.json",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/second-search/review.json",
+    "pointer": "/review/target_sha256",
+    "old": "83be8c17bb702435ae699a04dff3d0e3f75de1490afd486bf62e49d2b6d2e707",
+    "new": "ead3fd0dc076b938eea3633ca6ce6fa77138a97e4820f30fcb2956100716821a",
+    "generated_target": "secondary-target.json",
+    "generated_pointer": "/review/target_sha256"
+  },
+  {
+    "path": "examples/report-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "old": "88b5990e9d7b6ec4749669439866007145acdb153140fdb955ce50f99a103527",
+    "new": "9a280da59a8c89d4bac1cad2ea2f22a49b3e42613e68a7f3569c6182cfc277b6",
+    "generated_target": "REPORT_REVIEW_INTAKE",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/report-study-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "old": "a1ef865fa6637ec511a1f9ce86bcbac98269155f6c9bbc6d28aa6b2105f8815d",
+    "new": "d9a0e46a915b9e4e55535962036c2d6f1f0caf0563ceae52c1d4b093725fdd6a",
+    "generated_target": "REPORT_STUDY_REVIEW_INTAKE",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/report-study-inventory-review-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "old": "c30f18129b161b2675c77839fb7c35c69656cd0a287d1b3b9f91ca4808b29822",
+    "new": "13facf096749fb979ff7965da39738921ebb7f663d8a84555cd81e2776f2102d",
+    "generated_target": "REPORT_STUDY_INVENTORY_REVIEW_INTAKE",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/screening-decision-batch/import-review.json",
+    "pointer": "/target_sha256",
+    "old": "dd97102666c13d02418a2ef97e17cf844bfd8b6b5e6fcf7be947248d2671f717",
+    "new": "2fc94e656f794ca81882eeaca8e468ad8a3e483b510ad9d34a85531ab0ae0534",
+    "generated_target": "SCREENING_DECISION_BATCH_APPLICATION",
+    "generated_pointer": "/review_document/target_sha256"
+  },
+  {
+    "path": "examples/screening-sheet-intake/import-review.json",
+    "pointer": "/target_sha256",
+    "old": "cc6ef72b47263395b62c4b7f6054098cb0843bf555990904d7f2e2079446b097",
+    "new": "0fb3e500137e63f06fce71c6dea5d690675d09a7c16bd99bdf2aae55cbd38650",
+    "generated_target": "SCREENING_SHEET_INTAKE",
+    "generated_pointer": "/review_document/target_sha256"
+  }
+]

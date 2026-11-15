@@ -3,7 +3,8 @@ import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 def prior_bytes(name):
-    raw=(ROOT/name).read_bytes()
+    from tests._amendment_compat import prior_bytes as pre_amendment
+    raw=pre_amendment(name)
     changes=json.loads((ROOT/'tests/shared_analysis_source_changes.json').read_bytes())
     if name in changes:
         assert raw==changes[name]['new'].encode(),name

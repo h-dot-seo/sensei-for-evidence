@@ -35,6 +35,7 @@ class MapViewTests(unittest.TestCase):
             result={'status':lambda:research_status.status(p),'handoff':lambda:review_handoff.handoff(p),'compare':lambda:compare_runs.compare_protocols(p,p)}[kind]()
             if 'cli_errors.py' in result['engine_sha256']:
                 self.assertEqual(result['engine_sha256'].pop('cli_errors.py'),hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest())
+            self.assertEqual(result['engine_sha256'].pop('amendment_links.py'),hashlib.sha256((ROOT/'amendment_links.py').read_bytes()).hexdigest())
             self.assertNotIn('research_map_context',result)
             self.assertEqual(set(case['omitted_fingerprints']),expected[kind])
             # Round55: restore only the new shared-loader ENGINE digest; four CLI-only

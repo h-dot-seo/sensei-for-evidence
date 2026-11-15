@@ -1292,6 +1292,35 @@
       "role": "unverified_descriptor",
       "schema_version": 1,
       "value": "retained_bundle_manifest_descriptor"
+    },
+    {
+      "constructor_bindings": [
+        "after_input_protocol_sha256",
+        "before_protocol_sha256",
+        "candidate_protocol_sha256",
+        "engine_sha256"
+      ],
+      "constructor_expansions": [
+        "NEGATIVE_CLAIMS"
+      ],
+      "discriminator": "target_type",
+      "function": "_prepare",
+      "guide": "AMENDMENT_LEDGER.md",
+      "module": "amendment_intake.py",
+      "role": "review_target",
+      "schema_version": 1,
+      "value": "supplied_amendment"
+    },
+    {
+      "constructor_bindings": [],
+      "constructor_expansions": [],
+      "discriminator": "kind",
+      "function": "assemble",
+      "guide": "AMENDMENT_LEDGER.md",
+      "module": "amendment_intake.py",
+      "role": "detached_application",
+      "schema_version": 1,
+      "value": "detached_amendment"
     }
   ],
   "untagged_research_manifest": {

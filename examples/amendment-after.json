@@ -1,0 +1,28 @@
+{
+  "question": "How should this fictional revised local collection be recorded?",
+  "version": "fictional-amendment-v2",
+  "inclusion_criteria": [
+    "Fictional in-scope records for software testing only"
+  ],
+  "exclusion_criteria": [
+    "Fictional out-of-scope records for software testing only"
+  ],
+  "search_plan": [
+    {
+      "search_id": "local-primary",
+      "source": "synthetic-local-export",
+      "query": "fictional mechanism",
+      "window": "2020-2026"
+    },
+    {
+      "search_id": "local-secondary",
+      "source": "synthetic-second-export",
+      "query": "fictional development context",
+      "window": "2020-2026"
+    }
+  ],
+  "searches": [],
+  "screening": [],
+  "evidence": [],
+  "gaps": []
+}

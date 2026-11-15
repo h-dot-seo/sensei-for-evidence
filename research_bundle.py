@@ -12,7 +12,7 @@ from prisma_reports import report_flow
 from csv_safety import safe_csv_cell
 from json_io import parse_json, configure_utf8_stdio
 
-ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py', 'readiness_links.py', 'evidence_basis_links.py', 'archive_safety.py', 'question_links.py', 'output_disclosure_links.py')
+ENGINE_FILES = ('evidence_workflow.py', 'prisma_reports.py', 'context_links.py', 'search_audit.py', 'csv_safety.py', 'appraisal_links.py', 'json_io.py', 'adapter_integrity.py', 'offline_adapter.py', 'planning_links.py', 'synthesis_links.py', 'experiment_links.py', 'research_bundle.py', 'bibliographic_integrity.py', 'csv_export_parser.py', 'bibliographic_intake.py', 'bibliographic_review.py', 'report_links.py', 'screening_links.py', 'screening_decision_links.py', 'screening_decision.py', 'report_review_links.py', 'report_study_review_links.py', 'report_study_inventory_links.py', 'work_document_links.py', 'report_study_inventory_review_links.py', 'challenge_links.py', 'readiness_links.py', 'evidence_basis_links.py', 'archive_safety.py', 'question_links.py', 'output_disclosure_links.py', 'amendment_links.py')
 
 def engine_hashes():
     root = Path(__file__).resolve().parent
@@ -159,6 +159,9 @@ def build_bundle(raw):
         summary += ('Supplied output disclosure records: ' + str(len(context['disclosure_ledger'])) + '\n'
                     'Stale disclosure gate bindings: ' + str(len(context['stale_disclosure_ids'])) + '\n'
                     'Supplied labels do not establish actual publication, permission or scientific closure. Mechanical release readiness: NOT_RELEASED.\n')
+    if 'amendments' in research:
+        summary += ('Recorded amendments: ' + str(research['amendments']['recorded_count']) + '; before hashes not verified in place.\n'
+                    'Supplied records do not close gates, approve changes or authenticate reviewers.\n')
     payloads={'protocol.json':raw,'research.json':json_bytes(research),'reports.json':json_bytes(reports),
               'reports.csv':csv_text.encode(),'work-packages.csv':out.getvalue().encode(),'summary.md':summary.encode()}
     manifest=dict(schema_version=2,engine_sha256=engine_hashes(),input_sha256=hashlib.sha256(raw).hexdigest(),

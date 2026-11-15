@@ -19,7 +19,8 @@ def prior_bytes(name):
 
 def prior_builder_source(module):
     import inspect
-    source=inspect.getsource(module.build_bundle)
+    from tests._amendment_compat import prior_builder_source as pre_amendment_builder
+    source=pre_amendment_builder()
     block=json.loads((ROOT/'tests/output_disclosure_source_additions.json').read_bytes())['bundle_summary']
     assert source.count(block)==1
     return source.replace(block,'',1)

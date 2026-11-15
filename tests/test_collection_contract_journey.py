@@ -139,14 +139,17 @@ class CollectionContractJourneyTests(unittest.TestCase):
         for rel,digest in proof.items():
             source=prior_fixture_bytes(rel) if rel.startswith('examples/') else prior_bytes(rel)
             self.assertEqual(hashlib.sha256(source).hexdigest(),digest,rel)
-        self.assertEqual(set(proof),{p.relative_to(ROOT).as_posix() for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py')}|{p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file()})
+        self.assertEqual(set(proof),{p.relative_to(ROOT).as_posix() for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py')}|{p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file() and p.name not in ('amendment-before.json','amendment-after.json','manual-amendment.json')})
         prior=json.loads((ROOT/'tests/collection_contract_prior_registry.json').read_bytes())
         old={(r['script'],r['subcommand']):r for r in prior['commands']}
         current=command_contract.contract()
         observed=dict(current['implementation_sha256'])
+        for name in ('amendment_links.py','amendment_intake.py'):
+            self.assertEqual(observed.pop(name),hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
         self.assertEqual(observed.pop('retained_bundle_describe.py'),hashlib.sha256((ROOT/'retained_bundle_describe.py').read_bytes()).hexdigest())
         self.assertEqual(observed.pop('cli_errors.py'),hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest())
-        changed=set(json.loads((ROOT/'tests/shared_analysis_source_changes.json').read_bytes()))
+        changed=set(json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes()))
+        changed.update(json.loads((ROOT/'tests/shared_analysis_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/cli_error_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/archive_preflight_source_changes.json').read_bytes()))
@@ -156,15 +159,18 @@ class CollectionContractJourneyTests(unittest.TestCase):
         self.assertEqual(observed,prior['implementation_sha256'])
         changed=set()
         for key,row in self.rows.items():
-            if key==('retained_bundle_describe.py',None):
+            if key==('retained_bundle_describe.py',None) or key[0]=='amendment_intake.py':
                 self.assertIsNone(row['effects']);continue
             original=old[key]
+            if key==('compare_runs.py',None):
+                self.assertEqual(row['usage'], original['usage'].replace('[--amendment AMENDMENT]', '[--amendment AMENDMENT] [--amendment-id AMENDMENT_ID]'))
+                row=dict(row,usage=original['usage'])
             self.assertEqual({k:row[k] for k in original if k!='effects'},{k:v for k,v in original.items() if k!='effects'})
             if row['effects']!=original['effects']:
                 changed.add(key);self.assertIsNone(original['effects'])
         self.assertEqual(changed,NEW)
-        self.assertEqual((current['coverage']['commands'],current['coverage']['reviewed_effects']),(201,44))
-        self.assertEqual(sum(r['effects'] is None for r in current['commands']),157)
+        self.assertEqual((current['coverage']['commands'],current['coverage']['reviewed_effects']),(205,44))
+        self.assertEqual(sum(r['effects'] is None for r in current['commands']),161)
 
     def test_all_seventeen_handled_missing_inputs_and_usage_channels(self):
         for script,sub in sorted(NEW|EXISTING):

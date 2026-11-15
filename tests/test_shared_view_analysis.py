@@ -1,5 +1,6 @@
 """Same-call projection reuse; no cache, validation shortcut or general scale claim."""
 import ast
+from tests._amendment_compat import prior_bytes as pre_amendment
 import copy
 import cProfile
 import hashlib
@@ -82,7 +83,7 @@ print(json.dumps(rows))
 """
         with tempfile.TemporaryDirectory() as td:
             td=Path(td);old=td/'old';old.mkdir()
-            for p in ROOT.glob('*.py'):(old/p.name).write_bytes(CHANGES[p.name]['old'].encode() if p.name in CHANGES else p.read_bytes())
+            for p in ROOT.glob('*.py'):(old/p.name).write_bytes(CHANGES[p.name]['old'].encode() if p.name in CHANGES else pre_amendment(p.name))
             for value,multiplier in ((generated(3),1),(json.loads((ROOT/'examples/synthesis-review.json').read_bytes()),2)):
                 source=td/'input.json';source.write_text(json.dumps(value))
                 rows=[]
@@ -106,15 +107,15 @@ print(json.dumps(rows))
 
     def test_exact_four_sources_and_engine_other_sources_unchanged(self):
         expected=json.loads((ROOT/'tests/shared_analysis_prior_sources.json').read_bytes())
-        self.assertEqual(set(expected),{p.name for p in ROOT.glob('*.py') if p.name!='retained_bundle_describe.py'})
+        self.assertEqual(set(expected),{p.name for p in ROOT.glob('*.py') if p.name not in ('retained_bundle_describe.py','amendment_links.py','amendment_intake.py')})
         self.assertEqual(set(CHANGES),{'research_status.py','synthesis_review.py','work_review.py','review_handoff.py'})
         import research_bundle
         self.assertFalse(set(CHANGES)&set(research_bundle.ENGINE_FILES))
         for name,digest in expected.items():
-            raw=CHANGES[name]['old'].encode() if name in CHANGES else (ROOT/name).read_bytes()
+            raw=CHANGES[name]['old'].encode() if name in CHANGES else pre_amendment(name)
             self.assertEqual(hashlib.sha256(raw).hexdigest(),digest,name)
         for name,change in CHANGES.items():
-            self.assertEqual((ROOT/name).read_text(),change['new'])
+            self.assertEqual(pre_amendment(name).decode(),change['new'])
             old=ast.parse(change['old']);new=ast.parse(change['new'])
             a={n.name:ast.get_source_segment(change['old'],n) for n in old.body if isinstance(n,ast.FunctionDef)}
             b={n.name:ast.get_source_segment(change['new'],n) for n in new.body if isinstance(n,ast.FunctionDef)}
@@ -130,16 +131,21 @@ from pathlib import Path
 from unittest.mock import patch
 root=Path(sys.argv[1]).resolve();old=Path(sys.argv[2]).resolve();script=sys.argv[3];args=sys.argv[4:]
 names=['research_status.py','synthesis_review.py','work_review.py','review_handoff.py']
+# Exact additional round60 source fingerprints; current functions still execute.
+names=list(dict.fromkeys(names+list(json.loads((root/'tests/amendment_source_changes.json').read_bytes()))))
 source={root/name:(old/name).read_bytes() for name in names}
 real=Path.read_bytes
 def controlled(path):
  return source[path.resolve()] if path.resolve() in source else real(path)
 sys.path.insert(0,str(root));sys.argv=[str(root/script),*args]
+import research_bundle
+assert research_bundle.ENGINE_FILES[-1]=='amendment_links.py'
+research_bundle.ENGINE_FILES=research_bundle.ENGINE_FILES[:-1]
 with patch.object(Path,'read_bytes',controlled):runpy.run_path(str(root/script),run_name='__main__')
 '''
         with tempfile.TemporaryDirectory() as td:
             td=Path(td);old=td/'old';old.mkdir()
-            for p in ROOT.glob('*.py'):(old/p.name).write_bytes(CHANGES[p.name]['old'].encode() if p.name in CHANGES else p.read_bytes())
+            for p in ROOT.glob('*.py'):(old/p.name).write_bytes(CHANGES[p.name]['old'].encode() if p.name in CHANGES else pre_amendment(p.name))
             runfile=td/'controlled.py';runfile.write_text(runner)
             cases=[]
             for fixture in ('examples/bibliographic-base.json','examples/review-demo.json','examples/synthesis-review.json'):

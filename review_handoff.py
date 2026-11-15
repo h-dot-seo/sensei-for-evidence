@@ -512,6 +512,8 @@ def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
         result['engine_sha256']['screening_decision.py'] = hashlib.sha256(Path(__file__).with_name('screening_decision.py').read_bytes()).hexdigest()
         result['detailed_views'].append(dict(script='screening_decision.py', arguments=['inspect','PROTOCOL.json','--text'],
                                             purpose='Retained supplied decisions and source/reviewer snapshots; retrospective differences are not pending tasks'))
+    if 'amendments' in state:
+        result['amendments'] = copy.deepcopy(state['amendments'])
     if 'output_disclosures' in state:
         result['output_disclosures'] = copy.deepcopy(state['output_disclosures'])
         result['detailed_views'].append(dict(script='output_disclosure_review.py', arguments=['PROTOCOL.json','--text'], purpose='Supplied research-output labels and missing exact disclosure IDs, not actual publication or release approval. Use separate output_disclosure_intake target/assemble/verify review; no label is promoted.'))
@@ -525,6 +527,10 @@ def handoff(protocol, work_package_id=None, *, research_map=_NO_RESEARCH_MAP):
 
 
 def render_text(result):
+    if 'amendments' in result:
+        from amendment_links import context_lines
+        base = dict(result); context = base.pop('amendments')
+        return render_text(base) + '\n' + '\n'.join(context_lines(context)) + '\n'
     if 'output_disclosures' in result:
         from output_disclosure_review import context_lines
         base = dict(result); context = base.pop('output_disclosures')

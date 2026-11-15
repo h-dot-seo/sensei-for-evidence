@@ -12,7 +12,8 @@ def prior_bytes(name):
     return raw
 
 def prior_fixture_bytes(name):
-    raw=(ROOT/name).read_bytes()
+    from tests._amendment_compat import prior_fixture_bytes as pre_amendment_fixture
+    raw=pre_amendment_fixture(name)
     proof=ROOT/'tests/cli_error_fixture_changes.json'
     changes=json.loads(proof.read_bytes()) if proof.exists() else []
     for row in changes:

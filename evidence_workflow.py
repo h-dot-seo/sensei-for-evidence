@@ -205,6 +205,9 @@ def run(protocol):
         result['evidence_bases'] = evidence_bases
     if bibliographic_collection is not None:
         result['bibliographic_collection'] = bibliographic_collection
+    if 'amendments' in protocol:
+        from amendment_links import link_amendments
+        result['amendments'] = link_amendments(protocol)
     if 'output_disclosures' in protocol:
         from output_disclosure_links import link_disclosures
         result['output_disclosures'] = link_disclosures(protocol, readiness, work)

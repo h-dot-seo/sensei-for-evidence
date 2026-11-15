@@ -15,7 +15,7 @@
     }
   ],
   "review": {
-    "target_sha256": "83be8c17bb702435ae699a04dff3d0e3f75de1490afd486bf62e49d2b6d2e707",
+    "target_sha256": "ead3fd0dc076b938eea3633ca6ce6fa77138a97e4820f30fcb2956100716821a",
     "reviewer": "Fictional secondary collection reviewer",
     "reviewed_at": "2026-11-04",
     "rationale": "Prewritten software-test assertion for an explicitly separate planned search; not actual reading or review.",

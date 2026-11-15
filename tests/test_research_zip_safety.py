@@ -50,7 +50,7 @@ class ResearchZipSafetyTests(unittest.TestCase):
         data=json.loads((ROOT/'tests/research_zip_previous_baselines.json').read_bytes())
         self.assertEqual(hashlib.sha256(prior_builder_source(bundle).encode()).hexdigest(),data['build_function_sha256'])
         current=bundle.engine_hashes()
-        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py','question_links.py','output_disclosure_links.py'})
+        self.assertEqual(set(current),set(data['engine_sha256'])|{'archive_safety.py','question_links.py','output_disclosure_links.py','amendment_links.py'})
         for name,expected in data['engine_sha256'].items():
             if name in ('prisma_reports.py','screening_decision.py','json_io.py'):
                 from tests._cli_input_compat import prior_bytes as pre_cli_bytes

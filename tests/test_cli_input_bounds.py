@@ -134,6 +134,23 @@ class CliInputBoundsTests(unittest.TestCase):
                             if name==case['args'][0]:ordered['cli_errors.py']=hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest()
                     document['engine_sha256']=ordered
                     expected=json.dumps(document,ensure_ascii=False,indent=2)+'\n'
+            # Round60 changes only these declared implementation fingerprints.
+            if expected.startswith('{'):
+                document=json.loads(expected)
+                if 'engine_sha256' in document and 'output_disclosure_links.py' in document['engine_sha256']:
+                    changes=json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes())
+                    hashes=document['engine_sha256']
+                    for name,change in changes.items():
+                        if name in hashes:
+                            new=hashlib.sha256(change['new'].encode()).hexdigest()
+                            self.assertIn(hashes[name],(hashlib.sha256(change['old'].encode()).hexdigest(),new))
+                            hashes[name]=new
+                    ordered={}
+                    for name,value in hashes.items():
+                        ordered[name]=value
+                        if name=='output_disclosure_links.py':ordered['amendment_links.py']=hashlib.sha256((ROOT/'amendment_links.py').read_bytes()).hexdigest()
+                    document['engine_sha256']=ordered
+                    expected=json.dumps(document,ensure_ascii=False,indent=2)+'\n'
             expected=expected.replace('\n',os.linesep).encode()
             r=subprocess.run([sys.executable,*case['args']],cwd=ROOT,capture_output=True)
             stdout=r.stdout
