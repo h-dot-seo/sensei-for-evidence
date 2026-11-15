@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.139.0-authored-assertion-shapes` (2026-11-14). This file is the
+Current release: `0.140.0-exclusive-output-guards` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,21 +55,26 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.139.0-authored-assertion-shapes` (2026-11-14).
+Release: `0.140.0-exclusive-output-guards` (2026-11-15).
 
-Roadmap #36/#59: four descriptive completed challenge/readiness candidate and
-separate review shapes, integrated with two existing exact-input CLI journeys.
-All root product modules, checker, ENGINE, existing schemas and examples are byte
-unchanged. Human authorship/readiness labels remain supplied, not authenticated
-or scientifically assessed. Python remains authoritative for documented structural
-looseness, real context and exact bindings. No license or external contract change.
+Roadmap #97: fifteen remaining unguarded non-engine consumers / sixteen output
+sites share explicit existing-entry refusal followed by exclusive binary creation.
+No atomic publication, race-proof paths, source-reader weakening or partial-file
+cleanup is claimed. Global ENGINE and five engine/adapter-bound writers remain
+byte unchanged; guarded writers, JSON/date parsing and scientific policy remain
+unchanged. Consumers fingerprint the new helper; older artifacts require their
+recorded implementation. See [output contract](docs/OUTPUT_CONTRACT.md).
 
-Initial guide execution caught a missing schema_check `check` subcommand in the
-new documentation. Corrected guide and test argument positions only; no product
-changes. Six initial focused tests / 0.780 s passed. Final focused 44 tests / 3.713 s PASS (one native-Windows skip).
-Full suite 2328 tests / 212.055 s PASS (one native-Windows skip).
-Independent 54 tests / 4.941 s, actual 12-command journeys, and 792 mutations
-compared with an independent Draft202012 validator passed. This is limited tested
-agreement, not full JSON Schema compliance. All prior root/example/seven-schema
-bytes and frozen tree were independently checked unchanged. Publication audit 581,
-manifest 580, and Python 3.10 grammar 290 passed. No target resealing occurred.
+Core consumer focus 431 / 17.850 s passed; historical compatibility focus 43 /
+10.130 s passed. Independent core 198 / 7.151 s (one Windows junction skip), actual
+five view byte comparisons, existing-file refusal and FIFO/race probes passed.
+Fixed15 fictional targets were actually recreated: nine changed one hash and six
+were already correct; no other example bytes changed. Independent final 36 / 8.270 s (one Windows-junction skip), output-contract
+seven-command journey and prior 61-command/fixed15 replay passed. Final focus 51 /
+10.964 s passed (two skips); audit 588 / manifest 587 / grammar 293 passed.
+First full 2337 / 207.170 s found one missing helper row in the non-CLI command
+inventory. Added that exact documentation row; product/tests unchanged.
+Corrected full: 2337 tests / 210.407 s PASS (two native-platform skips).
+Corrected metadata: 15 / 10.916 s PASS (one skip); independent correction 15 /
+12.002 s, repeated 61-command/fixed15 replay and corrected tree matched.
+Only validation records and their manifest entries changed after full verification.

@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 
 from artifact_review import (MAX_ARTIFACTS, MAX_FILE_BYTES, MAX_TOTAL_BYTES,
                              check_file, open_root, read_input, safe_relative,
@@ -66,6 +67,7 @@ def _source_context(source, reports):
 
 def _implementation_hashes():
     result = dict(engine_hashes())
+    result.update(output_hashes())
     for name in ('report_source_check.py', 'artifact_review.py'):
         result[name] = hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest()
     return result
@@ -217,8 +219,7 @@ def main():
         encoded.encode('utf-8')
         rendered.encode('utf-8')
         if args.output is not None:
-            with args.output.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(encoded)
+            write_new(args.output, encoded.encode("utf-8"))
     except SourceCheckError as error:
         parser.exit(1, 'report source check error: ' + quoted_display(str(error)) + '\n')
     except (OSError, ValueError, TypeError, KeyError, IndexError, AttributeError,

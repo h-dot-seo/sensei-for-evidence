@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 from archive_safety import read_bounded
 
 MAX_CLI_INPUT_BYTES = 50_000_000
@@ -45,6 +46,7 @@ def review(protocol, record_id=None):
                                stale_source_reviews=len(result['review_ledger'])-current,
                                records_with_review_cues=len(result['records_with_review_cues']))
     implementation = dict(engine_hashes())
+    implementation.update(output_hashes())
     implementation['screening_review.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     result.update(schema_version=1, protocol_version=copy.deepcopy(protocol['version']),
                   protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
@@ -105,8 +107,7 @@ def main():
         encoded = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
         rendered = render_text(result) if args.text else encoded
         if args.output is not None:
-            with args.output.open('x', encoding='utf-8', newline='\n') as output:
-                output.write(encoded)
+            write_new(args.output, encoded.encode("utf-8"))
     except (ValueError, OSError, KeyError, TypeError, UnicodeError) as error:
         parser.exit(1, 'screening review error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

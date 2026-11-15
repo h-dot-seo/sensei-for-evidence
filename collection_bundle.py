@@ -11,6 +11,7 @@ import re
 import stat
 import zipfile
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 
 import bibliographic_intake
 import nbib_intake
@@ -22,7 +23,7 @@ from prisma_reports import report_flow
 MAX_BUNDLE_BYTES = 50_000_000
 MAX_BINDINGS = 100
 ENGINE_FILES = tuple(sorted(set(research_bundle.ENGINE_FILES) |
-    set(nbib_intake.implementation_hashes()) | {'collection_bundle.py'}))
+    set(nbib_intake.implementation_hashes()) | {'collection_bundle.py', 'output_io.py'}))
 BOUNDARY = (
     'Internal byte consistency and exact explicit ledger association only. '
     'Coverage counts describe supplied native wrappers, not literature or search completeness. '
@@ -257,8 +258,7 @@ def create(protocol_path, destination, bindings):
     raw = build_bundle(bibliographic_intake.read_bounded(Path(protocol_path), MAX_BUNDLE_BYTES), bindings)
     result = _built_summary(raw)
     _json_bytes(result)
-    with Path(destination).open('xb') as output:
-        output.write(raw)
+    write_new(Path(destination), raw)
     return result
 
 
@@ -302,8 +302,7 @@ def main():
         stdout = render_text(result).encode('utf-8') if args.text else _json_bytes(result)
         _size(len(stdout))
         if output is not None:
-            with args.output.open('xb') as stream:
-                stream.write(output)
+            write_new(args.output, output)
     except (ValueError, OSError, KeyError, TypeError, UnicodeError, RecursionError,
             zipfile.BadZipFile, zipfile.LargeZipFile, NotImplementedError, RuntimeError, EOFError) as error:
         parser.exit(1, 'Collection bundle error: ' + quoted_display(str(error)) + '\n')

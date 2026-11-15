@@ -520,3 +520,8 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | Challenge import review | `schemas/challenge-review.schema.json` |
 | Supplied readiness candidates | `schemas/readiness-candidates.schema.json` |
 | Readiness import review | `schemas/readiness-review.schema.json` |
+
+
+[Scoped exclusive-output contract](OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.
+
+| `output_io.py` | Scoped existing-entry guard and exclusive byte output; partial files and path races remain possible ([contract](OUTPUT_CONTRACT.md)) |

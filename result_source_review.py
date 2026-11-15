@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+from output_io import write_new, implementation_hashes as output_hashes
 
 from evidence_workflow import run
 from json_io import canonical_json_bytes, configure_utf8_stdio, parse_json, quoted_display
@@ -62,7 +63,7 @@ def _counts(values, states):
 
 
 def _implementation_hashes():
-    return dict(engine_hashes(), **{
+    return dict(engine_hashes(), **output_hashes(), **{
         'result_intake.py': hashlib.sha256(Path(result_intake.__file__).read_bytes()).hexdigest(),
         'result_source_review.py': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
 
@@ -242,8 +243,7 @@ def main():
             if len(output.encode('utf-8')) > MAX_OUTPUT_BYTES:
                 raise ValueError('output exceeds byte limit')
         if args.output is not None:
-            with args.output.open('x', encoding='utf-8', newline='\n') as destination:
-                destination.write(encoded)
+            write_new(args.output, encoded.encode("utf-8"))
     except (OSError, ValueError, TypeError, KeyError, UnicodeError, RecursionError, OverflowError) as error:
         parser.exit(1, 'result source review error: ' + quoted_display(str(error)) + '\n')
     print(rendered, end='')

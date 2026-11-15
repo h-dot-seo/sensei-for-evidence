@@ -68,3 +68,6 @@ absolute ZIP-parser CPU/memory bound. See [details](docs/RESEARCH_ZIP_SAFETY.md)
 
 
 [Bounded CLI inputs](docs/CLI_INPUT_BOUNDS.md): fifteen remaining entrypoints now enforce an inclusive 50,000,000 raw-byte limit per supplied JSON input; existing decisions and under-limit error/output contracts are preserved. This is not a total resource bound.
+
+
+[Scoped exclusive-output contract](docs/OUTPUT_CONTRACT.md): fifteen non-engine consumers share an existing-entry guard plus exclusive creation. This is not complete TOCTOU protection or atomic publication; partial files can remain after failure. Existing scientific decisions and source-reader boundaries are unchanged.

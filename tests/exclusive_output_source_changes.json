@@ -1,0 +1,216 @@
+{
+  "condition_intake.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with destination.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(destination, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "return dict(engine_hashes(), **{",
+      "return dict(engine_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "collection_bundle.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with Path(destination).open('xb') as output:\n        output.write(raw)",
+      "write_new(Path(destination), raw)"
+    ],
+    [
+      "with args.output.open('xb') as stream:\n                stream.write(output)",
+      "write_new(args.output, output)"
+    ],
+    [
+      "| {'collection_bundle.py'}",
+      "| {'collection_bundle.py', 'output_io.py'}"
+    ]
+  ],
+  "nbib_intake.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with output_path.open('xb') as output:\n                output.write(output_bytes)",
+      "write_new(output_path, output_bytes)"
+    ],
+    [
+      "return dict(bibliographic_intake.implementation_hashes(), **{",
+      "return dict(bibliographic_intake.implementation_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "receipt_intake.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.protocol_output.open('x',encoding='utf-8',newline='\\n') as output:output.write(serialized)",
+      "write_new(args.protocol_output, serialized.encode(\"utf-8\"))"
+    ],
+    [
+      "    hashes['receipt_intake.py']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()",
+      "    hashes['receipt_intake.py']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()\n    hashes.update(output_hashes())"
+    ]
+  ],
+  "report_decision.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with destination.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(destination, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "return dict(engine_hashes(), **{",
+      "return dict(engine_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "report_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    implementation = dict(engine_hashes())\n",
+      "    implementation = dict(engine_hashes())\n    implementation.update(output_hashes())\n"
+    ]
+  ],
+  "report_source_check.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    result = dict(engine_hashes())\n",
+      "    result = dict(engine_hashes())\n    result.update(output_hashes())\n"
+    ]
+  ],
+  "report_study_inventory.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    implementation = dict(engine_hashes())\n",
+      "    implementation = dict(engine_hashes())\n    implementation.update(output_hashes())\n"
+    ]
+  ],
+  "report_study_inventory_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    implementation = dict(engine_hashes())\n",
+      "    implementation = dict(engine_hashes())\n    implementation.update(output_hashes())\n"
+    ]
+  ],
+  "report_study_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    implementation = dict(engine_hashes())\n",
+      "    implementation = dict(engine_hashes())\n    implementation.update(output_hashes())\n"
+    ]
+  ],
+  "result_correction.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with destination.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(destination, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "return dict(engine_hashes(), **{",
+      "return dict(engine_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "result_extraction.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with destination.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(artifact)",
+      "write_new(destination, artifact.encode(\"utf-8\"))"
+    ],
+    [
+      "    result = dict(engine_hashes())\n",
+      "    result = dict(engine_hashes())\n    result.update(output_hashes())\n"
+    ]
+  ],
+  "result_intake.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with destination.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(destination, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "return dict(engine_hashes(), **{",
+      "return dict(engine_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "result_source_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as destination:\n                destination.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "return dict(engine_hashes(), **{",
+      "return dict(engine_hashes(), **output_hashes(), **{"
+    ]
+  ],
+  "screening_review.py": [
+    [
+      "from pathlib import Path\n",
+      "from pathlib import Path\nfrom output_io import write_new, implementation_hashes as output_hashes\n"
+    ],
+    [
+      "with args.output.open('x', encoding='utf-8', newline='\\n') as output:\n                output.write(encoded)",
+      "write_new(args.output, encoded.encode(\"utf-8\"))"
+    ],
+    [
+      "    implementation = dict(engine_hashes())\n",
+      "    implementation = dict(engine_hashes())\n    implementation.update(output_hashes())\n"
+    ]
+  ]
+}
