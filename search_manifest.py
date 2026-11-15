@@ -1,5 +1,6 @@
 """Freeze supplied query specifications and receipt accounting without executing searches."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -96,7 +97,7 @@ def manifest(protocol):
                                     cross_source_overlap_record_ids=sorted(rid for rid in source['record_ids'] if len(record_sources[rid])>1) if source['observed_search_indices'] else None,
                                     declared_plan_status='NOT_SUPPLIED' if not planned else 'INCOMPLETE' if source['missing_search_ids'] or source['unresolved_search_indices'] else 'ASSERTED_ACCOUNTED',
                                     source_completeness='NOT_ESTABLISHED'))
-    implementation=dict(engine_hashes(),**{'search_manifest.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
+    implementation=dict(engine_hashes(),**{'search_manifest.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'cli_errors.py': hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()})
     return dict(schema_version=1,question=research['question'],protocol_version=research['protocol_version'],
                 protocol_sha256=digest(protocol),hash_scope='Canonical supplied JSON, object key order ignored and list order retained; not authentication',
                 engine_sha256=implementation,plan_stage='SUPPLIED' if planned else 'NOT_SUPPLIED',
@@ -134,8 +135,14 @@ def render_text(result):
 def main():
     configure_utf8_stdio();parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('protocol',type=Path);parser.add_argument('--text',action='store_true');args=parser.parse_args()
-    try:result=manifest(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")))
-    except (ValueError,OSError,KeyError,TypeError) as error:parser.exit(1,str(error)+'\n')
+    stage, label = 'input', 'protocol'
+    try:
+        raw = read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        protocol = parse_json(raw)
+        stage = 'validation'
+        result = manifest(protocol)
+    except (ValueError,OSError,KeyError,TypeError) as error:
+        fail(parser, 'search manifest', stage, label, error)
     print(render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.text else '\n')
 
 if __name__=='__main__':main()

@@ -1,6 +1,6 @@
 # Validation record
 
-Current release: `0.143.0-shared-archive-preflight` (2026-11-15). This file is the
+Current release: `0.144.0-scoped-cli-errors` (2026-11-15). This file is the
 current snapshot; every dated entry since the 2026-11-02 release preparation is kept
 verbatim, in order, in [docs/VALIDATION_HISTORY.md](docs/VALIDATION_HISTORY.md).
 
@@ -55,12 +55,16 @@ succeeded; the public CI history is the record of published heads.
 
 ## Latest change
 
-Release: `0.143.0-shared-archive-preflight` (2026-11-15).
+Release: `0.144.0-scoped-cli-errors` (2026-11-15).
 
-Roadmap #54: consolidate seven existing ZIP metadata preflights in archive_safety without new acceptance, safety or format claims. Exact root8: existing ENGINE leaf plus seven collection/transition wrappers. Existing research check/read_bounded, build/verify function bodies and ENGINE filename sets remain unchanged. Wrapper body lines fall from102 to34 plus19 shared-helper lines (53 total, excluding seven imports). No runtime performance claim. See [shared preflight](docs/SHARED_ARCHIVE_PREFLIGHT.md).
+Roadmap #51 completes the remaining twelve ordinary first-stage CLI error paths with a non-engine presentation leaf, explicit static labels/categories and nine downstream manual hash maps. Existing reads, bounds, strict parsing, validators, gates, usage exit2 and receipt-check negative stdout/exit1 are preserved. Existing stderr consumers must handle the changed presentation. Original implementations remain necessary for exact old bound records; no automatic resealer or real review update exists. See [contract](docs/CLI_ERROR_CONTRACT.md).
 
-Initial three new tests had seven failures because a controlled old-source read was erroneously reversed twice, and one error assuming every transition module exposed an ENGINE_FILES constant. Fixed test setup only: load previous modules before controlling the eight implementation-byte reads, and compare actual implementation key sets where no constant exists. Corrected core3 /2.429s PASS. Old/new metadata comparison covers15 variants under two size-callback conditions across seven functions (210 pairs); an earlier progress estimate said14 variants and is corrected here.
+Exact root scope:21 existing modules plus cli_errors.py; global ENGINE files and accounting_flow/records_csv product bytes unchanged. An intermediate inspection mistakenly treated those two exporters' manual lists as missing propagation; full function inspection showed they already merge prisma_audit hashes. The unnecessary edits were reverted, and actual helper-map propagation is tested. This was an inspection mistake, not a product defect.
 
-Existing bundle and history focus266 /70.271s PASS (one platform skip). Independent core217 /52.545s PASS plus2100 randomized metadata comparisons against actual previous55 sources, including exception classes/messages, callback ordering and no payload reads. Seven actual old/current archives have identical bytes and cross-replay under controlled prior implementation reads; actual new-release hashes still change. All15 fixed fictional target hashes were actually regenerated with seven guides/61commands; other example bytes unchanged. Historical baselines are retained with exact named source/hash reversals. Full/final independent validation pending.
+Initial test setup assumed appraisal text omitted its embedded engine map and used a nonempty base for the receipt template. Corrected named map-line handling and the existing empty-base fixture. A separate first test invocation named three nonexistent modules (not executed); corrected names yielded148 tests/7.425s PASS. New six tests/3.315s PASS; independent core six/3.341s plus27 exception/stage probes PASS. Historical compat initially had five failures from intentional helper/source-map and stderr changes; existing JSON baselines were preserved with exact named source reversals/map exceptions, and old error-position tests use the preserved previous main. Corrected combined38/15.696s PASS. Prior archive preflight tests exclude only the newly added helper from their old inventory. These corrections do not change the bounded readers or old assertions' data meaning.
 
-Full2350 /219.585s PASS (two platform skips). Final focused39 /25.847s PASS (one skip). Independent final29 /10.200s, actual seven guides/61commands and15 fixed target recreations passed; hash-only/other example bytes and historical baseline JSON preservation verified. Audit604/manifest603 and Python3.10 grammar298 passed. Independent frozen tree6e3a8fc09f7490cb7808283f13a47b38558db520 matched exactly. Only these validation results and corresponding manifest entries change after full verification.
+Seven existing guides/61commands regenerated all15 fixed fictional targets: five changed and ten remained identical; other example bytes are preserved. Full/final independent validation pending.
+
+First full run2356/215.516s had3 failures and11 errors (two platform skips): new helper missing from the command-contract root inventory; two historical inventories/registry comparison needed the explicit added-helper/source reversal; latest history heading used the wrong separator. Corrected metadata/test inventory bookkeeping only, preserving all prior baseline JSON and product bytes. Full revalidation pending.
+
+Corrected full2356/222.346s PASS (two platform skips). Final focus49/27.014s PASS (one skip). Independent correction32/11.390s PASS (one skip), actual61guide commands/15targets and exact five metadata/test-record-only changes verified. Independent freeze tree02df0a87ca422248d29c85b95dcb22f7d3178ce8 matches. Audit611/manifest610 and Python3.10 grammar301 passed. After full verification only these result records and matching manifest rows change.

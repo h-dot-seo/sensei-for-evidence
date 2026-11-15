@@ -110,7 +110,7 @@ class ArchivePreflightSharedTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/archive_preflight_prior_sources.json').read_bytes())
         changes=json.loads((ROOT/'tests/archive_preflight_source_changes.json').read_bytes())
         self.assertEqual(set(changes),CHANGED)
-        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py')})
+        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name != 'cli_errors.py'})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(prior_bytes(name)).hexdigest(),digest,name)
         old=old_module('archive_safety')
         for name in ('_read_stream','read_bounded','check_stored_entries'):

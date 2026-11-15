@@ -192,7 +192,7 @@ def validate_sections(sections):
 def implementation_hashes():
     root = Path(__file__).resolve().parent
     return dict(engine_hashes(), **{name: hashlib.sha256((root / name).read_bytes()).hexdigest()
-        for name in ('patent_links.py', 'patent_intake.py', 'patent_review.py', 'search_manifest.py')})
+        for name in ('cli_errors.py', 'patent_links.py', 'patent_intake.py', 'patent_review.py', 'search_manifest.py')})
 
 
 def review(value):

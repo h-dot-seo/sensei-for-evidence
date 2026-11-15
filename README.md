@@ -428,3 +428,5 @@ Supplied research-output labels and exact disclosure context: [output disclosure
 [Strict JSON depth](docs/STRICT_JSON.md): shared decoding allows at most 128 nested containers. Deeper inputs now reject explicitly; old bound artifacts still require their recorded implementation.
 
 [Shared archive preflight](docs/SHARED_ARCHIVE_PREFLIGHT.md): seven existing ZIP workflows share the same metadata mechanics without changing formats, size policy, replay rules or safety claims.
+
+For the scoped ordinary-view stderr categories and old-record replay limitations, see [CLI error contract](docs/CLI_ERROR_CONTRACT.md).

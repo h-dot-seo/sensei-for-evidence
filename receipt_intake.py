@@ -1,5 +1,6 @@
 """Guide synthetic manual search receipt entry using the existing mock adapter."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -88,6 +89,7 @@ def check(protocol,fixture):
                     validation_error=str(error),external_calls=0,boundary=BOUNDARY)
     hashes=dict(search['engine_sha256'],**prisma['engine_sha256'])
     hashes['receipt_intake.py']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    hashes['cli_errors.py'] = hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()
     hashes.update(output_hashes())
     return dict(schema_version=1,valid_input=True,status='UNREVIEWED_SUPPLIED_CANDIDATES',
                 base_protocol_sha256=digest(protocol),fixture_sha256=digest(fixture),engine_sha256=hashes,
@@ -119,13 +121,23 @@ def main():
     c=sub.add_parser('check');c.add_argument('protocol',type=Path);c.add_argument('fixture',type=Path)
     c.add_argument('--text',action='store_true');c.add_argument('--protocol-output',type=Path,help='save an unreviewed candidate exclusively; never overwrite')
     args=parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
         protocol=parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
-        result=template(protocol) if args.command=='template' else check(protocol,parse_json(read_bounded(args.fixture, MAX_CLI_INPUT_BYTES)))
+        if args.command == 'template':
+            stage = 'validation'
+            result = template(protocol)
+        else:
+            label = 'fixture'
+            fixture = parse_json(read_bounded(args.fixture, MAX_CLI_INPUT_BYTES))
+            stage, label = 'validation', 'protocol / fixture'
+            result = check(protocol, fixture)
         if args.command=='check' and result['valid_input'] and args.protocol_output is not None:
+            stage, label = 'output', 'protocol output'
             serialized=json.dumps(result['protocol_candidate'],ensure_ascii=False,indent=2)+'\n'
             write_new(args.protocol_output, serialized.encode("utf-8"))
-    except (OSError,ValueError,KeyError,TypeError) as error:parser.exit(1,str(error)+'\n')
+    except (OSError,ValueError,KeyError,TypeError) as error:
+        fail(parser, 'receipt intake', stage, label, error)
     print(render_text(result) if args.command=='check' and args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.command=='check' and args.text else '\n')
     if args.command=='check' and not result['valid_input']:parser.exit(1)
 

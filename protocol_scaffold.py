@@ -36,7 +36,7 @@ NEGATIVE_CLAIMS = dict(plan_adequacy='NOT_ASSESSED', query_adequacy='NOT_ASSESSE
 
 def _hashes():
     root = Path(__file__).resolve().parent
-    names = ('protocol_scaffold.py', 'receipt_intake.py', 'challenge_intake.py',
+    names = ('cli_errors.py', 'protocol_scaffold.py', 'receipt_intake.py', 'challenge_intake.py',
              'nbib_intake.py', 'screening_sheet.py', 'screening_sheet_intake.py')
     return dict(engine_hashes(), **{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
 

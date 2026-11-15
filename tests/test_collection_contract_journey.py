@@ -139,12 +139,14 @@ class CollectionContractJourneyTests(unittest.TestCase):
         for rel,digest in proof.items():
             source=prior_fixture_bytes(rel) if rel.startswith('examples/') else prior_bytes(rel)
             self.assertEqual(hashlib.sha256(source).hexdigest(),digest,rel)
-        self.assertEqual(set(proof),{p.relative_to(ROOT).as_posix() for p in ROOT.glob('*.py')}|{p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file()})
+        self.assertEqual(set(proof),{p.relative_to(ROOT).as_posix() for p in ROOT.glob('*.py') if p.name!='cli_errors.py'}|{p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file()})
         prior=json.loads((ROOT/'tests/collection_contract_prior_registry.json').read_bytes())
         old={(r['script'],r['subcommand']):r for r in prior['commands']}
         current=command_contract.contract()
         observed=dict(current['implementation_sha256'])
-        changed=set(json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()))
+        self.assertEqual(observed.pop('cli_errors.py'),hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest())
+        changed=set(json.loads((ROOT/'tests/cli_error_source_changes.json').read_bytes()))
+        changed.update(json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes()))
         changed.update(json.loads((ROOT/'tests/archive_preflight_source_changes.json').read_bytes()))
         for name in changed:
             self.assertEqual(observed[name],hashlib.sha256((ROOT/name).read_bytes()).hexdigest())

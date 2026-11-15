@@ -80,7 +80,20 @@ class CliInputBoundsTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)/'input.json'
             for case in baseline:
-                p.write_bytes(bytes.fromhex(case['input_hex']));r=run_cli(case['script'],*arguments(case['script'],p))
+                p.write_bytes(bytes.fromhex(case['input_hex']))
+                changes=json.loads((ROOT/'tests/cli_error_source_changes.json').read_bytes())
+                if case['script'] in changes:
+                    # Historical error text is intentionally superseded by round57.
+                    # Execute the preserved previous CLI to retain the newline/offset proof;
+                    # current category/label/channel behavior is tested in test_cli_error_contract.
+                    import types
+                    module=types.ModuleType('previous_cli');module.__file__=str(ROOT/case['script'])
+                    exec(compile(changes[case['script']]['old'],module.__file__,'exec'),module.__dict__)
+                    output,error=io.StringIO(),io.StringIO()
+                    with patch.object(sys,'argv',[module.__file__,*map(str,arguments(case['script'],p))]),patch.object(sys,'stdout',output),patch.object(sys,'stderr',error):
+                        with self.assertRaises(SystemExit) as stopped:module.main()
+                    r=subprocess.CompletedProcess([],stopped.exception.code,output.getvalue().replace('\n',os.linesep).encode(),error.getvalue().replace('\n',os.linesep).encode())
+                else:r=run_cli(case['script'],*arguments(case['script'],p))
                 stderr=bytes.fromhex(case['stderr_hex']).replace(b'\n',os.linesep.encode())
                 self.assertEqual((r.returncode,r.stdout,r.stderr),(case['returncode'],bytes.fromhex(case['stdout_hex']),stderr))
 
@@ -98,6 +111,29 @@ class CliInputBoundsTests(unittest.TestCase):
                 oldfield='"'+name+'": "'+hashlib.sha256(pre_depth_bytes(name)).hexdigest()+'"'
                 newfield='"'+name+'": "'+hashlib.sha256((ROOT/name).read_bytes()).hexdigest()+'"'
                 expected=expected.replace(oldfield,newfield)
+            # Round57 adds one named non-engine helper key to adopted review maps.
+            error_changes=json.loads((ROOT/'tests/cli_error_source_changes.json').read_bytes())
+            if case['args'][0] in error_changes and case['args'][0] not in ('receipt_intake.py',):
+                document=json.loads(expected)
+                if 'engine_sha256' in document:
+                    for name,change in error_changes.items():
+                        if name in document['engine_sha256']:
+                            document['engine_sha256'][name]=hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
+                    # Tuple-built maps insert the helper before their local names.
+                    hashes=document['engine_sha256'];ordered={}
+                    tuple_names={'report_study_inventory.py','report_study_inventory_review.py','report_study_review.py','synthesis_review.py'}
+                    anchor=case['args'][0] if case['args'][0] in tuple_names else None
+                    for name,value in hashes.items():
+                        if name==anchor:ordered['cli_errors.py']=hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest()
+                        ordered[name]=value
+                    if anchor is None:
+                        # Five original reviewers add output_io after their own hash.
+                        ordered={}
+                        for name,value in hashes.items():
+                            ordered[name]=value
+                            if name==case['args'][0]:ordered['cli_errors.py']=hashlib.sha256((ROOT/'cli_errors.py').read_bytes()).hexdigest()
+                    document['engine_sha256']=ordered
+                    expected=json.dumps(document,ensure_ascii=False,indent=2)+'\n'
             expected=expected.replace('\n',os.linesep).encode()
             r=subprocess.run([sys.executable,*case['args']],cwd=ROOT,capture_output=True)
             stdout=r.stdout

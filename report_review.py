@@ -1,5 +1,6 @@
 """Inspect supplied full-text review positions or draft unfilled source/review assertions."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -49,6 +50,7 @@ def review(protocol, report_id=None):
     implementation = dict(engine_hashes())
     implementation.update(output_hashes())
     implementation['report_review.py'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    implementation['cli_errors.py'] = hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()
     implementation['report_review_links.py'] = hashlib.sha256(Path(__file__).with_name('report_review_links.py').read_bytes()).hexdigest()
     result.update(schema_version=1, protocol_version=copy.deepcopy(protocol['version']),
                   protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
@@ -108,17 +110,21 @@ def main():
     parser.add_argument('--text', action='store_true')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()
+    stage, label = 'input', 'protocol'
     try:
         protocol = parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES))
+        stage = 'validation'
         result = (template if args.template else review)(protocol, args.report_id)
+        stage, label = 'output', 'rendered report'
         encoded = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
         rendered = render_text(result) if args.text else encoded
         encoded.encode('utf-8')
         rendered.encode('utf-8')
         if args.output is not None:
+            stage, label = 'output', 'output'
             write_new(args.output, encoded.encode("utf-8"))
     except (ValueError, OSError, KeyError, TypeError, UnicodeError) as error:
-        parser.exit(1, 'report review error: ' + quoted_display(str(error)) + '\n')
+        fail(parser, 'report review', stage, label, error)
     print(rendered, end='')
 
 

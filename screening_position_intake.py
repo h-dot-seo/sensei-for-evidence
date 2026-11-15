@@ -44,7 +44,7 @@ NEGATIVE_CLAIMS = dict(canonical_screening_changed=False, adjudication='NOT_PERF
 
 def _hashes():
     root = Path(__file__).resolve().parent
-    names = ('screening_position_intake.py', 'screening_review.py', 'screening_sheet.py',
+    names = ('cli_errors.py', 'screening_position_intake.py', 'screening_review.py', 'screening_sheet.py',
              'screening_sheet_intake.py', 'csv_export_parser.py', 'challenge_intake.py',
              'nbib_intake.py', 'reviewed_intake_safety.py')
     return dict(engine_hashes(), **{name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})

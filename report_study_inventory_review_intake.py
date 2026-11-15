@@ -46,7 +46,7 @@ def digest(value):
 
 def _hashes():
     root = Path(__file__).resolve().parent
-    names = ('report_study_inventory_review_intake.py','report_study_inventory_review.py','report_study_inventory_review_links.py',
+    names = ('cli_errors.py', 'report_study_inventory_review_intake.py','report_study_inventory_review.py','report_study_inventory_review_links.py',
              'challenge_intake.py','nbib_intake.py','screening_decision_batch_apply.py','reviewed_intake_safety.py')
     return dict(engine_hashes(), **{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in names})
 

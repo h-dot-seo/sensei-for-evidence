@@ -164,7 +164,7 @@ def export_status(protocol):
     raw = render_status(result)
     hashes = dict(result['engine_sha256'])
     root = Path(__file__).resolve().parent
-    for name in ('views_export.py', 'prisma_audit.py'):
+    for name in ('cli_errors.py', 'views_export.py', 'prisma_audit.py'):
         hashes[name] = hashlib.sha256((root / name).read_bytes()).hexdigest()
     receipt = dict(schema=SCHEMA, status='RENDERED', protocol_sha256=result['protocol_sha256'],
                    hash_scope=result['hash_scope'], engine_sha256=hashes,

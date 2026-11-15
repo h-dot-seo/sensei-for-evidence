@@ -1,5 +1,6 @@
 """Export auditable supplied-data accounting, not a certified PRISMA flow diagram."""
 import argparse
+from cli_errors import fail
 import copy
 import hashlib
 import json
@@ -166,7 +167,7 @@ def export_audit(protocol):
     studies=sorted(set(r['study_id'] for r in evidence)|(included_studies or set()))
     study_links=[dict(study_id=sid,included_report_ids=None if reports is None else sorted(reports_by_study[sid]),
                       evidence_ids=sorted(evidence_by_study[sid])) for sid in studies]
-    implementation=dict(engine_hashes(),**{'prisma_audit.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()})
+    implementation=dict(engine_hashes(),**{'prisma_audit.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(), 'cli_errors.py': hashlib.sha256(Path(__file__).with_name('cli_errors.py').read_bytes()).hexdigest()})
     result = dict(schema_version=1,question=research['question'],protocol_version=research['protocol_version'],
                 protocol_sha256=hashlib.sha256(canonical_json_bytes(protocol)).hexdigest(),
                 hash_scope='Canonical supplied JSON; key order ignored, list order retained; not source authenticity',engine_sha256=implementation,
@@ -262,8 +263,14 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('protocol',type=Path);parser.add_argument('--text',action='store_true')
     args=parser.parse_args()
-    try:result=export_audit(parse_json(read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")))
-    except (ValueError,OSError,KeyError,TypeError) as error:parser.exit(1,str(error)+'\n')
+    stage, label = 'input', 'protocol'
+    try:
+        raw = read_bounded(args.protocol, MAX_CLI_INPUT_BYTES).decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        protocol = parse_json(raw)
+        stage = 'validation'
+        result = export_audit(protocol)
+    except (ValueError,OSError,KeyError,TypeError) as error:
+        fail(parser, 'prisma audit', stage, label, error)
     print(render_text(result) if args.text else json.dumps(result,ensure_ascii=False,indent=2),end='' if args.text else '\n')
 
 if __name__=='__main__':main()
