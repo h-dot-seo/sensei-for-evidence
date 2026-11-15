@@ -30,7 +30,7 @@ class CommandContractTests(unittest.TestCase):
         expected = command_rows((ROOT/'docs/COMMANDS.md').read_text(encoding='utf-8'))
         actual = {(row['script'], (row['subcommand'],) if row['subcommand'] else ()): row for row in result['commands']}
         self.assertEqual(set(actual), set(expected))
-        self.assertEqual(result['coverage']['reviewed_effects'], 32)
+        self.assertEqual(result['coverage']['reviewed_effects'], 44)
         for key, row in actual.items():
             self.assertEqual(row['usage'], expected[key] if row['has_parser'] else None)
             for guide in row['guides']:
@@ -150,7 +150,11 @@ class CommandContractTests(unittest.TestCase):
                 args = [sub] if sub else []
                 effects = row['effects']
                 args += [missing for name in effects['inputs'] if not name.startswith('--')]
-                if script == 'nbib_intake.py' and sub == 'preview':args += ['--search-id','synthetic','--searched-at','2026-01-01']
+                if script in ('nbib_intake.py','bibliographic_intake.py','ris_intake.py','nbib_batch_intake.py') and sub == 'preview':args += ['--search-id','synthetic','--searched-at','2026-01-01']
+                if script == 'nbib_batch_intake.py' and sub == 'preview':args += ['--export','synthetic='+missing]
+                if script in ('collection_bundle.py','native_collection_bundle.py','batch_collection_bundle.py') and sub == 'create':
+                    flag={'collection_bundle.py':'--nbib','native_collection_bundle.py':'--ris','batch_collection_bundle.py':'--batch'}[script]
+                    args += [str(Path(td)/'new.zip'),flag,'0='+missing]
                 if script == 'screening_decision.py' and sub == 'target':args += ['--record-id','synthetic']
                 if script == 'research_bundle.py' and sub == 'create':args += [str(Path(td)/'new.zip')]
                 if script == 'protocol_scaffold.py' and sub == 'template':args += ['--draft-output',str(Path(td)/'missing-parent'/'new.json')]

@@ -384,7 +384,7 @@ Read a received research ZIP without replay: [recorded bundle context](docs/RESE
 
 For a single local NBIB file, the [tested first-file workflow](docs/PUBMED_NBIB_INTAKE.md) connects explicit collection review, separate screening and archival checks. Fictional choices are not real research defaults.
 
-Command effects for automation: [source-bound partial contract](docs/AGENT_CONTRACT.md). Unknown effects are not permission.
+Command effects for automation: [source-bound partial contract](docs/AGENT_CONTRACT.md). Unknown effects are not permission. The [17-profile supplied collection journey](docs/COLLECTION_EFFECTS.md) distinguishes intake output options, separate review and archive replay.
 
 [Standalone authored research-map records](docs/RESEARCH_MAP.md): inspect separately supplied scope and stopping statements without changing protocol, gates or bundles. This sidecar is not engine-integrated research-map validation.
 
