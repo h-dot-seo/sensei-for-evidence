@@ -436,3 +436,5 @@ The operator handoff reuses validated analysis within one call, not across calls
 Received collection/transition archives can be inspected without replay using the [unverified retained-bundle reader](docs/RETAINED_BUNDLE_DESCRIBE.md). This does not verify payloads or replace the original verifier.
 
 [Supplied amendment ledger](docs/AMENDMENT_LEDGER.md) preserves a separately reviewed two-snapshot record without closing any gate or authenticating a reviewer.
+
+Explicit local synthetic size/timing observations (not performance guarantees): [scale envelope](docs/SCALE_ENVELOPE.md).
