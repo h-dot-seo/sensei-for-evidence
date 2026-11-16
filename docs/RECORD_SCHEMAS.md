@@ -192,3 +192,4 @@ Question target_type is operation-derived (supplied_question_append or supplied_
 | `kind=retained_bundle_manifest_descriptor` | 1 | unverified_descriptor | `retained_bundle_describe.py:describe` | [Guide](RETAINED_BUNDLE_DESCRIBE.md) |
 | `target_type=supplied_amendment` | 1 | review_target | `amendment_intake.py:_prepare` | [Guide](AMENDMENT_LEDGER.md) |
 | `kind=detached_amendment` | 1 | detached_application | `amendment_intake.py:assemble` | [Guide](AMENDMENT_LEDGER.md) |
+| `mode=pubmed_partition_review` | 1 | unsigned_offline_observation_report | `pubmed_partition.py:review` | [Guide](PUBMED_PARTITION.md) |

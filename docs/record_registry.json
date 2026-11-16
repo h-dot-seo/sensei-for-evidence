@@ -1321,6 +1321,20 @@
       "role": "detached_application",
       "schema_version": 1,
       "value": "detached_amendment"
+    },
+    {
+      "constructor_bindings": [
+        "implementation_sha256",
+        "plan_sha256"
+      ],
+      "constructor_expansions": [],
+      "discriminator": "mode",
+      "function": "review",
+      "guide": "PUBMED_PARTITION.md",
+      "module": "pubmed_partition.py",
+      "role": "unsigned_offline_observation_report",
+      "schema_version": 1,
+      "value": "pubmed_partition_review"
     }
   ],
   "untagged_research_manifest": {

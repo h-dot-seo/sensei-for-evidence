@@ -108,7 +108,7 @@ print(json.dumps(rows))
 
     def test_exact_four_sources_and_engine_other_sources_unchanged(self):
         expected=json.loads((ROOT/'tests/shared_analysis_prior_sources.json').read_bytes())
-        self.assertEqual(set(expected),{p.name for p in ROOT.glob('*.py') if p.name not in ('retained_bundle_describe.py','amendment_links.py','amendment_intake.py')})
+        self.assertEqual(set(expected),{p.name for p in ROOT.glob('*.py') if p.name not in ('retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py')})
         self.assertEqual(set(CHANGES),{'research_status.py','synthesis_review.py','work_review.py','review_handoff.py'})
         import research_bundle
         self.assertFalse(set(CHANGES)&set(research_bundle.ENGINE_FILES))

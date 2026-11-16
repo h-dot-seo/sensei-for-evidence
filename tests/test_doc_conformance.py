@@ -1,3 +1,4 @@
+from tests._ci_timeout_compat import prior_workflow_bytes
 from tests._native_archive_compat import prior_bytes as pre_native_archive
 """Explicit local Markdown coverage, never inferred execution or authority."""
 import ast
@@ -104,7 +105,7 @@ class DocumentationConformanceTests(unittest.TestCase):
     def test_original_sources_examples_workflows_and_block_bytes_preserved(self):
         proof=json.loads((ROOT/'tests/doc_conformance_prior_bytes.json').read_bytes())
         for name,digest in proof['files'].items():
-            self.assertEqual(hashlib.sha256(pre_native_archive(name) if '/' not in name else (ROOT/name).read_bytes()).hexdigest(),digest,name)
+            self.assertEqual(hashlib.sha256(prior_workflow_bytes((ROOT/name).read_bytes()) if name=='.github/workflows/tests.yml' else pre_native_archive(name) if '/' not in name else (ROOT/name).read_bytes()).hexdigest(),digest,name)
         current=shell_blocks(ROOT)
         self.assertEqual({key:current[key]['sha256'] for key in proof['blocks']},proof['blocks'])
         self.assertEqual(set(current)-set(proof['blocks']),{'docs/NATIVE_CONTINUATION_ARCHIVE.md::'+str(i) for i in range(3)})

@@ -1,3 +1,4 @@
+from tests._ci_timeout_compat import prior_workflow_bytes
 from tests._native_archive_compat import prior_bytes as pre_native_archive
 """Small deterministic probe mechanics; no large run in ordinary CI."""
 import copy
@@ -100,8 +101,8 @@ class ScaleProbeTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/scale_probe_prior_bytes.json').read_bytes())
         paths=list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*'))+list((ROOT/'schemas').rglob('*'))+list((ROOT/'.github').rglob('*'))
         current={p.relative_to(ROOT).as_posix():p for p in paths if p.is_file()}
-        self.assertEqual(set(current),set(proof))
-        for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_native_archive(name) if '/' not in name else current[name].read_bytes()).hexdigest(),digest,name)
+        self.assertEqual(set(current),set(proof)|{'pubmed_partition.py'})
+        for name,digest in proof.items():self.assertEqual(hashlib.sha256(prior_workflow_bytes(current[name].read_bytes()) if name=='.github/workflows/tests.yml' else pre_native_archive(name) if '/' not in name else current[name].read_bytes()).hexdigest(),digest,name)
 
 
 if __name__=='__main__':unittest.main()

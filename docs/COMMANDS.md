@@ -116,6 +116,8 @@ and no step fills a decision, judgement or label on your behalf.
 | `python pubmed_discovery.py from-responses [-h] --output OUTPUT input execution` | Replay retained response bodies offline into the same discovery record shape | [PubMed discovery](PUBMED_DISCOVERY.md) |
 | `python pubmed_discovery.py verify [-h] input` | Re-check a discovery record's internal consistency | [PubMed discovery](PUBMED_DISCOVERY.md) |
 | `python pubmed_discovery.py to-intake [-h] --search-id SEARCH_ID --output OUTPUT input protocol` | Convert discovered identifiers into an unreviewed CSV intake for a declared search | [PubMed discovery](PUBMED_DISCOVERY.md) |
+| `python pubmed_partition.py review [-h] [--discovery DISCOVERY] [--output OUTPUT] plan` | Inspect explicitly supplied date windows and retained discovery observations offline | [PubMed window reconciliation](PUBMED_PARTITION.md) |
+| `python pubmed_partition.py verify [-h] [--discovery DISCOVERY] plan report` | Replay a supplied window report against its original plan and discovery records offline | [PubMed window reconciliation](PUBMED_PARTITION.md) |
 | `python pubmed_metadata.py preview [-h] [--output OUTPUT] input selection` | Freeze an explicit PMID selection from a verified discovery and compute the preview hash | [PubMed metadata](PUBMED_METADATA.md) |
 | `python pubmed_metadata.py fetch [-h] --preview-sha256 PREVIEW_SHA256 --output OUTPUT input selection` | Send the previewed PMID batches to NCBI EFetch (the only networked metadata step) and retain MEDLINE text | [PubMed metadata](PUBMED_METADATA.md) |
 | `python pubmed_metadata.py from-responses [-h] --output OUTPUT input selection execution` | Replay retained EFetch responses offline into the same metadata record shape | [PubMed metadata](PUBMED_METADATA.md) |
@@ -539,3 +541,4 @@ compatibility. Origin fields are supplied declarations, never authentication.
 | `python amendment_intake.py verify [-h] [--output OUTPUT] [--protocol-output PROTOCOL_OUTPUT] before after application_record` | Replay the exact supplied two-snapshot amendment application | [Guide](AMENDMENT_LEDGER.md) |
 
 | `amendment_links.py` | Supplied amendment observations only; no gate closure or approval | [Guide](AMENDMENT_LEDGER.md) |
+

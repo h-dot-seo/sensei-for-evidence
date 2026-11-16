@@ -3507,6 +3507,28 @@
       "script": "work_transition_bundle.py",
       "subcommand": "verify",
       "usage": "python work_transition_bundle.py verify [-h] [--text] bundle"
+    },
+    {
+      "script": "pubmed_partition.py",
+      "subcommand": "review",
+      "usage": "python pubmed_partition.py review [-h] [--discovery DISCOVERY] [--output OUTPUT] plan",
+      "purpose": "Inspect explicitly supplied date windows and retained discovery observations offline",
+      "guides": [
+        "docs/PUBMED_PARTITION.md"
+      ],
+      "has_parser": true,
+      "effects": null
+    },
+    {
+      "script": "pubmed_partition.py",
+      "subcommand": "verify",
+      "usage": "python pubmed_partition.py verify [-h] [--discovery DISCOVERY] plan report",
+      "purpose": "Replay a supplied window report against its original plan and discovery records offline",
+      "guides": [
+        "docs/PUBMED_PARTITION.md"
+      ],
+      "has_parser": true,
+      "effects": null
     }
   ],
   "implementation_sha256": {
@@ -3636,7 +3658,8 @@
     "work_context_intake.py": "f4035ebf488fb55cd1d3d1f2ae204fba2f17d69b6e07892eb53c87e74a249ef7",
     "work_document_links.py": "6f0c66a1666ce37d98cd68d67bc463bb9a893f90920adaef7b69611913d3fba2",
     "work_review.py": "61c2f8fd215f58590a2d005eeefadd43c404af35c9e891bc2a3404551902f9d0",
-    "work_transition_bundle.py": "d5b613efc72a73bf21a365cfc93968655c34a2245df1d0cebf597877874a6ebd"
+    "work_transition_bundle.py": "d5b613efc72a73bf21a365cfc93968655c34a2245df1d0cebf597877874a6ebd",
+    "pubmed_partition.py": "6342d1ed8fd1295a61bdd56bc2b90dc539ac6cd9aefb1d9fa251972b1c89b664"
   },
   "schema_version": 1
 }

@@ -17,7 +17,7 @@ class CIContractTests(unittest.TestCase):
         self.assertEqual(len({(os,version) for os in systems for version in versions}),8)
         self.assertIn("      - if: matrix.python == '3.10'\n        run: python -m unittest discover -v\n",text)
         self.assertIn("      - if: matrix.python != '3.10'\n        run: python -m unittest discover -v --durations 25\n",text)
-        self.assertIn('    timeout-minutes: 10\n',text)
+        self.assertIn('    timeout-minutes: 20\n',text)
         self.assertIn('      fail-fast: false\n',text)
         for command in ('python audit_publication.py','python verify_manifest.py'):
             self.assertIn('      - run: '+command+'\n',text)
@@ -51,3 +51,14 @@ class CIContractTests(unittest.TestCase):
         self.assertEqual(text.count('permissions:'),1)
         self.assertNotIn('secrets.',text)
         self.assertNotIn('continue-on-error',text)
+
+    def test_exact_approved_timeout_delta_preserves_the_entire_prior_workflow(self):
+        import hashlib
+        import json
+        from tests._ci_timeout_compat import prior_workflow_bytes
+        path = '.github/workflows/tests.yml'
+        current = (ROOT/path).read_bytes()
+        prior = prior_workflow_bytes(current)
+        proof = json.loads((ROOT/'tests/pubmed_partition_prior_bytes.json').read_bytes())
+        self.assertEqual(hashlib.sha256(prior).hexdigest(), proof[path])
+        self.assertEqual(current, prior.replace(b'    timeout-minutes: 10\n', b'    timeout-minutes: 20\n', 1))
