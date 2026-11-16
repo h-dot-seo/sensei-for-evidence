@@ -100,7 +100,7 @@ class ScaleProbeTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/scale_probe_prior_bytes.json').read_bytes())
         paths=list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*'))+list((ROOT/'schemas').rglob('*'))+list((ROOT/'.github').rglob('*'))
         current={p.relative_to(ROOT).as_posix():p for p in paths if p.is_file()}
-        self.assertEqual(set(current),set(proof))
+        self.assertEqual(set(current),set(proof)|{'pubmed_partition.py'})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_native_archive(name) if '/' not in name else current[name].read_bytes()).hexdigest(),digest,name)
 
 

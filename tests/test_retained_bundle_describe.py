@@ -216,7 +216,7 @@ class RetainedBundleDescribeTests(unittest.TestCase):
     def test_all_existing_root_and_examples_unchanged(self):
         proof=json.loads((ROOT/'tests/retained_descriptor_prior_bytes.json').read_bytes())
         current={p.relative_to(ROOT).as_posix() for p in list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*')) if p.is_file() and p.name not in ('amendment-before.json','amendment-after.json','manual-amendment.json')}
-        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py','amendment_links.py','amendment_intake.py'})
+        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py'})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_amendment(name) if '/' not in name else pre_amendment_fixture(name)).hexdigest(),digest,name)
 
     def test_text_quotes_supplied_controls_and_descriptor_is_independent(self):

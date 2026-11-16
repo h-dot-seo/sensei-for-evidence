@@ -184,7 +184,7 @@ class AmendmentLedgerTests(unittest.TestCase):
         changes=json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes())
         proof=json.loads((ROOT/'tests/amendment_prior_sources.json').read_bytes())
         self.assertEqual(set(changes),{'evidence_workflow.py','research_bundle.py','adapter_integrity.py','bibliographic_integrity.py','compare_runs.py','research_status.py','review_handoff.py','protocol_keys.py'})
-        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(proof)|{'amendment_links.py','amendment_intake.py'})
+        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(proof)|{'amendment_links.py','amendment_intake.py','pubmed_partition.py'})
         for name,digest in proof.items():
             data=changes[name]['old'].encode() if name in changes else pre_native_archive(name)
             self.assertEqual(hashlib.sha256(data).hexdigest(),digest,name)

@@ -139,7 +139,7 @@ class AssertionSchemaTests(unittest.TestCase):
 
     def test_all_prior_root_examples_and_schemas_are_byte_preserved(self):
         baseline=load('tests/assertion_schema_prior_bytes.json')
-        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(baseline['root'])|{'output_io.py','cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py'})
+        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(baseline['root'])|{'output_io.py','cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py'})
         self.assertEqual({p.relative_to(ROOT).as_posix() for p in (ROOT/'examples').rglob('*') if p.is_file() and p.name not in ('amendment-before.json','amendment-after.json','manual-amendment.json')},set(baseline['examples']))
         from tests._exclusive_output_compat import prior_bytes, prior_fixture_bytes
         for kind,group in baseline.items():
