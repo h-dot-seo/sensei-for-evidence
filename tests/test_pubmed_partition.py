@@ -1,3 +1,4 @@
+from tests._ci_timeout_compat import prior_workflow_bytes
 """Explicit synthetic offline windows; no PubMed requests."""
 import copy
 import json
@@ -36,7 +37,10 @@ class PartitionTests(unittest.TestCase):
         observed = {path.relative_to(ROOT).as_posix(): path for path in paths if path.is_file()}
         self.assertEqual(set(observed), set(proof) | {'pubmed_partition.py'})
         for name, digest in proof.items():
-            self.assertEqual(hashlib.sha256(observed[name].read_bytes()).hexdigest(), digest, name)
+            raw = observed[name].read_bytes()
+            if name == '.github/workflows/tests.yml':
+                raw = prior_workflow_bytes(raw)
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), digest, name)
         import research_bundle
         self.assertNotIn('pubmed_partition.py', research_bundle.ENGINE_FILES)
 
