@@ -5,6 +5,8 @@ description: Plan, execute, inspect or challenge scientific and patent-informati
 
 # Evidence research workflow
 
+For source review and gap identification, follow [sensei-evidence](skills/sensei-evidence/SKILL.md). For deliverables, dependencies, milestones and diagrams, follow [sensei-planning](skills/sensei-planning/SKILL.md). Both use one protocol. Route mixed requests through evidence review, planning and source reassessment as needed.
+
 Read README.md and docs/ARCHITECTURE.md. Route natural intent to plan, run, status,
 method or audit. Do not require a special command syntax or promise unavailable tools.
 
