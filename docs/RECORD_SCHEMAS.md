@@ -193,3 +193,4 @@ Question target_type is operation-derived (supplied_question_append or supplied_
 | `target_type=supplied_amendment` | 1 | review_target | `amendment_intake.py:_prepare` | [Guide](AMENDMENT_LEDGER.md) |
 | `kind=detached_amendment` | 1 | detached_application | `amendment_intake.py:assemble` | [Guide](AMENDMENT_LEDGER.md) |
 | `mode=pubmed_partition_review` | 1 | unsigned_offline_observation_report | `pubmed_partition.py:review` | [Guide](PUBMED_PARTITION.md) |
+| `mode=pubmed_partition_comparison` | 1 | unsigned_offline_observation_comparison | `pubmed_partition_compare.py:compare` | [Guide](PUBMED_PARTITION.md#compare-two-sets-of-observations) |

@@ -81,6 +81,45 @@ class DispatcherListingTests(unittest.TestCase):
             self.assertIn(phrase, self.text)
         self.assertTrue(self.text.endswith('\n'))
 
+    def search(self, query):
+        with tempfile.TemporaryDirectory(prefix='sensei search ') as folder:
+            result = dispatch('list', '--search', query, cwd=folder)
+            self.assertEqual(list(Path(folder).iterdir()), [])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stderr, b'')
+        lines = result.stdout.decode('utf-8').splitlines()
+        self.assertEqual(lines[-1], sensei.BOUNDARY)
+        return lines
+
+    def test_search_matches_terms_across_script_name_and_description(self):
+        lines = self.search('  QuEuEs   RESEARCH_STATUS.P  ')
+        entries = [line for line in lines if line.startswith('  ')]
+        self.assertEqual([line.split()[0] for line in entries], ['research_status.py'])
+        self.assertIn('Summarize mechanical review queues', entries[0])
+
+    def test_search_matches_all_route_fields_and_prints_the_whole_route(self):
+        lines = self.search('BATCH_TO_EVIDENCE.MD  native_collection CITATION ris_intake.py')
+        plain = self.text.splitlines()
+        start = next(i for i, line in enumerate(plain) if line.startswith('  native_collection '))
+        self.assertEqual([line for line in lines if line.startswith('  ')], plain[start:start + 3])
+
+    def test_search_reports_no_matches_for_terms_from_different_entries(self):
+        lines = self.search('research_status.py BATCH_TO_EVIDENCE.md')
+        self.assertEqual(lines, ['No matching scripts or routes.', '', sensei.BOUNDARY])
+
+    def test_whitespace_only_search_prints_plain_list_without_checkout_writes(self):
+        with tempfile.TemporaryDirectory(prefix='sensei checkout ') as folder:
+            checkout = Path(folder)
+            for source in ROOT.glob('*.py'):
+                shutil.copyfile(source, checkout / source.name)
+            files = set(checkout.iterdir())
+            result = subprocess.run([sys.executable, '-E', str(checkout / 'sensei.py'),
+                                     'list', '--search', '   '], cwd=checkout,
+                                    capture_output=True, timeout=120)
+            self.assertEqual((result.returncode, result.stderr), (0, b''))
+            self.assertEqual(result.stdout, self.result.stdout)
+            self.assertEqual(set(checkout.iterdir()), files)
+
     def test_listing_escapes_control_and_format_characters(self):
         text = sensei.render_listing([('x.py', 'Fictional\nConclusion: READY\x1b‮')], [])
         self.assertNotIn('\nConclusion: READY', text)

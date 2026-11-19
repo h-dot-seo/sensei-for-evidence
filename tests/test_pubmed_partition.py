@@ -14,6 +14,7 @@ from unittest.mock import patch
 import pubmed_partition as p
 import pubmed_discovery as d
 from tests.test_pubmed_discovery import spec, native, attempt, artifact
+from tests._dispatcher_search_compat import before_list_search
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -35,9 +36,9 @@ class PartitionTests(unittest.TestCase):
         paths = [*ROOT.glob('*.py'), *(ROOT / 'examples').rglob('*'),
                  *(ROOT / 'schemas').rglob('*'), *(ROOT / '.github').rglob('*')]
         observed = {path.relative_to(ROOT).as_posix(): path for path in paths if path.is_file()}
-        self.assertEqual(set(observed), set(proof) | {'pubmed_partition.py'})
+        self.assertEqual(set(observed), set(proof) | {'pubmed_partition.py','pubmed_partition_compare.py'})
         for name, digest in proof.items():
-            raw = observed[name].read_bytes()
+            raw = before_list_search(name, observed[name].read_bytes())
             if name == '.github/workflows/tests.yml':
                 raw = prior_workflow_bytes(raw)
             self.assertEqual(hashlib.sha256(raw).hexdigest(), digest, name)

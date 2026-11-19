@@ -89,6 +89,13 @@ ZIP 출력 경로는 미리 존재하면 안 됩니다. 실제 연구 입력과 
 
 ## 주요 명령
 
+선별 단계에서 어떤 명령과 입력 안내서를 쓸지 찾으려면
+`python sensei.py list --search screening`을 실행하세요.
+같은 PubMed 날짜 구간에 대해 따로 보관한 두 검색 기록은
+`python pubmed_partition_compare.py compare --help`에서 입력 형식을 확인한 뒤
+오프라인으로 비교할 수 있습니다. 날짜 구간별로 어느 쪽에 기록이 있는지,
+PMID가 추가·누락되거나 순서가 바뀌었는지 확인합니다. [날짜 구간별 비교 예제](PUBMED_PARTITION.md)
+
 모든 스크립트와 하위 명령의 정확한 사용법은 [COMMANDS.md](COMMANDS.md)에, 단계별 설명은
 [WORKFLOWS.md](WORKFLOWS.md)에 있습니다. 출력 옵션은 항상 새 파일을 만들며 이미 있는 경로를
 덮어쓰지 않습니다. `--text`를 붙이면 읽기 전용 요약을, 붙이지 않으면 JSON을 출력합니다.

@@ -199,6 +199,7 @@ Citation files and collection
 - [Batch collection bundles](docs/BATCH_COLLECTION_BUNDLES.md)
 - [Native collection bundles](docs/NATIVE_COLLECTION_BUNDLES.md)
 - [PubMed discovery](docs/PUBMED_DISCOVERY.md)
+- [Reconcile PubMed date windows and compare retained observations](docs/PUBMED_PARTITION.md)
 - [PubMed metadata](docs/PUBMED_METADATA.md)
 
 Screening and reports

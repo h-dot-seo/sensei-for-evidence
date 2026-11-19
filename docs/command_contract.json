@@ -3245,10 +3245,10 @@
         "docs/OPERATOR_HANDOFF.md"
       ],
       "has_parser": true,
-      "purpose": "Print every root script that has a main entry point with the first sentence of its docstring, then the supplied-input routes of the operator handoff catalog with their scripts and guides; nothing is executed and only this repository's own files are read",
+      "purpose": "List root script names and first docstring sentences, plus handoff route IDs, titles, scripts and guide paths. Search matches entries containing every term, ignoring case. Listing reads only the checkout and executes no listed command.",
       "script": "sensei.py",
       "subcommand": "list",
-      "usage": "python sensei.py list [-h]"
+      "usage": "python sensei.py list [-h] [--search TEXT]"
     },
     {
       "effects": null,
@@ -3529,6 +3529,28 @@
       ],
       "has_parser": true,
       "effects": null
+    },
+    {
+      "script": "pubmed_partition_compare.py",
+      "subcommand": "compare",
+      "usage": "python pubmed_partition_compare.py compare [-h] [--before BEFORE] [--after AFTER] [--output OUTPUT] [--text] plan",
+      "purpose": "Compare retained observations of the same planned windows and locate changed PMID positions",
+      "guides": [
+        "docs/PUBMED_PARTITION.md"
+      ],
+      "has_parser": true,
+      "effects": null
+    },
+    {
+      "script": "pubmed_partition_compare.py",
+      "subcommand": "verify",
+      "usage": "python pubmed_partition_compare.py verify [-h] [--before BEFORE] [--after AFTER] plan report",
+      "purpose": "Replay both observation sets and verify a retained comparison",
+      "guides": [
+        "docs/PUBMED_PARTITION.md"
+      ],
+      "has_parser": true,
+      "effects": null
     }
   ],
   "implementation_sha256": {
@@ -3647,7 +3669,7 @@
     "screening_sheet_intake.py": "c9b58812414f4f3b54d00bc7e6a7fcaa1af35f6ed42ad30df30dbb6446267ebe",
     "search_audit.py": "fa48f3b17e625218985433b2d8182d4f2cd0900e1069aa3cbb7a7486a11f991c",
     "search_manifest.py": "bd6f8025a803dcb8113e6062e590ea84ae25be7cd50c9602c0fc588d0cf59b5a",
-    "sensei.py": "084da31ae16bf40836b6c586c290688863d2effceebb9d2b3caa02017607a469",
+    "sensei.py": "3f820f87e2f3c13bc53dbc77f847b5c38f435b18277164f377088e3b8e7824e3",
     "source_work_intake.py": "f0c73f0ccfb917dfcc15480ccdb86642bb7eb7a09facda434d8f3bf22e4c036c",
     "synthesis_links.py": "4fe4b0de5acc33a219c4cf5e4d96d6ac74b7bd2e44451ac175631b0054c62b60",
     "synthesis_review.py": "88dfc83f3eac65fdca9dde5496c0df72cfbaca40e6f88dc8a7dc3eea7fbecbf3",
@@ -3659,7 +3681,8 @@
     "work_document_links.py": "6f0c66a1666ce37d98cd68d67bc463bb9a893f90920adaef7b69611913d3fba2",
     "work_review.py": "61c2f8fd215f58590a2d005eeefadd43c404af35c9e891bc2a3404551902f9d0",
     "work_transition_bundle.py": "d5b613efc72a73bf21a365cfc93968655c34a2245df1d0cebf597877874a6ebd",
-    "pubmed_partition.py": "6342d1ed8fd1295a61bdd56bc2b90dc539ac6cd9aefb1d9fa251972b1c89b664"
+    "pubmed_partition.py": "6342d1ed8fd1295a61bdd56bc2b90dc539ac6cd9aefb1d9fa251972b1c89b664",
+    "pubmed_partition_compare.py": "4b790e332389345795ff53dab2f0f5d705f1db35e7b23c1f4bad81c301671168"
   },
   "schema_version": 1
 }

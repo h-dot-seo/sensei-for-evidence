@@ -195,7 +195,7 @@ class RetainedBundleDescribeTests(unittest.TestCase):
             self.assertEqual(run_cli('retained_bundle_describe.py').returncode,2)
 
     def test_documented_three_commands_for_all_seven_families(self):
-        guide=(ROOT/'docs/RETAINED_BUNDLE_DESCRIBE.md').read_text()
+        guide=(ROOT/'docs/RETAINED_BUNDLE_DESCRIBE.md').read_text(encoding='utf-8')
         commands=[line for line in guide.splitlines() if line.startswith('python retained_bundle_describe.py ')]
         self.assertEqual(len(commands),3)
         for name,raw in self.archives.items():
@@ -216,7 +216,7 @@ class RetainedBundleDescribeTests(unittest.TestCase):
     def test_all_existing_root_and_examples_unchanged(self):
         proof=json.loads((ROOT/'tests/retained_descriptor_prior_bytes.json').read_bytes())
         current={p.relative_to(ROOT).as_posix() for p in list(ROOT.glob('*.py'))+list((ROOT/'examples').rglob('*')) if p.is_file() and p.name not in ('amendment-before.json','amendment-after.json','manual-amendment.json')}
-        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py'})
+        self.assertEqual(current,set(proof)|{'retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py','pubmed_partition_compare.py'})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(pre_amendment(name) if '/' not in name else pre_amendment_fixture(name)).hexdigest(),digest,name)
 
     def test_text_quotes_supplied_controls_and_descriptor_is_independent(self):

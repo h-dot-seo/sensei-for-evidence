@@ -95,3 +95,59 @@ publication identity, query adequacy or independent scientific review. Queries,
 identifiers, timestamps and retained bodies can be sensitive and are not redacted.
 Keep real inputs and outputs private and outside public repositories. No network
 calls are made by either command. Nothing in a report authorizes external use.
+
+## Compare two sets of observations
+
+Use one explicit plan to compare two collections of retained discovery artifacts.
+Repeat `--before` or `--after` for each file on that side. The same request ID can
+occur once on each side. Either side can be empty. Side names describe your chosen
+comparison order. The recorded timestamps remain available for inspection.
+
+```text
+python pubmed_partition_compare.py compare PLAN.json --before FIRST_A.json --after SECOND_A.json --after SECOND_B.json --output CHANGES.json
+python pubmed_partition_compare.py verify PLAN.json CHANGES.json --before FIRST_A.json --after SECOND_A.json --after SECOND_B.json
+```
+
+Both commands replay each side using the original partition reviewer. Each side
+must match the same complete discovery specs. The report records the canonical
+SHA-256 of each regenerated partition review, so you can connect the comparison to
+a review you already retained. Window rows follow plan order and include their dates.
+
+Add `--text` to `compare` for a compact terminal view. Each window shows its
+initial reported counts, observed occurrence counts, stop reasons and numbers of
+changed PMIDs by type. Combine it with `--output CHANGES.json` to save all the
+positions and page observations in replayable JSON while reading the summary.
+
+Read `window_counts` to find how many windows have the same artifact, a different
+artifact, observations on just one side, or missing observations on both sides.
+Each supplied side retains its timestamp, digest, stop reason, initial count,
+occurrence count and page-level offsets, counts and query translations. A later
+timestamp or changed native metadata alone can give a different artifact digest.
+`changed_fields` names differences in the displayed observation fields, including
+changes to ordered page counts or translations. A missing side gives null.
+Two different artifacts can have identical displayed fields and PMID positions,
+for example when only a recorded attempt duration changed.
+
+`pmid_position_changes` compares ordered occurrences **within each window** when
+both sides contain a parsed page. An empty list means identical observed PMID
+sequences. A null means at least one side lacks a parsed page. For example, a
+retained zero-hit page followed by a page containing PMID `17` shows an
+`after_only` PMID at position zero. A missing artifact or a failed request
+followed by that same page leaves the position comparison null.
+
+Each changed PMID lists all zero-based positions on both sides. The change names
+identify a PMID observed on just one side, a change in occurrence count, or a
+change in positions with equal multiplicity. Positions can shift when a preceding
+identifier is inserted. Capped and diagnostic pages still describe only the
+returned identifiers. A PMID moving between windows produces a separate difference
+in each comparable window. Differences do not establish a change in the database,
+a complete retrieval, or the identity or eligibility of publications.
+
+The commands accept up to 100 artifacts per side. The plan and both collections
+share a 20,000,000-byte raw input budget and a canonical JSON budget of the same
+size. Each partition review keeps its existing limits. A report supplied to
+`verify` has its own 20,000,000-byte budget. Canonical and rendered outputs are
+also bounded. `compare` can exclusively create a new output file. Successful
+comparison and replay exit 0, including observed differences. Invalid inputs,
+existing outputs and replay mismatches exit 1 with a fixed diagnostic. Usage
+errors exit 2. Retain the source artifacts to reproduce the comparison.

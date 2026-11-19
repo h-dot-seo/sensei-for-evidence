@@ -29,7 +29,7 @@
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "54d69fcde403df53a4f506818b5ebf348c0b6701a46188d3e1f5101f8612e31f",
     "test": "tests.test_amendment_ledger.AmendmentLedgerTests.test_documented_nine_commands_with_separate_supplied_review",
-    "test_source_sha256": "82ed3087042bb072c0b89f6e7408c622e175a46effafcf90d327eda94c529b43"
+    "test_source_sha256": "59f60acd8926fa411dacdb646f45e5a7fd1be2f188bda3b9d00f8aeb05d00a06"
   },
   "docs/AMENDMENT_NOTES.md::0": {
     "argv": [
@@ -64,28 +64,28 @@
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "32108da1a5b02e7f123e418e581e04b9dcb19aa4411c7637f97e65038e675c03",
     "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
-    "test_source_sha256": "cccd1f13c9b025067d0ba70138b54f01588bdcb1a6601ca2089ecd48715175ec"
+    "test_source_sha256": "18a967619fed1a5e00d15b882decda7ac11743d519e93aa83eb5e4b08a22347c"
   },
   "docs/ASSERTION_SCHEMAS.md::1": {
     "classification": "covered-by",
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "dbe590df9d2cfafdaa9660e1490dd9ae20bf5e9c6951a45e89acb7ae9ef287bf",
     "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
-    "test_source_sha256": "cccd1f13c9b025067d0ba70138b54f01588bdcb1a6601ca2089ecd48715175ec"
+    "test_source_sha256": "18a967619fed1a5e00d15b882decda7ac11743d519e93aa83eb5e4b08a22347c"
   },
   "docs/ASSERTION_SCHEMAS.md::2": {
     "classification": "covered-by",
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "7498b9368d5de8a6a5bdaf7c6859d02ef56b217e02776be68bcb34de8843d580",
     "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
-    "test_source_sha256": "cccd1f13c9b025067d0ba70138b54f01588bdcb1a6601ca2089ecd48715175ec"
+    "test_source_sha256": "18a967619fed1a5e00d15b882decda7ac11743d519e93aa83eb5e4b08a22347c"
   },
   "docs/ASSERTION_SCHEMAS.md::3": {
     "classification": "covered-by",
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "9695d0a3099a1db11d1302ed1239bff169272345b62513c902e0409a2a07c166",
     "test": "tests.test_assertion_schemas.AssertionSchemaTests.test_documented_two_journeys_with_separate_fictional_reviews",
-    "test_source_sha256": "cccd1f13c9b025067d0ba70138b54f01588bdcb1a6601ca2089ecd48715175ec"
+    "test_source_sha256": "18a967619fed1a5e00d15b882decda7ac11743d519e93aa83eb5e4b08a22347c"
   },
   "docs/BATCH_COLLECTION_BUNDLES.md::0": {
     "classification": "exempt",
@@ -584,21 +584,21 @@
     "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
     "sha256": "fb6ff55c4e6c2e8bf96b0db4216b079a0a62635e38cc3f4b62f0e3ce272d95a3",
     "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
-    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
+    "test_source_sha256": "6adc752c9258e9ebc6e61214f023a1387ddd54c994f104d8994a20715702f72d"
   },
   "docs/NATIVE_CONTINUATION_ARCHIVE.md::1": {
     "classification": "covered-by",
     "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
     "sha256": "7f6ba843d8107bd6ac89e35d1e1306d4bb7751aa4dc23d932f3b327ddad8fb23",
     "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
-    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
+    "test_source_sha256": "6adc752c9258e9ebc6e61214f023a1387ddd54c994f104d8994a20715702f72d"
   },
   "docs/NATIVE_CONTINUATION_ARCHIVE.md::2": {
     "classification": "covered-by",
     "reason": "Separate fictional human choices/review supplied by the exact eight-command bespoke test, not by products.",
     "sha256": "91d1eea880bdf9ce8c6b75085be93e4a2c7392a8d7c5a21a26ee555adabd224a",
     "test": "tests.test_native_continuation_archive.NativeContinuationArchiveTests.test_eight_documented_commands_with_separate_fictional_human_inputs",
-    "test_source_sha256": "923307fadb87bb0eb9e27edf419b81e44ecdc55ffffe733c27a05ed9e95c8ba2"
+    "test_source_sha256": "6adc752c9258e9ebc6e61214f023a1387ddd54c994f104d8994a20715702f72d"
   },
   "docs/OPERATOR_HANDOFF.md::0": {
     "classification": "exempt",
@@ -1184,7 +1184,7 @@
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "96a088486f7661f1977f265298247ab283ffe8c8de146e3140e6469d9c0bc394",
     "test": "tests.test_retained_bundle_describe.RetainedBundleDescribeTests.test_documented_three_commands_for_all_seven_families",
-    "test_source_sha256": "55cdff899bae8b1bec066cddf7516fa7efad7cd112918fb7704a6eb74fd0f4ee"
+    "test_source_sha256": "666ffe315bf2c865be086ca54ed204853e97a65c352f5720064f3296b0afcb8b"
   },
   "docs/REVIEW_VIEWS.md::0": {
     "classification": "exempt",

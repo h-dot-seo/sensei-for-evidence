@@ -184,7 +184,7 @@ class AmendmentLedgerTests(unittest.TestCase):
         changes=json.loads((ROOT/'tests/amendment_source_changes.json').read_bytes())
         proof=json.loads((ROOT/'tests/amendment_prior_sources.json').read_bytes())
         self.assertEqual(set(changes),{'evidence_workflow.py','research_bundle.py','adapter_integrity.py','bibliographic_integrity.py','compare_runs.py','research_status.py','review_handoff.py','protocol_keys.py'})
-        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(proof)|{'amendment_links.py','amendment_intake.py','pubmed_partition.py'})
+        self.assertEqual({p.name for p in ROOT.glob('*.py')},set(proof)|{'amendment_links.py','amendment_intake.py','pubmed_partition.py','pubmed_partition_compare.py'})
         for name,digest in proof.items():
             data=changes[name]['old'].encode() if name in changes else pre_native_archive(name)
             self.assertEqual(hashlib.sha256(data).hexdigest(),digest,name)
@@ -241,7 +241,7 @@ class AmendmentLedgerTests(unittest.TestCase):
 
     def test_documented_nine_commands_with_separate_supplied_review(self):
         import re,shlex
-        commands=re.findall(r'^python (.+)$',(ROOT/'docs/AMENDMENT_LEDGER.md').read_text(),re.M)
+        commands=re.findall(r'^python (.+)$',(ROOT/'docs/AMENDMENT_LEDGER.md').read_text(encoding='utf-8'),re.M)
         self.assertEqual(len(commands),9)
         sources={p:p.read_bytes() for p in (ROOT/'examples').glob('*amendment*.json')}
         with tempfile.TemporaryDirectory() as td:

@@ -113,7 +113,7 @@ class JsonDepthTests(unittest.TestCase):
         proof=json.loads((ROOT/'tests/json_depth_prior_sources.json').read_bytes())
         changes=json.loads((ROOT/'tests/json_depth_source_changes.json').read_bytes())
         self.assertEqual(set(changes),CHANGED)
-        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py')})
+        self.assertEqual(set(proof),{p.name for p in ROOT.glob('*.py') if p.name not in ('cli_errors.py','retained_bundle_describe.py','amendment_links.py','amendment_intake.py','pubmed_partition.py','pubmed_partition_compare.py')})
         for name,digest in proof.items():self.assertEqual(hashlib.sha256(prior_bytes(name)).hexdigest(),digest,name)
         from evidence_workflow import run
         cases=json.loads((ROOT/'tests/evidence_basis_legacy_baselines.json').read_bytes())['cases']

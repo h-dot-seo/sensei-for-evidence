@@ -1335,6 +1335,22 @@
       "role": "unsigned_offline_observation_report",
       "schema_version": 1,
       "value": "pubmed_partition_review"
+    },
+    {
+      "constructor_bindings": [
+        "after_review_sha256",
+        "before_review_sha256",
+        "implementation_sha256",
+        "plan_sha256"
+      ],
+      "constructor_expansions": [],
+      "discriminator": "mode",
+      "function": "compare",
+      "guide": "PUBMED_PARTITION.md#compare-two-sets-of-observations",
+      "module": "pubmed_partition_compare.py",
+      "role": "unsigned_offline_observation_comparison",
+      "schema_version": 1,
+      "value": "pubmed_partition_comparison"
     }
   ],
   "untagged_research_manifest": {

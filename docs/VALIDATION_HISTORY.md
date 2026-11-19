@@ -4159,3 +4159,18 @@ Both Windows3.10 attempts used Python3.10.11/image20261103.298.1; setup-python t
 With explicit owner-delegated approval, change only the job timeout from10 to20minutes. No matrix row, runner label, trigger, cancellation scope, action pin, permission, credential persistence, network/secret/billing setting, test command, skip or failure handling is changed. This is an operating-budget correction, not a test relaxation or product optimization. Existing product/ENGINE/example/schema bytes remain unchanged. The workflow is the sole explicit exception to the earlier workflow-byte-preservation scope: a test-only helper asserts its exact new SHA, reverses only that one timeout line, and verifies the exact prior SHA against unchanged historical JSON. The CI oracle requires20minutes and a new full-workflow delta assertion protects all other bytes. Focused27 tests in8.005s passed; new-head full, independent difference review and complete remote CI remain pending. No additional retry of the old cancelled head is performed.
 
 CI-budget correction validation: new full2415 tests in329.681s PASS (two local platform skips), exit0. Independent28 tests in8.740s PASS verified exact workflow-only timeout delta, all prior baseline JSON/product/example/schema bytes, and fail-closed historical reversal for unrelated workflow changes. Independent tree370b1f30d76cf6de02b039849d30a850fe3fba13 matched manifest649/audit650. After that freeze only these two result records and manifest rows change. This local result does not replace exact new-head eight-job remote CI, which is required before merge; prior cancelled attempts remain explicitly incomplete as recorded above.
+
+## 2026-11-19: 0.152.0-partition-comparison-and-command-search
+
+Compare two sets of retained PubMed discovery observations against one explicit
+date-window plan. Separate-input replay checks both sets. The JSON comparison
+binds both partition reviews and records the positions of changed PMID occurrences
+within each window. Missing and unparsed observations remain distinct from a
+parsed zero-hit page. A compact terminal view can accompany saved JSON. The
+original discovery and partition implementations retain their published bytes.
+
+The dispatcher also supports case-insensitive search over listed scripts and
+handoff routes with `python sensei.py list --search TEXT`.
+
+Nine synthetic comparison regression tests passed, including direct CLI replay,
+exclusive JSON output, compact display and changed page translations.
