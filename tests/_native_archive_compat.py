@@ -2,11 +2,12 @@
 import ast
 import json
 from pathlib import Path
+from tests._dispatcher_search_compat import before_list_search
 ROOT=Path(__file__).resolve().parents[1]
 
 
 def prior_bytes(name):
-    raw=(ROOT/name).read_bytes()
+    raw=before_list_search(name, (ROOT/name).read_bytes())
     changes=json.loads((ROOT/'tests/native_continuation_source_changes.json').read_bytes())
     if name in changes:
         assert raw==changes[name]['new'].encode(),name

@@ -111,7 +111,7 @@ class StateCliBoundaryTests(unittest.TestCase):
         self.assertEqual(registry['implementation_sha256']['validate_run.py'],hashlib.sha256((ROOT/'validate_run.py').read_bytes()).hexdigest())
         entry=next(x for x in registry['commands'] if x['script']=='validate_run.py')
         self.assertIsNone(entry['effects'])
-        self.assertEqual(sum(x['effects'] is None for x in registry['commands']),163)
+        self.assertEqual(sum(x['effects'] is None for x in registry['commands']),165)
 
     def test_usage_remains_exit_two(self):
         result=run_cli('validate_run.py',cwd=ROOT)

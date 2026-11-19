@@ -20,6 +20,7 @@ import ris_continuation_intake as continuation
 import ris_continuation_parser as parser
 import research_bundle
 import retained_bundle_describe
+from tests._dispatcher_search_compat import before_list_search
 from json_io import canonical_json_bytes
 import tests.test_native_collection_bundle as native_cases
 encoded=native_cases.encoded
@@ -72,7 +73,7 @@ class NativeContinuationArchiveTests(unittest.TestCase):
         changes=json.loads((ROOT/'tests/native_continuation_source_changes.json').read_bytes())
         self.assertEqual(set(changes),{'native_collection_bundle.py','ris_continuation_intake.py','review_handoff.py'})
         for name,digest in prior.items():
-            actual=(ROOT/name).read_bytes()
+            actual=before_list_search(name, (ROOT/name).read_bytes())
             if name in changes:
                 self.assertEqual(actual,changes[name]['new'].encode());actual=changes[name]['old'].encode()
             self.assertEqual(hashlib.sha256(actual).hexdigest(),digest,name)

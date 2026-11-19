@@ -12,7 +12,8 @@ Layout: the command-line scripts and the engine modules they import are flat mod
 the repository root, so every command below runs as `python <script>.py ...` from there;
 the synthetic test suite is the `tests/` package. `python sensei.py list` prints the same
 scripts and the operator-handoff routes, and `python sensei.py run <script> ...` runs one
-of them without changing its arguments, output or exit status.
+of them without changing its arguments, output or exit status. To narrow the list,
+quote multiple terms together, for example `python sensei.py list --search "native citation"`.
 
 Table contract: `tests/test_command_reference.py` checks one complete backtick-quoted
 usage per command row, every script/subcommand, and the non-CLI module inventory.
@@ -60,7 +61,7 @@ and no step fills a decision, judgement or label on your behalf.
 | `python sensei.py [-h] {list,run,check,contract} ...` | Discover and run the root scripts from one entry point; the documented `python <script>` form stays the primary one | [Commands at a glance](../README.md#commands-at-a-glance) |
 | `python sensei.py contract [-h] [--text]` | Inspect source-bound partial command effects without running listed commands | [Agent contract](AGENT_CONTRACT.md) |
 | `python sensei.py check [-h]` | Read-only listed-byte inventory, in-memory syntax compilation and one synthetic status; no bytecode writes, not full tests, CI or research validation | [Checkout check](CHECKOUT_CHECK.md) |
-| `python sensei.py list [-h]` | Print every root script that has a main entry point with the first sentence of its docstring, then the supplied-input routes of the operator handoff catalog with their scripts and guides; nothing is executed and only this repository's own files are read | [Operator handoff](OPERATOR_HANDOFF.md) |
+| `python sensei.py list [-h] [--search TEXT]` | List root script names and first docstring sentences, plus handoff route IDs, titles, scripts and guide paths. Search matches entries containing every term, ignoring case. Listing reads only the checkout and executes no listed command. | [Operator handoff](OPERATOR_HANDOFF.md) |
 | `python sensei.py run [-h] script ...` | Execute one listed root script with the remaining arguments exactly as `python <script> ...` would, without a shell; any other name is rejected before anything runs, and the script keeps its own output, exit status and boundaries | this reference |
 
 ## Start, status and navigation
@@ -118,6 +119,8 @@ and no step fills a decision, judgement or label on your behalf.
 | `python pubmed_discovery.py to-intake [-h] --search-id SEARCH_ID --output OUTPUT input protocol` | Convert discovered identifiers into an unreviewed CSV intake for a declared search | [PubMed discovery](PUBMED_DISCOVERY.md) |
 | `python pubmed_partition.py review [-h] [--discovery DISCOVERY] [--output OUTPUT] plan` | Inspect explicitly supplied date windows and retained discovery observations offline | [PubMed window reconciliation](PUBMED_PARTITION.md) |
 | `python pubmed_partition.py verify [-h] [--discovery DISCOVERY] plan report` | Replay a supplied window report against its original plan and discovery records offline | [PubMed window reconciliation](PUBMED_PARTITION.md) |
+| `python pubmed_partition_compare.py compare [-h] [--before BEFORE] [--after AFTER] [--output OUTPUT] [--text] plan` | Compare retained observations of the same planned windows and locate changed PMID positions | [Comparing observations](PUBMED_PARTITION.md#compare-two-sets-of-observations) |
+| `python pubmed_partition_compare.py verify [-h] [--before BEFORE] [--after AFTER] plan report` | Replay both observation sets and verify a retained comparison | [Comparing observations](PUBMED_PARTITION.md#compare-two-sets-of-observations) |
 | `python pubmed_metadata.py preview [-h] [--output OUTPUT] input selection` | Freeze an explicit PMID selection from a verified discovery and compute the preview hash | [PubMed metadata](PUBMED_METADATA.md) |
 | `python pubmed_metadata.py fetch [-h] --preview-sha256 PREVIEW_SHA256 --output OUTPUT input selection` | Send the previewed PMID batches to NCBI EFetch (the only networked metadata step) and retain MEDLINE text | [PubMed metadata](PUBMED_METADATA.md) |
 | `python pubmed_metadata.py from-responses [-h] --output OUTPUT input selection execution` | Replay retained EFetch responses offline into the same metadata record shape | [PubMed metadata](PUBMED_METADATA.md) |

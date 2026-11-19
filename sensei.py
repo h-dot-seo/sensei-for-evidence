@@ -2,7 +2,8 @@
 
 `list` prints every root script that has a main entry point with the first sentence of
 its docstring, then the supplied-input routes of the operator handoff catalog with their
-scripts and guides. `run SCRIPT [ARGUMENTS ...]` executes one root script exactly as
+scripts and guides. Use `list --search "TERM TERM"` to show entries matching every term.
+`run SCRIPT [ARGUMENTS ...]` executes one root script exactly as
 `python SCRIPT [ARGUMENTS ...]` does, without a shell. The documented `python <script>`
 form stays the primary one. `check` performs a read-only checkout/inventory smoke check
 and runs one synthetic status fixture; it is not research validation or the test suite.
@@ -144,7 +145,12 @@ def catalog_routes():
     """Supplied-input routes of the operator handoff catalog: (id, title, scripts, guides)."""
     if str(ROOT) not in sys.path:
         sys.path.insert(0, str(ROOT))
-    import review_handoff  # Imported here only: `list` is the one subcommand that needs it.
+    previous = sys.dont_write_bytecode
+    sys.dont_write_bytecode = True
+    try:
+        import review_handoff
+    finally:
+        sys.dont_write_bytecode = previous
     routes = []
     for route in review_handoff.SUPPLIED_INPUT_WORKFLOWS:
         scripts = []
@@ -155,19 +161,35 @@ def catalog_routes():
     return routes
 
 
-def render_listing(scripts, routes):
-    lines = ['Root scripts with a command line (documented form `python SCRIPT ...`; '
-             '`python sensei.py run SCRIPT ...` is equivalent):']
-    for name, sentence in scripts:
-        lines.append('  ' + plain(name).ljust(34) + ' ' + plain(sentence))
-    lines.append('')
-    lines.append('Supplied-input routes of the operator handoff catalog (review_handoff.py); '
-                 'each route names guides to read and scripts whose parser help to inspect:')
+def render_listing(scripts, routes, search=''):
+    terms = search.casefold().split()
+
+    def matches(*fields):
+        text = ' '.join(fields).casefold()
+        return all(term in text for term in terms)
+
+    script_lines = ['  ' + plain(name).ljust(34) + ' ' + plain(sentence)
+                    for name, sentence in scripts if matches(name, sentence)]
+    route_lines = []
     for workflow_id, title, names, guides in routes:
-        lines.append('  ' + plain(workflow_id).ljust(34) + ' ' + plain(title))
-        lines.append('      scripts: ' + ', '.join(plain(name) for name in names))
-        lines.append('      guides:  ' + ', '.join(plain(guide) for guide in guides))
-    lines.append('')
+        if matches(workflow_id, title, *names, *guides):
+            route_lines.append('  ' + plain(workflow_id).ljust(34) + ' ' + plain(title))
+            route_lines.append('      scripts: ' + ', '.join(plain(name) for name in names))
+            route_lines.append('      guides:  ' + ', '.join(plain(guide) for guide in guides))
+
+    lines = []
+    if script_lines or not terms:
+        lines.append('Root scripts with a command line (documented form `python SCRIPT ...`; '
+                     '`python sensei.py run SCRIPT ...` is equivalent):')
+        lines.extend(script_lines)
+        lines.append('')
+    if route_lines or not terms:
+        lines.append('Supplied-input routes of the operator handoff catalog (review_handoff.py); '
+                     'each route names guides to read and scripts whose parser help to inspect:')
+        lines.extend(route_lines)
+        lines.append('')
+    if not lines:
+        lines.extend(['No matching scripts or routes.', ''])
     lines.append(BOUNDARY)
     return '\n'.join(lines) + '\n'
 
@@ -201,11 +223,13 @@ def build_parser():
                                      formatter_class=argparse.RawDescriptionHelpFormatter,
                                      epilog=BOUNDARY)
     subparsers = parser.add_subparsers(dest='command', metavar='{list,run,check,contract}', required=True)
-    subparsers.add_parser('list', help='print the root scripts with a command line and the catalog routes',
-                          description='Print every root script that has a main entry point, with the first '
-                                      'sentence of its docstring, then the supplied-input routes of the '
-                                      'operator handoff catalog with their scripts and guides.',
-                          epilog=BOUNDARY)
+    listing = subparsers.add_parser(
+        'list', help='print the root scripts with a command line and the catalog routes',
+        description='List root scripts with their first docstring sentences and supplied-input routes '
+                    'with their IDs, titles, scripts and guides.', epilog=BOUNDARY)
+    listing.add_argument('--search', metavar='TEXT', default='',
+                         help='show entries containing all whitespace-separated terms, ignoring case; '
+                              'quote multiple terms, e.g. --search "native citation"')
     subparsers.add_parser('check', help='read-only checkout/inventory and synthetic status smoke check',
                           description=CHECK_BOUNDARY, epilog='Writes no bytecode; does not run the full suite.')
     contracts = subparsers.add_parser('contract', help='print source-bound command declarations, not execution permission')
@@ -243,7 +267,7 @@ def main():
     if args.command == 'check':
         parser.exit(check_checkout())
     if args.command == 'list':
-        sys.stdout.write(render_listing(entry_point_scripts(), catalog_routes()))
+        sys.stdout.write(render_listing(entry_point_scripts(), catalog_routes(), args.search))
         return
     try:
         path = resolve_script(args.script)
