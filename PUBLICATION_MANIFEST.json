@@ -6,7 +6,7 @@
   "actual_corpora_included": false,
   "synthetic_examples_only": true,
   "license_status": "NOT_SELECTED",
-  "file_count": 649,
+  "file_count": 652,
   "files": [
     {
       "path": ".gitattributes",
@@ -45,8 +45,8 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 16429,
-      "sha256": "3a5658acc4c8480cda8248036ba54cd7b8cee83b5961e7d5fa700d51169839c5"
+      "bytes": 16760,
+      "sha256": "e096f4591c4094ee9e8a5672227fbc3cb0fb458cd4522811d242f216a4889c74"
     },
     {
       "path": "VALIDATION.md",
@@ -2032,6 +2032,21 @@
       "path": "sensei.py",
       "bytes": 12835,
       "sha256": "084da31ae16bf40836b6c586c290688863d2effceebb9d2b3caa02017607a469"
+    },
+    {
+      "path": "skills/sensei-evidence/SKILL.md",
+      "bytes": 1002,
+      "sha256": "18c4108fcd5944940c1ea6d8a245aabdc98066e644cd5302177785b0cde50713"
+    },
+    {
+      "path": "skills/sensei-planning/SKILL.md",
+      "bytes": 1387,
+      "sha256": "6fd9dad3e4cab553ec887511b403f317e4c7fe2fb0cf6371c7e312158c70dff3"
+    },
+    {
+      "path": "skills/sensei-planning/diagram.py",
+      "bytes": 1471,
+      "sha256": "dbf39fc1f29841edba5a66b96fa03949b28bc7c69fc04b55b5ac23590594cfc7"
     },
     {
       "path": "source_work_intake.py",
