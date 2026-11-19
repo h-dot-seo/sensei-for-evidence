@@ -2256,7 +2256,7 @@
     {
       "path": "tests/doc_block_registry.json",
       "bytes": 78470,
-      "sha256": "7190169abed89e8bbfae2c5871a301b68656602fe57593e980df0ff43ac0a650"
+      "sha256": "bc1ff96acd803165c98d7b41fc0a363d2eb955a2e2f3d608c7b51b190f68e8ae"
     },
     {
       "path": "tests/doc_conformance_prior_bytes.json",

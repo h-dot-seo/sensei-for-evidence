@@ -1184,7 +1184,7 @@
     "reason": "Existing bespoke test extracts and executes this documented journey, including modeled fictional human steps.",
     "sha256": "96a088486f7661f1977f265298247ab283ffe8c8de146e3140e6469d9c0bc394",
     "test": "tests.test_retained_bundle_describe.RetainedBundleDescribeTests.test_documented_three_commands_for_all_seven_families",
-    "test_source_sha256": "58c23810508035ba74f9ea54f7e918238c63a7d12521b52e6b0ddf31dcc812b4"
+    "test_source_sha256": "666ffe315bf2c865be086ca54ed204853e97a65c352f5720064f3296b0afcb8b"
   },
   "docs/REVIEW_VIEWS.md::0": {
     "classification": "exempt",
